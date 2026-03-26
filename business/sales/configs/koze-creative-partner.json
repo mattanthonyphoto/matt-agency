@@ -1,0 +1,583 @@
+{
+  "client": {
+    "company": "Koze Design Build",
+    "slug": "koze",
+    "owner": "Jason Craig",
+    "owner_title": "Principal",
+    "confidentiality_name": "Koze Design Build"
+  },
+  "proposal": {
+    "type": "creative-partner",
+    "title": "Creative Partner",
+    "date": "March 2026",
+    "valid_through": "April 30, 2026",
+    "filename": "koze-creative-partner.html"
+  },
+  "cover": {
+    "eyebrow": "Koze Design Build",
+    "headline_html": "Your renovations<br>tell a story.<br><em>Let’s start capturing it.</em>",
+    "subtitle": "Professional photography. Video. Build documentation. Before, during, and after. A dedicated content partner who already knows your work.",
+    "cta_text": "View Options",
+    "cta_target": "#tiers",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/30c29423-2b28-4164-8efb-809c0496af43/pit-meadows-architectural-interiors-photography-1.jpg",
+    "image_position": "center 35%"
+  },
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/36ff764d-62dd-4aac-8e2f-38d7530008cb/pit-meadows-architectural-interiors-photography-2.jpg",
+        "alt": "Pitt Meadows Residence kitchen overview",
+        "caption": "Pitt Meadows Residence &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/a1906c1e-7bef-4315-826d-4b5e45cc8f98/pit-meadows-architectural-interiors-photography-6.jpg",
+        "alt": "Pitt Meadows Residence spa bathroom",
+        "caption": "Pitt Meadows Residence &middot; Interior &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/59644469-d3a0-4d41-b28a-e36da60b2d1a/pit-meadows-architectural-interiors-photography-19.jpg",
+        "alt": "Pitt Meadows Residence natural light detail",
+        "caption": "Pitt Meadows Residence &middot; Detail &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8e63934a-a8ad-4d91-80ba-78344973f937/pit-meadows-architectural-interiors-photography-23.jpg",
+        "alt": "Pitt Meadows Residence bedroom",
+        "caption": "Pitt Meadows Residence &middot; Interior &middot; Matt Anthony Photography"
+      }
+    ]
+  },
+  "sections": [
+    "story",
+    "audit",
+    "services",
+    "pricing",
+    "roadmap",
+    "vision",
+    "numbers",
+    "awards",
+    "next_steps"
+  ],
+  "story": {
+    "eyebrow": "Where You Are",
+    "headline_html": "The work speaks for itself.<br><em>When people can see it.</em>",
+    "lead": "Jason, we shot Osprey and Hammond together last year and those images have been some of my strongest portfolio pieces. Your design-build work photographs beautifully because there’s real intention behind the decisions.",
+    "paragraphs": [
+      "But here’s what I found: Koze’s site has 9 pages total. Three project pages with minimal descriptions. No meta description on the homepage. No schema markup. No Google Business Profile. And the Osprey and Hammond pages on your site could be doing a lot more with proper SEO, richer descriptions, and the full image sets from our shoots.",
+      "Meanwhile, Copper Creek Homes in Abbotsford just won a CHBA Fraser Valley award, has a blog with a downloadable planning guide, and posts consistently. They’re not building better homes. They’re documenting and marketing better.",
+      "This proposal puts a content partner behind Koze who already knows your work. Every project gets documented, every shoot goes on the site with a proper project page, and the gaps the audit found get fixed in month one."
+    ],
+    "stats": [
+      {
+        "value": "70",
+        "label": "SEO Score"
+      },
+      {
+        "value": "5",
+        "label": "Project Pages"
+      },
+      {
+        "value": "0",
+        "label": "Video Assets"
+      },
+      {
+        "value": "0",
+        "label": "Awards Submitted"
+      }
+    ]
+  },
+  "audit": {
+    "eyebrow": "The Audit",
+    "nav_label": "Audit",
+    "headline_html": "What the data says.<br><em>Verified, not estimated.</em>",
+    "lead": "I crawled 9 pages on kozedesignbuild.ca. Here’s what I found.",
+    "paragraphs": [],
+    "grades": [
+      {
+        "area": "What’s Strong",
+        "findings": [
+          "<strong>Technical SEO scores 70/100.</strong> Valid SSL, 94ms response, sitemap, canonical tags, Open Graph. Solid Squarespace foundation.",
+          "<strong>Visual assets score 85/100.</strong> 130 images across the site, averaging 22.6 per project page. The Pitt Meadows photography is portfolio-grade.",
+          "<strong>Strong testimonials.</strong> Three detailed client reviews. Social proof is credible and prominently placed.",
+          "<strong>Houzz listing active.</strong> Authoritative directory presence for design-build."
+        ]
+      },
+      {
+        "area": "The Specific Gaps",
+        "findings": [
+          "<strong>Osprey and Hammond project pages are thin.</strong> Both pages have images from our shoots but minimal descriptions (under 130 words each). With proper project narratives, specs, and SEO-optimized text, these pages could rank for “custom renovation Pitt Meadows” and related search terms.",
+          "<strong>No meta description.</strong> Google is pulling random text from the page instead of a crafted description. Easiest fix available, 5 minutes.",
+          "<strong>No structured data.</strong> Zero schema markup. Google doesn’t know Koze is a design-build firm, where you’re based, or what you do.",
+          "<strong>No Google Business Profile detected.</strong> Can’t appear in Google Maps or the Local Pack for “design build Pitt Meadows” searches.",
+          "<strong>Zero video content.</strong> No project films, no reels, no renovation walkthroughs. Before/after video is the highest-performing content for design-build firms.",
+          "<strong>Only 9 pages.</strong> Small footprint limits search visibility. Each new project page and blog post is another entry point for organic traffic.",
+          "<strong>Copper Creek won a 2024 CHBA Fraser Valley award.</strong> They have a blog, a planning guide, and consistent content. Koze’s work is at this level or above. The credentials don’t reflect it."
+        ]
+      }
+    ],
+    "insight": {
+      "title": "The Bottom Line",
+      "content_html": "<p>Koze has a functional site and strong project photography from our shoots together. But the site is <strong>thin (9 pages)</strong>, missing basic SEO elements, and the Osprey and Hammond pages aren’t working as hard as they should. The fix isn’t a full rebuild, it’s a content partner who enriches existing pages, builds new ones for every shoot, fixes the SEO gaps in month one, and turns a 9-page site into a 20+ page portfolio that actually drives business.</p>"
+    }
+  },
+  "services": {
+    "eyebrow": "What This Adds",
+    "headline_html": "Your content arm.<br><em>Every project documented.</em>",
+    "intro": "Photography, video, and build documentation for every project, plus the website content and SEO fixes your site is missing. Every shoot becomes a project page. Every page gets proper SEO. The site grows with the business.",
+    "cards": [
+      {
+        "title": "Project Photography",
+        "is_new": false,
+        "entries": [
+          "1 full-day shoot per month",
+          "20 to 25 edited images per session",
+          "Before, during, and after documentation",
+          "Multi-format delivery: web, social, print, award-ready",
+          "Full licensing for all channels"
+        ]
+      },
+      {
+        "title": "Build Documentation + Video",
+        "is_new": true,
+        "entries": [
+          "Renovation transformation sequences",
+          "Crew action shots and progress documentation",
+          "Monthly social media reel from shoot footage",
+          "Before/after reveal videos for social",
+          "Year-end project film (Growth and Full tiers)"
+        ]
+      },
+      {
+        "title": "Website Content + SEO",
+        "is_new": true,
+        "entries": [
+          "New project page built for every shoot",
+          "Meta description and schema markup fixes (month one)",
+          "Image alt text optimization across all project photos",
+          "Google Business Profile setup and optimization",
+          "Monthly blog post (Growth and Full tiers)"
+        ]
+      },
+      {
+        "title": "Strategy + Awards",
+        "is_new": true,
+        "entries": [
+          "Full Creative Partner tier only",
+          "Monthly strategy call and content calendar",
+          "CHBA Fraser Valley award submissions",
+          "Publication pitches for completed projects",
+          "Full social media management (3x/week)"
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Choose Your Tier",
+    "headline_html": "Three tiers. Same partner.<br><em>Your call.</em>",
+    "intro": "Every tier delivers professional photography, build documentation, and before/after content. The question is how much video, social, and strategy you want on top.",
+    "tiers": [
+      {
+        "name": "Foundation",
+        "slug": "foundation",
+        "price": "$2,500",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $7,500 total",
+        "recommended": false,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "20 to 25 edited images",
+            "included": true
+          },
+          {
+            "text": "Before / during / after documentation",
+            "included": true
+          },
+          {
+            "text": "Build documentation (crew, materials, progress)",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, social, print, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Project page built per shoot",
+            "included": true
+          },
+          {
+            "text": "Schema + meta + alt text fixes (month one)",
+            "included": true
+          },
+          {
+            "text": "Google Business Profile setup",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": false
+          },
+          {
+            "text": "Monthly blog post + strategy call",
+            "included": false
+          },
+          {
+            "text": "Year-end project film",
+            "included": false
+          },
+          {
+            "text": "Awards + full social management",
+            "included": false
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$30,000"
+      },
+      {
+        "name": "Growth",
+        "slug": "growth",
+        "price": "$3,000",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $7,500 total",
+        "recommended": true,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "20 to 25 edited images",
+            "included": true
+          },
+          {
+            "text": "Before / during / after documentation",
+            "included": true
+          },
+          {
+            "text": "Build documentation (crew, materials, progress)",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, social, print, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Project page built per shoot",
+            "included": true
+          },
+          {
+            "text": "Schema + meta + alt text fixes (month one)",
+            "included": true
+          },
+          {
+            "text": "Google Business Profile setup",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": true
+          },
+          {
+            "text": "Monthly blog post",
+            "included": true
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": true
+          },
+          {
+            "text": "Year-end project film (60 to 90 seconds)",
+            "included": true
+          },
+          {
+            "text": "Awards + full social management",
+            "included": false
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$36,000"
+      },
+      {
+        "name": "Full Creative Partner",
+        "slug": "full",
+        "price": "$3,500",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $10,500 total",
+        "recommended": false,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "25 to 30 edited images",
+            "included": true
+          },
+          {
+            "text": "Before / during / after documentation",
+            "included": true
+          },
+          {
+            "text": "Build documentation (crew, materials, progress)",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, social, print, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Project page built per shoot",
+            "included": true
+          },
+          {
+            "text": "Schema + meta + alt text fixes (month one)",
+            "included": true
+          },
+          {
+            "text": "Google Business Profile setup",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": true
+          },
+          {
+            "text": "Monthly blog post",
+            "included": true
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": true
+          },
+          {
+            "text": "Year-end documentary film (2 to 3 minutes)",
+            "included": true
+          },
+          {
+            "text": "CHBA Fraser Valley award submissions",
+            "included": true
+          },
+          {
+            "text": "Full social media management (3x/week)",
+            "included": true
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$42,000"
+      }
+    ],
+    "insight": {
+      "title": "How to Think About This",
+      "content_html": "<p>You paid <strong>$3,415 for the Pitt Meadows shoot</strong> as a one-off. Here’s what that same range buys monthly:</p>",
+      "breakdowns": [
+        {
+          "label": "Foundation $2,500",
+          "desc": "Photography + build docs + a new project page per shoot + SEO fixes. Your site grows every month."
+        },
+        {
+          "label": "Growth $3,000",
+          "desc": "Everything above plus social reels, monthly blog post, strategy calls, and a year-end film. Content engine running."
+        },
+        {
+          "label": "Creative Partner $3,500",
+          "desc": "Content + strategy. Documentary film, CHBA awards pipeline, and full social management. The complete package."
+        }
+      ],
+      "footer_html": "<p style=\"margin-top:24px;\">You paid <strong>$3,415 for the Osprey and Hammond shoots</strong>. Those images are on the site but the pages are thin and not optimized. Foundation tier is $2,500/mo and every shoot goes live as a fully built project page with proper SEO the same month it’s delivered.</p>"
+    }
+  },
+  "roadmap": {
+    "eyebrow": "3-Month Pilot Roadmap",
+    "headline_html": "What gets done.<br><em>Month by month.</em>",
+    "intro": "The pilot runs May through July. Three months, three projects documented. You’ll know within 90 days whether this model works.",
+    "months": [
+      {
+        "month": "May 2026",
+        "label_html": "Fix + Document:<br>First Project",
+        "entries": [
+          "Google Business Profile created, verified, and optimized with photos",
+          "Meta description added to homepage (immediate SEO impact)",
+          "LocalBusiness schema markup added to the site",
+          "Osprey and Hammond project pages enriched with proper descriptions and SEO",
+          "Full-day shoot at an active renovation or recently completed project",
+          "20 to 25 edited images: before state, progress, finished spaces",
+          "New project page built and published from this shoot",
+          "Social media reel: before/after reveal",
+          "Strategy call to map out summer content calendar"
+        ]
+      },
+      {
+        "month": "June 2026",
+        "label_html": "Second Project:<br>Build the Library",
+        "entries": [
+          "Full-day session at a completed project or second active renovation",
+          "20 to 25 edited images + before/after documentation",
+          "Build documentation: progress, materials, crew candids",
+          "Social media reel from shoot content",
+          "Strategy call: review month one, adjust approach"
+        ]
+      },
+      {
+        "month": "July 2026",
+        "label_html": "Prove It:<br>Results and Decision",
+        "entries": [
+          "Full-day session, third project",
+          "20 to 25 edited images + build documentation",
+          "Social media reel + LinkedIn content",
+          "Pilot review: what worked, what the data says, what comes next",
+          "If results proven: 12-month continuation locked in"
+        ]
+      }
+    ],
+    "stats": [
+      {
+        "value": "3",
+        "label": "Full-Day Shoots"
+      },
+      {
+        "value": "75",
+        "label": "Professional Images"
+      },
+      {
+        "value": "4+",
+        "label": "New Project Pages"
+      },
+      {
+        "value": "1",
+        "label": "GBP Launched"
+      }
+    ]
+  },
+  "vision": {
+    "eyebrow": "The 12-Month Vision",
+    "headline_html": "What a full year of<br><em>content looks like.</em>",
+    "intro": "The pilot proves the model. A full year gives Koze the strongest visual portfolio in the Fraser Valley design-build market.",
+    "quarters": [
+      {
+        "period": "Q2 2026",
+        "title": "Prove the Model",
+        "description": "3 shoots. 75 images. 3 social reels. Before/after documentation that no local competitor has. Koze’s social channels are active with professional content for the first time."
+      },
+      {
+        "period": "Q3 2026",
+        "title": "Compound",
+        "description": "150+ images. Renovation transformation sequences banked. Build documentation showing craft and process. Six months of social content working for you."
+      },
+      {
+        "period": "Q4 2026",
+        "title": "Leverage",
+        "description": "Award submissions for CHBA Fraser Valley. Year-in-review content for proposals. 225+ images. Koze’s online presence is unrecognizable from where it started."
+      },
+      {
+        "period": "Q1 2027",
+        "title": "Separate",
+        "description": "300+ images, a year-end documentary, and a complete renovation portfolio working for Koze 24/7. The design-build firms who invest in content now win the next cycle."
+      }
+    ]
+  },
+  "numbers": {
+    "stats": [
+      {
+        "value": "300",
+        "label": "Professional Images"
+      },
+      {
+        "value": "12",
+        "label": "Social Reels"
+      },
+      {
+        "value": "12",
+        "label": "Projects Documented"
+      }
+    ]
+  },
+  "awards": {
+    "eyebrow": "Awards &amp; Publications",
+    "headline_html": "Your competitor just<br><em>won one.</em>",
+    "lead": "Copper Creek Homes in Abbotsford won the 2024 CHBA Fraser Valley Housing Award of Excellence. They’re not building better homes than Koze. They submitted.",
+    "paragraphs": [
+      "In the design-build market, awards are trust signals that close contracts. The firms who submit first establish the credibility gap. Koze’s renovation work qualifies. The submissions don’t exist yet."
+    ],
+    "competitor_numbers": [
+      {
+        "value": "0",
+        "label": "Koze Awards"
+      },
+      {
+        "value": "1",
+        "label": "Copper Creek CHBA Win"
+      },
+      {
+        "value": "5+",
+        "label": "Projects Ready to Submit"
+      }
+    ],
+    "detail_html": "<h3>What I Handle</h3><p>Every shoot is photographed to award-submission spec from day one. 300 DPI JPEG, colour-calibrated, anonymous-ready. When CHBA Fraser Valley submission season opens, your images are done. I prepare the entry materials, identify the right categories, and manage the process.</p>",
+    "services": [
+      {
+        "title": "Award Submissions",
+        "entries": [
+          "CHBA Fraser Valley Housing Awards",
+          "CHBA National Awards for Housing Excellence",
+          "HAVAN Awards",
+          "Georgie Awards (CHBA BC)",
+          "Gold Nugget Awards"
+        ]
+      },
+      {
+        "title": "Publication Pitches",
+        "entries": [
+          "Western Living",
+          "Dwell",
+          "ArchDaily",
+          "Dezeen",
+          "NUVO Magazine"
+        ]
+      }
+    ],
+    "insight": {
+      "title": "Renovation Categories Are Wide Open",
+      "content_html": "<p>CHBA Fraser Valley has specific renovation categories: Whole House Under $250K, Whole House Over $250K, Kitchen, Bathroom, and more. Copper Creek won in renovation. <strong>Koze could be the next name on that list.</strong> Every project photographed to spec is a potential submission.</p>"
+    }
+  },
+  "next_steps": {
+    "eyebrow": "Next Steps",
+    "headline_html": "We already know the work.<br><em>Let’s document all of it.</em>",
+    "paragraphs": [
+      "Jason, the Osprey and Hammond shoots proved what your work looks like when it’s documented properly. This is the next step: consistent content so every renovation Koze completes starts working for the business the moment the client moves in.",
+      "The pilot is three months. If it works, we keep going. If it doesn’t, you walk away with 75 professional images, before/after documentation, three social reels, and content that’s stronger than anything your competitors have. There’s no downside."
+    ],
+    "steps": [
+      {
+        "number": "1",
+        "title": "Pick Your Tier",
+        "description": "Foundation, Growth, or Full Creative Partner. Just let me know which fits."
+      },
+      {
+        "number": "2",
+        "title": "Deposit",
+        "description": "50% of the pilot total to lock in May and guarantee priority scheduling."
+      },
+      {
+        "number": "3",
+        "title": "Plan",
+        "description": "Quick 20-minute call to pick the first project and plan the summer shoots."
+      }
+    ],
+    "valid_note": "This proposal is valid through <strong style=\"color:var(--ink);\">April 30, 2026</strong>. After that, May availability cannot be guaranteed."
+  }
+}

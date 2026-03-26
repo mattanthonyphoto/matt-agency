@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — Matt Anthony Photography</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Ambient background -->
+    <div class="ambient-bg"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo-mark">MA</div>
+            <div>
+                <h1>Business Command Center</h1>
+                <div class="header-meta">
+                    <span class="live-dot"></span>
+                    <span id="lastUpdated">Connecting...</span>
+                    <span class="separator">|</span>
+                    <span id="autoRefreshStatus">Auto-refresh in 60s</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-stat">
+                <span class="header-stat-label">Day</span>
+                <span class="header-stat-value" id="headerDayOfYear">—</span>
+                <span class="header-stat-sub">of 365</span>
+            </div>
+            <div class="header-stat">
+                <span class="header-stat-label">Q1 Ends</span>
+                <span class="header-stat-value" id="headerDaysLeft">—</span>
+                <span class="header-stat-sub">days left</span>
+            </div>
+            <button class="btn-refresh" id="refreshBtn" onclick="loadDashboard()">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                    <path d="M13.65 2.35A8 8 0 1 0 16 8h-2a6 6 0 1 1-1.76-4.24L10 6h6V0l-2.35 2.35z" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Loading -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-ring">
+            <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="36" stroke="rgba(59,125,237,0.15)" stroke-width="4" fill="none"/>
+                <circle cx="40" cy="40" r="36" stroke="#3B7DED" stroke-width="4" fill="none"
+                    stroke-dasharray="226" stroke-dashoffset="170" stroke-linecap="round">
+                    <animateTransform attributeName="transform" type="rotate" from="0 40 40" to="360 40 40" dur="1s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+        <span class="loading-text">Pulling live data from 4 sources...</span>
+    </div>
+
+    <main class="dashboard">
+        <!-- Hero: Revenue Target Ring + Key Metrics -->
+        <section class="hero-row">
+            <div class="hero-ring-card">
+                <div class="ring-wrap">
+                    <svg class="ring-svg" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="88" stroke="rgba(59,125,237,0.08)" stroke-width="10" fill="none"/>
+                        <circle id="ringProgress" cx="100" cy="100" r="88" stroke="url(#ringGrad)" stroke-width="10" fill="none"
+                            stroke-dasharray="553" stroke-dashoffset="553" stroke-linecap="round"
+                            transform="rotate(-90 100 100)" style="transition: stroke-dashoffset 1.5s ease;"/>
+                        <defs>
+                            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#3B7DED"/>
+                                <stop offset="100%" stop-color="#8B5CF6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="ring-center">
+                        <span class="ring-pct" id="ringPct">0%</span>
+                        <span class="ring-label">of target</span>
+                    </div>
+                </div>
+                <div class="ring-details">
+                    <div class="ring-detail-row">
+                        <span class="ring-detail-label">YTD Revenue</span>
+                        <span class="ring-detail-value" id="heroRevenue">—</span>
+                    </div>
+                    <div class="ring-detail-row">
+                        <span class="ring-detail-label">2026 Target</span>
+                        <span class="ring-detail-value dim">$172,900</span>
+                    </div>
+                    <div class="ring-detail-row">
+                        <span class="ring-detail-label">Remaining</span>
+                        <span class="ring-detail-value" id="heroRemaining">—</span>
+                    </div>
+                    <div class="ring-detail-divider"></div>
+                    <div class="ring-detail-row">
+                        <span class="ring-detail-label">Daily Run Rate Needed</span>
+                        <span class="ring-detail-value accent-orange" id="heroRunRate">—</span>
+                    </div>
+                    <div class="ring-detail-row">
+                        <span class="ring-detail-label">Monthly Run Rate Needed</span>
+                        <span class="ring-detail-value accent-orange" id="heroMonthlyRate">—</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI Strip -->
+            <div class="kpi-strip">
+                <div class="kpi-card glass" data-accent="blue">
+                    <div class="kpi-icon-wrap blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+                    <div class="kpi-content">
+                        <span class="kpi-label">Net Profit</span>
+                        <span class="kpi-value" id="kpiProfit">—</span>
+                        <span class="kpi-sub" id="kpiProfitSub">—</span>
+                    </div>
+                </div>
+                <div class="kpi-card glass" data-accent="green">
+                    <div class="kpi-icon-wrap green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></div>
+                    <div class="kpi-content">
+                        <span class="kpi-label">Pipeline</span>
+                        <span class="kpi-value" id="kpiPipeline">—</span>
+                        <span class="kpi-sub" id="kpiPipelineSub">—</span>
+                    </div>
+                </div>
+                <div class="kpi-card glass" data-accent="purple">
+                    <div class="kpi-icon-wrap purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+                    <div class="kpi-content">
+                        <span class="kpi-label">Recurring</span>
+                        <span class="kpi-value" id="kpiRecurring">—</span>
+                        <span class="kpi-sub" id="kpiRecurringSub">—</span>
+                    </div>
+                </div>
+                <div class="kpi-card glass" data-accent="red">
+                    <div class="kpi-icon-wrap red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+                    <div class="kpi-content">
+                        <span class="kpi-label">Outstanding</span>
+                        <span class="kpi-value" id="kpiOutstanding">—</span>
+                        <span class="kpi-sub" id="kpiOutstandingSub">—</span>
+                    </div>
+                </div>
+                <div class="kpi-card glass" data-accent="orange">
+                    <div class="kpi-icon-wrap orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+                    <div class="kpi-content">
+                        <span class="kpi-label">YTD Expenses</span>
+                        <span class="kpi-value" id="kpiExpenses">—</span>
+                        <span class="kpi-sub" id="kpiExpensesSub">—</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Revenue Chart + YoY -->
+        <section class="chart-section">
+            <div class="card glass card-lg">
+                <div class="card-header">
+                    <h2 class="card-title">Revenue & Expenses</h2>
+                    <div class="chart-legend" id="chartLegend"></div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+            <div class="card glass">
+                <div class="card-header">
+                    <h2 class="card-title">Sales Pipeline</h2>
+                </div>
+                <div id="pipelineFunnel" class="funnel-container"></div>
+                <div class="section-divider"></div>
+                <h3 class="card-subtitle">Cold Outreach Funnel</h3>
+                <div id="coldEmailFunnel" class="funnel-container"></div>
+                <div id="coldEmailBreakdown" class="breakdown-tags"></div>
+            </div>
+        </section>
+
+        <!-- Clients + Financial -->
+        <section class="detail-section">
+            <div class="card glass">
+                <div class="card-header">
+                    <h2 class="card-title">Client Revenue (All Time)</h2>
+                    <span class="card-badge" id="clientCount">0 clients</span>
+                </div>
+                <div id="clientsTable" class="table-container"></div>
+            </div>
+            <div class="card glass">
+                <div class="card-header">
+                    <h2 class="card-title">Expense Categories</h2>
+                </div>
+                <div class="chart-container chart-donut">
+                    <canvas id="expenseChart"></canvas>
+                </div>
+                <div class="section-divider"></div>
+                <h3 class="card-subtitle">Profit & Loss — YTD</h3>
+                <div id="pnlSummary" class="pnl-summary"></div>
+            </div>
+        </section>
+
+        <!-- Bottom Stats + Invoices -->
+        <section class="bottom-section">
+            <div class="stats-grid">
+                <div class="stat-card glass">
+                    <div class="stat-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="stat-svg"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        <span class="stat-label">Mileage</span>
+                    </div>
+                    <span class="stat-value" id="statMileage">—</span>
+                    <span class="stat-sub" id="statMileageSub">0 trips logged</span>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="stat-svg"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                        <span class="stat-label">GST</span>
+                    </div>
+                    <span class="stat-value" id="statGST">—</span>
+                    <span class="stat-sub" id="statGSTSub">collected - ITCs</span>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="stat-svg"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                        <span class="stat-label">CCA Claimed</span>
+                    </div>
+                    <span class="stat-value" id="statCCA">—</span>
+                    <span class="stat-sub">equipment depreciation</span>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="stat-svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <span class="stat-label">Cold Leads</span>
+                    </div>
+                    <span class="stat-value" id="statColdLeads">—</span>
+                    <span class="stat-sub" id="statColdLeadsSub">with verified email</span>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="stat-svg"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span class="stat-label">CRM Contacts</span>
+                    </div>
+                    <span class="stat-value" id="statContacts">—</span>
+                    <span class="stat-sub">in GoHighLevel</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Invoices -->
+        <section class="invoices-section">
+            <div class="card glass">
+                <div class="card-header">
+                    <h2 class="card-title">Recent Invoices</h2>
+                    <span class="card-badge" id="invoiceCount">0 total</span>
+                </div>
+                <div id="invoicesTable" class="table-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span>Google Sheets + GoHighLevel + Instantly</span>
+        <span class="separator">|</span>
+        <span id="footerTime">—</span>
+    </footer>
+
+    <script src="/static/dashboard.js"></script>
+</body>
+</html>

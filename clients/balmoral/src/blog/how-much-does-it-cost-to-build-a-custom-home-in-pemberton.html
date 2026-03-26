@@ -1,0 +1,622 @@
+<!-- JSON-LD SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How Much Does It Cost to Build a Custom Home in Pemberton?",
+  "description": "A detailed cost guide for building a custom home in Pemberton, BC. Explore per-square-foot pricing, cost breakdowns, ALR considerations, and how Pemberton compares to Whistler and Squamish.",
+  "image": "https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/989bc309-dd71-40c1-83b9-0ba6f6523a1e/custom-home-builder-pemberton-balmoral-construction-1.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Marc Harvey",
+    "jobTitle": "Owner & Founder",
+    "url": "https://www.balmoralconstruction.com/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Balmoral Construction Inc.",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png"
+    }
+  },
+  "datePublished": "2026-03-18",
+  "dateModified": "2026-03-18",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.balmoralconstruction.com/blog/how-much-does-it-cost-to-build-a-custom-home-in-pemberton"
+  },
+  "keywords": ["Pemberton construction costs", "custom home builder Pemberton", "building costs Pemberton BC", "Pemberton vs Whistler building", "ALR building Pemberton"]
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{--bc-accent:#D4722A;--bc-accent-hover:#BF6523;--bc-accent-light:rgba(212,114,42,.1)}
+
+.bc-progress{position:fixed;top:0;left:0;height:3px;background:var(--bc-accent);z-index:1100;width:0%;transition:none}
+
+.bc{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a1a;line-height:1.7;font-weight:300;background:#fff}
+.bc img{max-width:100%;display:block}
+.bc a{color:inherit;text-decoration:none}
+
+/* NAV */
+.bc-hd{position:fixed;top:0;left:0;right:0;z-index:99999 !important;transition:background .4s cubic-bezier(.16,1,.3,1)}
+.bc-hd--top{background:transparent}
+.bc-hd--scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.bc-hd--mob-open{background:#fff !important;backdrop-filter:none}
+.bc-hd-inner{max-width:1600px;margin:0 auto;padding:0 clamp(24px,4vw,60px);display:flex;align-items:center;justify-content:space-between;height:80px}
+.bc-hd-logo img{height:52px;width:auto;transition:filter .4s}
+.bc-hd--top .bc-hd-logo img{filter:brightness(0) invert(1)}
+.bc-hd--mob-open .bc-hd-logo img{filter:none !important}
+.bc-hd-nav{display:flex;align-items:center;gap:clamp(24px,3.5vw,48px);list-style:none}
+.bc-hd-link{font-size:13px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#1a1a1a;transition:all .3s;position:relative}
+.bc-hd--top .bc-hd-link{color:rgba(255,255,255,.75)}
+.bc-hd--top .bc-hd-link:hover{color:#fff}
+.bc-hd-link:hover{color:#000}
+.bc-hd-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:currentColor;transition:width .3s}
+.bc-hd-link:hover::after{width:100%}
+.bc-hd-drop{position:relative}
+.bc-hd-drop-menu{position:absolute;top:calc(100% + 20px);left:-20px;background:#fff;padding:16px 0;min-width:220px;opacity:0;visibility:hidden;transition:all .3s;transform:translateY(8px);box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.bc-hd-drop:hover .bc-hd-drop-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.bc-hd-drop-menu a{display:block;padding:10px 28px;font-size:14px;font-weight:400;color:#666;letter-spacing:.04em;transition:all .2s}
+.bc-hd-drop-menu a:hover{color:var(--bc-accent);padding-left:32px}
+.bc-hd-mob{display:none;background:none;border:none;cursor:pointer;padding:10px;z-index:100001}
+.bc-hd-mob span{display:block;width:28px;height:2px;background:#1a1a1a;margin:7px 0;transition:all .4s}
+.bc-hd--top .bc-hd-mob span{background:#fff}
+.bc-hd--mob-open .bc-hd-mob span{background:#1a1a1a !important}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(2){opacity:0}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.bc-mob{position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:99998 !important;padding:100px clamp(24px,6vw,60px) 40px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.bc-mob.open{opacity:1;visibility:visible;display:flex;flex-direction:column}
+.bc-mob a{display:block;font-size:clamp(28px,6vw,40px);font-weight:200;color:#1a1a1a;padding:12px 0;letter-spacing:-.02em;border-bottom:1px solid #f0f0f0;transition:opacity .3s}
+.bc-mob a:hover{opacity:.5}
+.bc-mob-sub{padding-left:0}
+.bc-mob-sub a{font-size:clamp(14px,3vw,18px);font-weight:400;color:#999;letter-spacing:0;padding:8px 0}
+
+/* REVEAL */
+.bc-reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.bc-reveal.bc-visible{opacity:1;transform:translateY(0)}
+.bc-reveal-delay-1{transition-delay:.15s}
+.bc-reveal-delay-2{transition-delay:.3s}
+
+/* BLOG HERO */
+.bc-blog-hero{position:relative;height:70vh;min-height:500px;overflow:hidden;display:flex;align-items:flex-end}
+.bc-blog-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bc-blog-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.6) 100%);z-index:1}
+.bc-blog-hero-content{position:relative;z-index:2;max-width:1600px;margin:0 auto;padding:0 clamp(24px,4vw,60px) clamp(48px,6vw,80px);width:100%}
+.bc-blog-hero-content h1{font-size:clamp(28px,4.5vw,56px);font-weight:200;color:#fff;letter-spacing:-.03em;line-height:1.15;margin-bottom:20px;max-width:900px}
+.bc-blog-hero-content h1 strong{font-weight:600}
+.bc-blog-meta{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.bc-blog-meta span{font-size:12px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.bc-blog-meta span strong{color:rgba(255,255,255,.85);font-weight:500}
+
+/* BLOG BODY */
+.bc-blog-body{max-width:800px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px)}
+.bc-blog-body h2{font-size:clamp(24px,2.5vw,36px);font-weight:300;letter-spacing:-.02em;color:#1a1a1a;margin:clamp(40px,5vw,64px) 0 20px;line-height:1.2}
+.bc-blog-body h2 strong{font-weight:600}
+.bc-blog-body h3{font-size:clamp(18px,1.5vw,24px);font-weight:500;color:#1a1a1a;margin:32px 0 12px;letter-spacing:-.01em}
+.bc-blog-body p{font-size:16px;color:#444;line-height:1.9;margin-bottom:20px;font-weight:300}
+.bc-blog-body ul,.bc-blog-body ol{margin:0 0 20px 24px;color:#444;font-size:16px;line-height:1.9;font-weight:300}
+.bc-blog-body li{margin-bottom:8px}
+.bc-blog-body a{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s;padding-bottom:1px}
+.bc-blog-body a:hover{border-color:var(--bc-accent)}
+.bc-blog-body blockquote{border-left:3px solid var(--bc-accent);padding:16px 24px;margin:32px 0;background:var(--bc-accent-light);font-style:italic;color:#555}
+.bc-blog-body .bc-table-wrap{overflow-x:auto;margin:24px 0}
+.bc-blog-body table{width:100%;border-collapse:collapse;font-size:15px}
+.bc-blog-body table th{text-align:left;padding:12px 16px;background:#f8f8f6;font-weight:500;color:#1a1a1a;border-bottom:2px solid #eee;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.bc-blog-body table td{padding:12px 16px;border-bottom:1px solid #f0f0f0;color:#555}
+.bc-blog-body .bc-highlight{background:#f8f8f6;border:1px solid #eee;padding:clamp(20px,3vw,32px);margin:32px 0}
+.bc-blog-body .bc-highlight h3{margin-top:0}
+
+/* RELATED POSTS */
+.bc-related{padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px);background:#f8f8f6;border-top:1px solid #eee}
+.bc-related-inner{max-width:1600px;margin:0 auto}
+.bc-related h2{font-size:clamp(24px,2.5vw,36px);font-weight:200;letter-spacing:-.02em;color:#1a1a1a;margin-bottom:clamp(32px,4vw,48px)}
+.bc-related h2 strong{font-weight:600}
+.bc-related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(24px,3vw,40px)}
+.bc-related-card{background:#fff;overflow:hidden;transition:transform .3s}
+.bc-related-card:hover{transform:translateY(-4px)}
+.bc-related-card img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:brightness(.95);transition:filter .3s}
+.bc-related-card:hover img{filter:brightness(.88)}
+.bc-related-card-body{padding:20px 24px 24px}
+.bc-related-card-body h3{font-size:clamp(15px,1.2vw,18px);font-weight:500;color:#1a1a1a;margin-bottom:8px;line-height:1.4}
+.bc-related-card-body p{font-size:13px;color:#888;line-height:1.7;margin-bottom:8px}
+.bc-related-card-body .bc-blog-date{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:#bbb}
+
+/* CTA */
+.bc-cta{position:relative;height:60vh;min-height:400px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bc-cta img.bc-cta-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.bc-cta::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:1}
+.bc-cta-c{position:relative;z-index:2;text-align:center;max-width:600px;padding:0 24px}
+.bc-cta h2{font-size:clamp(28px,4vw,52px);font-weight:200;color:#fff;letter-spacing:-.03em;margin-bottom:16px;line-height:1.15}
+.bc-cta h2 strong{font-weight:600}
+.bc-cta p{font-size:17px;color:rgba(255,255,255,.55);margin-bottom:36px;line-height:1.8;font-weight:300}
+.bc-btn{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:18px 44px;border:2px solid rgba(255,255,255,.6);color:#fff;background:transparent;transition:all .4s;cursor:pointer}
+.bc-btn:hover{background:#fff;color:#1a1a1a;border-color:#fff}
+.bc-btn--accent{background:var(--bc-accent);color:#fff;border-color:var(--bc-accent);border-width:2px}
+.bc-btn--accent:hover{background:var(--bc-accent-hover);border-color:var(--bc-accent-hover);color:#fff}
+
+/* FOOTER */
+.bc-ft{background:#0a0a0a;color:#fff;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px) clamp(24px,3vw,40px);border-top:3px solid var(--bc-accent)}
+.bc-ft-inner{max-width:1600px;margin:0 auto}
+.bc-ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:clamp(24px,4vw,60px);padding-bottom:clamp(40px,5vw,60px);border-bottom:1px solid rgba(255,255,255,.08)}
+.bc-ft-brand p{font-size:13px;color:rgba(255,255,255,.35);line-height:1.8;margin-top:20px;max-width:300px;font-weight:300}
+.bc-ft-mark{height:60px;width:auto;opacity:.8;margin-bottom:8px}
+.bc-ft-col h4{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:20px}
+.bc-ft-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);line-height:2.2;transition:color .3s;font-weight:300}
+.bc-ft-col a:hover{color:var(--bc-accent)}
+.bc-ft-btm{display:flex;justify-content:space-between;align-items:center;padding-top:clamp(20px,3vw,32px)}
+.bc-ft-copy{font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.02em;font-weight:300}
+.bc-ft-social{display:flex;gap:24px}
+.bc-ft-social a{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);transition:color .3s}
+.bc-ft-social a:hover{color:var(--bc-accent)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.bc-hd-nav{display:none}
+.bc-hd-mob{display:block}
+}
+@media(max-width:768px){
+.bc-blog-hero{min-height:400px;height:60vh}
+.bc-related-grid{grid-template-columns:1fr}
+.bc-cta{height:50vh;min-height:350px}
+.bc-ft-top{grid-template-columns:1fr 1fr;gap:32px}
+.bc-ft-btm{flex-direction:column;gap:12px;text-align:center}
+}
+@media(max-width:480px){
+.bc-ft-top{grid-template-columns:1fr}
+}
+</style>
+
+<div class="bc-progress" id="bcProgress"></div>
+
+<div class="bc">
+
+<!-- NAV -->
+<header class="bc-hd bc-hd--top" id="bcHd">
+  <div class="bc-hd-inner">
+    <a href="/" class="bc-hd-logo">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png" alt="Balmoral Construction — Custom Home Builder in Whistler, Pemberton and Squamish">
+    </a>
+    <ul class="bc-hd-nav">
+      <li><a href="/about" class="bc-hd-link">About</a></li>
+      <li class="bc-hd-drop">
+        <a href="/services" class="bc-hd-link">Services</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/custom-home-building">Custom Home Building</a>
+          <a href="/home-renovations">Home Renovations</a>
+          <a href="/general-contracting">General Contracting</a>
+          <a href="/project-management">Project Management</a>
+          <a href="/land-consultation">Land Consultation</a>
+          <a href="/permit-coordination">Permit Coordination</a>
+        </div>
+      </li>
+      <li><a href="/work" class="bc-hd-link">Work</a></li>
+      <li class="bc-hd-drop">
+        <a href="javascript:void(0)" class="bc-hd-link">Locations</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/whistler-home-builder">Whistler</a>
+          <a href="/pemberton-home-builder">Pemberton</a>
+          <a href="/squamish-home-builder">Squamish</a>
+        </div>
+      </li>
+      <li><a href="/blog" class="bc-hd-link">Blog</a></li>
+      <li><a href="/contact" class="bc-hd-link">Contact</a></li>
+    </ul>
+    <button class="bc-hd-mob" aria-label="Menu" onclick="document.getElementById('bcMob').classList.toggle('open');this.classList.toggle('open');document.getElementById('bcHd').classList.toggle('bc-hd--mob-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="bc-mob" id="bcMob">
+  <a href="/about">About</a>
+  <a href="/services">Services</a>
+  <div class="bc-mob-sub">
+    <a href="/custom-home-building">Custom Home Building</a>
+    <a href="/home-renovations">Home Renovations</a>
+    <a href="/general-contracting">General Contracting</a>
+    <a href="/project-management">Project Management</a>
+    <a href="/land-consultation">Land Consultation</a>
+    <a href="/permit-coordination">Permit Coordination</a>
+  </div>
+  <a href="/work">Work</a>
+  <a href="javascript:void(0)">Locations</a>
+  <div class="bc-mob-sub">
+    <a href="/whistler-home-builder">Whistler</a>
+    <a href="/pemberton-home-builder">Pemberton</a>
+    <a href="/squamish-home-builder">Squamish</a>
+  </div>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="bc-blog-hero">
+  <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/989bc309-dd71-40c1-83b9-0ba6f6523a1e/custom-home-builder-pemberton-balmoral-construction-1.jpg" alt="Custom home in Pemberton, BC — understanding construction costs with Balmoral Construction">
+  <div class="bc-blog-hero-content">
+    <h1>How Much Does It Cost to Build a <strong>Custom Home in Pemberton?</strong></h1>
+    <div class="bc-blog-meta">
+      <span><strong>Marc Harvey</strong></span>
+      <span>March 2026</span>
+      <span>10 min read</span>
+    </div>
+  </div>
+</section>
+
+<!-- BODY -->
+<article class="bc-blog-body bc-reveal">
+
+  <p>Building a custom home in Pemberton, BC is one of the best decisions you can make in the Sea to Sky Corridor. With stunning mountain views, a tight-knit community, and land prices that remain more accessible than neighbouring Whistler, Pemberton offers a rare combination of value and lifestyle. But understanding what it actually costs to build here requires local knowledge that generic construction cost guides simply cannot provide.</p>
+
+  <p>At <a href="/custom-home-building">Balmoral Construction</a>, we are based in Pemberton and have built many of our most celebrated projects right here in the valley. Our office sits on Sugarloaf Place, and we have been building custom homes in this community for over a decade. This guide reflects what we see on the ground every day, not theoretical estimates from a spreadsheet.</p>
+
+  <h2>Why Pemberton Is <strong>Different from Whistler</strong></h2>
+
+  <p>One of the first questions we get from clients considering a build in Pemberton is how costs compare to Whistler. The short answer: Pemberton is generally more affordable, but the reasons go deeper than simple geography.</p>
+
+  <h3>Lower Lot Costs</h3>
+
+  <p>Land prices in Pemberton are significantly lower than in Whistler, where desirable lots routinely sell for $1.5 million to $3 million or more. In Pemberton, you can find buildable lots in the $400,000 to $900,000 range depending on size, location, and servicing. That difference alone can represent hundreds of thousands of dollars in savings before you even break ground.</p>
+
+  <h3>Different Soil Conditions</h3>
+
+  <p>Pemberton sits in a river valley, and the soil conditions here differ substantially from Whistler's mountain terrain. Many lots in the Pemberton area sit on alluvial deposits, which means the soil composition varies from site to site. Some lots have excellent bearing capacity, while others require engineered foundations or additional ground preparation. A proper geotechnical assessment is essential before committing to a lot, and it is something we always recommend during our <a href="/pemberton-home-builder">land consultation process</a>.</p>
+
+  <h3>ALR Considerations</h3>
+
+  <p>A significant portion of land in and around Pemberton falls within the Agricultural Land Reserve (ALR). This is a factor that catches many buyers off guard. ALR land comes with restrictions on what you can build, how large the home can be relative to the lot, and what secondary structures are permitted. If you are looking at a property in the ALR, you need a builder who understands these regulations inside and out. We have navigated ALR builds many times and can help you understand what is and is not possible on a given parcel.</p>
+
+  <h2>What Drives <strong>Pemberton Construction Costs</strong></h2>
+
+  <p>Custom home construction costs in Pemberton typically range from <strong>$400 to $650 per square foot</strong>, depending on several key variables. This is a meaningful difference from Whistler, where costs often run $500 to $800+ per square foot due to more challenging site conditions, stricter municipal requirements, and higher land values influencing design expectations.</p>
+
+  <p>Here are the primary factors that influence where your project falls within that range:</p>
+
+  <ul>
+    <li><strong>Site conditions</strong> — Flat, serviced lots in subdivisions like <a href="/sugarloaf">Sugarloaf Place</a> are generally less expensive to build on than rural lots requiring septic systems, wells, and long driveways.</li>
+    <li><strong>Design complexity</strong> — A straightforward rectangular footprint costs less per square foot than a home with multiple rooflines, cantilevers, or extensive glazing. That said, great design does not have to mean complicated design.</li>
+    <li><strong>Finishes and fixtures</strong> — This is often the widest variable. Finishes can range from solid and beautiful at the $400 level to ultra-premium at the $650+ level. Custom millwork, imported tile, and high-end appliance packages all shift the budget upward.</li>
+    <li><strong>Size</strong> — Larger homes tend to have a lower per-square-foot cost because fixed costs like permits, site work, and mechanical systems are spread across more area. But total cost obviously increases with size.</li>
+    <li><strong>Energy efficiency</strong> — Building to higher steps of the BC Energy Step Code adds modest upfront costs but delivers long-term savings. We recommend this investment to every client.</li>
+    <li><strong>Trade availability and timing</strong> — Starting a build in spring versus mid-winter can affect both scheduling and pricing, as trade demand fluctuates seasonally across the Sea to Sky Corridor.</li>
+  </ul>
+
+  <h2>Cost Breakdown: <strong>Where Your Money Goes</strong></h2>
+
+  <p>Understanding how your construction budget is allocated helps set realistic expectations. Here is a general breakdown for a custom home build in Pemberton:</p>
+
+  <div class="bc-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>% of Total Build Cost</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Site Work &amp; Foundation</td>
+          <td>10 &ndash; 15%</td>
+          <td>Excavation, drainage, concrete, waterproofing. Varies with soil and slope.</td>
+        </tr>
+        <tr>
+          <td>Framing &amp; Structure</td>
+          <td>15 &ndash; 20%</td>
+          <td>Lumber, engineered beams, sheathing, labour. Snow loads less extreme than Whistler.</td>
+        </tr>
+        <tr>
+          <td>Exterior Envelope</td>
+          <td>10 &ndash; 15%</td>
+          <td>Roofing, siding, windows, doors, insulation. Energy Step Code requirements apply.</td>
+        </tr>
+        <tr>
+          <td>Mechanical Systems</td>
+          <td>12 &ndash; 18%</td>
+          <td>HVAC, plumbing, electrical, HRV. Septic adds cost if not on municipal sewer.</td>
+        </tr>
+        <tr>
+          <td>Interior Finishes</td>
+          <td>25 &ndash; 35%</td>
+          <td>Flooring, cabinetry, countertops, tile, paint, fixtures. Widest variable.</td>
+        </tr>
+        <tr>
+          <td>Permits &amp; Fees</td>
+          <td>3 &ndash; 5%</td>
+          <td>Building permits, development cost charges, engineering, surveys.</td>
+        </tr>
+        <tr>
+          <td>Landscaping &amp; Exterior</td>
+          <td>3 &ndash; 5%</td>
+          <td>Driveway, grading, planting, decks, fencing.</td>
+        </tr>
+        <tr>
+          <td>Contingency</td>
+          <td>5 &ndash; 10%</td>
+          <td>Essential buffer for unknowns. We recommend at least 7%.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Pemberton-Specific <strong>Considerations</strong></h2>
+
+  <h3>Septic vs. Municipal Sewer</h3>
+
+  <p>Not all lots in Pemberton are connected to municipal sewer. Properties outside the Village core or in subdivisions without sewer infrastructure will require a septic system. A properly engineered septic system — including percolation testing, design, installation, and approval — can add $30,000 to $60,000 or more to your project, depending on soil conditions and system type. This is a cost that does not exist for builds on serviced lots, and it is critical to factor it in during the land evaluation stage.</p>
+
+  <h3>Well Water</h3>
+
+  <p>Similarly, some Pemberton properties rely on well water rather than municipal supply. Drilling a well, installing a pump system, and treating the water to meet health standards can cost $15,000 to $40,000. Flow rate and water quality vary significantly across the valley, so a well assessment should be part of your due diligence before purchasing. We have built homes on both serviced and unserviced lots and can guide you through what to expect.</p>
+
+  <h3>ALR Restrictions</h3>
+
+  <p>As mentioned above, Agricultural Land Reserve properties come with specific building restrictions. The ALC (Agricultural Land Commission) limits the total footprint of residential use on ALR parcels. As of recent policy changes, the principal residence is generally limited to 500 square metres of total floor area. Secondary residences for farm use may be permitted, but the approval process involves additional steps. If you are eyeing an ALR property, understanding these constraints early will save significant time and frustration later in the design process.</p>
+
+  <h3>Access and Servicing</h3>
+
+  <p>Some of the most beautiful properties in the Pemberton area are farther from the Village, along roads that may not be fully serviced. Longer driveways, power line extensions, and fire protection considerations can all add costs that do not apply to in-town lots. We always walk a property with our clients before they commit, helping them understand the full picture of what a given lot will cost to develop.</p>
+
+  <h2>How Pemberton Compares to <strong>Whistler and Squamish</strong></h2>
+
+  <div class="bc-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th>Pemberton</th>
+          <th>Whistler</th>
+          <th>Squamish</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cost per Sq Ft</td>
+          <td>$400 &ndash; $650</td>
+          <td>$500 &ndash; $800+</td>
+          <td>$425 &ndash; $675</td>
+        </tr>
+        <tr>
+          <td>Lot Prices</td>
+          <td>$400K &ndash; $900K</td>
+          <td>$1.5M &ndash; $3M+</td>
+          <td>$600K &ndash; $1.5M</td>
+        </tr>
+        <tr>
+          <td>Site Complexity</td>
+          <td>Moderate (valley floor)</td>
+          <td>High (mountain terrain)</td>
+          <td>Moderate to High</td>
+        </tr>
+        <tr>
+          <td>Servicing</td>
+          <td>Mixed (septic/well common)</td>
+          <td>Mostly municipal</td>
+          <td>Mostly municipal</td>
+        </tr>
+        <tr>
+          <td>ALR Considerations</td>
+          <td>Common</td>
+          <td>Rare</td>
+          <td>Some areas</td>
+        </tr>
+        <tr>
+          <td>Snow Load Requirements</td>
+          <td>Moderate</td>
+          <td>Very High</td>
+          <td>Lower</td>
+        </tr>
+        <tr>
+          <td>Build Timeline</td>
+          <td>12 &ndash; 16 months</td>
+          <td>14 &ndash; 18 months</td>
+          <td>12 &ndash; 16 months</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>If you are weighing options between communities, our <a href="/pemberton-home-builder">Pemberton home builder</a> page and our article on <a href="/blog/building-in-pemberton-vs-whistler">building in Pemberton vs. Whistler</a> provide deeper comparisons. The bottom line is that Pemberton offers exceptional value for custom home construction, particularly for families who want more space, more land, and a quieter mountain lifestyle without the Whistler price tag.</p>
+
+  <h2>Sample Budget Ranges: <strong>What to Expect by Size</strong></h2>
+
+  <p>The following ranges assume a serviced lot in Pemberton and mid-to-high-end finishes. Costs exclude land purchase, but include permits, site work, construction, and a contingency buffer.</p>
+
+  <div class="bc-highlight">
+    <h3>2,000 Sq Ft Custom Home</h3>
+    <p><strong>Estimated Range: $800,000 &ndash; $1,300,000</strong></p>
+    <p>A well-designed 2,000 sq ft home in Pemberton is perfect for a young family or downsizers who want quality without excess. At this size, every square foot needs to work hard. Smart layout design, efficient mechanical systems, and curated finishes keep the budget in check while delivering a home that feels spacious and considered. Projects like our <a href="/eagle">Eagle Drive build</a> demonstrate how modest square footage can still produce a striking result.</p>
+  </div>
+
+  <div class="bc-highlight">
+    <h3>3,000 Sq Ft Custom Home</h3>
+    <p><strong>Estimated Range: $1,200,000 &ndash; $1,950,000</strong></p>
+    <p>This is the sweet spot for many Pemberton custom home clients. At 3,000 square feet, there is room for generous living areas, a dedicated home office, a mudroom that actually works, and comfortable bedrooms for the family. Our <a href="/cerulean">Cerulean project</a> in Pemberton is an example of what is possible at this scale — a home that balances openness with warmth and takes full advantage of its mountain setting.</p>
+  </div>
+
+  <div class="bc-highlight">
+    <h3>4,000+ Sq Ft Custom Home</h3>
+    <p><strong>Estimated Range: $1,600,000 &ndash; $2,600,000+</strong></p>
+    <p>At 4,000 square feet and above, you are building a premium Pemberton residence with room for everything — expansive entertaining spaces, a dedicated primary suite, multiple living zones, and potentially guest accommodation. Our <a href="/sugarloaf">Sugarloaf project</a>, a 4,800 sq ft home right here in Pemberton, showcases the level of detail and craftsmanship that is possible at this scale, featuring floor-to-ceiling Innotech windows, custom millwork by Blueprint, and a material palette curated by interior designer Britt Lothrop.</p>
+  </div>
+
+  <h2>Tips for Managing <strong>Your Budget</strong></h2>
+
+  <p>Having built dozens of custom homes in the Sea to Sky Corridor, here is what we consistently advise clients when it comes to budget management:</p>
+
+  <h3>1. Start with the Land Assessment</h3>
+
+  <p>Before you fall in love with a lot, get a builder involved. We offer <a href="/pemberton-home-builder">land consultation</a> specifically for this purpose. Understanding the true cost of developing a property — including servicing, access, soil conditions, and ALR status — prevents budget surprises after you have already committed.</p>
+
+  <h3>2. Design with Your Budget, Not Against It</h3>
+
+  <p>The best homes are not necessarily the most expensive. Work with your architect and builder to find the design moves that deliver the most impact for the least cost. Simple rooflines, efficient floor plans, and strategic material choices can create a home that looks and feels premium without an inflated price tag.</p>
+
+  <h3>3. Protect Your Contingency</h3>
+
+  <p>We recommend a contingency of at least 7% of your construction budget. This is not money you plan to spend — it is protection against the unknowns that inevitably arise during construction. Unexpected soil conditions, material price fluctuations, and design changes all draw from contingency. Clients who protect this buffer finish their builds with far less stress.</p>
+
+  <h3>4. Choose Your Finishes Strategically</h3>
+
+  <p>Interior finishes are where budgets most commonly expand. We encourage clients to invest in the areas they will see and touch every day — kitchen countertops, primary bathroom tile, front door hardware — and look for savings in areas that are less visible. A great builder can guide you toward products that look premium without carrying a premium price.</p>
+
+  <h3>5. Lock in a Detailed Contract</h3>
+
+  <p>A comprehensive construction contract protects both you and your builder. It should clearly define scope, allowances, payment schedules, change order procedures, and timelines. At <a href="/custom-home-building">Balmoral Construction</a>, we provide detailed, transparent contracts because we believe clarity is the foundation of a positive building experience.</p>
+
+  <h3>6. Plan for the Full Timeline</h3>
+
+  <p>A custom home build in Pemberton typically takes 12 to 16 months from breaking ground, with an additional 4 to 8 months for design, engineering, and permitting. Factor in carrying costs on your lot during this period — property taxes, insurance, and loan interest if applicable. Understanding the full timeline helps you budget accurately and plan your life around the build.</p>
+
+  <h2>Ready to Explore <strong>Building in Pemberton?</strong></h2>
+
+  <p>Pemberton is where we live and where we have built some of our proudest projects. If you are considering a custom home in this community, we would welcome the chance to walk your lot, discuss your vision, and provide honest guidance on what your project will cost. There is no obligation and no pressure — just a straightforward conversation with a builder who knows this valley better than anyone.</p>
+
+  <p><a href="/contact">Get in touch</a> to start the conversation, or explore our <a href="/pemberton-home-builder">Pemberton custom home building services</a> to learn more about how we work.</p>
+
+</article>
+
+<!-- RELATED POSTS -->
+<section class="bc-related">
+  <div class="bc-related-inner">
+    <h2>Related <strong>Posts</strong></h2>
+    <div class="bc-related-grid">
+      <a href="/blog/how-much-does-it-cost-to-build-a-custom-home-in-whistler" class="bc-related-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/a426db85-f990-4801-b038-978af5d9685c/whistler-custom-home-builder-pinewood-14.jpg" alt="Custom home in Whistler — construction cost guide" loading="lazy">
+        <div class="bc-related-card-body">
+          <h3>How Much Does It Cost to Build a Custom Home in Whistler?</h3>
+          <p>A transparent breakdown of what drives custom home construction costs in Whistler.</p>
+          <span class="bc-blog-date">February 2026</span>
+        </div>
+      </a>
+      <a href="/blog/building-in-pemberton-vs-whistler" class="bc-related-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/b4f7fef9-3851-4035-93fd-981fe221853a/9-balmoral-construction-wedge.jpg" alt="Comparing building in Pemberton vs Whistler" loading="lazy">
+        <div class="bc-related-card-body">
+          <h3>Building in Pemberton vs. Whistler: What to Know</h3>
+          <p>Comparing lot costs, regulations, lifestyle, and timelines between Pemberton and Whistler.</p>
+          <span class="bc-blog-date">March 2026</span>
+        </div>
+      </a>
+      <a href="/blog/project-spotlight-sugarloaf" class="bc-related-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/8d1fe690-3b0d-4125-b1ca-be9981cb4f07/custom-home-builder-pemberton-balmoral-construction-18.jpg" alt="Sugarloaf custom home project in Pemberton" loading="lazy">
+        <div class="bc-related-card-body">
+          <h3>Project Spotlight: Sugarloaf — 4,800 Sq Ft of Precision Craft in Pemberton</h3>
+          <p>A deep dive into our 4,800 sq ft custom home build on Sugarloaf Place in Pemberton.</p>
+          <span class="bc-blog-date">March 2026</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bc-cta">
+  <img class="bc-cta-bg" src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/6a0569c9-3137-4978-940e-5be53aa5b23a/ext-SE-entry-comp-1024x683+%281%29.jpeg" alt="Start your custom home build with Balmoral Construction" loading="lazy">
+  <div class="bc-cta-c bc-reveal">
+    <h2>Ready to build in <strong>Pemberton?</strong></h2>
+    <p>Every project starts with a conversation about your vision, your land, and how you want to live. Reach out to start planning your custom home.</p>
+    <a href="/contact" class="bc-btn bc-btn--accent">Start a Conversation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bc-ft">
+  <div class="bc-ft-inner">
+    <div class="bc-ft-top">
+      <div class="bc-ft-brand">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/83ca6501-705e-43ee-b119-551d0c16ea14/unnamed.png" alt="Balmoral Construction — Custom Home Builder in the Sea to Sky Corridor" class="bc-ft-mark">
+        <p>Boutique custom home builder in the Sea to Sky Corridor. Based in Pemberton, building across Whistler, Pemberton &amp; Squamish since 2011.</p>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Services</h4>
+        <a href="/custom-home-building">Custom Home Building</a>
+        <a href="/home-renovations">Home Renovations</a>
+        <a href="/general-contracting">General Contracting</a>
+        <a href="/project-management">Project Management</a>
+        <a href="/land-consultation">Land Consultation</a>
+        <a href="/permit-coordination">Permit Coordination</a>
+        <a href="/services">All Services</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Locations</h4>
+        <a href="/whistler-home-builder">Whistler Home Builder</a>
+        <a href="/pemberton-home-builder">Pemberton Home Builder</a>
+        <a href="/squamish-home-builder">Squamish Home Builder</a>
+        <a href="/whistler-home-renovations">Whistler Renovations</a>
+        <a href="/pemberton-home-renovations">Pemberton Renovations</a>
+        <a href="/squamish-home-renovations">Squamish Renovations</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Projects</h4>
+        <a href="/warbler-way">Warbler Way</a>
+        <a href="/cerulean">Cerulean</a>
+        <a href="/sugarloaf">Sugarloaf</a>
+        <a href="/white-gold-2">White Gold 2</a>
+        <a href="/fitzsimmons">Fitzsimmons</a>
+        <a href="/work">All Projects</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Company</h4>
+        <a href="/about">About</a>
+        <a href="/work">Portfolio</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+        <a href="tel:6049072237">604.907.2237</a>
+        <a href="mailto:marc@balmoralconstruction.com">marc@balmoralconstruction.com</a>
+      </div>
+    </div>
+    <div class="bc-ft-btm">
+      <span class="bc-ft-copy">&copy; 2026 Balmoral Construction Inc. &mdash; Custom Home Builder in Whistler, Pemberton &amp; Squamish, BC</span>
+      <div class="bc-ft-social">
+        <a href="https://www.instagram.com/balmoralconstruction/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.houzz.com/professionals/general-contractors/balmoral-construction-pfvwus-pf~1513498919" target="_blank" rel="noopener">Houzz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var hd=document.getElementById('bcHd');
+  function checkScroll(){
+    var s=window.scrollY>80;
+    hd.classList.toggle('bc-hd--top',!s);
+    hd.classList.toggle('bc-hd--scrolled',s);
+  }
+  window.addEventListener('scroll',checkScroll);
+  checkScroll();
+
+  var prog=document.getElementById('bcProgress');
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(h>0) prog.style.width=(window.scrollY/h*100)+'%';
+  });
+
+  var reveals=document.querySelectorAll('.bc-reveal');
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('bc-visible');observer.unobserve(e.target)}
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  reveals.forEach(function(el){observer.observe(el)});
+})();
+</script>
+<style>
+/* Squarespace page wrapper reset */
+.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block{margin:0!important;padding:0!important;max-width:100%!important;width:100%!important}
+.page-section:last-of-type{padding-bottom:0!important;margin-bottom:0!important}
+#footer,.Footer,.footer,footer[data-footer-id],footer:not(.bc-ft){display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important}
+.sqs-block-spacer,.sqs-block-horizontalrule,.section-background{display:none!important}
+@media(max-width:768px){.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block,.Index-page-content,.blog-item-inner-wrapper,article.page,article.Page,.page-content,.Page-content{padding:0!important;margin:0!important}body{padding-bottom:0!important;margin-bottom:0!important}}
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){var f=document.querySelector('.bc-ft');if(f){var p=f.closest('.sqs-block')||f.closest('.page-section')||f.parentElement;while(p){var n=p.nextElementSibling;while(n){n.style.cssText='display:none!important;height:0!important;padding:0!important;margin:0!important;overflow:hidden!important';n=n.nextElementSibling}p=p.parentElement}}});
+</script>

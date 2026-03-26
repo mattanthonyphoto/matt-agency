@@ -1,0 +1,27 @@
+# macOS system files
+.DS_Store
+
+# Local configuration files with secrets or machine-specific settings
+*.local.json
+
+# Dependencies
+node_modules/
+
+# Environment & secrets
+.env
+.env.save
+.mcp.json
+credentials/
+credentials.json
+token.json
+
+# Temporary/intermediate files
+.tmp/
+
+# Editor
+.cursor/
+
+# Images (store externally, not in repo)
+*.jpg
+*.jpeg
+*.png

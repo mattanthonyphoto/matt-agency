@@ -1,0 +1,704 @@
+<!-- JSON-LD SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://www.balmoralconstruction.com/blog/building-in-pemberton-vs-whistler#article",
+      "headline": "Building in Pemberton vs. Whistler: What to Know",
+      "description": "A side-by-side comparison of building a custom home in Pemberton vs. Whistler — covering lot costs, construction costs, building regulations, climate, lifestyle, and timelines in the Sea to Sky Corridor.",
+      "author": {
+        "@type": "Person",
+        "name": "Marc Harvey",
+        "jobTitle": "Owner & Founder",
+        "url": "https://www.balmoralconstruction.com/about"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Balmoral Construction Inc.",
+        "url": "https://www.balmoralconstruction.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png"
+        }
+      },
+      "datePublished": "2026-03-10",
+      "dateModified": "2026-03-10",
+      "image": "https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/b4f7fef9-3851-4035-93fd-981fe221853a/9-balmoral-construction-wedge.jpg",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.balmoralconstruction.com/blog/building-in-pemberton-vs-whistler"
+      },
+      "keywords": ["Pemberton vs Whistler", "building in Pemberton BC", "building in Whistler BC", "custom home Pemberton", "custom home Whistler", "Sea to Sky home builder"]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.balmoralconstruction.com/blog/building-in-pemberton-vs-whistler#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is it cheaper to build a custom home in Pemberton than in Whistler?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, building in Pemberton is generally 10-20% less expensive than Whistler. Construction costs in Pemberton typically range from $400 to $650 per square foot, compared to $500 to $800+ in Whistler. Land costs are also significantly lower, with lots in Pemberton ranging from $500K to $1.5M versus $1M to $5M+ in Whistler."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the main differences in building regulations between Whistler and Pemberton?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Whistler is governed by the Resort Municipality of Whistler (RMOW), which has additional design guidelines, Development Permit areas, and stricter density controls compared to the Village of Pemberton. Whistler's regulations are generally more complex, with longer permit timelines (3-6 months vs. 2-4 months in Pemberton) and more restrictive building envelopes in many neighbourhoods."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How far is Pemberton from Whistler?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pemberton is approximately 30 minutes north of Whistler along Highway 99 (the Sea to Sky Highway). The drive is scenic and straightforward, making it easy to access Whistler's amenities, ski areas, and services while enjoying the more spacious, community-oriented lifestyle that Pemberton offers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Balmoral Construction build in both Pemberton and Whistler?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Balmoral Construction is headquartered in Pemberton and builds across the entire Sea to Sky Corridor, including Whistler, Pemberton, and Squamish. We have completed projects in all three communities and have deep experience with the building regulations, site conditions, and contractor networks specific to each area."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{--bc-accent:#D4722A;--bc-accent-hover:#BF6523;--bc-accent-light:rgba(212,114,42,.1)}
+
+.bc-progress{position:fixed;top:0;left:0;height:3px;background:var(--bc-accent);z-index:1100;width:0%;transition:none}
+
+.bc{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a1a;line-height:1.7;font-weight:300;background:#fff}
+.bc img{max-width:100%;display:block}
+.bc a{color:inherit;text-decoration:none}
+
+.bc-reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.bc-reveal.bc-visible{opacity:1;transform:translateY(0)}
+.bc-reveal-delay-1{transition-delay:.15s}
+.bc-reveal-delay-2{transition-delay:.3s}
+
+/* NAV */
+.bc-hd{position:fixed;top:0;left:0;right:0;z-index:99999 !important;transition:background .4s cubic-bezier(.16,1,.3,1)}
+.bc-hd--top{background:transparent}
+.bc-hd--scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.bc-hd--mob-open{background:#fff !important;backdrop-filter:none}
+.bc-hd-inner{max-width:1600px;margin:0 auto;padding:0 clamp(24px,4vw,60px);display:flex;align-items:center;justify-content:space-between;height:80px}
+.bc-hd-logo img{height:52px;width:auto;transition:filter .4s}
+.bc-hd--top .bc-hd-logo img{filter:brightness(0) invert(1)}
+.bc-hd--mob-open .bc-hd-logo img{filter:none !important}
+.bc-hd-nav{display:flex;align-items:center;gap:clamp(24px,3.5vw,48px);list-style:none}
+.bc-hd-link{font-size:13px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#1a1a1a;transition:all .3s;position:relative}
+.bc-hd--top .bc-hd-link{color:rgba(255,255,255,.75)}
+.bc-hd--top .bc-hd-link:hover{color:#fff}
+.bc-hd-link:hover{color:#000}
+.bc-hd-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:currentColor;transition:width .3s}
+.bc-hd-link:hover::after{width:100%}
+.bc-hd-drop{position:relative}
+.bc-hd-drop-menu{position:absolute;top:calc(100% + 20px);left:-20px;background:#fff;padding:16px 0;min-width:220px;opacity:0;visibility:hidden;transition:all .3s;transform:translateY(8px);box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.bc-hd-drop:hover .bc-hd-drop-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.bc-hd-drop-menu a{display:block;padding:10px 28px;font-size:14px;font-weight:400;color:#666;letter-spacing:.04em;transition:all .2s}
+.bc-hd-drop-menu a:hover{color:var(--bc-accent);padding-left:32px}
+.bc-hd-mob{display:none;background:none;border:none;cursor:pointer;padding:10px;z-index:100001}
+.bc-hd-mob span{display:block;width:28px;height:2px;background:#1a1a1a;margin:7px 0;transition:all .4s}
+.bc-hd--top .bc-hd-mob span{background:#fff}
+.bc-hd--mob-open .bc-hd-mob span{background:#1a1a1a !important}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(2){opacity:0}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.bc-mob{position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:99998 !important;padding:100px clamp(24px,6vw,60px) 40px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.bc-mob.open{opacity:1;visibility:visible;display:flex;flex-direction:column}
+.bc-mob a{display:block;font-size:clamp(28px,6vw,40px);font-weight:200;color:#1a1a1a;padding:12px 0;letter-spacing:-.02em;border-bottom:1px solid #f0f0f0;transition:opacity .3s}
+.bc-mob a:hover{opacity:.5}
+.bc-mob-sub{padding-left:0}
+.bc-mob-sub a{font-size:clamp(14px,3vw,18px);font-weight:400;color:#999;letter-spacing:0;padding:8px 0}
+
+/* BLOG HERO */
+.bc-blog-hero{position:relative;height:70vh;min-height:500px;overflow:hidden;display:flex;align-items:flex-end}
+.bc-blog-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bc-blog-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.6) 100%);z-index:1}
+.bc-blog-hero-content{position:relative;z-index:2;max-width:1600px;margin:0 auto;padding:0 clamp(24px,4vw,60px) clamp(48px,6vw,80px);width:100%}
+.bc-blog-hero-content h1{font-size:clamp(28px,4.5vw,56px);font-weight:200;color:#fff;letter-spacing:-.03em;line-height:1.15;margin-bottom:20px;max-width:800px}
+.bc-blog-hero-content h1 strong{font-weight:600}
+.bc-blog-meta{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.bc-blog-meta span{font-size:12px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.bc-blog-meta-dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.3)}
+
+/* ARTICLE BODY */
+.bc-article{max-width:800px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px)}
+.bc-article h2{font-size:clamp(24px,2.5vw,36px);font-weight:300;letter-spacing:-.02em;color:#1a1a1a;margin:clamp(40px,5vw,64px) 0 20px;line-height:1.2}
+.bc-article h2 strong{font-weight:600}
+.bc-article h3{font-size:clamp(18px,1.5vw,24px);font-weight:500;color:#1a1a1a;margin:32px 0 14px;line-height:1.3}
+.bc-article p{font-size:16px;color:#444;line-height:1.9;margin-bottom:20px;font-weight:300}
+.bc-article ul,.bc-article ol{margin:0 0 24px 24px;color:#444;font-size:16px;line-height:1.9;font-weight:300}
+.bc-article li{margin-bottom:8px}
+.bc-article a{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s}
+.bc-article a:hover{border-color:var(--bc-accent)}
+.bc-article blockquote{border-left:3px solid var(--bc-accent);padding:16px 24px;margin:32px 0;background:var(--bc-accent-light);font-size:16px;color:#333;line-height:1.8;font-style:normal;font-weight:300}
+.bc-article .bc-callout{background:#f8f8f6;border:1px solid #eee;padding:clamp(20px,3vw,32px);margin:32px 0}
+.bc-article .bc-callout h4{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--bc-accent);margin-bottom:12px}
+.bc-article .bc-callout p{margin-bottom:0}
+.bc-article table{width:100%;border-collapse:collapse;margin:32px 0;font-size:15px}
+.bc-article table th{text-align:left;padding:14px 16px;background:#f8f8f6;font-weight:500;color:#1a1a1a;font-size:13px;letter-spacing:.05em;text-transform:uppercase;border-bottom:2px solid #eee}
+.bc-article table td{padding:14px 16px;border-bottom:1px solid #eee;color:#444;font-weight:300}
+
+/* RELATED POSTS */
+.bc-related{background:#f8f8f6;border-top:1px solid #eee}
+.bc-related-inner{max-width:1600px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px)}
+.bc-related-inner h2{font-size:clamp(24px,2.5vw,36px);font-weight:200;letter-spacing:-.02em;color:#1a1a1a;margin-bottom:clamp(24px,3vw,40px)}
+.bc-related-inner h2 strong{font-weight:600}
+.bc-related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(24px,3vw,40px)}
+.bc-related-card img{width:100%;aspect-ratio:16/9;object-fit:cover;margin-bottom:16px;filter:brightness(.95);transition:filter .3s}
+.bc-related-card:hover img{filter:brightness(.88)}
+.bc-related-card h3{font-size:clamp(16px,1.3vw,20px);font-weight:500;color:#1a1a1a;margin-bottom:8px;line-height:1.4}
+.bc-related-card p{font-size:13px;color:#888;line-height:1.7;margin-bottom:10px}
+.bc-related-card .bc-blog-date{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:#bbb}
+
+/* CTA */
+.bc-cta{position:relative;height:60vh;min-height:400px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bc-cta img.bc-cta-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.bc-cta::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:1}
+.bc-cta-c{position:relative;z-index:2;text-align:center;max-width:600px;padding:0 24px}
+.bc-cta h2{font-size:clamp(28px,4vw,52px);font-weight:200;color:#fff;letter-spacing:-.03em;margin-bottom:16px;line-height:1.15}
+.bc-cta h2 strong{font-weight:600}
+.bc-cta p{font-size:17px;color:rgba(255,255,255,.55);margin-bottom:36px;line-height:1.8;font-weight:300}
+.bc-btn{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:18px 44px;border:2px solid rgba(255,255,255,.6);color:#fff;background:transparent;transition:all .4s;cursor:pointer}
+.bc-btn:hover{background:#fff;color:#1a1a1a;border-color:#fff}
+.bc-btn--accent{background:var(--bc-accent);color:#fff;border-color:var(--bc-accent);border-width:2px}
+.bc-btn--accent:hover{background:var(--bc-accent-hover);border-color:var(--bc-accent-hover);color:#fff}
+
+/* FAQ */
+.bc-faq-section{max-width:800px;margin:0 auto;padding:0 clamp(24px,4vw,60px) clamp(48px,6vw,80px)}
+.bc-faq-section h2{font-size:clamp(24px,2.5vw,36px);font-weight:200;letter-spacing:-.02em;color:#1a1a1a;margin-bottom:24px}
+.bc-faq-section h2 strong{font-weight:600}
+.bc-faq-list{width:100%}
+.bc-faq-item{border-bottom:1px solid #eee}
+.bc-faq-q{display:flex;justify-content:space-between;align-items:center;padding:clamp(18px,2vw,28px) 0;cursor:pointer;background:none;border:none;width:100%;text-align:left;font-family:'Inter',sans-serif;font-size:clamp(17px,1.4vw,20px);font-weight:400;color:#1a1a1a;line-height:1.5;gap:16px}
+.bc-faq-q:hover{color:#666}
+.bc-faq-icon{font-size:20px;color:#ccc;transition:transform .3s;flex-shrink:0}
+.bc-faq-item.open .bc-faq-icon{transform:rotate(45deg)}
+.bc-faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
+.bc-faq-item.open .bc-faq-a{max-height:500px}
+.bc-faq-a-inner{padding:0 0 clamp(18px,2vw,28px);font-size:16px;color:#666;line-height:1.9}
+.bc-faq-a-inner a{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s}
+.bc-faq-a-inner a:hover{border-color:var(--bc-accent)}
+
+/* FOOTER */
+.bc-ft{background:#0a0a0a;color:#fff;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px) clamp(24px,3vw,40px);border-top:3px solid var(--bc-accent)}
+.bc-ft-inner{max-width:1600px;margin:0 auto}
+.bc-ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:clamp(24px,4vw,60px);padding-bottom:clamp(40px,5vw,60px);border-bottom:1px solid rgba(255,255,255,.08)}
+.bc-ft-brand p{font-size:13px;color:rgba(255,255,255,.35);line-height:1.8;margin-top:20px;max-width:300px;font-weight:300}
+.bc-ft-mark{height:60px;width:auto;opacity:.8;margin-bottom:8px}
+.bc-ft-col h4{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:20px}
+.bc-ft-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);line-height:2.2;transition:color .3s;font-weight:300}
+.bc-ft-col a:hover{color:var(--bc-accent)}
+.bc-ft-btm{display:flex;justify-content:space-between;align-items:center;padding-top:clamp(20px,3vw,32px)}
+.bc-ft-copy{font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.02em;font-weight:300}
+.bc-ft-social{display:flex;gap:24px}
+.bc-ft-social a{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);transition:color .3s}
+.bc-ft-social a:hover{color:var(--bc-accent)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.bc-hd-nav{display:none}
+.bc-hd-mob{display:block}
+}
+@media(max-width:768px){
+.bc-blog-hero{min-height:400px;height:50vh}
+.bc-related-grid{grid-template-columns:1fr}
+.bc-ft-top{grid-template-columns:1fr 1fr;gap:32px}
+.bc-ft-btm{flex-direction:column;gap:12px;text-align:center}
+.bc-article table{font-size:13px}
+.bc-article table th,.bc-article table td{padding:10px 12px}
+}
+@media(max-width:480px){
+.bc-ft-top{grid-template-columns:1fr}
+}
+</style>
+
+<div class="bc-progress" id="bcProgress"></div>
+
+<div class="bc">
+
+<!-- NAV -->
+<header class="bc-hd bc-hd--top" id="bcHd">
+  <div class="bc-hd-inner">
+    <a href="/" class="bc-hd-logo">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png" alt="Balmoral Construction — Custom Home Builder in Whistler, Pemberton and Squamish">
+    </a>
+    <ul class="bc-hd-nav">
+      <li><a href="/about" class="bc-hd-link">About</a></li>
+      <li class="bc-hd-drop">
+        <a href="/services" class="bc-hd-link">Services</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/custom-home-building">Custom Home Building</a>
+          <a href="/home-renovations">Home Renovations</a>
+          <a href="/general-contracting">General Contracting</a>
+          <a href="/project-management">Project Management</a>
+          <a href="/land-consultation">Land Consultation</a>
+          <a href="/permit-coordination">Permit Coordination</a>
+        </div>
+      </li>
+      <li><a href="/work" class="bc-hd-link">Work</a></li>
+      <li class="bc-hd-drop">
+        <a href="javascript:void(0)" class="bc-hd-link">Locations</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/whistler-home-builder">Whistler</a>
+          <a href="/pemberton-home-builder">Pemberton</a>
+          <a href="/squamish-home-builder">Squamish</a>
+        </div>
+      </li>
+      <li><a href="/blog" class="bc-hd-link">Blog</a></li>
+      <li><a href="/contact" class="bc-hd-link">Contact</a></li>
+    </ul>
+    <button class="bc-hd-mob" aria-label="Menu" onclick="document.getElementById('bcMob').classList.toggle('open');this.classList.toggle('open');document.getElementById('bcHd').classList.toggle('bc-hd--mob-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="bc-mob" id="bcMob">
+  <a href="/about">About</a>
+  <a href="/services">Services</a>
+  <div class="bc-mob-sub">
+    <a href="/custom-home-building">Custom Home Building</a>
+    <a href="/home-renovations">Home Renovations</a>
+    <a href="/general-contracting">General Contracting</a>
+    <a href="/project-management">Project Management</a>
+    <a href="/land-consultation">Land Consultation</a>
+    <a href="/permit-coordination">Permit Coordination</a>
+  </div>
+  <a href="/work">Work</a>
+  <a href="javascript:void(0)">Locations</a>
+  <div class="bc-mob-sub">
+    <a href="/whistler-home-builder">Whistler</a>
+    <a href="/pemberton-home-builder">Pemberton</a>
+    <a href="/squamish-home-builder">Squamish</a>
+  </div>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="bc-blog-hero">
+  <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/b4f7fef9-3851-4035-93fd-981fe221853a/9-balmoral-construction-wedge.jpg" alt="Custom home in the Sea to Sky Corridor by Balmoral Construction — comparing building in Pemberton vs Whistler">
+  <div class="bc-blog-hero-content">
+    <h1>Building in Pemberton vs. Whistler: <strong>What to Know</strong></h1>
+    <div class="bc-blog-meta">
+      <span>March 2026</span>
+      <div class="bc-blog-meta-dot"></div>
+      <span>Marc Harvey</span>
+      <div class="bc-blog-meta-dot"></div>
+      <span>13 Min Read</span>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<article class="bc-article bc-reveal">
+
+  <p>If you are considering building a <a href="/custom-home-building">custom home</a> in the Sea to Sky Corridor, you have likely looked at both Whistler and Pemberton. These two communities are only 30 minutes apart by car, but they offer distinctly different experiences when it comes to land costs, construction budgets, building regulations, lifestyle, and overall value. As a <a href="/pemberton-home-builder">Pemberton-based builder</a> who has completed projects in both communities for over a decade, I have seen the decision from every angle.</p>
+
+  <p>This guide provides a straightforward, side-by-side comparison to help you decide which community is the right fit for your custom home. There is no objectively better answer — it depends entirely on your priorities, your budget, and how you want to live.</p>
+
+  <h2><strong>Lot Costs:</strong> The Biggest Difference</h2>
+
+  <p>The most significant financial difference between Pemberton and Whistler is the cost of land. This single variable can shift your total project budget by a million dollars or more.</p>
+
+  <h3>Whistler Lot Costs</h3>
+
+  <p>Vacant lots in Whistler typically range from <strong>$1 million to $5 million or more</strong>, depending on location, size, and views. Premium neighbourhoods like Kadenwood, Alpine Meadows, and Whistler Cay command the highest prices. Even lots with significant development challenges — steep grades, poor access, rock that requires blasting — rarely sell for under $1 million. The supply of buildable lots in Whistler is constrained by the resort's land base, and demand from both full-time residents and vacation homeowners keeps prices elevated.</p>
+
+  <h3>Pemberton Lot Costs</h3>
+
+  <p>In Pemberton, vacant residential lots generally range from <strong>$500,000 to $1.5 million</strong>. Established neighbourhoods like The Benchlands, Sunstone, and areas closer to the village centre offer lots with mountain views and good access at a fraction of comparable Whistler properties. Rural properties on larger acreages are also available, offering a level of space and privacy that simply does not exist within Whistler's municipal boundaries.</p>
+
+  <p>For clients who have a fixed total budget, the savings on land in Pemberton often translate directly into a larger home, higher-quality finishes, or both. We have worked with clients who chose Pemberton specifically because it allowed them to build the home they truly wanted, rather than compromising on size or finishes to fit a Whistler lot budget. Our <a href="/sugarloaf">Sugarloaf project</a> in Pemberton is a good example of what is possible when land costs leave more room in the construction budget.</p>
+
+  <h2><strong>Construction Costs</strong> Per Square Foot</h2>
+
+  <p>The cost of actually building a home is also lower in Pemberton, though the gap is narrower than the land cost difference.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Factor</th>
+        <th>Whistler</th>
+        <th>Pemberton</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Construction Cost (per sq ft)</td>
+        <td>$500 &ndash; $800+</td>
+        <td>$400 &ndash; $650</td>
+      </tr>
+      <tr>
+        <td>Average Lot Cost</td>
+        <td>$1M &ndash; $5M+</td>
+        <td>$500K &ndash; $1.5M</td>
+      </tr>
+      <tr>
+        <td>Permit Timeline</td>
+        <td>3 &ndash; 6 months</td>
+        <td>2 &ndash; 4 months</td>
+      </tr>
+      <tr>
+        <td>Construction Timeline</td>
+        <td>12 &ndash; 18 months</td>
+        <td>10 &ndash; 16 months</td>
+      </tr>
+      <tr>
+        <td>Site Prep Complexity</td>
+        <td>Often high</td>
+        <td>Generally moderate</td>
+      </tr>
+      <tr>
+        <td>Snow Load Requirements</td>
+        <td>Very high</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <td>Winter Building Premium</td>
+        <td>10 &ndash; 15%</td>
+        <td>5 &ndash; 10%</td>
+      </tr>
+      <tr>
+        <td>Total Project Cost (3,000 sq ft + land)</td>
+        <td>$2.5M &ndash; $7.5M+</td>
+        <td>$1.7M &ndash; $3.5M</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The construction cost difference is primarily driven by three factors: site preparation complexity (Whistler lots are more often steep or rocky), access logistics (some Whistler lots are genuinely difficult to reach with construction vehicles), and the RMOW's more stringent engineering requirements, particularly around snow loads. The actual quality of construction, the trades involved, and the materials used are identical — at <a href="/about">Balmoral</a>, we do not build to different standards based on location. For a deeper dive into what drives construction costs, see our <a href="/blog/how-much-does-it-cost-to-build-a-custom-home-in-whistler">Whistler cost guide</a>.</p>
+
+  <h2>Building Regulations: <strong>RMOW vs. Village of Pemberton</strong></h2>
+
+  <p>The regulatory landscape is one of the less obvious but highly significant differences between building in Whistler and Pemberton.</p>
+
+  <h3>Whistler (Resort Municipality of Whistler)</h3>
+
+  <p>Whistler is governed by the Resort Municipality of Whistler (RMOW), which has its own comprehensive set of zoning bylaws, development guidelines, and building regulations. Key characteristics include:</p>
+
+  <ul>
+    <li><strong>Development Permit areas</strong> — many Whistler neighbourhoods require a Development Permit in addition to a building permit, adding time and complexity to the approval process</li>
+    <li><strong>Design guidelines</strong> — some areas have specific design guidelines governing materials, colours, roof pitches, and overall aesthetic. These vary by neighbourhood and can significantly constrain design options</li>
+    <li><strong>Stricter density controls</strong> — floor area ratios (FAR) and lot coverage maximums tend to be more restrictive in Whistler, limiting the size of the home you can build relative to your lot</li>
+    <li><strong>Higher snow load engineering</strong> — the RMOW has some of the highest snow load requirements in BC, which impacts structural design and cost</li>
+    <li><strong>Environmental protections</strong> — Whistler has extensive environmental regulations, particularly around watercourses, riparian areas, and wildlife corridors</li>
+  </ul>
+
+  <h3>Pemberton (Village of Pemberton)</h3>
+
+  <p>The Village of Pemberton has a simpler regulatory framework. The zoning bylaw is straightforward, Development Permit requirements are limited to specific areas, and the overall approval process is less layered. This does not mean Pemberton has lower standards — homes still must meet the BC Building Code — but the administrative process is generally more efficient. Key differences include:</p>
+
+  <ul>
+    <li><strong>Fewer Development Permit requirements</strong> — most residential lots do not require a separate Development Permit</li>
+    <li><strong>More straightforward zoning</strong> — setbacks, lot coverage, and height restrictions are clear and consistently applied</li>
+    <li><strong>Faster permit processing</strong> — the Village's smaller application volume typically results in 2 to 4 month processing times compared to 3 to 6 months in Whistler</li>
+    <li><strong>Flexible design parameters</strong> — fewer neighbourhood-specific design guidelines means more freedom in architectural expression</li>
+  </ul>
+
+  <p>For a complete overview of the permit process in both communities, read our <a href="/blog/bc-building-permit-process-explained">BC building permit guide</a>.</p>
+
+  <h2>Climate <strong>Considerations</strong></h2>
+
+  <p>Pemberton and Whistler are in the same general climate zone, but there are meaningful differences that affect construction and daily living.</p>
+
+  <p>Whistler sits at a higher elevation and receives significantly more snowfall than Pemberton. This means heavier snow load requirements for construction, more challenging winter building conditions, and a longer season of snow management for homeowners. The upside is direct access to world-class skiing and a genuine alpine environment year-round.</p>
+
+  <p>Pemberton sits in a wide valley at a lower elevation. It receives less snow (though still plenty by most Canadian standards), has warmer summers, and offers a drier climate overall. The Pemberton Valley is known for its agricultural character and long summer days. For construction, the milder conditions mean a longer effective building season and lower winter premiums — typically 5 to 10% compared to 10 to 15% in Whistler.</p>
+
+  <h2>Lifestyle <strong>Differences</strong></h2>
+
+  <p>Beyond the financial and regulatory comparisons, the lifestyle difference is often what tips the decision for most homeowners.</p>
+
+  <h3>Whistler</h3>
+
+  <p>Whistler is a resort town with world-class amenities: two ski mountains, an extensive trail network, restaurants, shopping, cultural events, and a cosmopolitan energy. It attracts visitors from around the world, which creates a vibrant atmosphere but also means crowds, traffic, and a cost of living that reflects its resort status. Full-time residents enjoy unparalleled outdoor access but share their community with millions of annual visitors.</p>
+
+  <h3>Pemberton</h3>
+
+  <p>Pemberton is a community first. It has a small-town character with a growing food and farming culture, strong community connections, and a quieter pace of life. The outdoor recreation is excellent — hiking, biking, skiing at nearby resorts, and river activities — but without the crowds that characterize Whistler. Pemberton appeals to families, people who work remotely, and those who want the Sea to Sky lifestyle without the resort-town intensity. And at just 30 minutes from Whistler Village, the ski hills are still easily accessible for day trips.</p>
+
+  <h2>Access and <strong>Logistics</strong></h2>
+
+  <p>Both communities are accessed via Highway 99, the Sea to Sky Highway. From Vancouver, Pemberton is approximately 2.5 hours by car, with Whistler about 30 minutes closer.</p>
+
+  <p>For construction logistics, Pemberton's valley-floor location generally makes material delivery and site access easier. Most Pemberton lots are accessible by standard construction vehicles without the need for temporary access roads. In Whistler, many lots — particularly in higher-elevation neighbourhoods — present genuine access challenges that add cost and complexity to the build process.</p>
+
+  <p>One important logistical consideration: while our team and most of our primary trades are based in Pemberton, we have well-established operations in Whistler and make the short drive daily for projects there. The proximity means there is no meaningful difference in our ability to staff and manage a project in either community. Projects like <a href="/warbler-way">Warbler Way</a> in Whistler and <a href="/cerulean">Cerulean</a> in Pemberton receive the same level of hands-on attention.</p>
+
+  <h2>Timeline <strong>Comparisons</strong></h2>
+
+  <p>The overall timeline from first conversation to move-in day is generally shorter in Pemberton:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>Whistler</th>
+        <th>Pemberton</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Design &amp; Engineering</td>
+        <td>3 &ndash; 6 months</td>
+        <td>3 &ndash; 5 months</td>
+      </tr>
+      <tr>
+        <td>Permit Approval</td>
+        <td>3 &ndash; 6 months</td>
+        <td>2 &ndash; 4 months</td>
+      </tr>
+      <tr>
+        <td>Construction</td>
+        <td>12 &ndash; 18 months</td>
+        <td>10 &ndash; 16 months</td>
+      </tr>
+      <tr>
+        <td><strong>Total (Typical)</strong></td>
+        <td><strong>18 &ndash; 30 months</strong></td>
+        <td><strong>15 &ndash; 25 months</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The shorter Pemberton timeline is driven by faster permit processing, less complex site preparation on most lots, and a longer effective building season. However, every project is unique — a complex Pemberton build on a challenging lot could take as long as a straightforward Whistler build.</p>
+
+  <h2>Which Is <strong>Right for You?</strong></h2>
+
+  <p>After building dozens of homes across both communities, here is how we see the decision:</p>
+
+  <p><strong>Whistler may be right for you if:</strong></p>
+  <ul>
+    <li>Ski-in/ski-out or walking-distance-to-village access is a priority</li>
+    <li>You want a resort lifestyle with year-round amenities and events</li>
+    <li>Your budget accommodates Whistler land prices without compromising on your home</li>
+    <li>You are building a vacation home or investment property where resort proximity adds value</li>
+    <li>You want to be in the heart of the Sea to Sky's most recognized community</li>
+  </ul>
+
+  <p><strong>Pemberton may be right for you if:</strong></p>
+  <ul>
+    <li>You want more home and more land for your budget</li>
+    <li>A community-oriented, small-town lifestyle appeals to you</li>
+    <li>You are building a primary residence for your family</li>
+    <li>You prefer space, quiet, and a connection to the agricultural landscape</li>
+    <li>You want access to Whistler's amenities without living in a resort town</li>
+    <li>A shorter build timeline and simpler permit process are important to you</li>
+  </ul>
+
+  <p>Neither community is objectively better. They serve different needs and different stages of life. Many of our clients have lived in both — starting in Whistler and moving to Pemberton as their family grew, or the reverse. What matters is building a home that fits your life, in the community that supports the way you want to live.</p>
+
+  <div class="bc-callout">
+    <h4>Exploring Both Options?</h4>
+    <p>We are based in Pemberton and build across the entire Sea to Sky Corridor. Whether you are leaning toward <a href="/whistler-home-builder">Whistler</a> or <a href="/pemberton-home-builder">Pemberton</a>, we can help you evaluate lots, understand costs, and plan a build that matches your vision and budget. <a href="/contact">Contact us</a> to start the conversation.</p>
+  </div>
+
+</article>
+
+<!-- FAQ -->
+<section class="bc-faq-section bc-reveal">
+  <h2>Frequently Asked <strong>Questions</strong></h2>
+  <div class="bc-faq-list">
+    <div class="bc-faq-item">
+      <button class="bc-faq-q" aria-expanded="false">
+        Is it cheaper to build a custom home in Pemberton than in Whistler?
+        <span class="bc-faq-icon">+</span>
+      </button>
+      <div class="bc-faq-a">
+        <div class="bc-faq-a-inner">Yes, building in Pemberton is generally 10-20% less expensive than Whistler. Construction costs typically range from $400 to $650 per square foot in Pemberton, compared to $500 to $800+ in Whistler. Land costs are also significantly lower. Read our <a href="/blog/how-much-does-it-cost-to-build-a-custom-home-in-whistler">complete Whistler cost guide</a> for detailed breakdowns.</div>
+      </div>
+    </div>
+    <div class="bc-faq-item">
+      <button class="bc-faq-q" aria-expanded="false">
+        What are the main differences in building regulations between Whistler and Pemberton?
+        <span class="bc-faq-icon">+</span>
+      </button>
+      <div class="bc-faq-a">
+        <div class="bc-faq-a-inner">Whistler (RMOW) has additional design guidelines, Development Permit areas, and stricter density controls compared to the Village of Pemberton. Permit timelines are typically 3-6 months in Whistler vs. 2-4 months in Pemberton. Our <a href="/blog/bc-building-permit-process-explained">permit process guide</a> covers the details for both communities.</div>
+      </div>
+    </div>
+    <div class="bc-faq-item">
+      <button class="bc-faq-q" aria-expanded="false">
+        How far is Pemberton from Whistler?
+        <span class="bc-faq-icon">+</span>
+      </button>
+      <div class="bc-faq-a">
+        <div class="bc-faq-a-inner">Pemberton is approximately 30 minutes north of Whistler along Highway 99. The drive is scenic and straightforward, making it easy to access Whistler's amenities, ski areas, and services while enjoying the more spacious lifestyle that <a href="/pemberton-home-builder">Pemberton</a> offers.</div>
+      </div>
+    </div>
+    <div class="bc-faq-item">
+      <button class="bc-faq-q" aria-expanded="false">
+        Does Balmoral Construction build in both Pemberton and Whistler?
+        <span class="bc-faq-icon">+</span>
+      </button>
+      <div class="bc-faq-a">
+        <div class="bc-faq-a-inner">Yes, <a href="/about">Balmoral Construction</a> is headquartered in Pemberton and builds across the entire Sea to Sky Corridor, including <a href="/whistler-home-builder">Whistler</a>, <a href="/pemberton-home-builder">Pemberton</a>, and <a href="/squamish-home-builder">Squamish</a>. We have completed projects in all three communities, including <a href="/warbler-way">Warbler Way</a> and <a href="/cerulean">Cerulean</a>.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED POSTS -->
+<section class="bc-related">
+  <div class="bc-related-inner">
+    <h2>Related <strong>Articles</strong></h2>
+    <div class="bc-related-grid">
+      <a href="/blog/how-much-does-it-cost-to-build-a-custom-home-in-whistler" class="bc-related-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/a426db85-f990-4801-b038-978af5d9685c/whistler-custom-home-builder-pinewood-14.jpg" alt="Custom home in Whistler — understanding construction costs" loading="lazy">
+        <h3>How Much Does It Cost to Build a Custom Home in Whistler?</h3>
+        <p>A transparent breakdown of what drives custom home construction costs in Whistler and the Sea to Sky.</p>
+        <span class="bc-blog-date">February 2026</span>
+      </a>
+      <a href="/blog/bc-building-permit-process-explained" class="bc-related-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/ace17031-d6c3-4539-9275-ab17d604e713/Balmoral-Construction-Squamish-equestrian-commercial.jpg" alt="Guide to the BC building permit process" loading="lazy">
+        <h3>The BC Building Permit Process Explained</h3>
+        <p>What to expect when navigating the building permit process in Whistler, Pemberton, and Squamish.</p>
+        <span class="bc-blog-date">March 2026</span>
+      </a>
+      <a href="/pemberton-home-builder" class="bc-related-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/cbef60b8-5b6a-4fe1-b8b1-51584675f265/whistler-home-builder-balmoral-construction-warbler-45.jpg" alt="Pemberton home builder — Balmoral Construction" loading="lazy">
+        <h3>Custom Home Builder in Pemberton</h3>
+        <p>Based in Pemberton, building premium custom homes in the Sea to Sky Corridor since 2011.</p>
+        <span class="bc-blog-date">Location Page</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bc-cta">
+  <img class="bc-cta-bg" src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/6a0569c9-3137-4978-940e-5be53aa5b23a/ext-SE-entry-comp-1024x683+%281%29.jpeg" alt="Start your custom home build with Balmoral Construction" loading="lazy">
+  <div class="bc-cta-c bc-reveal">
+    <h2>Ready to discuss<br><strong>your project?</strong></h2>
+    <p>Every project starts with a conversation about your vision, your land, and how you want to live. Reach out to start planning your custom home in the Sea to Sky.</p>
+    <a href="/contact" class="bc-btn bc-btn--accent">Start a Conversation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bc-ft">
+  <div class="bc-ft-inner">
+    <div class="bc-ft-top">
+      <div class="bc-ft-brand">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/83ca6501-705e-43ee-b119-551d0c16ea14/unnamed.png" alt="Balmoral Construction — Custom Home Builder in the Sea to Sky Corridor" class="bc-ft-mark">
+        <p>Boutique custom home builder in the Sea to Sky Corridor. Based in Pemberton, building across Whistler, Pemberton &amp; Squamish since 2011.</p>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Services</h4>
+        <a href="/custom-home-building">Custom Home Building</a>
+        <a href="/home-renovations">Home Renovations</a>
+        <a href="/general-contracting">General Contracting</a>
+        <a href="/project-management">Project Management</a>
+        <a href="/land-consultation">Land Consultation</a>
+        <a href="/permit-coordination">Permit Coordination</a>
+        <a href="/services">All Services</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Locations</h4>
+        <a href="/whistler-home-builder">Whistler Home Builder</a>
+        <a href="/pemberton-home-builder">Pemberton Home Builder</a>
+        <a href="/squamish-home-builder">Squamish Home Builder</a>
+        <a href="/whistler-home-renovations">Whistler Renovations</a>
+        <a href="/pemberton-home-renovations">Pemberton Renovations</a>
+        <a href="/squamish-home-renovations">Squamish Renovations</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Projects</h4>
+        <a href="/warbler-way">Warbler Way</a>
+        <a href="/cerulean">Cerulean</a>
+        <a href="/sugarloaf">Sugarloaf</a>
+        <a href="/white-gold-2">White Gold 2</a>
+        <a href="/fitzsimmons">Fitzsimmons</a>
+        <a href="/work">All Projects</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Company</h4>
+        <a href="/about">About</a>
+        <a href="/work">Portfolio</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+        <a href="tel:6049072237">604.907.2237</a>
+        <a href="mailto:marc@balmoralconstruction.com">marc@balmoralconstruction.com</a>
+      </div>
+    </div>
+    <div class="bc-ft-btm">
+      <span class="bc-ft-copy">&copy; 2026 Balmoral Construction Inc. &mdash; Custom Home Builder in Whistler, Pemberton &amp; Squamish, BC</span>
+      <div class="bc-ft-social">
+        <a href="https://www.instagram.com/balmoralconstruction/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.houzz.com/professionals/general-contractors/balmoral-construction-pfvwus-pf~1513498919" target="_blank" rel="noopener">Houzz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var hd=document.getElementById('bcHd');
+  function checkScroll(){
+    var s=window.scrollY>80;
+    hd.classList.toggle('bc-hd--top',!s);
+    hd.classList.toggle('bc-hd--scrolled',s);
+  }
+  window.addEventListener('scroll',checkScroll);
+  checkScroll();
+
+  var prog=document.getElementById('bcProgress');
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(h>0) prog.style.width=(window.scrollY/h*100)+'%';
+  });
+
+  var reveals=document.querySelectorAll('.bc-reveal');
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('bc-visible');observer.unobserve(e.target)}
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  reveals.forEach(function(el){observer.observe(el)});
+
+  var faqItems=document.querySelectorAll('.bc-faq-item');
+  faqItems.forEach(function(item){
+    var btn=item.querySelector('.bc-faq-q');
+    btn.addEventListener('click',function(){
+      var isOpen=item.classList.contains('open');
+      faqItems.forEach(function(i){i.classList.remove('open');i.querySelector('.bc-faq-q').setAttribute('aria-expanded','false')});
+      if(!isOpen){
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+})();
+</script>
+<style>
+/* Squarespace page wrapper reset */
+.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block{margin:0!important;padding:0!important;max-width:100%!important;width:100%!important}
+.page-section:last-of-type{padding-bottom:0!important;margin-bottom:0!important}
+#footer,.Footer,.footer,footer[data-footer-id],footer:not(.bc-ft){display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important}
+.sqs-block-spacer,.sqs-block-horizontalrule,.section-background{display:none!important}
+@media(max-width:768px){.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block,.Index-page-content,.blog-item-inner-wrapper,article.page,article.Page,.page-content,.Page-content{padding:0!important;margin:0!important}body{padding-bottom:0!important;margin-bottom:0!important}}
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){var f=document.querySelector('.bc-ft');if(f){var p=f.closest('.sqs-block')||f.closest('.page-section')||f.parentElement;while(p){var n=p.nextElementSibling;while(n){n.style.cssText='display:none!important;height:0!important;padding:0!important;margin:0!important;overflow:hidden!important';n=n.nextElementSibling}p=p.parentElement}}});
+</script>

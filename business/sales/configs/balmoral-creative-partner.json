@@ -1,0 +1,546 @@
+{
+  "client": {
+    "company": "Balmoral Construction",
+    "slug": "balmoral",
+    "owner": "Marc Harvey",
+    "owner_title": "Owner",
+    "confidentiality_name": "Balmoral Construction Inc."
+  },
+  "proposal": {
+    "type": "creative-partner",
+    "title": "Creative Partner",
+    "date": "March 2026",
+    "valid_through": "April 15, 2026",
+    "filename": "creative-partner-proposal.html"
+  },
+  "cover": {
+    "eyebrow": "Balmoral Construction",
+    "headline_html": "Your creative<br>department.<br><em>Without the overhead.</em>",
+    "subtitle": "Website. SEO. Photography. Social media. Monthly strategy. One retainer. One person who already knows Balmoral inside and out.",
+    "cta_text": "View Options",
+    "cta_target": "#tiers",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/312b0797-a43a-4a51-906e-f913c78c7b79/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-3.jpg",
+    "image_position": "center 25%"
+  },
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef4086f4-81fa-468f-99bf-966ce7d83d89/warbler-whistler-architectural-photography-matt-anthony-.jpg-11.jpg",
+        "alt": "Warbler Residence at twilight — Whistler, BC",
+        "caption": "Warbler Residence &middot; Whistler, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c938566f-ee96-40da-aec4-d51ac9fa7e09/warbler-whistler-architectural-photography-matt-anthony-.jpg-13.jpg",
+        "alt": "Warbler Residence living room — floor-to-ceiling windows",
+        "caption": "Warbler Residence &middot; Interior &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8149d10c-1661-4e39-80d9-538f24b4123a/warbler-whistler-architectural-photography-matt-anthony-.jpg-33.jpg",
+        "alt": "Warbler Residence rear elevation — Whistler, BC",
+        "caption": "Warbler Residence &middot; Whistler, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/65d67cb8-ea3f-46dd-9c95-85b95e8f6fc8/warbler-whistler-architectural-photography-matt-anthony-.jpg-34.jpg",
+        "alt": "Warbler Residence — exterior at dusk",
+        "caption": "Warbler Residence &middot; Exterior &middot; Matt Anthony Photography"
+      }
+    ]
+  },
+  "sections": [
+    "story",
+    "services",
+    "pricing",
+    "roadmap",
+    "vision",
+    "numbers",
+    "awards",
+    "next_steps"
+  ],
+  "story": {
+    "eyebrow": "The Story So Far",
+    "headline_html": "You build exceptional homes.<br><em>People should know about it.</em>",
+    "lead": "Marc, over the past 12 months we’ve built Balmoral a 42-page custom website, an SEO strategy pulling organic traffic, and a digital presence that finally matches the calibre of your builds.",
+    "paragraphs": [
+      "But here’s the gap: every project Balmoral completes right now is a missed marketing opportunity. Fitzsimmons North is rising in Whistler with framing complete, and there’s no professional documentation of it. No photos for the website. No content for social. No imagery for proposals. Once the drywall goes up, that story is gone.",
+      "This proposal closes that gap. It adds professional photography, social media, and monthly strategy on top of your existing web and SEO services. Three options, one partner, zero extra work on your end."
+    ],
+    "stats": [
+      {
+        "value": "42",
+        "label": "Pages Built"
+      },
+      {
+        "value": "14",
+        "label": "Project Pages"
+      },
+      {
+        "value": "12+",
+        "label": "Months Together"
+      },
+      {
+        "value": "1",
+        "label": "Partner for Everything"
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "What’s Included",
+    "headline_html": "Everything Balmoral needs.<br><em>Nothing it doesn’t.</em>",
+    "intro": "Your current web and SEO retainer stays exactly as it is. This proposal layers professional photography, social media, and monthly strategy on top. Here’s the full scope:",
+    "cards": [
+      {
+        "title": "Website Management",
+        "is_new": false,
+        "entries": [
+          "Ongoing updates and maintenance",
+          "New project pages as projects complete",
+          "Photo uploads and gallery optimization",
+          "Performance monitoring and fixes"
+        ]
+      },
+      {
+        "title": "SEO and Content",
+        "is_new": false,
+        "entries": [
+          "Monthly blog post, SEO-optimized",
+          "Keyword targeting and page optimization",
+          "Internal linking across all 42 pages",
+          "Local SEO for Whistler, Pemberton, Squamish"
+        ]
+      },
+      {
+        "title": "Project Photography",
+        "is_new": true,
+        "entries": [
+          "1 full-day shoot per month",
+          "20 to 25 edited images per session",
+          "Drone and aerial coverage included",
+          "Multi-format delivery: web, print, social, award-ready",
+          "Full licensing for all channels",
+          "Priority scheduling, weather flexibility"
+        ]
+      },
+      {
+        "title": "Build and Team Content",
+        "is_new": true,
+        "entries": [
+          "Crew action shots and candid documentation",
+          "Material close-ups: timber, steel, craft details",
+          "Construction progress from framing to finish",
+          "Content built for proposals, presentations, and social"
+        ]
+      },
+      {
+        "title": "Video and Social",
+        "is_new": true,
+        "entries": [
+          "Monthly social media reel from shoot footage",
+          "Year-end project film (Growth and Full tiers)",
+          "Content repurposed for Instagram and LinkedIn",
+          "Monthly strategy call and content calendar"
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Choose Your Tier",
+    "headline_html": "Three tiers. Same partner.<br><em>Your call.</em>",
+    "intro": "Every tier includes website management and SEO. The only question is how much content you want to add. Start where it makes sense. You can always move up.",
+    "tiers": [
+      {
+        "name": "Foundation",
+        "slug": "foundation",
+        "price": "$2,500",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $7,500 total",
+        "recommended": false,
+        "bottom_label": "Annual investment",
+        "bottom_value": "$30,000",
+        "entries": [
+          {
+            "text": "Website management and updates",
+            "included": true
+          },
+          {
+            "text": "SEO and monthly blog post",
+            "included": true
+          },
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "20 to 25 edited images",
+            "included": true
+          },
+          {
+            "text": "Drone and aerial coverage",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, print, social, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Project page per shoot",
+            "included": true
+          },
+          {
+            "text": "Build and team content",
+            "included": false
+          },
+          {
+            "text": "Year-end project film",
+            "included": false
+          },
+          {
+            "text": "Social media reel",
+            "included": false
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": false
+          },
+          {
+            "text": "Full social media management",
+            "included": false
+          }
+        ]
+      },
+      {
+        "name": "Growth",
+        "slug": "growth",
+        "price": "$3,000",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $9,000 total",
+        "recommended": true,
+        "bottom_label": "Annual investment",
+        "bottom_value": "$36,000",
+        "entries": [
+          {
+            "text": "Website management and updates",
+            "included": true
+          },
+          {
+            "text": "SEO and monthly blog post",
+            "included": true
+          },
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "20 to 25 edited images",
+            "included": true
+          },
+          {
+            "text": "Drone and aerial coverage",
+            "included": true
+          },
+          {
+            "text": "Build and team content (crew, materials, progress)",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, print, social, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Project page per shoot",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": true
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": true
+          },
+          {
+            "text": "Year-end project film (60 to 90 seconds)",
+            "included": true
+          },
+          {
+            "text": "Full social media management",
+            "included": false
+          }
+        ]
+      },
+      {
+        "name": "Full Creative Partner",
+        "slug": "full",
+        "price": "$3,500",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $10,500 total",
+        "recommended": false,
+        "bottom_label": "Annual investment",
+        "bottom_value": "$42,000",
+        "entries": [
+          {
+            "text": "Website management and updates",
+            "included": true
+          },
+          {
+            "text": "SEO and monthly blog post",
+            "included": true
+          },
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "25 to 30 edited images",
+            "included": true
+          },
+          {
+            "text": "Drone and aerial coverage",
+            "included": true
+          },
+          {
+            "text": "Build and team content (crew, materials, progress)",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, print, social, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Project page per shoot",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": true
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": true
+          },
+          {
+            "text": "Year-end documentary film (2 to 3 minutes)",
+            "included": true
+          },
+          {
+            "text": "Full social media management (3x/week)",
+            "included": true
+          }
+        ]
+      }
+    ],
+    "insight": {
+      "title": "How to Think About This",
+      "content_html": "<p>Your current retainer is <strong>$1,260/month</strong> for web and SEO. Here’s what each tier adds:</p>",
+      "breakdowns": [
+        {
+          "label": "Foundation +$1,240",
+          "desc": "20-25 images per shoot. Your projects finally get documented properly."
+        },
+        {
+          "label": "Growth +$1,740",
+          "desc": "Plus build documentation, crew content, strategy calls, and a year-end highlight film."
+        },
+        {
+          "label": "Creative Partner +$2,240",
+          "desc": "The full stack. 25-30 images, year-end documentary, full social management. You never think about it."
+        }
+      ],
+      "footer_html": "<p style=\"margin-top:24px;\">For context: a single standalone project with video runs $3,500 to $5,500. Any of these tiers delivers that same value every month, plus website, SEO, and strategy, on a predictable budget.</p>"
+    }
+  },
+  "roadmap": {
+    "eyebrow": "3-Month Pilot Roadmap",
+    "headline_html": "What gets done.<br><em>Month by month.</em>",
+    "intro": "The pilot runs April through June. Three months, three shoots, three chances to prove this works.",
+    "months": [
+      {
+        "month": "April 2026",
+        "label_html": "Fitzsimmons North:<br>Capture the Build",
+        "entries": [
+          "Full-day session at Fitzsimmons North, Whistler, framing complete, ideal timing before envelope closes",
+          "20 to 25 edited images: structural progress, site aerials, crew at work, mountain context",
+          "Build and team content: crew action shots, timber framing details, material close-ups",
+          "Drone aerials showing the build in its Whistler setting",
+          "Project page updated with professional photography",
+          "Blog post: “Inside the Build: Fitzsimmons North”",
+          "Social media reel cut from shoot footage",
+          "Strategy call to set the Q2 content calendar"
+        ]
+      },
+      {
+        "month": "May 2026",
+        "label_html": "Second Project:<br>Build the Library",
+        "entries": [
+          "Full-day session, completed project or Fitzsimmons milestone revisit",
+          "20 to 25 edited images + drone aerials",
+          "Build documentation: progress shots, crew candids, craft details",
+          "Project page gallery refreshed with professional images",
+          "Blog post featuring the project, SEO-optimized",
+          "Social media reel from shoot content",
+          "Google review requests sent to project stakeholders",
+          "Strategy call: review performance and adjust"
+        ]
+      },
+      {
+        "month": "June 2026",
+        "label_html": "Prove It:<br>Results and Decision",
+        "entries": [
+          "Full-day session, third project or Fitzsimmons completion shoot",
+          "20 to 25 edited images + drone aerials",
+          "Social media reel + LinkedIn content",
+          "Third blog post, third piece of original content in 90 days",
+          "Pilot review: what worked, what the numbers say, what comes next",
+          "If results proven: 12-month continuation locked in"
+        ]
+      }
+    ],
+    "stats": [
+      {
+        "value": "3",
+        "label": "Full-Day Shoots"
+      },
+      {
+        "value": "75",
+        "label": "Professional Images"
+      },
+      {
+        "value": "3",
+        "label": "Social Reels"
+      },
+      {
+        "value": "90",
+        "label": "Days to Prove It"
+      }
+    ]
+  },
+  "vision": {
+    "eyebrow": "The 12-Month Vision",
+    "headline_html": "What a full year<br><em>looks like.</em>",
+    "intro": "The pilot proves the concept. A full year changes the trajectory of Balmoral’s brand. Most builders have a website. Very few have a content engine. Here’s the difference:",
+    "quarters": [
+      {
+        "period": "Q2 2026",
+        "title": "Prove the Model",
+        "description": "3 shoots. 75 images. 3 social reels. Fitzsimmons North documented through its most compelling stages. Build process captured from framing to finish. Website enriched with original content no competitor can replicate."
+      },
+      {
+        "period": "Q3 2026",
+        "title": "Scale the Library",
+        "description": "Peak season. Long summer light for hero exteriors and twilight sessions. 150+ professional images banked. Build documentation capturing crew, craft, and progress. Six months of social reels and content ready to deploy."
+      },
+      {
+        "period": "Q4 2026",
+        "title": "Leverage the Work",
+        "description": "Award-ready photography for CHBA and industry submissions. Year-in-review content for proposals and presentations. 225+ images. Balmoral’s online presence is unrecognizable from 12 months ago."
+      },
+      {
+        "period": "Q1 2027",
+        "title": "The Advantage Compounds",
+        "description": "12 months of content compounding in search rankings. 300+ images, a year-end documentary film, and a complete build documentation library working for Balmoral 24/7. Proposal-ready, award-ready, social-ready. Whether you’re on the jobsite or on vacation, your portfolio is closing the next deal."
+      }
+    ]
+  },
+  "numbers": {
+    "stats": [
+      {
+        "value": "300",
+        "label": "Professional Images"
+      },
+      {
+        "value": "12",
+        "label": "Drone Flights"
+      },
+      {
+        "value": "12",
+        "label": "Blog Posts"
+      }
+    ]
+  },
+  "awards": {
+    "eyebrow": "Awards &amp; Publications",
+    "headline_html": "The credentials your<br><em>competitors already have.</em>",
+    "lead": "Balmoral has been building luxury custom homes in the Sea-to-Sky corridor for 14 years. In that time, zero projects have been submitted for awards and zero have been pitched to publications. Meanwhile, your closest competitors are winning Georgie Awards and getting featured in magazines.",
+    "paragraphs": [
+      "This isn’t about vanity. In the luxury market, awards and press are trust signals. They’re the difference between a prospect calling three builders and calling one. Every project Balmoral completes without submitting is a missed credential."
+    ],
+    "competitor_numbers": [
+      {
+        "value": "0",
+        "label": "Balmoral Awards to Date"
+      },
+      {
+        "value": "17",
+        "label": "Georgies Held by RDC Fine Homes"
+      },
+      {
+        "value": "14",
+        "label": "Years of Builds — Unsubmitted"
+      }
+    ],
+    "detail_html": "<h3>What I Handle</h3><p>As your Creative Partner, every shoot is photographed to award-submission specifications from day one. 300 DPI JPEG, colour-calibrated, anonymous-ready, no people or branding in frame. When submission season opens, your images are already done. I prepare the entry materials, identify the right categories, and manage the submission process. You don’t touch any of it.</p>",
+    "services": [
+      {
+        "title": "Award Submissions",
+        "entries": [
+          "Georgie Awards (CHBA BC) — the standard for BC builders",
+          "CHBA National Awards for Housing Excellence",
+          "HAVAN Awards — open to all of BC",
+          "Gold Nugget Awards — North American prestige",
+          "Dezeen &amp; AZ Awards — global recognition"
+        ]
+      },
+      {
+        "title": "Publication Pitches",
+        "entries": [
+          "Western Living — BC’s top design magazine",
+          "Dwell — global residential architecture",
+          "Mountain Life — Sea-to-Sky corridor",
+          "ArchDaily &amp; Dezeen — world’s top architecture sites",
+          "NUVO Magazine — Canadian luxury lifestyle"
+        ]
+      }
+    ],
+    "insight": {
+      "title": "One Project, Multiple Credentials",
+      "content_html": "<p>A single project photographed to spec can generate <strong>3 to 5 credentials</strong>: a Georgie nomination, a CHBA entry, a magazine feature, an ArchDaily publication, and social content that references all of them. The photography is the foundation. Everything else builds from there.</p><p style=\"margin-bottom:0;\">The first step: <strong>join Sea to Sky CHBA</strong> to unlock Georgie and National eligibility. I’ll handle the rest.</p>"
+    }
+  },
+  "next_steps": {
+    "eyebrow": "Next Steps",
+    "headline_html": "Let’s start with<br><em>Fitzsimmons North.</em>",
+    "paragraphs": [
+      "Marc, we’ve been working together for over a year. You’ve seen what I can do with a website and an SEO strategy. This is the next step. Pick the tier that feels right, and let’s get Fitzsimmons North documented while the framing is still exposed and the story is worth telling.",
+      "The pilot is three months. If it works, we keep going. If it doesn’t, you still walk away with 75 professional images, build documentation, three social reels, three blog posts, and a website that’s stronger than it was before. There’s no downside."
+    ],
+    "steps": [
+      {
+        "number": "1",
+        "title": "Pick Your Tier",
+        "description": "Foundation, Growth, or Full Creative Partner. Just let me know which feels right."
+      },
+      {
+        "number": "2",
+        "title": "Deposit",
+        "description": "50% of the pilot total to lock in April and guarantee priority scheduling."
+      },
+      {
+        "number": "3",
+        "title": "Plan",
+        "description": "Quick 20-minute call to plan the Fitzsimmons North shoot and map out Q2."
+      }
+    ],
+    "valid_note": "This proposal is valid through <strong style=\"color:var(--ink);\">April 15, 2026</strong>. After that, April availability cannot be guaranteed."
+  }
+}

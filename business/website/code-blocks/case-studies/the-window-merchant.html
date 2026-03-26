@@ -1,0 +1,1467 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.wm-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a1a18;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+}
+
+.wm-loader.wm-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.wm-loader-brand {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: #f6f4f0;
+  opacity: 0;
+  animation: wmLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.wm-loader-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(138,133,121,0.7);
+  margin-top: 8px;
+  opacity: 0;
+  animation: wmLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.wm-loader-line {
+  width: 80px;
+  height: 1px;
+  background: rgba(201,169,110,0.12);
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+  opacity: 0;
+  animation: wmLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.wm-loader-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  animation: wmLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+}
+
+@keyframes wmLoaderIn { to { opacity: 1; } }
+@keyframes wmLoaderFill { to { left: 100%; } }
+
+/* ── Section nav dots ── */
+.wm-section-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.wm-section-nav.wm-nav-visible {
+  opacity: 1;
+}
+
+.wm-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #8a8579;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.wm-nav-dot:hover {
+  border-color: #c9a96e;
+  transform: scale(1.3);
+}
+
+.wm-nav-dot.wm-nav-active {
+  background: #c9a96e;
+  border-color: #c9a96e;
+  box-shadow: 0 0 8px rgba(201,169,110,0.4);
+}
+
+.wm-nav-dot::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, right 0.3s ease;
+}
+
+.wm-nav-dot:hover::before {
+  opacity: 1;
+  right: 24px;
+}
+
+@media (max-width: 768px) {
+  .wm-section-nav { display: none; }
+}
+
+/* ── Scroll progress bar ── */
+.wm-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.4));
+  z-index: 9999;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px rgba(201,169,110,0.4);
+}
+
+/* ── Headline gold underline on em ── */
+.wm-wrap h2 em {
+  position: relative;
+  display: inline;
+}
+
+.wm-wrap h2 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.2));
+  transition: width 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wm-wrap h2.wm-underlined em::after {
+  width: 100%;
+}
+
+/* ── Divider draw animation ── */
+.wm-divider {
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wm-divider.wm-drawn {
+  width: 80px;
+}
+
+/* ── Ken Burns on image breaks ── */
+.wm-img-break.wm-in-view img {
+  animation: wmKenBurns 16s ease-in-out infinite alternate;
+}
+
+@keyframes wmKenBurns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.06) translate(-4px, -6px); }
+}
+
+/* ── Film grain overlay ── */
+.wm-grain::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.wm-grain {
+  position: relative;
+}
+
+.wm-grain > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Eyebrow gold dash (animated) ── */
+.wm-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.wm-eyebrow::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  background: #c9a96e;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wm-eyebrow.wm-visible::before {
+  width: 24px;
+}
+
+/* ── Photo break depth layers ── */
+.wm-img-break {
+  position: relative;
+  overflow: hidden;
+}
+
+.wm-img-break img {
+  will-change: transform;
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+.wm-img-break::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(rgba(26,26,24,0.15), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.wm-img-break::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: linear-gradient(transparent, rgba(26,26,24,0.55));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Custom cursor ── */
+.wm-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(201,169,110,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
+.wm-cursor.wm-active {
+  opacity: 1;
+}
+
+.wm-cursor.wm-hover {
+  width: 50px;
+  height: 50px;
+  border-color: #c9a96e;
+  background: rgba(201,169,110,0.08);
+}
+
+.wm-cursor.wm-click {
+  width: 14px;
+  height: 14px;
+  background: rgba(201,169,110,0.3);
+}
+
+.wm-cursor-dot {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #c9a96e;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.wm-cursor-dot.wm-active {
+  opacity: 1;
+}
+
+/* ── Magnetic button ── */
+.wm-magnetic {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Testimonial word reveal ── */
+.wm-quote-text .wm-qw {
+  display: inline;
+  color: rgba(26,26,24,0.15);
+  transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wm-quote-text .wm-qw.wm-lit {
+  color: #1a1a18;
+}
+
+.wm-quote-text .wm-qw.wm-gold-word.wm-lit {
+  color: #b8975a;
+}
+
+/* ── Ambient particles canvas ── */
+.wm-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Deliverable card stagger ── */
+.wm-del-card {
+  transform: translateY(12px);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, opacity 0.6s ease;
+}
+
+.wm-del-card.wm-entered {
+  transform: translateY(0);
+}
+
+/* ── Scope stat bar fill ── */
+.wm-result {
+  position: relative;
+}
+
+.wm-result::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  transition: width 1s 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wm-result.wm-filled::after {
+  width: 80%;
+}
+
+/* ── Image diagonal wipe ── */
+.wm-img-break img {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: clip-path 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.1s linear;
+}
+
+.wm-img-break.wm-wipe img {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* ── Quote mark float ── */
+.wm-quote-text::before {
+  animation: wmQuoteFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes wmQuoteFloat {
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.05) translateY(-4px); }
+}
+
+/* ── CTA button glow pulse ── */
+.wm-cta-btn {
+  animation: wmBtnGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes wmBtnGlow {
+  0% { box-shadow: none; }
+  100% { box-shadow: 0 0 40px rgba(201,169,110,0.15), 0 0 80px rgba(201,169,110,0.05); }
+}
+
+/* ── Quote mark scale ── */
+.wm-quote-text::before {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.8);
+}
+
+.wm-quote.wm-in-view .wm-quote-text::before {
+  transform: scale(1);
+}
+
+/* ── Scope stat glow pulse ── */
+.wm-result-num {
+  transition: text-shadow 0.6s ease;
+}
+
+.wm-result-num.wm-counted {
+  text-shadow: 0 0 20px rgba(201,169,110,0.3);
+}
+
+/* ── Meta bar border draw ── */
+.wm-meta {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  background-image: linear-gradient(#d9d5cd, #d9d5cd), linear-gradient(#d9d5cd, #d9d5cd);
+  background-size: 0% 1px, 0% 1px;
+  background-position: center top, center bottom;
+  background-repeat: no-repeat;
+  transition: background-size 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wm-meta.wm-drawn {
+  background-size: 100% 1px, 100% 1px;
+}
+
+/* ── CTA background slow zoom ── */
+.wm-cta-bg img {
+  transition: transform 8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wm-cta.wm-in-view .wm-cta-bg img {
+  transform: scale(1.08);
+}
+
+/* ── Stats grid gold border gaps ── */
+.wm-results {
+  background: rgba(201,169,110,0.08);
+  gap: 1px;
+}
+
+.wm-result {
+  background: #f6f4f0;
+}
+
+/* ── Accent line pulse ── */
+.wm-accent {
+  animation: wmAccentPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes wmAccentPulse {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* ── Hero scroll fade ── */
+.wm-hero-content {
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* ── Scroll indicator ── */
+.wm-scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 3;
+  transition: opacity 0.4s ease;
+}
+
+.wm-scroll-hint.wm-hidden { opacity: 0; pointer-events: none; }
+
+.wm-scroll-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.45rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.3);
+}
+
+.wm-scroll-line {
+  width: 1px;
+  height: 36px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(246,244,240,0.1);
+}
+
+.wm-scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #c9a96e;
+  animation: wmScrollPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes wmScrollPulse {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ── Inline gold highlights ── */
+.wm-gold { color: #c9a96e; font-weight: 400; }
+
+/* ── Manifesto / closing argument ── */
+.wm-manifesto {
+  background: #1a1a18;
+  padding: 8rem 5vw;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.wm-manifesto::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(rgba(201,169,110,0.4), transparent);
+}
+
+.wm-manifesto-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(246,244,240,0.25);
+  max-width: 800px;
+  margin: 0 auto;
+  transition: color 0.8s ease;
+}
+
+.wm-manifesto-text .wm-mw {
+  display: inline;
+  color: rgba(246,244,240,0.15);
+  transition: color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wm-manifesto-text .wm-mw.wm-lit {
+  color: #f6f4f0;
+}
+
+.wm-manifesto-text .wm-mw.wm-gold-word.wm-lit {
+  color: #c9a96e;
+}
+
+/* ── Reimagined CTA ── */
+.wm-cta {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wm-cta-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.wm-cta-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.4) brightness(0.2);
+  transition: transform 8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wm-cta.wm-in-view .wm-cta-bg img {
+  transform: scale(1.1);
+}
+
+.wm-cta-c {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 5vw;
+}
+
+.wm-cta-eyebrow {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.wm-cta-eyebrow::before,
+.wm-cta-eyebrow::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: rgba(201,169,110,0.3);
+}
+
+.wm-cta h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 300;
+  color: #f6f4f0;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.wm-cta h2 em {
+  font-style: italic;
+  color: #c9a96e;
+}
+
+.wm-cta-sub {
+  color: #8a8579;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto 3rem;
+}
+
+.wm-cta-btn {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 1.2rem 3.5rem;
+  border: 1px solid #c9a96e;
+  background: #c9a96e;
+  color: #1a1a18;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.wm-cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.wm-cta-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.wm-cta-btn:hover {
+  background: transparent !important;
+  color: #c9a96e !important;
+  box-shadow: 0 0 30px rgba(201,169,110,0.2);
+}
+
+/* ── Deliverable card hover glow ── */
+.wm-del-card:hover {
+  box-shadow: 0 8px 30px rgba(201,169,110,0.06);
+  transform: translateY(-2px);
+}
+
+/* ═══ WINDOW MERCHANT CASE STUDY ═══ */
+.wm-wrap{font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a18;line-height:1.7;font-weight:300}
+.wm-wrap img{max-width:100%;display:block}
+.wm-wrap a{color:inherit;text-decoration:none}
+
+/* Hero */
+.wm-hero{position:relative;min-height:90vh;display:flex;align-items:flex-end;padding:6rem 5vw;background:#1a1a18;overflow:hidden}
+.wm-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(26,26,24,0.85) 100%);z-index:1}
+.wm-hero-bg{position:absolute;inset:0}
+.wm-hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.5;filter:saturate(0.6)}
+.wm-hero-content{position:relative;z-index:2;max-width:900px}
+.wm-hero-label{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem;font-weight:500}
+.wm-hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:1.08;color:#f6f4f0;letter-spacing:-0.02em;margin-bottom:1.5rem}
+.wm-hero h1 em{font-style:italic;color:#c9a96e}
+.wm-hero-sub{font-size:1rem;color:#d9d5cd;font-weight:300;max-width:520px}
+
+/* Meta Bar */
+.wm-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;border-top:1px solid #d9d5cd;border-bottom:1px solid #d9d5cd}
+.wm-meta-item{padding:2rem 5vw;border-right:1px solid #d9d5cd}
+.wm-meta-item:last-child{border-right:none}
+.wm-meta-dt{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#8a8579;margin-bottom:0.5rem;font-weight:500}
+.wm-meta-dd{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;font-weight:400;color:#1a1a18}
+
+/* Sections */
+.wm-section{padding:6rem 5vw}
+.wm-narrow{max-width:720px}
+.wm-label{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#b8975a;margin-bottom:1.5rem;font-weight:500}
+.wm-divider{width:60px;height:1px;background:#c9a96e;margin:0 0 2rem}
+.wm-section h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;margin-bottom:2rem;letter-spacing:-0.01em}
+.wm-section p{font-size:1rem;color:#4a4a46;margin-bottom:1.5rem;line-height:1.8}
+.wm-section p:last-child{margin-bottom:0}
+
+/* Image Breaks */
+.wm-img-break{width:100%;height:70vh;min-height:500px;overflow:hidden}
+.wm-img-break img{width:100%;height:100%;object-fit:cover}
+
+/* Deliverables */
+.wm-deliverables{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:2.5rem}
+.wm-del-card{padding:2rem 0;border-top:1px solid #d9d5cd}
+.wm-del-card h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.3rem;font-weight:400;margin-bottom:0.75rem}
+.wm-del-card p{font-size:0.9rem;color:#8a8579;line-height:1.7}
+
+/* Quote */
+.wm-quote{background:#eeece6;padding:6rem 5vw;text-align:center}
+.wm-quote-text{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;line-height:1.4;max-width:900px;margin:0 auto 1.5rem;color:#1a1a18}
+.wm-quote-text::before{content:'\201C';display:block;font-size:4rem;color:#c9a96e;line-height:1;margin-bottom:0.5rem;font-style:normal}
+.wm-quote-attr{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#8a8579;font-weight:500}
+.wm-quote-attr a{color:#b8975a;text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.3s ease}
+.wm-quote-attr a:hover{border-color:#b8975a}
+
+/* Results */
+.wm-results{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem}
+.wm-result{text-align:center;padding:2.5rem 1.5rem;background:#eeece6;border-radius:2px}
+.wm-result-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.8rem;font-weight:300;color:#b8975a;line-height:1;margin-bottom:0.5rem}
+.wm-result-lbl{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8579;font-weight:400}
+
+/* Showcase */
+.wm-showcase{padding:6rem 5vw;background:#1a1a18}
+.wm-showcase .wm-label{color:#c9a96e}
+.wm-showcase .wm-divider{background:rgba(201,169,110,0.4)}
+.wm-showcase h2{color:#f6f4f0}
+.wm-showcase h2 em{font-style:italic;color:#c9a96e}
+.wm-showcase-intro{font-size:1rem;font-weight:300;line-height:1.8;color:#d9d5cd;max-width:680px;margin-bottom:3.5rem}
+
+/* Grid Cards */
+.wm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.wm-card{position:relative;display:block;overflow:hidden;text-decoration:none !important;color:inherit;border-radius:2px}
+.wm-card-img-wrap{position:relative;width:100%;overflow:hidden;aspect-ratio:4/3}
+.wm-card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)}
+.wm-card:hover .wm-card-img-wrap img{transform:scale(1.05)}
+.wm-card-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,26,24,0.85) 0%,rgba(26,26,24,0.3) 40%,rgba(26,26,24,0.05) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:32px;opacity:0;transition:opacity 0.4s ease}
+.wm-card:hover .wm-card-overlay{opacity:1}
+.wm-card-title{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.2em;text-transform:uppercase;color:#f6f4f0;margin:0 0 6px 0}
+.wm-card-meta{font-size:11px;font-weight:300;letter-spacing:0.08em;color:#c9a96e;margin:0}
+.wm-card-arrow{position:absolute;top:24px;right:24px;width:32px;height:32px;border:1px solid rgba(246,244,240,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transform:translate(-8px,8px);transition:opacity 0.35s ease,transform 0.35s ease}
+.wm-card:hover .wm-card-arrow{opacity:1;transform:translate(0,0)}
+.wm-card-arrow svg{width:14px;height:14px;stroke:#f6f4f0;fill:none;stroke-width:1.5}
+
+/* Section Accent */
+.wm-accent{display:block;width:100%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.2) 20%,rgba(201,169,110,0.2) 80%,transparent 100%)}
+
+/* Footer */
+.wm-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.wm-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.wm-ft-locs a:hover{color:#c9a96e}.wm-ft{background:#1a1a18;border-top:1px solid rgba(201,169,110,0.15)}
+.wm-ft-row{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}
+.wm-ft-item{display:flex;align-items:baseline;gap:10px}
+.wm-ft-label{font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;white-space:nowrap}
+.wm-ft-dot{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,0.4);flex-shrink:0;position:relative;top:-2px}
+.wm-ft-item p,.wm-ft-item a{margin:0;font-size:12px;color:rgba(246,244,240,0.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color 0.3s ease}
+.wm-ft-item a:hover{color:#c9a96e}
+.wm-ft-social{display:flex;gap:18px}
+.wm-ft-rule{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.15) 20%,rgba(201,169,110,0.15) 80%,transparent 100%)}
+.wm-ft-bottom{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}
+.wm-ft-copy{font-size:10px;color:rgba(246,244,240,0.35);letter-spacing:0.08em}
+.wm-ft-nav{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center}
+.wm-ft-nav a{font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(246,244,240,0.35);text-decoration:none;transition:color 0.3s ease}
+.wm-ft-nav a:hover{color:#c9a96e}
+.wm-alt-cta{margin-top:1.25rem;font-size:.75rem;color:#8a8579;letter-spacing:.05em;font-weight:300}.wm-alt-cta a{color:#c9a96e;text-decoration:underline;text-underline-offset:3px;transition:color .3s ease}.wm-alt-cta a:hover{color:#f6f4f0}
+
+/* Responsive */
+@media(max-width:768px){
+.wm-hero{min-height:75vh;padding:4rem 6vw}
+.wm-section{padding:4rem 6vw}
+.wm-meta-item{border-right:none;border-bottom:1px solid #d9d5cd}
+.wm-meta-item:last-child{border-bottom:none}
+.wm-cta{min-height:70vh}
+.wm-deliverables{grid-template-columns:1fr}
+.wm-results{grid-template-columns:repeat(2,1fr)}
+.wm-showcase{padding:4rem 6vw}
+.wm-grid{grid-template-columns:1fr;gap:10px}
+.wm-card-overlay{opacity:1;background:linear-gradient(0deg,rgba(26,26,24,0.75) 0%,rgba(26,26,24,0.0) 50%);padding:24px}
+.wm-card-arrow{display:none}
+.wm-manifesto{padding:5rem 6vw}
+.wm-scroll-hint{bottom:24px}
+.wm-ft-row{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}
+.wm-ft-rule{margin:0 6vw}
+.wm-ft-bottom{flex-direction:column;gap:0.75rem;text-align:center;padding:1.25rem 6vw}
+}
+@media(min-width:769px) and (max-width:1024px){
+.wm-deliverables{grid-template-columns:repeat(2,1fr)}
+.wm-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+
+<div class="wm-loader" id="wmLoader">
+  <div class="wm-loader-brand">Matt Anthony Photography</div>
+  <div class="wm-loader-sub">Case Study</div>
+  <div class="wm-loader-line"></div>
+</div>
+<nav class="wm-section-nav" id="wmSectionNav"></nav>
+<div class="wm-cursor" id="wmCursor"></div>
+<div class="wm-cursor-dot" id="wmCursorDot"></div>
+<div class="wm-progress" id="wmProgress"></div>
+<div class="wm-wrap">
+
+  <!-- Hero -->
+  <section class="wm-hero wm-grain">
+    <div class="wm-hero-bg">
+      <img src="https://images.squarespace-cdn.com/content/v1/686d53c540bccb49df1c90bc/caf6964d-cbe6-40ea-8939-babd46c8f1b4/window-merchant-saltspring-exterior-windows-full-res-16.jpg" alt="The Window Merchant architectural glazing case study by Matt Anthony Photography">
+    </div>
+    <div class="wm-hero-content">
+      <p class="wm-hero-label">Case Study</p>
+      <h1>The Window Merchant: A Content Retainer That <em>Runs the Brand</em></h1>
+      <p class="wm-hero-sub">Monthly photography, videography, social media management, website redevelopment, and licensed project imagery for a premium European glazing supplier.</p>
+    </div>
+    <canvas class="wm-particles" id="wmParticles"></canvas>
+    <div class="wm-scroll-hint" id="wmScrollHint">
+      <span class="wm-scroll-text">Scroll</span>
+      <span class="wm-scroll-line"></span>
+    </div>
+  </section>
+
+  <!-- Meta Bar -->
+  <div class="wm-meta">
+    <div class="wm-meta-item">
+      <dt class="wm-meta-dt">Client</dt>
+      <dd class="wm-meta-dd">The Window Merchant</dd>
+    </div>
+    <div class="wm-meta-item">
+      <dt class="wm-meta-dt">Location</dt>
+      <dd class="wm-meta-dd">BC Wide</dd>
+    </div>
+    <div class="wm-meta-item">
+      <dt class="wm-meta-dt">Services</dt>
+      <dd class="wm-meta-dd">Photo · Video · Social · Web</dd>
+    </div>
+    <div class="wm-meta-item">
+      <dt class="wm-meta-dt">Scope</dt>
+      <dd class="wm-meta-dd">6 Projects · Ongoing Retainer</dd>
+    </div>
+  </div>
+
+  <!-- The Brief -->
+  <section class="wm-section" data-nav="Brief">
+    <div class="wm-narrow">
+      <p class="wm-label wm-eyebrow">The Brief</p>
+      <div class="wm-divider"></div>
+      <h2>A trades company that needed a visual system, not just a photographer</h2>
+      <p>The Window Merchant supplies premium European window and door systems to luxury residential projects across British Columbia. Their products appear in some of the most impressive homes in the province: Aluprof, Schüco, Reynaers, and Duxton systems installed in projects from Salt Spring Island to Vancouver to Whistler. But the visual presence did not reflect the calibre of the work.</p>
+      <p>The challenge was not a single shoot. It was building a complete visual engine: monthly content shoots documenting installations and completed projects, video production for social media, a full website redevelopment to showcase the portfolio, and a licensing model for project imagery that serves both The Window Merchant and the architects and builders they work alongside.</p>
+    </div>
+  </section>
+
+  <!-- Image Break 1 -->
+  <div class="wm-img-break">
+    <img src="https://images.squarespace-cdn.com/content/v1/686d53c540bccb49df1c90bc/f1844ca1-0ea2-434d-a30b-ed5580e737dd/west-10th-vancouver-web--21.jpg" alt="West 10th Avenue Vancouver contemporary glazing" loading="lazy">
+  </div>
+
+  <!-- The Approach -->
+  <section class="wm-section" data-nav="Approach">
+    <div class="wm-narrow">
+      <p class="wm-label wm-eyebrow">The Approach</p>
+      <div class="wm-divider"></div>
+      <h2>Monthly shoots. Constant content. One visual standard.</h2>
+      <p>The retainer is structured around monthly shoot days. Each month, we document a different project where Window Merchant products have been installed: completed homes, active installations, product details, and the finished result showing glazing systems in their architectural context. The shoots produce both photography and video, with content specifically formatted for Instagram, LinkedIn, and the website.</p>
+      <p>Six projects have been documented so far. The Skywater Main House and Cabin on Salt Spring Island showcase Reynaers systems in a coastal West Coast setting with panoramic ocean views. West 10th in Vancouver demonstrates urban modernism with floor-to-ceiling glass. Joan Audry Lane captures installation progression photography. The Fitzsimmons Residence in Whistler and the Wedgewood project round out the portfolio with alpine and suburban applications.</p>
+      <p>The website was rebuilt from the ground up, custom coded with dedicated project pages, product specifications, and architect and builder credits on every page. The site now functions as both a portfolio and a sales tool, giving prospective clients a clear picture of what Window Merchant products look like installed in real homes, not just rendered in a catalogue.</p>
+      <p>Social media management runs on the content produced each month. Posts are planned, written, and scheduled across platforms. The feed stays active and professional without The Window Merchant team needing to create anything themselves. They focus on selling and installing windows. We handle how the work looks to the world.</p>
+    </div>
+  </section>
+
+  <!-- Deliverables -->
+  <section class="wm-section" data-nav="Deliverables">
+    <div class="wm-narrow">
+      <p class="wm-label wm-eyebrow">Deliverables</p>
+      <div class="wm-divider"></div>
+      <h2>The full content operation</h2>
+    </div>
+    <div class="wm-deliverables">
+      <div class="wm-del-card">
+        <h3>Project Photography</h3>
+        <p>Architectural photography of completed installations showing Window Merchant glazing systems in context. Interiors, exteriors, details, and aerials.</p>
+      </div>
+      <div class="wm-del-card">
+        <h3>Video Production</h3>
+        <p>Short form video for social media. Project walk-throughs, installation sequences, and product-focused content designed for Reels and LinkedIn video.</p>
+      </div>
+      <div class="wm-del-card">
+        <h3>Social Media Management</h3>
+        <p>Content planning, writing, and scheduling across Instagram and LinkedIn. A consistent, professional presence built on the monthly shoot output.</p>
+      </div>
+      <div class="wm-del-card">
+        <h3>Website Design &amp; Management</h3>
+        <p>Full custom coded rebuild with dedicated project pages, product pages, and ongoing updates as new projects are completed and documented.</p>
+      </div>
+      <div class="wm-del-card">
+        <h3>Licensed Project Imagery</h3>
+        <p>A multi-party licensing model where project images serve both The Window Merchant and the architects and builders involved in each home.</p>
+      </div>
+      <div class="wm-del-card">
+        <h3>Monthly Content Retainer</h3>
+        <p>Standing monthly engagement covering shoot days, editing, delivery, social media, and website maintenance. One relationship, one invoice, everything handled.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wm-accent"></div>
+
+  <!-- Testimonial -->
+  <section class="wm-quote" id="wmQuote" data-nav="Testimonial">
+    <p class="wm-quote-text"><span class="wm-qw">He</span> <span class="wm-qw">completely</span> <span class="wm-qw wm-gold-word">redesigned</span> <span class="wm-qw">our</span> <span class="wm-qw wm-gold-word">website</span> <span class="wm-qw">and</span> <span class="wm-qw">has</span> <span class="wm-qw">been</span> <span class="wm-qw">documenting</span> <span class="wm-qw">our</span> <span class="wm-qw">projects</span> <span class="wm-qw">through</span> <span class="wm-qw">photography,</span> <span class="wm-qw">video,</span> <span class="wm-qw">and</span> <span class="wm-qw">social</span> <span class="wm-qw">media</span> <span class="wm-qw">ever</span> <span class="wm-qw">since.</span> <span class="wm-qw">The</span> <span class="wm-qw">new</span> <span class="wm-qw">site</span> <span class="wm-qw">looks</span> <span class="wm-qw wm-gold-word">incredible</span> <span class="wm-qw">and</span> <span class="wm-qw">really</span> <span class="wm-qw">reflects</span> <span class="wm-qw">the</span> <span class="wm-qw wm-gold-word">quality</span> <span class="wm-qw">of</span> <span class="wm-qw">our</span> <span class="wm-qw">work.</span> <span class="wm-qw">Having</span> <span class="wm-qw">Matt</span> <span class="wm-qw">handle</span> <span class="wm-qw">everything</span> <span class="wm-qw">from</span> <span class="wm-qw wm-gold-word">content</span> <span class="wm-qw wm-gold-word">creation</span> <span class="wm-qw">to</span> <span class="wm-qw">posting</span> <span class="wm-qw">has</span> <span class="wm-qw">made</span> <span class="wm-qw">a</span> <span class="wm-qw wm-gold-word">big</span> <span class="wm-qw wm-gold-word">difference</span> <span class="wm-qw">in</span> <span class="wm-qw">keeping</span> <span class="wm-qw">our</span> <span class="wm-qw">brand</span> <span class="wm-qw wm-gold-word">consistent</span> <span class="wm-qw">and</span> <span class="wm-qw wm-gold-word">professional.</span> <span class="wm-qw wm-gold-word">Highly</span> <span class="wm-qw wm-gold-word">recommend.</span></p>
+    <p class="wm-quote-attr">Jeremy Kirbyson · <a href="https://www.thewindowmerchant.com/" target="_blank" rel="noopener">thewindowmerchant.com</a></p>
+  </section>
+
+  <div class="wm-accent"></div>
+
+  <!-- Image Break 2 -->
+  <div class="wm-img-break">
+    <img src="https://images.squarespace-cdn.com/content/v1/686d53c540bccb49df1c90bc/e60d258c-eecc-466d-956e-8527607c0966/window-merchant-saltspring-interior-windows-web-5.jpg" alt="Skywater Main House finished interior Salt Spring Island" loading="lazy">
+  </div>
+
+  <!-- Results -->
+  <section class="wm-section" style="text-align:center" data-nav="Results">
+    <div style="max-width:720px;margin:0 auto">
+      <p class="wm-label wm-eyebrow">Results</p>
+      <div class="wm-divider" style="margin:0 auto 2rem"></div>
+      <h2>A brand that finally looks like the product it sells</h2>
+      <p>The Window Merchant now has a website that functions as their primary sales tool. When a prospective client visits, they see real projects with real installations, not stock photography or manufacturer renders. Each project page credits the architect and builder, creating a network of association with the firms that specify and install their products.</p>
+      <p>The social media presence runs on autopilot. Monthly shoots produce enough content to sustain consistent posting across platforms without anyone at The Window Merchant needing to pick up a camera or write a caption. The feed demonstrates the range of the product line across different architectural styles and regions, from island retreats to urban townhomes to alpine residences.</p>
+      <p>The licensed imagery model has created an additional benefit: architects and builders who work with The Window Merchant receive professional photography of their own projects, strengthening those relationships and incentivising future specifications. The photography serves multiple businesses simultaneously, which makes the investment more efficient for everyone involved. It also means the imagery is ready for <a href="/journal/georgie-awards-guide" style="color:#b8975a;text-decoration:none;border-bottom:1px solid rgba(184,151,90,0.3);transition:border-color 0.3s ease;">Georgie Award submissions</a> — which include trades-specific categories where suppliers and installers can showcase their contribution to award-winning homes.</p>
+      <p>The retainer continues month to month. Each new project adds depth to the portfolio, strength to the brand, and content to the social media pipeline. The system runs. The brand grows. The Window Merchant team focuses on what they do best.</p>
+    </div>
+    <div class="wm-results">
+      <div class="wm-result">
+        <p class="wm-result-num">6</p>
+        <p class="wm-result-lbl">Projects Documented</p>
+      </div>
+      <div class="wm-result">
+        <p class="wm-result-num">1</p>
+        <p class="wm-result-lbl">Website Built</p>
+      </div>
+      <div class="wm-result">
+        <p class="wm-result-num">12+</p>
+        <p class="wm-result-lbl">Months Active</p>
+      </div>
+      <div class="wm-result">
+        <p class="wm-result-num">3</p>
+        <p class="wm-result-lbl">Platforms Managed</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase -->
+  <section class="wm-showcase wm-grain" data-nav="Projects">
+    <p class="wm-label wm-eyebrow">Featured Projects</p>
+    <div class="wm-divider"></div>
+    <h2>Six projects. One growing <em>visual library</em>.</h2>
+    <p class="wm-showcase-intro">Each project showcases Window Merchant glazing systems in a different architectural context, from coastal to alpine to urban.</p>
+    <div class="wm-grid">
+      <!-- Skywater Main House -->
+      <a class="wm-card" href="https://www.thewindowmerchant.com/work/skywater-main-house" target="_blank" rel="noopener">
+        <div class="wm-card-img-wrap">
+          <img src="https://images.squarespace-cdn.com/content/v1/686d53c540bccb49df1c90bc/a851b507-3398-43d3-a132-4c6b58853af2/window-merchant-saltspring-exterior-windows-full-res-13.jpg" alt="Skywater Main House Salt Spring Island exterior window installation by The Window Merchant" loading="lazy">
+          <div class="wm-card-overlay">
+            <p class="wm-card-title">Skywater Main House</p>
+            <p class="wm-card-meta">Salt Spring Island</p>
+          </div>
+          <div class="wm-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+      </a>
+      <!-- Skywater Cabin -->
+      <a class="wm-card" href="https://www.thewindowmerchant.com/work/skywater-cabin" target="_blank" rel="noopener">
+        <div class="wm-card-img-wrap">
+          <img src="https://images.squarespace-cdn.com/content/v1/686d53c540bccb49df1c90bc/63c43401-19b3-4492-b442-a54f1525fc9a/window-merchant-saltspring-exterior-windows-full-res-8.jpg" alt="Salt Spring Island luxury home exterior glazing The Window Merchant" loading="lazy">
+          <div class="wm-card-overlay">
+            <p class="wm-card-title">Skywater Cabin</p>
+            <p class="wm-card-meta">Salt Spring Island</p>
+          </div>
+          <div class="wm-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+      </a>
+      <!-- West 10th -->
+      <a class="wm-card" href="https://www.thewindowmerchant.com/work/west-10th-vancouver" target="_blank" rel="noopener">
+        <div class="wm-card-img-wrap">
+          <img src="https://images.squarespace-cdn.com/content/v1/686d53c540bccb49df1c90bc/2e080e9e-ccab-4a3a-a4ad-f935ac364a1d/west-10th-vancouver-web--2.jpg" alt="West 10th Avenue Vancouver contemporary home interior glazing" loading="lazy">
+          <div class="wm-card-overlay">
+            <p class="wm-card-title">West 10th</p>
+            <p class="wm-card-meta">Vancouver</p>
+          </div>
+          <div class="wm-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+      </a>
+      <!-- Joan Audry Lane -->
+      <a class="wm-card" href="https://www.thewindowmerchant.com/work/joan-audry-ln" target="_blank" rel="noopener">
+        <div class="wm-card-img-wrap">
+          <img src="https://images.squarespace-cdn.com/content/v1/686d53c540bccb49df1c90bc/f767d574-5be9-40b4-a16f-143b334eeb38/the-window-merchant-progress-photos-8.jpg" alt="The Window Merchant window installation progress documentation" loading="lazy">
+          <div class="wm-card-overlay">
+            <p class="wm-card-title">Joan Audry Lane</p>
+            <p class="wm-card-meta">Sea-to-Sky</p>
+          </div>
+          <div class="wm-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+      </a>
+      <!-- Fitzsimmons -->
+      <a class="wm-card" href="https://www.thewindowmerchant.com/work/fitzsimmons" target="_blank" rel="noopener">
+        <div class="wm-card-img-wrap">
+          <img src="https://images.squarespace-cdn.com/content/v1/686d53c540bccb49df1c90bc/8e1132c5-7091-4948-a308-3009fda1bc00/fitzsimmons-whislter-web-49.jpg" alt="Fitzsimmons Residence Whistler glazing detail by The Window Merchant" loading="lazy">
+          <div class="wm-card-overlay">
+            <p class="wm-card-title">Fitzsimmons</p>
+            <p class="wm-card-meta">Whistler</p>
+          </div>
+          <div class="wm-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+      </a>
+      <!-- Wedgewood -->
+      <a class="wm-card" href="https://www.thewindowmerchant.com/work/wedgewood" target="_blank" rel="noopener">
+        <div class="wm-card-img-wrap">
+          <img src="https://images.squarespace-cdn.com/content/v1/686d53c540bccb49df1c90bc/1b357976-ed8a-44b9-991d-a7ef2ea55ece/warbler-project-2500px--15.jpg" alt="Warbler Residence Whistler interior natural light through Window Merchant glazing" loading="lazy">
+          <div class="wm-card-overlay">
+            <p class="wm-card-title">Wedgewood</p>
+            <p class="wm-card-meta">Licensed Imagery</p>
+          </div>
+          <div class="wm-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Manifesto -->
+  <section class="wm-manifesto wm-grain" id="wmManifesto">
+    <p class="wm-manifesto-text">
+      <span class="wm-mw">Every</span> <span class="wm-mw">installation</span> <span class="wm-mw">without</span> <span class="wm-mw wm-gold-word">professional</span> <span class="wm-mw wm-gold-word">documentation</span> <span class="wm-mw">is</span> <span class="wm-mw">a</span> <span class="wm-mw">missed</span> <span class="wm-mw">opportunity.</span> <span class="wm-mw">No</span> <span class="wm-mw">photos</span> <span class="wm-mw">for</span> <span class="wm-mw">the</span> <span class="wm-mw">website.</span> <span class="wm-mw">No</span> <span class="wm-mw">content</span> <span class="wm-mw">for</span> <span class="wm-mw">social.</span> <span class="wm-mw">No</span> <span class="wm-mw">imagery</span> <span class="wm-mw">for</span> <span class="wm-mw">proposals.</span> <span class="wm-mw">Once</span> <span class="wm-mw">the</span> <span class="wm-mw">homeowner</span> <span class="wm-mw">moves</span> <span class="wm-mw">in,</span> <span class="wm-mw">that</span> <span class="wm-mw wm-gold-word">story</span> <span class="wm-mw">is</span> <span class="wm-mw wm-gold-word">gone.</span>
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <section class="wm-cta">
+    <div class="wm-cta-bg">
+      <img src="https://images.squarespace-cdn.com/content/v1/686d53c540bccb49df1c90bc/47f2b999-4571-4129-845e-4827ca7307d2/window-merchant-saltspring-exterior-windows-full-res-14.jpg" alt="The Window Merchant Salt Spring Island exterior architectural photography" loading="lazy">
+    </div>
+    <div class="wm-cta-c">
+      <p class="wm-cta-eyebrow">Ready to Stand Out</p>
+      <h2>If you're a trades company ready to <em>dominate your market</em>, let's talk.</h2>
+      <p class="wm-cta-sub">Photography. Video. Social media. A custom coded website. One retainer that runs the whole operation, so you can focus on the work.</p>
+      <a href="/discovery-call" class="wm-cta-btn wm-magnetic" target="_blank" rel="noopener">Book a Discovery Call</a>
+      <p class="wm-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="wm-ft">
+<div class="wm-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+
+    <div class="wm-ft-row">
+      <div class="wm-ft-item">
+        <span class="wm-ft-label">Based In</span>
+        <span class="wm-ft-dot"></span>
+        <p>Squamish, British Columbia</p>
+      </div>
+      <div class="wm-ft-item">
+        <span class="wm-ft-label">Email</span>
+        <span class="wm-ft-dot"></span>
+        <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a>
+      </div>
+      <div class="wm-ft-item">
+        <span class="wm-ft-label">Phone</span>
+        <span class="wm-ft-dot"></span>
+        <a href="tel:6047659270">604.765.9270</a>
+      </div>
+      <div class="wm-ft-item">
+        <span class="wm-ft-label">Follow</span>
+        <span class="wm-ft-dot"></span>
+        <div class="wm-ft-social">
+          <a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="wm-ft-rule"></div>
+    <div class="wm-ft-bottom">
+      <p class="wm-ft-copy">&copy; 2026 Matt Anthony Photography</p>
+      <nav class="wm-ft-nav">
+        <a href="/projects">Projects</a>
+        <a href="/journal">Journal</a>
+        <a href="/journal/georgie-awards-guide">Georgie Awards</a>
+        <a href="/bio">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/pricing-guide-landing">Get Pricing</a>
+      </nav>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var isMobile = 'ontouchstart' in window;
+  var wrap = document.querySelector('.wm-wrap');
+  var progressBar = document.getElementById('wmProgress');
+  var hero = document.querySelector('.wm-hero');
+  var heroContent = document.querySelector('.wm-hero-content');
+  var heroBg = document.querySelector('.wm-hero-bg');
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader = document.getElementById('wmLoader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('wm-done'); }, 1100);
+  });
+
+  /* ═══ SECTION NAV DOTS ═══ */
+  var sectionNav = document.getElementById('wmSectionNav');
+  var navSections = document.querySelectorAll('[data-nav]');
+  var navDots = [];
+  navSections.forEach(function(sec){
+    var dot = document.createElement('div');
+    dot.className = 'wm-nav-dot';
+    dot.setAttribute('data-label', sec.getAttribute('data-nav'));
+    dot.addEventListener('click', function(){
+      sec.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+    sectionNav.appendChild(dot);
+    navDots.push({ dot:dot, section:sec });
+  });
+
+  function updateNavDots(){
+    var scrollY = window.scrollY;
+    var winH = window.innerHeight;
+    if(scrollY > winH * 0.5) sectionNav.classList.add('wm-nav-visible');
+    else sectionNav.classList.remove('wm-nav-visible');
+    var active = null;
+    navDots.forEach(function(item){
+      var rect = item.section.getBoundingClientRect();
+      if(rect.top < winH * 0.5 && rect.bottom > winH * 0.3) active = item;
+      item.dot.classList.remove('wm-nav-active');
+    });
+    if(active) active.dot.classList.add('wm-nav-active');
+  }
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  function updateProgress(){
+    var s = window.scrollY;
+    var d = document.documentElement.scrollHeight - window.innerHeight;
+    if(d > 0) progressBar.style.width = (s / d * 100) + '%';
+  }
+
+  /* ═══ HERO PARALLAX + FADE ═══ */
+  function updateHero(){
+    var s = window.scrollY;
+    var h = window.innerHeight;
+    if(s > h) return;
+    var ratio = s / h;
+    if(heroBg) heroBg.style.transform = 'translateY(' + (s * 0.35) + 'px) scale(' + (1 + ratio * 0.05) + ')';
+    if(heroContent){
+      heroContent.style.transform = 'translateY(' + (s * 0.15) + 'px)';
+      heroContent.style.opacity = 1 - ratio * 1.2;
+    }
+  }
+
+  /* ═══ PHOTO BREAK PARALLAX ═══ */
+  var photoBreaks = document.querySelectorAll('.wm-img-break');
+  function updatePhotoParallax(){
+    photoBreaks.forEach(function(pb){
+      var rect = pb.getBoundingClientRect();
+      if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+      var center = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+      var img = pb.querySelector('img');
+      if(img) img.style.transform = 'translateY(' + (center * -30) + 'px) scale(1.08)';
+    });
+  }
+
+  /* ═══ HEADLINE GOLD UNDERLINE ═══ */
+  var headObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('wm-underlined'); headObs.unobserve(e.target); }
+    });
+  }, {threshold:0.4});
+  document.querySelectorAll('.wm-wrap h2').forEach(function(h){ headObs.observe(h); });
+
+  /* ═══ EYEBROW DASH DRAW ═══ */
+  var eyeObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('wm-visible'); eyeObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.wm-eyebrow').forEach(function(el){ eyeObs.observe(el); });
+
+  /* ═══ DIVIDER DRAW ═══ */
+  var divObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('wm-drawn'); divObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.wm-divider').forEach(function(el){ el.style.width = '0'; divObs.observe(el); });
+
+  /* ═══ META BAR BORDER DRAW ═══ */
+  var metaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('wm-drawn'); metaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.wm-meta').forEach(function(el){ metaObs.observe(el); });
+
+  /* ═══ KEN BURNS ═══ */
+  var kenObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) e.target.classList.add('wm-in-view');
+      else e.target.classList.remove('wm-in-view');
+    });
+  }, {threshold:0.1});
+  photoBreaks.forEach(function(el){ kenObs.observe(el); });
+
+  /* ═══ QUOTE SECTION ═══ */
+  var quoteObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('wm-in-view'); quoteObs.unobserve(e.target); }
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.wm-quote').forEach(function(el){ quoteObs.observe(el); });
+
+  /* ═══ CTA ZOOM ═══ */
+  var ctaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('wm-in-view'); ctaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.2});
+  document.querySelectorAll('.wm-cta').forEach(function(el){ ctaObs.observe(el); });
+
+  /* ═══ STAT COUNTERS ═══ */
+  function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+  var counterObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting || e.target.classList.contains('wm-counted')) return;
+      e.target.classList.add('wm-counted');
+      var text = e.target.textContent.trim();
+      var hasPlus = text.indexOf('+') !== -1;
+      var num = parseInt(text);
+      if(isNaN(num)) return;
+      var start = performance.now();
+      function tick(now){
+        var t = Math.min((now - start) / 1400, 1);
+        e.target.textContent = Math.round(ease(t) * num) + (hasPlus ? '+' : '');
+        if(t < 1) requestAnimationFrame(tick);
+      }
+      e.target.textContent = '0' + (hasPlus ? '+' : '');
+      requestAnimationFrame(tick);
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.wm-result-num').forEach(function(el){ counterObs.observe(el); });
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor = document.getElementById('wmCursor');
+  var cursorDot = document.getElementById('wmCursorDot');
+  var cx = 0, cy = 0, dx = 0, dy = 0;
+  if(!isMobile && cursor){
+    document.addEventListener('mousemove', function(e){
+      dx = e.clientX; dy = e.clientY;
+      cursorDot.style.left = dx + 'px';
+      cursorDot.style.top = dy + 'px';
+      if(!cursor.classList.contains('wm-active')){
+        cursor.classList.add('wm-active');
+        cursorDot.classList.add('wm-active');
+      }
+    });
+    function tickCursor(){
+      cx += (dx - cx) * 0.12;
+      cy += (dy - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(tickCursor);
+    }
+    tickCursor();
+    var hoverEls = document.querySelectorAll('a, button, .wm-card, .wm-del-card, .wm-cta-btn');
+    hoverEls.forEach(function(el){
+      el.addEventListener('mouseenter', function(){ cursor.classList.add('wm-hover'); });
+      el.addEventListener('mouseleave', function(){ cursor.classList.remove('wm-hover'); });
+    });
+    document.addEventListener('mousedown', function(){ cursor.classList.add('wm-click'); });
+    document.addEventListener('mouseup', function(){ cursor.classList.remove('wm-click'); });
+  }
+
+  /* ═══ MAGNETIC BUTTON ═══ */
+  if(!isMobile){
+    document.querySelectorAll('.wm-magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.25) + 'px, ' + (y * 0.25) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  /* ═══ TESTIMONIAL WORD REVEAL ═══ */
+  var quoteEl = document.getElementById('wmQuote');
+  var qWords = quoteEl ? quoteEl.querySelectorAll('.wm-qw') : [];
+  var quoteRevealed = false;
+  function updateQuote(){
+    if(!quoteEl || quoteRevealed) return;
+    var rect = quoteEl.getBoundingClientRect();
+    var vh = window.innerHeight;
+    if(rect.top > vh || rect.bottom < 0) return;
+    var progress = 1 - (rect.top / (vh * 0.55));
+    progress = Math.max(0, Math.min(1, progress));
+    var wordsToLight = Math.floor(progress * qWords.length);
+    for(var i = 0; i < qWords.length; i++){
+      if(i < wordsToLight) qWords[i].classList.add('wm-lit');
+    }
+    if(wordsToLight >= qWords.length) quoteRevealed = true;
+  }
+
+  /* ═══ DELIVERABLE CARD STAGGER ═══ */
+  var delObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var cards = e.target.querySelectorAll('.wm-del-card');
+        cards.forEach(function(card, i){
+          setTimeout(function(){ card.classList.add('wm-entered'); }, i * 100);
+        });
+        delObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.2});
+  var delGrid = document.querySelector('.wm-deliverables');
+  if(delGrid) delObs.observe(delGrid);
+
+  /* ═══ RESULT STAT BAR FILLS ═══ */
+  var resultObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var items = e.target.querySelectorAll('.wm-result');
+        items.forEach(function(item, i){
+          setTimeout(function(){ item.classList.add('wm-filled'); }, i * 120);
+        });
+        resultObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.3});
+  var resultGrid = document.querySelector('.wm-results');
+  if(resultGrid) resultObs.observe(resultGrid);
+
+  /* ═══ AMBIENT PARTICLES ═══ */
+  var canvas = document.getElementById('wmParticles');
+  if(canvas){
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    function resizeCanvas(){
+      var parent = canvas.parentElement;
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    for(var p = 0; p < 30; p++){
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -Math.random() * 0.4 - 0.1,
+        r: Math.random() * 1.5 + 0.5,
+        a: Math.random() * 0.3 + 0.05
+      });
+    }
+    function drawParticles(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(function(pt){
+        pt.x += pt.vx;
+        pt.y += pt.vy;
+        if(pt.y < -10) { pt.y = canvas.height + 10; pt.x = Math.random() * canvas.width; }
+        if(pt.x < -10) pt.x = canvas.width + 10;
+        if(pt.x > canvas.width + 10) pt.x = -10;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(201,169,110,' + pt.a + ')';
+        ctx.fill();
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+  }
+
+  /* ═══ SCROLL INDICATOR HIDE ═══ */
+  var scrollHint = document.getElementById('wmScrollHint');
+  function updateScrollHint(){
+    if(window.scrollY > 80) scrollHint.classList.add('wm-hidden');
+    else scrollHint.classList.remove('wm-hidden');
+  }
+
+  /* ═══ MANIFESTO WORD REVEAL ═══ */
+  var manifesto = document.getElementById('wmManifesto');
+  var mWords = manifesto ? manifesto.querySelectorAll('.wm-mw') : [];
+  var manifestoRevealed = false;
+  function updateManifesto(){
+    if(!manifesto || manifestoRevealed) return;
+    var rect = manifesto.getBoundingClientRect();
+    var vh = window.innerHeight;
+    if(rect.top > vh || rect.bottom < 0) return;
+    var progress = 1 - (rect.top / (vh * 0.6));
+    progress = Math.max(0, Math.min(1, progress));
+    var wordsToLight = Math.floor(progress * mWords.length);
+    for(var i = 0; i < mWords.length; i++){
+      if(i < wordsToLight) mWords[i].classList.add('wm-lit');
+    }
+    if(wordsToLight >= mWords.length) manifestoRevealed = true;
+  }
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateHero();
+        updatePhotoParallax();
+        updateScrollHint();
+        updateManifesto();
+        updateQuote();
+        updateNavDots();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress();
+  updateHero();
+  updateScrollHint();
+  updateNavDots();
+})();
+</script>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="How a monthly content retainer transformed The Window Merchant's brand — photography, video, social media, and website management by Matt Anthony.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/the-window-merchant">
+<meta property="og:title" content="The Window Merchant | Content Retainer Case Study | Matt Anthony Photography">
+<meta property="og:description" content="A trades company that needed a visual system, not just a photographer. Monthly shoots, constant content, one visual standard.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/the-window-merchant">
+<meta property="og:type" content="article">

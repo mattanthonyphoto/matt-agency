@@ -1,0 +1,854 @@
+{
+  "client": {
+    "company": "Kombi Construction",
+    "slug": "kombi",
+    "owner": "Brian",
+    "owner_title": "Owner"
+  },
+  "plan": {
+    "type": "builder-marketing-plan",
+    "date": "March 2026",
+    "year": "2026",
+    "filename": "kombi-marketing-plan.html"
+  },
+  "cover": {
+    "eyebrow": "Marketing Playbook",
+    "headline_html": "How Kombi Construction<br>wins more<br><em>of the right clients.</em>",
+    "subtitle": "A personalized marketing strategy for Kombi Construction, built on what's actually working in BC's custom home market right now.",
+    "cta_text": "See Where You Stand",
+    "cta_target": "#snapshot",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/312b0797-a43a-4a51-906e-f913c78c7b79/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-3.jpg",
+    "image_position": "center 25%"
+  },
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef4086f4-81fa-468f-99bf-966ce7d83d89/warbler-whistler-architectural-photography-matt-anthony-.jpg-11.jpg",
+        "alt": "Warbler Residence at twilight — Whistler, BC",
+        "caption": "Warbler Residence &middot; Whistler, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e07b8aac-c1ec-4293-b956-79b41aa39f33/5322-backhouse-web-1.jpg",
+        "alt": "The Perch — modern coastal home, Sunshine Coast",
+        "caption": "The Perch &middot; Sunshine Coast, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/52135c1c-0414-47aa-ba78-6d225bc11f6b/siteline-langley.jpg",
+        "alt": "Fraserview Vista luxury residence — Langley, BC",
+        "caption": "Fraserview Vista &middot; Langley, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/47eefcd4-72ce-4641-8ff0-a4ea2e8b9e12/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-19.jpg",
+        "alt": "Fitzsimmons Residence at twilight — Whistler, BC",
+        "caption": "Fitzsimmons Residence &middot; Whistler, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/0e7a6365-526e-4c0e-8b06-4939d5008849/5322-backhouse-web-4.jpg",
+        "alt": "The Perch — suspended fireplace interior",
+        "caption": "The Perch &middot; Sunshine Coast, BC &middot; Matt Anthony Photography"
+      }
+    ]
+  },
+  "sections": [
+    "snapshot",
+    "opportunity",
+    "gallery_1",
+    "website",
+    "gbp",
+    "social",
+    "gallery_2",
+    "content_engine",
+    "reviews",
+    "referrals",
+    "awards",
+    "case_study",
+    "numbers",
+    "roadmap",
+    "rhythm",
+    "cta"
+  ],
+  "snapshot": {
+    "eyebrow": "Where You Stand",
+    "headline_html": "A quick look at<br><em>Kombi Construction online.</em>",
+    "lead": "I took a close look at Kombi Construction's digital presence, from your website to social media to Google. You've got a solid foundation to build on.",
+    "paragraphs": [
+      "The good news: valid ssl certificate. Also, good meta title. Anyone who finds Kombi Construction is going to see quality work.",
+      "The challenge: no structured data (schema.org). Google Business Profile not detected. These are fixable gaps with outsized upside."
+    ],
+    "scores": [
+      {
+        "value": "85",
+        "label": "Website & SEO",
+        "grade": "A-",
+        "color": "good"
+      },
+      {
+        "value": "40",
+        "label": "Social Media",
+        "grade": "D-",
+        "color": "poor"
+      },
+      {
+        "value": "46",
+        "label": "Google Presence",
+        "grade": "D",
+        "color": "poor"
+      },
+      {
+        "value": "92",
+        "label": "Visual Assets",
+        "grade": "A",
+        "color": "good"
+      }
+    ],
+    "findings": [
+      {
+        "area": "What's Working",
+        "status": "active",
+        "status_label": "Strong",
+        "points": [
+          "Valid SSL certificate",
+          "Good meta title",
+          "Good meta description"
+        ]
+      },
+      {
+        "area": "Biggest Gaps",
+        "status": "needs-work",
+        "status_label": "Needs Work",
+        "points": [
+          "No structured data (schema.org)",
+          "Google Business Profile not detected",
+          "No LocalBusiness schema markup",
+          "Very small site (2 pages)"
+        ]
+      }
+    ],
+    "insight": {
+      "title": "The Bottom Line",
+      "content_html": "<p>Kombi Construction builds great homes but the online presence doesn't fully reflect that yet. The good news is the fixes are straightforward, the competition in your market is beatable, and the upside is significant. This plan shows you exactly how to close the gap.</p>"
+    }
+  },
+  "opportunity": {
+    "eyebrow": "The Opportunity",
+    "headline_html": "What the top builders<br><em>in your market are doing.</em>",
+    "lead": "The North Shore has serious builders: Goldcon, Barrett Group, Shakespeare Homes, Blackfish. But when you look at who's actually showing up online, the field thins out fast.",
+    "paragraphs": [
+      "I looked at the builders in your area across every channel: website quality, social media activity, Google presence, professional photography, and awards. Some are doing it well. Most aren't. And that's your opportunity.",
+      "The builders consistently landing the best projects aren't necessarily building better homes than you. They're just more visible where it counts. They show up in Google, they post consistently on social, and they have the professional imagery to back it up."
+    ],
+    "competitors": [
+      {
+        "name": "Goldcon Construction",
+        "is_you": false,
+        "website": "good",
+        "website_note": "Modern, schema markup",
+        "social": "good",
+        "social_note": "16K followers",
+        "gbp": "good",
+        "gbp_note": "60 reviews, 5.0★",
+        "photography": "good",
+        "photography_note": "Professional",
+        "awards": "good",
+        "awards_note": "CHBA National"
+      },
+      {
+        "name": "Barrett Group",
+        "is_you": false,
+        "website": "good",
+        "website_note": "Clean, professional",
+        "social": "ok",
+        "social_note": "Active",
+        "gbp": "good",
+        "gbp_note": "22 reviews, 4.9★",
+        "photography": "good",
+        "photography_note": "Professional",
+        "awards": "good",
+        "awards_note": "HAVAN Builder of Year"
+      },
+      {
+        "name": "Shakespeare Homes",
+        "is_you": false,
+        "website": "good",
+        "website_note": "Schema, blog, certs",
+        "social": "good",
+        "social_note": "1.5K, 530 posts",
+        "gbp": "ok",
+        "gbp_note": "Listed, few reviews",
+        "photography": "good",
+        "photography_note": "Professional",
+        "awards": "good",
+        "awards_note": "HAVAN Renovator of Year"
+      },
+      {
+        "name": "Blackfish Homes",
+        "is_you": false,
+        "website": "ok",
+        "website_note": "Dated design",
+        "social": "good",
+        "social_note": "6K followers",
+        "gbp": "ok",
+        "gbp_note": "Houzz 4.9",
+        "photography": "ok",
+        "photography_note": "Solid, not top-tier",
+        "awards": "good",
+        "awards_note": "Georgie + Ovation"
+      },
+      {
+        "name": "Bolder Homes",
+        "is_you": false,
+        "website": "ok",
+        "website_note": "Template feel",
+        "social": "poor",
+        "social_note": "71 followers",
+        "gbp": "poor",
+        "gbp_note": "No reviews",
+        "photography": "ok",
+        "photography_note": "Decent",
+        "awards": "ok",
+        "awards_note": "Some Georgie"
+      },
+      {
+        "name": "Kombi Construction",
+        "is_you": true,
+        "website": "ok",
+        "website_note": "Clean but 2 pages",
+        "social": "poor",
+        "social_note": "Minimal",
+        "gbp": "poor",
+        "gbp_note": "Not detected",
+        "photography": "ok",
+        "photography_note": "Carousel only",
+        "awards": "poor",
+        "awards_note": "None in 31 years"
+      }
+    ],
+    "insight": {
+      "title": "What This Means",
+      "content_html": "<p>Only a handful of builders in your market are firing on all cylinders. The rest have the same gaps you do. That means this isn't about catching up to an impossible standard. It's about being one of the first to get it right. And right now, that position is wide open.</p>"
+    }
+  },
+  "website": {
+    "eyebrow": "Website & SEO",
+    "headline_html": "Your website is your<br><em>24/7 sales team.</em>",
+    "lead": "Kombi Construction's website at kombihomes.com has 2 pages. Here's what's working and where the biggest SEO wins are.",
+    "paragraphs": [
+      "Your site doesn't have structured data markup (JSON-LD), which means Google can't pull your business details into rich search results. Adding LocalBusiness schema is the single fastest technical win available.",
+      "Dedicated project pages are where SEO and client trust intersect. Each completed build should have its own page with professional photos, specs, and location tags. These are what rank in Google.",
+      "Your sitemap is set up, which helps Google index your pages."
+    ],
+    "checklist": [
+      {
+        "text": "Add structured data (JSON-LD)",
+        "detail": "Helps Google understand your business. LocalBusiness + Organization schema at minimum.",
+        "done": false
+      },
+      {
+        "text": "Create project portfolio pages",
+        "detail": "Each completed project gets its own page with professional photos, specs, and client context.",
+        "done": false
+      },
+      {
+        "text": "Write location-specific pages",
+        "detail": "North Vancouver BC and surrounding areas. One page per service area.",
+        "done": false
+      },
+      {
+        "text": "Fix meta descriptions",
+        "detail": "Every page needs a unique, compelling meta description under 160 characters.",
+        "done": true
+      },
+      {
+        "text": "Add a blog with 2 posts/month",
+        "detail": "Project case studies, build process insights, and local market content.",
+        "done": false
+      },
+      {
+        "text": "Optimize images with alt text",
+        "detail": "Every image needs descriptive alt text. Good for SEO and accessibility.",
+        "done": false
+      }
+    ],
+    "insight": {
+      "title": "The Professional Photography Connection",
+      "content_html": "<p>Every recommendation above needs one thing to work: <strong>strong visual content</strong>. Project pages need professional photography. Blog posts need real images from real builds. Location pages need hero shots from that area. The website strategy and the content strategy are the same strategy.</p>"
+    }
+  },
+  "gbp": {
+    "eyebrow": "Google Business Profile",
+    "headline_html": "The free tool<br><em>most builders ignore.</em>",
+    "lead": "Kombi Construction doesn't appear to have a fully optimized Google Business Profile. This is the single highest-ROI action in this entire plan.",
+    "paragraphs": [
+      "When someone searches 'custom home builder North Vancouver BC', Google shows the map pack first. That's three businesses. GBP is how you get there.",
+      "The fix isn't complicated. A fully optimized GBP with 20+ reviews, professional photos, and weekly posts would put you in the map pack within 90 days."
+    ],
+    "checklist": [
+      {
+        "text": "Claim and verify your GBP listing",
+        "detail": "If you haven't already. Google will mail a postcard or call to verify.",
+        "done": false
+      },
+      {
+        "text": "Complete every field",
+        "detail": "Business hours, services, description, attributes. 100% completion helps ranking.",
+        "done": false
+      },
+      {
+        "text": "Add 25+ professional photos",
+        "detail": "Completed projects, team, office, process shots. Updated monthly.",
+        "done": false
+      },
+      {
+        "text": "Post weekly updates",
+        "detail": "Project milestones, completed builds, awards, team updates. Takes 5 minutes.",
+        "done": false
+      },
+      {
+        "text": "Build to 20+ reviews",
+        "detail": "Ask every happy client. Respond to every review within 24 hours.",
+        "done": false
+      },
+      {
+        "text": "Add your service areas",
+        "detail": "North Vancouver BC and surrounding communities.",
+        "done": false
+      }
+    ],
+    "stats": [
+      {
+        "value": "46%",
+        "label": "Of Google Searches Are Local"
+      },
+      {
+        "value": "76%",
+        "label": "Visit Within 24 Hours"
+      },
+      {
+        "value": "28%",
+        "label": "Result in a Purchase"
+      },
+      {
+        "value": "5x",
+        "label": "More Views with Photos"
+      }
+    ],
+    "insight": {
+      "title": "Why This Matters for Builders",
+      "content_html": "<p>Your ideal client isn't scrolling Instagram looking for a builder. They're Googling 'custom home builder North Vancouver BC.' GBP is how you intercept that search. And the builders in your market who've figured this out are getting those calls instead of you.</p>"
+    }
+  },
+  "social": {
+    "eyebrow": "Social Media",
+    "headline_html": "Show the work.<br><em>Consistently.</em>",
+    "lead": "Most builders in the North Vancouver BC market are either not posting on social media or posting inconsistently. This is a wide-open opportunity.",
+    "paragraphs": [
+      "This isn't about becoming a social media company. It's about showing the work you're already doing in a way that attracts the clients you want.",
+      "The builders getting the most traction on social aren't hiring agencies or spending hours on content. They're doing one thing well: showing the work in progress."
+    ],
+    "pillars": [
+      {
+        "title": "The Build",
+        "frequency": "2x per week",
+        "description": "Progress shots, framing, structural moments. The stuff that shows your team knows what they're doing. Phone photos work fine here."
+      },
+      {
+        "title": "The Finished Product",
+        "frequency": "1x per week",
+        "description": "Professional photography of completed projects. These are the posts that get saved and shared. This is what attracts the right clients."
+      },
+      {
+        "title": "The Team",
+        "frequency": "1x per week",
+        "description": "Crew on site, team lunches, jobsite culture. People hire people. Show the humans behind the builds."
+      },
+      {
+        "title": "The Process",
+        "frequency": "1x per week",
+        "description": "Material selections, design decisions, problem-solving. Educational content positions you as the expert."
+      }
+    ],
+    "insight": {
+      "title": "The Content Math",
+      "content_html": "<p>One professional photo shoot produces 20-25 images. That's <strong>5 weeks of social content</strong> from a single day. Add in your phone shots from site visits and team moments, and you have a full content calendar without ever running out of material.</p>"
+    }
+  },
+  "content_engine": {
+    "eyebrow": "The Content Engine",
+    "headline_html": "One shoot feeds<br><em>every channel.</em>",
+    "lead": "This is where everything connects. Professional project documentation isn't just about having nice photos on your website. It's the engine that powers your entire marketing system.",
+    "paragraphs": [
+      "One professional photo shoot of a completed project produces 20-25 edited images. Here's where those images go and what they do for you:"
+    ],
+    "channels": [
+      {
+        "title": "Website & SEO",
+        "entries": [
+          "Dedicated project page with full photo gallery",
+          "Blog case study with build story and specs",
+          "Location page hero images for local SEO",
+          "Schema markup with project imagery"
+        ]
+      },
+      {
+        "title": "Social Media",
+        "entries": [
+          "5+ weeks of Instagram and Facebook content",
+          "LinkedIn portfolio posts for B2B credibility",
+          "Before/after carousels and reel content",
+          "Story content showing craftsmanship details"
+        ]
+      },
+      {
+        "title": "Google Business Profile",
+        "entries": [
+          "Monthly photo updates (boosts ranking)",
+          "Project completion posts with imagery",
+          "Service area photos tied to locations",
+          "Team and process documentation"
+        ]
+      },
+      {
+        "title": "Sales & Proposals",
+        "entries": [
+          "Client presentation decks with real imagery",
+          "Printed materials and brochures",
+          "Award submission photography (Georgie, CHBA)",
+          "Publication-ready images (Western Living, Dwell)"
+        ]
+      }
+    ],
+    "numbers": [
+      {
+        "value": "25",
+        "label": "Images per Shoot"
+      },
+      {
+        "value": "5",
+        "label": "Weeks of Content"
+      },
+      {
+        "value": "4",
+        "label": "Channels Fed"
+      }
+    ],
+    "insight": {
+      "title": "The Multiplier Effect",
+      "content_html": "<p>Most builders think of photography as a one-time expense for the website. The builders winning the most work treat it as a content investment. One day of shooting creates months of marketing fuel across every platform. The ROI isn't in the photos themselves, it's in what those photos do across your entire marketing system.</p>"
+    }
+  },
+  "reviews": {
+    "eyebrow": "Reviews & Reputation",
+    "headline_html": "Word of mouth,<br><em>at scale.</em>",
+    "lead": "For a builder of Kombi Construction's caliber, 20+ Google reviews should be the minimum. Here's how to build that systematically.",
+    "paragraphs": [
+      "Custom home building is a high-trust, high-ticket decision. Potential clients aren't buying shoes online. They're investing hundreds of thousands in their family's home. Reviews are how they validate their gut feeling about you before they ever pick up the phone.",
+      "The goal isn't hundreds of reviews. It's 20-30 genuine reviews from real clients that tell specific stories about working with you."
+    ],
+    "stats": [
+      {
+        "value": "?",
+        "label": "Current Google Reviews"
+      },
+      {
+        "value": "93%",
+        "label": "Read Reviews Before Hiring"
+      },
+      {
+        "value": "20",
+        "label": "Reviews for Credibility"
+      },
+      {
+        "value": "4.7",
+        "label": "Minimum Target Rating"
+      }
+    ],
+    "checklist": [
+      {
+        "text": "Send a review request within 1 week of project handover",
+        "detail": "Strike while the excitement is fresh. Include a direct link to your Google review page.",
+        "done": false
+      },
+      {
+        "text": "Make it easy with a direct Google review link",
+        "detail": "Don't send them to your website. Send the Google review URL so it's one click.",
+        "done": false
+      },
+      {
+        "text": "Respond to every review within 24 hours",
+        "detail": "Thank them specifically. Mention the project. Shows potential clients you care.",
+        "done": false
+      },
+      {
+        "text": "Ask subcontractors and design partners too",
+        "detail": "Architects, designers, and trades you work with can leave Google reviews about the collaboration.",
+        "done": false
+      },
+      {
+        "text": "Feature best reviews on your website",
+        "detail": "Pull the strongest Google reviews onto your homepage and project pages.",
+        "done": false
+      }
+    ],
+    "insight": {
+      "title": "The Compounding Effect",
+      "content_html": "<p>Reviews compound. The first 10 get you into consideration. The next 10 get you ranked. After 20+, you're the obvious choice. And every review with a specific story does more than any ad could.</p>"
+    }
+  },
+  "referrals": {
+    "eyebrow": "Referral System",
+    "headline_html": "Turn happy clients into<br><em>your sales team.</em>",
+    "lead": "Most of your best projects probably came from referrals. The problem is that referrals happen randomly. A system makes them predictable.",
+    "paragraphs": [
+      "In North Vancouver BC, word of mouth is everything. But right now it's accidental. Someone mentions you at a dinner party, maybe the friend follows up, maybe they don't.",
+      "The builders consistently landing the best projects have three things in common: they ask, they make it easy, and they follow up."
+    ],
+    "steps": [
+      {
+        "number": "1",
+        "title": "The Ask",
+        "description": "At project handover, ask directly: 'We loved working on this project. If you know anyone building or renovating, we'd appreciate the introduction.' Simple, honest, no incentive needed."
+      },
+      {
+        "number": "2",
+        "title": "Make It Easy",
+        "description": "Give them something to share. A link to the project page on your website with professional photos. People share beautiful things without being asked twice."
+      },
+      {
+        "number": "3",
+        "title": "The Follow-Up",
+        "description": "Thank every referrer personally. A handwritten note or a framed print of their home goes further than any gift card. Stay in their world with a quick check-in every 6 months."
+      }
+    ],
+    "insight": {
+      "title": "The Photography Connection",
+      "content_html": "<p>The single best referral tool is a stunning project page with professional photography. When a past client tells their friend 'you should call our builder,' the friend Googles you. If what they find looks as good as the recommendation, you get the call. If it doesn't, you lose it.</p>"
+    }
+  },
+  "awards": {
+    "eyebrow": "Awards & Publications",
+    "headline_html": "The credentials<br><em>that close deals.</em>",
+    "lead": "Awards aren't vanity. They're the third-party validation that separates Kombi Construction from every other builder making the same claims.",
+    "paragraphs": [
+      "'Award-winning custom home builder' in your Google listing, on your website, and in your proposals changes the conversation. Most builders haven't submitted. That's the opportunity.",
+      "A single strong submission with professional photography could land your first award this year."
+    ],
+    "channels": [
+      {
+        "title": "Award Programs",
+        "entries": [
+          "Georgie Awards (CHBA BC) &mdash; deadline typically March",
+          "CHBA National Awards for Housing Excellence",
+          "HAVAN Awards (if Lower Mainland)",
+          "Gold Nugget Awards &mdash; international recognition"
+        ]
+      },
+      {
+        "title": "Publications",
+        "entries": [
+          "Western Living &mdash; BC's premier shelter magazine",
+          "Mountain Life &mdash; strong for Sea-to-Sky builders",
+          "Dwell &mdash; design-focused, high credibility",
+          "Local newspaper home sections and features"
+        ]
+      }
+    ],
+    "insight": {
+      "title": "The Requirement",
+      "content_html": "<p>Every award submission and publication pitch requires one thing: <strong>professional photography</strong>. Not phone shots. Not point-and-shoot. Publication-quality imagery that meets specific technical requirements. Without it, your best project can't even enter the conversation.</p>"
+    }
+  },
+  "numbers": {
+    "stats": [
+      {
+        "value": "25",
+        "label": "Images per Shoot"
+      },
+      {
+        "value": "12",
+        "label": "Months of Content"
+      },
+      {
+        "value": "7",
+        "label": "Channels Fed"
+      }
+    ]
+  },
+  "roadmap": {
+    "eyebrow": "90-Day Action Plan",
+    "headline_html": "Where to start.<br><em>What to do first.</em>",
+    "lead": "You don't need to do everything at once. Here's the prioritized sequence based on what will move the needle fastest for Kombi Construction.",
+    "paragraphs": [],
+    "periods": [
+      {
+        "timeframe": "Week 1-2",
+        "label_html": "Foundation:<br><em>Get Found</em>",
+        "entries": [
+          "Claim and fully optimize your Google Business Profile",
+          "Add 15-20 of your best project photos to GBP",
+          "Ask your 5 most recent clients for Google reviews",
+          "Fix any critical website issues (broken links, missing pages, slow load)"
+        ]
+      },
+      {
+        "timeframe": "Week 3-4",
+        "label_html": "Content:<br><em>Show the Work</em>",
+        "entries": [
+          "Start posting 3x/week on Instagram (build progress + finished work + team)",
+          "Create your first project case study page on the website",
+          "Schedule your first professional photo shoot of a completed project",
+          "Set up your LinkedIn company page"
+        ]
+      },
+      {
+        "timeframe": "Month 2",
+        "label_html": "Momentum:<br><em>Build the Library</em>",
+        "entries": [
+          "Publish 2 blog posts (project case study + local market insight)",
+          "Launch your review request system (email template + direct link)",
+          "Post weekly GBP updates with project photos",
+          "Research award submission deadlines and requirements"
+        ]
+      },
+      {
+        "timeframe": "Month 3",
+        "label_html": "Scale:<br><em>Compound the Gains</em>",
+        "entries": [
+          "Second professional photo shoot (different project or in-progress build)",
+          "Submit first award application with professional imagery",
+          "Activate referral system with past client outreach",
+          "Review analytics: what's working, what to double down on"
+        ]
+      }
+    ],
+    "stats": [
+      {
+        "value": "90",
+        "label": "Days to Transform"
+      },
+      {
+        "value": "2",
+        "label": "Pro Photo Shoots"
+      },
+      {
+        "value": "50",
+        "label": "Professional Images"
+      },
+      {
+        "value": "20",
+        "label": "Target Google Reviews"
+      }
+    ]
+  },
+  "rhythm": {
+    "eyebrow": "The Monthly Rhythm",
+    "headline_html": "Keep the engine<br><em>running.</em>",
+    "lead": "After the first 90 days, marketing becomes a rhythm, not a project. Here's what a sustainable monthly cadence looks like.",
+    "paragraphs": [],
+    "cards": [
+      {
+        "frequency": "Weekly",
+        "title": "Content & Social",
+        "entries": [
+          "3-4 Instagram posts (mix of build, finished, team)",
+          "1 LinkedIn post (project update or insight)",
+          "1 GBP post with photos",
+          "Reply to all comments and DMs"
+        ]
+      },
+      {
+        "frequency": "Monthly",
+        "title": "Website & SEO",
+        "entries": [
+          "1 blog post or project case study",
+          "Update project gallery with new photos",
+          "Check Google Search Console for opportunities",
+          "Update GBP with new project photos"
+        ]
+      },
+      {
+        "frequency": "Monthly",
+        "title": "Relationships",
+        "entries": [
+          "Send 2-3 review requests to recent clients",
+          "Reach out to 1 past client for referral ask",
+          "Connect with 2 architects or designers",
+          "Engage with local builders and trades online"
+        ]
+      },
+      {
+        "frequency": "Quarterly",
+        "title": "Big Moves",
+        "entries": [
+          "1 professional photo shoot (completed project)",
+          "Review award submission deadlines",
+          "Audit website analytics and adjust strategy",
+          "Plan next quarter's content calendar"
+        ]
+      },
+      {
+        "frequency": "Quarterly",
+        "title": "Content Production",
+        "entries": [
+          "Batch edit and distribute shoot images",
+          "Create 3 months of social content from shoot",
+          "Update website project pages",
+          "Prep award submission materials"
+        ]
+      },
+      {
+        "frequency": "Annually",
+        "title": "Strategy Review",
+        "entries": [
+          "Full marketing audit (what worked, what didn't)",
+          "Update website with best projects from the year",
+          "Plan award submissions for the year",
+          "Set content and growth targets for next 12 months"
+        ]
+      }
+    ],
+    "insight": {
+      "title": "The Real Secret",
+      "content_html": "<p>The builders who win at marketing aren't spending more time on it. They're spending <strong>better</strong> time. One professional photo shoot per quarter produces enough content to fuel everything else for months. The system runs itself once the content exists.</p>"
+    }
+  },
+  "gallery_1": {
+    "columns": 1,
+    "images": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/58f835c2-21e3-441c-a6c1-629b91a2afaf/siteline-langley-16.jpg",
+        "alt": "Fraserview Vista — exterior twilight, Langley"
+      }
+    ],
+    "caption": "Matt Anthony Photography"
+  },
+  "gallery_2": {
+    "columns": 1,
+    "images": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/2b3d3270-c8c3-4e1a-954a-4aca41b35b71/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-13.jpg",
+        "alt": "Tranquil Retreat — wood ceiling living room"
+      }
+    ],
+    "caption": "Matt Anthony Photography"
+  },
+  "case_study": {
+    "eyebrow": "Case Study",
+    "headline_html": "What this looks like<br><em>in practice.</em>",
+    "lead": "Balmoral Construction is a custom home builder in the Sea-to-Sky corridor. Here's what happened when they invested in professional documentation and a content-driven marketing strategy.",
+    "header_image": {
+      "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg",
+      "alt": "Warbler Residence — built by Balmoral Construction, Whistler",
+      "eyebrow": "Balmoral Construction",
+      "title_html": "From invisible online to<br><em>the builder people find first.</em>"
+    },
+    "paragraphs": [
+      "When we started working together, Balmoral had completed over 50 custom homes across the Sea-to-Sky corridor but had zero online presence to show for it. No project pages, no professional photography, no awards, no content strategy.",
+      "We built a full 42-page website with dedicated project pages, location-specific landing pages, and a blog. Every page is backed by professional architectural photography.",
+      "We then launched a monthly content system: professional photo shoots, social media content, Google Business Profile optimization, and award submissions.",
+      "The result: Balmoral now shows up in Google for every key search term in their market. Their website generates qualified leads. Their Instagram showcases the work. And for the first time, their online presence matches the quality of what they actually build."
+    ],
+    "stats": [
+      {
+        "value": "42",
+        "label": "Website Pages Built"
+      },
+      {
+        "value": "14",
+        "label": "Project Pages"
+      },
+      {
+        "value": "300+",
+        "label": "Professional Images"
+      },
+      {
+        "value": "7",
+        "label": "Location Pages"
+      }
+    ],
+    "gallery": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/40f0f4b4-0146-4139-8682-d3505ba00ba2/warbler-whistler-architectural-photography-matt-anthony-.jpg-36.jpg",
+        "alt": "Warbler Residence — Balmoral Construction"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/0a5c4ead-f6f9-413c-aaad-b12b03837e78/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg.jpg",
+        "alt": "Fitzsimmons Residence — Balmoral Construction"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d4768559-4d0d-4403-a58c-02db15d5b177/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-42.jpg",
+        "alt": "Fitzsimmons interior — Balmoral Construction"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/98b6bb8c-ede3-4de9-978a-fc8ae91554a6/warbler-whistler-architectural-photography-matt-anthony-.jpg-35.jpg",
+        "alt": "Warbler exterior — Balmoral Construction"
+      }
+    ],
+    "link": {
+      "url": "https://www.balmoralconstruction.com",
+      "text": "See the Balmoral website"
+    },
+    "insight": {
+      "title": "The Takeaway",
+      "content_html": "<p>Balmoral didn't need to change how they build homes. They needed to <strong>show</strong> how they build homes. The photography, the website, the content system, they're all the same investment. And it compounds every month.</p>"
+    },
+    "browser": {
+      "url_text": "balmoralconstruction.com",
+      "screenshot": "https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/93aadd7d-1feb-4c75-bf1e-25a901aa197f/www.balmoralconstruction.com_+%282%29+%281%29.png?content-type=image%2Fpng",
+      "alt": "Balmoral Construction website — 42 pages built by Matt Anthony Photography"
+    }
+  },
+  "cta": {
+    "eyebrow": "Let's Talk",
+    "headline_html": "Ready to build your<br><em>content engine?</em>",
+    "paragraphs": [
+      "Everything in this plan starts with one thing: professional visual content. The website, the social, the awards, the reviews, they all need imagery that matches the quality of what you build.",
+      "I work as a dedicated creative partner for builders across BC. Photography, content strategy, social media, and brand development. Not a vendor you call once a year, but an embedded partner who keeps your marketing engine running."
+    ],
+    "bg_image": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8a674d33-4176-43dd-89c1-a565c1c3df48/5322-backhouse-web-24.jpg",
+    "button": {
+      "text": "Book a Discovery Call",
+      "url": "https://mattanthonyphoto.com/discovery-call"
+    },
+    "details": [
+      {
+        "label": "Specialization",
+        "value": "Architectural & Construction Photography"
+      },
+      {
+        "label": "Service Area",
+        "value": "Sea-to-Sky, Sunshine Coast, Vancouver, Fraser Valley"
+      },
+      {
+        "label": "Starting At",
+        "value": "One shoot. See what's possible."
+      }
+    ]
+  },
+  "closing": {
+    "eyebrow": "What's Next",
+    "headline_html": "This plan works.<br><em>If it gets executed.</em>",
+    "paragraphs": [
+      "Brian, I put this together because Kombi Construction builds the kind of homes that should be getting more attention than they are. The work is there. The marketing just needs to catch up.",
+      "Every section of this plan connects back to one thing: having professional visual content to fuel the machine. Without it, the website stays thin, the social stays inconsistent, the awards stay unsubmitted, and the best clients keep finding your competitors first.",
+      "I specialize in exactly this, architectural and construction photography built specifically for marketing. Not just pretty photos, but a content system that feeds every channel you need.",
+      "If you'd like to talk about getting the content engine started, I'm here. No pitch, just a conversation about what would make the biggest difference for Kombi Construction right now."
+    ],
+    "steps": [
+      {
+        "number": "1",
+        "title": "Start with GBP",
+        "description": "The highest-ROI action in this plan. Takes an afternoon, pays off for years."
+      },
+      {
+        "number": "2",
+        "title": "Shoot One Project",
+        "description": "Pick your best recent build. One professional shoot creates months of content across every channel."
+      },
+      {
+        "number": "3",
+        "title": "Build the Rhythm",
+        "description": "Once the content exists, the weekly posting and monthly updates take minutes, not hours."
+      }
+    ]
+  }
+}

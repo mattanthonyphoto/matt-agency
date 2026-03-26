@@ -1,0 +1,263 @@
+{
+  "scores": {
+    "seo": {
+      "value": 69,
+      "grade": "B-",
+      "color": "mid"
+    },
+    "local": {
+      "value": 46,
+      "grade": "C-",
+      "color": "bad"
+    },
+    "content": {
+      "value": 100,
+      "grade": "A",
+      "color": "good"
+    },
+    "visual_assets": {
+      "value": 77,
+      "grade": "B",
+      "color": "good"
+    }
+  },
+  "findings": {
+    "seo": [
+      {
+        "status": "pass",
+        "title": "Valid SSL certificate",
+        "detail": "Site is served over HTTPS."
+      },
+      {
+        "status": "pass",
+        "title": "Good meta title",
+        "detail": "\"site lines architecture | Transform Your Space Today\" (52 chars)"
+      },
+      {
+        "status": "warn",
+        "title": "Meta description too long (195 chars)",
+        "detail": "Recommended: 120-155 characters."
+      },
+      {
+        "status": "pass",
+        "title": "Single H1 tag",
+        "detail": "\"Let’s chat\""
+      },
+      {
+        "status": "warn",
+        "title": "Missing Open Graph tags: og:image",
+        "detail": "Social media shares will look generic without proper OG tags."
+      },
+      {
+        "status": "fail",
+        "title": "No structured data (schema.org)",
+        "detail": "No JSON-LD found. Add LocalBusiness, Organization, or WebSite schema."
+      },
+      {
+        "status": "pass",
+        "title": "robots.txt exists",
+        "detail": "20 disallowed paths."
+      },
+      {
+        "status": "pass",
+        "title": "Sitemap found (97 URLs)",
+        "detail": "URL: https://www.sitelines.ca/sitemap.xml"
+      },
+      {
+        "status": "pass",
+        "title": "Canonical tag present",
+        "detail": "https://www.sitelines.ca"
+      },
+      {
+        "status": "pass",
+        "title": "Good server response (77ms)",
+        "detail": "First byte returned quickly."
+      }
+    ],
+    "local": [
+      {
+        "status": "fail",
+        "title": "Google Business Profile not detected",
+        "detail": "Google often blocks automated requests. Verify manually. Verify at business.google.com."
+      },
+      {
+        "status": "fail",
+        "title": "No LocalBusiness schema markup",
+        "detail": "Add LocalBusiness or HomeBuilder JSON-LD schema with NAP, hours, and service area."
+      },
+      {
+        "status": "pass",
+        "title": "Listed on Houzz",
+        "detail": "Found at https://www.houzz.com/professionals/hznb/query/nqrwns/probr0-bo~q_site-lines-architecture"
+      },
+      {
+        "status": "warn",
+        "title": "Not found on HomeStars",
+        "detail": "Consider creating a profile for citation building."
+      },
+      {
+        "status": "warn",
+        "title": "Not found on CHBA",
+        "detail": "Consider creating a profile for citation building."
+      },
+      {
+        "status": "warn",
+        "title": "NAP consistency check needed",
+        "detail": "Verify name, address, and phone are consistent across website footer, GBP, and directory listings."
+      }
+    ],
+    "content": [
+      {
+        "status": "pass",
+        "title": "Good homepage content (858 words)",
+        "detail": "Homepage has sufficient text content."
+      },
+      {
+        "status": "pass",
+        "title": "28 pages crawled",
+        "detail": "Site has a reasonable amount of content."
+      },
+      {
+        "status": "pass",
+        "title": "5 project/portfolio pages found",
+        "detail": "5 with descriptions (100+ words), 0 image-only."
+      },
+      {
+        "status": "pass",
+        "title": "All project pages have descriptions",
+        "detail": "Good content coverage across portfolio."
+      },
+      {
+        "status": "pass",
+        "title": "Blog/journal section found (1 pages)",
+        "detail": "Active content publishing helps SEO."
+      }
+    ],
+    "visual_assets": [
+      {
+        "status": "pass",
+        "title": "8 images on homepage",
+        "detail": "Good visual presence."
+      },
+      {
+        "status": "fail",
+        "title": "8 of 8 images missing alt text (100%)",
+        "detail": "Alt text is critical for image SEO and accessibility."
+      },
+      {
+        "status": "pass",
+        "title": "320 total images across site",
+        "detail": "320 missing alt text site-wide."
+      },
+      {
+        "status": "pass",
+        "title": "Project pages average 9.8 images",
+        "detail": "Good visual coverage per project."
+      },
+      {
+        "status": "warn",
+        "title": "No Open Graph image",
+        "detail": "Social shares will lack a preview image. Set og:image to a strong portfolio shot."
+      }
+    ]
+  },
+  "meta": {
+    "url": "https://www.sitelines.ca/",
+    "company_name": "Site Lines Architecture",
+    "location": "Fort Langley BC",
+    "pages_crawled": 30,
+    "pages_successful": 28,
+    "pages_errored": 2,
+    "total_word_count": 7646,
+    "total_images": 320,
+    "total_missing_alt": 320,
+    "schema_types_found": [],
+    "project_pages_count": 5,
+    "project_pages_with_descriptions": 5,
+    "has_robots_txt": true,
+    "has_sitemap": true,
+    "sitemap_url_count": 97,
+    "ssl_valid": true,
+    "redirect_count": 0,
+    "final_url": "https://www.sitelines.ca/",
+    "homepage_title": "site lines architecture | Transform Your Space Today",
+    "homepage_meta_description": "Explore award-winning architectural and interior design services in \r\nresidential, commercial, and institutional design. We bring your visions to \r\nlife with innovative, detail-focused solutions.",
+    "homepage_word_count": 858,
+    "homepage_image_count": 8,
+    "homepage_response_ms": 77,
+    "homepage_size_kb": 223.0,
+    "gbp_detected": false,
+    "directories_checked": {
+      "Houzz": true,
+      "HomeStars": false,
+      "CHBA": false
+    },
+    "project_pages": [
+      {
+        "url": "https://www.sitelines.ca/commercial",
+        "title": "Commercial | Discover Expert Commercial Designs — site lines architecture",
+        "word_count": 176,
+        "image_count": 10,
+        "has_description": true
+      },
+      {
+        "url": "https://www.sitelines.ca/our-work",
+        "title": "Residential — site lines architecture",
+        "word_count": 166,
+        "image_count": 10,
+        "has_description": true
+      },
+      {
+        "url": "https://www.sitelines.ca/blog",
+        "title": "Site Lines Architecture Blog | Design Insights, Projects & Expert Advice — site lines architecture",
+        "word_count": 257,
+        "image_count": 6,
+        "has_description": true
+      },
+      {
+        "url": "https://www.sitelines.ca/residential",
+        "title": "Residential — site lines architecture",
+        "word_count": 166,
+        "image_count": 10,
+        "has_description": true
+      },
+      {
+        "url": "https://www.sitelines.ca/peaks-with-niso-homes",
+        "title": "Peaks with Niso Homes | Discover Luxury Homes Today — site lines architecture",
+        "word_count": 282,
+        "image_count": 13,
+        "has_description": true
+      }
+    ],
+    "page_urls": [
+      "https://www.sitelines.ca",
+      "https://www.sitelines.ca/about",
+      "https://www.sitelines.ca/beard-bardot",
+      "https://www.sitelines.ca/blog",
+      "https://www.sitelines.ca/cart",
+      "https://www.sitelines.ca/commercial",
+      "https://www.sitelines.ca/dowco",
+      "https://www.sitelines.ca/encompass",
+      "https://www.sitelines.ca/fort-langley-cliffside",
+      "https://www.sitelines.ca/foyer-maillard",
+      "https://www.sitelines.ca/fraser-valley-vista",
+      "https://www.sitelines.ca/institutional",
+      "https://www.sitelines.ca/lilyterrace",
+      "https://www.sitelines.ca/mahogany",
+      "https://www.sitelines.ca/multi-family",
+      "https://www.sitelines.ca/northside-community-recreation-center",
+      "https://www.sitelines.ca/our-process",
+      "https://www.sitelines.ca/our-work",
+      "https://www.sitelines.ca/panorama-ridge",
+      "https://www.sitelines.ca/peaks-with-niso-homes",
+      "https://www.sitelines.ca/relate-church",
+      "https://www.sitelines.ca/residential",
+      "https://www.sitelines.ca/safe-software",
+      "https://www.sitelines.ca/salishan-place-by-the-river",
+      "https://www.sitelines.ca/seventh-day-adventist-church",
+      "https://www.sitelines.ca/seventh-day-adventist-church-headquarters",
+      "https://www.sitelines.ca/tri-city-office-building",
+      "https://www.sitelines.ca/windermere-lakeside"
+    ]
+  }
+}

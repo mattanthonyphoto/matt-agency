@@ -1,0 +1,347 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.bl-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.bl-loader.bl-done{opacity:0;visibility:hidden;pointer-events:none}
+.bl-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:blLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:blLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:blLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:blLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes blLoaderIn{to{opacity:1}}
+@keyframes blLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.bl-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.bl-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.bl-cursor.bl-active{opacity:1}
+.bl-cursor.bl-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.bl-cursor.bl-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.bl-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.bl-cursor-dot.bl-active{opacity:1}
+
+/* ── CTA button glow ── */
+.bl-btn,.bl-cta-btn{animation:blBtnGlow 3s ease-in-out infinite alternate}
+@keyframes blBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+:root{--ink:#1a1a18;--paper:#f6f4f0;--warm:#c9a96e;--warm-muted:#b8975a;--stone:#8a8579;--light-stone:#d9d5cd;--off-white:#eeece6;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',-apple-system,sans-serif;--display:'Josefin Sans',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+.bl-wrap{overflow-x:hidden!important;font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased}
+.bl-wrap img{max-width:100%;display:block}
+.bl-wrap a{color:inherit;text-decoration:none}
+.bl-hero{position:relative;width:100%;min-height:70vh;display:flex;align-items:flex-end;padding:0 5vw 4rem;overflow:hidden;background:var(--ink)}
+.bl-hero-bg{position:absolute;inset:0;z-index:0}
+.bl-hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.7) brightness(.35)}
+.bl-hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(26,26,24,.2) 0%,rgba(26,26,24,.05) 30%,rgba(26,26,24,.7) 75%,rgba(26,26,24,.95) 100%)}
+.bl-hero-c{position:relative;z-index:2;max-width:760px}
+.bl-hero-label{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--warm);font-weight:500;margin-bottom:1rem}
+.bl-hero h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3.8rem);font-weight:300;line-height:1.1;color:var(--paper);letter-spacing:-.02em;margin-bottom:1rem}
+.bl-hero h1 em{font-style:italic;color:var(--warm)}
+.bl-hero-meta{font-size:.8rem;color:var(--light-stone);font-weight:300}
+.bl-body{max-width:720px;margin:0 auto;padding:4rem 5vw}
+.bl-body h2{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:300;line-height:1.2;color:var(--ink);margin:3rem 0 1.25rem;letter-spacing:-.01em}
+.bl-body h3{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:400;line-height:1.25;color:var(--ink);margin:2.5rem 0 1rem}
+.bl-body p{font-size:1rem;line-height:1.85;color:#3a3a38;margin-bottom:1.25rem;font-weight:300}
+.bl-body strong{font-weight:500;color:var(--ink)}
+.bl-body ul,.bl-body ol{margin:1rem 0 1.5rem 1.5rem;font-size:1rem;line-height:1.85;color:#3a3a38}
+.bl-body li{margin-bottom:.5rem}
+.bl-img-body{margin:2.5rem 0;border-radius:2px;overflow:hidden}
+.bl-img-body img{width:100%;display:block}
+.bl-pullquote{border-left:2px solid var(--warm);padding:1.5rem 0 1.5rem 2rem;margin:2.5rem 0;font-family:var(--serif);font-size:1.3rem;font-weight:300;line-height:1.5;color:var(--ink);font-style:italic}
+.bl-checklist{margin:2rem 0;padding:2rem;background:var(--off-white);border-radius:2px}
+.bl-checklist h3{font-family:var(--serif);font-size:1.3rem;font-weight:400;margin:0 0 1.25rem;color:var(--ink)}
+.bl-checklist p{font-size:.95rem;line-height:1.8;color:#3a3a38;margin-bottom:.75rem;padding-left:1rem;border-left:2px solid rgba(201,169,110,.3)}
+.bl-checklist p:last-child{margin-bottom:0}
+.bl-related{padding:4rem 5vw;background:var(--off-white)}
+.bl-related-label{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--warm);font-weight:500;margin-bottom:2rem}
+.bl-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.bl-rel-card{display:block;text-decoration:none;color:inherit}
+.bl-rel-img{overflow:hidden;border-radius:2px;aspect-ratio:16/10;margin-bottom:1rem}
+.bl-rel-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.bl-rel-card:hover .bl-rel-img img{transform:scale(1.04)}
+.bl-rel-cat{font-size:.5rem;letter-spacing:.25em;text-transform:uppercase;color:var(--warm);font-weight:500;margin-bottom:.4rem}
+.bl-rel-card h3{font-family:var(--serif);font-size:1.05rem;font-weight:400;line-height:1.3;color:var(--ink);transition:color .3s ease}
+.bl-rel-card:hover h3{color:var(--warm-muted)}
+.bl-cta{position:relative;padding:5rem 5vw;text-align:center;background:var(--ink);overflow:hidden}
+.bl-cta-bg{position:absolute;inset:0;z-index:0;opacity:.2}
+.bl-cta-bg img{width:100%;height:100%;object-fit:cover}
+.bl-cta-c{position:relative;z-index:2}
+.bl-cta h2{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;color:var(--paper);margin-bottom:1rem;line-height:1.2}
+.bl-cta h2 em{font-style:italic;color:var(--warm)}
+.bl-cta p{font-size:1rem;color:var(--stone);max-width:480px;margin:0 auto 2rem;line-height:1.8}
+.bl-btn{display:inline-block;font-family:var(--sans);font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;padding:1.1rem 3rem;border:1px solid var(--warm)!important;background:var(--warm)!important;color:var(--ink)!important;font-weight:500;transition:all .35s ease;text-decoration:none}
+.bl-btn:hover{background:transparent!important;color:var(--warm)!important}
+.bl-alt-cta{margin-top:1.25rem;font-size:.75rem;color:var(--stone);letter-spacing:.05em;font-weight:300}
+.bl-alt-cta a{color:var(--warm);text-decoration:underline;text-underline-offset:3px;transition:color .3s ease}
+.bl-alt-cta a:hover{color:var(--paper)}
+.bl-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.bl-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.bl-ft-locs a:hover{color:#c9a96e}.bl-ft{background:var(--ink);border-top:1px solid rgba(201,169,110,.15)}
+.bl-ft-row{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}
+.bl-ft-item{display:flex;align-items:baseline;gap:10px}
+.bl-ft-label{font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--warm);font-weight:500;white-space:nowrap}
+.bl-ft-dot{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,.4);flex-shrink:0;position:relative;top:-2px}
+.bl-ft-item p,.bl-ft-item a{margin:0;font-size:12px;color:rgba(246,244,240,.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color .3s ease}
+.bl-ft-item a:hover{color:var(--warm)}
+.bl-ft-social{display:flex;gap:18px}
+.bl-ft-rule{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,.15) 20%,rgba(201,169,110,.15) 80%,transparent 100%)}
+.bl-ft-bottom{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}
+.bl-ft-copy{font-size:10px;color:rgba(246,244,240,.35);letter-spacing:.08em}
+.bl-ft-nav{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center}
+.bl-ft-nav a{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);text-decoration:none;transition:color .3s ease}
+.bl-ft-nav a:hover{color:var(--warm)}
+@media(max-width:768px){
+.bl-hero{min-height:55vh;padding:0 6vw 3rem}
+.bl-body{padding:3rem 6vw}
+.bl-related{padding:3rem 6vw}
+.bl-related-grid{grid-template-columns:1fr;gap:2rem}
+.bl-cta{padding:3rem 6vw}
+.bl-ft-row{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}
+.bl-ft-rule{margin:0 6vw}
+.bl-ft-bottom{flex-direction:column;gap:.75rem;text-align:center;padding:1.25rem 6vw}
+}
+.bl-ft-email{cursor:pointer}
+</style>
+
+<div class="bl-loader" id="blLoader">
+  <div class="bl-loader-brand">Matt Anthony Photography</div>
+  <div class="bl-loader-sub">Georgie Award Photography</div>
+  <div class="bl-loader-line"></div>
+</div>
+<div class="bl-cursor" id="blCursor"></div>
+<div class="bl-cursor-dot" id="blCursorDot"></div>
+<div class="bl-progress" id="blProgress"></div>
+<div class="bl-wrap">
+
+<!-- Hero -->
+<section class="bl-hero">
+  <div class="bl-hero-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83a2955e-1bae-4f9f-a83d-a595dad1997f/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-11.jpg?format=2500w" alt="Fitzsimmons Residence Whistler exterior architectural photography"></div>
+  <div class="bl-hero-c">
+    <p class="bl-hero-label">Journal</p>
+    <h1>What Georgie Award Judges Actually Look for in <em>Submission Photography</em></h1>
+    <p class="bl-hero-meta">December 5, 2025</p>
+  </div>
+</section>
+
+<!-- Article Body -->
+<article class="bl-body">
+
+  <p>The Georgie Awards represent BC's premier recognition for residential construction, administered by CHBA BC across more than 50 categories. They celebrate excellence in design, construction, and innovation. But there's a critical detail that many entrants overlook: the judges don't know who you are. For a complete breakdown of the program, categories, and photography requirements, <a href="/journal/georgie-awards-guide" style="color:var(--warm-muted);text-decoration:underline;text-underline-offset:3px">read our complete Georgie Awards guide</a>.</p>
+
+  <p>Submissions are reviewed anonymously. The judges evaluating your entry cannot see your firm name, your architect's reputation, or your project budget. Everything they know about your work comes from the materials you submit: the written description, the floor plans, and the photographs.</p>
+
+  <p>That anonymity changes the stakes entirely. Your photography isn't supplementary. It's the primary medium through which judges evaluate your work.</p>
+
+  <h2>The Anonymous Evaluation</h2>
+
+  <p>When a judge opens your submission, they see images on a screen. No context about the neighbourhood. No knowledge of the client's brief. No understanding of the budget constraints you navigated. The photographs must communicate all of this independently.</p>
+
+  <p>This is fundamentally different from how clients experience your work. A prospective client visits your website already predisposed to be interested. They've been referred, or they found you through a search. They're looking for reasons to hire you. A judge is looking for reasons to score one entry higher than another. The bar is different, and the photography needs to meet it.</p>
+
+  <h2>Category Criteria Drive Everything</h2>
+
+  <p>Every Georgie category has specific scoring criteria. A "Best Custom Home" submission is evaluated differently than a "Best Kitchen" or "Best Interior Design" entry. Your photography should be selected and sequenced specifically for the category you're entering.</p>
+
+  <p>Before choosing your submission images, pull the category criteria from the call for entries document. For a custom home category, judges typically evaluate exterior design, interior spatial quality, material selection, site integration, and overall design cohesion. For a kitchen category, they evaluate layout efficiency, material quality, design innovation, and the relationship between the kitchen and adjacent spaces.</p>
+
+  <p>Your written description establishes what the judges should notice. Your photography provides the visual proof. Every claim in the text should have a corresponding image that supports it.</p>
+
+</article>
+
+<div class="bl-img-body" style="max-width:720px;margin:0 auto 0;padding:0 5vw">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/a3f3bbf1-98ff-4636-b992-8523fef2d08c/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-7.jpg?format=2500w" alt="Fitzsimmons Residence Whistler interior design demonstrating material quality and spatial composition" loading="lazy">
+</div>
+
+<article class="bl-body">
+
+  <h2>What Strong Georgie Submissions Look Like</h2>
+
+  <p>Winning Georgie submissions share consistent patterns in their photography:</p>
+
+  <p><strong>Lead with your strongest image.</strong> The first photograph sets the tone for the entire evaluation. It should be your most compelling view, typically an exterior context shot or a hero interior that immediately establishes the character of the project.</p>
+
+  <p><strong>Tell a spatial story.</strong> Sequence your images logically: exterior approach, entry, main living spaces, kitchen, secondary spaces, details. The judge should feel like they're moving through the home, understanding how spaces relate to one another.</p>
+
+  <p><strong>Prove every written claim.</strong> If your description mentions cedar and steel material intersections, include a detail shot showing that junction. If you describe the relationship between the living space and the landscape, include an interior shot that shows the view through the windows. Every assertion needs visual evidence.</p>
+
+  <p><strong>Include range.</strong> Wide establishing shots, medium interior compositions, tight detail close-ups, aerial views. Different scales communicate different qualities of the project. A submission with only wide shots misses the material story. A submission with only details misses the spatial story.</p>
+
+</article>
+
+<div class="bl-img-body" style="max-width:720px;margin:0 auto 0;padding:0 5vw">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/6026f732-c55b-4410-9999-77435ce911f8/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-15.jpg?format=2500w" alt="Fitzsimmons Residence architectural detail showing material intersection and craftsmanship" loading="lazy">
+</div>
+
+<article class="bl-body">
+
+  <h2>The Technical Standards</h2>
+
+  <p>Georgie submissions must meet professional quality standards. Images should have no borders, watermarks, logos, or frames. No staged digital imagery without accompanying originals. Renovation categories require before and after shots captured from identical perspectives.</p>
+
+  <p>Heavy post-production manipulation risks undermining your submission. Judges who spot sky replacements, extreme HDR processing, or artificial enhancement begin to question the authenticity of the entire entry. Keep the editing natural and restrained. The design should carry the image, not the post-production.</p>
+
+  <h2>Timing Your Shoot Around the Entry Calendar</h2>
+
+  <p>Georgie entries have a two-year eligibility window. The entry portal typically opens in late summer with a fall submission deadline. Working backwards, the optimal timing is a September or early October shoot, which gives you two weeks for editing and image selection before the portal closes.</p>
+
+  <p>Rushing a shoot the week before the deadline produces compromised results. Light conditions may not be ideal. You won't have time to reshoot if conditions are poor. And the editing will be hurried rather than considered. Build in a buffer.</p>
+
+  <div class="bl-checklist">
+    <h3>Georgie Submission Photography Checklist</h3>
+    <p>Review category-specific scoring criteria before the shoot.</p>
+    <p>Lead with your strongest image for immediate impact.</p>
+    <p>Sequence images narratively through the property.</p>
+    <p>Photograph every claim made in your written description.</p>
+    <p>Include compositional range: wide, medium, detail, aerial.</p>
+    <p>Keep editing natural and minimal.</p>
+    <p>Capture renovation before/afters from identical angles.</p>
+    <p>Avoid deadline-pressure shooting. Build in a buffer.</p>
+    <p>Utilize every available image slot strategically.</p>
+  </div>
+
+  <h2>The HAVAN and CHBA National Differences</h2>
+
+  <p>If your project is eligible for multiple programs, understand that each has its own requirements. <a href="/journal/havan-awards-guide" style="color:var(--warm-muted);text-decoration:underline;text-underline-offset:3px">HAVAN</a> requires specific photo naming conventions tied to your entry ID and defines maximum image counts per category. The CHBA National Awards receive over 1,000 entries annually, judged by nearly 300 industry professionals.</p>
+
+  <p>Provincial Georgie winners frequently resubmit to the national CHBA program, sometimes with upgraded or reselected imagery. Having variety from the original shoot gives you the flexibility to curate differently for each program rather than reusing the same set.</p>
+
+  <h2>The Investment That Changes the Outcome</h2>
+
+  <p>The firms that consistently win Georgies treat award photography as a strategic investment, not an afterthought. They budget specifically for award-focused shoots. They brief their photographer on category criteria before the shoot day. They time the shoot for optimal conditions. And they curate image sets strategically for each category.</p>
+
+  <p>The difference between an entry that advances and one that doesn't is often not the project quality. It's the clarity of the visual communication. Photography that's planned around the evaluation criteria gives judges exactly what they need to score your work at its true level. Learn more about how we approach this on our <a href="/award-publication-imagery" style="color:var(--warm-muted);text-decoration:underline;text-underline-offset:3px">award and publication imagery</a> service page.</p>
+
+</article>
+
+<div class="bl-img-body" style="max-width:720px;margin:0 auto 0;padding:0 5vw">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/23aedb76-4c10-4a31-ba9c-9ebd434a25bc/5322-backhouse-web-2.jpg?format=2500w" alt="The Perch exterior cladding and facade architectural photography for award submission" loading="lazy">
+</div>
+
+<!-- Related Posts -->
+<section class="bl-related">
+  <p class="bl-related-label">Continue Reading</p>
+  <div class="bl-related-grid">
+    <a href="/journal/how-to-photograph-your-project-for-award-submissions" class="bl-rel-card">
+      <div class="bl-rel-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7ef87751-7049-4003-b0ae-2d83f90f21c4/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-13.jpg?format=750w" alt="How to photograph your project for award submissions" loading="lazy"></div>
+      <p class="bl-rel-cat">Awards</p>
+      <h3>How to Photograph Your Project for Award Submissions</h3>
+    </a>
+    <a href="/journal/georgie-awards-guide" class="bl-rel-card">
+      <div class="bl-rel-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83a2955e-1bae-4f9f-a83d-a595dad1997f/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-11.jpg?format=750w" alt="Complete guide to Georgie Awards photography requirements" loading="lazy"></div>
+      <p class="bl-rel-cat">Award Guide</p>
+      <h3>The Complete Georgie Awards Photography Guide</h3>
+    </a>
+    <a href="/journal/havan-awards-guide" class="bl-rel-card">
+      <div class="bl-rel-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/bf463fcc-0f61-4c27-84d0-46be256bb34c/warbler-whistler-architectural-photography-matt-anthony-.jpg-6.jpg?format=750w" alt="Complete guide to HAVAN Awards photography requirements" loading="lazy"></div>
+      <p class="bl-rel-cat">Award Guide</p>
+      <h3>The Complete HAVAN Awards Photography Guide</h3>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bl-cta">
+  <div class="bl-cta-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/6026f732-c55b-4410-9999-77435ce911f8/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-15.jpg?format=2500w" alt="Fitzsimmons Residence architectural detail" loading="lazy"></div>
+  <div class="bl-cta-c">
+    <h2>Submitting for a Georgie <em>this year</em>?</h2>
+    <p>Let's plan the photography around the category criteria so the submission does your project justice.</p>
+    <a href="/discovery-call" class="bl-btn">Book a Discovery Call</a>
+    <p class="bl-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bl-ft">
+<div class="bl-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+
+  <div class="bl-ft-row">
+    <div class="bl-ft-item"><span class="bl-ft-label">Based In</span><span class="bl-ft-dot"></span><p>Squamish, British Columbia</p></div>
+    <div class="bl-ft-item"><span class="bl-ft-label">Email</span><span class="bl-ft-dot"></span><a id="ft-em" class="bl-ft-email"></a></div>
+    <div class="bl-ft-item"><span class="bl-ft-label">Phone</span><span class="bl-ft-dot"></span><a href="tel:6047659270">604.765.9270</a></div>
+    <div class="bl-ft-item"><span class="bl-ft-label">Follow</span><span class="bl-ft-dot"></span><div class="bl-ft-social"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  </div>
+  <div class="bl-ft-rule"></div>
+  <div class="bl-ft-bottom">
+    <span class="bl-ft-copy">&copy; 2026 Matt Anthony Photography</span>
+    <nav class="bl-ft-nav"><a href="/projects">Projects</a><a href="/journal">Journal</a><a href="/bio">About</a><a href="/contact">Contact</a><a href="/pricing-guide-landing">Get Pricing</a></nav>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var isMobile='ontouchstart' in window;
+
+  /* ═══ EMAIL OBFUSCATION ═══ */
+  var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];var e=document.getElementById('ft-em');if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader=document.getElementById('blLoader');
+  window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('bl-done');},1100);});
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  var progressBar=document.getElementById('blProgress');
+  function updateProgress(){var sc=window.scrollY;var d=document.documentElement.scrollHeight-window.innerHeight;if(d>0)progressBar.style.width=(sc/d*100)+'%';}
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor=document.getElementById('blCursor');var cursorDot=document.getElementById('blCursorDot');var cx=0,cy=0,dx=0,dy=0;
+  if(!isMobile&&cursor){
+    document.addEventListener('mousemove',function(ev){dx=ev.clientX;dy=ev.clientY;cursorDot.style.left=dx+'px';cursorDot.style.top=dy+'px';if(!cursor.classList.contains('bl-active')){cursor.classList.add('bl-active');cursorDot.classList.add('bl-active');}});
+    function tickCursor(){cx+=(dx-cx)*0.12;cy+=(dy-cy)*0.12;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(tickCursor);}tickCursor();
+    var hoverEls=document.querySelectorAll('a, button, .bl-btn, .bl-cta-btn, .bl-rel-card');
+    hoverEls.forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('bl-hover');});el.addEventListener('mouseleave',function(){cursor.classList.remove('bl-hover');});});
+    document.addEventListener('mousedown',function(){cursor.classList.add('bl-click');});
+    document.addEventListener('mouseup',function(){cursor.classList.remove('bl-click');});
+  }
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking=false;
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){updateProgress();ticking=false;});ticking=true;}},{passive:true});
+  updateProgress();
+})();
+</script>
+
+<!-- Meta & Schema -->
+<meta name="description" content="What Georgie Award judges evaluate in submission photography. Insights into anonymous judging, category criteria, and how to build a winning image set.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/journal/what-georgie-award-judges-look-for-submission-photography">
+<meta property="og:title" content="What Georgie Award Judges Actually Look for in Submission Photography | Matt Anthony Photography">
+<meta property="og:description" content="Insights into anonymous judging, category criteria, and how to build a winning image set for Georgie Awards.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/journal/what-georgie-award-judges-look-for-submission-photography">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83a2955e-1bae-4f9f-a83d-a595dad1997f/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-11.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What Georgie Award Judges Actually Look for in Submission Photography",
+  "description": "What Georgie Award judges evaluate in submission photography. Insights into anonymous judging, category criteria, and how to build a winning image set.",
+  "url": "https://www.mattanthonyphoto.com/journal/what-georgie-award-judges-look-for-submission-photography",
+  "datePublished": "2025-12-05",
+  "dateModified": "2025-12-05",
+  "author": {
+    "@type": "Person",
+    "name": "Matt Anthony",
+    "url": "https://www.mattanthonyphoto.com/bio"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Matt Anthony Photography",
+    "url": "https://www.mattanthonyphoto.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/f5587052-bcdb-4b1b-8f61-84f98ba1adfb/warbler-whistler-architectural-photography-matt-anthony-.jpg-22.jpg"
+    }
+  },
+  "image": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83a2955e-1bae-4f9f-a83d-a595dad1997f/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-11.jpg",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.mattanthonyphoto.com/journal/what-georgie-award-judges-look-for-submission-photography"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Josefin+Sans:wght@600;700&display=swap" rel="stylesheet">

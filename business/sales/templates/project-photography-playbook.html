@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Project Photography Playbook — Matt Anthony Photography</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A18;
+    --paper: #F6F4F0;
+    --gold: #C9A96E;
+    --gold-dim: rgba(201,169,110,0.12);
+    --gold-border: rgba(201,169,110,0.25);
+    --gold-glow: rgba(201,169,110,0.06);
+    --stone: #8A8579;
+    --white: #FFFFFF;
+    --light: #FAFAF8;
+    --green: #4A7C59;
+    --amber: #C49A3C;
+    --red: #A65353;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; -webkit-print-color-adjust:exact; print-color-adjust:exact; scroll-behavior:smooth; }
+  body { background:var(--white); color:var(--ink); font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.75; overflow-x:hidden; }
+
+  /* ═══════════════════════════════════════
+     SCROLL PROGRESS
+     ═══════════════════════════════════════ */
+  .scroll-progress {
+    position:fixed; top:0; left:0; height:2px; z-index:100;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.4));
+    width:0%; transition:width 0.1s linear;
+  }
+
+  /* ═══════════════════════════════════════
+     COVER
+     ═══════════════════════════════════════ */
+  .cover {
+    min-height:100vh; background:var(--ink); color:var(--paper);
+    display:flex; flex-direction:column; justify-content:flex-end;
+    position:relative; overflow:hidden;
+  }
+  .cover-image {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    background:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8a674d33-4176-43dd-89c1-a565c1c3df48/5322-backhouse-web-24.jpg') center 25% / cover no-repeat;
+    will-change:transform;
+  }
+  .cover-image::after {
+    content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+    background:linear-gradient(
+      to bottom,
+      rgba(26,26,24,0.3) 0%,
+      rgba(26,26,24,0.2) 20%,
+      rgba(26,26,24,0.5) 50%,
+      rgba(26,26,24,0.92) 75%,
+      rgba(26,26,24,0.99) 100%
+    );
+  }
+  .cover-top {
+    position:absolute; top:0; left:0; right:0; z-index:3;
+    padding:40px 60px; display:flex; justify-content:space-between; align-items:center;
+  }
+  .cover-logo {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:rgba(246,244,240,0.6);
+  }
+  .cover-date {
+    font-family:'Josefin Sans',sans-serif; font-size:0.65rem;
+    letter-spacing:0.2em; color:rgba(246,244,240,0.4);
+  }
+  .cover-content {
+    position:relative; z-index:2; padding:0 60px 80px; max-width:800px;
+  }
+  .cover-eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.4em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:20px; display:flex; align-items:center; gap:16px;
+    opacity:0; animation:coverFade 0.8s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover-eyebrow::before { content:''; width:32px; height:1px; background:var(--gold); }
+  .cover h1 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:clamp(2.8rem,5.5vw,4.8rem); line-height:1.08; margin-bottom:20px;
+    letter-spacing:-0.01em;
+    text-shadow:0 2px 40px rgba(0,0,0,0.5);
+    opacity:0; animation:coverFade 0.9s 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover h1 em { font-style:italic; font-weight:500; color:var(--gold); }
+  .cover-sub {
+    font-size:1rem; color:rgba(246,244,240,0.75); max-width:520px;
+    line-height:1.8; margin-bottom:40px;
+    opacity:0; animation:coverFade 0.9s 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover-meta-bar {
+    display:flex; gap:48px; padding-top:32px;
+    border-top:1px solid rgba(201,169,110,0.15);
+    opacity:0; animation:coverFade 0.9s 1.2s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover-meta-item {
+    font-size:0.75rem; color:rgba(246,244,240,0.35); line-height:1.8;
+  }
+  .cover-meta-item strong {
+    display:block; color:rgba(246,244,240,0.7); font-weight:400;
+    font-family:'Josefin Sans',sans-serif; font-size:0.6rem;
+    letter-spacing:0.15em; text-transform:uppercase; margin-bottom:2px;
+  }
+  @keyframes coverFade {
+    from { opacity:0; transform:translateY(20px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  /* ═══════════════════════════════════════
+     LAYOUT
+     ═══════════════════════════════════════ */
+  .section { padding:100px 60px; max-width:1000px; margin:0 auto; }
+  .section.wide { max-width:1200px; }
+  .section.dark { background:var(--ink); color:var(--paper); max-width:100%; }
+  .section.cream { background:var(--paper); max-width:100%; }
+  .section.light { background:var(--light); max-width:100%; }
+  .section.dark .section-inner,
+  .section.cream .section-inner,
+  .section.light .section-inner { max-width:1000px; margin:0 auto; }
+
+  .eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; display:flex; align-items:center; gap:14px;
+  }
+  .eyebrow::before { content:''; width:0; height:1px; background:var(--gold); transition:width 0.6s 0.2s cubic-bezier(0.16,1,0.3,1); }
+  .eyebrow.visible::before { width:24px; }
+
+  h2 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:2.6rem; line-height:1.12; margin-bottom:32px;
+    letter-spacing:-0.01em; text-wrap:balance;
+  }
+  h2 em { font-style:italic; font-weight:500; position:relative; display:inline; }
+  h2 em::after {
+    content:''; position:absolute; bottom:2px; left:0;
+    width:0; height:1.5px;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.3));
+    transition:width 1s 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  h2.underlined em::after { width:100%; }
+  h3 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.75rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
+    margin:48px 0 20px;
+  }
+  p { margin-bottom:20px; font-size:0.95rem; }
+  .lead { font-size:1.05rem; line-height:1.9; color:var(--stone); text-wrap:pretty; }
+
+  /* ═══════════════════════════════════════
+     STATS
+     ═══════════════════════════════════════ */
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .stat { background:var(--white); text-align:center; padding:36px 16px; }
+  .section.cream .stat { background:var(--paper); }
+  .section.dark .stat { background:rgba(255,255,255,0.04); }
+  .stat-val {
+    font-family:'Cormorant Garamond',serif; font-size:2.6rem; font-weight:500;
+    color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+  }
+  .stat-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--stone);
+  }
+  .section.dark .stat-lbl { color:rgba(246,244,240,0.5); }
+
+  /* ═══════════════════════════════════════
+     PHOTO BREAK
+     ═══════════════════════════════════════ */
+  .photo-break {
+    height:45vh; min-height:300px; position:relative; overflow:hidden;
+    background:var(--ink);
+  }
+  .photo-break-bg {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    background-size:cover; background-position:center;
+    animation:kenBurns 12s infinite alternate ease-in-out;
+  }
+  .photo-break::before,
+  .photo-break::after {
+    content:''; position:absolute; left:0; right:0; z-index:2;
+  }
+  .photo-break::before { top:0; height:60px; background:linear-gradient(to bottom, var(--ink), transparent); opacity:0.5; }
+  .photo-break::after { bottom:0; height:60px; background:linear-gradient(to top, var(--ink), transparent); opacity:0.5; }
+  @keyframes kenBurns {
+    from { transform:scale(1) translateY(0); }
+    to { transform:scale(1.06) translateY(-8px); }
+  }
+
+  /* ═══════════════════════════════════════
+     CHECKLIST
+     ═══════════════════════════════════════ */
+  .checklist { margin:40px 0; }
+  .checklist-group { margin-bottom:32px; }
+  .checklist-group-title {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.65rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; padding-bottom:8px; border-bottom:1px solid var(--gold-dim);
+  }
+  .checklist-item {
+    display:flex; align-items:flex-start; gap:14px;
+    padding:10px 0; font-size:0.9rem; line-height:1.6;
+    border-bottom:1px solid rgba(0,0,0,0.04);
+  }
+  .checklist-item::before {
+    content:''; flex-shrink:0; width:18px; height:18px; margin-top:3px;
+    border:1.5px solid var(--gold-border); border-radius:3px;
+    background:var(--gold-glow);
+  }
+  .checklist-item.checked::before {
+    background:var(--gold); border-color:var(--gold);
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 8l3 3 5-5' stroke='%231A1A18' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:center; background-size:14px;
+  }
+
+  /* ═══════════════════════════════════════
+     INSIGHT BOX
+     ═══════════════════════════════════════ */
+  .insight {
+    border-left:3px solid var(--gold);
+    padding:24px 28px; margin:40px 0;
+    background:var(--gold-glow);
+  }
+  .insight p { margin:0; font-size:0.92rem; color:var(--stone); }
+  .insight strong { color:var(--ink); font-weight:500; }
+  .section.dark .insight { background:rgba(201,169,110,0.06); }
+  .section.dark .insight p { color:rgba(246,244,240,0.7); }
+  .section.dark .insight strong { color:var(--paper); }
+
+  /* ═══════════════════════════════════════
+     STEPS
+     ═══════════════════════════════════════ */
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin:48px 0; background:var(--gold-dim); }
+  .step {
+    background:var(--white); padding:40px 28px;
+    transition:all 0.3s cubic-bezier(0.16,1,0.3,1); border-top:3px solid transparent;
+  }
+  .step:hover { border-top-color:var(--gold); background:var(--light); }
+  .section.cream .step { background:var(--paper); }
+  .section.cream .step:hover { background:var(--white); }
+  .step-num {
+    font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:400;
+    color:var(--gold); line-height:1; margin-bottom:16px;
+  }
+  .step-title {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.65rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--ink);
+    margin-bottom:12px;
+  }
+  .step p { font-size:0.85rem; color:var(--stone); margin:0; }
+
+  /* ═══════════════════════════════════════
+     TWO COLUMN
+     ═══════════════════════════════════════ */
+  .two-col {
+    display:grid; grid-template-columns:1fr 1fr; gap:48px;
+    margin:40px 0;
+  }
+  .two-col h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.65rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px;
+  }
+  .two-col ul { list-style:none; }
+  .two-col li {
+    font-size:0.88rem; line-height:1.7; padding:6px 0;
+    padding-left:18px; position:relative;
+    border-bottom:1px solid rgba(0,0,0,0.04);
+  }
+  .two-col li::before {
+    content:''; position:absolute; left:0; top:14px;
+    width:6px; height:6px; border-radius:50%;
+    background:var(--gold-border);
+  }
+
+  /* ═══════════════════════════════════════
+     TIMELINE
+     ═══════════════════════════════════════ */
+  .timeline { margin:48px 0; }
+  .timeline-item {
+    display:grid; grid-template-columns:80px 1fr; gap:24px;
+    padding:24px 0; border-bottom:1px solid var(--gold-dim);
+  }
+  .timeline-time {
+    font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:500;
+    color:var(--gold); padding-top:2px;
+  }
+  .timeline-title {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.65rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--ink);
+    margin-bottom:6px;
+  }
+  .timeline-desc { font-size:0.88rem; color:var(--stone); margin:0; }
+
+  /* ═══════════════════════════════════════
+     FAQ
+     ═══════════════════════════════════════ */
+  .faq { margin:40px 0; }
+  .faq-item { padding:28px 0; border-bottom:1px solid var(--gold-dim); }
+  .faq-q {
+    font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:500;
+    color:var(--ink); margin-bottom:12px; cursor:default;
+  }
+  .section.dark .faq-q { color:var(--paper); }
+  .faq-a { font-size:0.9rem; color:var(--stone); }
+  .faq-a p { margin:0; }
+  .section.dark .faq-a { color:rgba(246,244,240,0.6); }
+
+  /* ═══════════════════════════════════════
+     NUMBERS BAR
+     ═══════════════════════════════════════ */
+  .numbers {
+    display:grid; grid-template-columns:repeat(3,1fr);
+    background:var(--ink); position:relative;
+  }
+  .numbers::before {
+    content:''; position:absolute; inset:0; opacity:0.04;
+    background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+  .num {
+    text-align:center; padding:48px 24px; position:relative; z-index:1;
+  }
+  .num-val {
+    font-family:'Cormorant Garamond',serif; font-size:3.4rem; font-weight:500;
+    color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+  }
+  .num-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.3em; text-transform:uppercase; color:rgba(246,244,240,0.4);
+  }
+
+  /* ═══════════════════════════════════════
+     CTA BANNER
+     ═══════════════════════════════════════ */
+  .cta-banner {
+    background:var(--ink); color:var(--paper); text-align:center;
+    padding:100px 60px; position:relative; overflow:hidden;
+  }
+  .cta-banner::before {
+    content:''; position:absolute; inset:0; opacity:0.03;
+    background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+  .cta-banner .eyebrow { justify-content:center; }
+  .cta-banner h2 { margin-bottom:16px; }
+  .cta-banner p { color:rgba(246,244,240,0.6); max-width:500px; margin:0 auto 40px; }
+  .cta-btn {
+    display:inline-flex; align-items:center; gap:12px;
+    padding:16px 40px;
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--ink); background:var(--gold);
+    text-decoration:none; border:none; cursor:pointer;
+    transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .cta-btn:hover { background:var(--paper); transform:translateY(-2px); box-shadow:0 8px 32px rgba(201,169,110,0.3); }
+  .cta-btn-arrow { transition:transform 0.3s; }
+  .cta-btn:hover .cta-btn-arrow { transform:translateX(4px); }
+
+  /* ═══════════════════════════════════════
+     COST SHARE VISUAL
+     ═══════════════════════════════════════ */
+  .cost-share-visual {
+    display:grid; grid-template-columns:1fr auto 1fr; gap:24px; align-items:center;
+    margin:48px 0; padding:40px; background:var(--gold-glow); border:1px solid var(--gold-dim);
+  }
+  .cost-share-col { text-align:center; }
+  .cost-share-label {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
+    margin-bottom:8px;
+  }
+  .cost-share-price {
+    font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:500;
+    color:var(--ink);
+  }
+  .cost-share-price.gold { color:var(--gold); }
+  .cost-share-price del { color:var(--stone); font-size:1.6rem; }
+  .cost-share-arrow {
+    font-size:1.5rem; color:var(--gold); padding:0 8px;
+  }
+  .cost-share-parties {
+    display:flex; gap:12px; justify-content:center; margin-top:12px;
+  }
+  .cost-share-party {
+    padding:6px 14px; font-size:0.7rem;
+    font-family:'Josefin Sans',sans-serif; letter-spacing:0.1em;
+    background:var(--gold-dim); color:var(--stone);
+  }
+
+  /* ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ */
+  .footer {
+    background:var(--ink); color:rgba(246,244,240,0.3); padding:40px 60px;
+    text-align:center; font-size:0.75rem;
+  }
+  .footer a { color:var(--gold); text-decoration:none; }
+  .footer-brand {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+    letter-spacing:0.3em; text-transform:uppercase; color:rgba(246,244,240,0.5);
+    margin-bottom:8px;
+  }
+
+  /* ═══════════════════════════════════════
+     REVEAL ANIMATIONS
+     ═══════════════════════════════════════ */
+  .reveal { opacity:0; transform:translateY(32px); transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal-delay-1 { transition-delay:0.1s; }
+  .reveal-delay-2 { transition-delay:0.2s; }
+  .reveal-delay-3 { transition-delay:0.3s; }
+
+  /* ═══════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════ */
+  @media (max-width:768px) {
+    .section { padding:60px 24px; }
+    .cover-content { padding:0 24px 40px; }
+    .cover-top { padding:20px 24px; }
+    .cover-meta-bar { flex-direction:column; gap:16px; }
+    h2 { font-size:2rem; }
+    .stats { grid-template-columns:repeat(2,1fr); }
+    .steps { grid-template-columns:1fr; }
+    .two-col { grid-template-columns:1fr; gap:32px; }
+    .numbers { grid-template-columns:1fr; }
+    .timeline-item { grid-template-columns:60px 1fr; gap:16px; }
+    .cost-share-visual { grid-template-columns:1fr; }
+    .cost-share-arrow { transform:rotate(90deg); }
+  }
+
+  @media print {
+    .scroll-progress { display:none; }
+    .reveal { opacity:1 !important; transform:none !important; }
+    .photo-break { height:200px; page-break-inside:avoid; }
+    .cover { min-height:auto; padding:60px; }
+    .section { padding:40px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ═══════════════════════════════════════
+     COVER
+     ═══════════════════════════════════════ -->
+<section class="cover">
+  <div class="cover-image"></div>
+  <div class="cover-top">
+    <div class="cover-logo">Matt Anthony Photography</div>
+    <div class="cover-date">2026</div>
+  </div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">Lead Magnet</div>
+    <h1>The Project<br>Photography <em>Playbook</em></h1>
+    <p class="cover-sub">Everything architects, builders, and designers need to know about getting their projects professionally photographed. From preparation to publication.</p>
+    <div class="cover-meta-bar">
+      <div class="cover-meta-item"><strong>For</strong>Architects, Builders, Designers</div>
+      <div class="cover-meta-item"><strong>Covers</strong>Preparation, Cost-Share, Process</div>
+      <div class="cover-meta-item"><strong>Region</strong>British Columbia</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     WHY IT MATTERS
+     ═══════════════════════════════════════ -->
+<section class="section">
+  <div class="eyebrow reveal">Section 01</div>
+  <h2 class="reveal">Why Professional Photography<br><em>Matters</em></h2>
+  <p class="lead reveal">You spend months, sometimes years, building something extraordinary. The photography is how the world sees it. It's how clients find you, how awards judges evaluate you, and how publications decide whether to feature your work.</p>
+
+  <div class="stats reveal">
+    <div class="stat"><span class="stat-val">32%</span><span class="stat-lbl">Faster Sales</span></div>
+    <div class="stat"><span class="stat-val">12-18</span><span class="stat-lbl">Months of Content</span></div>
+    <div class="stat"><span class="stat-val">90%</span><span class="stat-lbl">Start Online</span></div>
+    <div class="stat"><span class="stat-val">60%</span><span class="stat-lbl">Time on Photos</span></div>
+  </div>
+
+  <p class="reveal">Properties with professional photography sell 32% faster. But the value goes far beyond a single listing. One professional photo shoot generates content for your website, social media, award submissions, proposals, print materials, supplier marketing, and editorial pitches. That's 12-18 months of marketing from a single day.</p>
+
+  <div class="insight reveal">
+    <p><strong>The real cost isn't the photography.</strong> It's the projects you never win because your portfolio doesn't reflect the quality of your work. Buyers making million-dollar decisions, firms evaluating your capability for an RFP, awards judges choosing between 50 entries. They all start with the photos.</p>
+  </div>
+
+  <h3 class="reveal">Who needs professional architectural photography</h3>
+  <div class="two-col reveal">
+    <div>
+      <h4>You definitely need it if</h4>
+      <ul>
+        <li>You're entering awards (Georgies, AIBC, Western Living DOTY, IDIBC)</li>
+        <li>You're pitching for projects over $1M</li>
+        <li>You want editorial coverage in architectural publications</li>
+        <li>Your website portfolio is older than 2 years</li>
+        <li>You're competing against firms with better visual presence</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Phone photos won't cut it because</h4>
+      <ul>
+        <li>They can't handle interior dynamic range (blown windows or dark rooms)</li>
+        <li>They distort vertical lines and spatial proportions</li>
+        <li>Award programs reject non-professional imagery</li>
+        <li>Editors won't publish them at editorial resolution</li>
+        <li>They position your $2M build next to a condo listing</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     NUMBERS BAR
+     ═══════════════════════════════════════ -->
+<div class="numbers">
+  <div class="num"><span class="num-val">1</span><span class="num-lbl">Day of Shooting</span></div>
+  <div class="num"><span class="num-val">40+</span><span class="num-lbl">Edited Images</span></div>
+  <div class="num"><span class="num-val">18</span><span class="num-lbl">Months of Content</span></div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     COST-SHARE
+     ═══════════════════════════════════════ -->
+<section class="section cream">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Section 02</div>
+    <h2 class="reveal">The Cost-Share <em>Model</em></h2>
+    <p class="lead reveal">On any custom home or renovation, multiple parties benefit from professional photography: the builder, the architect, the interior designer, the landscape architect, even the window and millwork suppliers. Rather than each hiring their own photographer, or none at all, you split the investment.</p>
+
+    <div class="cost-share-visual reveal">
+      <div class="cost-share-col">
+        <div class="cost-share-label">Without Cost-Share</div>
+        <div class="cost-share-price">$3,500</div>
+        <div style="font-size:0.8rem; color:var(--stone); margin-top:4px;">One party carries the full cost</div>
+      </div>
+      <div class="cost-share-arrow">&rarr;</div>
+      <div class="cost-share-col">
+        <div class="cost-share-label">With Cost-Share (3 Parties)</div>
+        <div class="cost-share-price gold">~$1,400</div>
+        <div style="font-size:0.8rem; color:var(--stone); margin-top:4px;">Each party's effective cost</div>
+        <div class="cost-share-parties">
+          <div class="cost-share-party">Builder</div>
+          <div class="cost-share-party">Architect</div>
+          <div class="cost-share-party">Designer</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="reveal">How it works</h3>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">One Party Books</div>
+        <p>The builder, architect, or designer initiates the shoot. They control scheduling and have primary access to the site.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Collaborators Opt In</div>
+        <p>The photographer reaches out to other project collaborators. Each receives a licensing fee (typically 25-35% of the shoot cost) for usage rights to the full image set.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Everyone Gets Images</div>
+        <p>All parties receive the complete edited gallery with a license for their marketing use: website, social, awards, proposals, and print.</p>
+      </div>
+    </div>
+
+    <div class="insight reveal">
+      <p><strong>This is standard practice, not a favour.</strong> The photographer manages all outreach, licensing, and distribution. You don't need to coordinate with anyone. And it means every project collaborator gets professional images of their contribution, which makes the entire industry better.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PHOTO BREAK
+     ═══════════════════════════════════════ -->
+<div class="photo-break">
+  <div class="photo-break-bg" style="background:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9d699cdf-a6ac-442f-b234-97b0aba24035/5322-backhouse-web-5.jpg') center / cover no-repeat;"></div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     IS YOUR PROJECT READY?
+     ═══════════════════════════════════════ -->
+<section class="section">
+  <div class="eyebrow reveal">Section 03</div>
+  <h2 class="reveal">Is Your Project <em>Photo-Ready?</em></h2>
+  <p class="lead reveal">The difference between a good shoot and a great one often comes down to preparation. Use this checklist to ensure your project is ready. Every item matters. One missed detail can compromise an entire composition.</p>
+
+  <div class="checklist reveal">
+    <div class="checklist-group">
+      <div class="checklist-group-title">Construction Completion</div>
+      <div class="checklist-item">All construction 100% complete. No visible tools, materials, or debris.</div>
+      <div class="checklist-item">All fixtures installed and functioning (switches, outlets, hardware, plumbing)</div>
+      <div class="checklist-item">Touch-up paint complete on all surfaces</div>
+      <div class="checklist-item">No painter's tape anywhere in the building</div>
+      <div class="checklist-item">Baseboards, trim, and caulking all finished</div>
+      <div class="checklist-item">All labels and stickers removed from windows, appliances, and mirrors</div>
+      <div class="checklist-item">HVAC registers and covers installed</div>
+      <div class="checklist-item">No visible scuff marks on floors or walls</div>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-group-title">Exterior & Landscaping</div>
+      <div class="checklist-item">Landscaping installed and established (not fresh sod with visible seams)</div>
+      <div class="checklist-item">Driveway, walkways, and patios completed</div>
+      <div class="checklist-item">Exterior lighting installed and functioning</div>
+      <div class="checklist-item">Construction fencing, signage, dumpsters, and trailers removed</div>
+      <div class="checklist-item">Gutters and downspouts installed</div>
+      <div class="checklist-item">Windows cleaned inside and out (critical for light quality)</div>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-group-title">Interior Finishing</div>
+      <div class="checklist-item">All light bulbs installed and same colour temperature (mismatched bulbs ruin photos)</div>
+      <div class="checklist-item">Window coverings installed (or intentionally omitted for clean aesthetic)</div>
+      <div class="checklist-item">All doors on hinges with handles installed</div>
+      <div class="checklist-item">Appliances installed with all packaging removed</div>
+      <div class="checklist-item">No visible wiring or cable runs</div>
+    </div>
+  </div>
+
+  <div class="insight reveal">
+    <p><strong>The most common trap:</strong> "Everything is done except the landscaping." Exterior shots anchor the entire portfolio. A beautiful interior gallery undermined by a muddy, bare yard tells an incomplete story. If the landscaping isn't in, wait.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     STAGING & STYLING
+     ═══════════════════════════════════════ -->
+<section class="section light">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Section 04</div>
+    <h2 class="reveal">Staging & <em>Styling</em></h2>
+    <p class="lead reveal">The architecture should be the star. Staging creates depth, scale, and warmth, but it should never compete with the design. Less is almost always more.</p>
+
+    <div class="two-col reveal">
+      <div>
+        <h4>The Day Before</h4>
+        <ul>
+          <li>Professional deep clean of the entire space</li>
+          <li>Windows cleaned inside and out (this is the single most common oversight)</li>
+          <li>Floors spotless, including corners and under furniture</li>
+          <li>Stainless steel polished, no fingerprints</li>
+          <li>All mirrors cleaned</li>
+          <li>Stone and quartz countertops polished</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Styling That Elevates</h4>
+        <ul>
+          <li>Fresh flowers or greenery (simple, architectural, not busy)</li>
+          <li>Curated coffee table books relevant to the aesthetic</li>
+          <li>A lit fireplace for warmth and focal point</li>
+          <li>Fresh, matching towels in bathrooms</li>
+          <li>Bed made with hotel-level precision</li>
+          <li>One or two lifestyle elements (cutting board, wine glass, open book)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="reveal">What to remove</h3>
+    <div class="two-col reveal">
+      <div>
+        <h4>Always Remove</h4>
+        <ul>
+          <li>All kitchen counter clutter (one curated arrangement only)</li>
+          <li>Fridge magnets, notes, and photos</li>
+          <li>Bathroom counter items (one soap, one towel max)</li>
+          <li>Garbage and recycling bins</li>
+          <li>All visible cords and cables</li>
+          <li>Doormats that don't match the aesthetic</li>
+          <li>All toilet lids should be closed</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Common Mistakes</h4>
+        <ul>
+          <li>Over-styling: the architecture should breathe</li>
+          <li>Personal family photos in staged spaces</li>
+          <li>Holiday decorations (unless the shoot is seasonal)</li>
+          <li>Assuming the photographer will rearrange furniture (discuss scope in advance)</li>
+          <li>Last-minute additions that clutter the composition</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     TIMING & LIGHT
+     ═══════════════════════════════════════ -->
+<section class="section dark">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Section 05</div>
+    <h2 class="reveal">Timing, Light <em>& Weather</em></h2>
+    <p class="lead reveal" style="color:rgba(246,244,240,0.6);">Light is the single most important variable in architectural photography. The direction your building faces, the time of day, and the weather all determine whether the photos capture the design intent or flatten it.</p>
+
+    <h3 class="reveal" style="color:rgba(246,244,240,0.4);">Orientation Guide</h3>
+    <div class="steps reveal">
+      <div class="step" style="background:rgba(255,255,255,0.03);">
+        <div class="step-num">S</div>
+        <div class="step-title" style="color:var(--paper);">South-Facing</div>
+        <p style="color:rgba(246,244,240,0.5);">Most flexible. Good light through most of the day. Ideal for consistent interior illumination.</p>
+      </div>
+      <div class="step" style="background:rgba(255,255,255,0.03);">
+        <div class="step-num">E</div>
+        <div class="step-title" style="color:var(--paper);">East-Facing</div>
+        <p style="color:rgba(246,244,240,0.5);">Best for morning exterior shots. Warm, soft light through front-facing windows early in the day.</p>
+      </div>
+      <div class="step" style="background:rgba(255,255,255,0.03);">
+        <div class="step-num">W</div>
+        <div class="step-title" style="color:var(--paper);">West-Facing</div>
+        <p style="color:rgba(246,244,240,0.5);">Best for afternoon and twilight. Golden hour illuminates the facade. Ideal for the signature dusk shot.</p>
+      </div>
+    </div>
+
+    <div class="insight reveal">
+      <p><strong>Twilight is the money shot.</strong> The 20-40 minute window after sunset when the sky turns deep blue and interior lights glow warm. This is the hero image that goes on your website banner. It requires all interior and exterior lights to be on and functioning. Plan for it.</p>
+    </div>
+
+    <h3 class="reveal" style="color:rgba(246,244,240,0.4);">BC Seasonal Guide</h3>
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-time">Spring</div>
+        <div>
+          <div class="timeline-title" style="color:var(--paper);">April - May</div>
+          <p class="timeline-desc" style="color:rgba(246,244,240,0.5);">Ideal conditions. Green landscapes, longer days, moderate sun angles. Perfect balance of exterior and interior light.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">Summer</div>
+        <div>
+          <div class="timeline-title" style="color:var(--paper);">June - August</div>
+          <p class="timeline-desc" style="color:rgba(246,244,240,0.5);">Great for exteriors but harsh midday sun. Best to shoot mornings or evenings. Watch for wildfire smoke in the Interior.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">Fall</div>
+        <div>
+          <div class="timeline-title" style="color:var(--paper);">September - October</div>
+          <p class="timeline-desc" style="color:rgba(246,244,240,0.5);">Beautiful foliage for contextual shots. Golden quality of light. Days getting shorter, so twilight windows are brief.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">Winter</div>
+        <div>
+          <div class="timeline-title" style="color:var(--paper);">November - February</div>
+          <p class="timeline-desc" style="color:rgba(246,244,240,0.5);">Shortest days. Moody, dramatic exteriors. Snow on the right project is stunning. Interior-focused shoots work well.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Photo Break 2 -->
+<div class="photo-break">
+  <div class="photo-break-bg" style="background:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/df676ea0-2bb8-4e89-91a1-55d3ce883c14/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-19.jpg') center / cover no-repeat;"></div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     WHAT HAPPENS DURING A SHOOT
+     ═══════════════════════════════════════ -->
+<section class="section">
+  <div class="eyebrow reveal">Section 06</div>
+  <h2 class="reveal">What Happens <em>During a Shoot</em></h2>
+  <p class="lead reveal">A professional architectural photo shoot is methodical, not rushed. For a typical custom home (2,500-4,000 sq ft), expect a full day on site. Here's the process.</p>
+
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-time">8:00</div>
+      <div>
+        <div class="timeline-title">Arrival & Walkthrough</div>
+        <p class="timeline-desc">Assess every room. Identify hero compositions. Check light direction. Note any issues that need addressing before shooting begins.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">8:30</div>
+      <div>
+        <div class="timeline-title">Styling Pass</div>
+        <p class="timeline-desc">Adjust furniture placement, remove distracting items, add styling elements. This is where the space transforms from "lived in" to "photographed."</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">9:00</div>
+      <div>
+        <div class="timeline-title">Systematic Shooting Begins</div>
+        <p class="timeline-desc">Work room by room, starting with spaces that have the best morning light. Multiple angles per room: wide establishing, medium detail, tight vignette. 30-60 minutes per composition.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">12:00</div>
+      <div>
+        <div class="timeline-title">Midday Break</div>
+        <p class="timeline-desc">Midday sun creates harsh shadows. Use this window for lunch, gear reset, and interior-only compositions that don't depend on window light.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">14:00</div>
+      <div>
+        <div class="timeline-title">Afternoon Session & Exteriors</div>
+        <p class="timeline-desc">Resume interiors with afternoon light. Begin exterior compositions timed to sun position. Drone aerials for site context and elevation views.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">Sunset</div>
+      <div>
+        <div class="timeline-title">Twilight Session</div>
+        <p class="timeline-desc">All lights on. The 20-40 minute blue hour window. This produces the signature hero image. Weather-dependent and requires advance planning.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="reveal">Who should be on site</h3>
+  <div class="two-col reveal">
+    <div>
+      <h4>Yes</h4>
+      <ul>
+        <li>The photographer and any assistants</li>
+        <li>One point of contact (builder PM, architect, or designer)</li>
+        <li>A stylist if the project warrants it</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Not Ideal</h4>
+      <ul>
+        <li>The homeowner during the shoot (too many opinions, slows the process)</li>
+        <li>Multiple stakeholders with competing visions</li>
+        <li>Pets (hair on surfaces, animals wandering into frames)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     DELIVERABLES
+     ═══════════════════════════════════════ -->
+<section class="section cream">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Section 07</div>
+    <h2 class="reveal">What You <em>Receive</em></h2>
+    <p class="lead reveal">Professional architectural photography is not about pressing a shutter button. Each delivered image is the result of precise exposure control, post-production blending, colour science, and geometric correction.</p>
+
+    <div class="stats reveal">
+      <div class="stat"><span class="stat-val">25-50</span><span class="stat-lbl">Standard Deliverables</span></div>
+      <div class="stat"><span class="stat-val">40-80</span><span class="stat-lbl">Complex Projects</span></div>
+      <div class="stat"><span class="stat-val">2-4</span><span class="stat-lbl">Weeks Turnaround</span></div>
+      <div class="stat"><span class="stat-val">2</span><span class="stat-lbl">Resolution Formats</span></div>
+    </div>
+
+    <h3 class="reveal">What "editing" means in architectural photography</h3>
+    <div class="two-col reveal">
+      <div>
+        <h4>Technical Processing</h4>
+        <ul>
+          <li>Exposure blending: combining multiple exposures so windows and interiors are both properly lit</li>
+          <li>Colour correction: ensuring whites are white, wood tones are accurate, paint colours match reality</li>
+          <li>Vertical line correction: making walls and columns truly vertical (correcting lens distortion)</li>
+          <li>Geometric correction: ensuring parallel lines remain parallel throughout the frame</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Creative Processing</h4>
+        <ul>
+          <li>Sky enhancement or replacement when overcast conditions don't serve the project</li>
+          <li>Object removal: construction debris, garbage bins, electrical panels, neighbour's clutter</li>
+          <li>Flambient blending: combining flash and ambient light for natural-looking interiors</li>
+          <li>Detail retouching: minor blemishes, power lines, temporary distractions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="insight reveal">
+      <p><strong>About raw files:</strong> Asking for unedited raw files is like asking a builder to hand over a half-framed house. Raw files are a starting point, not a deliverable. The editing is where the craft lives.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     COMMON MISTAKES
+     ═══════════════════════════════════════ -->
+<section class="section">
+  <div class="eyebrow reveal">Section 08</div>
+  <h2 class="reveal">Mistakes That <em>Ruin Shoots</em></h2>
+  <p class="lead reveal">Every one of these has happened on a real project. They're all avoidable.</p>
+
+  <h3 class="reveal">Before the Shoot</h3>
+  <div class="checklist reveal">
+    <div class="checklist-item">Booking before construction is truly complete, then scrambling on the day</div>
+    <div class="checklist-item">Not coordinating with all parties. The designer stages furniture, the builder removes it. Nobody communicated.</div>
+    <div class="checklist-item">Skipping the pre-shoot walkthrough. Surprises on shoot day waste expensive time.</div>
+    <div class="checklist-item">Not cleaning windows. The single most common oversight that degrades image quality.</div>
+    <div class="checklist-item">Ignoring the landscaping. Beautiful interiors undercut by a muddy, bare yard.</div>
+  </div>
+
+  <h3 class="reveal">During the Shoot</h3>
+  <div class="checklist reveal">
+    <div class="checklist-item">Too many stakeholders on site giving competing opinions</div>
+    <div class="checklist-item">Homeowner rearranging styling while the photographer is shooting</div>
+    <div class="checklist-item">Dead bulbs or mismatched colour temperatures (3000K next to 5000K)</div>
+    <div class="checklist-item">HVAC running during long exposures, causing curtains to move</div>
+    <div class="checklist-item">Pets on site. Hair on surfaces, animals wandering into frames.</div>
+  </div>
+
+  <h3 class="reveal">After the Shoot</h3>
+  <div class="checklist reveal">
+    <div class="checklist-item">Requesting excessive retouching. "Can you remove the neighbour's house?" is not a minor edit.</div>
+    <div class="checklist-item">Waiting too long to use the images. Seasonal relevance fades.</div>
+    <div class="checklist-item">Not sharing with collaborators. Missing the cost-share opportunity entirely.</div>
+    <div class="checklist-item">Compressing images for web without proper optimization. Killing quality.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FAQ
+     ═══════════════════════════════════════ -->
+<section class="section dark">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Section 09</div>
+    <h2 class="reveal">Questions<br><em>Everyone Asks</em></h2>
+
+    <div class="faq reveal">
+      <div class="faq-item">
+        <div class="faq-q">"How much does architectural photography cost?"</div>
+        <div class="faq-a"><p>Typically $2,000-$5,500+ per project depending on scope, size, and deliverables. This is significantly more than real estate photography ($300-500) because the use case is fundamentally different. Real estate photography is documentation. Architectural photography is storytelling. And with cost-sharing, the effective cost per party drops substantially.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">"Can't we just use our phones?"</div>
+        <div class="faq-a"><p>Phone cameras cannot handle the dynamic range of interior spaces. You get blown-out windows or dark rooms, never both properly exposed. They distort vertical lines and spatial proportions. Award programs reject non-professional imagery. And they position your $2M build next to a condo listing. The gap between phone and professional is not incremental. It's categorical.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">"How far in advance should we book?"</div>
+        <div class="faq-a"><p>Notify your photographer when the project is 4-6 weeks from completion. This allows time for scheduling, a pre-shoot walkthrough, and coordination with collaborators. Peak season (April-September) fills faster.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">"What if it rains on shoot day?"</div>
+        <div class="faq-a"><p>Professional photographers include a weather reschedule policy. Interiors can often still be shot on overcast days (and actually benefit from even, soft window light). Exteriors and twilight are weather-dependent. Most photographers reschedule at no additional charge within reasonable limits.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">"Who owns the photos?"</div>
+        <div class="faq-a"><p>Copyright remains with the photographer. You receive a license for specific uses: website, social media, awards, proposals, print materials. This is standard practice across the industry and is how cost-sharing works. Each party licenses usage rights to the same image set.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">"Do we need to stage the space?"</div>
+        <div class="faq-a"><p>Some level of staging is essential. An empty room photographs flat and lifeless. Furniture creates depth, scale, and warmth. The level of staging depends on the project. Your photographer can advise on what's needed and what's excessive.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     GETTING THE MOST FROM YOUR INVESTMENT
+     ═══════════════════════════════════════ -->
+<section class="section">
+  <div class="eyebrow reveal">Section 10</div>
+  <h2 class="reveal">Maximize Your <em>Investment</em></h2>
+  <p class="lead reveal">One shoot, one day, properly planned. Here's how to extract the most value from it.</p>
+
+  <h3 class="reveal">Use your images everywhere</h3>
+  <div class="two-col reveal">
+    <div>
+      <h4>Marketing</h4>
+      <ul>
+        <li>Website portfolio (refresh every project)</li>
+        <li>Social media content (12-18 months of posts)</li>
+        <li>Proposals and pitch decks</li>
+        <li>Email campaigns and newsletters</li>
+        <li>Print brochures and leave-behinds</li>
+        <li>Google Business Profile and directories</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Industry</h4>
+      <ul>
+        <li>Award submissions (Georgies, AIBC, Western Living, IDIBC, Architizer)</li>
+        <li>Publication pitches (ArchDaily, Dezeen, Canadian Architect, Dwell)</li>
+        <li>Supplier marketing (license to trades for mutual exposure)</li>
+        <li>Case studies and project stories</li>
+        <li>Speaking engagements and conference materials</li>
+        <li>Recruitment (showing the quality of your work to potential hires)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight reveal">
+    <p><strong>The multiplier effect:</strong> When you tag the photographer and collaborators on social media, everyone amplifies the reach. One post becomes four. Your photographer's audience sees your build. Your audience sees the design. The architect's followers discover both. Everyone wins.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CTA
+     ═══════════════════════════════════════ -->
+<div class="cta-banner" style="background:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/5be7e36c-d920-4d5d-9260-da4df4c50415/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-16.jpg') center / cover no-repeat; position:relative;">
+  <div style="position:absolute;inset:0;background:rgba(26,26,24,0.82);"></div>
+  <div class="eyebrow reveal" style="justify-content:center;position:relative;z-index:1;">Next Step</div>
+  <h2 class="reveal" style="position:relative;z-index:1;">Ready to photograph<br>your next <em>project?</em></h2>
+  <p class="reveal" style="position:relative;z-index:1;">Book a 15-minute discovery call. We'll discuss your project, timeline, and how to get the most from the investment.</p>
+  <a href="https://mattanthonyphoto.com/discovery-call" class="cta-btn reveal" style="position:relative;z-index:1;">
+    Book a Discovery Call <span class="cta-btn-arrow">&rarr;</span>
+  </a>
+</div>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-brand">Matt Anthony Photography</div>
+  <p>Squamish, BC &nbsp;&middot;&nbsp; Sea-to-Sky &nbsp;&middot;&nbsp; Vancouver &nbsp;&middot;&nbsp; Fraser Valley &nbsp;&middot;&nbsp; Okanagan</p>
+  <p style="margin-top:8px;"><a href="https://mattanthonyphoto.com">mattanthonyphoto.com</a> &nbsp;&middot;&nbsp; <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a> &nbsp;&middot;&nbsp; 604.765.9270</p>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+     ═══════════════════════════════════════ -->
+<script>
+  // Scroll progress
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    document.getElementById('scrollProgress').style.width = pct + '%';
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const eyebrows = document.querySelectorAll('.eyebrow');
+  const h2s = document.querySelectorAll('h2');
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        if (e.target.tagName === 'H2') e.target.classList.add('underlined');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  reveals.forEach(el => obs.observe(el));
+  eyebrows.forEach(el => obs.observe(el));
+  h2s.forEach(el => obs.observe(el));
+
+  // Number counter animation
+  const counters = document.querySelectorAll('.stat-val, .num-val');
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const text = el.textContent;
+        const match = text.match(/(\d+)/);
+        if (match) {
+          const target = parseInt(match[1]);
+          const suffix = text.replace(match[1], '').trim();
+          const prefix = text.substring(0, text.indexOf(match[1]));
+          let start = 0;
+          const duration = 1200;
+          const startTime = performance.now();
+          const animate = (now) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(start + (target - start) * eased);
+            el.textContent = prefix + current + suffix;
+            if (progress < 1) requestAnimationFrame(animate);
+          };
+          requestAnimationFrame(animate);
+        }
+        counterObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(el => counterObs.observe(el));
+
+  // Cover parallax
+  const coverImg = document.querySelector('.cover-image');
+  if (coverImg) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y < window.innerHeight) {
+        coverImg.style.transform = `scale(1.08) translateY(${y * 0.15}px)`;
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

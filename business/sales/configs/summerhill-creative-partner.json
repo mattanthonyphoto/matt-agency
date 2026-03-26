@@ -1,0 +1,547 @@
+{
+  "client": {
+    "company": "Summerhill Fine Homes",
+    "slug": "summerhill",
+    "owner": "Kyle Paisley",
+    "owner_title": "Director of Projects",
+    "confidentiality_name": "Summerhill Fine Homes Inc."
+  },
+  "proposal": {
+    "type": "creative-partner",
+    "title": "Creative Partner",
+    "date": "March 2026",
+    "valid_through": "April 30, 2026",
+    "filename": "summerhill-creative-partner.html"
+  },
+  "cover": {
+    "eyebrow": "Summerhill Fine Homes",
+    "headline_html": "Your site is built.<br>Now fill it with<br><em>content worth seeing.</em>",
+    "subtitle": "Professional photography. Video. Build documentation. Social content. Awards. A dedicated content partner who feeds your existing platform with assets no competitor can match.",
+    "cta_text": "View Options",
+    "cta_target": "#tiers",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e07b8aac-c1ec-4293-b956-79b41aa39f33/5322-backhouse-web-1.jpg",
+    "image_position": "center 30%"
+  },
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/bd45b746-3623-41b7-8016-a94a135bd9b6/5322-backhouse-web-10.jpg",
+        "alt": "The Perch exterior at twilight — Sunshine Coast, BC",
+        "caption": "The Perch &middot; Sunshine Coast, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9d699cdf-a6ac-442f-b234-97b0aba24035/5322-backhouse-web-5.jpg",
+        "alt": "The Perch kitchen and dining — natural materials",
+        "caption": "The Perch &middot; Kitchen &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d0d20567-1be7-4759-8503-9fa1ce83f891/5322-backhouse-web-18.jpg",
+        "alt": "The Perch exterior dusk panoramic — Sunshine Coast",
+        "caption": "The Perch &middot; Sunshine Coast, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/75b669fa-89d6-47c2-a4b4-6b45bfa203b1/5322-backhouse-web-6.jpg",
+        "alt": "The Perch suspended fireplace interior detail",
+        "caption": "The Perch &middot; Interior Detail &middot; Matt Anthony Photography"
+      }
+    ]
+  },
+  "sections": [
+    "story",
+    "audit",
+    "services",
+    "pricing",
+    "roadmap",
+    "vision",
+    "numbers",
+    "awards",
+    "next_steps"
+  ],
+  "story": {
+    "eyebrow": "Where You Are",
+    "headline_html": "The platform is there.<br><em>The content pipeline isn’t.</em>",
+    "lead": "Kyle, I ran a full technical audit on summerhill.build before putting this together. Your site scored 85/100 on SEO fundamentals. 20 project pages with real descriptions. 1,637 images. It’s genuinely better than 90% of custom builders in BC.",
+    "paragraphs": [
+      "The site is built. You have a web team. That’s not the gap. The gap is what goes into it. Right now Summerhill is completing projects faster than they’re being documented. Your CLT and passive house builds are visually compelling construction methods that architects, designers, and homeowners want to see, and none of it is being captured professionally.",
+      "There’s no video anywhere. No build process documentation. Instagram is sporadic. Zero award submissions in 30+ years. And 1,435 of those 1,637 images have no alt text, so Google can’t even index them.",
+      "Lincoln Construction, right here in Gibsons, already has award finalist badges and a content strategy. Jenkins has a portfolio full of professional photography. The opportunity isn’t to rebuild what you have. It’s to feed it with the content that makes it work."
+    ],
+    "stats": [
+      {
+        "value": "85",
+        "label": "SEO Score"
+      },
+      {
+        "value": "1,637",
+        "label": "Images on Site"
+      },
+      {
+        "value": "0",
+        "label": "Video Assets"
+      },
+      {
+        "value": "0",
+        "label": "Awards Submitted"
+      }
+    ]
+  },
+  "audit": {
+    "eyebrow": "The Audit",
+    "nav_label": "Audit",
+    "headline_html": "What the data says.<br><em>Verified, not estimated.</em>",
+    "lead": "I crawled 30 pages on summerhill.build. Here’s the real picture.",
+    "paragraphs": [],
+    "grades": [
+      {
+        "area": "What’s Strong",
+        "findings": [
+          "<strong>Technical SEO scores 85/100.</strong> Valid SSL, 78ms server response, proper meta titles and descriptions, Open Graph tags, canonical URLs, sitemap.",
+          "<strong>Content depth scores 100/100.</strong> 20 project pages with 100+ words each. 473-word homepage. This is significantly ahead of most builders.",
+          "<strong>Visual library is extensive.</strong> 1,637 total images averaging 70.7 per project page. The raw material is there.",
+          "<strong>Houzz listing active.</strong> Authoritative directory backlink in place.",
+          "<strong>Google Business Profile is live.</strong> Already set up and active. This is the foundation for local search visibility that most builders skip."
+        ]
+      },
+      {
+        "area": "What’s Missing (and What I’d Provide)",
+        "findings": [
+          "<strong>Zero video content.</strong> No project films, no reels, no build documentation footage. Video is the highest-engagement format on every platform in 2026, and Summerhill has none. This is the single biggest content gap.",
+          "<strong>No build process documentation.</strong> CLT, passive house, mass timber. These construction methods are inherently visual and fascinating. None of it is being captured. This content performs exceptionally well on social and in proposals.",
+          "<strong>1,435 images missing alt text (87.6%).</strong> Google can’t index what it can’t read. I’d provide properly tagged, keyword-rich images with every delivery.",
+          "<strong>Social is sporadic.</strong> A 17-person company with active build sites should be posting 3-4 times a week. The content doesn’t exist yet to make that possible."
+        ]
+      }
+    ],
+    "insight": {
+      "title": "The Bottom Line",
+      "content_html": "<p>Summerhill doesn’t need a new site or a new agency. You need a <strong>content partner</strong> who creates the assets your platform is missing: professional photography, video, build documentation, and award-ready imagery. Everything I deliver is yours to use on your site, in proposals, on social, and in award submissions. Your web team handles the platform. I handle what goes into it.</p>"
+    }
+  },
+  "services": {
+    "eyebrow": "What This Adds",
+    "headline_html": "Your content arm.<br><em>Not a web agency.</em>",
+    "intro": "I’m not touching your website. Your team built it, they run it. What I provide is the content pipeline that feeds it. Foundation and Growth are pure content creation. Full Creative Partner adds the strategy layer on top.",
+    "cards": [
+      {
+        "title": "Project Photography",
+        "is_new": false,
+        "entries": [
+          "1 full-day shoot per month",
+          "20 to 25 edited images per session",
+          "Drone and aerial coverage of coastal properties",
+          "Multi-format delivery: web, social, print, award-ready",
+          "Full licensing for all channels",
+          "Images delivered with keyword-rich alt text and filenames"
+        ]
+      },
+      {
+        "title": "Build Documentation",
+        "is_new": true,
+        "entries": [
+          "CLT, mass timber, and passive house construction in progress",
+          "Crew action shots and candid team content",
+          "Material close-ups: concrete, timber, steel, craft details",
+          "Content built for proposals, presentations, and social"
+        ]
+      },
+      {
+        "title": "Video + Social Content",
+        "is_new": true,
+        "entries": [
+          "Monthly social media reel from shoot footage",
+          "Year-end project film (Growth and Full tiers)",
+          "Content formatted for Instagram and LinkedIn",
+          "Monthly strategy call and content calendar"
+        ]
+      },
+      {
+        "title": "Strategy + Awards",
+        "is_new": true,
+        "entries": [
+          "Full Creative Partner tier only",
+          "Monthly SEO blog draft for your team to publish",
+          "Awards submissions: Georgie, CHBA, HAVAN",
+          "Publication pitches: Western Living, Dwell, ArchDaily",
+          "Full social media management (3x/week)"
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Choose Your Tier",
+    "headline_html": "Three tiers. Same partner.<br><em>Your call.</em>",
+    "intro": "Every tier delivers professional photography, build documentation, and drone coverage. The question is how much video, social, and awards strategy you want on top.",
+    "tiers": [
+      {
+        "name": "Foundation",
+        "slug": "foundation",
+        "price": "$2,000",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $6,000 total",
+        "recommended": false,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "20 to 25 edited images",
+            "included": true
+          },
+          {
+            "text": "Drone and aerial coverage",
+            "included": true
+          },
+          {
+            "text": "Build documentation (crew, materials, progress)",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, social, print, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": false
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": false
+          },
+          {
+            "text": "Year-end project film",
+            "included": false
+          },
+          {
+            "text": "Blog drafts + awards pipeline",
+            "included": false
+          },
+          {
+            "text": "Full social media management",
+            "included": false
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$24,000"
+      },
+      {
+        "name": "Growth",
+        "slug": "growth",
+        "price": "$2,500",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $7,500 total",
+        "recommended": true,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "20 to 25 edited images",
+            "included": true
+          },
+          {
+            "text": "Drone and aerial coverage",
+            "included": true
+          },
+          {
+            "text": "Build documentation (crew, materials, progress)",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, social, print, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": true
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": true
+          },
+          {
+            "text": "Year-end project film (60 to 90 seconds)",
+            "included": true
+          },
+          {
+            "text": "Blog drafts + awards pipeline",
+            "included": false
+          },
+          {
+            "text": "Full social media management",
+            "included": false
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$30,000"
+      },
+      {
+        "name": "Full Creative Partner",
+        "slug": "full",
+        "price": "$3,500",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $10,500 total",
+        "recommended": false,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "25 to 30 edited images",
+            "included": true
+          },
+          {
+            "text": "Drone and aerial coverage",
+            "included": true
+          },
+          {
+            "text": "Build documentation (crew, materials, progress)",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, social, print, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": true
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": true
+          },
+          {
+            "text": "Year-end documentary film (2 to 3 minutes)",
+            "included": true
+          },
+          {
+            "text": "Monthly SEO blog draft (your team publishes)",
+            "included": true
+          },
+          {
+            "text": "Awards pipeline (Georgie, CHBA, publications)",
+            "included": true
+          },
+          {
+            "text": "Full social media management (3x/week)",
+            "included": true
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$42,000"
+      }
+    ],
+    "insight": {
+      "title": "How to Think About This",
+      "content_html": "<p>You paid <strong>$3,150 for The Perch</strong> as a one-off shoot. Here’s what that same investment range buys monthly:</p>",
+      "breakdowns": [
+        {
+          "label": "Foundation $2,000",
+          "desc": "20-25 images + build documentation + drone every month. Pure content creation, less than the cost of a single project shoot."
+        },
+        {
+          "label": "Growth $2,500",
+          "desc": "Everything above plus social reels, strategy calls, and a year-end highlight film. Still pure content, just more of it."
+        },
+        {
+          "label": "Creative Partner $3,500",
+          "desc": "Content + strategy. 25-30 images, documentary film, blog drafts, awards pipeline, and full social management. The complete package."
+        }
+      ],
+      "footer_html": "<p style=\"margin-top:24px;\">Every asset I deliver is multi-format and ready to use: your web team drops images into the site, social content goes straight to your channels, and award-ready files are banked for submission season. No handoff friction.</p>"
+    }
+  },
+  "roadmap": {
+    "eyebrow": "3-Month Pilot Roadmap",
+    "headline_html": "What gets done.<br><em>Month by month.</em>",
+    "intro": "The pilot runs May through July. Three months, three shoots, peak Sunshine Coast light. You’ll know within 90 days whether this model works.",
+    "months": [
+      {
+        "month": "May 2026",
+        "label_html": "Strongest Completed<br>Project",
+        "entries": [
+          "Full-day shoot at your strongest recently completed project",
+          "20 to 25 edited images: interiors, exteriors, details, context",
+          "Build documentation: crew candids, material close-ups, craft details",
+          "Drone aerials of the home in its coastal setting",
+          "All images delivered with SEO-ready alt text and filenames",
+          "Social media reel cut from shoot footage",
+          "Strategy call to map out summer content calendar"
+        ]
+      },
+      {
+        "month": "June 2026",
+        "label_html": "Active Build:<br>Document the Process",
+        "entries": [
+          "Full-day session at an active CLT, mass timber, or passive house site",
+          "20 to 25 images: progress, structure, crew at work, material details",
+          "Build process documentation: the content no Sunshine Coast competitor has",
+          "Drone aerials showing the build in its coastal setting",
+          "Social media reel from shoot content",
+          "Strategy call: review month one, adjust approach"
+        ]
+      },
+      {
+        "month": "July 2026",
+        "label_html": "Peak Summer Light<br>+ Prove It",
+        "entries": [
+          "Full-day hero exterior session in peak summer light",
+          "20 to 25 images + twilight session + drone aerials",
+          "Social media reel + LinkedIn content",
+          "Pilot review: what worked, what the data says, what comes next",
+          "If results proven: 12-month continuation locked in"
+        ]
+      }
+    ],
+    "stats": [
+      {
+        "value": "3",
+        "label": "Full-Day Shoots"
+      },
+      {
+        "value": "75",
+        "label": "Professional Images"
+      },
+      {
+        "value": "3",
+        "label": "Social Reels"
+      },
+      {
+        "value": "90",
+        "label": "Days to Prove It"
+      }
+    ]
+  },
+  "vision": {
+    "eyebrow": "The 12-Month Vision",
+    "headline_html": "What a full year of<br><em>content looks like.</em>",
+    "intro": "Summerhill already has the platform. A full year of content creation turns it into the strongest builder portfolio on the Sunshine Coast.",
+    "quarters": [
+      {
+        "period": "Q2 2026",
+        "title": "Prove the Model",
+        "description": "3 shoots. 75 images. 3 social reels. Build process documentation that no local competitor has. Your web team has a steady stream of fresh, professional assets to publish."
+      },
+      {
+        "period": "Q3 2026",
+        "title": "Compound",
+        "description": "Peak season. Hero exteriors in summer light. 150+ professional images. Build documentation of CLT and passive house methods. 6 blog drafts published. Social channels consistently active for the first time."
+      },
+      {
+        "period": "Q4 2026",
+        "title": "Leverage",
+        "description": "Award submissions for Georgie and CHBA using images already shot to spec. Year-in-review content for proposals. 225+ images. Your site has more original content than every Sunshine Coast competitor combined."
+      },
+      {
+        "period": "Q1 2027",
+        "title": "Separate",
+        "description": "300+ images, a year-end documentary, 12 blog posts compounding in search rankings. Summerhill is the best-documented builder on the Sunshine Coast. The firms who invest in content now win the next cycle."
+      }
+    ]
+  },
+  "numbers": {
+    "stats": [
+      {
+        "value": "300",
+        "label": "Professional Images"
+      },
+      {
+        "value": "12",
+        "label": "Drone Flights"
+      },
+      {
+        "value": "12",
+        "label": "Social Reels"
+      }
+    ]
+  },
+  "awards": {
+    "eyebrow": "Awards &amp; Publications",
+    "headline_html": "30 years of builds.<br><em>Zero submissions.</em>",
+    "lead": "Summerhill has been building passive house, CLT, and design-forward homes on the Sunshine Coast for over three decades. Meanwhile, Lincoln Construction, right here in Gibsons, already has Golden Angle and Homes Across Canada finalist badges.",
+    "paragraphs": [
+      "On the Sunshine Coast, most builders haven’t submitted either. But the ones who move first establish the credibility gap. Summerhill has the strongest body of work. The credentials should reflect it."
+    ],
+    "competitor_numbers": [
+      {
+        "value": "0",
+        "label": "Summerhill Awards"
+      },
+      {
+        "value": "2",
+        "label": "Lincoln Finalist Badges"
+      },
+      {
+        "value": "30+",
+        "label": "Years of Qualifying Builds"
+      }
+    ],
+    "detail_html": "<h3>What I Handle</h3><p>Every shoot is photographed to award-submission spec from day one. 300 DPI JPEG, colour-calibrated, anonymous-ready. When submission season opens, the images are done. I prepare entry materials, identify categories, and manage submissions. You don’t touch any of it. The credentials go on your site and into your proposals.</p>",
+    "services": [
+      {
+        "title": "Award Submissions",
+        "entries": [
+          "Georgie Awards (CHBA BC) — the standard for BC builders",
+          "CHBA National Awards for Housing Excellence",
+          "HAVAN Awards — open to all of BC",
+          "Gold Nugget Awards — North American prestige",
+          "Dezeen &amp; AZ Awards — global recognition"
+        ]
+      },
+      {
+        "title": "Publication Pitches",
+        "entries": [
+          "Western Living — BC’s top design magazine",
+          "Dwell — global residential architecture",
+          "Mountain Life — Sunshine Coast / Sea-to-Sky",
+          "ArchDaily &amp; Dezeen — world’s top architecture sites",
+          "NUVO Magazine — Canadian luxury lifestyle"
+        ]
+      }
+    ],
+    "insight": {
+      "title": "One Project, Multiple Credentials",
+      "content_html": "<p>A single project photographed to spec can generate <strong>3 to 5 credentials</strong>. The Perch alone could have been submitted to Georgie, CHBA National, ArchDaily, and Western Living. That’s four credentials from one shoot you’ve already paid for.</p><p style=\"margin-bottom:0;\">First step: <strong>join Sunshine Coast or Sea to Sky CHBA</strong> to unlock Georgie and National eligibility. I handle the rest.</p>"
+    }
+  },
+  "next_steps": {
+    "eyebrow": "Next Steps",
+    "headline_html": "The platform is built.<br><em>Let’s fill it.</em>",
+    "paragraphs": [
+      "Kyle, Summerhill’s site is already ahead of the competition. What’s missing isn’t another agency, it’s a content partner who creates the assets your platform needs: professional photography, video, build documentation, and the awards pipeline that turns 30 years of work into credentials.",
+      "The pilot is three months. If it works, we keep going. If it doesn’t, you walk away with 75 professional images, build documentation of your construction methods, three social reels, and content your web team can use for the next five years. There’s no downside."
+    ],
+    "steps": [
+      {
+        "number": "1",
+        "title": "Pick Your Tier",
+        "description": "Foundation, Growth, or Full Creative Partner. Just let me know which fits."
+      },
+      {
+        "number": "2",
+        "title": "Deposit",
+        "description": "50% of the pilot total to lock in May and guarantee priority scheduling."
+      },
+      {
+        "number": "3",
+        "title": "Plan",
+        "description": "Quick 20-minute call to pick the first project and plan the summer shoots."
+      }
+    ],
+    "valid_note": "This proposal is valid through <strong style=\"color:var(--ink);\">April 30, 2026</strong>. After that, May availability cannot be guaranteed."
+  }
+}

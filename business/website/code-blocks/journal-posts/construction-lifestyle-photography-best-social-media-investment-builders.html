@@ -1,0 +1,413 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.bl-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.bl-loader.bl-done{opacity:0;visibility:hidden;pointer-events:none}
+.bl-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:blLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:blLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:blLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:blLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes blLoaderIn{to{opacity:1}}
+@keyframes blLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.bl-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.bl-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.bl-cursor.bl-active{opacity:1}
+.bl-cursor.bl-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.bl-cursor.bl-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.bl-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.bl-cursor-dot.bl-active{opacity:1}
+
+/* ── CTA button glow ── */
+.bl-btn,.bl-cta-btn{animation:blBtnGlow 3s ease-in-out infinite alternate}
+@keyframes blBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+  :root {
+    --ink: #1a1a18;
+    --paper: #f6f4f0;
+    --warm: #c9a96e;
+    --warm-muted: #b8975a;
+    --stone: #8a8579;
+    --light-stone: #d9d5cd;
+    --off-white: #eeece6;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+    --display: 'Josefin Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.7; font-weight: 300; -webkit-font-smoothing: antialiased; }
+
+  .bl-hero { position: relative; min-height: 85vh; display: flex; align-items: flex-end; padding: 6rem 5vw; background: var(--ink); overflow: hidden; width: 100%; }
+  .bl-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(26,26,24,0.85) 100%); z-index: 1; }
+  .bl-hero-bg { position: absolute; inset: 0; opacity: 0.5; filter: saturate(0.6); }
+  .bl-hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .bl-hero-content { position: relative; z-index: 2; max-width: 900px; }
+  .bl-hero-label { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--warm); margin-bottom: 1.5rem; font-weight: 500; opacity: 0; animation: blFadeUp 0.8s ease forwards 0.3s; }
+  .bl-hero h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5.5vw, 4.5rem); font-weight: 300; line-height: 1.1; color: var(--paper); letter-spacing: -0.02em; margin-bottom: 1.5rem; opacity: 0; animation: blFadeUp 0.8s ease forwards 0.5s; }
+  .bl-hero h1 em { font-style: italic; color: var(--warm); }
+  .bl-hero-sub { font-family: var(--sans); font-size: 1rem; color: var(--light-stone); font-weight: 300; max-width: 560px; opacity: 0; animation: blFadeUp 0.8s ease forwards 0.7s; }
+
+  .bl-meta-bar { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--light-stone); border-bottom: 1px solid var(--light-stone); width: 100%; }
+  .bl-meta-item { padding: 1.5rem 5vw; border-right: 1px solid var(--light-stone); flex: 1; min-width: 180px; }
+  .bl-meta-item:last-child { border-right: none; }
+  .bl-meta-item dt { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.4rem; font-weight: 500; }
+  .bl-meta-item dd { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--ink); }
+
+  .bl-body { padding: 5rem 5vw; width: 100%; }
+  .bl-body-inner { max-width: 720px; }
+  .bl-body h2 { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; line-height: 1.2; margin: 3.5rem 0 1.5rem; letter-spacing: -0.01em; color: var(--ink); }
+  .bl-body h2:first-child { margin-top: 0; }
+  .bl-body h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; margin: 2.5rem 0 1rem; color: var(--ink); }
+  .bl-body p { font-size: 1rem; color: #4a4a46; margin-bottom: 1.5rem; line-height: 1.8; }
+  .bl-body p:last-child { margin-bottom: 0; }
+  .bl-body ul { margin: 0 0 1.5rem 1.25rem; }
+  .bl-body li { font-size: 1rem; color: #4a4a46; line-height: 1.8; margin-bottom: 0.5rem; }
+  .bl-body li strong { color: var(--ink); font-weight: 500; }
+  .bl-body blockquote { border-left: 2px solid var(--warm); padding: 1.25rem 0 1.25rem 2rem; margin: 2.5rem 0; font-family: var(--serif); font-size: 1.25rem; font-style: italic; line-height: 1.5; color: var(--ink); }
+  .bl-body a { color: var(--warm-muted); text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.3); transition: border-color 0.3s ease; }
+  .bl-body a:hover { border-color: var(--warm); }
+
+  .bl-section-label { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--warm-muted); margin-bottom: 1.5rem; font-weight: 500; }
+  .bl-divider { width: 60px; height: 1px; background: var(--warm); margin: 0 0 2rem; }
+
+  .bl-image-break { width: 100%; height: 70vh; min-height: 450px; overflow: hidden; }
+  .bl-image-break img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .bl-image-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; width: 100%; }
+  .bl-image-pair img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+
+  /* ─── CONTENT BOX ─── */
+  .bl-content-box { background: var(--off-white); padding: 4rem 5vw; width: 100%; }
+  .bl-content-box-inner { max-width: 720px; }
+  .bl-content-box h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; margin-bottom: 1.5rem; color: var(--ink); }
+  .bl-content-box ul { margin: 0 0 0 1.25rem; }
+  .bl-content-box li { font-size: 0.95rem; color: #4a4a46; line-height: 1.8; margin-bottom: 0.5rem; }
+  .bl-content-box li strong { color: var(--ink); font-weight: 500; }
+
+  .bl-pull-quote { background: var(--off-white); padding: 5rem 5vw; text-align: center; width: 100%; }
+  .bl-pull-quote p { font-family: var(--serif); font-size: clamp(1.3rem, 2.5vw, 2rem); font-weight: 300; font-style: italic; line-height: 1.4; max-width: 800px; margin: 0 auto; color: var(--ink); }
+  .bl-pull-quote p::before { content: '\201C'; display: block; font-size: 4rem; color: var(--warm); line-height: 1; margin-bottom: 0.5rem; font-style: normal; }
+
+  .bl-related { padding: 5rem 5vw; width: 100%; background: var(--ink); }
+  .bl-related .bl-section-label { color: var(--warm); }
+  .bl-related h2 { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; color: var(--paper); margin-bottom: 2.5rem; }
+  .bl-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .bl-related-card { display: block; text-decoration: none; color: inherit; overflow: hidden; border-radius: 2px; }
+  .bl-related-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .bl-related-card:hover img { transform: scale(1.04); }
+  .bl-related-card-body { padding: 1.25rem 0; }
+  .bl-related-card-cat { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.5rem; font-weight: 500; }
+  .bl-related-card-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--paper); line-height: 1.3; }
+
+  .bl-cta { position: relative; padding: 7rem 5vw; text-align: center; width: 100%; overflow: hidden; min-height: 50vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .bl-cta-bg { position: absolute; inset: 0; z-index: 0; }
+  .bl-cta-bg img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.5) brightness(0.25); }
+  .bl-cta-c { position: relative; z-index: 2; }
+  .bl-cta h2 { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; color: var(--paper); margin-bottom: 1rem; }
+  .bl-cta h2 em { font-style: italic; color: var(--warm); }
+  .bl-cta p { color: var(--light-stone); font-size: 1rem; max-width: 520px; margin: 0 auto 2.5rem; }
+  .bl-cta-btn { display: inline-block !important; font-family: var(--sans) !important; font-size: 0.7rem !important; letter-spacing: 0.25em !important; text-transform: uppercase !important; padding: 1rem 2.5rem !important; border: 1px solid var(--warm) !important; color: var(--warm) !important; background: transparent !important; text-decoration: none !important; font-weight: 500 !important; transition: all 0.35s ease; }
+  .bl-cta-btn:hover { background: var(--warm) !important; color: var(--ink) !important; }
+  .bl-alt-cta { margin-top: 1.25rem; font-size: 0.75rem; color: var(--stone); letter-spacing: 0.05em; font-weight: 300; }
+  .bl-alt-cta a { color: var(--warm); text-decoration: underline; text-underline-offset: 3px; transition: color 0.3s ease; }
+  .bl-alt-cta a:hover { color: var(--paper); }
+
+  .bl-ft { background: #1a1a18; border-top: 1px solid rgba(201,169,110,0.15); }
+  .bl-ft-row { display: flex; justify-content: space-between; align-items: center; padding: 2.25rem 5vw; gap: 2rem; flex-wrap: wrap; }
+  .bl-ft-item { display: flex; align-items: baseline; gap: 10px; }
+  .bl-ft-label { font-size: 7.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #c9a96e; font-weight: 500; white-space: nowrap; }
+  .bl-ft-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(201,169,110,0.4); flex-shrink: 0; position: relative; top: -2px; }
+  .bl-ft-item p, .bl-ft-item a { margin: 0; font-size: 12px; color: rgba(246,244,240,0.8); font-weight: 300; white-space: nowrap; text-decoration: none; transition: color 0.3s ease; }
+  .bl-ft-item a:hover { color: #c9a96e; }
+  .bl-ft-social { display: flex; gap: 18px; }
+  .bl-ft-rule { margin: 0 5vw; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.15) 20%, rgba(201,169,110,0.15) 80%, transparent 100%); }
+  .bl-ft-bottom { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 5vw; }
+  .bl-ft-copy { font-size: 10px; color: rgba(246,244,240,0.35); letter-spacing: 0.08em; }
+  .bl-ft-nav{ display: flex; gap: 2.5rem; ;flex-wrap:wrap;justify-content:center}
+  .bl-ft-nav a { font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(246,244,240,0.35); text-decoration: none; transition: color 0.3s ease; }
+  .bl-ft-nav a:hover { color: #c9a96e; }
+
+  @keyframes blFadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 768px) {
+    .bl-hero { min-height: 70vh; padding: 4rem 6vw; }
+    .bl-body { padding: 3.5rem 6vw; }
+    .bl-meta-item { border-right: none; border-bottom: 1px solid var(--light-stone); flex: 100%; }
+    .bl-meta-item:last-child { border-bottom: none; }
+    .bl-image-break { height: 50vh; min-height: 300px; }
+    .bl-image-pair { grid-template-columns: 1fr; }
+    .bl-content-box { padding: 3rem 6vw; }
+    .bl-pull-quote { padding: 3.5rem 6vw; }
+    .bl-related { padding: 3.5rem 6vw; }
+    .bl-related-grid { grid-template-columns: 1fr; }
+    .bl-cta { padding: 4rem 6vw; }
+    .bl-ft-row { flex-direction: column; gap: 1.25rem; align-items: flex-start; padding: 2rem 6vw; }
+    .bl-ft-rule { margin: 0 6vw; }
+    .bl-ft-bottom { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.25rem 6vw; }
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .bl-related-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+.bl-ft-email{cursor:pointer}
+body{overflow-x:hidden!important}
+</style>
+
+<div class="bl-loader" id="blLoader">
+  <div class="bl-loader-brand">Matt Anthony Photography</div>
+  <div class="bl-loader-sub">Construction Lifestyle Photography</div>
+  <div class="bl-loader-line"></div>
+</div>
+<div class="bl-cursor" id="blCursor"></div>
+<div class="bl-cursor-dot" id="blCursorDot"></div>
+<div class="bl-progress" id="blProgress"></div>
+
+<!-- HERO -->
+<section class="bl-hero">
+  <div class="bl-hero-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/99381b00-0337-4207-afdf-fef0d9870acf/construction-lifestyle-photography-sunshine-coast-summerhill18.jpg?format=2500w" alt="Construction lifestyle photography showing Summerhill Fine Homes crew at work on the Sunshine Coast"></div>
+  <div class="bl-hero-content">
+    <p class="bl-hero-label">Journal</p>
+    <h1>Why Construction Lifestyle Photography is the Best <em>Social Media Investment</em> for Builders</h1>
+    <p class="bl-hero-sub">The highest-ROI social media content for builders is the process, not the finished product.</p>
+  </div>
+</section>
+
+<!-- META BAR -->
+<dl class="bl-meta-bar">
+  <div class="bl-meta-item">
+    <dt>Published</dt>
+    <dd>October 20, 2025</dd>
+  </div>
+  <div class="bl-meta-item">
+    <dt>Category</dt>
+    <dd>Social Strategy</dd>
+  </div>
+  <div class="bl-meta-item">
+    <dt>Author</dt>
+    <dd>Matt Anthony</dd>
+  </div>
+</dl>
+
+<!-- INTRO -->
+<section class="bl-body">
+  <div class="bl-body-inner">
+    <p>Every custom builder faces identical social media challenges: finish beautiful projects, post completion photos, achieve modest engagement, then stay silent for months. The winning strategy involves documenting construction processes rather than only final results. Lifestyle photography of crews working, materials being installed, and active jobsite energy fills content gaps, drives consistent engagement, and builds brand identity that finished project images cannot achieve alone.</p>
+  </div>
+</section>
+
+<!-- IMAGE BREAK -->
+<div class="bl-image-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/093d1c5e-3f91-4377-9827-b4cfa3b82d6b/construction-lifestyle-photography-squamish-redined-glazing-10.jpg?format=2500w" alt="Refined Glazing crew installing windows on an active construction site in Squamish" loading="lazy">
+</div>
+
+<!-- FINISHED PROJECTS + WHAT PERFORMS -->
+<section class="bl-body">
+  <div class="bl-body-inner">
+    <h2>Finished Projects Are Not Social Media Content</h2>
+    <p>Finished project photography remains essential for websites, portfolios, proposals, and award submissions -- but performs poorly on social platforms. A completed interior receives brief engagement; reposting months later yields lower performance. A single finished project generates approximately three to four viable social posts, representing just three to four weeks of content from an 18-month construction timeline.</p>
+    <p>Construction phases spanning those 18 months offer continuous engaging moments: crane operations, custom detail fitting, progressive structural emergence. Algorithms reward fresh, frequent content telling evolving stories.</p>
+
+    <h2>What Performs on Instagram and LinkedIn</h2>
+    <p>Consistently high-engagement categories include:</p>
+    <ul>
+      <li><strong>People at work:</strong> Hands installing details, crew members carrying materials, project managers reviewing plans. Human skill and craft narratives resonate strongly.</li>
+      <li><strong>Progression:</strong> Identical angles photographed every two weeks from foundation through finish. Carousel sequences satisfy viewer curiosity and demonstrate project management capability.</li>
+      <li><strong>Material moments:</strong> First cedar cladding installation, custom millwork staging, window deliveries. These reveal component quality and create supplier and trade tagging opportunities.</li>
+      <li><strong>Short form video:</strong> 15-second clips, time-lapses, framed walk-throughs. Video outperforms still photography significantly -- Instagram Reels and LinkedIn videos reach two to five times more people than static images.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- IMAGE PAIR -->
+<div class="bl-image-pair">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/a7e23a28-784e-46d9-b5d6-9ba9681cbe19/team-headshots-photography-squamish-summerhill-5.jpg?format=2500w" alt="Summerhill Fine Homes team member environmental portrait on construction site" loading="lazy">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/f4a9fc7e-a0d5-4ac4-b2d6-e9634f7b04f4/jobsite-progression-photography-squamish-the-window-merchant-2.jpg?format=2500w" alt="Window Merchant installation progression photography on active jobsite" loading="lazy">
+</div>
+
+<!-- RECRUITMENT + ONE SHOOT DAY -->
+<section class="bl-body">
+  <div class="bl-body-inner">
+    <h2>The Recruitment Advantage</h2>
+    <p>Social media functions as recruitment infrastructure. Skilled trades evaluate potential employers through company online presence. Construction lifestyle content -- crews collaborating, jobsite culture, craftsmanship pride -- communicates workplace reality beyond job listings. Multiple builders report new hires mentioning Instagram feeds during interviews. In competitive talent markets, this represents meaningful competitive advantage.</p>
+
+    <h2>One Shoot Day, Months of Content</h2>
+    <p>The model: schedule single planned jobsite shoot days quarterly across active projects. Four to six-hour documentation sessions capture crews working, material details, building progression, environmental team portraits, and short video clips. One shoot day produces content for two to four months of social posting.</p>
+    <p>Planning requirement: coordinate timing around dramatic structural moments, visible trade work, or project milestones rather than arriving to inactive sites during poor weather.</p>
+
+    <h2>Team Portraits Are Brand Infrastructure</h2>
+    <p>Environmental portraits -- people in their working element on project sites wearing everyday gear -- serve multiple purposes: website team pages, client proposals, LinkedIn profiles. Personal narratives outperform corporate content on professional platforms. Portraits captured during lifestyle shoots feel authentic because they integrate natural context, existing lighting, and relaxed participants already engaged in work.</p>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="bl-pull-quote">
+  <p>One shoot day. Months of content. Stop scrambling for social media posts. Build a system that runs on one quarterly shoot day.</p>
+</section>
+
+<!-- THE COMPARISON -->
+<section class="bl-body">
+  <div class="bl-body-inner">
+    <h2>The Comparison That Sells It</h2>
+    <p>Two competing builders pursue an identical $2M custom home client. Builder A's Instagram shows 12 posts: finished projects, quarterly updates, a sparse-looking feed. Builder B's Instagram shows 80 posts: construction lifestyle, progression documentation, team portraits, materials, short videos, finished photography -- active and professional.</p>
+    <p>Identical construction quality yields completely different prospect perception -- entirely through content strategy choices.</p>
+  </div>
+</section>
+
+<!-- CONTENT BOX -->
+<section class="bl-content-box">
+  <div class="bl-content-box-inner">
+    <h3>Content From One Shoot Day</h3>
+    <ul>
+      <li><strong>Instagram feed posts:</strong> 8-12 curated lifestyle, detail, and progression images</li>
+      <li><strong>Instagram Reels:</strong> 3-5 short videos (15-30 seconds) of trades, time-lapses, walk-throughs</li>
+      <li><strong>LinkedIn posts:</strong> 4-6 professional images with narrative captions</li>
+      <li><strong>Website content:</strong> Updated team portraits, construction galleries, progression documentation</li>
+      <li><strong>Proposal assets:</strong> Fresh team photos and in-progress project imagery</li>
+      <li><strong>Total runway:</strong> 8-16 weeks consistent posting from a single shoot day</li>
+    </ul>
+  </div>
+</section>
+
+<!-- HOW TO START -->
+<section class="bl-body">
+  <div class="bl-body-inner">
+    <h2>How to Start</h2>
+    <p>Select the most active jobsite. Choose a day with visible work activity. Allow the photographer a half-day to document everything. Authenticity matters -- crews perform normal work without posing; sites appear operational rather than staged. The photographer's role involves discovering compelling moments within working construction reality.</p>
+    <p>Subsequent shoots establish visual libraries reflecting firm quality and personnel. After the third shoot, consistent engaging content becomes operational practice rather than a dreaded task.</p>
+  </div>
+</section>
+
+<!-- RELATED POSTS -->
+<section class="bl-related">
+  <p class="bl-section-label">Continue Reading</p>
+  <div class="bl-divider"></div>
+  <h2>Related Articles</h2>
+  <div class="bl-related-grid">
+    <a href="/journal/summerhill-fine-homes-visual-brand-ongoing-photography" class="bl-related-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8885e535-fd99-48e9-801f-020449535162/5322-backhouse-web-22.jpg?format=1500w" alt="Summerhill Fine Homes visual brand aerial photography" loading="lazy">
+      <div class="bl-related-card-body">
+        <p class="bl-related-card-cat">Client Story</p>
+        <p class="bl-related-card-title">How Summerhill Fine Homes Built a Visual Brand Through Ongoing Photography</p>
+      </div>
+    </a>
+    <a href="/journal/how-to-build-visual-library-website-proposals-awards" class="bl-related-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/aaf09b1e-0c8f-4362-bb6b-d1078581c875/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-2.jpg?format=1500w" alt="Visual library strategy architectural photography" loading="lazy">
+      <div class="bl-related-card-body">
+        <p class="bl-related-card-cat">Strategy</p>
+        <p class="bl-related-card-title">How to Build a Visual Library That Works Across Your Website, Proposals, and Awards</p>
+      </div>
+    </a>
+    <a href="/journal/behind-the-shoot-the-perch-sunshine-coast" class="bl-related-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/986386ba-6a96-4e7e-871c-19977ed61aa3/5322-backhouse-web-17.jpg?format=1500w" alt="The Perch at dusk Sunshine Coast" loading="lazy">
+      <div class="bl-related-card-body">
+        <p class="bl-related-card-cat">Behind the Shoot</p>
+        <p class="bl-related-card-title">Behind the Shoot: The Perch, Sunshine Coast</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bl-cta">
+  <div class="bl-cta-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/81230512-506e-479d-80e5-602d3c82efb6/team-headshots-photography-squamish-summerhill-12.jpg" alt="Summerhill Fine Homes team photography on site" loading="lazy"></div>
+  <div class="bl-cta-c">
+    <h2>Ready to build a <em>content system</em>?</h2>
+    <p>One quarterly shoot day. Months of social content. Let's set it up.</p>
+    <a href="/discovery-call" class="bl-cta-btn">Book a Discovery Call</a>
+    <p class="bl-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="bl-ft">
+<div class="bl-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+  <div class="bl-ft-row">
+    <div class="bl-ft-item"><span class="bl-ft-label">Based In</span><span class="bl-ft-dot"></span><p>Squamish, British Columbia</p></div>
+    <div class="bl-ft-item"><span class="bl-ft-label">Email</span><span class="bl-ft-dot"></span><a id="ft-em" class="bl-ft-email"></a></div>
+    <div class="bl-ft-item"><span class="bl-ft-label">Phone</span><span class="bl-ft-dot"></span><a href="tel:6047659270">604.765.9270</a></div>
+    <div class="bl-ft-item"><span class="bl-ft-label">Follow</span><span class="bl-ft-dot"></span><div class="bl-ft-social"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  </div>
+  <div class="bl-ft-rule"></div>
+  <div class="bl-ft-bottom">
+    <span class="bl-ft-copy">&copy; 2026 Matt Anthony Photography</span>
+    <nav class="bl-ft-nav"><a href="/projects">Projects</a><a href="/journal">Journal</a><a href="/bio">About</a><a href="/contact">Contact</a><a href="/pricing-guide-landing">Get Pricing</a></nav>
+  </div>
+</div>
+
+<!-- SEO Meta -->
+<script>
+(function(){
+  var isMobile='ontouchstart' in window;
+
+  /* ═══ EMAIL OBFUSCATION ═══ */
+  var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];var e=document.getElementById('ft-em');if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader=document.getElementById('blLoader');
+  window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('bl-done');},1100);});
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  var progressBar=document.getElementById('blProgress');
+  function updateProgress(){var sc=window.scrollY;var d=document.documentElement.scrollHeight-window.innerHeight;if(d>0)progressBar.style.width=(sc/d*100)+'%';}
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor=document.getElementById('blCursor');var cursorDot=document.getElementById('blCursorDot');var cx=0,cy=0,dx=0,dy=0;
+  if(!isMobile&&cursor){
+    document.addEventListener('mousemove',function(ev){dx=ev.clientX;dy=ev.clientY;cursorDot.style.left=dx+'px';cursorDot.style.top=dy+'px';if(!cursor.classList.contains('bl-active')){cursor.classList.add('bl-active');cursorDot.classList.add('bl-active');}});
+    function tickCursor(){cx+=(dx-cx)*0.12;cy+=(dy-cy)*0.12;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(tickCursor);}tickCursor();
+    var hoverEls=document.querySelectorAll('a, button, .bl-btn, .bl-cta-btn, .bl-rel-card');
+    hoverEls.forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('bl-hover');});el.addEventListener('mouseleave',function(){cursor.classList.remove('bl-hover');});});
+    document.addEventListener('mousedown',function(){cursor.classList.add('bl-click');});
+    document.addEventListener('mouseup',function(){cursor.classList.remove('bl-click');});
+  }
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking=false;
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){updateProgress();ticking=false;});ticking=true;}},{passive:true});
+  updateProgress();
+})();
+</script>
+
+<meta name="description" content="The highest-ROI social media content for builders is the process, not the finished product. How construction lifestyle photography fills content gaps and drives engagement.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/journal/construction-lifestyle-photography-best-social-media-investment-builders">
+<meta property="og:title" content="Why Construction Lifestyle Photography is the Best Social Media Investment for Builders | Matt Anthony">
+<meta property="og:description" content="The highest-ROI social media content for builders is the process, not the finished product.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/journal/construction-lifestyle-photography-best-social-media-investment-builders">
+<meta property="og:type" content="article">
+
+<!-- BlogPosting Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Construction Lifestyle Photography is the Best Social Media Investment for Builders",
+  "description": "The highest-ROI social media content for builders is the process, not the finished product.",
+  "url": "https://www.mattanthonyphoto.com/journal/construction-lifestyle-photography-best-social-media-investment-builders",
+  "datePublished": "2025-10-20",
+  "dateModified": "2025-10-20",
+  "author": {
+    "@type": "Person",
+    "name": "Matt Anthony",
+    "url": "https://www.mattanthonyphoto.com/bio"
+  },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "Matt Anthony Photography",
+    "url": "https://www.mattanthonyphoto.com"
+  },
+  "image": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/99381b00-0337-4207-afdf-fef0d9870acf/construction-lifestyle-photography-sunshine-coast-summerhill18.jpg",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.mattanthonyphoto.com/journal/construction-lifestyle-photography-best-social-media-investment-builders"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Josefin+Sans:wght@600;700&display=swap" rel="stylesheet">

@@ -1,0 +1,351 @@
+{
+  "client": {
+    "company": "Copper Creek Homes",
+    "slug": "coppercreek"
+  },
+  "audit_date": "March 2026",
+  "cover": {
+    "headline_html": "Copper Creek Homes<br><em>Site &amp; SEO Audit</em>",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef4086f4-81fa-468f-99bf-966ce7d83d89/warbler-whistler-architectural-photography-matt-anthony-.jpg-11.jpg",
+    "image_position": "center 40%"
+  },
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c938566f-ee96-40da-aec4-d51ac9fa7e09/warbler-whistler-architectural-photography-matt-anthony-.jpg-13.jpg",
+        "alt": "Warbler Residence interior",
+        "caption": "Matt Anthony Photography &middot; Whistler, BC"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8149d10c-1661-4e39-80d9-538f24b4123a/warbler-whistler-architectural-photography-matt-anthony-.jpg-33.jpg",
+        "alt": "Warbler Residence exterior",
+        "caption": "Matt Anthony Photography &middot; Whistler, BC"
+      }
+    ]
+  },
+  "overall_scores": [
+    {
+      "value": 69,
+      "label": "Overall SEO",
+      "grade": "B-",
+      "color": "ok"
+    },
+    {
+      "value": 46,
+      "label": "Local / GEO",
+      "grade": "C-",
+      "color": "bad"
+    },
+    {
+      "value": 100,
+      "label": "Content",
+      "grade": "A",
+      "color": "good"
+    },
+    {
+      "value": 92,
+      "label": "Visual Assets",
+      "grade": "A",
+      "color": "good"
+    }
+  ],
+  "sections": [
+    {
+      "type": "seo",
+      "eyebrow": "SEO Audit",
+      "headline_html": "Strong content.<br><em>Two technical gaps holding it back.</em>",
+      "lead": "I crawled 30 pages on coppercreekhomes.ca. The content foundation is excellent, 22 project pages with descriptions, a blog, and 1,336 images. But two specific technical issues are limiting search visibility.",
+      "categories": [
+        {
+          "name": "What’s Working",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "Fast, Secure Foundation",
+              "detail": "Valid SSL, 84ms response time, clean Squarespace build."
+            },
+            {
+              "status": "pass",
+              "title": "76-URL Sitemap",
+              "detail": "Extensive sitemap helping Google discover all pages. Well above average."
+            },
+            {
+              "status": "pass",
+              "title": "Open Graph Tags Present",
+              "detail": "Social sharing displays correctly."
+            },
+            {
+              "status": "pass",
+              "title": "Strong Content Depth (100/100)",
+              "detail": "22 project pages, all with descriptions. 645-word homepage. Blog with 5 posts. This is significantly better than most Fraser Valley builders."
+            },
+            {
+              "status": "pass",
+              "title": "Excellent Visual Coverage (92/100)",
+              "detail": "1,336 images across the site. Project pages average 53.8 images each. Only 33 images missing alt text (2.5%). Outstanding."
+            }
+          ]
+        },
+        {
+          "name": "What Needs Fixing",
+          "findings": [
+            {
+              "status": "fail",
+              "title": "No Structured Data (Schema.org)",
+              "detail": "Zero JSON-LD markup on the site. Google doesn’t know Copper Creek is a builder, where you’re based, or what services you offer. Adding LocalBusiness + HomeBuilder schema would improve local search results and could unlock rich snippets."
+            },
+            {
+              "status": "warn",
+              "title": "Meta Title Too Short (18 Characters)",
+              "detail": "\"Copper Creek Homes\" is the full title. Should include location and service: \"Copper Creek Homes | Custom Builder &amp; Renovator | Abbotsford BC\" for better click-through rates."
+            },
+            {
+              "status": "warn",
+              "title": "Meta Description Too Long (228 Characters)",
+              "detail": "Google truncates at ~155 characters. The extra text is invisible in search results. Tighten to hit within 150-155 characters for full visibility."
+            }
+          ]
+        }
+      ],
+      "insight": {
+        "title": "SEO Bottom Line",
+        "content_html": "<p>The content and visual foundation is <strong>among the best I’ve audited</strong> in the Fraser Valley. The only real blocker is <strong>structured data</strong>, a one-time fix that would make Google understand Copper Creek as a local builder. The meta title and description adjustments are 5-minute fixes with immediate impact.</p>"
+      }
+    },
+    {
+      "type": "geo",
+      "eyebrow": "Local SEO &amp; GEO Audit",
+      "headline_html": "Local visibility.<br><em>The one big gap.</em>",
+      "lead": "When someone in Abbotsford or the Fraser Valley searches for a custom builder, can they find Copper Creek on Google Maps?",
+      "categories": [
+        {
+          "name": "Google Business Profile",
+          "findings": [
+            {
+              "status": "fail",
+              "title": "No Google Business Profile Detected",
+              "detail": "This is the <strong>single biggest gap</strong> in Copper Creek’s online presence. Without an active GBP, you can’t appear in Google Maps or the Local Pack (where 46% of local search clicks go). For a builder that serves 18 specific areas, this is a significant missed opportunity."
+            },
+            {
+              "status": "fail",
+              "title": "No LocalBusiness Schema",
+              "detail": "No structured data connecting the website to a local business identity. Google can’t programmatically understand your address, service areas, or business hours."
+            }
+          ]
+        },
+        {
+          "name": "Directory Presence",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "Listed on Houzz",
+              "detail": "Active Houzz profile. Strong authoritative backlink."
+            },
+            {
+              "status": "pass",
+              "title": "Listed on BBB",
+              "detail": "Better Business Bureau profile found. Good trust signal."
+            },
+            {
+              "status": "pass",
+              "title": "Listed on TrustedPros",
+              "detail": "Two TrustedPros listings found. Additional citation source."
+            },
+            {
+              "status": "warn",
+              "title": "Not Found on HomeStars",
+              "detail": "HomeStars ranks well for contractor searches in the Fraser Valley. Worth creating a profile."
+            },
+            {
+              "status": "warn",
+              "title": "CHBA Fraser Valley Membership",
+              "detail": "You won a CHBA FV award but the CHBA directory listing wasn’t detected in the audit. Verify your member profile is active and linked to the website."
+            }
+          ]
+        }
+      ],
+      "insight": {
+        "title": "Local SEO Bottom Line",
+        "content_html": "<p><strong>Set up a Google Business Profile.</strong> It’s free, takes 30 minutes, and with your CHBA award, 22 project photos to upload, and 18 service areas to list, it would be one of the strongest GBP profiles in the Fraser Valley builder category. This is the highest-ROI action available.</p>"
+      }
+    },
+    {
+      "type": "competitors",
+      "eyebrow": "Competitive Landscape",
+      "headline_html": "How you compare.<br><em>In the Fraser Valley.</em>",
+      "lead": "Here’s how Copper Creek stacks up against builders competing for the same clients in Abbotsford and the Fraser Valley.",
+      "columns": [
+        "Builder",
+        "Website",
+        "Content",
+        "Photography",
+        "Awards",
+        "Video"
+      ],
+      "rows": [
+        {
+          "highlight": true,
+          "cells": [
+            "<strong>Copper Creek Homes</strong><br><span style='font-size:0.7rem;color:var(--text-muted);'>Abbotsford</span>",
+            "<span class='dot green'></span>Strong",
+            "<span class='dot green'></span>Blog + 22 projects",
+            "<span class='dot green'></span>Good portfolio",
+            "<span class='dot green'></span>CHBA FV 2024",
+            "<span class='dot red'></span>None"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Lacey Construction<br><span style='font-size:0.7rem;color:var(--text-muted);'>Abbotsford</span>",
+            "<span class='dot green'></span>Strong",
+            "<span class='dot amber'></span>Decent",
+            "<span class='dot green'></span>Professional",
+            "<span class='dot green'></span>Multiple awards",
+            "<span class='dot amber'></span>Some"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Opulence Custom Homes<br><span style='font-size:0.7rem;color:var(--text-muted);'>Abbotsford</span>",
+            "<span class='dot green'></span>Professional",
+            "<span class='dot red'></span>No blog",
+            "<span class='dot green'></span>Extensive",
+            "<span class='dot amber'></span>Affiliations",
+            "<span class='dot red'></span>None"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Versa Homes<br><span style='font-size:0.7rem;color:var(--text-muted);'>Abbotsford</span>",
+            "<span class='dot green'></span>Modern",
+            "<span class='dot amber'></span>Location pages",
+            "<span class='dot amber'></span>Mixed",
+            "<span class='dot red'></span>None listed",
+            "<span class='dot red'></span>None"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Delonix Homes<br><span style='font-size:0.7rem;color:var(--text-muted);'>Chilliwack</span>",
+            "<span class='dot green'></span>Clean",
+            "<span class='dot amber'></span>Basic",
+            "<span class='dot amber'></span>Decent",
+            "<span class='dot green'></span>Award-winning",
+            "<span class='dot red'></span>None"
+          ]
+        }
+      ],
+      "insight": {
+        "title": "The Competitive Picture",
+        "content_html": "<p>Copper Creek is <strong>ahead of most Fraser Valley competitors</strong> on content and awards. The gap everyone shares: <strong>zero video content</strong>. No Fraser Valley builder has project films, walkthrough videos, or social reels. First mover with professional video content would have a significant advantage, and Copper Creek’s 22-project portfolio is the perfect foundation to build from.</p>"
+      }
+    },
+    {
+      "type": "content",
+      "eyebrow": "Content &amp; Visual Assets",
+      "headline_html": "What you have.<br><em>What’s missing.</em>",
+      "lead": "Copper Creek’s content foundation is genuinely strong. Here’s where to build from.",
+      "categories": [
+        {
+          "name": "Strengths",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "22 Project Pages with Descriptions",
+              "detail": "Every project has a proper page with text content. This is rare, most builders have image-only portfolios. Excellent for SEO."
+            },
+            {
+              "status": "pass",
+              "title": "Blog with 5 Posts",
+              "detail": "Active content publishing including the “Renovation Roulette” lead magnet. Ahead of most competitors on content marketing."
+            },
+            {
+              "status": "pass",
+              "title": "1,336 Images, 97.5% with Alt Text",
+              "detail": "Only 33 images missing alt text across the entire site. This is the best alt text coverage I’ve seen in any builder audit."
+            },
+            {
+              "status": "pass",
+              "title": "Strong Testimonials + CHBA Award",
+              "detail": "Social proof is in place. The 2024 CHBA FV award is a genuine differentiator."
+            }
+          ]
+        },
+        {
+          "name": "Opportunities",
+          "findings": [
+            {
+              "status": "fail",
+              "title": "Zero Video Content",
+              "detail": "No project films, no walkthroughs, no social reels, no before/after reveal videos. Video is the highest-engagement format on every platform. For a renovation-focused builder, transformation content is the most compelling thing you can show a prospect."
+            },
+            {
+              "status": "warn",
+              "title": "No Build Process Documentation",
+              "detail": "Copper Creek’s renovation process is a selling point (it’s on the website). But there’s no visual documentation of it. Before/during/after content, crew at work, material selections in progress. This content builds trust and differentiates."
+            },
+            {
+              "status": "warn",
+              "title": "Blog Could Scale",
+              "detail": "5 posts is a good start. Monthly publishing targeting “custom home builder Abbotsford,” “Fraser Valley renovation,” and “home renovation cost BC” would compound organic traffic significantly over 12 months."
+            },
+            {
+              "status": "warn",
+              "title": "Award Story Underutilized",
+              "detail": "The CHBA FV win is mentioned but not fully leveraged. A dedicated award case study, social content celebrating the win, and using the credential across all project pages would multiply its value."
+            }
+          ]
+        }
+      ],
+      "insight": {
+        "title": "Content Bottom Line",
+        "content_html": "<p>Copper Creek’s content foundation is <strong>the strongest I’ve audited in the Fraser Valley</strong>. What’s missing is the media layer: <strong>video, build documentation, and consistent social content</strong>. These are the assets that turn a good website into a content engine that generates leads while you’re on the jobsite.</p>"
+      }
+    },
+    {
+      "type": "recommendations",
+      "eyebrow": "What I’d Fix First",
+      "headline_html": "The action plan.<br><em>Priority order.</em>",
+      "lead": "Three moves that would take Copper Creek from strong to dominant in the Fraser Valley.",
+      "stats": [
+        {
+          "value": "0",
+          "label": "Video Assets"
+        },
+        {
+          "value": "0",
+          "label": "Schema Markup"
+        },
+        {
+          "value": "22",
+          "label": "Projects Ready for Film"
+        }
+      ],
+      "steps": [
+        {
+          "number": "1",
+          "title": "Google Business Profile + Schema",
+          "description": "GBP is free and takes 30 minutes. Upload project photos, list all 18 service areas, add the CHBA award badge. Add LocalBusiness schema to the site. Immediate local visibility boost."
+        },
+        {
+          "number": "2",
+          "title": "Video + Build Documentation",
+          "description": "Start with 2-3 renovation transformation films. Before/during/after content for social and the website. No Fraser Valley builder has this. First mover wins."
+        },
+        {
+          "number": "3",
+          "title": "Scale the Award Momentum",
+          "description": "Submit 2-3 more projects to CHBA FV 2025 and CHBA National. Leverage the existing win across all channels. One award opened the door, consistent submissions build the reputation."
+        }
+      ],
+      "insight": {
+        "title": "This Is Where a Creative Partner Comes In",
+        "content_html": "<p>Copper Creek’s foundation is built. What’s missing is the <strong>media layer</strong>: professional project films, build documentation, social content, and the ongoing production pipeline that keeps it all flowing. That’s exactly what I do.</p><p style=\"margin-bottom:0;\"><strong>See the full Creative Partner proposal</strong> for pricing, options, and a pilot roadmap.</p>"
+      }
+    }
+  ]
+}

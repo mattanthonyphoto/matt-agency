@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Playbook — {{ client.company }}</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A18;
+    --paper: #F6F4F0;
+    --gold: #C9A96E;
+    --gold-dim: rgba(201,169,110,0.12);
+    --gold-border: rgba(201,169,110,0.25);
+    --gold-glow: rgba(201,169,110,0.06);
+    --stone: #8A8579;
+    --white: #FFFFFF;
+    --light: #FAFAF8;
+    --green: #4A7C59;
+    --amber: #C49A3C;
+    --red: #A65353;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; -webkit-print-color-adjust:exact; print-color-adjust:exact; scroll-behavior:smooth; }
+  body { background:var(--white); color:var(--ink); font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.75; overflow-x:hidden; }
+
+  /* ═══════════════════════════════════════
+     COVER
+     ═══════════════════════════════════════ */
+  .cover {
+    min-height:100vh; background:var(--ink); color:var(--paper);
+    display:flex; flex-direction:column; justify-content:flex-end;
+    position:relative; overflow:hidden;
+  }
+  .cover-image {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    background-size:cover; background-position:center 25%;
+    will-change:transform; transition:transform 0.1s linear;
+  }
+  .cover-image::after {
+    content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+    background:linear-gradient(
+      to bottom,
+      rgba(26,26,24,0.3) 0%,
+      rgba(26,26,24,0.2) 20%,
+      rgba(26,26,24,0.5) 50%,
+      rgba(26,26,24,0.92) 75%,
+      rgba(26,26,24,0.99) 100%
+    );
+  }
+  .cover-top {
+    position:absolute; top:0; left:0; right:0; z-index:3;
+    padding:40px 60px; display:flex; justify-content:space-between; align-items:center;
+  }
+  .cover-logo {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:rgba(246,244,240,0.6);
+  }
+  .cover-date {
+    font-family:'Josefin Sans',sans-serif; font-size:0.65rem;
+    letter-spacing:0.2em; color:rgba(246,244,240,0.4);
+  }
+  .cover-content {
+    position:relative; z-index:2; padding:0 60px 80px; max-width:760px;
+  }
+  .cover-eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.4em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:20px; display:flex; align-items:center; gap:16px;
+  }
+  .cover-eyebrow::before { content:''; width:32px; height:1px; background:var(--gold); }
+  .cover h1 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:clamp(2.8rem,5.5vw,4.8rem); line-height:1.08; margin-bottom:20px;
+    letter-spacing:-0.01em;
+    text-shadow:0 2px 40px rgba(0,0,0,0.5), 0 4px 80px rgba(0,0,0,0.3);
+  }
+  .cover h1 em { font-style:italic; font-weight:500; color:var(--gold); }
+  .cover-sub {
+    font-size:1rem; color:rgba(246,244,240,0.75); max-width:520px;
+    line-height:1.8; margin-bottom:56px;
+    text-shadow:0 1px 20px rgba(0,0,0,0.4);
+  }
+  .cover-meta-bar {
+    display:flex; gap:48px; padding-top:32px;
+    border-top:1px solid rgba(201,169,110,0.15);
+  }
+  .cover-meta-item {
+    font-size:0.75rem; color:rgba(246,244,240,0.35); line-height:1.8;
+  }
+  .cover-meta-item strong {
+    display:block; color:rgba(246,244,240,0.7); font-weight:400;
+    font-family:'Josefin Sans',sans-serif; font-size:0.6rem;
+    letter-spacing:0.15em; text-transform:uppercase; margin-bottom:2px;
+  }
+  .cover-cta {
+    display:inline-flex; align-items:center; gap:10px;
+    margin-top:32px; padding:12px 28px;
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--paper); border:1px solid rgba(246,244,240,0.25);
+    text-decoration:none; cursor:pointer;
+    transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+    opacity:0; animation:coverFade 0.9s 1.5s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover-cta:hover { border-color:var(--gold); color:var(--gold); padding-right:36px; }
+  .cover-cta-arrow { display:inline-block; transition:transform 0.3s ease; font-size:0.8rem; }
+  .cover-cta:hover .cover-cta-arrow { transform:translateY(3px); }
+
+  /* ═══════════════════════════════════════
+     LAYOUT
+     ═══════════════════════════════════════ */
+  .section { padding:120px 60px; max-width:1000px; margin:0 auto; }
+  .section.wide { max-width:1200px; }
+  .section.dark { background:var(--ink); color:var(--paper); max-width:100%; }
+  .section.cream { background:var(--paper); }
+  .section.light { background:var(--light); }
+  .section.dark .section-inner { max-width:1000px; margin:0 auto; }
+
+  .eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; display:flex; align-items:center; gap:14px;
+  }
+  .eyebrow::before { content:''; width:0; height:1px; background:var(--gold); transition:width 0.6s 0.2s cubic-bezier(0.16,1,0.3,1); }
+  .eyebrow.visible::before { width:24px; }
+
+  h2 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:2.6rem; line-height:1.12; margin-bottom:32px;
+    letter-spacing:-0.01em; text-wrap:balance;
+  }
+  h2 em { font-style:italic; font-weight:500; position:relative; display:inline; }
+  h2 em::after {
+    content:''; position:absolute; bottom:2px; left:0;
+    width:0; height:1.5px;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.3));
+    transition:width 1s 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  h2.underlined em::after { width:100%; }
+  h3 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.75rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
+    margin:56px 0 20px;
+  }
+  p { margin-bottom:20px; font-size:0.95rem; }
+  .lead { font-size:1.05rem; line-height:1.9; color:var(--stone); text-wrap:pretty; }
+
+  /* ═══════════════════════════════════════
+     SCORECARD
+     ═══════════════════════════════════════ */
+  .scorecard {
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    margin:56px 0; background:var(--gold-dim);
+  }
+  .score-item {
+    background:var(--white); text-align:center; padding:40px 16px;
+    position:relative;
+  }
+  .section.cream .score-item { background:var(--paper); }
+  .score-ring {
+    width:80px; height:80px; margin:0 auto 16px; position:relative;
+  }
+  .score-ring svg { width:100%; height:100%; transform:rotate(-90deg); }
+  .score-ring circle {
+    fill:none; stroke-width:3; cx:40; cy:40; r:36;
+  }
+  .score-ring .ring-bg { stroke:var(--gold-dim); }
+  .score-ring .ring-fill {
+    stroke:var(--gold); stroke-linecap:round;
+    stroke-dasharray:226.2; stroke-dashoffset:226.2;
+    transition:stroke-dashoffset 1.5s 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  .score-ring.animated .ring-fill { stroke-dashoffset:var(--offset); }
+  .score-ring .ring-fill.good { stroke:var(--green); }
+  .score-ring .ring-fill.ok { stroke:var(--gold); }
+  .score-ring .ring-fill.poor { stroke:var(--red); }
+  .score-grade {
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:500;
+    color:var(--ink);
+  }
+  .score-label {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--stone);
+  }
+
+  /* ═══════════════════════════════════════
+     STATS
+     ═══════════════════════════════════════ */
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .stat { background:var(--white); text-align:center; padding:36px 16px; }
+  .section.cream .stat { background:var(--paper); }
+  .stat-val {
+    font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:500;
+    color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+    text-shadow:0 0 40px rgba(201,169,110,0.15);
+  }
+  .stat-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--stone);
+  }
+
+  /* ═══════════════════════════════════════
+     CHANNEL CARDS (2-column)
+     ═══════════════════════════════════════ */
+  .channels { display:grid; grid-template-columns:1fr 1fr; gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .channel {
+    background:var(--white); padding:40px 36px; position:relative;
+    transition:all 0.3s cubic-bezier(0.16,1,0.3,1); border-left:3px solid transparent;
+  }
+  .channel:hover { border-left-color:var(--gold); background:var(--light); }
+  .channel-status {
+    position:absolute; top:20px; right:20px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.2em; text-transform:uppercase; padding:4px 12px;
+  }
+  .channel-status.active { color:var(--green); border:1px solid rgba(74,124,89,0.3); }
+  .channel-status.needs-work { color:var(--amber); border:1px solid rgba(196,154,60,0.3); }
+  .channel-status.missing { color:var(--red); border:1px solid rgba(166,83,83,0.3); }
+  .channel h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.7rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;
+  }
+  .channel ul { list-style:none; }
+  .channel li {
+    font-size:0.85rem; padding:8px 0 8px 24px; position:relative;
+    color:var(--stone); border-bottom:1px solid rgba(26,26,24,0.04);
+  }
+  .channel li:last-child { border:none; }
+  .channel li::before {
+    content:''; position:absolute; left:0; top:16px;
+    width:8px; height:1px; background:var(--gold);
+  }
+
+  /* ═══════════════════════════════════════
+     CHECKLIST
+     ═══════════════════════════════════════ */
+  .checklist { margin:40px 0; }
+  .checklist-item {
+    display:flex; align-items:flex-start; gap:16px; padding:14px 0;
+    border-bottom:1px solid rgba(26,26,24,0.06);
+  }
+  .checklist-item:last-child { border:none; }
+  .checklist-icon {
+    flex-shrink:0; width:20px; height:20px; border:1.5px solid var(--gold-border);
+    border-radius:3px; margin-top:2px; position:relative;
+  }
+  .checklist-icon::after {
+    content:''; position:absolute; top:3px; left:6px;
+    width:5px; height:9px; border:solid var(--gold); border-width:0 1.5px 1.5px 0;
+    transform:rotate(45deg); opacity:0;
+  }
+  .checklist-item.checked .checklist-icon { border-color:var(--gold); background:var(--gold-dim); }
+  .checklist-item.checked .checklist-icon::after { opacity:1; }
+  .checklist-text { font-size:0.9rem; color:var(--ink); }
+  .checklist-text span { display:block; font-size:0.8rem; color:var(--stone); margin-top:2px; }
+
+  /* ═══════════════════════════════════════
+     INSIGHT BOX
+     ═══════════════════════════════════════ */
+  .insight {
+    background:var(--light); padding:48px 56px; margin:56px 0;
+    position:relative; border:1px solid rgba(201,169,110,0.08);
+    box-shadow:0 8px 32px rgba(0,0,0,0.03);
+  }
+  .insight::before {
+    content:''; position:absolute; top:0; left:0; bottom:0;
+    width:3px; background:var(--gold);
+    box-shadow:4px 0 16px rgba(201,169,110,0.08);
+  }
+  .insight h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;
+  }
+  .insight p { font-size:0.9rem; margin-bottom:10px; }
+  .insight p:last-child { margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     NUMBERS BAR
+     ═══════════════════════════════════════ */
+  .numbers {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    margin:56px 0; background:var(--gold-dim);
+  }
+  .num { background:var(--ink); text-align:center; padding:48px 24px; }
+  .num-val {
+    font-family:'Cormorant Garamond',serif; font-size:3.5rem;
+    font-weight:500; color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+    text-shadow:0 0 60px rgba(201,169,110,0.25), 0 0 120px rgba(201,169,110,0.1);
+  }
+  .num-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:rgba(246,244,240,0.4);
+  }
+
+  /* ═══════════════════════════════════════
+     ROADMAP (90-day)
+     ═══════════════════════════════════════ */
+  .roadmap { margin:56px 0; position:relative; }
+  .roadmap-line {
+    position:absolute; left:200px; top:48px; width:2px;
+    height:0; background:var(--gold);
+    transition:height 0.05s linear; z-index:1;
+    box-shadow:0 0 6px rgba(201,169,110,0.3);
+  }
+  .roadmap-line::after {
+    content:''; position:absolute; bottom:-4px; left:-3px;
+    width:8px; height:8px; border-radius:50%;
+    background:var(--gold); box-shadow:0 0 12px rgba(201,169,110,0.5);
+  }
+  .rm {
+    display:grid; grid-template-columns:200px 1fr; gap:0;
+    border-bottom:1px solid rgba(26,26,24,0.06); min-height:0;
+  }
+  .rm:last-child { border:none; }
+  .rm-left {
+    padding:40px 32px 40px 0; border-right:2px solid var(--gold-dim);
+    position:relative;
+  }
+  .rm-left::after {
+    content:''; position:absolute; right:-5px; top:48px;
+    width:8px; height:8px; border-radius:50%; background:var(--gold);
+  }
+  .rm-period {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:4px;
+  }
+  .rm-label {
+    font-family:'Cormorant Garamond',serif; font-size:1.3rem;
+    font-weight:400; font-style:italic; color:var(--ink); line-height:1.3;
+  }
+  .rm-right { padding:40px 0 40px 40px; }
+  .rm-right ul { list-style:none; }
+  .rm-right li {
+    font-size:0.85rem; padding:6px 0 6px 24px; position:relative; color:var(--stone);
+  }
+  .rm-right li::before {
+    content:''; position:absolute; left:0; top:14px;
+    width:8px; height:1px; background:var(--gold);
+  }
+
+  /* ═══════════════════════════════════════
+     MONTHLY RHYTHM (grid)
+     ═══════════════════════════════════════ */
+  .rhythm-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    margin:56px 0; background:var(--gold-dim);
+  }
+  .rhythm-card {
+    background:var(--white); padding:36px 32px;
+    transition:background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .rhythm-card:hover { background:var(--light); box-shadow:0 4px 24px rgba(0,0,0,0.04); }
+  .rhythm-freq {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.5rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;
+  }
+  .rhythm-card h4 {
+    font-family:'DM Sans',sans-serif; font-weight:500; font-size:0.95rem;
+    margin-bottom:12px;
+  }
+  .rhythm-card ul { list-style:none; }
+  .rhythm-card li {
+    font-size:0.8rem; padding:5px 0 5px 20px; position:relative; color:var(--stone);
+  }
+  .rhythm-card li::before {
+    content:''; position:absolute; left:0; top:13px;
+    width:6px; height:1px; background:var(--gold);
+  }
+
+  /* ═══════════════════════════════════════
+     STEPS (next actions)
+     ═══════════════════════════════════════ */
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .step { background:var(--white); padding:40px 32px; transition:background 0.3s ease, box-shadow 0.3s ease; }
+  .step:hover { background:var(--light); box-shadow:0 4px 24px rgba(0,0,0,0.04); }
+  .step-num {
+    font-family:'Cormorant Garamond',serif; font-size:3rem;
+    font-weight:400; color:var(--gold); line-height:1; margin-bottom:16px; display:block;
+    text-shadow:0 0 40px rgba(201,169,110,0.15);
+  }
+  .step h4 { font-family:'DM Sans',sans-serif; font-weight:500; font-size:0.95rem; margin-bottom:10px; }
+  .step p { font-size:0.82rem; color:var(--stone); margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     PHOTO BREAK
+     ═══════════════════════════════════════ */
+  .photo-break {
+    width:100%; height:45vh; min-height:320px; max-height:480px;
+    position:relative; overflow:hidden;
+    clip-path:inset(0 0 0 0); transition:clip-path 1.2s cubic-bezier(0.16,1,0.3,1);
+  }
+  .photo-break.revealed { clip-path:inset(0 0 0 0); }
+  .photo-break img {
+    width:100%; height:120%; object-fit:cover; display:block;
+    position:absolute; top:-10%; left:0;
+    filter:brightness(0.85); transition:filter 0.8s cubic-bezier(0.16,1,0.3,1);
+    will-change:transform;
+  }
+  .photo-break:hover img { filter:brightness(0.95); }
+  .photo-break::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:80px;
+    background:linear-gradient(rgba(26,26,24,0.15), transparent); z-index:1; pointer-events:none;
+  }
+  .photo-break::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:120px;
+    background:linear-gradient(transparent, rgba(26,26,24,0.6)); z-index:1; pointer-events:none;
+  }
+  .photo-break-caption {
+    position:absolute; bottom:0; left:0; right:0; z-index:2; padding:24px 60px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.3em; text-transform:uppercase; color:rgba(246,244,240,0.5);
+  }
+  .photo-break.in-view img { animation:kenBurns 12s ease-in-out infinite alternate; }
+  @keyframes kenBurns {
+    0% { transform:scale(1) translateY(0); }
+    100% { transform:scale(1.06) translateY(-8px); }
+  }
+
+  /* ═══════════════════════════════════════
+     CONTENT PILLAR CARDS
+     ═══════════════════════════════════════ */
+  .pillars { display:grid; grid-template-columns:1fr 1fr; gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .pillar {
+    background:var(--white); padding:40px 36px;
+    transition:all 0.3s cubic-bezier(0.16,1,0.3,1); border-left:3px solid transparent;
+  }
+  .pillar:hover { border-left-color:var(--gold); background:var(--light); }
+  .pillar h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.7rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;
+  }
+  .pillar-type {
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--stone);
+    margin-bottom:16px;
+  }
+  .pillar p { font-size:0.85rem; color:var(--stone); margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     COMPETITOR TABLE
+     ═══════════════════════════════════════ */
+  .comp-table {
+    width:100%; border-collapse:collapse; margin:56px 0;
+  }
+  .comp-table th {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    padding:16px 20px; text-align:left; border-bottom:2px solid var(--gold-dim);
+  }
+  .comp-table td {
+    font-size:0.85rem; padding:14px 20px; color:var(--stone);
+    border-bottom:1px solid rgba(26,26,24,0.06);
+  }
+  .comp-table tr:last-child td { border:none; }
+  .comp-table .highlight td {
+    color:var(--ink); font-weight:400; background:var(--gold-glow);
+  }
+  .comp-dot {
+    display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:8px;
+  }
+  .comp-dot.good { background:var(--green); }
+  .comp-dot.ok { background:var(--gold); }
+  .comp-dot.poor { background:var(--red); }
+
+  /* ═══════════════════════════════════════
+     CASE STUDY
+     ═══════════════════════════════════════ */
+  .case-study-header {
+    position:relative; overflow:hidden; min-height:360px;
+    display:flex; align-items:flex-end; margin-bottom:56px;
+  }
+  .case-study-header img {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    object-fit:cover; filter:brightness(0.7);
+  }
+  .case-study-header-content {
+    position:relative; z-index:2; padding:40px 48px; width:100%;
+    background:linear-gradient(transparent, rgba(26,26,24,0.85));
+  }
+  .case-study-header-content h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+    letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;
+  }
+  .case-study-header-content h3 {
+    font-family:'Cormorant Garamond',serif; font-weight:400; font-size:2rem;
+    color:var(--paper); margin:0; letter-spacing:-0.01em; text-transform:none;
+  }
+  .case-study-header-content h3 em { font-style:italic; font-weight:500; color:var(--gold); }
+  .case-study-stats {
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--gold-dim); margin:40px 0;
+  }
+  .case-study-stat {
+    background:var(--ink); text-align:center; padding:32px 16px;
+  }
+  .case-study-stat .num-val {
+    font-family:'Cormorant Garamond',serif; font-size:2.4rem;
+    font-weight:500; color:var(--gold); display:block; line-height:1; margin-bottom:8px;
+  }
+  .case-study-stat .num-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:rgba(246,244,240,0.4);
+  }
+  .case-study-gallery {
+    display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:3px;
+    margin:40px 0;
+  }
+  .case-study-gallery img {
+    width:100%; height:180px; object-fit:cover; display:block;
+    filter:brightness(0.92); transition:filter 0.4s ease;
+  }
+  .case-study-gallery img:hover { filter:brightness(1.05); }
+  .case-study-link {
+    display:inline-flex; align-items:center; gap:10px;
+    margin-top:24px; padding:12px 28px;
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--gold-border);
+    text-decoration:none; transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .case-study-link:hover { border-color:var(--gold); background:var(--gold-dim); }
+
+  /* ═══════════════════════════════════════
+     BROWSER MOCKUP (Website Slider)
+     ═══════════════════════════════════════ */
+  .browser-mockup {
+    max-width:940px; margin:48px auto; border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(26,26,24,0.18), 0 10px 30px rgba(26,26,24,0.1);
+    animation:browserGlow 4s ease-in-out infinite alternate;
+  }
+  @keyframes browserGlow {
+    0%   { box-shadow:0 30px 80px rgba(26,26,24,0.18), 0 10px 30px rgba(26,26,24,0.1); }
+    100% { box-shadow:0 30px 80px rgba(26,26,24,0.18), 0 10px 30px rgba(26,26,24,0.1), 0 0 60px rgba(201,169,110,0.06); }
+  }
+  .browser-bar {
+    background:#2a2a28; padding:14px 18px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .browser-dot {
+    width:11px; height:11px; border-radius:50%;
+  }
+  .browser-dot:nth-child(1) { background:#ff5f57; }
+  .browser-dot:nth-child(2) { background:#ffbd2e; }
+  .browser-dot:nth-child(3) { background:#28c840; }
+  .browser-url {
+    flex:1; background:#1a1a18; border-radius:6px;
+    padding:7px 14px; margin-left:10px;
+    font-size:12px; color:#8a8579;
+    font-family:'DM Sans',-apple-system,sans-serif;
+    letter-spacing:0.02em;
+  }
+  .browser-viewport {
+    height:520px; overflow:hidden; position:relative;
+    background:#1a1a18;
+  }
+  .browser-viewport img {
+    width:100%; display:block;
+    animation:webScroll 20s cubic-bezier(0.45,0,0.55,1) infinite;
+  }
+  @keyframes webScroll {
+    0%,20%   { transform:translateY(0); }
+    45%,55%  { transform:translateY(-1500px); }
+    80%,100% { transform:translateY(0); }
+  }
+
+  /* ═══════════════════════════════════════
+     CTA + FOOTER — Unified end block
+     ═══════════════════════════════════════ */
+  .cta-banner {
+    background:var(--ink); color:var(--paper); padding:200px 60px 160px;
+    text-align:center; position:relative; overflow:hidden;
+  }
+  .cta-banner .section-inner { max-width:680px; margin:0 auto; position:relative; z-index:2; }
+  .cta-banner-image {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+  }
+  .cta-banner-image img {
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .cta-banner-image::after {
+    content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+    background:linear-gradient(
+      to bottom,
+      rgba(26,26,24,0.6) 0%,
+      rgba(26,26,24,0.45) 30%,
+      rgba(26,26,24,0.5) 60%,
+      rgba(26,26,24,0.85) 100%
+    );
+  }
+  .cta-banner-bg { display:none; }
+  .cta-banner .eyebrow { display:none; }
+  .cta-banner h2 {
+    text-align:center; color:var(--paper);
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:clamp(1.8rem,3.5vw,2.8rem); line-height:1.2;
+    margin-bottom:24px;
+  }
+  .cta-banner h2 em { font-style:italic; color:var(--gold); }
+  .cta-banner p {
+    color:rgba(246,244,240,0.6); text-align:center;
+    max-width:520px; margin:0 auto 12px;
+    font-size:0.9rem; line-height:1.8;
+  }
+  .cta-banner p:last-of-type { margin-bottom:48px; }
+  .cta-btn {
+    display:inline-flex; align-items:center; gap:12px;
+    padding:18px 48px;
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.65rem;
+    letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--ink); background:var(--gold);
+    text-decoration:none; border:none; cursor:pointer;
+    transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .cta-btn:hover {
+    background:var(--paper); color:var(--ink);
+    transform:translateY(-2px);
+  }
+  .cta-btn-arrow { font-size:0.9rem; transition:transform 0.3s ease; }
+  .cta-btn:hover .cta-btn-arrow { transform:translateX(4px); }
+  .cta-secondary {
+    margin-top:16px; font-size:0.8rem; color:rgba(246,244,240,0.4);
+  }
+  .cta-secondary a {
+    color:var(--gold); text-decoration:underline;
+    text-underline-offset:3px; text-decoration-color:rgba(201,169,110,0.4);
+  }
+  .cta-details { display:none; }
+
+  /* ═══════════════════════════════════════
+     INLINE GALLERY (sprinkled between sections)
+     ═══════════════════════════════════════ */
+  .inline-gallery {
+    display:grid; grid-template-columns:1fr 1fr; gap:3px;
+    background:var(--ink);
+  }
+  .inline-gallery.three-col { grid-template-columns:1fr 1fr 1fr; }
+  .inline-gallery.single-hero {
+    display:block; position:relative; overflow:hidden;
+    height:55vh; min-height:360px; max-height:560px;
+  }
+  .inline-gallery.single-hero img {
+    width:100%; height:100%; object-fit:cover; display:block;
+    filter:brightness(0.82);
+    transition:filter 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .inline-gallery.single-hero:hover img { filter:brightness(0.9); }
+  .inline-gallery.single-hero .inline-gallery-caption {
+    position:absolute; bottom:0; left:0; right:0; z-index:2;
+    padding:28px 60px;
+    background:linear-gradient(transparent, rgba(26,26,24,0.7));
+  }
+  .inline-gallery img {
+    width:100%; height:260px; object-fit:cover; display:block;
+    filter:brightness(0.88); transition:filter 0.5s ease, transform 0.5s ease;
+  }
+  .inline-gallery img:hover { filter:brightness(1.02); transform:scale(1.01); }
+  .inline-gallery-caption {
+    grid-column:1/-1; background:var(--ink); padding:16px 60px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.3em; text-transform:uppercase;
+    color:rgba(246,244,240,0.25); text-align:center;
+  }
+
+  @media (max-width:768px) {
+    .case-study-stats { grid-template-columns:1fr 1fr; }
+    .case-study-gallery { grid-template-columns:1fr 1fr; }
+    .case-study-gallery img { height:140px; }
+    .browser-viewport { height:300px; }
+    .browser-viewport img { animation-name:webScrollMobile; }
+    @keyframes webScrollMobile {
+      0%,20%   { transform:translateY(0); }
+      45%,55%  { transform:translateY(-1000px); }
+      80%,100% { transform:translateY(0); }
+    }
+    .cta-banner { padding:100px 32px 80px; }
+    .footer-locations { padding:32px 32px; gap:20px; }
+    .footer-bar { flex-direction:column; gap:12px; padding:24px 32px; align-items:center; }
+    .footer-note { padding:16px 32px; }
+    .inline-gallery { grid-template-columns:1fr; }
+    .inline-gallery.three-col { grid-template-columns:1fr; }
+    .inline-gallery img { height:200px; }
+    .inline-gallery.single-hero { height:40vh; min-height:240px; }
+    .inline-gallery.single-hero .inline-gallery-caption { padding:20px 32px; }
+  }
+
+  /* ═══════════════════════════════════════
+     FOOTER — Locations bar + contact row
+     ═══════════════════════════════════════ */
+  .footer {
+    background:var(--ink); padding:0; text-align:center; position:relative;
+  }
+  .footer-locations {
+    display:flex; justify-content:center; gap:32px; flex-wrap:wrap;
+    padding:40px 60px;
+    border-top:1px solid rgba(246,244,240,0.06);
+  }
+  .footer-locations span {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase;
+    color:rgba(246,244,240,0.3);
+  }
+  .footer-bar {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:24px 60px;
+    border-top:1px solid rgba(246,244,240,0.06);
+  }
+  .footer-bar-item {
+    font-family:'DM Sans',sans-serif; font-size:0.7rem;
+    color:rgba(246,244,240,0.3); letter-spacing:0.02em;
+  }
+  .footer-bar-item strong {
+    font-family:'Josefin Sans',sans-serif; font-weight:400;
+    font-size:0.5rem; letter-spacing:0.2em; text-transform:uppercase;
+    color:rgba(246,244,240,0.15); margin-right:8px;
+  }
+  .footer-bar-item a {
+    color:rgba(246,244,240,0.3); text-decoration:none;
+    transition:color 0.3s ease;
+  }
+  .footer-bar-item a:hover { color:var(--gold); }
+  .footer-note {
+    padding:20px 60px;
+    font-size:0.5rem; letter-spacing:0.2em;
+    text-transform:uppercase; font-family:'Josefin Sans',sans-serif;
+    color:rgba(246,244,240,0.08); text-align:center;
+    border-top:1px solid rgba(246,244,240,0.04);
+  }
+
+  /* ═══════════════════════════════════════
+     SCROLL PROGRESS BAR
+     ═══════════════════════════════════════ */
+  .scroll-progress {
+    position:fixed; top:0; left:0; height:2px; width:0%;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.4));
+    z-index:9999; transition:width 0.05s linear;
+    box-shadow:0 0 8px rgba(201,169,110,0.3);
+  }
+
+  /* ═══════════════════════════════════════
+     SCROLL REVEAL
+     ═══════════════════════════════════════ */
+  .reveal {
+    opacity:0; transform:translateY(32px);
+    transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal-delay-1 { transition-delay:0.1s; }
+  .reveal-delay-2 { transition-delay:0.2s; }
+  .reveal-delay-3 { transition-delay:0.3s; }
+  .reveal-delay-4 { transition-delay:0.4s; }
+  .reveal-delay-5 { transition-delay:0.5s; }
+
+  /* Cover cascade */
+  .cover .cover-eyebrow, .cover h1, .cover .cover-sub, .cover .cover-meta-bar {
+    opacity:0; transform:translateY(24px);
+    animation:coverFade 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover .cover-eyebrow { animation-delay:0.3s; }
+  .cover h1 { animation-delay:0.6s; }
+  .cover .cover-sub { animation-delay:0.9s; }
+  .cover .cover-meta-bar { animation-delay:1.2s; }
+  @keyframes coverFade { to { opacity:1; transform:translateY(0); } }
+
+  /* ═══════════════════════════════════════
+     FILM GRAIN
+     ═══════════════════════════════════════ */
+  .grain-section::after {
+    content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size:128px 128px; pointer-events:none; z-index:0; opacity:0.5;
+  }
+  .grain-section { position:relative; }
+  .grain-section > * { position:relative; z-index:1; }
+
+  /* ═══════════════════════════════════════
+     SECTION NAV DOTS
+     ═══════════════════════════════════════ */
+  .section-nav {
+    position:fixed; right:24px; top:50%; transform:translateY(-50%);
+    z-index:9998; display:flex; flex-direction:column; gap:12px;
+    opacity:0; transition:opacity 0.4s ease;
+  }
+  .section-nav.visible { opacity:1; }
+  .section-nav-dot {
+    width:8px; height:8px; border-radius:50%;
+    background:transparent; border:1px solid var(--stone);
+    cursor:pointer; transition:all 0.3s ease; position:relative;
+  }
+  .section-nav-dot:hover { border-color:var(--gold); transform:scale(1.3); }
+  .section-nav-dot.active {
+    background:var(--gold); border-color:var(--gold);
+    box-shadow:0 0 8px rgba(201,169,110,0.4);
+  }
+  .section-nav-dot::before {
+    content:attr(data-label);
+    position:absolute; right:20px; top:50%; transform:translateY(-50%);
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--gold);
+    white-space:nowrap; opacity:0; pointer-events:none; transition:opacity 0.3s ease, right 0.3s ease;
+  }
+  .section-nav-dot:hover::before { opacity:1; right:24px; }
+
+  /* ═══════════════════════════════════════
+     SCROLL INDICATOR
+     ═══════════════════════════════════════ */
+  .scroll-indicator {
+    position:absolute; bottom:40px; left:50%;
+    transform:translateX(-50%); display:flex; flex-direction:column;
+    align-items:center; gap:8px;
+    opacity:0; animation:coverFade 0.9s 1.8s cubic-bezier(0.16,1,0.3,1) forwards;
+    transition:opacity 0.4s ease;
+  }
+  .scroll-indicator.hidden { opacity:0 !important; }
+  .scroll-indicator-text {
+    font-family:'Josefin Sans',sans-serif; font-size:0.45rem;
+    letter-spacing:0.3em; text-transform:uppercase; color:rgba(246,244,240,0.3);
+  }
+  .scroll-indicator-line {
+    width:1px; height:32px; position:relative; overflow:hidden;
+    background:rgba(246,244,240,0.1);
+  }
+  .scroll-indicator-line::after {
+    content:''; position:absolute; top:-100%; left:0;
+    width:100%; height:100%; background:var(--gold);
+    animation:scrollPulse 2s cubic-bezier(0.16,1,0.3,1) infinite;
+  }
+  @keyframes scrollPulse { 0% { top:-100%; } 50% { top:100%; } 100% { top:100%; } }
+
+  /* ═══════════════════════════════════════
+     LOADING SCREEN
+     ═══════════════════════════════════════ */
+  .loader {
+    position:fixed; top:0; left:0; right:0; bottom:0;
+    background:var(--ink); z-index:99999;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+  }
+  .loader.done { opacity:0; visibility:hidden; pointer-events:none; }
+  .loader-brand {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.6em; text-transform:uppercase; color:var(--paper);
+    opacity:0; animation:loaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-sub {
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.9rem;
+    color:var(--stone); margin-top:8px;
+    opacity:0; animation:loaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line {
+    width:80px; height:1px; background:var(--gold-dim); margin-top:24px;
+    position:relative; overflow:hidden; border-radius:1px;
+    opacity:0; animation:loaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line::after {
+    content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation:loaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+  }
+  @keyframes loaderIn { to { opacity:1; } }
+  @keyframes loaderFill { to { left:100%; } }
+
+  /* ═══════════════════════════════════════
+     PRINT
+     ═══════════════════════════════════════ */
+  @media print {
+    .cover { min-height:100vh; }
+    .section { padding:60px; }
+    .scroll-progress, .section-nav, .loader, .cover-cta, .scroll-indicator { display:none; }
+    .photo-break { height:200px; page-break-inside:avoid; clip-path:none !important; }
+    h2 em::after { width:100% !important; }
+    .reveal { opacity:1 !important; transform:none !important; }
+    .eyebrow::before { width:24px !important; }
+    .grain-section::after { display:none; }
+  }
+
+  /* ═══════════════════════════════════════
+     MOBILE
+     ═══════════════════════════════════════ */
+  @media (max-width:768px) {
+    .cover-content, .cover-top { padding-left:32px; padding-right:32px; }
+    .section { padding:80px 32px; }
+    .scorecard, .channels, .pillars, .rhythm-grid, .steps, .numbers, .stats { grid-template-columns:1fr; }
+    .rm { grid-template-columns:1fr; }
+    .rm-left { border-right:none; border-bottom:2px solid var(--gold-dim); padding:24px 0; }
+    .rm-left::after { display:none; }
+    .rm-right { padding:24px 0; }
+    .roadmap-line { display:none; }
+    .cover-meta-bar { flex-direction:column; gap:16px; }
+    .footer { padding:60px 32px; }
+    .section-nav { display:none; }
+    .photo-break { height:200px; min-height:200px; }
+    .photo-break-caption { padding:12px 32px; }
+    .scroll-indicator { display:none; }
+    .comp-table { display:block; overflow-x:auto; }
+    .channel { border-left:none !important; }
+    .channel:hover { border-left:none !important; }
+    .pillar { border-left:none !important; }
+    .pillar:hover { border-left:none !important; }
+    .insight { padding:32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div class="loader" id="loader">
+  <div class="loader-brand">Matt Anthony Photography</div>
+  <div class="loader-sub">Marketing Playbook</div>
+  <div class="loader-line"></div>
+</div>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav class="section-nav" id="sectionNav"></nav>
+
+<!-- ═══════ COVER ═══════ -->
+<div class="cover">
+  <div class="cover-image" id="coverImg" style="background-image:url('{{ cover.image_url }}');background-position:{{ cover.image_position | default('center 25%') }};"></div>
+  <div class="cover-top">
+    <div class="cover-logo">Matt Anthony Photography</div>
+    <div class="cover-date">{{ plan.date }}</div>
+  </div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">{{ cover.eyebrow }}</div>
+    <h1>{{ cover.headline_html | safe }}</h1>
+    <p class="cover-sub">{{ cover.subtitle }}</p>
+    <div class="cover-meta-bar">
+      <div class="cover-meta-item"><strong>Prepared for</strong>{{ client.owner }}{% if client.owner_title %}, {{ client.owner_title }}{% endif %}</div>
+      <div class="cover-meta-item"><strong>Company</strong>{{ client.company }}</div>
+      <div class="cover-meta-item"><strong>Date</strong>{{ plan.date }}</div>
+    </div>
+    {% if cover.cta_text %}
+    <a class="cover-cta" href="{{ cover.cta_target | default('#snapshot') }}"><span>{{ cover.cta_text }}</span><span class="cover-cta-arrow">&darr;</span></a>
+    {% endif %}
+  </div>
+  <div class="scroll-indicator" id="scrollIndicator">
+    <div class="scroll-indicator-text">Scroll</div>
+    <div class="scroll-indicator-line"></div>
+  </div>
+</div>
+
+
+{# ═══════ SECTION LOOP WITH PHOTO BREAKS ═══════ #}
+{% for section_name in sections %}
+
+{# ─── SNAPSHOT (Where You Stand) ─── #}
+{% if section_name == "snapshot" and snapshot is defined %}
+<div class="section cream" id="snapshot" data-nav="{{ snapshot.nav_label | default('Snapshot') }}">
+  <div class="eyebrow">{{ snapshot.eyebrow }}</div>
+  <h2>{{ snapshot.headline_html | safe }}</h2>
+  <p class="lead">{{ snapshot.lead }}</p>
+  {% for p in snapshot.paragraphs %}
+  <p>{{ p | safe }}</p>
+  {% endfor %}
+  {% if snapshot.scores %}
+  <div class="scorecard">
+    {% for s in snapshot.scores %}
+    <div class="score-item">
+      <div class="score-ring" data-score="{{ s.value }}">
+        <svg viewBox="0 0 80 80"><circle class="ring-bg" /><circle class="ring-fill {{ s.color | default('ok') }}" /></svg>
+        <span class="score-grade">{{ s.grade }}</span>
+      </div>
+      <span class="score-label">{{ s.label }}</span>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if snapshot.findings %}
+  <div class="channels">
+    {% for f in snapshot.findings %}
+    <div class="channel">
+      <div class="channel-status {{ f.status }}">{{ f.status_label }}</div>
+      <h4>{{ f.area }}</h4>
+      <ul>
+        {% for point in f.points %}
+        <li>{{ point | safe }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if snapshot.insight %}
+  <div class="insight">
+    <h4>{{ snapshot.insight.title }}</h4>
+    {{ snapshot.insight.content_html | safe }}
+  </div>
+  {% endif %}
+</div>
+
+{# ─── OPPORTUNITY (What Top Builders Do) ─── #}
+{% elif section_name == "opportunity" and opportunity is defined %}
+<div class="section" data-nav="{{ opportunity.nav_label | default('Opportunity') }}">
+  <div class="eyebrow">{{ opportunity.eyebrow }}</div>
+  <h2>{{ opportunity.headline_html | safe }}</h2>
+  <p class="lead">{{ opportunity.lead }}</p>
+  {% for p in opportunity.paragraphs %}
+  <p>{{ p | safe }}</p>
+  {% endfor %}
+  {% if opportunity.competitors %}
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>Builder</th>
+        <th>Website</th>
+        <th>Social</th>
+        <th>GBP</th>
+        <th>Photography</th>
+        <th>Awards</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in opportunity.competitors %}
+      <tr{% if c.is_you %} class="highlight"{% endif %}>
+        <td><strong>{{ c.name }}</strong></td>
+        <td><span class="comp-dot {{ c.website }}"></span>{{ c.website_note }}</td>
+        <td><span class="comp-dot {{ c.social }}"></span>{{ c.social_note }}</td>
+        <td><span class="comp-dot {{ c.gbp }}"></span>{{ c.gbp_note }}</td>
+        <td><span class="comp-dot {{ c.photography }}"></span>{{ c.photography_note }}</td>
+        <td><span class="comp-dot {{ c.awards }}"></span>{{ c.awards_note }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+  {% if opportunity.insight %}
+  <div class="insight">
+    <h4>{{ opportunity.insight.title }}</h4>
+    {{ opportunity.insight.content_html | safe }}
+  </div>
+  {% endif %}
+</div>
+
+{# ─── WEBSITE & SEO ─── #}
+{% elif section_name == "website" and website is defined %}
+<div class="section cream" data-nav="{{ website.nav_label | default('Website') }}">
+  <div class="eyebrow">{{ website.eyebrow }}</div>
+  <h2>{{ website.headline_html | safe }}</h2>
+  <p class="lead">{{ website.lead }}</p>
+  {% for p in website.paragraphs %}
+  <p>{{ p | safe }}</p>
+  {% endfor %}
+  {% if website.checklist %}
+  <h3>Quick Wins</h3>
+  <div class="checklist">
+    {% for item in website.checklist %}
+    <div class="checklist-item{{ ' checked' if item.done else '' }}">
+      <div class="checklist-icon"></div>
+      <div class="checklist-text">{{ item.text }}<span>{{ item.detail }}</span></div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if website.insight %}
+  <div class="insight">
+    <h4>{{ website.insight.title }}</h4>
+    {{ website.insight.content_html | safe }}
+  </div>
+  {% endif %}
+</div>
+
+{# ─── GOOGLE BUSINESS PROFILE ─── #}
+{% elif section_name == "gbp" and gbp is defined %}
+<div class="section" data-nav="{{ gbp.nav_label | default('Google') }}">
+  <div class="eyebrow">{{ gbp.eyebrow }}</div>
+  <h2>{{ gbp.headline_html | safe }}</h2>
+  <p class="lead">{{ gbp.lead }}</p>
+  {% for p in gbp.paragraphs %}
+  <p>{{ p | safe }}</p>
+  {% endfor %}
+  {% if gbp.checklist %}
+  <h3>GBP Optimization Checklist</h3>
+  <div class="checklist">
+    {% for item in gbp.checklist %}
+    <div class="checklist-item{{ ' checked' if item.done else '' }}">
+      <div class="checklist-icon"></div>
+      <div class="checklist-text">{{ item.text }}<span>{{ item.detail }}</span></div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if gbp.stats %}
+  <div class="stats">
+    {% for s in gbp.stats %}
+    <div class="stat"><span class="stat-val">{{ s.value }}</span><span class="stat-lbl">{{ s.label }}</span></div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if gbp.insight %}
+  <div class="insight">
+    <h4>{{ gbp.insight.title }}</h4>
+    {{ gbp.insight.content_html | safe }}
+  </div>
+  {% endif %}
+</div>
+
+{# ─── SOCIAL MEDIA ─── #}
+{% elif section_name == "social" and social is defined %}
+<div class="section light" data-nav="{{ social.nav_label | default('Social') }}">
+  <div class="eyebrow">{{ social.eyebrow }}</div>
+  <h2>{{ social.headline_html | safe }}</h2>
+  <p class="lead">{{ social.lead }}</p>
+  {% for p in social.paragraphs %}
+  <p>{{ p | safe }}</p>
+  {% endfor %}
+  {% if social.pillars %}
+  <h3>Content Pillars</h3>
+  <div class="pillars">
+    {% for pillar in social.pillars %}
+    <div class="pillar">
+      <h4>{{ pillar.title }}</h4>
+      <div class="pillar-type">{{ pillar.frequency }}</div>
+      <p>{{ pillar.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if social.insight %}
+  <div class="insight">
+    <h4>{{ social.insight.title }}</h4>
+    {{ social.insight.content_html | safe }}
+  </div>
+  {% endif %}
+</div>
+
+{# ─── CONTENT ENGINE ─── #}
+{% elif section_name == "content_engine" and content_engine is defined %}
+<div class="section" data-nav="{{ content_engine.nav_label | default('Content') }}">
+  <div class="eyebrow">{{ content_engine.eyebrow }}</div>
+  <h2>{{ content_engine.headline_html | safe }}</h2>
+  <p class="lead">{{ content_engine.lead }}</p>
+  {% for p in content_engine.paragraphs %}
+  <p>{{ p | safe }}</p>
+  {% endfor %}
+  {% if content_engine.channels %}
+  <div class="channels">
+    {% for ch in content_engine.channels %}
+    <div class="channel">
+      <h4>{{ ch.title }}</h4>
+      <ul>
+        {% for point in ch.entries %}
+        <li>{{ point | safe }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if content_engine.numbers %}
+  <div class="numbers grain-section">
+    {% for n in content_engine.numbers %}
+    <div class="num"><span class="num-val">{{ n.value }}</span><span class="num-lbl">{{ n.label }}</span></div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if content_engine.insight %}
+  <div class="insight">
+    <h4>{{ content_engine.insight.title }}</h4>
+    {{ content_engine.insight.content_html | safe }}
+  </div>
+  {% endif %}
+</div>
+
+{# ─── REVIEWS & REPUTATION ─── #}
+{% elif section_name == "reviews" and reviews is defined %}
+<div class="section cream" data-nav="{{ reviews.nav_label | default('Reviews') }}">
+  <div class="eyebrow">{{ reviews.eyebrow }}</div>
+  <h2>{{ reviews.headline_html | safe }}</h2>
+  <p class="lead">{{ reviews.lead }}</p>
+  {% for p in reviews.paragraphs %}
+  <p>{{ p | safe }}</p>
+  {% endfor %}
+  {% if reviews.stats %}
+  <div class="stats">
+    {% for s in reviews.stats %}
+    <div class="stat"><span class="stat-val">{{ s.value }}</span><span class="stat-lbl">{{ s.label }}</span></div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if reviews.checklist %}
+  <h3>Review Generation System</h3>
+  <div class="checklist">
+    {% for item in reviews.checklist %}
+    <div class="checklist-item{{ ' checked' if item.done else '' }}">
+      <div class="checklist-icon"></div>
+      <div class="checklist-text">{{ item.text }}<span>{{ item.detail }}</span></div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if reviews.insight %}
+  <div class="insight">
+    <h4>{{ reviews.insight.title }}</h4>
+    {{ reviews.insight.content_html | safe }}
+  </div>
+  {% endif %}
+</div>
+
+{# ─── REFERRAL SYSTEM ─── #}
+{% elif section_name == "referrals" and referrals is defined %}
+<div class="section" data-nav="{{ referrals.nav_label | default('Referrals') }}">
+  <div class="eyebrow">{{ referrals.eyebrow }}</div>
+  <h2>{{ referrals.headline_html | safe }}</h2>
+  <p class="lead">{{ referrals.lead }}</p>
+  {% for p in referrals.paragraphs %}
+  <p>{{ p | safe }}</p>
+  {% endfor %}
+  {% if referrals.steps %}
+  <div class="steps">
+    {% for step in referrals.steps %}
+    <div class="step">
+      <span class="step-num">{{ step.number }}</span>
+      <h4>{{ step.title }}</h4>
+      <p>{{ step.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if referrals.insight %}
+  <div class="insight">
+    <h4>{{ referrals.insight.title }}</h4>
+    {{ referrals.insight.content_html | safe }}
+  </div>
+  {% endif %}
+</div>
+
+{# ─── AWARDS & PUBLICATIONS ─── #}
+{% elif section_name == "awards" and awards is defined %}
+<div class="section light" data-nav="{{ awards.nav_label | default('Awards') }}">
+  <div class="eyebrow">{{ awards.eyebrow }}</div>
+  <h2>{{ awards.headline_html | safe }}</h2>
+  <p class="lead">{{ awards.lead }}</p>
+  {% for p in awards.paragraphs %}
+  <p>{{ p | safe }}</p>
+  {% endfor %}
+  {% if awards.channels %}
+  <div class="channels">
+    {% for ch in awards.channels %}
+    <div class="channel">
+      <h4>{{ ch.title }}</h4>
+      <ul>
+        {% for item in ch.entries %}
+        <li>{{ item | safe }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if awards.insight %}
+  <div class="insight">
+    <h4>{{ awards.insight.title }}</h4>
+    {{ awards.insight.content_html | safe }}
+  </div>
+  {% endif %}
+</div>
+
+{# ─── NUMBERS BAR ─── #}
+{% elif section_name == "numbers" and numbers is defined %}
+<div class="numbers grain-section">
+  {% for n in numbers.stats %}
+  <div class="num"><span class="num-val">{{ n.value }}</span><span class="num-lbl">{{ n.label }}</span></div>
+  {% endfor %}
+</div>
+
+{# ─── 90-DAY ROADMAP ─── #}
+{% elif section_name == "roadmap" and roadmap is defined %}
+<div class="section" data-nav="{{ roadmap.nav_label | default('Roadmap') }}">
+  <div class="eyebrow">{{ roadmap.eyebrow }}</div>
+  <h2>{{ roadmap.headline_html | safe }}</h2>
+  <p class="lead">{{ roadmap.lead }}</p>
+  {% for p in roadmap.paragraphs %}
+  <p>{{ p | safe }}</p>
+  {% endfor %}
+  <div class="roadmap">
+    <div class="roadmap-line" id="roadmapLine"></div>
+    {% for period in roadmap.periods %}
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-period">{{ period.timeframe }}</div>
+        <div class="rm-label">{{ period.label_html | safe }}</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          {% for item in period.entries %}
+          <li>{{ item | safe }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% if roadmap.stats %}
+  <div class="stats">
+    {% for s in roadmap.stats %}
+    <div class="stat"><span class="stat-val">{{ s.value }}</span><span class="stat-lbl">{{ s.label }}</span></div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+
+{# ─── MONTHLY RHYTHM ─── #}
+{% elif section_name == "rhythm" and rhythm is defined %}
+<div class="section cream" data-nav="{{ rhythm.nav_label | default('Monthly') }}">
+  <div class="eyebrow">{{ rhythm.eyebrow }}</div>
+  <h2>{{ rhythm.headline_html | safe }}</h2>
+  <p class="lead">{{ rhythm.lead }}</p>
+  {% for p in rhythm.paragraphs %}
+  <p>{{ p | safe }}</p>
+  {% endfor %}
+  {% if rhythm.cards %}
+  <div class="rhythm-grid">
+    {% for card in rhythm.cards %}
+    <div class="rhythm-card">
+      <div class="rhythm-freq">{{ card.frequency }}</div>
+      <h4>{{ card.title }}</h4>
+      <ul>
+        {% for item in card.entries %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if rhythm.insight %}
+  <div class="insight">
+    <h4>{{ rhythm.insight.title }}</h4>
+    {{ rhythm.insight.content_html | safe }}
+  </div>
+  {% endif %}
+</div>
+
+{# ─── CASE STUDY ─── #}
+{% elif section_name == "case_study" and case_study is defined %}
+<div class="section" data-nav="{{ case_study.nav_label | default('Proof') }}">
+  <div class="eyebrow">{{ case_study.eyebrow }}</div>
+  <h2>{{ case_study.headline_html | safe }}</h2>
+  <p class="lead">{{ case_study.lead }}</p>
+  {% if case_study.header_image %}
+  <div class="case-study-header">
+    <img src="{{ case_study.header_image.url }}" alt="{{ case_study.header_image.alt }}">
+    <div class="case-study-header-content">
+      <h4>{{ case_study.header_image.eyebrow }}</h4>
+      <h3>{{ case_study.header_image.title_html | safe }}</h3>
+    </div>
+  </div>
+  {% endif %}
+  {% for p in case_study.paragraphs %}
+  <p>{{ p | safe }}</p>
+  {% endfor %}
+  {% if case_study.stats %}
+  <div class="case-study-stats">
+    {% for s in case_study.stats %}
+    <div class="case-study-stat"><span class="num-val">{{ s.value }}</span><span class="num-lbl">{{ s.label }}</span></div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if case_study.browser %}
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <span class="browser-dot"></span>
+      <span class="browser-dot"></span>
+      <span class="browser-dot"></span>
+      <span class="browser-url">{{ case_study.browser.url_text | default('balmoralconstruction.com') }}</span>
+    </div>
+    <div class="browser-viewport">
+      <img src="{{ case_study.browser.screenshot }}" alt="{{ case_study.browser.alt | default('Website screenshot') }}" loading="lazy">
+    </div>
+  </div>
+  {% endif %}
+  {% if case_study.gallery %}
+  <div class="case-study-gallery">
+    {% for img in case_study.gallery %}
+    <img src="{{ img.url }}" alt="{{ img.alt }}" loading="lazy">
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if case_study.link %}
+  <a class="case-study-link" href="{{ case_study.link.url }}" target="_blank">{{ case_study.link.text }} <span>&rarr;</span></a>
+  {% endif %}
+  {% if case_study.insight %}
+  <div class="insight">
+    <h4>{{ case_study.insight.title }}</h4>
+    {{ case_study.insight.content_html | safe }}
+  </div>
+  {% endif %}
+</div>
+
+{# ─── INLINE GALLERIES ─── #}
+{% elif section_name == "gallery_1" and gallery_1 is defined %}
+<div class="inline-gallery{{ ' three-col' if gallery_1.columns == 3 else '' }}{{ ' single-hero' if gallery_1.images | length == 1 else '' }}">
+  {% for img in gallery_1.images %}
+  <img src="{{ img.url }}" alt="{{ img.alt }}" loading="lazy">
+  {% endfor %}
+  {% if gallery_1.caption %}
+  <div class="inline-gallery-caption">{{ gallery_1.caption | safe }}</div>
+  {% endif %}
+</div>
+
+{% elif section_name == "gallery_2" and gallery_2 is defined %}
+<div class="inline-gallery{{ ' three-col' if gallery_2.columns == 3 else '' }}{{ ' single-hero' if gallery_2.images | length == 1 else '' }}">
+  {% for img in gallery_2.images %}
+  <img src="{{ img.url }}" alt="{{ img.alt }}" loading="lazy">
+  {% endfor %}
+  {% if gallery_2.caption %}
+  <div class="inline-gallery-caption">{{ gallery_2.caption | safe }}</div>
+  {% endif %}
+</div>
+
+{% elif section_name == "gallery_3" and gallery_3 is defined %}
+<div class="inline-gallery{{ ' three-col' if gallery_3.columns == 3 else '' }}{{ ' single-hero' if gallery_3.images | length == 1 else '' }}">
+  {% for img in gallery_3.images %}
+  <img src="{{ img.url }}" alt="{{ img.alt }}" loading="lazy">
+  {% endfor %}
+  {% if gallery_3.caption %}
+  <div class="inline-gallery-caption">{{ gallery_3.caption | safe }}</div>
+  {% endif %}
+</div>
+
+{# ─── CTA BANNER ─── #}
+{% elif section_name == "cta" and cta is defined %}
+<div class="cta-banner" data-nav="{{ cta.nav_label | default('Work Together') }}">
+  {% if cta.bg_image %}
+  <div class="cta-banner-image">
+    <img src="{{ cta.bg_image }}" alt="Matt Anthony Photography" loading="lazy">
+  </div>
+  {% endif %}
+  <div class="section-inner">
+    <h2>{{ cta.headline_html | safe }}</h2>
+    {% for p in cta.paragraphs %}
+    <p>{{ p | safe }}</p>
+    {% endfor %}
+    {% if cta.button %}
+    <a class="cta-btn" href="{{ cta.button.url }}"><span>{{ cta.button.text }}</span></a>
+    {% endif %}
+  </div>
+</div>
+
+{# ─── CLOSING / NEXT STEPS ─── #}
+{% elif section_name == "closing" and closing is defined %}
+<div class="section" data-nav="{{ closing.nav_label | default('Next') }}">
+  <div class="eyebrow">{{ closing.eyebrow }}</div>
+  <h2>{{ closing.headline_html | safe }}</h2>
+  {% for p in closing.paragraphs %}
+  <p>{{ p | safe }}</p>
+  {% endfor %}
+  {% if closing.steps %}
+  <div class="steps">
+    {% for step in closing.steps %}
+    <div class="step">
+      <span class="step-num">{{ step.number }}</span>
+      <h4>{{ step.title }}</h4>
+      <p>{{ step.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+
+{% endif %}
+
+{# ─── PHOTO BREAK — every 3rd content section, never adjacent to galleries ─── #}
+{% set content_sections = ['snapshot','opportunity','website','gbp','social','content_engine','reviews','referrals','awards','roadmap','rhythm'] %}
+{% set gallery_sections = ['gallery_1','gallery_2','gallery_3','case_study','cta','closing','numbers'] %}
+{% if section_name in content_sections %}
+  {% set ns = namespace(count=0, next_is_gallery=false) %}
+  {% for s in sections[:loop.index] %}
+    {% if s in content_sections %}{% set ns.count = ns.count + 1 %}{% endif %}
+  {% endfor %}
+  {% if loop.index < sections | length %}
+    {% if sections[loop.index] in gallery_sections %}{% set ns.next_is_gallery = true %}{% endif %}
+  {% endif %}
+  {% if ns.count > 0 and ns.count % 3 == 0 and not ns.next_is_gallery and images is defined and images.breaks is defined %}
+    {% set bi = (ns.count // 3 - 1) % (images.breaks | length) %}
+    {% set brk = images.breaks[bi] %}
+<div class="photo-break">
+  <img src="{{ brk.url }}" alt="{{ brk.alt }}">
+  <div class="photo-break-caption">{{ brk.caption | safe }}</div>
+</div>
+  {% endif %}
+{% endif %}
+
+{% endfor %}
+
+
+<script>
+(function(){
+  'use strict';
+
+  /* ═══════ LOADING SCREEN ═══════ */
+  var loader = document.getElementById('loader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('done'); }, 1100);
+  });
+
+  /* ═══════ SCROLL PROGRESS ═══════ */
+  var progressBar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }
+
+  /* ═══════ COVER PARALLAX ═══════ */
+  var coverImg = document.querySelector('.cover-image');
+  function updateParallax(){
+    if(window.scrollY < window.innerHeight){
+      coverImg.style.transform = 'scale(1.08) translateY(' + (window.scrollY * 0.3) + 'px)';
+    }
+  }
+
+  /* ═══════ PHOTO BREAK PARALLAX + KEN BURNS ═══════ */
+  var photoBreakEls = document.querySelectorAll('.photo-break');
+  function updatePhotoParallax(){
+    photoBreakEls.forEach(function(pb){
+      var rect = pb.getBoundingClientRect();
+      var inView = rect.bottom > 0 && rect.top < window.innerHeight;
+      pb.classList.toggle('in-view', inView);
+    });
+  }
+
+  /* ═══════ SECTION NAV DOTS ═══════ */
+  var sectionNav = document.getElementById('sectionNav');
+  var navSections = document.querySelectorAll('[data-nav]');
+  var navDots = [];
+  navSections.forEach(function(sec){
+    var dot = document.createElement('div');
+    dot.className = 'section-nav-dot';
+    dot.setAttribute('data-label', sec.getAttribute('data-nav'));
+    dot.addEventListener('click', function(){ sec.scrollIntoView({ behavior:'smooth', block:'start' }); });
+    sectionNav.appendChild(dot);
+    navDots.push({ dot:dot, section:sec });
+  });
+
+  function updateNavDots(){
+    var scrollY = window.scrollY;
+    var winH = window.innerHeight;
+    sectionNav.classList.toggle('visible', scrollY > winH * 0.5);
+    var active = null;
+    navDots.forEach(function(item){
+      var rect = item.section.getBoundingClientRect();
+      if(rect.top < winH * 0.5 && rect.bottom > winH * 0.3) active = item;
+      item.dot.classList.remove('active');
+    });
+    if(active) active.dot.classList.add('active');
+  }
+
+  /* ═══════ SCROLL REVEAL ═══════ */
+  var revealTargets = [];
+  document.querySelectorAll('.section, .numbers').forEach(function(section){
+    section.querySelectorAll('.eyebrow, h2, .lead, .scorecard, .stats, .channels, .pillars, .insight, .roadmap, .checklist, .numbers, .steps, .rhythm-grid, .comp-table').forEach(function(el, i){
+      el.classList.add('reveal');
+      if(i > 0 && i < 6) el.classList.add('reveal-delay-' + i);
+      revealTargets.push(el);
+    });
+    section.querySelectorAll('.score-item, .channel, .pillar, .step, .num, .stat, .rm, .rhythm-card, .checklist-item').forEach(function(el, i){
+      el.classList.add('reveal');
+      el.classList.add('reveal-delay-' + Math.min(i + 1, 5));
+      revealTargets.push(el);
+    });
+    Array.prototype.forEach.call(section.children, function(child){
+      if(child.tagName === 'P' && !child.classList.contains('lead') && !child.classList.contains('cover-sub')){
+        child.classList.add('reveal');
+        revealTargets.push(child);
+      }
+    });
+  });
+
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+        animateCounter(entry.target);
+        animateRings(entry.target);
+      }
+    });
+  }, { threshold:0.15, rootMargin:'0px 0px -40px 0px' });
+  revealTargets.forEach(function(el){ revealObserver.observe(el); });
+
+  /* ═══════ EYEBROW LINE ═══════ */
+  var eyebrows = document.querySelectorAll('.eyebrow');
+  var eyebrowObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); eyebrowObs.unobserve(entry.target); }
+    });
+  }, { threshold:0.5 });
+  eyebrows.forEach(function(eb){ eyebrowObs.observe(eb); });
+
+  /* ═══════ HEADLINE UNDERLINE ═══════ */
+  var headlines = document.querySelectorAll('h2');
+  var headlineObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('underlined'); headlineObs.unobserve(entry.target); }
+    });
+  }, { threshold:0.5 });
+  headlines.forEach(function(h){ headlineObs.observe(h); });
+
+  /* ═══════ NUMBER COUNTER ═══════ */
+  function animateCounter(el){
+    var valEl = el.querySelector('.stat-val, .num-val');
+    if(!valEl || valEl.dataset.counted) return;
+    valEl.dataset.counted = 'true';
+    var text = valEl.textContent.trim();
+    var hasPlus = text.indexOf('+') > -1;
+    var hasPercent = text.indexOf('%') > -1;
+    var suffix = hasPlus ? '+' : hasPercent ? '%' : '';
+    var num = parseInt(text.replace(/[^0-9]/g,''), 10);
+    if(isNaN(num) || num === 0) return;
+    var duration = 1200;
+    var start = performance.now();
+    function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+    function tick(now){
+      var t = Math.min((now - start) / duration, 1);
+      valEl.textContent = Math.round(ease(t) * num) + suffix;
+      if(t < 1) requestAnimationFrame(tick);
+    }
+    valEl.textContent = '0' + suffix;
+    requestAnimationFrame(tick);
+  }
+
+  /* ═══════ SCORE RING ANIMATION ═══════ */
+  function animateRings(el){
+    var rings = el.querySelectorAll ? el.querySelectorAll('.score-ring') : [];
+    rings.forEach(function(ring){
+      if(ring.dataset.animated) return;
+      ring.dataset.animated = 'true';
+      var score = parseInt(ring.dataset.score, 10) || 0;
+      var circumference = 226.2;
+      var offset = circumference - (circumference * score / 100);
+      ring.querySelector('.ring-fill').style.setProperty('--offset', offset);
+      ring.classList.add('animated');
+    });
+  }
+  // Also animate rings in scorecards observed directly
+  var scorecardObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ animateRings(entry.target); scorecardObs.unobserve(entry.target); }
+    });
+  }, { threshold:0.15 });
+  document.querySelectorAll('.scorecard').forEach(function(sc){ scorecardObs.observe(sc); });
+
+  /* ═══════ PHOTO BREAK CURTAIN ═══════ */
+  var photoRevealObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('revealed'); photoRevealObs.unobserve(entry.target); }
+    });
+  }, { threshold:0.1 });
+  photoBreakEls.forEach(function(pb){ photoRevealObs.observe(pb); });
+
+  /* ═══════ SCROLL INDICATOR ═══════ */
+  var scrollIndicator = document.getElementById('scrollIndicator');
+  function updateScrollIndicator(){
+    scrollIndicator.classList.toggle('hidden', window.scrollY > 100);
+  }
+
+  /* ═══════ ROADMAP LINE DRAW ═══════ */
+  var roadmapLine = document.getElementById('roadmapLine');
+  var roadmap = document.querySelector('.roadmap');
+  function updateRoadmapLine(){
+    if(!roadmap || !roadmapLine) return;
+    var rect = roadmap.getBoundingClientRect();
+    var roadmapTop = rect.top + window.scrollY;
+    var roadmapHeight = rect.height - 96;
+    var scrollPos = window.scrollY + window.innerHeight * 0.6;
+    var progress = Math.max(0, Math.min(1, (scrollPos - roadmapTop - 48) / roadmapHeight));
+    roadmapLine.style.height = (progress * roadmapHeight) + 'px';
+  }
+
+  /* ═══════ CTA SMOOTH SCROLL ═══════ */
+  var cta = document.querySelector('.cover-cta');
+  if(cta){
+    cta.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  }
+
+  /* ═══════ SCROLL HANDLER ═══════ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateParallax();
+        updatePhotoParallax();
+        updateScrollIndicator();
+        updateRoadmapLine();
+        updateNavDots();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress();
+  updateParallax();
+  updatePhotoParallax();
+  updateRoadmapLine();
+  updateNavDots();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,371 @@
+{
+  "client": {
+    "company": "Summerhill Fine Homes",
+    "slug": "summerhill"
+  },
+  "audit_date": "March 2026",
+  "cover": {
+    "headline_html": "Summerhill Fine Homes<br><em>Site &amp; SEO Audit</em>",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e07b8aac-c1ec-4293-b956-79b41aa39f33/5322-backhouse-web-1.jpg",
+    "image_position": "center 40%"
+  },
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d0d20567-1be7-4759-8503-9fa1ce83f891/5322-backhouse-web-18.jpg",
+        "alt": "The Perch exterior dusk panoramic",
+        "caption": "The Perch &middot; Sunshine Coast, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/4bb9a1fe-5bc1-4cf3-a0ea-8053f1a7270c/5322-backhouse-web-3.jpg",
+        "alt": "The Perch living room interior",
+        "caption": "The Perch &middot; Interior &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/75b669fa-89d6-47c2-a4b4-6b45bfa203b1/5322-backhouse-web-6.jpg",
+        "alt": "The Perch suspended fireplace detail",
+        "caption": "The Perch &middot; Interior Detail &middot; Matt Anthony Photography"
+      }
+    ]
+  },
+  "overall_scores": [
+    {
+      "value": 85,
+      "label": "Overall SEO",
+      "grade": "A-",
+      "color": "ok"
+    },
+    {
+      "value": 58,
+      "label": "Local / GEO",
+      "grade": "C+",
+      "color": "ok"
+    },
+    {
+      "value": 100,
+      "label": "Content",
+      "grade": "A",
+      "color": "good"
+    },
+    {
+      "value": 85,
+      "label": "Visual Assets",
+      "grade": "A-",
+      "color": "ok"
+    }
+  ],
+  "sections": [
+    {
+      "type": "seo",
+      "eyebrow": "SEO Audit",
+      "headline_html": "Search visibility.<br><em>What’s working and what’s not.</em>",
+      "lead": "I ran a technical audit on summerhill.build and crawled 30 pages. The site has a strong foundation with good meta data and fast response times, but there’s one critical gap and a major image SEO issue holding it back.",
+      "categories": [
+        {
+          "name": "What’s Working",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "Valid SSL Certificate",
+              "detail": "Site is served over HTTPS with no mixed content issues."
+            },
+            {
+              "status": "pass",
+              "title": "Strong Meta Title",
+              "detail": "\"Inspired Building - Summerhill Fine Homes\" (41 characters). Clear, branded, good length."
+            },
+            {
+              "status": "pass",
+              "title": "Meta Description Present",
+              "detail": "\"Custom home builder specializing in sustainability and performance\" (137 chars). Solid description that communicates the value proposition."
+            },
+            {
+              "status": "pass",
+              "title": "Single H1 Tag",
+              "detail": "\"Inspired Building\" — clean hierarchy, no duplicate H1s."
+            },
+            {
+              "status": "pass",
+              "title": "Open Graph Tags",
+              "detail": "og:title and og:image present. Social sharing will display correctly."
+            },
+            {
+              "status": "pass",
+              "title": "Fast Server Response",
+              "detail": "78ms to first byte. Well-optimized hosting."
+            },
+            {
+              "status": "pass",
+              "title": "Sitemap Exists",
+              "detail": "sitemap_index.xml found with 8 URLs indexed. Google can discover your pages."
+            },
+            {
+              "status": "pass",
+              "title": "Canonical Tags",
+              "detail": "Proper canonical URLs set. No duplicate content issues."
+            }
+          ]
+        },
+        {
+          "name": "What Needs Fixing",
+          "findings": [
+            {
+              "status": "fail",
+              "title": "No Structured Data (Schema.org)",
+              "detail": "Zero JSON-LD markup found on the site. This is the single biggest SEO gap. Adding LocalBusiness, Organization, and Project schema would help Google understand what Summerhill does, where you operate, and what you’ve built. This directly impacts local search visibility and rich snippets."
+            },
+            {
+              "status": "fail",
+              "title": "1,435 Images Missing Alt Text",
+              "detail": "Of 1,637 total images across the site, <strong>87.6% have no alt text</strong>. The homepage alone has 35 of 50 images (70%) without alt tags. This is a significant accessibility and image SEO issue. Every image is a missed opportunity to rank in Google Image search for terms like “custom home Sunshine Coast.”"
+            },
+            {
+              "status": "warn",
+              "title": "Only 8 URLs in Sitemap",
+              "detail": "30 crawlable pages but only 8 in the sitemap. The remaining 22 pages may not be getting indexed efficiently. Expanding the sitemap to include all project pages would improve discoverability."
+            }
+          ]
+        }
+      ],
+      "insight": {
+        "title": "SEO Bottom Line",
+        "content_html": "<p>The site’s technical foundation is <strong>solid</strong> — fast, secure, well-structured meta data. The two critical fixes are <strong>structured data</strong> (schema markup for LocalBusiness + Projects) and <strong>image alt text</strong> across 1,435 images. These are both one-time fixes that permanently improve search visibility.</p>"
+      }
+    },
+    {
+      "type": "geo",
+      "eyebrow": "Local SEO &amp; GEO Audit",
+      "headline_html": "Local visibility.<br><em>The biggest gap.</em>",
+      "lead": "Local SEO determines whether Summerhill shows up when someone searches “custom builder near me” on the Sunshine Coast. This is where the most significant gaps exist.",
+      "categories": [
+        {
+          "name": "Google Business Profile",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "Google Business Profile Is Active",
+              "detail": "Summerhill has a live, active Google Business Profile. This is the foundation for local search visibility and Google Maps presence. Ahead of most Sunshine Coast builders on this front."
+            },
+            {
+              "status": "warn",
+              "title": "GBP Optimization Opportunity",
+              "detail": "Verify that the profile has complete service areas, business categories, photos, and regular posts. An optimized GBP with 10+ reviews significantly outranks a basic listing."
+            },
+            {
+              "status": "fail",
+              "title": "No LocalBusiness Schema on Website",
+              "detail": "No structured data connecting your website to your GBP. Adding LocalBusiness JSON-LD schema reinforces your local presence and helps Google connect the two."
+            }
+          ]
+        },
+        {
+          "name": "Directory Presence",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "Listed on Houzz",
+              "detail": "Summerhill has a Houzz profile. This is a strong authoritative backlink for residential builders."
+            },
+            {
+              "status": "warn",
+              "title": "Not Found on HomeStars",
+              "detail": "No HomeStars profile detected. HomeStars ranks well for “builder” searches in BC and provides a trust signal plus backlink."
+            },
+            {
+              "status": "warn",
+              "title": "Not Found on CHBA Directory",
+              "detail": "No CHBA BC directory listing detected. This is an authoritative industry backlink that signals credibility to Google. Also required for Georgie Award eligibility."
+            },
+            {
+              "status": "warn",
+              "title": "NAP Consistency Unverified",
+              "detail": "Your business name, address, and phone number (NAP) should be identical across your website footer, Google Business Profile, Houzz, and all other listings. Inconsistencies confuse Google and hurt local rankings."
+            }
+          ]
+        }
+      ],
+      "insight": {
+        "title": "Local SEO Bottom Line",
+        "content_html": "<p><strong>The GBP is a strong start.</strong> The next steps are optimizing it with regular photo uploads, requesting Google reviews from past clients (target 10+), and adding LocalBusiness schema to the website so Google connects your GBP to your site. The directory gaps (HomeStars, CHBA) are secondary but worth filling for citation building.</p>"
+      }
+    },
+    {
+      "type": "competitors",
+      "eyebrow": "Competitive Landscape",
+      "headline_html": "How you compare.<br><em>On the Sunshine Coast.</em>",
+      "lead": "Here’s how Summerhill’s online presence stacks up against the builders you’re actually competing against for Sunshine Coast clients.",
+      "columns": [
+        "Builder",
+        "Website",
+        "Schema/SEO",
+        "Photography",
+        "Awards",
+        "Content"
+      ],
+      "rows": [
+        {
+          "highlight": true,
+          "cells": [
+            "<strong>Summerhill Fine Homes</strong><br><span style='font-size:0.7rem;color:var(--text-muted);'>Gibsons</span>",
+            "<span class='dot green'></span>Strong (Bricks)",
+            "<span class='dot red'></span>No schema",
+            "<span class='dot green'></span>Pro (The Perch)",
+            "<span class='dot red'></span>None submitted",
+            "<span class='dot amber'></span>1 blog post"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Jenkins Construction<br><span style='font-size:0.7rem;color:var(--text-muted);'>Sunshine Coast</span>",
+            "<span class='dot green'></span>Pro (Squarespace)",
+            "<span class='dot amber'></span>Basic",
+            "<span class='dot green'></span>Excellent portfolio",
+            "<span class='dot red'></span>None listed",
+            "<span class='dot red'></span>No blog"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Lincoln Construction<br><span style='font-size:0.7rem;color:var(--text-muted);'>Gibsons</span>",
+            "<span class='dot green'></span>Pro (Squarespace)",
+            "<span class='dot amber'></span>Basic",
+            "<span class='dot green'></span>Strong portfolio",
+            "<span class='dot green'></span>Golden Angle + HA26 finalist",
+            "<span class='dot green'></span>News + planning guide"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Vernon Construction<br><span style='font-size:0.7rem;color:var(--text-muted);'>Sunshine Coast</span>",
+            "<span class='dot amber'></span>Basic (Squarespace)",
+            "<span class='dot red'></span>None visible",
+            "<span class='dot amber'></span>Gallery exists",
+            "<span class='dot red'></span>None listed",
+            "<span class='dot red'></span>No blog"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Stevenson Construction<br><span style='font-size:0.7rem;color:var(--text-muted);'>Sechelt</span>",
+            "<span class='dot amber'></span>Decent (WordPress)",
+            "<span class='dot red'></span>None visible",
+            "<span class='dot amber'></span>Project images",
+            "<span class='dot amber'></span>Association logos",
+            "<span class='dot red'></span>Minimal"
+          ]
+        }
+      ],
+      "insight": {
+        "title": "The Local Competitive Gap",
+        "content_html": "<p>On the Sunshine Coast, <strong>Lincoln Construction is the one to watch</strong> — they have award finalist badges, a downloadable planning guide, and a strong content strategy. Jenkins has excellent photography. Everyone else is roughly where Summerhill is or behind.</p><p style=\"margin-bottom:0;\">Summerhill’s site quality is <strong>at or above every competitor</strong>. The differentiators that would pull ahead: schema markup, Google Business Profile, awards submissions, and video content. None of these competitors have video. First mover wins.</p>"
+      }
+    },
+    {
+      "type": "content",
+      "eyebrow": "Content &amp; Visual Assets",
+      "headline_html": "What you have.<br><em>What you could do with it.</em>",
+      "lead": "An audit of Summerhill’s current photography, content, and visual asset coverage across the site.",
+      "categories": [
+        {
+          "name": "Content Strengths",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "30 Crawlable Pages",
+              "detail": "Solid page count for a custom builder. The site has real depth."
+            },
+            {
+              "status": "pass",
+              "title": "20 Project Pages with Descriptions",
+              "detail": "Every project page has 100+ words of descriptive content. This is <strong>significantly better than most builders</strong> who have image-only portfolios."
+            },
+            {
+              "status": "pass",
+              "title": "Good Homepage Content (473 Words)",
+              "detail": "Homepage has strong copy that communicates Summerhill’s value proposition. Well above the 300-word minimum for SEO."
+            },
+            {
+              "status": "pass",
+              "title": "Strong Visual Coverage",
+              "detail": "Project pages average 70.7 images each. 1,637 total images across the site. This is an excellent visual library."
+            }
+          ]
+        },
+        {
+          "name": "Opportunities",
+          "findings": [
+            {
+              "status": "warn",
+              "title": "Blog Has Only 1 Post",
+              "detail": "A blog section exists but has minimal content. Monthly posts targeting “custom home building Sunshine Coast,” “passive house BC,” or “CLT construction” would compound organic traffic over time."
+            },
+            {
+              "status": "fail",
+              "title": "1,435 Images Without Alt Text",
+              "detail": "This is the single biggest content gap. Every image without alt text is invisible to Google Image search. For an architectural builder, image search is a <strong>major discovery channel</strong> that’s currently being left on the table."
+            },
+            {
+              "status": "warn",
+              "title": "No Video Content on Site",
+              "detail": "Zero project films, walkthrough videos, or social reels embedded on the site. Video increases time-on-page (an SEO signal) and is the highest-engagement format for social media."
+            },
+            {
+              "status": "warn",
+              "title": "Build Process Not Documented",
+              "detail": "Summerhill’s CLT, passive house, and mass timber construction methods are visually compelling. Documenting the build process creates content that performs well on social, builds trust with prospects, and differentiates from competitors who only show finished homes."
+            }
+          ]
+        }
+      ],
+      "insight": {
+        "title": "Content Bottom Line",
+        "content_html": "<p>The site’s content foundation is <strong>stronger than most custom builders</strong>. 20 project pages with real descriptions is rare in this market. The wins are specific: <strong>fix 1,435 missing alt tags</strong> (one-time project), <strong>start a monthly blog</strong>, and <strong>add video and build documentation</strong> to turn a good portfolio into a content engine that drives organic traffic.</p>"
+      }
+    },
+    {
+      "type": "recommendations",
+      "eyebrow": "What I’d Fix First",
+      "headline_html": "The action plan.<br><em>Priority order.</em>",
+      "lead": "Three moves that would have the biggest impact on Summerhill’s visibility, based on what the audit actually found.",
+      "stats": [
+        {
+          "value": "1,435",
+          "label": "Images Need Alt Text"
+        },
+        {
+          "value": "0",
+          "label": "Schema Markup Found"
+        },
+        {
+          "value": "0",
+          "label": "Video Assets"
+        }
+      ],
+      "steps": [
+        {
+          "number": "1",
+          "title": "Schema + Alt Text",
+          "description": "Add LocalBusiness JSON-LD schema to the site. Fix 1,435 missing alt tags with descriptive, keyword-rich text. These are one-time projects that permanently improve search visibility."
+        },
+        {
+          "number": "2",
+          "title": "Video + Build Documentation",
+          "description": "Start capturing CLT, passive house, and mass timber construction professionally. Create monthly social reels and a year-end project film. First mover on the Sunshine Coast for video content."
+        },
+        {
+          "number": "3",
+          "title": "Awards Pipeline",
+          "description": "Submit 2-3 strongest projects to Georgie Awards and CHBA National. Every shoot photographed to award spec going forward. Lincoln already has finalist badges. Summerhill’s work is stronger."
+        }
+      ],
+      "insight": {
+        "title": "This Is Where a Creative Partner Comes In",
+        "content_html": "<p>The site’s foundation is strong. What’s missing is the <strong>ongoing content engine</strong>: professional project photography, build documentation, video, social content, and the SEO layer that makes all of it discoverable. Every gap in this audit is something I handle as part of the Creative Partner retainer.</p><p style=\"margin-bottom:0;\"><strong>See the full Creative Partner proposal</strong> for pricing, tier options, and a 3-month pilot roadmap.</p>"
+      }
+    }
+  ]
+}

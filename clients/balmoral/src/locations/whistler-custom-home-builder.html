@@ -1,0 +1,598 @@
+<!-- HomeAndConstructionBusiness SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Balmoral Construction Inc.",
+  "url": "https://www.balmoralconstruction.com",
+  "telephone": "(604) 907-2237",
+  "email": "marc@balmoralconstruction.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1704 Sugarloaf Place",
+    "addressLocality": "Pemberton",
+    "addressRegion": "BC",
+    "postalCode": "V0N 2L3",
+    "addressCountry": "CA"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Whistler, BC"
+  },
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Warranty Registration",
+      "name": "BC New Home Warranty"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Warranty Registration",
+      "name": "National Home Warranty"
+    }
+  ],
+  "memberOf": {
+    "@type": "Organization",
+    "name": "Canadian Home Builders Association — Sea to Sky"
+  }
+}
+</script>
+
+<!-- FAQPage SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does it cost to build a custom home in Whistler?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Custom home construction in Whistler typically ranges from $500 to $800+ per square foot, depending on site complexity, design specifications, finishing levels, and lot accessibility. Ski-in/ski-out properties and steep-slope builds tend to be at the higher end due to additional engineering and construction requirements. We provide detailed cost estimates after evaluating your specific lot and understanding your design vision."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does the RMOW building permit process take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Resort Municipality of Whistler permit process typically takes 3 to 6 months from application to approval, depending on the complexity of the project and whether development permits or variances are required. Projects in environmentally sensitive areas or those requiring tree removal assessments may take longer. We coordinate all consultant reports and municipal submissions to minimize delays."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which Whistler neighbourhoods are best for building a custom home?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on your priorities. Kadenwood offers the largest lots with ski-in/ski-out access and maximum privacy. White Gold provides excellent southern exposure and mountain views with good proximity to the Village. Wedgwood balances forest privacy with Village accessibility. Blueberry Hill and Brio offer additional options."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you build during winter in Whistler?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but with careful planning. We schedule foundation, framing, and exterior envelope work during the warmer months (May through October) when conditions are optimal. Interior finishing, mechanical systems, and millwork can proceed through winter. For larger projects, we may use temporary enclosures to extend the exterior construction window."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What snow load requirements apply to homes in Whistler?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Snow load requirements in Whistler vary by location and elevation, with ground snow loads typically ranging from 4.0 to 6.5 kPa depending on the specific site. Roof systems must be engineered for both uniform snow loads and drifting conditions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you handle ski-in/ski-out home construction?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. We have experience building on ski-access properties in Whistler, including projects in the Kadenwood and White Gold areas. Ski-in/ski-out builds require coordination with Whistler Blackcomb regarding trail interfaces, additional considerations for slope stability, and careful design to maximize both ski access and mountain views."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many custom homes does Balmoral build in Whistler per year?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We intentionally limit ourselves to a small number of projects at any given time. This ensures Marc Harvey, our owner, stays personally involved in every Whistler build rather than delegating to site supervisors. Our project managers Jeremy Lewis and Jonny Tweedie are on site daily."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bc-accent:#D4722A;--bc-accent-hover:#BF6523;--bc-accent-light:rgba(212,114,42,.1)}
+.bc-progress{position:fixed;top:0;left:0;height:3px;background:var(--bc-accent);z-index:1100;width:0%;transition:none}
+.bc{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a1a;line-height:1.7;font-weight:300;background:#fff}
+.bc img{max-width:100%;display:block}
+.bc a{color:inherit;text-decoration:none}
+.bc-reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.bc-reveal.bc-visible{opacity:1;transform:translateY(0)}
+.bc-reveal-delay-1{transition-delay:.15s}
+.bc-reveal-delay-2{transition-delay:.3s}
+.bc-reveal-delay-3{transition-delay:.45s}
+
+/* NAV */
+.bc-hd{position:fixed;top:0;left:0;right:0;z-index:99999 !important;transition:background .4s cubic-bezier(.16,1,.3,1)}
+.bc-hd--top{background:transparent}
+.bc-hd--scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.bc-hd--mob-open{background:#fff !important;backdrop-filter:none}
+.bc-hd-inner{max-width:1600px;margin:0 auto;padding:0 clamp(24px,4vw,60px);display:flex;align-items:center;justify-content:space-between;height:80px}
+.bc-hd-logo img{height:52px;width:auto;transition:filter .4s}
+.bc-hd--top .bc-hd-logo img{filter:brightness(0) invert(1)}
+.bc-hd--mob-open .bc-hd-logo img{filter:none !important}
+.bc-hd-nav{display:flex;align-items:center;gap:clamp(24px,3.5vw,48px);list-style:none}
+.bc-hd-link{font-size:13px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#1a1a1a;transition:all .3s;position:relative}
+.bc-hd--top .bc-hd-link{color:rgba(255,255,255,.75)}
+.bc-hd--top .bc-hd-link:hover{color:#fff}
+.bc-hd-link:hover{color:#000}
+.bc-hd-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:currentColor;transition:width .3s}
+.bc-hd-link:hover::after{width:100%}
+.bc-hd-drop{position:relative}
+.bc-hd-drop-menu{position:absolute;top:calc(100% + 20px);left:-20px;background:#fff;padding:16px 0;min-width:220px;opacity:0;visibility:hidden;transition:all .3s;transform:translateY(8px);box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.bc-hd-drop:hover .bc-hd-drop-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.bc-hd-drop-menu a{display:block;padding:10px 28px;font-size:14px;font-weight:400;color:#666;letter-spacing:.04em;transition:all .2s}
+.bc-hd-drop-menu a:hover{color:var(--bc-accent);padding-left:32px}
+.bc-hd-mob{display:none;background:none;border:none;cursor:pointer;padding:10px;z-index:100001}
+.bc-hd-mob span{display:block;width:28px;height:2px;background:#1a1a1a;margin:7px 0;transition:all .4s}
+.bc-hd--top .bc-hd-mob span{background:#fff}
+.bc-hd--mob-open .bc-hd-mob span{background:#1a1a1a !important}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(2){opacity:0}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.bc-mob{position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:99998 !important;padding:100px clamp(24px,6vw,60px) 40px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.bc-mob.open{opacity:1;visibility:visible;display:flex;flex-direction:column}
+.bc-mob a{display:block;font-size:clamp(28px,6vw,40px);font-weight:200;color:#1a1a1a;padding:12px 0;letter-spacing:-.02em;border-bottom:1px solid #f0f0f0;transition:opacity .3s}
+.bc-mob a:hover{opacity:.5}
+.bc-mob-sub{padding-left:0}
+.bc-mob-sub a{font-size:clamp(14px,3vw,18px);font-weight:400;color:#999;letter-spacing:0;padding:8px 0}
+
+/* HERO */
+.bc-loc-hero{position:relative;height:65vh;min-height:500px;overflow:hidden}
+.bc-loc-hero img{width:100%;height:100%;object-fit:cover;transform:scale(1.03);transition:transform 8s cubic-bezier(.16,1,.3,1)}
+.bc-loc-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.05) 40%,rgba(0,0,0,.5) 100%);z-index:1}
+.bc-loc-hero-c{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:0 clamp(24px,4vw,60px) clamp(48px,6vw,80px);max-width:1600px;margin:0 auto}
+.bc-loc-hero-c .bc-section-label{font-size:11px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--bc-accent);margin-bottom:16px;display:block}
+.bc-loc-hero-c h1{font-size:clamp(32px,5vw,64px);font-weight:200;color:#fff;letter-spacing:-.04em;line-height:1.1;margin-bottom:16px}
+.bc-loc-hero-c h1 strong{font-weight:600}
+.bc-loc-hero-c p{font-size:clamp(14px,1.2vw,16px);color:rgba(255,255,255,.6);font-weight:300;max-width:520px;line-height:1.8}
+
+/* SECTION SHARED */
+.bc-section-pad{padding:clamp(80px,10vw,140px) clamp(24px,4vw,60px)}
+.bc-section-inner{max-width:1600px;margin:0 auto}
+.bc-section-label{font-size:11px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:#999;margin-bottom:24px;display:block}
+.bc-section-h2{font-size:clamp(28px,3.5vw,48px);font-weight:200;letter-spacing:-.03em;line-height:1.15;color:#000;margin-bottom:clamp(20px,3vw,40px)}
+.bc-section-h2 strong{font-weight:600}
+.bc-text-link{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s;padding-bottom:1px}
+.bc-text-link:hover{border-color:var(--bc-accent)}
+.bc-bg-light{background:#f8f8f6}
+.bc-bg-dark{background:#0f0f0f;color:#fff}
+.bc-bg-dark .bc-section-h2{color:#fff}
+.bc-bg-dark .bc-section-label{color:rgba(255,255,255,.35)}
+
+/* BODY CONTENT */
+.bc-loc-body{max-width:900px;margin:0 auto}
+.bc-loc-body h2{font-size:clamp(22px,2.5vw,32px);font-weight:500;line-height:1.3;margin:0 0 20px;letter-spacing:-.02em;color:#1a1a1a}
+.bc-loc-body h3{font-size:clamp(16px,1.3vw,20px);font-weight:500;margin:clamp(32px,4vw,48px) 0 12px;letter-spacing:-.01em;color:#1a1a1a}
+.bc-loc-body p{font-size:15px;color:#555;line-height:1.9;margin:0 0 16px;font-weight:300}
+.bc-loc-body ul{margin:0 0 20px;padding-left:20px}
+.bc-loc-body ul li{font-size:15px;color:#555;line-height:1.9;font-weight:300;margin-bottom:6px}
+
+/* SERVICES GRID */
+.bc-loc-svcs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}
+.bc-loc-svc{padding:clamp(24px,3vw,40px);background:#f8f8f6;border:1px solid #eee;transition:border-color .3s}
+.bc-loc-svc:hover{border-color:var(--bc-accent)}
+.bc-loc-svc h3{font-size:clamp(15px,1.2vw,18px);font-weight:500;color:#1a1a1a;margin:0 0 10px}
+.bc-loc-svc p{font-size:14px;color:#777;line-height:1.8;margin:0;font-weight:300}
+
+/* PROJECT CARDS */
+.bc-loc-projects{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1.2vw,16px)}
+.bc-loc-pcard{position:relative;overflow:hidden;display:block}
+.bc-loc-pcard img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .5s;filter:brightness(.92)}
+.bc-loc-pcard:hover img{transform:scale(1.03);filter:brightness(.8)}
+.bc-loc-pcard::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.55) 100%);opacity:0;transition:opacity .5s}
+.bc-loc-pcard:hover::after{opacity:1}
+.bc-loc-pcard-info{position:absolute;bottom:clamp(12px,1.5vw,24px);left:clamp(12px,1.5vw,24px);right:clamp(12px,1.5vw,24px);z-index:2;opacity:0;transform:translateY(8px);transition:all .5s}
+.bc-loc-pcard:hover .bc-loc-pcard-info{opacity:1;transform:translateY(0)}
+.bc-loc-pcard-info h3{font-size:clamp(16px,1.5vw,22px);font-weight:400;color:#fff;letter-spacing:-.02em}
+.bc-loc-pcard-info h3 strong{font-weight:600}
+.bc-loc-pcard-info span{font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px;display:block}
+
+/* KNOWLEDGE 2-COL */
+.bc-loc-know-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px)}
+.bc-loc-know-grid h3{font-size:clamp(15px,1.2vw,18px);font-weight:500;color:var(--bc-accent);margin:clamp(24px,3vw,36px) 0 8px}
+.bc-loc-know-grid p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.9;margin:0 0 12px;font-weight:300}
+
+/* FAQ */
+.bc-faq-list{max-width:900px}
+.bc-faq-item{border-bottom:1px solid #eee}
+.bc-faq-q{display:flex;justify-content:space-between;align-items:center;padding:clamp(18px,2vw,28px) 0;cursor:pointer;background:none;border:none;width:100%;text-align:left;font-family:'Inter',sans-serif;font-size:clamp(17px,1.4vw,20px);font-weight:400;color:#1a1a1a;line-height:1.5;gap:16px}
+.bc-faq-q:hover{color:#666}
+.bc-faq-icon{font-size:20px;color:#ccc;transition:transform .3s;flex-shrink:0}
+.bc-faq-item.open .bc-faq-icon{transform:rotate(45deg)}
+.bc-faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
+.bc-faq-item.open .bc-faq-a{max-height:500px}
+.bc-faq-a-inner{padding:0 0 clamp(18px,2vw,28px);font-size:16px;color:#666;line-height:1.9}
+.bc-faq-a-inner a{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s}
+.bc-faq-a-inner a:hover{border-color:var(--bc-accent)}
+
+/* CTA */
+.bc-cta{position:relative;height:55vh;min-height:400px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bc-cta img.bc-cta-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.bc-cta::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:1}
+.bc-cta-c{position:relative;z-index:2;text-align:center;max-width:600px;padding:0 24px}
+.bc-cta h2{font-size:clamp(28px,4vw,52px);font-weight:200;color:#fff;letter-spacing:-.03em;margin-bottom:16px;line-height:1.15}
+.bc-cta h2 strong{font-weight:600}
+.bc-cta p{font-size:17px;color:rgba(255,255,255,.55);margin-bottom:36px;line-height:1.8;font-weight:300}
+.bc-btn{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:18px 44px;border:2px solid var(--bc-accent);background:var(--bc-accent);color:#fff;transition:all .4s;cursor:pointer}
+.bc-btn:hover{background:var(--bc-accent-hover);border-color:var(--bc-accent-hover)}
+
+/* FOOTER */
+.bc-ft{background:#0a0a0a;color:#fff;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px) clamp(24px,3vw,40px);border-top:3px solid var(--bc-accent)}
+.bc-ft-inner{max-width:1600px;margin:0 auto}
+.bc-ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:clamp(24px,4vw,60px);padding-bottom:clamp(40px,5vw,60px);border-bottom:1px solid rgba(255,255,255,.08)}
+.bc-ft-brand p{font-size:13px;color:rgba(255,255,255,.35);line-height:1.8;margin-top:20px;max-width:300px;font-weight:300}
+.bc-ft-mark{height:60px;width:auto;opacity:.8;margin-bottom:8px}
+.bc-ft-col h4{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:20px}
+.bc-ft-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);line-height:2.2;transition:color .3s;font-weight:300}
+.bc-ft-col a:hover{color:var(--bc-accent)}
+.bc-ft-btm{display:flex;justify-content:space-between;align-items:center;padding-top:clamp(20px,3vw,32px)}
+.bc-ft-copy{font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.02em;font-weight:300}
+.bc-ft-social{display:flex;gap:24px}
+.bc-ft-social a{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);transition:color .3s}
+.bc-ft-social a:hover{color:var(--bc-accent)}
+
+@media(max-width:900px){.bc-hd-nav{display:none}.bc-hd-mob{display:block}}
+@media(max-width:768px){
+.bc-loc-hero{height:55vh;min-height:400px}
+.bc-loc-svcs{grid-template-columns:1fr}
+.bc-loc-projects{grid-template-columns:1fr}
+.bc-loc-know-grid{grid-template-columns:1fr}
+.bc-cta{height:50vh;min-height:350px}
+.bc-ft-top{grid-template-columns:1fr 1fr;gap:32px}
+.bc-ft-btm{flex-direction:column;gap:12px;text-align:center}
+.bc-mob a{font-size:clamp(20px,4vw,28px)}
+}
+@media(max-width:480px){
+.bc-ft-top{grid-template-columns:1fr}
+}
+</style>
+
+<div class="bc-progress" id="bcProgress"></div>
+
+<div class="bc">
+
+<!-- NAV -->
+<header class="bc-hd bc-hd--top" id="bcHd">
+  <div class="bc-hd-inner">
+    <a href="/" class="bc-hd-logo">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png" alt="Balmoral Construction — Custom Home Builder in Whistler, Pemberton and Squamish">
+    </a>
+    <ul class="bc-hd-nav">
+      <li><a href="/about" class="bc-hd-link">About</a></li>
+      <li class="bc-hd-drop">
+        <a href="/services" class="bc-hd-link">Services</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/custom-home-building">Custom Home Building</a>
+          <a href="/home-renovations">Home Renovations</a>
+          <a href="/general-contracting">General Contracting</a>
+          <a href="/project-management">Project Management</a>
+          <a href="/land-consultation">Land Consultation</a>
+          <a href="/permit-coordination">Permit Coordination</a>
+        </div>
+      </li>
+      <li><a href="/work" class="bc-hd-link">Work</a></li>
+      <li class="bc-hd-drop">
+        <a href="javascript:void(0)" class="bc-hd-link">Locations</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/whistler-home-builder">Whistler</a>
+          <a href="/pemberton-home-builder">Pemberton</a>
+          <a href="/squamish-home-builder">Squamish</a>
+        </div>
+      </li>
+      <li><a href="/blog" class="bc-hd-link">Blog</a></li>
+      <li><a href="/contact" class="bc-hd-link">Contact</a></li>
+    </ul>
+    <button class="bc-hd-mob" aria-label="Menu" onclick="document.getElementById('bcMob').classList.toggle('open');this.classList.toggle('open');document.getElementById('bcHd').classList.toggle('bc-hd--mob-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="bc-mob" id="bcMob">
+  <a href="/about">About</a>
+  <a href="/services">Services</a>
+  <div class="bc-mob-sub">
+    <a href="/custom-home-building">Custom Home Building</a>
+    <a href="/home-renovations">Home Renovations</a>
+    <a href="/general-contracting">General Contracting</a>
+    <a href="/project-management">Project Management</a>
+    <a href="/land-consultation">Land Consultation</a>
+    <a href="/permit-coordination">Permit Coordination</a>
+  </div>
+  <a href="/work">Work</a>
+  <a href="javascript:void(0)">Locations</a>
+  <div class="bc-mob-sub">
+    <a href="/whistler-home-builder">Whistler</a>
+    <a href="/pemberton-home-builder">Pemberton</a>
+    <a href="/squamish-home-builder">Squamish</a>
+  </div>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="bc-loc-hero">
+  <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/cbef60b8-5b6a-4fe1-b8b1-51584675f265/whistler-home-builder-balmoral-construction-warbler-45.jpg" alt="Custom home building in Whistler, BC — alpine luxury homes by Balmoral Construction">
+  <div class="bc-loc-hero-c">
+    <span class="bc-section-label">Whistler, BC</span>
+    <h1><strong>Custom Home Builder</strong> in Whistler, BC</h1>
+    <p>Alpine luxury homes designed for mountain living. Balmoral Construction has been building custom residences across Whistler's most sought-after neighbourhoods for over a decade.</p>
+  </div>
+</section>
+
+<!-- BODY CONTENT -->
+<section class="bc-section-pad" style="background:#fff">
+  <div class="bc-section-inner bc-loc-body bc-reveal">
+    <h2>Why Build a Custom Home in Whistler?</h2>
+    <p>Whistler is unlike any other place to build a home in British Columbia. Nestled between Whistler and Blackcomb mountains at the heart of the Coast Range, this resort municipality offers a lifestyle that blends world-class skiing, year-round outdoor recreation, and a tight-knit community that has evolved well beyond its origins as a ski town. For those considering a <a href="/custom-home-building" class="bc-text-link">custom home build</a>, Whistler represents both a deeply personal lifestyle choice and a sound long-term investment.</p>
+    <p>Property values in Whistler have demonstrated remarkable resilience and growth over the past two decades. The resort municipality's strict development controls, limited buildable land, and global reputation as a four-season destination create a supply-constrained market where well-built custom homes consistently appreciate. Unlike speculative markets where oversupply can erode value, Whistler's geographic and regulatory constraints mean that quality construction on a well-chosen lot is one of the most reliable stores of value in the <a href="/whistler-home-builder" class="bc-text-link">Sea to Sky Corridor</a>.</p>
+    <p>The appeal of building custom in Whistler goes beyond investment. It's about creating a home that responds to the specific conditions of alpine living. Ski-in/ski-out access on Blackcomb or Whistler Mountain. Views that change with the seasons. Architecture that handles heavy snow loads gracefully while maximizing natural light during the shorter winter days. A <a href="/custom-home-building" class="bc-text-link">custom build</a> lets you design for exactly how you want to live in this environment, rather than compromising with what's already on the market.</p>
+
+    <h3>Whistler's Premier Neighbourhoods</h3>
+    <p>Each Whistler neighbourhood has its own character, and choosing the right one shapes the entire build. <strong>Kadenwood</strong>, perched above Creekside on the Whistler Mountain side, offers some of the largest lots in the municipality with direct ski-in/ski-out access via the Kadenwood gondola. Homes here are expansive, typically 4,000 to 8,000 square feet, set among old-growth trees with views toward the Tantalus Range. The privacy and exclusivity of Kadenwood make it Whistler's most prestigious address for custom builds.</p>
+    <p><strong>White Gold</strong>, located along the benchlands above the valley floor, has emerged as one of Whistler's most desirable new-build neighbourhoods. The lots offer south-facing exposure with panoramic mountain views, and the relative accessibility compared to Kadenwood makes it attractive for families who want to be close to the Village while still enjoying generous lot sizes. Balmoral has completed multiple projects in White Gold, including our <a href="/white-gold-2" class="bc-text-link">White Gold 2</a> and <a href="/white-gold" class="bc-text-link">White Gold</a> builds, and our familiarity with the specific soil conditions, setbacks, and neighbourhood covenants here gives our clients a significant advantage.</p>
+    <p><strong>Wedgwood</strong>, tucked into the forest between Whistler Village and the Nicklaus North golf course, offers a balance of privacy, proximity, and natural beauty. The lots are well-treed and often feature creek frontage or forest views. Building in Wedgwood requires careful attention to tree preservation and the neighbourhood's established aesthetic character. <strong>Blueberry Hill</strong> and the <strong>Brio</strong> area provide additional options for custom builds, each with their own advantages in terms of aspect, access, and community feel.</p>
+    <p>For those seeking the ultimate alpine experience, ski-in/ski-out properties on both mountains remain the pinnacle of Whistler real estate. These lots command premium prices, but they deliver something no <a href="/home-renovations" class="bc-text-link">renovation</a> or remodel can replicate: the ability to click into your bindings at the front door. Building custom on a ski-access lot requires specialized knowledge of slope construction, avalanche considerations, and the specific requirements of Whistler Blackcomb's trail interface agreements.</p>
+    <p>Whistler is also a community of families, entrepreneurs, and outdoor professionals who have chosen mountain life full-time. The schools, recreation facilities, health services, and cultural offerings have matured significantly. Building a permanent residence here is no longer just a vacation home decision, it's a lifestyle commitment supported by genuine community infrastructure. That growing year-round population base further strengthens the long-term value proposition for <a href="/custom-home-building" class="bc-text-link">custom home builders</a> who choose Whistler.</p>
+  </div>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="bc-section-pad bc-bg-light" style="border-top:1px solid #eee;border-bottom:1px solid #eee">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">What We Build</span>
+    <h2 class="bc-section-h2 bc-reveal">Custom home building services in <strong>Whistler</strong></h2>
+    <p class="bc-reveal" style="font-size:15px;color:#777;max-width:600px;margin-bottom:clamp(32px,4vw,48px);font-weight:300;line-height:1.8">From initial site evaluation through to final walkthrough, we manage every phase of your <a href="/custom-home-building" class="bc-text-link">Whistler custom home</a>.</p>
+    <div class="bc-loc-svcs bc-reveal bc-reveal-delay-1">
+      <div class="bc-loc-svc">
+        <h3>Site Evaluation &amp; Land Consulting</h3>
+        <p>We assess your Whistler lot for soil conditions, slope stability, snow load requirements, utility access, and view optimization before any design work begins. Our knowledge of Whistler's specific geotechnical conditions helps you avoid costly surprises.</p>
+      </div>
+      <div class="bc-loc-svc">
+        <h3>Design Collaboration</h3>
+        <p>We work with your architect or connect you with trusted Whistler-based design professionals. Our construction expertise enters the design phase early, ensuring your vision translates to a buildable, on-budget reality that performs in alpine conditions.</p>
+      </div>
+      <div class="bc-loc-svc">
+        <h3>RMOW Permit Coordination</h3>
+        <p>The Resort Municipality of Whistler has specific building requirements that differ from other Sea to Sky communities. We navigate RMOW permits, development variance applications, and building envelope compliance on your behalf.</p>
+      </div>
+      <div class="bc-loc-svc">
+        <h3>Alpine Construction</h3>
+        <p>From engineered foundations on steep terrain to roof systems designed for heavy snow loads, we build homes that perform in Whistler's demanding climate. Our crews are experienced with the specific challenges of high-altitude construction.</p>
+      </div>
+      <div class="bc-loc-svc">
+        <h3>Interior Finishing &amp; Millwork</h3>
+        <p>Working with our affiliated interior designer Britt Lothrop, we deliver interiors that balance mountain aesthetic with modern luxury. Custom millwork, heated floors, and material selections that withstand temperature extremes are standard in our builds.</p>
+      </div>
+      <div class="bc-loc-svc">
+        <h3>Warranty &amp; Post-Completion</h3>
+        <p>Every Balmoral home carries <a href="/reviews" class="bc-text-link">BC New Home Warranty and National Home Warranty</a> coverage. We walk you through every system and remain available well after move-in, because mountain homes demand ongoing attention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section class="bc-section-pad" style="background:#fff">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Our Whistler Work</span>
+    <h2 class="bc-section-h2 bc-reveal">Custom homes we've built in <strong>Whistler</strong></h2>
+    <div class="bc-loc-projects bc-reveal bc-reveal-delay-1">
+      <a href="/warbler-way" class="bc-loc-pcard">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/cbef60b8-5b6a-4fe1-b8b1-51584675f265/whistler-home-builder-balmoral-construction-warbler-45.jpg" alt="Warbler Way custom home in Whistler by Balmoral Construction" loading="lazy">
+        <div class="bc-loc-pcard-info"><h3><strong>Warbler Way</strong></h3><span>Whistler, BC</span></div>
+      </a>
+      <a href="/white-gold-2" class="bc-loc-pcard">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/ec7acb28-c48b-492c-acc6-3cce78d31b5d/whistler-home-builder-balmoral-construction-fitzsimmons-20.jpg" alt="White Gold 2 custom home in Whistler by Balmoral Construction" loading="lazy">
+        <div class="bc-loc-pcard-info"><h3><strong>White Gold 2</strong></h3><span>Whistler, BC</span></div>
+      </a>
+      <a href="/fitzsimmons" class="bc-loc-pcard">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/7954e373-fa46-448a-af4c-2981936bb465/A_021-1024x683.jpg" alt="Fitzsimmons custom home in Whistler by Balmoral Construction" loading="lazy">
+        <div class="bc-loc-pcard-info"><h3><strong>Fitzsimmons</strong></h3><span>Whistler, BC</span></div>
+      </a>
+    </div>
+    <div class="bc-reveal bc-reveal-delay-2" style="text-align:center;padding-top:clamp(32px,4vw,48px)">
+      <a href="/work" style="font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#999;transition:color .3s;padding-bottom:4px;border-bottom:1px solid #ddd">View All Projects &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL KNOWLEDGE -->
+<section class="bc-section-pad bc-bg-dark">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Local Expertise</span>
+    <h2 class="bc-section-h2 bc-reveal">Building in Whistler requires <strong>local knowledge</strong></h2>
+    <div class="bc-loc-know-grid bc-reveal bc-reveal-delay-1">
+      <div>
+        <p>Whistler isn't just another mountain town with a building department. The Resort Municipality of Whistler (RMOW) operates under unique governance structures and building requirements that differ substantially from neighbouring communities. Builders without deep Whistler experience often underestimate the complexity of the permitting process, the strictness of environmental protections, and the specific engineering requirements that alpine conditions demand.</p>
+        <p>Our team has navigated RMOW processes across dozens of projects. We understand the development permit requirements, the tree management protocols, the specific snow load and seismic engineering standards, and the neighbourhood-specific covenants that can shape what you're allowed to build. That institutional knowledge translates directly into smoother approvals, fewer delays, and builds that meet or exceed every standard the municipality sets.</p>
+
+        <h3>RMOW Permits &amp; Regulations</h3>
+        <p>Whistler's permitting process involves multiple stages: development permit, building permit, and often additional approvals for tree removal, environmental assessment, or development variance. The RMOW takes a particularly active role in reviewing design compatibility with neighbourhood character. We coordinate with all required consultants, from geotechnical engineers to environmental assessors, and maintain working relationships with municipal planning staff that help keep timelines on track.</p>
+
+        <h3>Bear-Proof &amp; Wildlife Requirements</h3>
+        <p>Every new build in Whistler must incorporate bear-proof waste management systems. The RMOW has strict bylaws governing garbage and recycling enclosures, and non-compliance can result in fines and construction delays. We design waste management solutions into our builds from the outset, including bear-proof enclosures that integrate with the home's architecture rather than looking like an afterthought bolted to the side of the house.</p>
+      </div>
+      <div>
+        <h3>Snow Load Engineering</h3>
+        <p>Whistler receives an average of 10 to 12 metres of snowfall per season, with ground snow loads that vary significantly by elevation and aspect. Roof systems must be engineered to handle not just the weight of accumulated snow but the dynamic loads of sliding, drifting, and rapid melt cycles. We work with structural engineers who specialize in alpine construction to design roof systems, foundation connections, and structural framing that handle Whistler's specific load requirements with appropriate safety margins.</p>
+
+        <h3>Wildfire Interface Considerations</h3>
+        <p>Several Whistler neighbourhoods fall within the wildfire-urban interface zone, which triggers additional building requirements under FireSmart principles. These include specific exterior cladding materials, setback requirements from combustible vegetation, roof material restrictions, and ember-resistant vent designs. Our builds incorporate these requirements from the design phase, ensuring compliance without compromising the aesthetic vision.</p>
+
+        <h3>Winter Construction Windows</h3>
+        <p>Building in Whistler means working within a compressed construction season for exterior work. Snow typically arrives in November and can persist into May at higher elevations. We plan our build schedules to maximize the window for foundation, framing, and exterior envelope work during the warmer months, then shift to interior finishing and mechanical work during winter. This seasonal planning is critical to keeping projects on schedule without compromising quality due to weather-related pressure.</p>
+
+        <h3>Moisture Management</h3>
+        <p>The combination of heavy snowfall, rain transitions, and temperature cycling creates one of the most demanding moisture environments in residential construction. Our building envelope details are designed specifically for Whistler's conditions: high-performance weather barriers, carefully designed drainage planes, vapour management strategies that account for heating season dynamics, and detailing around penetrations that prevents the moisture intrusion issues that plague poorly built mountain homes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bc-section-pad bc-bg-light" style="border-top:1px solid #eee;border-bottom:1px solid #eee">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Common Questions</span>
+    <h2 class="bc-section-h2 bc-reveal">Whistler custom home building <strong>FAQ</strong></h2>
+    <div class="bc-faq-list bc-reveal bc-reveal-delay-1">
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">How much does it cost to build a custom home in Whistler?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">Custom home construction in Whistler typically ranges from $500 to $800+ per square foot, depending on site complexity, design specifications, finishing levels, and lot accessibility. Ski-in/ski-out properties and steep-slope builds tend to be at the higher end due to additional engineering and construction requirements. We provide detailed cost estimates after evaluating your specific lot and understanding your design vision. <a href="/blog/how-much-does-it-cost-to-build-a-custom-home-in-whistler">Read our full cost guide</a> or <a href="/contact">contact us</a> for a consultation.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">How long does the RMOW building permit process take?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">The Resort Municipality of Whistler permit process typically takes 3 to 6 months from application to approval, depending on the complexity of the project and whether development permits or variances are required. Projects in environmentally sensitive areas or those requiring tree removal assessments may take longer. We coordinate all consultant reports and municipal submissions to minimize delays. <a href="/blog/bc-building-permit-process-explained">Learn about the BC permit process</a>.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">Which Whistler neighbourhoods are best for building a custom home?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">It depends on your priorities. Kadenwood offers the largest lots with ski-in/ski-out access and maximum privacy. White Gold provides excellent southern exposure and mountain views with good proximity to the Village. Wedgwood balances forest privacy with Village accessibility. Blueberry Hill and Brio offer additional options. We can help you evaluate lots in any Whistler neighbourhood based on your lifestyle needs and budget. <a href="/contact">Contact us to discuss</a>.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">Can you build during winter in Whistler?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">Yes, but with careful planning. We schedule foundation, framing, and exterior envelope work during the warmer months (May through October) when conditions are optimal. Interior finishing, mechanical systems, and millwork can proceed through winter. For larger projects, we may use temporary enclosures to extend the exterior construction window. Proper seasonal planning is essential to both quality and budget control.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">What snow load requirements apply to homes in Whistler?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">Snow load requirements in Whistler vary by location and elevation, with ground snow loads typically ranging from 4.0 to 6.5 kPa depending on the specific site. Roof systems must be engineered for both uniform snow loads and drifting conditions. We work with structural engineers who specialize in alpine construction to ensure every structural element meets or exceeds code requirements for Whistler's specific conditions.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">Do you handle ski-in/ski-out home construction?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">Absolutely. We have experience building on ski-access properties in Whistler, including projects in the Kadenwood and White Gold areas. Ski-in/ski-out builds require coordination with Whistler Blackcomb regarding trail interfaces, additional considerations for slope stability, and careful design to maximize both ski access and mountain views. These are among the most rewarding projects we take on. <a href="/work">See our portfolio</a>.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">How many custom homes does Balmoral build in Whistler per year?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">We intentionally limit ourselves to a small number of projects at any given time. This ensures <a href="/about">Marc Harvey, our owner</a>, stays personally involved in every Whistler build rather than delegating to site supervisors. Our project managers Jeremy Lewis and Jonny Tweedie are on site daily. This boutique approach means longer lead times for new projects, but it also means every client gets the full attention of our senior team.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bc-cta">
+  <img class="bc-cta-bg" src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/5c61a29e-68de-4319-9de2-c8f345512926/custom-home-whistler-hillside-exterior-sea-to-sky.jpg" alt="Custom home in Whistler by Balmoral Construction" loading="lazy">
+  <div class="bc-cta-c bc-reveal">
+    <h2>Ready to build in <strong>Whistler?</strong></h2>
+    <p>Tell us about your vision for your Whistler home. Every project starts with a conversation about your lot, your lifestyle, and what mountain living means to you.</p>
+    <a href="/contact" class="bc-btn bc-btn--accent">Start Your Whistler Build</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bc-ft">
+  <div class="bc-ft-inner">
+    <div class="bc-ft-top">
+      <div class="bc-ft-brand">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/83ca6501-705e-43ee-b119-551d0c16ea14/unnamed.png" alt="Balmoral Construction — Custom Home Builder in the Sea to Sky Corridor" class="bc-ft-mark">
+        <p>Boutique custom home builder in the Sea to Sky Corridor. Based in Pemberton, building across Whistler, Pemberton &amp; Squamish since 2011.</p>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Services</h4>
+        <a href="/custom-home-building">Custom Home Building</a>
+        <a href="/home-renovations">Home Renovations</a>
+        <a href="/general-contracting">General Contracting</a>
+        <a href="/project-management">Project Management</a>
+        <a href="/land-consultation">Land Consultation</a>
+        <a href="/permit-coordination">Permit Coordination</a>
+        <a href="/services">All Services</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Locations</h4>
+        <a href="/whistler-home-builder">Whistler Home Builder</a>
+        <a href="/pemberton-home-builder">Pemberton Home Builder</a>
+        <a href="/squamish-home-builder">Squamish Home Builder</a>
+        <a href="/whistler-home-renovations">Whistler Renovations</a>
+        <a href="/pemberton-home-renovations">Pemberton Renovations</a>
+        <a href="/squamish-home-renovations">Squamish Renovations</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Projects</h4>
+        <a href="/warbler-way">Warbler Way</a>
+        <a href="/cerulean">Cerulean</a>
+        <a href="/sugarloaf">Sugarloaf</a>
+        <a href="/white-gold-2">White Gold 2</a>
+        <a href="/fitzsimmons">Fitzsimmons</a>
+        <a href="/work">All Projects</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Company</h4>
+        <a href="/about">About</a>
+        <a href="/work">Portfolio</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+        <a href="tel:6049072237">604.907.2237</a>
+        <a href="mailto:marc@balmoralconstruction.com">marc@balmoralconstruction.com</a>
+      </div>
+    </div>
+    <div class="bc-ft-btm">
+      <span class="bc-ft-copy">&copy; 2026 Balmoral Construction Inc. &mdash; Custom Home Builder in Whistler, Pemberton &amp; Squamish, BC</span>
+      <div class="bc-ft-social">
+        <a href="https://www.instagram.com/balmoralconstruction/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.houzz.com/professionals/general-contractors/balmoral-construction-pfvwus-pf~1513498919" target="_blank" rel="noopener">Houzz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var hd=document.getElementById('bcHd');
+  function checkScroll(){var s=window.scrollY>80;hd.classList.toggle('bc-hd--top',!s);hd.classList.toggle('bc-hd--scrolled',s)}
+  window.addEventListener('scroll',checkScroll);checkScroll();
+
+  var prog=document.getElementById('bcProgress');
+  window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;if(h>0)prog.style.width=(window.scrollY/h*100)+'%'});
+
+  var reveals=document.querySelectorAll('.bc-reveal');
+  var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('bc-visible');observer.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  reveals.forEach(function(el){observer.observe(el)});
+
+  document.querySelectorAll('.bc-faq-item').forEach(function(item){
+    var btn=item.querySelector('.bc-faq-q');
+    btn.addEventListener('click',function(){
+      var isOpen=item.classList.contains('open');
+      document.querySelectorAll('.bc-faq-item').forEach(function(i){i.classList.remove('open');i.querySelector('.bc-faq-q').setAttribute('aria-expanded','false')});
+      if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true')}
+    });
+  });
+})();
+</script>
+<style>
+/* Squarespace page wrapper reset */
+.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block{margin:0!important;padding:0!important;max-width:100%!important;width:100%!important}
+.page-section:last-of-type{padding-bottom:0!important;margin-bottom:0!important}
+#footer,.Footer,.footer,footer[data-footer-id],footer:not(.bc-ft){display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important}
+.sqs-block-spacer,.sqs-block-horizontalrule,.section-background{display:none!important}
+@media(max-width:768px){.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block,.Index-page-content,.blog-item-inner-wrapper,article.page,article.Page,.page-content,.Page-content{padding:0!important;margin:0!important}body{padding-bottom:0!important;margin-bottom:0!important}}
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){var f=document.querySelector('.bc-ft');if(f){var p=f.closest('.sqs-block')||f.closest('.page-section')||f.parentElement;while(p){var n=p.nextElementSibling;while(n){n.style.cssText='display:none!important;height:0!important;padding:0!important;margin:0!important;overflow:hidden!important';n=n.nextElementSibling}p=p.parentElement}}});
+</script>

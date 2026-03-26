@@ -1,0 +1,364 @@
+{
+  "scores": {
+    "seo": {
+      "value": 77,
+      "grade": "B",
+      "color": "good"
+    },
+    "local": {
+      "value": 46,
+      "grade": "C-",
+      "color": "bad"
+    },
+    "content": {
+      "value": 84,
+      "grade": "A-",
+      "color": "good"
+    },
+    "visual_assets": {
+      "value": 85,
+      "grade": "A-",
+      "color": "good"
+    }
+  },
+  "findings": {
+    "seo": [
+      {
+        "status": "pass",
+        "title": "Valid SSL certificate",
+        "detail": "Site is served over HTTPS."
+      },
+      {
+        "status": "pass",
+        "title": "Good meta title",
+        "detail": "\"LRD Studio | Interior Design - Whistler, Squamish\" (49 chars)"
+      },
+      {
+        "status": "warn",
+        "title": "Meta description too long (163 chars)",
+        "detail": "Recommended: 120-155 characters."
+      },
+      {
+        "status": "pass",
+        "title": "Single H1 tag",
+        "detail": "\"DESIGN FOR LIFE  |  RESIDENTIAL + COMMERCIAL\""
+      },
+      {
+        "status": "pass",
+        "title": "Open Graph tags present",
+        "detail": "og:title, og:image found."
+      },
+      {
+        "status": "fail",
+        "title": "No structured data (schema.org)",
+        "detail": "No JSON-LD found. Add LocalBusiness, Organization, or WebSite schema."
+      },
+      {
+        "status": "pass",
+        "title": "robots.txt exists",
+        "detail": "20 disallowed paths."
+      },
+      {
+        "status": "pass",
+        "title": "Sitemap found (36 URLs)",
+        "detail": "URL: https://www.lrdstudio.ca/sitemap.xml"
+      },
+      {
+        "status": "pass",
+        "title": "Canonical tag present",
+        "detail": "https://www.lrdstudio.ca"
+      },
+      {
+        "status": "pass",
+        "title": "Good server response (91ms)",
+        "detail": "First byte returned quickly."
+      }
+    ],
+    "local": [
+      {
+        "status": "fail",
+        "title": "Google Business Profile not detected",
+        "detail": "Google often blocks automated requests. Verify manually. Verify at business.google.com."
+      },
+      {
+        "status": "fail",
+        "title": "No LocalBusiness schema markup",
+        "detail": "Add LocalBusiness or HomeBuilder JSON-LD schema with NAP, hours, and service area."
+      },
+      {
+        "status": "pass",
+        "title": "Listed on Houzz",
+        "detail": "Found at https://www.houzz.com/professionals/hznb/query/nqrwns/probr0-bo~q_lrd-studio"
+      },
+      {
+        "status": "warn",
+        "title": "Not found on HomeStars",
+        "detail": "Consider creating a profile for citation building."
+      },
+      {
+        "status": "warn",
+        "title": "Not found on CHBA",
+        "detail": "Consider creating a profile for citation building."
+      },
+      {
+        "status": "warn",
+        "title": "NAP consistency check needed",
+        "detail": "Verify name, address, and phone are consistent across website footer, GBP, and directory listings."
+      }
+    ],
+    "content": [
+      {
+        "status": "pass",
+        "title": "Good homepage content (464 words)",
+        "detail": "Homepage has sufficient text content."
+      },
+      {
+        "status": "pass",
+        "title": "29 pages crawled",
+        "detail": "Site has a reasonable amount of content."
+      },
+      {
+        "status": "pass",
+        "title": "20 project/portfolio pages found",
+        "detail": "19 with descriptions (100+ words), 1 image-only."
+      },
+      {
+        "status": "warn",
+        "title": "1 project pages could use more content",
+        "detail": "Adding descriptions to all project pages improves search visibility."
+      },
+      {
+        "status": "warn",
+        "title": "No blog or journal section found",
+        "detail": "Regular content (monthly posts) helps build search authority."
+      }
+    ],
+    "visual_assets": [
+      {
+        "status": "pass",
+        "title": "8 images on homepage",
+        "detail": "Good visual presence."
+      },
+      {
+        "status": "fail",
+        "title": "6 of 8 images missing alt text (75%)",
+        "detail": "Alt text is critical for image SEO and accessibility."
+      },
+      {
+        "status": "pass",
+        "title": "761 total images across site",
+        "detail": "699 missing alt text site-wide."
+      },
+      {
+        "status": "pass",
+        "title": "Project pages average 34.8 images",
+        "detail": "Good visual coverage per project."
+      }
+    ]
+  },
+  "meta": {
+    "url": "https://www.lrdstudio.ca",
+    "company_name": "LRD Studio",
+    "location": "Squamish BC",
+    "pages_crawled": 30,
+    "pages_successful": 29,
+    "pages_errored": 1,
+    "total_word_count": 17858,
+    "total_images": 761,
+    "total_missing_alt": 699,
+    "schema_types_found": [],
+    "project_pages_count": 20,
+    "project_pages_with_descriptions": 19,
+    "has_robots_txt": true,
+    "has_sitemap": true,
+    "sitemap_url_count": 36,
+    "ssl_valid": true,
+    "redirect_count": 0,
+    "final_url": "https://www.lrdstudio.ca/",
+    "homepage_title": "LRD Studio | Interior Design - Whistler, Squamish",
+    "homepage_meta_description": "Full-service interior design team with projects in Whistler, Squamish & \r\nVancouver. Personal approach for residential, legacy renovations & \r\ncommercial projects.",
+    "homepage_word_count": 464,
+    "homepage_image_count": 8,
+    "homepage_response_ms": 91,
+    "homepage_size_kb": 182.0,
+    "gbp_detected": false,
+    "directories_checked": {
+      "Houzz": true,
+      "HomeStars": false,
+      "CHBA": false
+    },
+    "project_pages": [
+      {
+        "url": "https://www.lrdstudio.ca/whistler-interior-designers",
+        "title": "Interior Designers — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 536,
+        "image_count": 9,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects",
+        "title": "Projects — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 163,
+        "image_count": 20,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/residential/sunridge",
+        "title": "Sunridge — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 763,
+        "image_count": 48,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/residential/needles-drive",
+        "title": "Needles Drive — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 766,
+        "image_count": 45,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/commercial/stilhavn",
+        "title": "Stilhavn — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 864,
+        "image_count": 14,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/residential/fitzsimmons",
+        "title": "Fitzsimmons — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 709,
+        "image_count": 37,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/residential/panorama",
+        "title": "Panorama — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 231,
+        "image_count": 28,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/commercial/sram",
+        "title": "SRAM — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 760,
+        "image_count": 33,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/residential/cypress",
+        "title": "Cypress — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 685,
+        "image_count": 25,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/residential/falcon",
+        "title": "Falcon Crescent — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 959,
+        "image_count": 49,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/residential/balsam",
+        "title": "Balsam — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 764,
+        "image_count": 36,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/residential/toni-sailer",
+        "title": "Toni Sailer — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 241,
+        "image_count": 46,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/residential/kadenwood",
+        "title": "Kadenwood — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 701,
+        "image_count": 58,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/residential/balsam2",
+        "title": "Balsam 2 — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 717,
+        "image_count": 41,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/residential/sunstone",
+        "title": "Sunstone — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 732,
+        "image_count": 82,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/residential/summer-lane",
+        "title": "Summer Lane — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 762,
+        "image_count": 58,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/commercial/chiefdental",
+        "title": "Chief Dental — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 918,
+        "image_count": 8,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/residential/east-van-loft",
+        "title": "East Van Loft — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 227,
+        "image_count": 34,
+        "has_description": true
+      },
+      {
+        "url": "https://www.lrdstudio.ca/whistler-commercial-interior-design ",
+        "title": "",
+        "word_count": 0,
+        "image_count": 0,
+        "has_description": false
+      },
+      {
+        "url": "https://www.lrdstudio.ca/projects/commercial/moov-yoga-studio",
+        "title": "Moov Yoga Studio — LRD Studio | Interior Design - Whistler, Squamish",
+        "word_count": 649,
+        "image_count": 24,
+        "has_description": true
+      }
+    ],
+    "page_urls": [
+      "https://www.lrdstudio.ca",
+      "https://www.lrdstudio.ca/about",
+      "https://www.lrdstudio.ca/careers-1-1",
+      "https://www.lrdstudio.ca/cart",
+      "https://www.lrdstudio.ca/client-portal",
+      "https://www.lrdstudio.ca/contact",
+      "https://www.lrdstudio.ca/press",
+      "https://www.lrdstudio.ca/projects",
+      "https://www.lrdstudio.ca/projects/commercial/chiefdental",
+      "https://www.lrdstudio.ca/projects/commercial/moov-yoga-studio",
+      "https://www.lrdstudio.ca/projects/commercial/sram",
+      "https://www.lrdstudio.ca/projects/commercial/stilhavn",
+      "https://www.lrdstudio.ca/projects/residential/balsam",
+      "https://www.lrdstudio.ca/projects/residential/balsam2",
+      "https://www.lrdstudio.ca/projects/residential/cypress",
+      "https://www.lrdstudio.ca/projects/residential/east-van-loft",
+      "https://www.lrdstudio.ca/projects/residential/falcon",
+      "https://www.lrdstudio.ca/projects/residential/fitzsimmons",
+      "https://www.lrdstudio.ca/projects/residential/kadenwood",
+      "https://www.lrdstudio.ca/projects/residential/needles-drive",
+      "https://www.lrdstudio.ca/projects/residential/panorama",
+      "https://www.lrdstudio.ca/projects/residential/summer-lane",
+      "https://www.lrdstudio.ca/projects/residential/sunridge",
+      "https://www.lrdstudio.ca/projects/residential/sunstone",
+      "https://www.lrdstudio.ca/projects/residential/toni-sailer",
+      "https://www.lrdstudio.ca/services",
+      "https://www.lrdstudio.ca/studio-notes",
+      "https://www.lrdstudio.ca/testimonials",
+      "https://www.lrdstudio.ca/whistler-interior-designers"
+    ]
+  }
+}

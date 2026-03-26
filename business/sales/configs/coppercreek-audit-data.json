@@ -1,0 +1,379 @@
+{
+  "scores": {
+    "seo": {
+      "value": 69,
+      "grade": "B-",
+      "color": "mid"
+    },
+    "local": {
+      "value": 46,
+      "grade": "C-",
+      "color": "bad"
+    },
+    "content": {
+      "value": 100,
+      "grade": "A",
+      "color": "good"
+    },
+    "visual_assets": {
+      "value": 92,
+      "grade": "A",
+      "color": "good"
+    }
+  },
+  "findings": {
+    "seo": [
+      {
+        "status": "pass",
+        "title": "Valid SSL certificate",
+        "detail": "Site is served over HTTPS."
+      },
+      {
+        "status": "warn",
+        "title": "Meta title too short (18 chars)",
+        "detail": "Title: \"Copper Creek Homes\". Should be more descriptive."
+      },
+      {
+        "status": "warn",
+        "title": "Meta description too long (228 chars)",
+        "detail": "Recommended: 120-155 characters."
+      },
+      {
+        "status": "pass",
+        "title": "Single H1 tag",
+        "detail": "\"award winningcustom homebuilder & renovator\""
+      },
+      {
+        "status": "pass",
+        "title": "Open Graph tags present",
+        "detail": "og:title, og:image found."
+      },
+      {
+        "status": "fail",
+        "title": "No structured data (schema.org)",
+        "detail": "No JSON-LD found. Add LocalBusiness, Organization, or WebSite schema."
+      },
+      {
+        "status": "pass",
+        "title": "robots.txt exists",
+        "detail": "20 disallowed paths."
+      },
+      {
+        "status": "pass",
+        "title": "Sitemap found (76 URLs)",
+        "detail": "URL: https://www.coppercreekhomes.ca/sitemap.xml"
+      },
+      {
+        "status": "pass",
+        "title": "Canonical tag present",
+        "detail": "https://www.coppercreekhomes.ca"
+      },
+      {
+        "status": "pass",
+        "title": "Good server response (84ms)",
+        "detail": "First byte returned quickly."
+      }
+    ],
+    "local": [
+      {
+        "status": "fail",
+        "title": "Google Business Profile not detected",
+        "detail": "Google often blocks automated requests. Verify manually. Verify at business.google.com."
+      },
+      {
+        "status": "fail",
+        "title": "No LocalBusiness schema markup",
+        "detail": "Add LocalBusiness or HomeBuilder JSON-LD schema with NAP, hours, and service area."
+      },
+      {
+        "status": "pass",
+        "title": "Listed on Houzz",
+        "detail": "Found at https://www.houzz.com/professionals/hznb/query/nqrwns/probr0-bo~q_copper-creek-homes"
+      },
+      {
+        "status": "warn",
+        "title": "Not found on HomeStars",
+        "detail": "Consider creating a profile for citation building."
+      },
+      {
+        "status": "warn",
+        "title": "Not found on CHBA",
+        "detail": "Consider creating a profile for citation building."
+      },
+      {
+        "status": "warn",
+        "title": "NAP consistency check needed",
+        "detail": "Verify name, address, and phone are consistent across website footer, GBP, and directory listings."
+      }
+    ],
+    "content": [
+      {
+        "status": "pass",
+        "title": "Good homepage content (645 words)",
+        "detail": "Homepage has sufficient text content."
+      },
+      {
+        "status": "pass",
+        "title": "30 pages crawled",
+        "detail": "Site has a reasonable amount of content."
+      },
+      {
+        "status": "pass",
+        "title": "22 project/portfolio pages found",
+        "detail": "22 with descriptions (100+ words), 0 image-only."
+      },
+      {
+        "status": "pass",
+        "title": "All project pages have descriptions",
+        "detail": "Good content coverage across portfolio."
+      },
+      {
+        "status": "pass",
+        "title": "Blog/journal section found (5 pages)",
+        "detail": "Active content publishing helps SEO."
+      }
+    ],
+    "visual_assets": [
+      {
+        "status": "pass",
+        "title": "21 images on homepage",
+        "detail": "Good visual presence."
+      },
+      {
+        "status": "warn",
+        "title": "5 of 21 images missing alt text",
+        "detail": "Add descriptive alt text to all images."
+      },
+      {
+        "status": "pass",
+        "title": "1336 total images across site",
+        "detail": "33 missing alt text site-wide."
+      },
+      {
+        "status": "pass",
+        "title": "Project pages average 53.8 images",
+        "detail": "Good visual coverage per project."
+      }
+    ]
+  },
+  "meta": {
+    "url": "https://www.coppercreekhomes.ca",
+    "company_name": "Copper Creek Homes",
+    "location": "Abbotsford BC",
+    "pages_crawled": 30,
+    "pages_successful": 30,
+    "pages_errored": 0,
+    "total_word_count": 17765,
+    "total_images": 1336,
+    "total_missing_alt": 33,
+    "schema_types_found": [],
+    "project_pages_count": 22,
+    "project_pages_with_descriptions": 22,
+    "has_robots_txt": true,
+    "has_sitemap": true,
+    "sitemap_url_count": 76,
+    "ssl_valid": true,
+    "redirect_count": 0,
+    "final_url": "https://www.coppercreekhomes.ca/",
+    "homepage_title": "Copper Creek Homes",
+    "homepage_meta_description": "Welcome to Copper Creek Homes, your 25-year expert in custom homes, \r\nrenovations, and commercial construction in the Lower Mainland. Our \r\ntransparent, on-time, on-budget approach sets us apart. Experience \r\nexcellence with us!",
+    "homepage_word_count": 645,
+    "homepage_image_count": 21,
+    "homepage_response_ms": 84,
+    "homepage_size_kb": 163.8,
+    "gbp_detected": false,
+    "directories_checked": {
+      "Houzz": true,
+      "HomeStars": false,
+      "CHBA": false
+    },
+    "project_pages": [
+      {
+        "url": "https://www.coppercreekhomes.ca",
+        "title": "Copper Creek Homes",
+        "word_count": 645,
+        "image_count": 21,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/vancouver-home-builder",
+        "title": "Vancouver Home Builder — Copper Creek Homes",
+        "word_count": 533,
+        "image_count": 61,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/pitt-meadows-home-builder",
+        "title": "Pitt Meadows Home Builder — Copper Creek Homes",
+        "word_count": 538,
+        "image_count": 61,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/richmond-home-builder",
+        "title": "Richmond Home Builder — Copper Creek Homes",
+        "word_count": 533,
+        "image_count": 61,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/white-rock-home-builder",
+        "title": "White Rock Home Builder — Copper Creek Homes",
+        "word_count": 538,
+        "image_count": 61,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/surrey-home-builder",
+        "title": "Surrey Home Builder — Copper Creek Homes",
+        "word_count": 533,
+        "image_count": 61,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/chba-housing-awards-of-excellence-finalists",
+        "title": "Award-Winning Home Builders in Fraser Valley | Copper Creek Homes | CHBA Excellence Finalists 2024 — Copper Creek Homes",
+        "word_count": 581,
+        "image_count": 73,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/burnaby-home-builder",
+        "title": "Burnaby Home Builder — Copper Creek Homes",
+        "word_count": 533,
+        "image_count": 61,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/port-moody-home-builder",
+        "title": "Port Moody Home Builder — Copper Creek Homes",
+        "word_count": 538,
+        "image_count": 61,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/new-westminster-home-builder",
+        "title": "New Westminster Home Builder — Copper Creek Homes",
+        "word_count": 538,
+        "image_count": 61,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/contact",
+        "title": "Contact — Copper Creek Homes",
+        "word_count": 619,
+        "image_count": 63,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/services",
+        "title": "Custom Home Builder — Copper Creek Homes",
+        "word_count": 465,
+        "image_count": 17,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/west-vancouver-home-builder",
+        "title": "West Vancouver Home Builder — Copper Creek Homes",
+        "word_count": 538,
+        "image_count": 61,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/blog/10-home-maintenance-tips-with-weatherguard-gutters",
+        "title": "10 Essential Custom Home Maintenance Tips from Weatherguard Gutters | Copper Creek Homes — Copper Creek Homes",
+        "word_count": 1813,
+        "image_count": 17,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/blog/art-of-custom-home-building",
+        "title": "The Art of Custom Home Building in BC — Copper Creek Homes",
+        "word_count": 759,
+        "image_count": 17,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/coquitlam-home-builder",
+        "title": "Coquitlam Home Builder — Copper Creek Homes",
+        "word_count": 533,
+        "image_count": 61,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/aldergrove-home-builder",
+        "title": "Aldergrove Home Builder — Copper Creek Homes",
+        "word_count": 533,
+        "image_count": 61,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/mission-home-builder",
+        "title": "Mission Home Builder — Copper Creek Homes",
+        "word_count": 533,
+        "image_count": 61,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/delta-home-builder",
+        "title": "Delta Home Builder — Copper Creek Homes",
+        "word_count": 533,
+        "image_count": 61,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/maple-ridge-home-builder",
+        "title": "Maple Ridge Home Builder — Copper Creek Homes",
+        "word_count": 538,
+        "image_count": 61,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/chilliwack-home-builder",
+        "title": "Chilliwack Home Builder — Copper Creek Homes",
+        "word_count": 533,
+        "image_count": 61,
+        "has_description": true
+      },
+      {
+        "url": "https://www.coppercreekhomes.ca/langley-home-builder",
+        "title": "Langley Home Builder — Copper Creek Homes",
+        "word_count": 533,
+        "image_count": 61,
+        "has_description": true
+      }
+    ],
+    "page_urls": [
+      "https://www.coppercreekhomes.ca",
+      "https://www.coppercreekhomes.ca/about-us",
+      "https://www.coppercreekhomes.ca/aldergrove-home-builder",
+      "https://www.coppercreekhomes.ca/awards",
+      "https://www.coppercreekhomes.ca/blog",
+      "https://www.coppercreekhomes.ca/blog/10-home-maintenance-tips-with-weatherguard-gutters",
+      "https://www.coppercreekhomes.ca/blog/art-of-custom-home-building",
+      "https://www.coppercreekhomes.ca/blog/building-permits-in-bc",
+      "https://www.coppercreekhomes.ca/blog/category/Tips+%26+Tricks",
+      "https://www.coppercreekhomes.ca/burnaby-home-builder",
+      "https://www.coppercreekhomes.ca/chba-housing-awards-of-excellence-finalists",
+      "https://www.coppercreekhomes.ca/chilliwack-home-builder",
+      "https://www.coppercreekhomes.ca/contact",
+      "https://www.coppercreekhomes.ca/coquitlam-home-builder",
+      "https://www.coppercreekhomes.ca/delta-home-builder",
+      "https://www.coppercreekhomes.ca/langley-home-builder",
+      "https://www.coppercreekhomes.ca/maple-ridge-home-builder",
+      "https://www.coppercreekhomes.ca/mission-home-builder",
+      "https://www.coppercreekhomes.ca/new-westminster-home-builder",
+      "https://www.coppercreekhomes.ca/pitt-meadows-home-builder",
+      "https://www.coppercreekhomes.ca/port-moody-home-builder",
+      "https://www.coppercreekhomes.ca/process",
+      "https://www.coppercreekhomes.ca/richmond-home-builder",
+      "https://www.coppercreekhomes.ca/search",
+      "https://www.coppercreekhomes.ca/services",
+      "https://www.coppercreekhomes.ca/sign-up-now-to-learn-the-5-highstake-blunders-to-avoid",
+      "https://www.coppercreekhomes.ca/surrey-home-builder",
+      "https://www.coppercreekhomes.ca/vancouver-home-builder",
+      "https://www.coppercreekhomes.ca/west-vancouver-home-builder",
+      "https://www.coppercreekhomes.ca/white-rock-home-builder"
+    ]
+  }
+}

@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Awards & Publications Strategy — Balmoral Construction</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A18;
+    --paper: #F6F4F0;
+    --gold: #C9A96E;
+    --gold-dim: rgba(201,169,110,0.12);
+    --gold-border: rgba(201,169,110,0.25);
+    --gold-glow: rgba(201,169,110,0.06);
+    --stone: #8A8579;
+    --white: #FFFFFF;
+    --light: #FAFAF8;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; -webkit-print-color-adjust:exact; print-color-adjust:exact; scroll-behavior:smooth; }
+  body { background:var(--white); color:var(--ink); font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.75; overflow-x:hidden; }
+
+
+  /* ═══════════════════════════════════════
+     SCROLL PROGRESS BAR
+     ═══════════════════════════════════════ */
+  .scroll-progress {
+    position:fixed; top:0; left:0; height:2px; width:0%;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.4));
+    z-index:9999; transition:width 0.05s linear;
+    box-shadow:0 0 8px rgba(201,169,110,0.3);
+  }
+
+  /* ═══════════════════════════════════════
+     LOADING SCREEN
+     ═══════════════════════════════════════ */
+  .loader {
+    position:fixed; top:0; left:0; right:0; bottom:0;
+    background:var(--ink); z-index:99999;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1), visibility 0.6s;
+  }
+  .loader.done {
+    opacity:0; visibility:hidden; pointer-events:none;
+  }
+  .loader-brand {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.7rem;
+    letter-spacing:0.5em; text-transform:uppercase; color:var(--paper);
+    opacity:0; animation:loaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line {
+    width:80px; height:1px; background:var(--gold-dim); margin-top:24px;
+    position:relative; overflow:hidden; border-radius:1px;
+    opacity:0; animation:loaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line::after {
+    content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation:loaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+  }
+  @keyframes loaderIn { to { opacity:1; } }
+  @keyframes loaderFill { to { left:100%; } }
+
+  /* ═══════════════════════════════════════
+     SCROLL REVEAL ANIMATIONS
+     ═══════════════════════════════════════ */
+  .reveal {
+    opacity:0; transform:translateY(32px);
+    transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal-delay-1 { transition-delay:0.08s; }
+  .reveal-delay-2 { transition-delay:0.16s; }
+  .reveal-delay-3 { transition-delay:0.24s; }
+  .reveal-delay-4 { transition-delay:0.32s; }
+  .reveal-delay-5 { transition-delay:0.40s; }
+
+  /* ═══════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════ */
+  .header {
+    background:var(--ink); color:var(--paper); padding:0;
+    position:relative; overflow:hidden; min-height:70vh;
+    display:flex; flex-direction:column; justify-content:flex-end;
+  }
+  .header-bg {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    background-image:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/312b0797-a43a-4a51-906e-f913c78c7b79/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-3.jpg');
+    background-size:cover; background-position:center 40%;
+    filter:brightness(0.35);
+  }
+  .header-inner {
+    position:relative; z-index:1; padding:120px 64px 100px;
+  }
+  .header::after {
+    content:''; position:absolute; bottom:0; left:64px; right:64px;
+    height:1px; background:linear-gradient(90deg, var(--gold), transparent 70%);
+    z-index:1;
+  }
+
+  /* ═══════════════════════════════════════
+     PHOTO BREAK — PARALLAX BANNERS
+     ═══════════════════════════════════════ */
+  .photo-break {
+    width:100%; height:40vh; min-height:280px; max-height:420px;
+    position:relative; overflow:hidden;
+  }
+  .photo-break img {
+    width:100%; height:120%; object-fit:cover; display:block;
+    position:absolute; top:-10%; left:0;
+    filter:brightness(0.85);
+    transition:filter 0.8s cubic-bezier(0.16,1,0.3,1);
+    will-change:transform;
+  }
+  .photo-break:hover img { filter:brightness(0.95); }
+  .photo-break::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:60px;
+    background:linear-gradient(rgba(26,26,24,0.15), transparent);
+    z-index:1; pointer-events:none;
+  }
+  .photo-break::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:100px;
+    background:linear-gradient(transparent, rgba(26,26,24,0.6));
+    z-index:1; pointer-events:none;
+  }
+  .photo-break-caption {
+    position:absolute; bottom:0; left:0; right:0; z-index:2;
+    padding:20px 64px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.3em; text-transform:uppercase;
+    color:rgba(246,244,240,0.5);
+  }
+
+  /* ═══════════════════════════════════════
+     PHOTO CURTAIN REVEAL + KEN BURNS
+     ═══════════════════════════════════════ */
+  .photo-break {
+    clip-path:inset(0 0 0 0);
+    transition:clip-path 1.2s cubic-bezier(0.16,1,0.3,1);
+  }
+  .photo-break.revealed { clip-path:inset(0 0 0 0); }
+  .photo-break.in-view img {
+    animation:kenBurns 12s ease-in-out infinite alternate;
+  }
+  @keyframes kenBurns {
+    0% { transform:scale(1) translateY(0); }
+    100% { transform:scale(1.06) translateY(-8px); }
+  }
+
+  /* ═══════════════════════════════════════
+     HEADLINE GOLD UNDERLINE
+     ═══════════════════════════════════════ */
+  h2 em { position:relative; display:inline; }
+  h2 em::after {
+    content:''; position:absolute; bottom:2px; left:0;
+    width:0; height:1.5px;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.3));
+    transition:width 1s 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  h2.underlined em::after { width:100%; }
+
+  /* ═══════════════════════════════════════
+     PREMIUM REFINEMENTS
+     ═══════════════════════════════════════ */
+  .num-val {
+    text-shadow:0 0 60px rgba(201,169,110,0.25), 0 0 120px rgba(201,169,110,0.1);
+  }
+  .action {
+    transition:background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .action:hover {
+    background:var(--light);
+    box-shadow:0 4px 24px rgba(0,0,0,0.04);
+  }
+  .callout {
+    box-shadow:0 8px 32px rgba(0,0,0,0.03);
+  }
+  .callout::before {
+    box-shadow:4px 0 16px rgba(201,169,110,0.08);
+  }
+  .pub {
+    transition:all 0.3s ease;
+    border-left:3px solid transparent;
+  }
+  .pub:hover {
+    border-left-color:var(--gold);
+    background:var(--light);
+  }
+  .section.cream .pub:hover { background:var(--white); }
+  h2 { text-wrap:balance; }
+  .lead { text-wrap:pretty; }
+
+  /* ═══════════════════════════════════════
+     FILM GRAIN OVERLAY
+     ═══════════════════════════════════════ */
+  .grain-section::after {
+    content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size:128px 128px;
+    pointer-events:none; z-index:0; opacity:0.5;
+  }
+  .grain-section { position:relative; }
+  .grain-section > * { position:relative; z-index:1; }
+
+  /* ═══════════════════════════════════════
+     SECTION NAV DOTS
+     ═══════════════════════════════════════ */
+  .section-nav {
+    position:fixed; right:24px; top:50%; transform:translateY(-50%);
+    z-index:9998; display:flex; flex-direction:column; gap:12px;
+    opacity:0; transition:opacity 0.4s ease;
+  }
+  .section-nav.visible { opacity:1; }
+  .section-nav-dot {
+    width:8px; height:8px; border-radius:50%;
+    background:transparent; border:1px solid var(--stone);
+    cursor:pointer; transition:all 0.3s ease;
+    position:relative;
+  }
+  .section-nav-dot:hover {
+    border-color:var(--gold); transform:scale(1.3);
+  }
+  .section-nav-dot.active {
+    background:var(--gold); border-color:var(--gold);
+    box-shadow:0 0 8px rgba(201,169,110,0.4);
+  }
+  .section-nav-dot::before {
+    content:attr(data-label);
+    position:absolute; right:20px; top:50%; transform:translateY(-50%);
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--gold);
+    white-space:nowrap; opacity:0; pointer-events:none;
+    transition:opacity 0.3s ease, right 0.3s ease;
+  }
+  .section-nav-dot:hover::before {
+    opacity:1; right:24px;
+  }
+
+  /* ═══════════════════════════════════════
+     HEADER CASCADE ANIMATION
+     ═══════════════════════════════════════ */
+  .header .header-eyebrow,
+  .header h1,
+  .header .header-sub {
+    opacity:0; transform:translateY(24px);
+    animation:headerFade 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .header .header-eyebrow { animation-delay:0.3s; }
+  .header h1 { animation-delay:0.6s; }
+  .header .header-sub { animation-delay:0.9s; }
+  @keyframes headerFade {
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  /* ═══════════════════════════════════════
+     HEADER PARALLAX
+     ═══════════════════════════════════════ */
+  .header-bg {
+    will-change:transform;
+    transition:transform 0.1s linear;
+  }
+
+  /* ═══════════════════════════════════════
+     SCROLL INDICATOR
+     ═══════════════════════════════════════ */
+  .scroll-indicator {
+    position:absolute; bottom:40px; left:50%;
+    transform:translateX(-50%); display:flex; flex-direction:column;
+    align-items:center; gap:8px;
+    opacity:0; animation:headerFade 0.9s 1.2s cubic-bezier(0.16,1,0.3,1) forwards;
+    transition:opacity 0.4s ease; z-index:2;
+  }
+  .scroll-indicator.hidden { opacity:0 !important; }
+  .scroll-indicator-text {
+    font-family:'Josefin Sans',sans-serif; font-size:0.45rem;
+    letter-spacing:0.3em; text-transform:uppercase;
+    color:rgba(246,244,240,0.3);
+  }
+  .scroll-indicator-line {
+    width:1px; height:32px; position:relative; overflow:hidden;
+    background:rgba(246,244,240,0.1);
+  }
+  .scroll-indicator-line::after {
+    content:''; position:absolute; top:-100%; left:0;
+    width:100%; height:100%; background:var(--gold);
+    animation:scrollPulse 2s cubic-bezier(0.16,1,0.3,1) infinite;
+  }
+  @keyframes scrollPulse {
+    0% { top:-100%; }
+    50% { top:100%; }
+    100% { top:100%; }
+  }
+
+  /* ═══════════════════════════════════════
+     AWARDS TABLE ENHANCED
+     ═══════════════════════════════════════ */
+  .awards-table tbody tr {
+    transition:background 0.3s ease;
+  }
+  .awards-table tbody tr:hover {
+    background:var(--light);
+  }
+
+  /* ═══════════════════════════════════════
+     FLOW STEP HOVER
+     ═══════════════════════════════════════ */
+  .flow-step {
+    transition:padding-left 0.3s ease, border-color 0.3s ease;
+  }
+  .flow-step:hover {
+    padding-left:8px;
+    border-bottom-color:var(--gold-border);
+  }
+  .header-eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; display:flex; align-items:center; gap:14px;
+  }
+  .header-eyebrow::before { content:''; width:24px; height:1px; background:var(--gold); }
+  .header h1 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:3.2rem; line-height:1.12; letter-spacing:-0.01em;
+    margin-bottom:24px;
+  }
+  .header h1 em { font-style:italic; font-weight:500; }
+  .header-sub {
+    font-family:'DM Sans',sans-serif; font-weight:300; font-size:0.85rem;
+    color:rgba(246,244,240,0.5); letter-spacing:0.05em;
+  }
+
+  /* ═══════════════════════════════════════
+     SECTIONS
+     ═══════════════════════════════════════ */
+  .section {
+    max-width:800px; margin:0 auto; padding:80px 64px;
+  }
+  .section.full { max-width:100%; }
+  .section.dark { background:var(--ink); color:var(--paper); }
+  .section.cream { background:var(--paper); }
+  .section.light { background:var(--light); }
+  .section.wide { max-width:960px; }
+
+  .eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; display:flex; align-items:center; gap:14px;
+  }
+  .eyebrow::before {
+    content:''; width:0; height:1px; background:var(--gold);
+    transition:width 0.6s cubic-bezier(0.16,1,0.3,1);
+  }
+  .eyebrow.visible::before { width:24px; }
+
+  h2 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:2.6rem; line-height:1.12; margin-bottom:32px;
+    letter-spacing:-0.01em;
+  }
+  h2 em { font-style:italic; font-weight:500; }
+  h3 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.75rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
+    margin:48px 0 20px;
+  }
+  p { margin-bottom:20px; font-size:0.95rem; }
+  .lead { font-size:1.05rem; line-height:1.9; color:var(--stone); }
+
+  .divider {
+    width:1px; height:80px; background:var(--gold-dim);
+    margin:0 auto; border:none; display:block;
+  }
+
+  blockquote {
+    border-left:2px solid var(--gold);
+    padding:8px 0 8px 24px; margin:32px 0;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic; font-size:1.2rem; line-height:1.6;
+    color:var(--stone);
+  }
+
+  /* ═══════════════════════════════════════
+     BY THE NUMBERS BAR
+     ═══════════════════════════════════════ */
+  .numbers-bar {
+    background:var(--ink); color:var(--paper); padding:64px;
+    display:grid; grid-template-columns:1fr 1fr; gap:1px;
+  }
+  .numbers-bar .num {
+    text-align:center; padding:32px 24px;
+  }
+  .num-val {
+    font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:500;
+    color:var(--gold); display:block; line-height:1; margin-bottom:12px;
+  }
+  .num-arrow {
+    font-family:'Cormorant Garamond',serif; font-size:2.8rem; font-weight:400;
+    color:rgba(201,169,110,0.3); display:block; line-height:1; margin-bottom:12px;
+  }
+  .num-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:rgba(246,244,240,0.5);
+  }
+
+  /* ═══════════════════════════════════════
+     ROADMAP
+     ═══════════════════════════════════════ */
+  .roadmap { margin:56px 0; position:relative; }
+  .roadmap-line {
+    position:absolute; left:200px; top:48px; width:2px;
+    height:0; background:var(--gold);
+    transition:height 0.05s linear; z-index:1;
+    box-shadow:0 0 6px rgba(201,169,110,0.3);
+  }
+  .roadmap-line::after {
+    content:''; position:absolute; bottom:-4px; left:-3px;
+    width:8px; height:8px; border-radius:50%;
+    background:var(--gold); box-shadow:0 0 12px rgba(201,169,110,0.5);
+  }
+  .rm {
+    display:grid; grid-template-columns:200px 1fr; gap:0;
+    border-bottom:1px solid rgba(26,26,24,0.06); min-height:0;
+  }
+  .rm:last-child { border:none; }
+  .rm-left {
+    padding:40px 32px 40px 0; border-right:2px solid var(--gold-dim);
+    position:relative;
+  }
+  .rm-left::after {
+    content:''; position:absolute; right:-5px; top:48px;
+    width:8px; height:8px; border-radius:50%; background:var(--gold);
+  }
+  .rm-month {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:4px;
+  }
+  .rm-label {
+    font-family:'Cormorant Garamond',serif; font-size:1.3rem;
+    font-weight:400; font-style:italic; color:var(--ink); line-height:1.3;
+  }
+  .rm-right { padding:40px 0 40px 40px; }
+  .rm-right ul { list-style:none; }
+  .rm-right li {
+    font-size:0.85rem; padding:6px 0 6px 24px; position:relative; color:var(--stone);
+  }
+  .rm-right li::before {
+    content:''; position:absolute; left:0; top:14px;
+    width:8px; height:1px; background:var(--gold);
+  }
+
+  /* ═══════════════════════════════════════
+     AWARDS TABLE
+     ═══════════════════════════════════════ */
+  .awards-table {
+    width:100%; border-collapse:collapse; margin:40px 0;
+  }
+  .awards-table thead th {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    padding:16px 12px; text-align:left;
+    border-bottom:1px solid var(--gold-border);
+  }
+  .awards-table tbody td {
+    font-size:0.85rem; padding:16px 12px;
+    border-bottom:1px solid rgba(26,26,24,0.06);
+    vertical-align:top;
+  }
+  .awards-table tbody tr:last-child td { border-bottom:none; }
+  .award-name {
+    font-family:'DM Sans',sans-serif; font-weight:500; color:var(--ink);
+  }
+  .award-prestige {
+    font-family:'Josefin Sans',sans-serif; font-size:0.6rem;
+    letter-spacing:0.1em; text-transform:uppercase;
+    padding:3px 10px; border-radius:2px; display:inline-block;
+  }
+  .prestige-highest { background:var(--gold); color:var(--white); }
+  .prestige-high { background:var(--gold-dim); color:var(--gold); }
+
+  /* ═══════════════════════════════════════
+     CALLOUT BOX
+     ═══════════════════════════════════════ */
+  .callout {
+    background:var(--light); border:1px solid var(--gold-border);
+    padding:40px 36px; margin:40px 0; position:relative;
+  }
+  .callout::before {
+    content:''; position:absolute; top:0; left:0; width:3px; height:100%;
+    background:var(--gold);
+  }
+  .callout h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.7rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:20px;
+  }
+  .callout ul { list-style:none; margin-bottom:20px; }
+  .callout li {
+    font-size:0.85rem; padding:6px 0 6px 24px; position:relative;
+    color:var(--stone);
+  }
+  .callout li::before {
+    content:''; position:absolute; left:0; top:14px;
+    width:8px; height:1px; background:var(--gold);
+  }
+  .callout .callout-quote {
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:1.1rem; color:var(--ink); margin-bottom:0;
+    padding-top:12px; border-top:1px solid var(--gold-dim);
+  }
+
+  /* ═══════════════════════════════════════
+     TIERS / PUBLICATION CARDS
+     ═══════════════════════════════════════ */
+  .tier {
+    margin:40px 0;
+  }
+  .tier-label {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.65rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; display:flex; align-items:center; gap:12px;
+  }
+  .tier-label::after { content:''; flex:1; height:1px; background:var(--gold-dim); }
+
+  .pub-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--gold-dim);
+  }
+  .pub {
+    background:var(--white); padding:28px 24px;
+  }
+  .section.cream .pub { background:var(--paper); }
+  .pub-name {
+    font-family:'DM Sans',sans-serif; font-weight:500; font-size:0.95rem;
+    color:var(--ink); margin-bottom:4px;
+  }
+  .pub-loc {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:8px;
+  }
+  .pub-desc {
+    font-size:0.8rem; color:var(--stone); margin-bottom:0; line-height:1.6;
+  }
+
+  /* ═══════════════════════════════════════
+     FLOW STEPS
+     ═══════════════════════════════════════ */
+  .flow {
+    margin:40px 0; counter-reset:flow;
+  }
+  .flow-step {
+    display:flex; gap:24px; align-items:flex-start;
+    padding:20px 0; border-bottom:1px solid rgba(26,26,24,0.06);
+    counter-increment:flow;
+  }
+  .flow-step:last-child { border-bottom:none; }
+  .flow-num {
+    font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:500;
+    color:var(--gold); line-height:1; min-width:36px;
+  }
+  .flow-text {
+    font-size:0.9rem; color:var(--ink); padding-top:4px;
+  }
+
+  /* ═══════════════════════════════════════
+     ACTION STEPS
+     ═══════════════════════════════════════ */
+  .actions {
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
+    background:var(--gold-dim); margin:40px 0;
+  }
+  .action {
+    background:var(--white); padding:36px 28px; text-align:center;
+  }
+  .section.cream .action { background:var(--paper); }
+  .action-num {
+    font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:500;
+    color:var(--gold); display:block; line-height:1; margin-bottom:16px;
+  }
+  .action-title {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.65rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--ink);
+    margin-bottom:12px;
+  }
+  .action-desc {
+    font-size:0.8rem; color:var(--stone); margin:0; line-height:1.6;
+  }
+
+  /* ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ */
+  .footer {
+    background:var(--ink); color:var(--paper); padding:64px;
+    text-align:center;
+  }
+  .footer-brand {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.7rem;
+    letter-spacing:0.4em; text-transform:uppercase; color:var(--paper);
+    margin-bottom:20px;
+  }
+  .footer-links {
+    font-size:0.75rem; color:rgba(246,244,240,0.4); margin-bottom:24px;
+    line-height:2;
+  }
+  .footer-links a {
+    color:rgba(246,244,240,0.5); text-decoration:none;
+    border-bottom:1px solid rgba(201,169,110,0.2);
+    transition:color 0.3s, border-color 0.3s;
+  }
+  .footer-links a:hover { color:var(--gold); border-color:var(--gold); }
+  .footer-conf {
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.2em; text-transform:uppercase;
+    color:rgba(246,244,240,0.25); margin-top:32px;
+    padding-top:24px; border-top:1px solid rgba(246,244,240,0.06);
+  }
+
+  /* ═══════════════════════════════════════
+     PRINT
+     ═══════════════════════════════════════ */
+  @media print {
+    .scroll-progress, .loader, .section-nav, .scroll-indicator { display:none; }
+    .reveal { opacity:1 !important; transform:none !important; }
+    .eyebrow::before { width:24px !important; }
+    .photo-break { clip-path:none !important; }
+    h2 em::after { width:100% !important; }
+    .header { padding:60px 40px 50px; }
+    .section { padding:40px; }
+    body { font-size:10pt; }
+  }
+
+  /* ═══════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════ */
+  @media (max-width:768px) {
+    .header { min-height:50vh; }
+    .header-inner { padding:80px 28px 64px; }
+    .header h1 { font-size:2.2rem; }
+    .photo-break { height:200px; min-height:200px; }
+    .photo-break-caption { padding:12px 28px; }
+    .section { padding:56px 28px; }
+    h2 { font-size:2rem; }
+    .numbers-bar { grid-template-columns:1fr; padding:40px 28px; }
+    .num-val { font-size:3rem; }
+    .awards-table { font-size:0.75rem; }
+    .awards-table thead th { font-size:0.5rem; padding:12px 8px; }
+    .awards-table tbody td { padding:12px 8px; }
+    .pub-grid { grid-template-columns:1fr; }
+    .actions { grid-template-columns:1fr; }
+    .rm { grid-template-columns:1fr; }
+    .rm-left { border-right:none; border-bottom:2px solid var(--gold-dim); padding:24px 0; }
+    .rm-left::after { display:none; }
+    .rm-right { padding:24px 0; }
+    .roadmap-line { display:none; }
+    .footer { padding:48px 28px; }
+    .section-nav { display:none; }
+    .scroll-indicator { display:none; }
+  }
+  @media (max-width:480px) {
+    .header-inner { padding:64px 20px 48px; }
+    .header h1 { font-size:1.8rem; }
+    .photo-break { height:160px; }
+    .section { padding:48px 20px; }
+    h2 { font-size:1.7rem; }
+    .awards-table { display:block; overflow-x:auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div class="loader" id="loader">
+  <div class="loader-brand">Matt Anthony Photography</div>
+  <div class="loader-sub" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:loaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;">Awards Strategy</div>
+  <div class="loader-line"></div>
+</div>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- SECTION NAV -->
+<nav class="section-nav" id="sectionNav"></nav>
+
+<!-- ═══════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════ -->
+<header class="header">
+  <div class="header-bg" id="headerBg"></div>
+  <div class="header-inner">
+    <div class="header-eyebrow">Strategy Document</div>
+    <h1>Awards & Publications<br>Strategy <em>for Balmoral</em></h1>
+    <p class="header-sub">Prepared by Matt Anthony Photography &middot; March 2026</p>
+  </div>
+  <div class="scroll-indicator" id="scrollIndicator">
+    <div class="scroll-indicator-text">Scroll</div>
+    <div class="scroll-indicator-line"></div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════
+     BY THE NUMBERS
+     ═══════════════════════════════════════ -->
+<div class="numbers-bar grain-section">
+  <div class="num reveal">
+    <span class="num-val" data-count="0">0</span>
+    <span class="num-lbl">Awards submitted to date</span>
+  </div>
+  <div class="num reveal reveal-delay-2">
+    <span class="num-val" data-count="17">17</span>
+    <span class="num-lbl">Georgie Awards held by closest competitor (RDC Fine Homes)</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SECTION 1: THE GAP
+     ═══════════════════════════════════════ -->
+<div class="divider"></div>
+<section class="section" data-nav="The Gap">
+  <div class="eyebrow">Section 01</div>
+  <h2>The <em>Gap</em></h2>
+  <p class="lead">Balmoral has been building luxury custom homes in the Sea to Sky corridor for 14 years, with zero awards submitted and zero press coverage.</p>
+  <p>That gap is costing real business. Competitors like RDC Fine Homes hold 17 Georgie Awards. CVC Custom Builders have been featured on HGTV and in the Wall Street Journal. In the luxury market, awards and publications are not vanity metrics. They are trust signals that close $2M+ contracts.</p>
+  <p>Prospective clients researching luxury builders compare credentials. The absence of awards is not neutral. It reads as unproven.</p>
+  <blockquote>Every project Balmoral completes without submitting is a missed credential.</blockquote>
+</section>
+
+<!-- PHOTO BREAK -->
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef4086f4-81fa-468f-99bf-966ce7d83d89/warbler-whistler-architectural-photography-matt-anthony-.jpg-11.jpg" alt="Warbler Residence at twilight — Whistler, BC">
+  <div class="photo-break-caption">Warbler Residence &middot; Whistler, BC &middot; Matt Anthony Photography</div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SECTION 2: THE AWARDS CALENDAR
+     ═══════════════════════════════════════ -->
+<section class="section wide" data-nav="Calendar">
+  <div class="eyebrow">Section 02</div>
+  <h2>The Awards <em>Calendar</em></h2>
+  <p class="lead">Seven major awards, mapped to a 12-month submission cycle.</p>
+
+  <table class="awards-table reveal">
+    <thead>
+      <tr>
+        <th>Award</th>
+        <th>Prestige</th>
+        <th>Entry Opens</th>
+        <th>Deadline</th>
+        <th>Gala</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="award-name">Georgie Awards</span><br><span style="font-size:0.75rem;color:var(--stone);">CHBA BC</span></td>
+        <td><span class="award-prestige prestige-highest">Highest in BC</span></td>
+        <td>June / July</td>
+        <td>November</td>
+        <td>May</td>
+      </tr>
+      <tr>
+        <td><span class="award-name">CHBA National Awards</span><br><span style="font-size:0.75rem;color:var(--stone);">CHBA Canada</span></td>
+        <td><span class="award-prestige prestige-highest">Highest in Canada</span></td>
+        <td>September</td>
+        <td>December</td>
+        <td>May</td>
+      </tr>
+      <tr>
+        <td><span class="award-name">HAVAN Awards</span><br><span style="font-size:0.75rem;color:var(--stone);">Homebuilders Association Vancouver</span></td>
+        <td><span class="award-prestige prestige-high">High (All BC)</span></td>
+        <td>October</td>
+        <td>January</td>
+        <td>April</td>
+      </tr>
+      <tr>
+        <td><span class="award-name">Gold Nugget Awards</span><br><span style="font-size:0.75rem;color:var(--stone);">North America</span></td>
+        <td><span class="award-prestige prestige-high">High (North America)</span></td>
+        <td>January</td>
+        <td>June</td>
+        <td>July</td>
+      </tr>
+      <tr>
+        <td><span class="award-name">AZ Awards</span><br><span style="font-size:0.75rem;color:var(--stone);">Azure Magazine</span></td>
+        <td><span class="award-prestige prestige-high">High (International)</span></td>
+        <td>November</td>
+        <td>February</td>
+        <td>June</td>
+      </tr>
+      <tr>
+        <td><span class="award-name">Dezeen Awards</span><br><span style="font-size:0.75rem;color:var(--stone);">Global</span></td>
+        <td><span class="award-prestige prestige-highest">Highest (Global)</span></td>
+        <td>February</td>
+        <td>June</td>
+        <td>TBD</td>
+      </tr>
+      <tr>
+        <td><span class="award-name">Western Living DOTY</span><br><span style="font-size:0.75rem;color:var(--stone);">Designer of the Year</span></td>
+        <td><span class="award-prestige prestige-high">High (BC)</span></td>
+        <td>March</td>
+        <td>April</td>
+        <td>TBD</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 3: PHOTOGRAPHY REQUIREMENTS
+     ═══════════════════════════════════════ -->
+<div class="divider"></div>
+<section class="section" data-nav="Photo Specs">
+  <div class="eyebrow">Section 03</div>
+  <h2>Photography <em>Requirements</em></h2>
+  <p class="lead">All major awards share nearly identical photography specifications.</p>
+
+  <div class="callout reveal">
+    <h4>Submission Standards</h4>
+    <ul>
+      <li>300 DPI JPEG, colour only</li>
+      <li>No people, logos, signage, or identifying features</li>
+      <li>No nighttime exteriors (dusk is acceptable)</li>
+      <li>Anonymous submissions (no branding visible)</li>
+      <li>Floor plans often required alongside images</li>
+    </ul>
+    <p class="callout-quote">This is exactly what my photography delivers. Every shoot is already award-ready.</p>
+  </div>
+</section>
+
+<!-- PHOTO BREAK -->
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c938566f-ee96-40da-aec4-d51ac9fa7e09/warbler-whistler-architectural-photography-matt-anthony-.jpg-13.jpg" alt="Warbler Residence living room">
+  <div class="photo-break-caption">Warbler Residence &middot; Interior &middot; Matt Anthony Photography</div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SECTION 4: PUBLICATION TARGETS
+     ═══════════════════════════════════════ -->
+<section class="section cream" data-nav="Publications">
+  <div class="eyebrow">Section 04</div>
+  <h2>Publication <em>Targets</em></h2>
+  <p class="lead">Two tiers, sequenced for maximum impact. Exclusives first, then broad distribution.</p>
+
+  <div class="tier reveal">
+    <div class="tier-label">Tier 1 &mdash; Pitch First (Exclusivity)</div>
+    <div class="pub-grid">
+      <div class="pub">
+        <p class="pub-name">Western Living</p>
+        <p class="pub-loc">Vancouver</p>
+        <p class="pub-desc">BC's top design magazine. Will not publish previously featured homes.</p>
+      </div>
+      <div class="pub">
+        <p class="pub-name">Dwell</p>
+        <p class="pub-loc">San Francisco</p>
+        <p class="pub-desc">Global reach. Prefers exclusives, even from Instagram.</p>
+      </div>
+      <div class="pub">
+        <p class="pub-name">Architectural Digest</p>
+        <p class="pub-loc">New York</p>
+        <p class="pub-desc">Highest bar. Photographer relationships are the asset.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tier reveal">
+    <div class="tier-label">Tier 2 &mdash; Broader Reach</div>
+    <div class="pub-grid">
+      <div class="pub">
+        <p class="pub-name">Azure Magazine</p>
+        <p class="pub-loc">Toronto</p>
+        <p class="pub-desc">Architecture and design.</p>
+      </div>
+      <div class="pub">
+        <p class="pub-name">NUVO Magazine</p>
+        <p class="pub-loc">Vancouver</p>
+        <p class="pub-desc">Luxury lifestyle, 4.1M quarterly audience.</p>
+      </div>
+      <div class="pub">
+        <p class="pub-name">Mountain Life</p>
+        <p class="pub-loc">Sea-to-Sky</p>
+        <p class="pub-desc">Perfect local credibility.</p>
+      </div>
+      <div class="pub">
+        <p class="pub-name">ArchDaily</p>
+        <p class="pub-loc">Global</p>
+        <p class="pub-desc">World's most visited architecture site. Free submission.</p>
+      </div>
+      <div class="pub">
+        <p class="pub-name">Dezeen</p>
+        <p class="pub-loc">Global</p>
+        <p class="pub-desc">World's most popular design publication.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 5: THE SUBMISSION STRATEGY
+     ═══════════════════════════════════════ -->
+<div class="divider"></div>
+<section class="section" data-nav="Strategy">
+  <div class="eyebrow">Section 05</div>
+  <h2>The Submission <em>Strategy</em></h2>
+  <p class="lead">One project, photographed right, can generate 3-5 credentials.</p>
+
+  <div class="flow reveal">
+    <div class="flow-step">
+      <span class="flow-num">1</span>
+      <span class="flow-text">Shoot the project with award-spec photography from day one</span>
+    </div>
+    <div class="flow-step">
+      <span class="flow-num">2</span>
+      <span class="flow-text">Submit to Western Living first (they require exclusives)</span>
+    </div>
+    <div class="flow-step">
+      <span class="flow-num">3</span>
+      <span class="flow-text">If featured, leverage the press for Georgie and CHBA award entries</span>
+    </div>
+    <div class="flow-step">
+      <span class="flow-num">4</span>
+      <span class="flow-text">After publication, submit to ArchDaily and Dezeen for broader reach</span>
+    </div>
+    <div class="flow-step">
+      <span class="flow-num">5</span>
+      <span class="flow-text">Use awards and press across website, proposals, and social media</span>
+    </div>
+  </div>
+
+  <blockquote>One project, photographed right, can generate 3&ndash;5 credentials.</blockquote>
+</section>
+
+<!-- PHOTO BREAK -->
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/76e4a936-3e97-4510-b280-07e9cda4c3f1/eagle-pemberton-architectural-photography-matt-anthony-.jpg-7.jpg" alt="Eagle Residence at twilight — Pemberton, BC">
+  <div class="photo-break-caption">Eagle Residence &middot; Pemberton, BC &middot; Matt Anthony Photography</div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SECTION 6: 12-MONTH AWARDS ROADMAP
+     ═══════════════════════════════════════ -->
+<section class="section light" data-nav="Roadmap">
+  <div class="eyebrow">Section 06</div>
+  <h2>What gets done.<br><em>Month by month.</em></h2>
+  <p class="lead">A 12-month awards calendar mapped to Balmoral's first submission cycle. Every deadline accounted for, every deliverable sequenced.</p>
+
+  <div class="roadmap">
+    <div class="roadmap-line" id="roadmapLine"></div>
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">Q2 2026</div>
+        <div class="rm-label">Build the<br>Foundation</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          <li>Join Sea to Sky CHBA to unlock Georgie and National eligibility</li>
+          <li>Photograph 2&ndash;3 strongest completed projects to award spec (300 DPI, anonymous, no branding)</li>
+          <li>Compile floor plans, project narratives, and builder statements for each</li>
+          <li>Pitch Warbler Residence to Western Living as exclusive feature</li>
+          <li>Submit Warbler to ArchDaily (free, no exclusivity conflict)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">Q3 2026</div>
+        <div class="rm-label">Georgie Season<br>Opens</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          <li>Georgie Awards entries open (June/July) &mdash; submit top 2 projects across multiple categories</li>
+          <li>CHBA National Awards entries open (September) &mdash; prepare submissions</li>
+          <li>Continue photographing active projects through peak summer light</li>
+          <li>Follow up on Western Living pitch; if accepted, coordinate feature timeline</li>
+          <li>Pitch Dwell and Architectural Digest with second project (exclusives)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">Q4 2026</div>
+        <div class="rm-label">Submit<br>Everything</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          <li>Georgie Awards deadline (November) &mdash; all entries finalized and submitted</li>
+          <li>HAVAN Awards entries open (October) &mdash; submit same projects, different categories</li>
+          <li>CHBA National deadline (December) &mdash; leverage Georgie entries for national submission</li>
+          <li>AZ Awards entries open (November) &mdash; submit strongest architectural project</li>
+          <li>Broader publication pitches: NUVO, Mountain Life, Azure Magazine</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">Q1 2027</div>
+        <div class="rm-label">Reap the<br>Credentials</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          <li>Gold Nugget Awards submission (January deadline) &mdash; North American prestige</li>
+          <li>HAVAN deadline (January) &mdash; finalize entries</li>
+          <li>AZ Awards deadline (February) &mdash; submit</li>
+          <li>Dezeen Awards entries open (February) &mdash; global-tier submission</li>
+          <li>HAVAN Gala (April) &mdash; first potential award win</li>
+          <li>Georgie Gala (May) &mdash; BC's biggest night for builders</li>
+          <li>Use all awards, nominations, and press across website, proposals, and social</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 7: WHAT BALMORAL NEEDS TO START
+     ═══════════════════════════════════════ -->
+<section class="section cream" data-nav="Next Steps">
+  <div class="eyebrow">Section 07</div>
+  <h2>What Balmoral <em>Needs to Start</em></h2>
+  <p class="lead">Three steps. The rest is handled.</p>
+
+  <div class="actions reveal">
+    <div class="action">
+      <span class="action-num">1</span>
+      <p class="action-title">Join Sea to Sky CHBA</p>
+      <p class="action-desc">Required for Georgie Award and CHBA National Award eligibility.</p>
+    </div>
+    <div class="action">
+      <span class="action-num">2</span>
+      <p class="action-title">Identify 2&ndash;3 Projects</p>
+      <p class="action-desc">Select the strongest completed projects for first submissions.</p>
+    </div>
+    <div class="action">
+      <span class="action-num">3</span>
+      <p class="action-title">Schedule Photography</p>
+      <p class="action-desc">Award-spec photography sessions. I handle the rest.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-brand">Matt Anthony Photography</div>
+  <div class="footer-links">
+    <a href="https://mattanthonyphoto.com">mattanthonyphoto.com</a><br>
+    <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a><br>
+    604.765.9270 &middot; Squamish, BC
+  </div>
+  <div class="footer-conf">Confidential &mdash; Prepared for Balmoral Construction Inc.</div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════ -->
+<script>
+(function(){
+'use strict';
+
+/* ═══════ LOADING SCREEN ═══════ */
+var loader = document.getElementById('loader');
+window.addEventListener('load', function(){
+  setTimeout(function(){ loader.classList.add('done'); }, 1100);
+});
+
+/* ═══════ SCROLL PROGRESS BAR ═══════ */
+var progressBar = document.getElementById('scrollProgress');
+function updateProgress(){
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  var s = window.scrollY;
+  progressBar.style.width = (h > 0 ? (s / h) * 100 : 0) + '%';
+}
+
+/* ═══════ HEADER PARALLAX ═══════ */
+var headerBg = document.getElementById('headerBg');
+function updateParallax(){
+  if(window.scrollY < window.innerHeight){
+    headerBg.style.transform = 'scale(1.08) translateY(' + (window.scrollY * 0.3) + 'px)';
+  }
+}
+
+/* ═══════ SCROLL INDICATOR HIDE ═══════ */
+var scrollIndicator = document.getElementById('scrollIndicator');
+function updateScrollIndicator(){
+  if(window.scrollY > 100){
+    scrollIndicator.classList.add('hidden');
+  } else {
+    scrollIndicator.classList.remove('hidden');
+  }
+}
+
+/* ═══════ PHOTO BREAK PARALLAX + KEN BURNS ═══════ */
+var photoBreakEls = document.querySelectorAll('.photo-break');
+function updatePhotoParallax(){
+  photoBreakEls.forEach(function(pb){
+    var rect = pb.getBoundingClientRect();
+    pb.classList.toggle('in-view', rect.bottom > 0 && rect.top < window.innerHeight);
+  });
+}
+
+/* ═══════ PHOTO CURTAIN REVEAL ═══════ */
+var photoRevealObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add('revealed');
+      photoRevealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold:0.1 });
+photoBreakEls.forEach(function(pb){ photoRevealObserver.observe(pb); });
+
+/* ═══════ HEADLINE GOLD UNDERLINE ═══════ */
+var headlines = document.querySelectorAll('h2');
+var headlineObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add('underlined');
+      headlineObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold:0.5 });
+headlines.forEach(function(h){ headlineObserver.observe(h); });
+
+/* ═══════ SECTION NAV DOTS ═══════ */
+var sectionNav = document.getElementById('sectionNav');
+var navSections = document.querySelectorAll('[data-nav]');
+var navDots = [];
+navSections.forEach(function(sec){
+  var dot = document.createElement('div');
+  dot.className = 'section-nav-dot';
+  dot.setAttribute('data-label', sec.getAttribute('data-nav'));
+  dot.addEventListener('click', function(){
+    sec.scrollIntoView({ behavior:'smooth', block:'start' });
+  });
+  sectionNav.appendChild(dot);
+  navDots.push({ dot:dot, section:sec });
+});
+
+function updateNavDots(){
+  var scrollY = window.scrollY;
+  var winH = window.innerHeight;
+  if(scrollY > winH * 0.5){
+    sectionNav.classList.add('visible');
+  } else {
+    sectionNav.classList.remove('visible');
+  }
+  var active = null;
+  navDots.forEach(function(item){
+    var rect = item.section.getBoundingClientRect();
+    if(rect.top < winH * 0.5 && rect.bottom > winH * 0.3){
+      active = item;
+    }
+    item.dot.classList.remove('active');
+  });
+  if(active) active.dot.classList.add('active');
+}
+
+/* ═══════ ROADMAP LINE DRAW ═══════ */
+var roadmapLine = document.getElementById('roadmapLine');
+var roadmap = document.querySelector('.roadmap');
+function updateRoadmapLine(){
+  if(!roadmap || !roadmapLine) return;
+  var rect = roadmap.getBoundingClientRect();
+  var roadmapTop = rect.top + window.scrollY;
+  var roadmapHeight = rect.height - 96;
+  var scrollPos = window.scrollY + window.innerHeight * 0.6;
+  var progress = (scrollPos - roadmapTop - 48) / roadmapHeight;
+  progress = Math.max(0, Math.min(1, progress));
+  roadmapLine.style.height = (progress * roadmapHeight) + 'px';
+}
+
+/* ═══════ COMBINED SCROLL HANDLER ═══════ */
+var ticking = false;
+window.addEventListener('scroll', function(){
+  if(!ticking){
+    requestAnimationFrame(function(){
+      updateProgress();
+      updateParallax();
+      updatePhotoParallax();
+      updateScrollIndicator();
+      updateRoadmapLine();
+      updateNavDots();
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, {passive:true});
+
+/* ═══════ SCROLL REVEAL ═══════ */
+var revealTargets = [];
+document.querySelectorAll('.section, .numbers-bar').forEach(function(section){
+  section.querySelectorAll('.eyebrow, h2, .lead, .callout, .awards-table, .tier, .flow, .actions, .roadmap').forEach(function(el, i){
+    el.classList.add('reveal');
+    if(i > 0 && i < 6) el.classList.add('reveal-delay-' + i);
+    revealTargets.push(el);
+  });
+  section.querySelectorAll('.action, .flow-step, .pub, .num, .rm').forEach(function(el, i){
+    el.classList.add('reveal');
+    el.classList.add('reveal-delay-' + Math.min(i + 1, 5));
+    revealTargets.push(el);
+  });
+  Array.prototype.forEach.call(section.children, function(child){
+    if(child.tagName === 'P' && !child.classList.contains('lead')){
+      child.classList.add('reveal');
+      revealTargets.push(child);
+    }
+    if(child.tagName === 'BLOCKQUOTE'){
+      child.classList.add('reveal');
+      revealTargets.push(child);
+    }
+  });
+});
+
+var revealObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+      animateCounter(entry.target);
+    }
+  });
+}, { threshold:0.15, rootMargin:'0px 0px -40px 0px' });
+
+revealTargets.forEach(function(el){ revealObserver.observe(el); });
+
+/* ═══════ EYEBROW LINE ANIMATION ═══════ */
+var eyebrows = document.querySelectorAll('.eyebrow');
+var eyebrowObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      eyebrowObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold:0.5 });
+eyebrows.forEach(function(eb){ eyebrowObserver.observe(eb); });
+
+/* ═══════ NUMBER COUNTER ANIMATION ═══════ */
+function animateCounter(el){
+  var valEl = el.querySelector('.num-val');
+  if(!valEl || valEl.dataset.counted) return;
+  valEl.dataset.counted = 'true';
+  var target = parseInt(valEl.getAttribute('data-count'), 10);
+  if(isNaN(target)) return;
+  if(target === 0){ valEl.textContent = '0'; return; }
+  var duration = 1200;
+  var start = performance.now();
+  function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+  function step(now){
+    var elapsed = now - start;
+    var progress = Math.min(elapsed / duration, 1);
+    valEl.textContent = Math.round(target * ease(progress));
+    if(progress < 1) requestAnimationFrame(step);
+  }
+  valEl.textContent = '0';
+  requestAnimationFrame(step);
+}
+
+/* ═══════ INIT ═══════ */
+updateProgress();
+updateParallax();
+updatePhotoParallax();
+updateRoadmapLine();
+updateNavDots();
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.bl-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.bl-loader.bl-done{opacity:0;visibility:hidden;pointer-events:none}
+.bl-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:blLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:blLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:blLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:blLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes blLoaderIn{to{opacity:1}}
+@keyframes blLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.bl-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.bl-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.bl-cursor.bl-active{opacity:1}
+.bl-cursor.bl-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.bl-cursor.bl-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.bl-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.bl-cursor-dot.bl-active{opacity:1}
+
+/* ── CTA button glow ── */
+.bl-btn,.bl-cta-btn{animation:blBtnGlow 3s ease-in-out infinite alternate}
+@keyframes blBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+:root{--ink:#1a1a18;--paper:#f6f4f0;--warm:#c9a96e;--warm-muted:#b8975a;--stone:#8a8579;--light-stone:#d9d5cd;--off-white:#eeece6;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',-apple-system,sans-serif;--display:'Josefin Sans',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+.bl-wrap{overflow-x:hidden!important;font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased}
+.bl-wrap img{max-width:100%;display:block}
+.bl-wrap a{color:inherit;text-decoration:none}
+.bl-hero{position:relative;width:100%;min-height:70vh;display:flex;align-items:flex-end;padding:0 5vw 4rem;overflow:hidden;background:var(--ink)}
+.bl-hero-bg{position:absolute;inset:0;z-index:0}
+.bl-hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.7) brightness(.35)}
+.bl-hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(26,26,24,.2) 0%,rgba(26,26,24,.05) 30%,rgba(26,26,24,.7) 75%,rgba(26,26,24,.95) 100%)}
+.bl-hero-c{position:relative;z-index:2;max-width:760px}
+.bl-hero-label{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--warm);font-weight:500;margin-bottom:1rem}
+.bl-hero h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3.8rem);font-weight:300;line-height:1.1;color:var(--paper);letter-spacing:-.02em;margin-bottom:1rem}
+.bl-hero h1 em{font-style:italic;color:var(--warm)}
+.bl-hero-meta{font-size:.8rem;color:var(--light-stone);font-weight:300}
+.bl-body{max-width:720px;margin:0 auto;padding:4rem 5vw}
+.bl-body h2{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:300;line-height:1.2;color:var(--ink);margin:3rem 0 1.25rem;letter-spacing:-.01em}
+.bl-body h3{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:400;line-height:1.25;color:var(--ink);margin:2.5rem 0 1rem}
+.bl-body p{font-size:1rem;line-height:1.85;color:#3a3a38;margin-bottom:1.25rem;font-weight:300}
+.bl-body strong{font-weight:500;color:var(--ink)}
+.bl-body ul,.bl-body ol{margin:1rem 0 1.5rem 1.5rem;font-size:1rem;line-height:1.85;color:#3a3a38}
+.bl-body li{margin-bottom:.5rem}
+.bl-img-body{margin:2.5rem 0;border-radius:2px;overflow:hidden}
+.bl-img-body img{width:100%;display:block}
+.bl-pullquote{border-left:2px solid var(--warm);padding:1.5rem 0 1.5rem 2rem;margin:2.5rem 0;font-family:var(--serif);font-size:1.3rem;font-weight:300;line-height:1.5;color:var(--ink);font-style:italic}
+.bl-checklist{margin:2rem 0;padding:2rem;background:var(--off-white);border-radius:2px}
+.bl-checklist h3{font-family:var(--serif);font-size:1.3rem;font-weight:400;margin:0 0 1.25rem;color:var(--ink)}
+.bl-checklist p{font-size:.95rem;line-height:1.8;color:#3a3a38;margin-bottom:.75rem;padding-left:1rem;border-left:2px solid rgba(201,169,110,.3)}
+.bl-checklist p:last-child{margin-bottom:0}
+.bl-related{padding:4rem 5vw;background:var(--off-white)}
+.bl-related-label{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--warm);font-weight:500;margin-bottom:2rem}
+.bl-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.bl-rel-card{display:block;text-decoration:none;color:inherit}
+.bl-rel-img{overflow:hidden;border-radius:2px;aspect-ratio:16/10;margin-bottom:1rem}
+.bl-rel-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.bl-rel-card:hover .bl-rel-img img{transform:scale(1.04)}
+.bl-rel-cat{font-size:.5rem;letter-spacing:.25em;text-transform:uppercase;color:var(--warm);font-weight:500;margin-bottom:.4rem}
+.bl-rel-card h3{font-family:var(--serif);font-size:1.05rem;font-weight:400;line-height:1.3;color:var(--ink);transition:color .3s ease}
+.bl-rel-card:hover h3{color:var(--warm-muted)}
+.bl-cta{position:relative;padding:5rem 5vw;text-align:center;background:var(--ink);overflow:hidden}
+.bl-cta-bg{position:absolute;inset:0;z-index:0;opacity:.2}
+.bl-cta-bg img{width:100%;height:100%;object-fit:cover}
+.bl-cta-c{position:relative;z-index:2}
+.bl-cta h2{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;color:var(--paper);margin-bottom:1rem;line-height:1.2}
+.bl-cta h2 em{font-style:italic;color:var(--warm)}
+.bl-cta p{font-size:1rem;color:var(--stone);max-width:480px;margin:0 auto 2rem;line-height:1.8}
+.bl-btn{display:inline-block;font-family:var(--sans);font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;padding:1.1rem 3rem;border:1px solid var(--warm)!important;background:var(--warm)!important;color:var(--ink)!important;font-weight:500;transition:all .35s ease;text-decoration:none}
+.bl-btn:hover{background:transparent!important;color:var(--warm)!important}
+.bl-alt-cta{margin-top:1.25rem;font-size:.75rem;color:var(--stone);letter-spacing:.05em;font-weight:300}
+.bl-alt-cta a{color:var(--warm);text-decoration:underline;text-underline-offset:3px;transition:color .3s ease}
+.bl-alt-cta a:hover{color:var(--paper)}
+.bl-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.bl-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.bl-ft-locs a:hover{color:#c9a96e}.bl-ft{background:var(--ink);border-top:1px solid rgba(201,169,110,.15)}
+.bl-ft-row{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}
+.bl-ft-item{display:flex;align-items:baseline;gap:10px}
+.bl-ft-label{font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--warm);font-weight:500;white-space:nowrap}
+.bl-ft-dot{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,.4);flex-shrink:0;position:relative;top:-2px}
+.bl-ft-item p,.bl-ft-item a{margin:0;font-size:12px;color:rgba(246,244,240,.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color .3s ease}
+.bl-ft-item a:hover{color:var(--warm)}
+.bl-ft-social{display:flex;gap:18px}
+.bl-ft-rule{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,.15) 20%,rgba(201,169,110,.15) 80%,transparent 100%)}
+.bl-ft-bottom{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}
+.bl-ft-copy{font-size:10px;color:rgba(246,244,240,.35);letter-spacing:.08em}
+.bl-ft-nav{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center}
+.bl-ft-nav a{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);text-decoration:none;transition:color .3s ease}
+.bl-ft-nav a:hover{color:var(--warm)}
+@media(max-width:768px){
+.bl-hero{min-height:55vh;padding:0 6vw 3rem}
+.bl-body{padding:3rem 6vw}
+.bl-related{padding:3rem 6vw}
+.bl-related-grid{grid-template-columns:1fr;gap:2rem}
+.bl-cta{padding:3rem 6vw}
+.bl-ft-row{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}
+.bl-ft-rule{margin:0 6vw}
+.bl-ft-bottom{flex-direction:column;gap:.75rem;text-align:center;padding:1.25rem 6vw}
+}
+.bl-ft-email{cursor:pointer}
+</style>
+
+<div class="bl-loader" id="blLoader">
+  <div class="bl-loader-brand">Matt Anthony Photography</div>
+  <div class="bl-loader-sub">Preparing for a Photo Shoot</div>
+  <div class="bl-loader-line"></div>
+</div>
+<div class="bl-cursor" id="blCursor"></div>
+<div class="bl-cursor-dot" id="blCursorDot"></div>
+<div class="bl-progress" id="blProgress"></div>
+<div class="bl-wrap">
+
+<!-- Hero -->
+<section class="bl-hero">
+  <div class="bl-hero-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/b00b123a-10cc-4f9c-981d-f682da605ef7/warbler-whistler-architectural-photography-matt-anthony-.jpg-8.jpg?format=2500w" alt="Warbler Residence kitchen staged for architectural photography"></div>
+  <div class="bl-hero-c">
+    <p class="bl-hero-label">Journal</p>
+    <h1>How to Prepare Your Project for an <em>Architectural Photo Shoot</em></h1>
+    <p class="bl-hero-meta">January 5, 2026</p>
+  </div>
+</section>
+
+<!-- Article Body -->
+<article class="bl-body">
+
+  <p><strong>A practical staging and preparation checklist for architects, builders, and designers.</strong></p>
+
+  <p>The photography that represents your completed project will serve your firm for years. It will live on your website, appear in award submissions, show up in proposals, and circulate on social media. The quality of that photography depends on what happens before the photographer arrives as much as what happens during the shoot.</p>
+
+  <p>The work you do in the days and hours before the shoot has as much influence on the final images as anything the photographer does on the day.</p>
+
+  <h2>Two Weeks Before: The Site Walk</h2>
+
+  <p>A site visit two weeks prior allows the photographer and client to walk the project together and identify potential issues. During this visit, examine:</p>
+
+  <ul>
+    <li>Landscaping completion status</li>
+    <li>Construction debris or materials still on site</li>
+    <li>Light fixture installation and functionality</li>
+    <li>Unfinished details: baseboards, switch plates, grout lines</li>
+  </ul>
+
+  <p>Two weeks provides enough runway to address minor issues that would otherwise require extensive post-production work or compromise the images entirely. A missing light fixture or unfinished grout line takes minutes to fix on site but hours to retouch in post.</p>
+
+  <h2>One Week Before: The Punch List</h2>
+
+  <p>This is a comprehensive walkthrough focused on cleanliness and completeness.</p>
+
+  <h3>Exterior</h3>
+  <ul>
+    <li>Clear all construction debris, vehicles, and dumpsters</li>
+    <li>Tidy landscaping and mow lawns</li>
+    <li>Clean driveways and walkways</li>
+    <li>Power wash surfaces that accumulated construction dust</li>
+    <li>Verify all exterior lighting is functional</li>
+  </ul>
+
+  <h3>Windows</h3>
+  <p>Clean every window, inside and out. This is critical. Dirty windows show as haze, streaks, or spots in photographs, particularly when they're backlit. Professional window cleaning is strongly recommended.</p>
+
+</article>
+
+<div class="bl-img-body" style="max-width:720px;margin:0 auto 0;padding:0 5vw">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/40f0f4b4-0146-4139-8682-d3505ba00ba2/warbler-whistler-architectural-photography-matt-anthony-.jpg-36.jpg?format=2500w" alt="Warbler Residence front entrance clean and prepared for architectural photography" loading="lazy">
+</div>
+
+<article class="bl-body">
+
+  <h3>Interior Surfaces</h3>
+  <ul>
+    <li>Dust all horizontal surfaces: shelving, countertops, millwork</li>
+    <li>Clean fingerprints from stainless steel appliances</li>
+    <li>Wipe cabinet fronts</li>
+    <li>Vacuum and mop all floors</li>
+    <li>Remove scuffs from hardwood</li>
+  </ul>
+
+  <h3>Fixtures and Details</h3>
+  <ul>
+    <li>Confirm all light fixtures are installed with appropriate bulbs and consistent colour temperature</li>
+    <li>Install switch plates, outlet covers, and vent covers</li>
+    <li>Align and tighten cabinet hardware</li>
+    <li>Remove protective films from appliances and fixtures</li>
+  </ul>
+
+  <h2>The Day Before: Staging</h2>
+
+  <p>Staging principles for architectural photography emphasize minimal, intentional decoration.</p>
+
+  <div class="bl-pullquote">Less is more. The most common staging mistake is overdoing it. A few carefully chosen objects in each space are far more effective than filling every surface.</div>
+
+  <p>Key staging guidance:</p>
+  <ul>
+    <li>Colour selections should complement the existing palette of the space</li>
+    <li>Remove all utilitarian items: garbage bins, cleaning supplies, toiletries, remotes, chargers</li>
+    <li>Fresh, neatly folded towels in bathrooms</li>
+    <li>Made beds with clean, minimal linens</li>
+  </ul>
+
+</article>
+
+<div class="bl-img-body" style="max-width:720px;margin:0 auto 0;padding:0 5vw">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/fd2ada53-18e4-4ae8-ba74-6de86f69d950/warbler-whistler-architectural-photography-matt-anthony-.jpg-17.jpg?format=2500w" alt="Warbler Residence material detail showing wood and metal intersection" loading="lazy">
+</div>
+
+<article class="bl-body">
+
+  <div class="bl-checklist">
+    <h3>Morning of the Shoot: Final Check</h3>
+    <p>All lights on with consistent colour temperatures</p>
+    <p>Blinds and shades at uniform positioning</p>
+    <p>Thermostat off or set to neutral (HVAC off for video to eliminate noise)</p>
+    <p>Clear the property of pets and people</p>
+    <p>Remove all vehicles from the driveway and surrounding area</p>
+  </div>
+
+  <h2>What to Expect on Shoot Day</h2>
+
+  <p>Typical residential shoots run six to ten hours. The photographer typically starts with morning interiors in east-facing rooms, follows the sunlight through the day, shoots exteriors during golden hours, and captures twilight photography 30 to 45 minutes after sunset.</p>
+
+  <p>Trust the photographer's process. They've planned the day around light conditions and will move through spaces in an order that maximizes natural light quality. Avoid over-directing. The best results come from a collaborative dynamic where the photographer has creative latitude within the framework of the agreed shot list.</p>
+
+  <h2>The Homeowner Conversation</h2>
+
+  <p>For occupied properties, clear communication with the homeowner is essential:</p>
+
+  <ul>
+    <li>Explain the full-day duration of the shoot</li>
+    <li>Set expectations about personal item removal and temporary staging</li>
+    <li>Note that all rooms, including bathrooms, will be photographed</li>
+    <li>Request that pets be off-site for the day</li>
+    <li>Frame the shoot as a celebration of their investment in quality design</li>
+  </ul>
+
+  <h2>Weather Contingency</h2>
+
+  <p>For BC projects, overcast conditions actually benefit interior work by providing soft, even light without harsh shadows. The guide recommends scheduling backup dates within the same week for exterior-dependent shots.</p>
+
+  <p>Snow in higher elevations is an opportunity rather than an obstacle. Fresh snow creates clean, dramatic exterior compositions. The optimal window is 24 to 48 hours post-storm, when the snow is settled but still pristine.</p>
+
+  <h2>After the Shoot</h2>
+
+  <p>Images typically deliver within one to two weeks. To make the most of the process:</p>
+
+  <ul>
+    <li>Communicate any deadlines (award submissions, website launches) upfront</li>
+    <li>Review the images carefully when delivered</li>
+    <li>Raise any concerns immediately</li>
+    <li>Ask the photographer to explain compositional choices if you're curious about specific decisions</li>
+  </ul>
+
+</article>
+
+<div class="bl-img-body" style="max-width:720px;margin:0 auto 0;padding:0 5vw">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/2259280a-792c-45c4-9804-d5185893f695/warbler-whistler-architectural-photography-matt-anthony-.jpg-19.jpg?format=2500w" alt="Warbler Residence fireplace and living room with evening light" loading="lazy">
+</div>
+
+<!-- Related Posts -->
+<section class="bl-related">
+  <p class="bl-related-label">Continue Reading</p>
+  <div class="bl-related-grid">
+    <a href="/journal/5-details-make-or-break-architectural-interior-photography" class="bl-rel-card">
+      <div class="bl-rel-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/47eefcd4-72ce-4641-8ff0-a4ea2e8b9e12/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-19.jpg?format=750w" alt="5 details that make or break interior photography" loading="lazy"></div>
+      <p class="bl-rel-cat">Process</p>
+      <h3>5 Details That Make or Break Architectural Interior Photography</h3>
+    </a>
+    <a href="/journal/what-architects-should-look-for-hiring-photographer" class="bl-rel-card">
+      <div class="bl-rel-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/aa77ed99-a103-40dd-bce5-b355bab58632/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-11.jpg?format=750w" alt="What architects should look for when hiring a photographer" loading="lazy"></div>
+      <p class="bl-rel-cat">Process</p>
+      <h3>What Architects Should Look for When Hiring an Architectural Photographer</h3>
+    </a>
+    <a href="/journal/project-photography-vs-real-estate-photography" class="bl-rel-card">
+      <div class="bl-rel-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c938566f-ee96-40da-aec4-d51ac9fa7e09/warbler-whistler-architectural-photography-matt-anthony-.jpg-13.jpg?format=750w" alt="Project photography vs real estate photography" loading="lazy"></div>
+      <p class="bl-rel-cat">Business</p>
+      <h3>Project Photography vs Real Estate Photography: Why They're Not the Same Thing</h3>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bl-cta">
+  <div class="bl-cta-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c981a8d1-a1a8-4c4a-8c68-643f1e614937/warbler-whistler-architectural-photography-matt-anthony-.jpg-26.jpg?format=2500w" alt="Warbler Residence ensuite bathroom architectural photography" loading="lazy"></div>
+  <div class="bl-cta-c">
+    <h2>Have a project ready to <em>shoot</em>?</h2>
+    <p>Let's plan the photography so every detail is working in your favour on the day.</p>
+    <a href="/discovery-call" class="bl-btn">Book a Discovery Call</a>
+    <p class="bl-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bl-ft">
+<div class="bl-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+
+  <div class="bl-ft-row">
+    <div class="bl-ft-item"><span class="bl-ft-label">Based In</span><span class="bl-ft-dot"></span><p>Squamish, British Columbia</p></div>
+    <div class="bl-ft-item"><span class="bl-ft-label">Email</span><span class="bl-ft-dot"></span><a id="ft-em" class="bl-ft-email"></a></div>
+    <div class="bl-ft-item"><span class="bl-ft-label">Phone</span><span class="bl-ft-dot"></span><a href="tel:6047659270">604.765.9270</a></div>
+    <div class="bl-ft-item"><span class="bl-ft-label">Follow</span><span class="bl-ft-dot"></span><div class="bl-ft-social"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  </div>
+  <div class="bl-ft-rule"></div>
+  <div class="bl-ft-bottom">
+    <span class="bl-ft-copy">&copy; 2026 Matt Anthony Photography</span>
+    <nav class="bl-ft-nav"><a href="/projects">Projects</a><a href="/journal">Journal</a><a href="/bio">About</a><a href="/contact">Contact</a><a href="/pricing-guide-landing">Get Pricing</a></nav>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var isMobile='ontouchstart' in window;
+
+  /* ═══ EMAIL OBFUSCATION ═══ */
+  var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];var e=document.getElementById('ft-em');if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader=document.getElementById('blLoader');
+  window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('bl-done');},1100);});
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  var progressBar=document.getElementById('blProgress');
+  function updateProgress(){var sc=window.scrollY;var d=document.documentElement.scrollHeight-window.innerHeight;if(d>0)progressBar.style.width=(sc/d*100)+'%';}
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor=document.getElementById('blCursor');var cursorDot=document.getElementById('blCursorDot');var cx=0,cy=0,dx=0,dy=0;
+  if(!isMobile&&cursor){
+    document.addEventListener('mousemove',function(ev){dx=ev.clientX;dy=ev.clientY;cursorDot.style.left=dx+'px';cursorDot.style.top=dy+'px';if(!cursor.classList.contains('bl-active')){cursor.classList.add('bl-active');cursorDot.classList.add('bl-active');}});
+    function tickCursor(){cx+=(dx-cx)*0.12;cy+=(dy-cy)*0.12;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(tickCursor);}tickCursor();
+    var hoverEls=document.querySelectorAll('a, button, .bl-btn, .bl-cta-btn, .bl-rel-card');
+    hoverEls.forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('bl-hover');});el.addEventListener('mouseleave',function(){cursor.classList.remove('bl-hover');});});
+    document.addEventListener('mousedown',function(){cursor.classList.add('bl-click');});
+    document.addEventListener('mouseup',function(){cursor.classList.remove('bl-click');});
+  }
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking=false;
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){updateProgress();ticking=false;});ticking=true;}},{passive:true});
+  updateProgress();
+})();
+</script>
+
+<!-- Meta & Schema -->
+<meta name="description" content="A practical staging and preparation checklist for architects, builders, and designers before an architectural photo shoot.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/journal/how-to-prepare-project-architectural-photo-shoot">
+<meta property="og:title" content="How to Prepare Your Project for an Architectural Photo Shoot | Matt Anthony Photography">
+<meta property="og:description" content="A practical staging and preparation checklist for architects, builders, and designers.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/journal/how-to-prepare-project-architectural-photo-shoot">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/b00b123a-10cc-4f9c-981d-f682da605ef7/warbler-whistler-architectural-photography-matt-anthony-.jpg-8.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Prepare Your Project for an Architectural Photo Shoot",
+  "description": "A practical staging and preparation checklist for architects, builders, and designers before an architectural photo shoot.",
+  "url": "https://www.mattanthonyphoto.com/journal/how-to-prepare-project-architectural-photo-shoot",
+  "datePublished": "2026-01-05",
+  "dateModified": "2026-01-05",
+  "author": {
+    "@type": "Person",
+    "name": "Matt Anthony",
+    "url": "https://www.mattanthonyphoto.com/bio"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Matt Anthony Photography",
+    "url": "https://www.mattanthonyphoto.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/f5587052-bcdb-4b1b-8f61-84f98ba1adfb/warbler-whistler-architectural-photography-matt-anthony-.jpg-22.jpg"
+    }
+  },
+  "image": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/b00b123a-10cc-4f9c-981d-f682da605ef7/warbler-whistler-architectural-photography-matt-anthony-.jpg-8.jpg",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.mattanthonyphoto.com/journal/how-to-prepare-project-architectural-photo-shoot"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Josefin+Sans:wght@600;700&display=swap" rel="stylesheet">

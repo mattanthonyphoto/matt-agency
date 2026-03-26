@@ -1,0 +1,531 @@
+{
+  "client": {
+    "company": "Copper Creek Homes",
+    "slug": "coppercreek",
+    "owner": "Marv Falk",
+    "owner_title": "Founder",
+    "confidentiality_name": "Copper Creek Homes"
+  },
+  "proposal": {
+    "type": "creative-partner",
+    "title": "Creative Partner",
+    "date": "March 2026",
+    "valid_through": "April 30, 2026",
+    "filename": "coppercreek-creative-partner.html"
+  },
+  "cover": {
+    "eyebrow": "Copper Creek Homes",
+    "headline_html": "You’ve already won<br>the first award.<br><em>Now build the library.</em>",
+    "subtitle": "22 projects documented. A CHBA award on the wall. What’s missing: video, build documentation, and the social content that turns one win into a reputation.",
+    "cta_text": "View Options",
+    "cta_target": "#tiers",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef4086f4-81fa-468f-99bf-966ce7d83d89/warbler-whistler-architectural-photography-matt-anthony-.jpg-11.jpg",
+    "image_position": "center 35%"
+  },
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c938566f-ee96-40da-aec4-d51ac9fa7e09/warbler-whistler-architectural-photography-matt-anthony-.jpg-13.jpg",
+        "alt": "Architectural interior photography",
+        "caption": "Matt Anthony Photography &middot; Whistler, BC"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8149d10c-1661-4e39-80d9-538f24b4123a/warbler-whistler-architectural-photography-matt-anthony-.jpg-33.jpg",
+        "alt": "Warbler Residence exterior",
+        "caption": "Matt Anthony Photography &middot; Whistler, BC"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/65d67cb8-ea3f-46dd-9c95-85b95e8f6fc8/warbler-whistler-architectural-photography-matt-anthony-.jpg-34.jpg",
+        "alt": "Warbler Residence dusk exterior",
+        "caption": "Matt Anthony Photography &middot; Whistler, BC"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/98b6bb8c-ede3-4de9-978a-fc8ae91554a6/warbler-whistler-architectural-photography-matt-anthony-.jpg-35.jpg",
+        "alt": "Contemporary alpine home exterior",
+        "caption": "Matt Anthony Photography &middot; Whistler, BC"
+      }
+    ]
+  },
+  "sections": [
+    "story",
+    "audit",
+    "services",
+    "pricing",
+    "roadmap",
+    "vision",
+    "numbers",
+    "awards",
+    "next_steps"
+  ],
+  "story": {
+    "eyebrow": "Where You Are",
+    "headline_html": "The foundation is stronger<br><em>than you probably realize.</em>",
+    "lead": "Marv, I ran a full technical audit on coppercreekhomes.ca before putting this together. Your site scored 100/100 on content depth and 92/100 on visual assets. 22 project pages with descriptions, a blog with a lead magnet, and 1,336 images with 97.5% alt text coverage. That’s the best content foundation I’ve seen from a Fraser Valley builder.",
+    "paragraphs": [
+      "You also have something most builders don’t: a CHBA Fraser Valley award. That’s a real credential. But right now it’s a line on the website and not much more. The full value of that win, the submission photos, the story behind the project, the social proof it creates, hasn’t been activated yet.",
+      "What’s missing is the media layer. Zero video content across the entire site and social channels. No build process documentation showing renovation transformations in progress. No project films. In 2026, video is the highest-engagement format on every platform, and Copper Creek has none. No Fraser Valley builder does. First mover wins.",
+      "This proposal puts a dedicated content partner behind Copper Creek who captures every project professionally, creates the video and social content your site is missing, and builds the award pipeline that turns one win into a track record."
+    ],
+    "stats": [
+      {
+        "value": "100",
+        "label": "Content Score"
+      },
+      {
+        "value": "22",
+        "label": "Project Pages"
+      },
+      {
+        "value": "1",
+        "label": "CHBA Award"
+      },
+      {
+        "value": "0",
+        "label": "Video Assets"
+      }
+    ]
+  },
+  "audit": {
+    "eyebrow": "The Audit",
+    "nav_label": "Audit",
+    "headline_html": "What the data says.<br><em>Verified, not estimated.</em>",
+    "lead": "I crawled 30 pages on coppercreekhomes.ca. Here’s the real picture.",
+    "paragraphs": [],
+    "grades": [
+      {
+        "area": "What’s Strong (and Rare)",
+        "findings": [
+          "<strong>Content scores 100/100.</strong> 22 project pages with descriptions. 645-word homepage. Blog with 5 posts and a lead magnet. This is the best content foundation I’ve audited in the Fraser Valley.",
+          "<strong>Visual assets score 92/100.</strong> 1,336 images, 97.5% with proper alt text. Project pages average 53.8 images each. Outstanding coverage.",
+          "<strong>CHBA Fraser Valley award winner.</strong> 2024 Housing Awards of Excellence for Modern Farmhouse renovation. Real credential that competitors don’t have.",
+          "<strong>Directory presence.</strong> Houzz, BBB, and TrustedPros profiles active. Multiple citation sources in place."
+        ]
+      },
+      {
+        "area": "The Specific Gaps",
+        "findings": [
+          "<strong>Zero video content.</strong> No project films, no reels, no walkthrough videos, no before/after reveals. This is the single biggest content gap. Renovation transformation video is the highest-performing format for design-build firms, and Copper Creek has none.",
+          "<strong>No structured data (schema.org).</strong> Zero JSON-LD markup. Google doesn’t know Copper Creek is a builder or where you operate. One-time fix with permanent impact.",
+          "<strong>No Google Business Profile detected.</strong> Can’t appear in Google Maps or the Local Pack. With 22 projects, 18 service areas, and a CHBA award, this would be one of the strongest GBP profiles in the Fraser Valley.",
+          "<strong>The award story is underutilized.</strong> One mention on the site. No dedicated case study, no social content celebrating the win, no credential badges on project pages. One award should generate months of content."
+        ]
+      }
+    ],
+    "insight": {
+      "title": "The Bottom Line",
+      "content_html": "<p>Copper Creek’s website and content are <strong>ahead of the competition</strong>. This isn’t a fix-what’s-broken situation. It’s an activate-what-you-have situation. The gaps are specific: video, build documentation, GBP, and leveraging the award. A content partner fills exactly these holes.</p>"
+    }
+  },
+  "services": {
+    "eyebrow": "What This Adds",
+    "headline_html": "The media layer<br><em>your site is missing.</em>",
+    "intro": "Your site and content are strong. What I add is the production pipeline: professional project photography, video, build documentation, and social-ready content delivered monthly. Everything multi-format and ready to use.",
+    "cards": [
+      {
+        "title": "Project Photography",
+        "is_new": false,
+        "entries": [
+          "1 full-day shoot per month",
+          "20 to 25 edited images per session",
+          "Before, during, and after renovation documentation",
+          "Multi-format delivery: web, social, print, award-ready",
+          "Full licensing for all channels"
+        ]
+      },
+      {
+        "title": "Build Documentation + Video",
+        "is_new": true,
+        "entries": [
+          "Renovation transformation sequences",
+          "Monthly social media reel from shoot footage",
+          "Before/after reveal videos for social",
+          "Year-end project film (Growth and Full tiers)",
+          "Crew action shots and progress documentation"
+        ]
+      },
+      {
+        "title": "Social Content",
+        "is_new": true,
+        "entries": [
+          "Content formatted for Instagram and LinkedIn",
+          "Renovation reveal reels (highest-engagement format)",
+          "Build process stories and behind-the-scenes",
+          "Monthly strategy call and content calendar"
+        ]
+      },
+      {
+        "title": "Awards Pipeline",
+        "is_new": true,
+        "entries": [
+          "Full Creative Partner tier only",
+          "Every shoot to award-submission spec",
+          "CHBA FV + CHBA National submissions",
+          "Publication pitches: Western Living, Dwell, ArchDaily",
+          "Award credentials for your site and proposals"
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Choose Your Tier",
+    "headline_html": "Three tiers. Same partner.<br><em>Your call.</em>",
+    "intro": "Every tier delivers professional photography, build documentation, and before/after content. The question is how much video, social, and awards strategy you want on top.",
+    "tiers": [
+      {
+        "name": "Foundation",
+        "slug": "foundation",
+        "price": "$2,000",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $6,000 total",
+        "recommended": false,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "20 to 25 edited images",
+            "included": true
+          },
+          {
+            "text": "Before / during / after documentation",
+            "included": true
+          },
+          {
+            "text": "Build documentation (crew, materials, progress)",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, social, print, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": false
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": false
+          },
+          {
+            "text": "Year-end project film",
+            "included": false
+          },
+          {
+            "text": "Awards pipeline + social management",
+            "included": false
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$24,000"
+      },
+      {
+        "name": "Growth",
+        "slug": "growth",
+        "price": "$2,500",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $7,500 total",
+        "recommended": true,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "20 to 25 edited images",
+            "included": true
+          },
+          {
+            "text": "Before / during / after documentation",
+            "included": true
+          },
+          {
+            "text": "Build documentation (crew, materials, progress)",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, social, print, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": true
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": true
+          },
+          {
+            "text": "Year-end project film (60 to 90 seconds)",
+            "included": true
+          },
+          {
+            "text": "Awards pipeline + social management",
+            "included": false
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$30,000"
+      },
+      {
+        "name": "Full Creative Partner",
+        "slug": "full",
+        "price": "$3,500",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $10,500 total",
+        "recommended": false,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "25 to 30 edited images",
+            "included": true
+          },
+          {
+            "text": "Before / during / after documentation",
+            "included": true
+          },
+          {
+            "text": "Build documentation (crew, materials, progress)",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, social, print, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": true
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": true
+          },
+          {
+            "text": "Year-end documentary film (2 to 3 minutes)",
+            "included": true
+          },
+          {
+            "text": "CHBA FV + National award submissions",
+            "included": true
+          },
+          {
+            "text": "Full social media management (3x/week)",
+            "included": true
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$42,000"
+      }
+    ],
+    "insight": {
+      "title": "How to Think About This",
+      "content_html": "<p>A standalone project shoot with video typically runs <strong>$3,500 to $5,500</strong>. Here’s what a monthly retainer delivers:</p>",
+      "breakdowns": [
+        {
+          "label": "Foundation $2,000",
+          "desc": "20-25 images + build documentation + before/after every month. Pure content creation at less than a single project shoot."
+        },
+        {
+          "label": "Growth $2,500",
+          "desc": "Everything above plus social reels, strategy calls, and a year-end highlight film. The content engine starts compounding."
+        },
+        {
+          "label": "Creative Partner $3,500",
+          "desc": "Content + strategy. Documentary film, CHBA award submissions, and full social management. One win becomes a track record."
+        }
+      ],
+      "footer_html": "<p style=\"margin-top:24px;\">No Fraser Valley builder has professional video content. The first one to invest captures the entire category. Copper Creek's 22-project portfolio and CHBA award make you the strongest candidate to own that position.</p>\n<div style=\"margin-top:24px;padding:24px 28px;background:var(--light);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;\">\n<h4 style=\"font-family:'Josefin Sans',sans-serif;font-weight:400;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin:0 0 12px;\">Add-On: Local SEO &amp; GEO Package</h4>\n<p style=\"font-size:0.88rem;color:var(--stone);margin:0 0 12px;\">Your audit scored <strong style=\"color:var(--ink);\">46/100 on local SEO</strong>. No Google Business Profile, no schema markup, no service area pages. For a builder serving 18 locations across the Fraser Valley, this is the biggest visibility gap.</p>\n<p style=\"font-size:0.88rem;color:var(--stone);margin:0 0 12px;\">The Local SEO package can be added to any Creative Partner tier:</p>\n<ul style=\"list-style:none;padding:0;margin:0;\">\n<li style=\"font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);\"><span style=\"position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);\"></span>Google Business Profile setup, optimization, and monthly posts</li>\n<li style=\"font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);\"><span style=\"position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);\"></span>LocalBusiness + HomeBuilder schema markup</li>\n<li style=\"font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);\"><span style=\"position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);\"></span>Meta title and description optimization across all pages</li>\n<li style=\"font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);\"><span style=\"position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);\"></span>Service area landing pages for key Fraser Valley locations</li>\n<li style=\"font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);\"><span style=\"position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);\"></span>Monthly SEO blog post targeting local search terms</li>\n<li style=\"font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);\"><span style=\"position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);\"></span>Google review generation strategy</li>\n</ul>\n<p style=\"font-size:0.88rem;color:var(--ink);margin:16px 0 0;font-weight:400;\"><strong>$750 to $1,250/mo</strong> added to any tier. Happy to scope this separately.</p>\n</div>"
+    }
+  },
+  "roadmap": {
+    "eyebrow": "3-Month Pilot Roadmap",
+    "headline_html": "What gets done.<br><em>Month by month.</em>",
+    "intro": "The pilot runs May through July. Three months, three projects documented with photography and video for the first time.",
+    "months": [
+      {
+        "month": "May 2026",
+        "label_html": "Best Recent<br>Renovation",
+        "entries": [
+          "Full-day shoot at your strongest recently completed renovation",
+          "20 to 25 edited images: before state, progress, finished spaces",
+          "Renovation transformation documentation",
+          "First social media reel: before/after reveal",
+          "Strategy call to map out summer content calendar"
+        ]
+      },
+      {
+        "month": "June 2026",
+        "label_html": "Active Build:<br>Capture the Process",
+        "entries": [
+          "Full-day session at an active renovation site",
+          "20 to 25 images: demolition, framing, progress, crew at work",
+          "Build process documentation that no competitor has",
+          "Social media reel from shoot content",
+          "Strategy call: review month one, adjust approach"
+        ]
+      },
+      {
+        "month": "July 2026",
+        "label_html": "Scale + Prove It",
+        "entries": [
+          "Full-day session, third project",
+          "20 to 25 edited images + renovation documentation",
+          "Social media reel + LinkedIn content",
+          "Pilot review: what worked, what the data says, what comes next",
+          "If results proven: 12-month continuation locked in"
+        ]
+      }
+    ],
+    "stats": [
+      {
+        "value": "3",
+        "label": "Full-Day Shoots"
+      },
+      {
+        "value": "75",
+        "label": "Professional Images"
+      },
+      {
+        "value": "3",
+        "label": "Social Reels"
+      },
+      {
+        "value": "90",
+        "label": "Days to Prove It"
+      }
+    ]
+  },
+  "vision": {
+    "eyebrow": "The 12-Month Vision",
+    "headline_html": "What a full year of<br><em>content looks like.</em>",
+    "intro": "Copper Creek already has the strongest content foundation in the Fraser Valley. A full year of video and build documentation turns that into an unassailable lead.",
+    "quarters": [
+      {
+        "period": "Q2 2026",
+        "title": "Prove the Model",
+        "description": "3 shoots. 75 images. 3 social reels. The first renovation transformation videos in the Fraser Valley builder market. Content that no competitor can match."
+      },
+      {
+        "period": "Q3 2026",
+        "title": "Compound",
+        "description": "150+ images. Build process documentation banked. Before/during/after content driving engagement on social. Six months of reels working for you."
+      },
+      {
+        "period": "Q4 2026",
+        "title": "Leverage",
+        "description": "CHBA FV 2025 submissions from new shoots. CHBA National entry. 225+ images. The award pipeline is now systematic, not opportunistic."
+      },
+      {
+        "period": "Q1 2027",
+        "title": "Separate",
+        "description": "300+ images, a year-end documentary, and the only professional video portfolio in the Fraser Valley builder market. One award becomes three. Content compounds permanently."
+      }
+    ]
+  },
+  "numbers": {
+    "stats": [
+      {
+        "value": "300",
+        "label": "Professional Images"
+      },
+      {
+        "value": "12",
+        "label": "Social Reels"
+      },
+      {
+        "value": "12",
+        "label": "Projects Documented"
+      }
+    ]
+  },
+  "awards": {
+    "eyebrow": "Awards &amp; Publications",
+    "headline_html": "One award opened the door.<br><em>Now walk through it.</em>",
+    "lead": "Copper Creek won the 2024 CHBA Fraser Valley Housing Award of Excellence. That’s a real credential. But one award is a moment. Consistent submissions build a reputation.",
+    "paragraphs": [
+      "Lacey Construction in Abbotsford has multiple local, provincial, and national awards. Delonix Homes in Chilliwack is award-winning. Mike Lobe Contracting won the 2025 CHBA National for Best Custom Home. The builders who submit consistently are the ones clients trust with $1M+ projects."
+    ],
+    "competitor_numbers": [
+      {
+        "value": "1",
+        "label": "Copper Creek Award"
+      },
+      {
+        "value": "3+",
+        "label": "Competitor Award Winners"
+      },
+      {
+        "value": "22",
+        "label": "Projects Ready to Submit"
+      }
+    ],
+    "detail_html": "<h3>What I Handle</h3><p>Every shoot is photographed to award-submission spec from day one. 300 DPI JPEG, colour-calibrated, anonymous-ready. When CHBA Fraser Valley and National submission season opens, your images are done. I prepare entry materials, identify categories, and manage the process. You don’t touch any of it.</p>",
+    "services": [
+      {
+        "title": "Award Submissions",
+        "entries": [
+          "CHBA Fraser Valley Housing Awards",
+          "CHBA National Awards for Housing Excellence",
+          "Georgie Awards (CHBA BC)",
+          "HAVAN Awards",
+          "Gold Nugget Awards"
+        ]
+      },
+      {
+        "title": "Publication Pitches",
+        "entries": [
+          "Western Living",
+          "Dwell",
+          "ArchDaily &amp; Dezeen",
+          "Mountain Life",
+          "NUVO Magazine"
+        ]
+      }
+    ],
+    "insight": {
+      "title": "22 Projects, 22 Potential Submissions",
+      "content_html": "<p>You have the deepest project portfolio in the Fraser Valley. Every one of those 22 projects, properly photographed to spec, could be a CHBA entry. <strong>The difference between one award and five isn’t the quality of the builds. It’s whether you submit.</strong></p>"
+    }
+  },
+  "next_steps": {
+    "eyebrow": "Next Steps",
+    "headline_html": "One award proved it.<br><em>Let’s build the track record.</em>",
+    "paragraphs": [
+      "Marv, Copper Creek’s site and content are already ahead of most competitors. What’s missing is the media layer: video, build documentation, and the production pipeline that turns your renovation work into marketing assets every single month.",
+      "The pilot is three months. If it works, we keep going. If it doesn’t, you walk away with 75 professional images, renovation transformation content, three social reels, and the first project videos in the Fraser Valley builder market. There’s no downside."
+    ],
+    "steps": [
+      {
+        "number": "1",
+        "title": "Pick Your Tier",
+        "description": "Foundation, Growth, or Full Creative Partner. Just let me know which fits."
+      },
+      {
+        "number": "2",
+        "title": "Deposit",
+        "description": "50% of the pilot total to lock in May and guarantee priority scheduling."
+      },
+      {
+        "number": "3",
+        "title": "Plan",
+        "description": "Quick 20-minute call to pick the first project and plan the summer."
+      }
+    ],
+    "valid_note": "This proposal is valid through <strong style=\"color:var(--ink);\">April 30, 2026</strong>. After that, May availability cannot be guaranteed."
+  }
+}

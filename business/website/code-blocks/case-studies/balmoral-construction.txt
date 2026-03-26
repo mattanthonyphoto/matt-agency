@@ -1,0 +1,2239 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.bc-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a1a18;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+}
+
+.bc-loader.bc-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.bc-loader-brand {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: #f6f4f0;
+  opacity: 0;
+  animation: bcLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.bc-loader-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(138,133,121,0.7);
+  margin-top: 8px;
+  opacity: 0;
+  animation: bcLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.bc-loader-line {
+  width: 80px;
+  height: 1px;
+  background: rgba(201,169,110,0.12);
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+  opacity: 0;
+  animation: bcLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.bc-loader-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  animation: bcLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+}
+
+@keyframes bcLoaderIn { to { opacity: 1; } }
+@keyframes bcLoaderFill { to { left: 100%; } }
+
+/* ── Section nav dots ── */
+.bc-section-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.bc-section-nav.bc-nav-visible {
+  opacity: 1;
+}
+
+.bc-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #8a8579;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.bc-nav-dot:hover {
+  border-color: #c9a96e;
+  transform: scale(1.3);
+}
+
+.bc-nav-dot.bc-nav-active {
+  background: #c9a96e;
+  border-color: #c9a96e;
+  box-shadow: 0 0 8px rgba(201,169,110,0.4);
+}
+
+.bc-nav-dot::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, right 0.3s ease;
+}
+
+.bc-nav-dot:hover::before {
+  opacity: 1;
+  right: 24px;
+}
+
+@media (max-width: 768px) {
+  .bc-section-nav { display: none; }
+}
+
+/* ── Scroll progress bar ── */
+.bc-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.4));
+  z-index: 9999;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px rgba(201,169,110,0.4);
+}
+
+/* ── Headline gold underline on em ── */
+.bc-wrap h2 em {
+  position: relative;
+  display: inline;
+}
+
+.bc-wrap h2 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.2));
+  transition: width 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bc-wrap h2.bc-underlined em::after {
+  width: 100%;
+}
+
+/* ── Divider draw animation ── */
+.bc-divider {
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bc-divider.bc-drawn {
+  width: 80px;
+}
+
+/* ── Ken Burns on image breaks ── */
+.bc-img-break.bc-in-view img {
+  animation: bcKenBurns 16s ease-in-out infinite alternate;
+}
+
+@keyframes bcKenBurns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.06) translate(-4px, -6px); }
+}
+
+/* ── Film grain overlay ── */
+.bc-grain::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.bc-grain {
+  position: relative;
+}
+
+.bc-grain > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Eyebrow gold dash (animated) ── */
+.bc-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.bc-eyebrow::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  background: #c9a96e;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bc-eyebrow.bc-visible::before {
+  width: 24px;
+}
+
+/* ── Photo break depth layers ── */
+.bc-img-break {
+  position: relative;
+  overflow: hidden;
+}
+
+.bc-img-break img {
+  will-change: transform;
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+.bc-img-break::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(rgba(26,26,24,0.15), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bc-img-break::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: linear-gradient(transparent, rgba(26,26,24,0.55));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Project cards ── */
+
+/* ── Custom cursor ── */
+.bc-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(201,169,110,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
+.bc-cursor.bc-active {
+  opacity: 1;
+}
+
+.bc-cursor.bc-hover {
+  width: 50px;
+  height: 50px;
+  border-color: #c9a96e;
+  background: rgba(201,169,110,0.08);
+}
+
+.bc-cursor.bc-click {
+  width: 14px;
+  height: 14px;
+  background: rgba(201,169,110,0.3);
+}
+
+.bc-cursor-dot {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #c9a96e;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bc-cursor-dot.bc-active {
+  opacity: 1;
+}
+
+/* ── Magnetic button ── */
+.bc-magnetic {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Testimonial word reveal ── */
+.bc-quote-text .bc-qw {
+  display: inline;
+  color: rgba(26,26,24,0.15);
+  transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bc-quote-text .bc-qw.bc-lit {
+  color: #1a1a18;
+}
+
+.bc-quote-text .bc-qw.bc-gold-word.bc-lit {
+  color: #b8975a;
+}
+
+/* ── Ambient particles canvas ── */
+.bc-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Deliverable card stagger ── */
+.bc-del-card {
+  transform: translateY(12px);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, opacity 0.6s ease;
+}
+
+.bc-del-card.bc-entered {
+  transform: translateY(0);
+}
+
+/* ── Scope stat bar fill ── */
+.bc-scope-item {
+  position: relative;
+}
+
+.bc-scope-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  transition: width 1s 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bc-scope-item.bc-filled::after {
+  width: 80%;
+}
+
+/* ── Image diagonal wipe ── */
+.bc-img-break img {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: clip-path 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.1s linear;
+}
+
+.bc-img-break.bc-wipe img {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* ── Quote mark float ── */
+.bc-quote-text::before {
+  animation: bcQuoteFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes bcQuoteFloat {
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.05) translateY(-4px); }
+}
+
+/* ── CTA button glow pulse ── */
+.bc-cta-btn {
+  animation: bcBtnGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes bcBtnGlow {
+  0% { box-shadow: none; }
+  100% { box-shadow: 0 0 40px rgba(201,169,110,0.15), 0 0 80px rgba(201,169,110,0.05); }
+}
+
+/* (hero label — no animation, clean static) */
+
+/* ── Browser mockup ambient glow ── */
+.bc-browser {
+  animation: bcBrowserGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes bcBrowserGlow {
+  0% { box-shadow: 0 30px 80px rgba(26,26,24,0.18), 0 10px 30px rgba(26,26,24,0.1); }
+  100% { box-shadow: 0 30px 80px rgba(26,26,24,0.18), 0 10px 30px rgba(26,26,24,0.1), 0 0 60px rgba(201,169,110,0.06); }
+}
+
+/* ── Quote mark scale ── */
+.bc-quote-text::before {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.8);
+}
+
+.bc-quote.bc-in-view .bc-quote-text::before {
+  transform: scale(1);
+}
+
+/* ── Scope stat glow pulse ── */
+.bc-scope-num {
+  transition: text-shadow 0.6s ease;
+}
+
+.bc-scope-num.bc-counted {
+  text-shadow: 0 0 20px rgba(201,169,110,0.3);
+}
+
+/* ── Meta bar border draw ── */
+.bc-meta {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  background-image: linear-gradient(#d9d5cd, #d9d5cd), linear-gradient(#d9d5cd, #d9d5cd);
+  background-size: 0% 1px, 0% 1px;
+  background-position: center top, center bottom;
+  background-repeat: no-repeat;
+  transition: background-size 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bc-meta.bc-drawn {
+  background-size: 100% 1px, 100% 1px;
+}
+
+/* ── CTA background slow zoom ── */
+.bc-cta-bg img {
+  transition: transform 8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bc-cta.bc-in-view .bc-cta-bg img {
+  transform: scale(1.08);
+}
+
+/* ── Stats grid gold border gaps ── */
+.bc-results {
+  background: rgba(201,169,110,0.08);
+  gap: 1px;
+}
+
+.bc-result {
+  background: #f6f4f0;
+}
+
+/* ── Accent line pulse ── */
+.bc-accent {
+  animation: bcAccentPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes bcAccentPulse {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* ── Hero scroll fade ── */
+.bc-hero-content {
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* ── Scroll indicator ── */
+.bc-scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 3;
+  transition: opacity 0.4s ease;
+}
+
+.bc-scroll-hint.bc-hidden { opacity: 0; pointer-events: none; }
+
+.bc-scroll-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.45rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.3);
+}
+
+.bc-scroll-line {
+  width: 1px;
+  height: 36px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(246,244,240,0.1);
+}
+
+.bc-scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #c9a96e;
+  animation: bcScrollPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes bcScrollPulse {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ── Inline gold highlights ── */
+.bc-gold { color: #c9a96e; font-weight: 400; }
+
+/* ── Manifesto / closing argument ── */
+.bc-manifesto {
+  background: #1a1a18;
+  padding: 8rem 5vw;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bc-manifesto::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(rgba(201,169,110,0.4), transparent);
+}
+
+.bc-manifesto-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(246,244,240,0.25);
+  max-width: 800px;
+  margin: 0 auto;
+  transition: color 0.8s ease;
+}
+
+.bc-manifesto-text .bc-mw {
+  display: inline;
+  color: rgba(246,244,240,0.15);
+  transition: color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bc-manifesto-text .bc-mw.bc-lit {
+  color: #f6f4f0;
+}
+
+.bc-manifesto-text .bc-mw.bc-gold-word.bc-lit {
+  color: #c9a96e;
+}
+
+/* ── Reimagined CTA ── */
+.bc-cta {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bc-cta-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bc-cta-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.4) brightness(0.2);
+  transition: transform 8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bc-cta.bc-in-view .bc-cta-bg img {
+  transform: scale(1.1);
+}
+
+.bc-cta-c {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 5vw;
+}
+
+.bc-cta-eyebrow {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.bc-cta-eyebrow::before,
+.bc-cta-eyebrow::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: rgba(201,169,110,0.3);
+}
+
+.bc-cta h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 300;
+  color: #f6f4f0;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.bc-cta h2 em {
+  font-style: italic;
+  color: #c9a96e;
+}
+
+.bc-cta-sub {
+  color: #8a8579;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto 3rem;
+}
+
+.bc-cta-btn {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 1.2rem 3.5rem;
+  border: 1px solid #c9a96e;
+  background: #c9a96e;
+  color: #1a1a18;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.bc-cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.bc-cta-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.bc-cta-btn:hover {
+  background: transparent !important;
+  color: #c9a96e !important;
+  box-shadow: 0 0 30px rgba(201,169,110,0.2);
+}
+
+/* ── Deliverable card hover glow ── */
+.bc-del-card {
+  transition: box-shadow 0.4s ease, transform 0.3s ease;
+}
+
+.bc-del-card:hover {
+  box-shadow: 0 8px 30px rgba(201,169,110,0.06);
+  transform: translateY(-2px);
+}
+
+/* ═══ BALMORAL CASE STUDY ═══ */
+.bc-wrap {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #1a1a18;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.bc-wrap img {
+  max-width: 100%;
+  display: block;
+}
+
+.bc-wrap a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── HERO ─── */
+.bc-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 6rem 5vw;
+  background: #1a1a18;
+  overflow: hidden;
+}
+
+.bc-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(26,26,24,0.85) 100%);
+  z-index: 1;
+}
+
+.bc-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.bc-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  filter: saturate(0.6);
+}
+
+.bc-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.bc-hero-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.bc-hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.08;
+  color: #f6f4f0;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.bc-hero h1 em {
+  font-style: italic;
+  color: #c9a96e;
+}
+
+.bc-hero-sub {
+  font-size: 1rem;
+  color: #d9d5cd;
+  font-weight: 300;
+  max-width: 520px;
+}
+
+/* ─── META BAR ─── */
+.bc-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0;
+  border-top: 1px solid #d9d5cd;
+  border-bottom: 1px solid #d9d5cd;
+}
+
+.bc-meta-item {
+  padding: 2rem 5vw;
+  border-right: 1px solid #d9d5cd;
+}
+
+.bc-meta-item:last-child {
+  border-right: none;
+}
+
+.bc-meta-dt {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8579;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.bc-meta-dd {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #1a1a18;
+}
+
+/* ─── SECTIONS ─── */
+.bc-section {
+  padding: 6rem 5vw;
+}
+
+.bc-narrow {
+  max-width: 720px;
+}
+
+.bc-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #b8975a;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.bc-divider {
+  width: 60px;
+  height: 1px;
+  background: #c9a96e;
+  margin: 0 0 2rem;
+}
+
+.bc-section h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.bc-section p {
+  font-size: 1rem;
+  color: #4a4a46;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.bc-section p:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── IMAGE BREAK ─── */
+.bc-img-break {
+  width: 100%;
+  height: 70vh;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.bc-img-break img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ─── DELIVERABLES ─── */
+.bc-deliverables {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.bc-del-card {
+  padding: 2rem 0;
+  border-top: 1px solid #d9d5cd;
+}
+
+.bc-del-card h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+.bc-del-card p {
+  font-size: 0.9rem;
+  color: #8a8579;
+  line-height: 1.7;
+}
+
+/* ─── PULL QUOTE ─── */
+.bc-quote {
+  background: #eeece6;
+  padding: 6rem 5vw;
+  text-align: center;
+}
+
+.bc-quote-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+  color: #1a1a18;
+}
+
+.bc-quote-text::before {
+  content: '\201C';
+  display: block;
+  font-size: 4rem;
+  color: #c9a96e;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  font-style: normal;
+}
+
+.bc-quote-attr {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8579;
+  font-weight: 500;
+}
+
+.bc-quote-attr a {
+  color: #b8975a;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.bc-quote-attr a:hover {
+  border-color: #b8975a;
+}
+
+/* ─── RESULTS ─── */
+.bc-results {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.bc-result {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: #eeece6;
+  border-radius: 2px;
+}
+
+.bc-result-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: #b8975a;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.bc-result-lbl {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8a8579;
+  font-weight: 400;
+}
+
+/* ─── WEBSITE SHOWCASE ─── */
+.bc-web-section {
+  padding: 6rem 5vw;
+  background: #f6f4f0;
+}
+
+.bc-web-section .bc-label {
+  color: #b8975a;
+}
+
+.bc-web-section .bc-narrow {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.bc-web-intro {
+  font-size: 1rem;
+  color: #4a4a46;
+  line-height: 1.8;
+  max-width: 720px;
+  margin-bottom: 3rem;
+}
+
+.bc-browser {
+  max-width: 940px;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(26,26,24,0.18), 0 10px 30px rgba(26,26,24,0.1);
+}
+
+.bc-browser-bar {
+  background: #2a2a28;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bc-browser-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.bc-browser-dot:nth-child(1) { background: #ff5f57; }
+.bc-browser-dot:nth-child(2) { background: #ffbd2e; }
+.bc-browser-dot:nth-child(3) { background: #28c840; }
+
+.bc-browser-url {
+  flex: 1;
+  background: #1a1a18;
+  border-radius: 6px;
+  padding: 7px 14px;
+  margin-left: 10px;
+  font-size: 12px;
+  color: #8a8579;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.bc-browser-viewport {
+  height: 520px;
+  overflow: hidden;
+  position: relative;
+  background: #1a1a18;
+}
+
+.bc-browser-viewport img {
+  width: 100%;
+  display: block;
+  animation: bcWebScroll 20s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes bcWebScroll {
+  0%, 20% { transform: translateY(0); }
+  45%, 55% { transform: translateY(-1500px); }
+  80%, 100% { transform: translateY(0); }
+}
+
+.bc-web-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 3rem auto 0;
+  max-width: 940px;
+}
+
+.bc-web-stat {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+.bc-web-stat-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: #b8975a;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.bc-web-stat-lbl {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8a8579;
+  font-weight: 400;
+}
+
+/* ─── SECTION ACCENT ─── */
+.bc-accent {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.2) 20%, rgba(201,169,110,0.2) 80%, transparent 100%);
+}
+
+/* ─── SHOWCASE ─── */
+.bc-showcase {
+  padding: 6rem 5vw 3rem;
+  background: #1a1a18;
+}
+
+.bc-showcase .bc-label {
+  color: #c9a96e;
+}
+
+.bc-showcase .bc-divider {
+  background: rgba(201,169,110,0.4);
+}
+
+.bc-showcase h2 {
+  color: #f6f4f0;
+}
+
+.bc-showcase h2 em {
+  font-style: italic;
+  color: #c9a96e;
+}
+
+.bc-showcase-intro {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #d9d5cd;
+  max-width: 680px;
+  margin-bottom: 0;
+}
+
+.bc-showcase-intro a {
+  color: #c9a96e;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201,169,110,0.3);
+  transition: border-color 0.3s ease;
+}
+
+.bc-showcase-intro a:hover {
+  border-color: #c9a96e;
+}
+
+/* ─── PROJECT GRID (2x2) ─── */
+.bc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 3rem;
+}
+
+.bc-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  text-decoration: none !important;
+  color: inherit;
+  border-radius: 2px;
+}
+
+.bc-card-img-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.bc-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bc-card:hover .bc-card-img-wrap img {
+  transform: scale(1.05);
+}
+
+.bc-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(26,26,24,0.85) 0%, rgba(26,26,24,0.3) 40%, rgba(26,26,24,0.05) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.bc-card:hover .bc-card-overlay {
+  opacity: 1;
+}
+
+.bc-card-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f6f4f0;
+  margin: 0 0 6px 0;
+}
+
+.bc-card-meta {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: #c9a96e;
+  margin: 0;
+}
+
+.bc-card-arrow {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(246,244,240,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translate(-8px, 8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.bc-card:hover .bc-card-arrow {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.bc-card-arrow svg {
+  width: 14px;
+  height: 14px;
+  stroke: #f6f4f0;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* ─── SCOPE STRIP ─── */
+.bc-scope {
+  background: #1a1a18;
+  padding: 4rem 5vw;
+  border-top: 1px solid rgba(201,169,110,0.1);
+}
+
+.bc-scope-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.bc-scope-item {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.bc-scope-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: #c9a96e;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.bc-scope-lbl {
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8a8579;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* (CTA styles defined in interactive layer above) */
+
+/* ─── FOOTER ─── */
+.bc-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.bc-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.bc-ft-locs a:hover{color:#c9a96e}
+.bc-ft {
+  background: #1a1a18;
+  border-top: 1px solid rgba(201,169,110,0.15);
+}
+
+.bc-ft-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.25rem 5vw;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.bc-ft-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.bc-ft-label {
+  font-size: 7.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.bc-ft-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(201,169,110,0.4);
+  flex-shrink: 0;
+  position: relative;
+  top: -2px;
+}
+
+.bc-ft-item p,
+.bc-ft-item a {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(246,244,240,0.8);
+  font-weight: 300;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.bc-ft-item a:hover {
+  color: #c9a96e;
+}
+
+.bc-ft-social {
+  display: flex;
+  gap: 18px;
+}
+
+.bc-ft-rule {
+  margin: 0 5vw;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.15) 20%, rgba(201,169,110,0.15) 80%, transparent 100%);
+}
+
+.bc-ft-bottom {
+    padding-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 5vw;
+}
+
+.bc-ft-copy {
+  font-size: 10px;
+  color: rgba(246,244,240,0.35);
+  letter-spacing: 0.08em;
+}
+
+.bc-ft-nav {
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.bc-ft-nav a {
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.bc-ft-nav a:hover {
+  color: #c9a96e;
+}
+
+.bc-alt-cta{margin-top:1.25rem;font-size:.75rem;color:#8a8579;letter-spacing:.05em;font-weight:300}.bc-alt-cta a{color:#c9a96e;text-decoration:underline;text-underline-offset:3px;transition:color .3s ease}.bc-alt-cta a:hover{color:#f6f4f0}
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .bc-hero {
+    min-height: 75vh;
+    padding: 4rem 6vw;
+  }
+
+  .bc-section {
+    padding: 4rem 6vw;
+  }
+
+  .bc-quote {
+    padding: 4rem 6vw;
+  }
+
+  .bc-meta-item {
+    border-right: none;
+    border-bottom: 1px solid #d9d5cd;
+  }
+
+  .bc-meta-item:last-child {
+    border-bottom: none;
+  }
+
+  .bc-cta {
+    min-height: 70vh;
+  }
+
+  .bc-deliverables {
+    grid-template-columns: 1fr;
+  }
+
+  .bc-results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bc-showcase {
+    padding: 4rem 6vw;
+  }
+
+  .bc-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .bc-card-overlay {
+    opacity: 1;
+    background: linear-gradient(0deg, rgba(26,26,24,0.75) 0%, rgba(26,26,24,0.0) 50%);
+    padding: 24px;
+  }
+
+  .bc-card-arrow {
+    display: none;
+  }
+
+  .bc-scope-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .bc-scope-num {
+    font-size: 1.8rem;
+  }
+
+  .bc-web-section {
+    padding: 4rem 6vw;
+  }
+
+  .bc-browser-viewport {
+    height: 300px;
+  }
+
+  .bc-browser-viewport img {
+    animation-name: bcWebScrollMobile;
+  }
+
+  @keyframes bcWebScrollMobile {
+    0%, 20% { transform: translateY(0); }
+    45%, 55% { transform: translateY(-1000px); }
+    80%, 100% { transform: translateY(0); }
+  }
+
+  .bc-web-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .bc-web-stat-num {
+    font-size: 1.8rem;
+  }
+
+  .bc-manifesto {
+    padding: 5rem 6vw;
+  }
+
+  .bc-cta {
+    min-height: 80vh;
+  }
+
+  .bc-scroll-hint {
+    bottom: 24px;
+  }
+
+  .bc-ft-row {
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 2rem 6vw;
+  }
+
+  .bc-ft-rule {
+    margin: 0 6vw;
+  }
+
+  .bc-ft-bottom {
+    padding-bottom: 2rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    padding: 1.25rem 6vw;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .bc-deliverables {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
+
+<div class="bc-loader" id="bcLoader">
+  <div class="bc-loader-brand">Matt Anthony Photography</div>
+  <div class="bc-loader-sub">Case Study</div>
+  <div class="bc-loader-line"></div>
+</div>
+<nav class="bc-section-nav" id="bcSectionNav"></nav>
+
+<div class="bc-cursor" id="bcCursor"></div>
+<div class="bc-cursor-dot" id="bcCursorDot"></div>
+<div class="bc-progress" id="bcProgress"></div>
+<div class="bc-wrap">
+
+<!-- ═══ HERO ═══ -->
+<div class="bc-hero bc-grain">
+  <div class="bc-hero-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg?format=2500w" alt="Warbler Residence Whistler architectural photography by Matt Anthony">
+  </div>
+  <div class="bc-hero-content">
+    <p class="bc-hero-label">Case Study</p>
+    <h1>Balmoral Construction: From Photography to <em>Full Visual Partner</em></h1>
+    <p class="bc-hero-sub">Four luxury projects, a complete website build, video content, and an ongoing retainer that turned a first shoot into a long-term partnership.</p>
+  </div>
+  <canvas class="bc-particles" id="bcParticles"></canvas>
+  <div class="bc-scroll-hint" id="bcScrollHint">
+    <span class="bc-scroll-text">Scroll</span>
+    <span class="bc-scroll-line"></span>
+  </div>
+</div>
+
+<!-- ═══ META BAR ═══ -->
+<dl class="bc-meta">
+  <div class="bc-meta-item">
+    <dt class="bc-meta-dt">Client</dt>
+    <dd class="bc-meta-dd">Balmoral Construction</dd>
+  </div>
+  <div class="bc-meta-item">
+    <dt class="bc-meta-dt">Location</dt>
+    <dd class="bc-meta-dd">Whistler &amp; Pemberton, BC</dd>
+  </div>
+  <div class="bc-meta-item">
+    <dt class="bc-meta-dt">Services</dt>
+    <dd class="bc-meta-dd">Photo &middot; Video &middot; Web &middot; Retainer</dd>
+  </div>
+  <div class="bc-meta-item">
+    <dt class="bc-meta-dt">Scope</dt>
+    <dd class="bc-meta-dd">4 Projects &middot; 1 Year</dd>
+  </div>
+</dl>
+
+<!-- ═══ THE BRIEF ═══ -->
+<section class="bc-section bc-narrow" data-nav="Brief">
+  <p class="bc-label bc-eyebrow">The Brief</p>
+  <div class="bc-divider"></div>
+  <h2>A builder with exceptional work and no visual presence to match</h2>
+  <p>Balmoral Construction builds luxury custom homes across Whistler and Pemberton. The kind of projects that deserve recognition — and that are eligible for programs like the <a href="/journal/georgie-awards-guide" style="color:#b8975a;text-decoration:none;border-bottom:1px solid rgba(184,151,90,0.3);transition:border-color 0.3s ease;">Georgie Awards</a>. But when we first connected, the visual infrastructure didn't reflect the quality of the builds. The portfolio imagery was inconsistent, the website didn't communicate the calibre of work being done, and the social media presence was sparse. The goal wasn't a single shoot. It was a complete visual overhaul: professional photography across multiple completed projects, video content for social media, a ground-up website redesign, and an ongoing system to keep everything current as new projects come through.</p>
+</section>
+
+<!-- FULL-WIDTH IMAGE BREAK -->
+<div class="bc-img-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/0a5c4ead-f6f9-413c-aaad-b12b03837e78/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg.jpg?format=2500w" alt="Fitzsimmons Residence exterior Whistler" loading="lazy">
+</div>
+
+<!-- ═══ THE APPROACH ═══ -->
+<section class="bc-section bc-narrow" data-nav="Approach">
+  <p class="bc-label bc-eyebrow">The Approach</p>
+  <div class="bc-divider"></div>
+  <h2>Photography first, then everything built on top</h2>
+  <p>We started where every visual identity should start: with the work itself. Four completed projects were shot to full scope: architectural interiors and exteriors, aerial photography, twilight sessions, material details, and short form video content. The Warbler Residence and Fitzsimmons Residence in Whistler. The Sugarloaf and Eagle residences in Pemberton.</p>
+  <p>Each shoot was planned around the specific qualities of the project: the alpine light conditions at Fitzsimmons, the panoramic valley views at Sugarloaf, the material palette at Warbler, the compact site strategy at Eagle. The resulting library gave Balmoral a deep, consistent set of imagery across four distinct projects. Enough to populate every channel from website to social media to proposals.</p>
+  <p>With the photography in place, the website was custom coded from scratch. Forty-two pages, each built around the imagery: 14 project galleries, 6 service-specific landing pages, 6 geo-targeted location pages covering Whistler, Pemberton, and Squamish for both new builds and renovations. A blog framework with 8 SEO-optimised articles drives organic traffic through cost-to-build guides, permit explainers, and project spotlights. The site launched with layered JSON-LD structured data, LocalBusiness schema with an 80km service radius, FAQ markup, breadcrumb navigation, and custom JavaScript animations. Built to 2026 SEO and local geo-targeting standards, with the same attention to craft that defines Balmoral's construction.</p>
+</section>
+
+<!-- FULL-WIDTH IMAGE BREAK -->
+<div class="bc-img-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/aaf09b1e-0c8f-4362-bb6b-d1078581c875/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-2.jpg?format=2500w" alt="Sugarloaf Residence Pemberton exterior architectural photography" loading="lazy">
+</div>
+
+<!-- ═══ DELIVERABLES ═══ -->
+<section class="bc-section" data-nav="Deliverables">
+  <div class="bc-narrow">
+    <p class="bc-label bc-eyebrow">Deliverables</p>
+    <div class="bc-divider"></div>
+    <h2>What we built together</h2>
+  </div>
+  <div class="bc-deliverables">
+    <div class="bc-del-card">
+      <h3>Architectural Photography</h3>
+      <p>Full-scope interior, exterior, aerial, and twilight photography across four luxury residential projects in Whistler and Pemberton.</p>
+    </div>
+    <div class="bc-del-card">
+      <h3>42-Page Custom Website</h3>
+      <p>Custom-coded from scratch: 14 project galleries, 6 service pages, 6 geo-targeted location pages, team bios, reviews, blog, and contact. Built to 2026 SEO standards.</p>
+    </div>
+    <div class="bc-del-card">
+      <h3>SEO &amp; Structured Data</h3>
+      <p>LocalBusiness schema, FAQ markup, breadcrumbs, service catalogs, and aggregate ratings. Geo-targeted for Whistler, Pemberton, and Squamish with an 80km service radius.</p>
+    </div>
+    <div class="bc-del-card">
+      <h3>Content &amp; Blog Strategy</h3>
+      <p>Eight SEO-optimised blog posts: cost-to-build guides, permit explainers, location comparisons, and project spotlights driving organic traffic to service pages.</p>
+    </div>
+    <div class="bc-del-card">
+      <h3>Drone &amp; Video</h3>
+      <p>Transport Canada certified aerial photography and short form video content for social media. Project films and spatial walk-throughs for Reels and LinkedIn.</p>
+    </div>
+    <div class="bc-del-card">
+      <h3>Ongoing Creative Partner</h3>
+      <p>Monthly retainer covering website maintenance, new project additions, content updates, photography of new builds, and strategic visual planning as the business grows.</p>
+    </div>
+  </div>
+</section>
+
+<div class="bc-accent"></div>
+
+<!-- ═══ WEBSITE SHOWCASE ═══ -->
+<section class="bc-web-section" data-nav="Website">
+  <div class="bc-narrow">
+    <p class="bc-label bc-eyebrow">Website</p>
+    <div class="bc-divider"></div>
+    <h2>A 42-page website built to win work</h2>
+    <p class="bc-web-intro">The Balmoral website was custom coded from the ground up: 42 pages, each built around professional photography. Six geo-targeted location pages rank for Whistler, Pemberton, and Squamish. Layered JSON-LD structured data includes LocalBusiness schema with service catalogs, FAQ markup, breadcrumbs, and aggregate ratings. Eight SEO-optimised blog posts drive organic traffic. Custom JavaScript powers scroll-triggered animations and a progress indicator. The site is managed under an ongoing retainer, with new projects, content, and SEO updates added monthly.</p>
+  </div>
+  <div class="bc-browser">
+    <div class="bc-browser-bar">
+      <span class="bc-browser-dot"></span>
+      <span class="bc-browser-dot"></span>
+      <span class="bc-browser-dot"></span>
+      <span class="bc-browser-url">balmoralconstruction.com</span>
+    </div>
+    <div class="bc-browser-viewport">
+      <img src="https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/93aadd7d-1feb-4c75-bf1e-25a901aa197f/www.balmoralconstruction.com_+%282%29+%281%29.png?content-type=image%2Fpng" alt="Balmoral Construction website designed and managed by Matt Anthony Photography" loading="lazy">
+    </div>
+  </div>
+  <div class="bc-web-stats">
+    <div class="bc-web-stat">
+      <p class="bc-web-stat-num">42</p>
+      <p class="bc-web-stat-lbl">Pages Built</p>
+    </div>
+    <div class="bc-web-stat">
+      <p class="bc-web-stat-num">6</p>
+      <p class="bc-web-stat-lbl">Geo-Targeted Pages</p>
+    </div>
+    <div class="bc-web-stat">
+      <p class="bc-web-stat-num">4</p>
+      <p class="bc-web-stat-lbl">JSON-LD Schemas</p>
+    </div>
+  </div>
+</section>
+
+<div class="bc-accent"></div>
+
+<!-- ═══ TESTIMONIAL ═══ -->
+<section class="bc-quote" id="bcQuote" data-nav="Testimonial">
+  <p class="bc-quote-text"><span class="bc-qw">Working</span> <span class="bc-qw">with</span> <span class="bc-qw">Matt</span> <span class="bc-qw">was</span> <span class="bc-qw">an</span> <span class="bc-qw bc-gold-word">absolute</span> <span class="bc-qw bc-gold-word">pleasure</span> <span class="bc-qw">from</span> <span class="bc-qw">start</span> <span class="bc-qw">to</span> <span class="bc-qw">finish.</span> <span class="bc-qw">The</span> <span class="bc-qw">entire</span> <span class="bc-qw">process,</span> <span class="bc-qw">from</span> <span class="bc-qw">our</span> <span class="bc-qw">initial</span> <span class="bc-qw">contact</span> <span class="bc-qw">to</span> <span class="bc-qw">the</span> <span class="bc-qw">delivery</span> <span class="bc-qw">of</span> <span class="bc-qw bc-gold-word">stunning</span> <span class="bc-qw bc-gold-word">photos</span> <span class="bc-qw">and</span> <span class="bc-qw">the</span> <span class="bc-qw">completion</span> <span class="bc-qw">of</span> <span class="bc-qw">my</span> <span class="bc-qw bc-gold-word">website,</span> <span class="bc-qw">was</span> <span class="bc-qw bc-gold-word">seamless</span> <span class="bc-qw">and</span> <span class="bc-qw bc-gold-word">professional.</span> <span class="bc-qw">He</span> <span class="bc-qw">took</span> <span class="bc-qw">the</span> <span class="bc-qw">time</span> <span class="bc-qw">to</span> <span class="bc-qw">understand</span> <span class="bc-qw">my</span> <span class="bc-qw">needs,</span> <span class="bc-qw">and</span> <span class="bc-qw">the</span> <span class="bc-qw">trust</span> <span class="bc-qw">we</span> <span class="bc-qw">built</span> <span class="bc-qw">made</span> <span class="bc-qw">every</span> <span class="bc-qw">step</span> <span class="bc-qw bc-gold-word">effortless.</span> <span class="bc-qw">The</span> <span class="bc-qw">website</span> <span class="bc-qw">looks</span> <span class="bc-qw bc-gold-word">fantastic,</span> <span class="bc-qw">and</span> <span class="bc-qw">the</span> <span class="bc-qw">ongoing</span> <span class="bc-qw">maintenance</span> <span class="bc-qw">plan</span> <span class="bc-qw">gives</span> <span class="bc-qw">me</span> <span class="bc-qw bc-gold-word">peace</span> <span class="bc-qw bc-gold-word">of</span> <span class="bc-qw bc-gold-word">mind</span> <span class="bc-qw">knowing</span> <span class="bc-qw">everything</span> <span class="bc-qw">is</span> <span class="bc-qw">taken</span> <span class="bc-qw">care</span> <span class="bc-qw">of.</span></p>
+  <p class="bc-quote-attr">Marc Harvey, Balmoral Construction &middot; <a href="https://www.balmoralconstruction.com/" target="_blank" rel="noopener">balmoralconstruction.com</a></p>
+</section>
+
+<div class="bc-accent"></div>
+
+<!-- ═══ THE OUTCOME ═══ -->
+<section class="bc-section" style="text-align:center" data-nav="Outcome">
+  <div style="max-width:720px;margin:0 auto">
+    <p class="bc-label bc-eyebrow">The Outcome</p>
+    <div class="bc-divider" style="margin:0 auto 2rem"></div>
+    <h2>A visual identity that matches the quality of the builds</h2>
+    <p>Balmoral now has a 42-page custom-coded website that communicates the calibre of their work from the first click. Six geo-targeted landing pages rank for the markets they build in. Four JSON-LD schemas feed structured data to search engines. Eight blog posts drive organic traffic through location-specific content that no competitor has.</p>
+    <p>The social media presence runs on a deep library of video and photography content across four documented projects. The retainer ensures every new build gets photographed to the same standard, the website stays current with fresh project pages and SEO updates, and the visual brand compounds with each completed home.</p>
+    <p>What started as a photography inquiry became a full creative partnership. That's what happens when the photographer understands the business, not just the buildings.</p>
+  </div>
+  <div class="bc-results">
+    <div class="bc-result">
+      <div class="bc-result-num">42</div>
+      <div class="bc-result-lbl">Pages Built</div>
+    </div>
+    <div class="bc-result">
+      <div class="bc-result-num">4</div>
+      <div class="bc-result-lbl">Projects Photographed</div>
+    </div>
+    <div class="bc-result">
+      <div class="bc-result-num">6</div>
+      <div class="bc-result-lbl">Geo-Targeted Pages</div>
+    </div>
+    <div class="bc-result">
+      <div class="bc-result-num">12+</div>
+      <div class="bc-result-lbl">Month Partnership</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SHOWCASE ═══ -->
+<section class="bc-showcase bc-grain" data-nav="Projects">
+  <p class="bc-label bc-eyebrow">Featured Projects</p>
+  <div class="bc-divider"></div>
+  <h2>Four builds. One <em>visual standard</em>.</h2>
+  <p class="bc-showcase-intro">Each project was photographed to full scope: interiors, exteriors, aerials, details, twilight, and video. This library serves Balmoral's website, proposals, social media, and future <a href="/award-publication-imagery" style="color:#c9a96e;text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.3);transition:border-color 0.3s ease;">award and publication submissions</a>.</p>
+  <div class="bc-grid">
+    <a href="/warbler-whistler" class="bc-card">
+      <div class="bc-card-img-wrap">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/40f0f4b4-0146-4139-8682-d3505ba00ba2/warbler-whistler-architectural-photography-matt-anthony-.jpg-36.jpg?format=2500w" alt="Warbler Residence Whistler" loading="lazy">
+      </div>
+      <div class="bc-card-overlay">
+        <p class="bc-card-title">Warbler Residence</p>
+        <p class="bc-card-meta">Whistler, BC</p>
+      </div>
+      <div class="bc-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+    </a>
+    <a href="/fitzsimmons-whistler" class="bc-card">
+      <div class="bc-card-img-wrap">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d4768559-4d0d-4403-a58c-02db15d5b177/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-42.jpg?format=2500w" alt="Fitzsimmons Residence Whistler" loading="lazy">
+      </div>
+      <div class="bc-card-overlay">
+        <p class="bc-card-title">Fitzsimmons Residence</p>
+        <p class="bc-card-meta">Whistler, BC</p>
+      </div>
+      <div class="bc-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+    </a>
+    <a href="/sugarloaf-residence" class="bc-card">
+      <div class="bc-card-img-wrap">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7feb0024-6829-459f-96e1-4eff91fb7894/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-9.jpg?format=2500w" alt="Sugarloaf Residence Pemberton" loading="lazy">
+      </div>
+      <div class="bc-card-overlay">
+        <p class="bc-card-title">Sugarloaf Residence</p>
+        <p class="bc-card-meta">Pemberton, BC</p>
+      </div>
+      <div class="bc-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+    </a>
+    <a href="/eagle-residence" class="bc-card">
+      <div class="bc-card-img-wrap">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/4355dd8f-a134-48f2-99bd-83f775956131/eagle-pemberton-architectural-photography-matt-anthony-.jpg-5.jpg?format=2500w" alt="Eagle Residence Pemberton" loading="lazy">
+      </div>
+      <div class="bc-card-overlay">
+        <p class="bc-card-title">Eagle Residence</p>
+        <p class="bc-card-meta">Pemberton, BC</p>
+      </div>
+      <div class="bc-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══ SCOPE STATS ═══ -->
+<div class="bc-scope">
+  <div class="bc-scope-grid">
+    <div class="bc-scope-item">
+      <p class="bc-scope-num">42</p>
+      <p class="bc-scope-lbl">Pages Built</p>
+    </div>
+    <div class="bc-scope-item">
+      <p class="bc-scope-num">14</p>
+      <p class="bc-scope-lbl">Project Pages</p>
+    </div>
+    <div class="bc-scope-item">
+      <p class="bc-scope-num">6</p>
+      <p class="bc-scope-lbl">Location Pages</p>
+    </div>
+    <div class="bc-scope-item">
+      <p class="bc-scope-num">6</p>
+      <p class="bc-scope-lbl">Service Pages</p>
+    </div>
+    <div class="bc-scope-item">
+      <p class="bc-scope-num">8</p>
+      <p class="bc-scope-lbl">Blog Posts</p>
+    </div>
+    <div class="bc-scope-item">
+      <p class="bc-scope-num">4</p>
+      <p class="bc-scope-lbl">JSON-LD Schemas</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MANIFESTO ═══ -->
+<section class="bc-manifesto bc-grain" id="bcManifesto">
+  <p class="bc-manifesto-text">
+    <span class="bc-mw">Every</span> <span class="bc-mw">project</span> <span class="bc-mw">you</span> <span class="bc-mw">complete</span> <span class="bc-mw">without</span> <span class="bc-mw bc-gold-word">professional</span> <span class="bc-mw bc-gold-word">documentation</span> <span class="bc-mw">is</span> <span class="bc-mw">a</span> <span class="bc-mw">missed</span> <span class="bc-mw">opportunity.</span> <span class="bc-mw">No</span> <span class="bc-mw">photos</span> <span class="bc-mw">for</span> <span class="bc-mw">the</span> <span class="bc-mw">website.</span> <span class="bc-mw">No</span> <span class="bc-mw">content</span> <span class="bc-mw">for</span> <span class="bc-mw">social.</span> <span class="bc-mw">No</span> <span class="bc-mw">imagery</span> <span class="bc-mw">for</span> <span class="bc-mw">proposals.</span> <span class="bc-mw">Once</span> <span class="bc-mw">the</span> <span class="bc-mw">drywall</span> <span class="bc-mw">goes</span> <span class="bc-mw">up,</span> <span class="bc-mw">that</span> <span class="bc-mw bc-gold-word">story</span> <span class="bc-mw">is</span> <span class="bc-mw bc-gold-word">gone.</span>
+  </p>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="bc-cta">
+  <div class="bc-cta-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/40f0f4b4-0146-4139-8682-d3505ba00ba2/warbler-whistler-architectural-photography-matt-anthony-.jpg-36.jpg?format=2500w" alt="Warbler Residence Whistler architectural photography by Balmoral Construction" loading="lazy">
+  </div>
+  <div class="bc-cta-c">
+    <p class="bc-cta-eyebrow">Ready to Stand Out</p>
+    <h2>If you're a builder ready to <em>dominate your market</em>, let's talk.</h2>
+    <p class="bc-cta-sub">Photography. Video. A custom-coded website. SEO that puts you on the map. One retainer. One person who already knows your industry inside and out.</p>
+    <a href="/discovery-call" class="bc-cta-btn bc-magnetic" target="_blank" rel="noopener">Book a Discovery Call</a>
+    <p class="bc-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="bc-ft">
+<div class="bc-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+
+  <div class="bc-ft-row">
+    <div class="bc-ft-item"><span class="bc-ft-label">Based In</span><span class="bc-ft-dot"></span><p>Squamish, British Columbia</p></div>
+    <div class="bc-ft-item"><span class="bc-ft-label">Email</span><span class="bc-ft-dot"></span><a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a></div>
+    <div class="bc-ft-item"><span class="bc-ft-label">Phone</span><span class="bc-ft-dot"></span><a href="tel:6047659270">604.765.9270</a></div>
+    <div class="bc-ft-item"><span class="bc-ft-label">Follow</span><span class="bc-ft-dot"></span><div class="bc-ft-social"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  </div>
+  <div class="bc-ft-rule"></div>
+  <div class="bc-ft-bottom">
+    <span class="bc-ft-copy">&copy; 2026 Matt Anthony Photography</span>
+    <nav class="bc-ft-nav"><a href="/projects">Projects</a><a href="/journal">Journal</a><a href="/journal/georgie-awards-guide">Georgie Awards</a><a href="/bio">About</a><a href="/contact">Contact</a><a href="/pricing-guide-landing">Get Pricing</a></nav>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var isMobile = 'ontouchstart' in window;
+  var wrap = document.querySelector('.bc-wrap');
+  var progressBar = document.getElementById('bcProgress');
+  var hero = document.querySelector('.bc-hero');
+  var heroContent = document.querySelector('.bc-hero-content');
+  var heroBg = document.querySelector('.bc-hero-bg');
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader = document.getElementById('bcLoader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('bc-done'); }, 1100);
+  });
+
+  /* ═══ SECTION NAV DOTS ═══ */
+  var sectionNav = document.getElementById('bcSectionNav');
+  var navSections = document.querySelectorAll('[data-nav]');
+  var navDots = [];
+  navSections.forEach(function(sec){
+    var dot = document.createElement('div');
+    dot.className = 'bc-nav-dot';
+    dot.setAttribute('data-label', sec.getAttribute('data-nav'));
+    dot.addEventListener('click', function(){
+      sec.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+    sectionNav.appendChild(dot);
+    navDots.push({ dot:dot, section:sec });
+  });
+
+  function updateNavDots(){
+    var scrollY = window.scrollY;
+    var winH = window.innerHeight;
+    if(scrollY > winH * 0.5) sectionNav.classList.add('bc-nav-visible');
+    else sectionNav.classList.remove('bc-nav-visible');
+    var active = null;
+    navDots.forEach(function(item){
+      var rect = item.section.getBoundingClientRect();
+      if(rect.top < winH * 0.5 && rect.bottom > winH * 0.3) active = item;
+      item.dot.classList.remove('bc-nav-active');
+    });
+    if(active) active.dot.classList.add('bc-nav-active');
+  }
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  function updateProgress(){
+    var s = window.scrollY;
+    var d = document.documentElement.scrollHeight - window.innerHeight;
+    if(d > 0) progressBar.style.width = (s / d * 100) + '%';
+  }
+
+  /* ═══ HERO PARALLAX + FADE ═══ */
+  function updateHero(){
+    var s = window.scrollY;
+    var h = window.innerHeight;
+    if(s > h) return;
+    var ratio = s / h;
+    if(heroBg) heroBg.style.transform = 'translateY(' + (s * 0.35) + 'px) scale(' + (1 + ratio * 0.05) + ')';
+    if(heroContent){
+      heroContent.style.transform = 'translateY(' + (s * 0.15) + 'px)';
+      heroContent.style.opacity = 1 - ratio * 1.2;
+    }
+  }
+
+  /* ═══ PHOTO BREAK PARALLAX ═══ */
+  var photoBreaks = document.querySelectorAll('.bc-img-break');
+  function updatePhotoParallax(){
+    photoBreaks.forEach(function(pb){
+      var rect = pb.getBoundingClientRect();
+      if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+      var center = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+      var img = pb.querySelector('img');
+      if(img) img.style.transform = 'translateY(' + (center * -30) + 'px) scale(1.08)';
+    });
+  }
+
+  /* ═══ HEADLINE GOLD UNDERLINE ═══ */
+  var headObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('bc-underlined'); headObs.unobserve(e.target); }
+    });
+  }, {threshold:0.4});
+  document.querySelectorAll('.bc-wrap h2').forEach(function(h){ headObs.observe(h); });
+
+  /* ═══ EYEBROW DASH DRAW ═══ */
+  var eyeObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('bc-visible'); eyeObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.bc-eyebrow').forEach(function(el){ eyeObs.observe(el); });
+
+  /* ═══ DIVIDER DRAW ═══ */
+  var divObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('bc-drawn'); divObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.bc-divider').forEach(function(el){ el.style.width = '0'; divObs.observe(el); });
+
+  /* ═══ META BAR BORDER DRAW ═══ */
+  var metaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('bc-drawn'); metaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.bc-meta').forEach(function(el){ metaObs.observe(el); });
+
+  /* ═══ KEN BURNS ═══ */
+  var kenObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) e.target.classList.add('bc-in-view');
+      else e.target.classList.remove('bc-in-view');
+    });
+  }, {threshold:0.1});
+  photoBreaks.forEach(function(el){ kenObs.observe(el); });
+
+  /* ═══ QUOTE SECTION ═══ */
+  var quoteObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('bc-in-view'); quoteObs.unobserve(e.target); }
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.bc-quote').forEach(function(el){ quoteObs.observe(el); });
+
+  /* ═══ CTA ZOOM ═══ */
+  var ctaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('bc-in-view'); ctaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.2});
+  document.querySelectorAll('.bc-cta').forEach(function(el){ ctaObs.observe(el); });
+
+  /* ═══ STAT COUNTERS ═══ */
+  function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+  var counterObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting || e.target.classList.contains('bc-counted')) return;
+      e.target.classList.add('bc-counted');
+      var text = e.target.textContent.trim();
+      var hasPlus = text.indexOf('+') !== -1;
+      var num = parseInt(text);
+      if(isNaN(num)) return;
+      var start = performance.now();
+      function tick(now){
+        var t = Math.min((now - start) / 1400, 1);
+        e.target.textContent = Math.round(ease(t) * num) + (hasPlus ? '+' : '');
+        if(t < 1) requestAnimationFrame(tick);
+      }
+      e.target.textContent = '0' + (hasPlus ? '+' : '');
+      requestAnimationFrame(tick);
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.bc-scope-num, .bc-web-stat-num, .bc-result-num').forEach(function(el){ counterObs.observe(el); });
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor = document.getElementById('bcCursor');
+  var cursorDot = document.getElementById('bcCursorDot');
+  var cx = 0, cy = 0, dx = 0, dy = 0;
+  if(!isMobile && cursor){
+    document.addEventListener('mousemove', function(e){
+      dx = e.clientX; dy = e.clientY;
+      cursorDot.style.left = dx + 'px';
+      cursorDot.style.top = dy + 'px';
+      if(!cursor.classList.contains('bc-active')){
+        cursor.classList.add('bc-active');
+        cursorDot.classList.add('bc-active');
+      }
+    });
+    function tickCursor(){
+      cx += (dx - cx) * 0.12;
+      cy += (dy - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(tickCursor);
+    }
+    tickCursor();
+    var hoverEls = document.querySelectorAll('a, button, .bc-card, .bc-del-card, .bc-cta-btn');
+    hoverEls.forEach(function(el){
+      el.addEventListener('mouseenter', function(){ cursor.classList.add('bc-hover'); });
+      el.addEventListener('mouseleave', function(){ cursor.classList.remove('bc-hover'); });
+    });
+    document.addEventListener('mousedown', function(){ cursor.classList.add('bc-click'); });
+    document.addEventListener('mouseup', function(){ cursor.classList.remove('bc-click'); });
+  }
+
+  /* ═══ MAGNETIC BUTTON ═══ */
+  if(!isMobile){
+    document.querySelectorAll('.bc-magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.25) + 'px, ' + (y * 0.25) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  /* ═══ TESTIMONIAL WORD REVEAL ═══ */
+  var quoteEl = document.getElementById('bcQuote');
+  var qWords = quoteEl ? quoteEl.querySelectorAll('.bc-qw') : [];
+  var quoteRevealed = false;
+  function updateQuote(){
+    if(!quoteEl || quoteRevealed) return;
+    var rect = quoteEl.getBoundingClientRect();
+    var vh = window.innerHeight;
+    if(rect.top > vh || rect.bottom < 0) return;
+    var progress = 1 - (rect.top / (vh * 0.55));
+    progress = Math.max(0, Math.min(1, progress));
+    var wordsToLight = Math.floor(progress * qWords.length);
+    for(var i = 0; i < qWords.length; i++){
+      if(i < wordsToLight) qWords[i].classList.add('bc-lit');
+    }
+    if(wordsToLight >= qWords.length) quoteRevealed = true;
+  }
+
+  /* ═══ DELIVERABLE CARD STAGGER ═══ */
+  var delObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var cards = e.target.querySelectorAll('.bc-del-card');
+        cards.forEach(function(card, i){
+          setTimeout(function(){ card.classList.add('bc-entered'); }, i * 100);
+        });
+        delObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.2});
+  var delGrid = document.querySelector('.bc-deliverables');
+  if(delGrid) delObs.observe(delGrid);
+
+  /* ═══ SCOPE STAT BAR FILLS ═══ */
+  var scopeObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var items = e.target.querySelectorAll('.bc-scope-item');
+        items.forEach(function(item, i){
+          setTimeout(function(){ item.classList.add('bc-filled'); }, i * 120);
+        });
+        scopeObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.3});
+  var scopeGrid = document.querySelector('.bc-scope-grid');
+  if(scopeGrid) scopeObs.observe(scopeGrid);
+
+  /* ═══ AMBIENT PARTICLES ═══ */
+  var canvas = document.getElementById('bcParticles');
+  if(canvas){
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    function resizeCanvas(){
+      var parent = canvas.parentElement;
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    for(var p = 0; p < 30; p++){
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -Math.random() * 0.4 - 0.1,
+        r: Math.random() * 1.5 + 0.5,
+        a: Math.random() * 0.3 + 0.05
+      });
+    }
+    function drawParticles(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(function(pt){
+        pt.x += pt.vx;
+        pt.y += pt.vy;
+        if(pt.y < -10) { pt.y = canvas.height + 10; pt.x = Math.random() * canvas.width; }
+        if(pt.x < -10) pt.x = canvas.width + 10;
+        if(pt.x > canvas.width + 10) pt.x = -10;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(201,169,110,' + pt.a + ')';
+        ctx.fill();
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+  }
+
+  /* ═══ SCROLL INDICATOR HIDE ═══ */
+  var scrollHint = document.getElementById('bcScrollHint');
+  function updateScrollHint(){
+    if(window.scrollY > 80) scrollHint.classList.add('bc-hidden');
+    else scrollHint.classList.remove('bc-hidden');
+  }
+
+  /* ═══ MANIFESTO WORD REVEAL ═══ */
+  var manifesto = document.getElementById('bcManifesto');
+  var mWords = manifesto ? manifesto.querySelectorAll('.bc-mw') : [];
+  var manifestoRevealed = false;
+  function updateManifesto(){
+    if(!manifesto || manifestoRevealed) return;
+    var rect = manifesto.getBoundingClientRect();
+    var vh = window.innerHeight;
+    if(rect.top > vh || rect.bottom < 0) return;
+    var progress = 1 - (rect.top / (vh * 0.6));
+    progress = Math.max(0, Math.min(1, progress));
+    var wordsToLight = Math.floor(progress * mWords.length);
+    for(var i = 0; i < mWords.length; i++){
+      if(i < wordsToLight) mWords[i].classList.add('bc-lit');
+    }
+    if(wordsToLight >= mWords.length) manifestoRevealed = true;
+  }
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateHero();
+        updatePhotoParallax();
+        updateScrollHint();
+        updateManifesto();
+        updateQuote();
+        updateNavDots();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress();
+  updateHero();
+  updateScrollHint();
+  updateNavDots();
+})();
+</script>
+
+<!--
+  Balmoral Construction — Case Study Code Block
+  mattanthonyphoto.com/balmoral-construction
+
+  Last updated: 2026-03-19
+  Changes:
+    1. Added meta description, canonical, and OG tags
+    2. Fixed Review author type in Article schema: Organization → Person (Marc Harvey)
+    3. Fixed 1 generic alt ("Architectural photography") to descriptive alt
+    4. Updated refs: /projects-1 → /projects, "Visual Partner Retainer" → "Creative Partner", /visual-partner-retainer → /creative-partner
+    5. Fixed footer LinkedIn link (full URL with rel="noopener")
+    6. Added loading="lazy" to all below-fold images
+-->
+
+<!-- SEO Meta -->
+<meta name="description" content="From photography to full creative partner — how Matt Anthony built Balmoral Construction's 42-page website, photographed four luxury homes, and runs an ongoing retainer.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/balmoral-construction">
+<meta property="og:title" content="Balmoral Construction | Photography Case Study | Matt Anthony">
+<meta property="og:description" content="42-page custom website, four luxury projects photographed, geo-targeted SEO, and an ongoing creative partnership. From photography to full brand elevation.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/balmoral-construction">
+<meta property="og:type" content="article">
+
+<!-- Article + Review Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Balmoral Construction: From Photography to Full Brand Elevation",
+  "url": "https://www.mattanthonyphoto.com/balmoral-construction",
+  "author": {
+    "@id": "https://www.mattanthonyphoto.com/#person"
+  },
+  "publisher": {
+    "@id": "https://www.mattanthonyphoto.com/#business"
+  },
+  "image": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/f5587052-bcdb-4b1b-8f61-84f98ba1adfb/warbler-whistler-architectural-photography-matt-anthony-.jpg-22.jpg",
+  "about": {
+    "@type": "Organization",
+    "name": "Balmoral Construction"
+  },
+  "review": {
+    "@type": "Review",
+    "author": {
+      "@type": "Person",
+      "name": "Marc Harvey"
+    },
+    "reviewBody": "Working with Matt was an absolute pleasure from start to finish. The entire process, from our initial contact to the delivery of stunning photos and the completion of my website, was seamless and professional.",
+    "itemReviewed": {
+      "@id": "https://www.mattanthonyphoto.com/#business"
+    }
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Josefin+Sans:wght@600;700&display=swap" rel="stylesheet">

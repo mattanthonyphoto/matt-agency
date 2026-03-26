@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site &amp; SEO Audit — Copper Creek Homes</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #1A1A18;
+  --bg-card: #222220;
+  --bg-surface: #2A2A27;
+  --bg-hover: #333330;
+  --text: #F6F4F0;
+  --text-dim: #B8B2A8;
+  --text-muted: #8A8579;
+  --accent: #C9A96E;
+  --accent-dim: rgba(201,169,110,0.12);
+  --accent-glow: rgba(201,169,110,0.06);
+  --border: rgba(201,169,110,0.08);
+  --border-accent: rgba(201,169,110,0.25);
+  --green: #5B9A6F;
+  --green-bg: rgba(91,154,111,0.12);
+  --green-text: #7BC08E;
+  --amber: #D4A843;
+  --amber-bg: rgba(212,168,67,0.12);
+  --amber-text: #E4C06A;
+  --red: #C45B5B;
+  --red-bg: rgba(196,91,91,0.1);
+  --red-text: #E07A7A;
+  --critical: #A63D3D;
+  --critical-bg: rgba(166,61,61,0.12);
+  --critical-text: #D46A6A;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; scroll-behavior:smooth; }
+body {
+  background:var(--bg); color:var(--text);
+  font-family:'DM Sans',sans-serif; font-weight:300;
+  line-height:1.75; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* PROGRESS BAR */
+.progress { position:fixed; top:0; left:0; height:2px; width:0%; background:var(--accent); z-index:9999; transition:width 0.05s linear; }
+
+/* HEADER */
+.header {
+  position:relative; overflow:hidden; min-height:70vh;
+  display:flex; flex-direction:column; justify-content:flex-end;
+}
+.header-bg {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background-size:cover; background-position:center;
+  filter:brightness(0.3) saturate(0.6);
+}
+.header-bg::after {
+  content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(180deg, rgba(26,26,24,0.2) 0%, rgba(26,26,24,0.95) 100%);
+}
+.header-inner {
+  position:relative; z-index:1; padding:80px 64px 64px; max-width:900px;
+}
+.header-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--accent); background:var(--accent-dim);
+  padding:6px 14px; border-radius:2px; margin-bottom:24px;
+  border:1px solid var(--border-accent);
+}
+.header-badge::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--accent); animation:pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+.header h1 {
+  font-family:'Cormorant Garamond',serif; font-weight:400;
+  font-size:clamp(2.4rem,5vw,3.4rem); line-height:1.1;
+  letter-spacing:-0.01em; margin-bottom:16px;
+}
+.header h1 em { font-style:italic; font-weight:500; color:var(--accent); }
+.header-meta {
+  display:flex; gap:32px; margin-top:24px; padding-top:24px;
+  border-top:1px solid rgba(201,169,110,0.15);
+}
+.header-meta-item { font-size:0.8rem; color:var(--text-muted); }
+.header-meta-item strong {
+  display:block; font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+  font-weight:400; letter-spacing:0.15em;
+  text-transform:uppercase; color:var(--text-dim); margin-bottom:2px;
+}
+
+/* SCORE CARDS */
+.scores {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:var(--border); margin:0;
+}
+.score-card {
+  background:var(--bg-card); text-align:center; padding:48px 24px;
+  position:relative; overflow:hidden;
+}
+.score-card::after {
+  content:''; position:absolute; bottom:0; left:20%; right:20%; height:3px;
+  border-radius:2px;
+}
+.score-card.good::after { background:var(--green); }
+.score-card.ok::after { background:var(--amber); }
+.score-card.bad::after { background:var(--red); }
+.score-card.critical::after { background:var(--critical); }
+.score-ring {
+  width:100px; height:100px; margin:0 auto 20px; position:relative;
+  display:flex; align-items:center; justify-content:center;
+}
+.score-ring svg { position:absolute; top:0; left:0; transform:rotate(-90deg); }
+.score-ring-bg { fill:none; stroke:var(--bg-surface); stroke-width:5; }
+.score-ring-fill { fill:none; stroke-width:5; stroke-linecap:round;
+  stroke-dasharray:276.5; transition:stroke-dashoffset 2s cubic-bezier(0.16,1,0.3,1); }
+.score-ring-fill.good { stroke:var(--green); }
+.score-ring-fill.ok { stroke:var(--amber); }
+.score-ring-fill.bad { stroke:var(--red); }
+.score-ring-fill.critical { stroke:var(--critical); }
+.score-number {
+  font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:500;
+  position:relative; z-index:1;
+}
+.score-number.good { color:var(--green-text); }
+.score-number.ok { color:var(--amber-text); }
+.score-number.bad { color:var(--red-text); }
+.score-number.critical { color:var(--critical-text); }
+.score-label {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px;
+}
+.score-grade {
+  font-family:'Josefin Sans',sans-serif; font-size:0.5rem; font-weight:400;
+  letter-spacing:0.1em; text-transform:uppercase;
+  padding:4px 12px; border-radius:2px; display:inline-block;
+}
+.score-grade.good { background:var(--green-bg); color:var(--green-text); }
+.score-grade.ok { background:var(--amber-bg); color:var(--amber-text); }
+.score-grade.bad { background:var(--red-bg); color:var(--red-text); }
+.score-grade.critical { background:var(--critical-bg); color:var(--critical-text); }
+
+/* SECTIONS */
+.section { max-width:860px; margin:0 auto; padding:80px 64px; }
+.section.wide { max-width:1000px; }
+.section.surface { background:var(--bg-surface); max-width:100%; }
+.section.surface .section-inner { max-width:860px; margin:0 auto; }
+.eyebrow {
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:300;
+  letter-spacing:0.35em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:16px; display:flex; align-items:center; gap:14px;
+}
+.eyebrow::before { content:''; width:24px; height:1px; background:var(--accent); }
+h2 {
+  font-family:'Cormorant Garamond',serif; font-weight:400;
+  font-size:2.4rem; line-height:1.12; letter-spacing:-0.01em; margin-bottom:28px;
+}
+h2 em { font-style:italic; font-weight:500; color:var(--accent); }
+.lead { font-size:1rem; color:var(--text-dim); line-height:1.85; margin-bottom:32px; }
+
+/* CATEGORY HEADERS */
+.category {
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--accent); margin:48px 0 20px; padding-bottom:12px;
+  border-bottom:1px solid var(--border-accent); display:flex; align-items:center; gap:12px;
+}
+.category::before { content:''; width:16px; height:1px; background:var(--accent); }
+
+/* FINDINGS */
+.findings { display:flex; flex-direction:column; gap:2px; }
+.finding {
+  display:grid; grid-template-columns:36px 1fr; gap:16px; padding:16px 20px;
+  background:var(--bg-card); border-radius:6px; align-items:start;
+  border:1px solid var(--border); transition:border-color 0.2s;
+}
+.finding:hover { border-color:var(--border-accent); }
+.finding-status {
+  width:28px; height:28px; border-radius:6px; display:flex;
+  align-items:center; justify-content:center; font-size:0.75rem;
+  font-weight:700; margin-top:1px;
+}
+.finding-status.pass { background:var(--green-bg); color:var(--green-text); }
+.finding-status.warn { background:var(--amber-bg); color:var(--amber-text); }
+.finding-status.fail { background:var(--red-bg); color:var(--red-text); }
+.finding-title { font-weight:500; font-size:0.9rem; margin-bottom:4px; }
+.finding-detail { font-size:0.82rem; color:var(--text-dim); line-height:1.75; }
+
+/* CALLOUT */
+.callout {
+  background:var(--bg-card); border:1px solid var(--border-accent); border-radius:8px;
+  padding:32px; margin:40px 0; position:relative; overflow:hidden;
+}
+.callout::before {
+  content:''; position:absolute; top:0; left:0; width:3px; height:100%;
+  background:var(--accent); border-radius:2px;
+}
+.callout h4 {
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:16px;
+}
+.callout p { font-size:0.9rem; color:var(--text-dim); margin-bottom:12px; }
+.callout p:last-child { margin-bottom:0; }
+.callout strong { color:var(--text); font-weight:600; }
+
+/* COMPETITOR TABLE */
+.compare-table { width:100%; border-collapse:separate; border-spacing:0; margin:32px 0; border-radius:8px; overflow:hidden; border:1px solid var(--border); }
+.compare-table thead th {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem; font-weight:400;
+  letter-spacing:0.15em; text-transform:uppercase;
+  color:var(--accent); padding:14px 16px; text-align:left;
+  background:var(--bg-surface); border-bottom:1px solid var(--border-accent);
+}
+.compare-table tbody td {
+  font-size:0.82rem; padding:14px 16px; border-bottom:1px solid var(--border);
+  vertical-align:middle; background:var(--bg-card);
+}
+.compare-table tbody tr:last-child td { border-bottom:none; }
+.compare-table tbody tr:hover td { background:var(--bg-hover); }
+.compare-table .you-row td { background:var(--accent-dim); }
+.compare-table .you-row td:first-child { color:var(--accent); font-weight:600; }
+.dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:8px; }
+.dot.green { background:var(--green); }
+.dot.amber { background:var(--amber); }
+.dot.red { background:var(--red); }
+.dot.grey { background:var(--text-muted); }
+
+/* STATS BAR */
+.stats-bar {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+  background:var(--border); margin:0;
+}
+.stat-block { background:var(--bg-card); text-align:center; padding:48px 24px; }
+.stat-value {
+  font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:500;
+  color:var(--accent); display:block; line-height:1; margin-bottom:10px;
+  text-shadow:0 0 40px rgba(201,169,110,0.15);
+}
+.stat-label {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted);
+}
+
+/* ACTION STEPS */
+.steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin:40px 0; border-radius:8px; overflow:hidden; }
+.step { background:var(--bg-card); padding:36px 28px; transition:background 0.2s; }
+.step:hover { background:var(--bg-hover); }
+.step-num {
+  font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:500;
+  color:var(--accent); display:block; margin-bottom:16px;
+}
+.step h4 { font-size:0.95rem; font-weight:500; margin-bottom:10px; }
+.step p { font-size:0.82rem; color:var(--text-dim); margin:0; line-height:1.6; }
+
+/* PHOTO BREAK */
+.photo-break {
+  width:100%; height:35vh; min-height:240px; max-height:380px;
+  position:relative; overflow:hidden;
+}
+.photo-break img {
+  width:100%; height:120%; object-fit:cover; display:block;
+  position:absolute; top:-10%; left:0; filter:brightness(0.6) saturate(0.7);
+}
+.photo-break-caption {
+  position:absolute; bottom:0; left:0; right:0; z-index:2; padding:16px 64px;
+  font-size:0.6rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase;
+  color:rgba(226,232,240,0.3);
+}
+
+/* DIVIDER */
+.divider { width:1px; height:60px; background:var(--border); margin:0 auto; }
+
+/* FOOTER */
+.footer {
+  background:var(--bg-card); padding:64px; text-align:center;
+  border-top:1px solid var(--border);
+}
+.footer-brand {
+  font-family:'Josefin Sans',sans-serif; font-size:0.7rem; font-weight:300;
+  letter-spacing:0.4em; text-transform:uppercase;
+  color:var(--text); margin-bottom:16px;
+}
+.footer-info { font-size:0.8rem; color:var(--text-muted); line-height:2.2; }
+.footer-info a { color:var(--accent); text-decoration:none; }
+.footer-note {
+  margin-top:32px; font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+  font-weight:300; letter-spacing:0.15em;
+  text-transform:uppercase; color:var(--text-muted); opacity:0.4;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px) {
+  .header-inner { padding:60px 28px 48px; }
+  .section { padding:56px 28px; }
+  .scores { grid-template-columns:1fr 1fr; }
+  .steps { grid-template-columns:1fr; }
+  .stats-bar { grid-template-columns:1fr; }
+  .compare-table { display:block; overflow-x:auto; }
+  .header-meta { flex-direction:column; gap:12px; }
+  .photo-break { height:180px; min-height:180px; }
+  .photo-break-caption { padding:12px 28px; }
+}
+@media (max-width:480px) {
+  .scores { grid-template-columns:1fr; }
+  h2 { font-size:1.7rem; }
+}
+@media print {
+  .progress { display:none; }
+  body { background:#fff; color:#1a1a1a; }
+  .score-card, .finding, .callout, .step, .stat-block, .compare-table td { background:#fff; border:1px solid #ddd; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progressBar"></div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-bg" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef4086f4-81fa-468f-99bf-966ce7d83d89/warbler-whistler-architectural-photography-matt-anthony-.jpg-11.jpg');background-position:center 40%;"></div>
+  <div class="header-inner">
+    <div class="header-badge">Live Audit Report</div>
+    <h1>Copper Creek Homes<br><em>Site &amp; SEO Audit</em></h1>
+    <div class="header-meta">
+      <div class="header-meta-item"><strong>Prepared for</strong>Copper Creek Homes</div>
+      <div class="header-meta-item"><strong>Prepared by</strong>Matt Anthony Photography</div>
+      <div class="header-meta-item"><strong>Date</strong>March 2026</div>
+    </div>
+  </div>
+</header>
+
+<!-- SCORE CARDS -->
+<div class="scores">
+  
+  <div class="score-card ok">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill ok" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="85.715"></circle>
+      </svg>
+      <span class="score-number ok" data-count="69">0</span>
+    </div>
+    <div class="score-label">Overall SEO</div>
+    <span class="score-grade ok">B-</span>
+  </div>
+  
+  <div class="score-card bad">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill bad" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="149.31"></circle>
+      </svg>
+      <span class="score-number bad" data-count="46">0</span>
+    </div>
+    <div class="score-label">Local / GEO</div>
+    <span class="score-grade bad">C-</span>
+  </div>
+  
+  <div class="score-card good">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill good" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="0.0"></circle>
+      </svg>
+      <span class="score-number good" data-count="100">0</span>
+    </div>
+    <div class="score-label">Content</div>
+    <span class="score-grade good">A</span>
+  </div>
+  
+  <div class="score-card good">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill good" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="22.120000000000005"></circle>
+      </svg>
+      <span class="score-number good" data-count="92">0</span>
+    </div>
+    <div class="score-label">Visual Assets</div>
+    <span class="score-grade good">A</span>
+  </div>
+  
+</div>
+
+<!-- SECTIONS -->
+
+
+
+<div class="divider"></div>
+<section class="section">
+  <div class="eyebrow">SEO Audit</div>
+  <h2>Strong content.<br><em>Two technical gaps holding it back.</em></h2>
+  <p class="lead">I crawled 30 pages on coppercreekhomes.ca. The content foundation is excellent, 22 project pages with descriptions, a blog, and 1,336 images. But two specific technical issues are limiting search visibility.</p>
+  
+  <div class="category">What’s Working</div>
+  <div class="findings">
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Fast, Secure Foundation</div>
+        <div class="finding-detail">Valid SSL, 84ms response time, clean Squarespace build.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">76-URL Sitemap</div>
+        <div class="finding-detail">Extensive sitemap helping Google discover all pages. Well above average.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Open Graph Tags Present</div>
+        <div class="finding-detail">Social sharing displays correctly.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Strong Content Depth (100/100)</div>
+        <div class="finding-detail">22 project pages, all with descriptions. 645-word homepage. Blog with 5 posts. This is significantly better than most Fraser Valley builders.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Excellent Visual Coverage (92/100)</div>
+        <div class="finding-detail">1,336 images across the site. Project pages average 53.8 images each. Only 33 images missing alt text (2.5%). Outstanding.</div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="category">What Needs Fixing</div>
+  <div class="findings">
+    
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">No Structured Data (Schema.org)</div>
+        <div class="finding-detail">Zero JSON-LD markup on the site. Google doesn’t know Copper Creek is a builder, where you’re based, or what services you offer. Adding LocalBusiness + HomeBuilder schema would improve local search results and could unlock rich snippets.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">Meta Title Too Short (18 Characters)</div>
+        <div class="finding-detail">"Copper Creek Homes" is the full title. Should include location and service: "Copper Creek Homes | Custom Builder &amp; Renovator | Abbotsford BC" for better click-through rates.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">Meta Description Too Long (228 Characters)</div>
+        <div class="finding-detail">Google truncates at ~155 characters. The extra text is invisible in search results. Tighten to hit within 150-155 characters for full visibility.</div>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+  <div class="callout">
+    <h4>SEO Bottom Line</h4>
+    <p>The content and visual foundation is <strong>among the best I’ve audited</strong> in the Fraser Valley. The only real blocker is <strong>structured data</strong>, a one-time fix that would make Google understand Copper Creek as a local builder. The meta title and description adjustments are 5-minute fixes with immediate impact.</p>
+  </div>
+  
+</section>
+
+
+
+
+
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c938566f-ee96-40da-aec4-d51ac9fa7e09/warbler-whistler-architectural-photography-matt-anthony-.jpg-13.jpg" alt="Warbler Residence interior">
+  <div class="photo-break-caption">Matt Anthony Photography &middot; Whistler, BC</div>
+</div>
+
+
+
+
+
+<section class="section surface">
+  <div class="section-inner">
+    <div class="eyebrow">Local SEO &amp; GEO Audit</div>
+    <h2>Local visibility.<br><em>The one big gap.</em></h2>
+    <p class="lead">When someone in Abbotsford or the Fraser Valley searches for a custom builder, can they find Copper Creek on Google Maps?</p>
+    
+    <div class="category">Google Business Profile</div>
+    <div class="findings">
+      
+      <div class="finding">
+        <div class="finding-status fail">&#10007;</div>
+        <div>
+          <div class="finding-title">No Google Business Profile Detected</div>
+          <div class="finding-detail">This is the <strong>single biggest gap</strong> in Copper Creek’s online presence. Without an active GBP, you can’t appear in Google Maps or the Local Pack (where 46% of local search clicks go). For a builder that serves 18 specific areas, this is a significant missed opportunity.</div>
+        </div>
+      </div>
+      
+      <div class="finding">
+        <div class="finding-status fail">&#10007;</div>
+        <div>
+          <div class="finding-title">No LocalBusiness Schema</div>
+          <div class="finding-detail">No structured data connecting the website to a local business identity. Google can’t programmatically understand your address, service areas, or business hours.</div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="category">Directory Presence</div>
+    <div class="findings">
+      
+      <div class="finding">
+        <div class="finding-status pass">&#10003;</div>
+        <div>
+          <div class="finding-title">Listed on Houzz</div>
+          <div class="finding-detail">Active Houzz profile. Strong authoritative backlink.</div>
+        </div>
+      </div>
+      
+      <div class="finding">
+        <div class="finding-status pass">&#10003;</div>
+        <div>
+          <div class="finding-title">Listed on BBB</div>
+          <div class="finding-detail">Better Business Bureau profile found. Good trust signal.</div>
+        </div>
+      </div>
+      
+      <div class="finding">
+        <div class="finding-status pass">&#10003;</div>
+        <div>
+          <div class="finding-title">Listed on TrustedPros</div>
+          <div class="finding-detail">Two TrustedPros listings found. Additional citation source.</div>
+        </div>
+      </div>
+      
+      <div class="finding">
+        <div class="finding-status warn">!</div>
+        <div>
+          <div class="finding-title">Not Found on HomeStars</div>
+          <div class="finding-detail">HomeStars ranks well for contractor searches in the Fraser Valley. Worth creating a profile.</div>
+        </div>
+      </div>
+      
+      <div class="finding">
+        <div class="finding-status warn">!</div>
+        <div>
+          <div class="finding-title">CHBA Fraser Valley Membership</div>
+          <div class="finding-detail">You won a CHBA FV award but the CHBA directory listing wasn’t detected in the audit. Verify your member profile is active and linked to the website.</div>
+        </div>
+      </div>
+      
+    </div>
+    
+    
+    <div class="callout">
+      <h4>Local SEO Bottom Line</h4>
+      <p><strong>Set up a Google Business Profile.</strong> It’s free, takes 30 minutes, and with your CHBA award, 22 project photos to upload, and 18 service areas to list, it would be one of the strongest GBP profiles in the Fraser Valley builder category. This is the highest-ROI action available.</p>
+    </div>
+    
+  </div>
+</section>
+
+
+
+
+
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8149d10c-1661-4e39-80d9-538f24b4123a/warbler-whistler-architectural-photography-matt-anthony-.jpg-33.jpg" alt="Warbler Residence exterior">
+  <div class="photo-break-caption">Matt Anthony Photography &middot; Whistler, BC</div>
+</div>
+
+
+
+
+
+<div class="divider"></div>
+<section class="section wide">
+  <div class="eyebrow">Competitive Landscape</div>
+  <h2>How you compare.<br><em>In the Fraser Valley.</em></h2>
+  <p class="lead">Here’s how Copper Creek stacks up against builders competing for the same clients in Abbotsford and the Fraser Valley.</p>
+  <table class="compare-table">
+    <thead><tr><th>Builder</th><th>Website</th><th>Content</th><th>Photography</th><th>Awards</th><th>Video</th></tr></thead>
+    <tbody>
+      
+      <tr class="you-row">
+        <td><strong>Copper Creek Homes</strong><br><span style='font-size:0.7rem;color:var(--text-muted);'>Abbotsford</span></td><td><span class='dot green'></span>Strong</td><td><span class='dot green'></span>Blog + 22 projects</td><td><span class='dot green'></span>Good portfolio</td><td><span class='dot green'></span>CHBA FV 2024</td><td><span class='dot red'></span>None</td>
+      </tr>
+      
+      <tr>
+        <td>Lacey Construction<br><span style='font-size:0.7rem;color:var(--text-muted);'>Abbotsford</span></td><td><span class='dot green'></span>Strong</td><td><span class='dot amber'></span>Decent</td><td><span class='dot green'></span>Professional</td><td><span class='dot green'></span>Multiple awards</td><td><span class='dot amber'></span>Some</td>
+      </tr>
+      
+      <tr>
+        <td>Opulence Custom Homes<br><span style='font-size:0.7rem;color:var(--text-muted);'>Abbotsford</span></td><td><span class='dot green'></span>Professional</td><td><span class='dot red'></span>No blog</td><td><span class='dot green'></span>Extensive</td><td><span class='dot amber'></span>Affiliations</td><td><span class='dot red'></span>None</td>
+      </tr>
+      
+      <tr>
+        <td>Versa Homes<br><span style='font-size:0.7rem;color:var(--text-muted);'>Abbotsford</span></td><td><span class='dot green'></span>Modern</td><td><span class='dot amber'></span>Location pages</td><td><span class='dot amber'></span>Mixed</td><td><span class='dot red'></span>None listed</td><td><span class='dot red'></span>None</td>
+      </tr>
+      
+      <tr>
+        <td>Delonix Homes<br><span style='font-size:0.7rem;color:var(--text-muted);'>Chilliwack</span></td><td><span class='dot green'></span>Clean</td><td><span class='dot amber'></span>Basic</td><td><span class='dot amber'></span>Decent</td><td><span class='dot green'></span>Award-winning</td><td><span class='dot red'></span>None</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <div class="callout">
+    <h4>The Competitive Picture</h4>
+    <p>Copper Creek is <strong>ahead of most Fraser Valley competitors</strong> on content and awards. The gap everyone shares: <strong>zero video content</strong>. No Fraser Valley builder has project films, walkthrough videos, or social reels. First mover with professional video content would have a significant advantage, and Copper Creek’s 22-project portfolio is the perfect foundation to build from.</p>
+  </div>
+  
+</section>
+
+
+
+
+
+
+
+
+<section class="section">
+  <div class="eyebrow">Content &amp; Visual Assets</div>
+  <h2>What you have.<br><em>What’s missing.</em></h2>
+  <p class="lead">Copper Creek’s content foundation is genuinely strong. Here’s where to build from.</p>
+  
+  <div class="category">Strengths</div>
+  <div class="findings">
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">22 Project Pages with Descriptions</div>
+        <div class="finding-detail">Every project has a proper page with text content. This is rare, most builders have image-only portfolios. Excellent for SEO.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Blog with 5 Posts</div>
+        <div class="finding-detail">Active content publishing including the “Renovation Roulette” lead magnet. Ahead of most competitors on content marketing.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">1,336 Images, 97.5% with Alt Text</div>
+        <div class="finding-detail">Only 33 images missing alt text across the entire site. This is the best alt text coverage I’ve seen in any builder audit.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Strong Testimonials + CHBA Award</div>
+        <div class="finding-detail">Social proof is in place. The 2024 CHBA FV award is a genuine differentiator.</div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="category">Opportunities</div>
+  <div class="findings">
+    
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Zero Video Content</div>
+        <div class="finding-detail">No project films, no walkthroughs, no social reels, no before/after reveal videos. Video is the highest-engagement format on every platform. For a renovation-focused builder, transformation content is the most compelling thing you can show a prospect.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">No Build Process Documentation</div>
+        <div class="finding-detail">Copper Creek’s renovation process is a selling point (it’s on the website). But there’s no visual documentation of it. Before/during/after content, crew at work, material selections in progress. This content builds trust and differentiates.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">Blog Could Scale</div>
+        <div class="finding-detail">5 posts is a good start. Monthly publishing targeting “custom home builder Abbotsford,” “Fraser Valley renovation,” and “home renovation cost BC” would compound organic traffic significantly over 12 months.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">Award Story Underutilized</div>
+        <div class="finding-detail">The CHBA FV win is mentioned but not fully leveraged. A dedicated award case study, social content celebrating the win, and using the credential across all project pages would multiply its value.</div>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+  <div class="callout">
+    <h4>Content Bottom Line</h4>
+    <p>Copper Creek’s content foundation is <strong>the strongest I’ve audited in the Fraser Valley</strong>. What’s missing is the media layer: <strong>video, build documentation, and consistent social content</strong>. These are the assets that turn a good website into a content engine that generates leads while you’re on the jobsite.</p>
+  </div>
+  
+</section>
+
+
+
+
+
+
+
+
+<div class="stats-bar">
+  
+  <div class="stat-block"><span class="stat-value">0</span><span class="stat-label">Video Assets</span></div>
+  
+  <div class="stat-block"><span class="stat-value">0</span><span class="stat-label">Schema Markup</span></div>
+  
+  <div class="stat-block"><span class="stat-value">22</span><span class="stat-label">Projects Ready for Film</span></div>
+  
+</div>
+<section class="section">
+  <div class="eyebrow">What I’d Fix First</div>
+  <h2>The action plan.<br><em>Priority order.</em></h2>
+  <p class="lead">Three moves that would take Copper Creek from strong to dominant in the Fraser Valley.</p>
+  <div class="steps">
+    
+    <div class="step">
+      <span class="step-num">1</span>
+      <h4>Google Business Profile + Schema</h4>
+      <p>GBP is free and takes 30 minutes. Upload project photos, list all 18 service areas, add the CHBA award badge. Add LocalBusiness schema to the site. Immediate local visibility boost.</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-num">2</span>
+      <h4>Video + Build Documentation</h4>
+      <p>Start with 2-3 renovation transformation films. Before/during/after content for social and the website. No Fraser Valley builder has this. First mover wins.</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-num">3</span>
+      <h4>Scale the Award Momentum</h4>
+      <p>Submit 2-3 more projects to CHBA FV 2025 and CHBA National. Leverage the existing win across all channels. One award opened the door, consistent submissions build the reputation.</p>
+    </div>
+    
+  </div>
+  
+  <div class="callout">
+    <h4>This Is Where a Creative Partner Comes In</h4>
+    <p>Copper Creek’s foundation is built. What’s missing is the <strong>media layer</strong>: professional project films, build documentation, social content, and the ongoing production pipeline that keeps it all flowing. That’s exactly what I do.</p><p style="margin-bottom:0;"><strong>See the full Creative Partner proposal</strong> for pricing, options, and a pilot roadmap.</p>
+  </div>
+  
+</section>
+
+
+
+
+
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">Matt Anthony Photography</div>
+  <div class="footer-info">
+    <a href="https://mattanthonyphoto.com">mattanthonyphoto.com</a><br>
+    <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a> &middot; 604.765.9270<br>
+    Squamish, BC
+  </div>
+  <div class="footer-note">This audit is confidential and prepared exclusively for Copper Creek Homes.</div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* PROGRESS BAR */
+var bar = document.getElementById('progressBar');
+function updateProgress(){
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+}
+
+/* SCORE RING + COUNTER ANIMATION */
+var rings = document.querySelectorAll('.score-ring-fill');
+var numbers = document.querySelectorAll('.score-number[data-count]');
+var animated = false;
+
+function animateScores(){
+  if(animated) return;
+  var cards = document.querySelector('.scores');
+  if(!cards) return;
+  var rect = cards.getBoundingClientRect();
+  if(rect.top < window.innerHeight * 0.8){
+    animated = true;
+    rings.forEach(function(ring){
+      var target = parseFloat(ring.getAttribute('data-target'));
+      ring.style.strokeDashoffset = target;
+    });
+    numbers.forEach(function(num){
+      var target = parseInt(num.getAttribute('data-count'));
+      var duration = 1500;
+      var start = performance.now();
+      function tick(now){
+        var t = Math.min((now - start) / duration, 1);
+        var ease = 1 - Math.pow(1 - t, 3);
+        num.textContent = Math.round(target * ease);
+        if(t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+}
+
+/* FINDING REVEAL */
+var findings = document.querySelectorAll('.finding, .callout, .step');
+findings.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateY(12px)'; el.style.transition='opacity 0.5s ease, transform 0.5s ease'; });
+var revealObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.style.opacity='1';
+      entry.target.style.transform='translateY(0)';
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.1, rootMargin:'0px 0px -20px 0px'});
+findings.forEach(function(el){ revealObserver.observe(el); });
+
+/* SCROLL HANDLER */
+var ticking = false;
+window.addEventListener('scroll', function(){
+  if(!ticking){
+    requestAnimationFrame(function(){
+      updateProgress();
+      animateScores();
+      ticking = false;
+    });
+    ticking = true;
+  }
+},{passive:true});
+
+updateProgress();
+animateScores();
+})();
+</script>
+</body>
+</html>

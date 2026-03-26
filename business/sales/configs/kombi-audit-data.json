@@ -1,0 +1,186 @@
+{
+  "scores": {
+    "seo": {
+      "value": 85,
+      "grade": "A-",
+      "color": "good"
+    },
+    "local": {
+      "value": 46,
+      "grade": "C-",
+      "color": "bad"
+    },
+    "content": {
+      "value": 54,
+      "grade": "C",
+      "color": "mid"
+    },
+    "visual_assets": {
+      "value": 92,
+      "grade": "A",
+      "color": "good"
+    }
+  },
+  "findings": {
+    "seo": [
+      {
+        "status": "pass",
+        "title": "Valid SSL certificate",
+        "detail": "Site is served over HTTPS."
+      },
+      {
+        "status": "pass",
+        "title": "Good meta title",
+        "detail": "\"North Shore General Contractor - Kombi Homes\" (44 chars)"
+      },
+      {
+        "status": "pass",
+        "title": "Good meta description",
+        "detail": "\"Kombi Construction is a residential design and construction company based in North Vancouver, BC...\" (96 chars)"
+      },
+      {
+        "status": "pass",
+        "title": "Single H1 tag",
+        "detail": "\"KOMBI CONSTRUCTION\""
+      },
+      {
+        "status": "pass",
+        "title": "Open Graph tags present",
+        "detail": "og:title, og:image found."
+      },
+      {
+        "status": "fail",
+        "title": "No structured data (schema.org)",
+        "detail": "No JSON-LD found. Add LocalBusiness, Organization, or WebSite schema."
+      },
+      {
+        "status": "pass",
+        "title": "robots.txt exists",
+        "detail": "1 disallowed paths."
+      },
+      {
+        "status": "pass",
+        "title": "Sitemap found (2 URLs)",
+        "detail": "URL: https://kombihomes.com/sitemap_index.xml"
+      },
+      {
+        "status": "pass",
+        "title": "Canonical tag present",
+        "detail": "https://kombihomes.com/"
+      },
+      {
+        "status": "pass",
+        "title": "Good server response (541ms)",
+        "detail": "First byte returned quickly."
+      }
+    ],
+    "local": [
+      {
+        "status": "fail",
+        "title": "Google Business Profile not detected",
+        "detail": "Google often blocks automated requests. Verify manually. Verify at business.google.com."
+      },
+      {
+        "status": "fail",
+        "title": "No LocalBusiness schema markup",
+        "detail": "Add LocalBusiness or HomeBuilder JSON-LD schema with NAP, hours, and service area."
+      },
+      {
+        "status": "pass",
+        "title": "Listed on Houzz",
+        "detail": "Found at https://www.houzz.com/professionals/hznb/query/nqrwns/probr0-bo~q_kombi-homes"
+      },
+      {
+        "status": "warn",
+        "title": "Not found on HomeStars",
+        "detail": "Consider creating a profile for citation building."
+      },
+      {
+        "status": "warn",
+        "title": "Not found on CHBA",
+        "detail": "Consider creating a profile for citation building."
+      },
+      {
+        "status": "warn",
+        "title": "NAP consistency check needed",
+        "detail": "Verify name, address, and phone are consistent across website footer, GBP, and directory listings."
+      }
+    ],
+    "content": [
+      {
+        "status": "warn",
+        "title": "Light homepage content (160 words)",
+        "detail": "Consider adding more descriptive content about services and service area."
+      },
+      {
+        "status": "fail",
+        "title": "Very small site (2 pages)",
+        "detail": "Fewer than 5 pages indexed. More content = more search opportunities."
+      },
+      {
+        "status": "fail",
+        "title": "No project/portfolio pages found",
+        "detail": "Portfolio is a primary SEO and sales driver. Ensure project pages exist with descriptive URLs."
+      },
+      {
+        "status": "warn",
+        "title": "No blog or journal section found",
+        "detail": "Regular content (monthly posts) helps build search authority."
+      }
+    ],
+    "visual_assets": [
+      {
+        "status": "pass",
+        "title": "12 images on homepage",
+        "detail": "Good visual presence."
+      },
+      {
+        "status": "pass",
+        "title": "Most images have alt text (1 missing)",
+        "detail": "Minor improvements possible."
+      },
+      {
+        "status": "warn",
+        "title": "16 total images across site",
+        "detail": "1 missing alt text site-wide."
+      }
+    ]
+  },
+  "meta": {
+    "url": "https://kombihomes.com",
+    "company_name": "Kombi Homes",
+    "location": null,
+    "pages_crawled": 2,
+    "pages_successful": 2,
+    "pages_errored": 0,
+    "total_word_count": 306,
+    "total_images": 16,
+    "total_missing_alt": 1,
+    "schema_types_found": [],
+    "project_pages_count": 0,
+    "project_pages_with_descriptions": 0,
+    "has_robots_txt": true,
+    "has_sitemap": true,
+    "sitemap_url_count": 2,
+    "ssl_valid": true,
+    "redirect_count": 0,
+    "final_url": "https://kombihomes.com/",
+    "homepage_title": "North Shore General Contractor - Kombi Homes",
+    "homepage_meta_description": "Kombi Construction is a residential design and construction company based in North Vancouver, BC",
+    "homepage_word_count": 160,
+    "homepage_image_count": 12,
+    "homepage_response_ms": 541,
+    "homepage_size_kb": 98.1,
+    "gbp_detected": false,
+    "directories_checked": {
+      "Houzz": true,
+      "HomeStars": false,
+      "CHBA": false
+    },
+    "project_pages": [],
+    "page_urls": [
+      "https://kombihomes.com",
+      "https://kombihomes.com/contact"
+    ]
+  }
+}

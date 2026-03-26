@@ -1,0 +1,365 @@
+{
+  "scores": {
+    "seo": {
+      "value": 85,
+      "grade": "A-",
+      "color": "good"
+    },
+    "local": {
+      "value": 46,
+      "grade": "C-",
+      "color": "bad"
+    },
+    "content": {
+      "value": 100,
+      "grade": "A",
+      "color": "good"
+    },
+    "visual_assets": {
+      "value": 85,
+      "grade": "A-",
+      "color": "good"
+    }
+  },
+  "findings": {
+    "seo": [
+      {
+        "status": "pass",
+        "title": "Valid SSL certificate",
+        "detail": "Site is served over HTTPS."
+      },
+      {
+        "status": "pass",
+        "title": "Good meta title",
+        "detail": "\"Inspired Building - Summerhill Fine Homes\" (41 chars)"
+      },
+      {
+        "status": "pass",
+        "title": "Good meta description",
+        "detail": "\"Custom home builder specializing in sustainability and performance, from dream homes to unique comme...\" (137 chars)"
+      },
+      {
+        "status": "pass",
+        "title": "Single H1 tag",
+        "detail": "\"Inspired Building\""
+      },
+      {
+        "status": "pass",
+        "title": "Open Graph tags present",
+        "detail": "og:title, og:image found."
+      },
+      {
+        "status": "fail",
+        "title": "No structured data (schema.org)",
+        "detail": "No JSON-LD found. Add LocalBusiness, Organization, or WebSite schema."
+      },
+      {
+        "status": "pass",
+        "title": "robots.txt exists",
+        "detail": "1 disallowed paths."
+      },
+      {
+        "status": "pass",
+        "title": "Sitemap found (8 URLs)",
+        "detail": "URL: https://summerhill.build/sitemap_index.xml"
+      },
+      {
+        "status": "pass",
+        "title": "Canonical tag present",
+        "detail": "https://summerhill.build/"
+      },
+      {
+        "status": "pass",
+        "title": "Good server response (78ms)",
+        "detail": "First byte returned quickly."
+      }
+    ],
+    "local": [
+      {
+        "status": "fail",
+        "title": "Google Business Profile not detected",
+        "detail": "Google often blocks automated requests. Verify manually. Verify at business.google.com."
+      },
+      {
+        "status": "fail",
+        "title": "No LocalBusiness schema markup",
+        "detail": "Add LocalBusiness or HomeBuilder JSON-LD schema with NAP, hours, and service area."
+      },
+      {
+        "status": "pass",
+        "title": "Listed on Houzz",
+        "detail": "Found at https://www.houzz.com/professionals/hznb/query/nqrwns/probr0-bo~q_summerhill-fine-homes"
+      },
+      {
+        "status": "warn",
+        "title": "Not found on HomeStars",
+        "detail": "Consider creating a profile for citation building."
+      },
+      {
+        "status": "warn",
+        "title": "Not found on CHBA",
+        "detail": "Consider creating a profile for citation building."
+      },
+      {
+        "status": "warn",
+        "title": "NAP consistency check needed",
+        "detail": "Verify name, address, and phone are consistent across website footer, GBP, and directory listings."
+      }
+    ],
+    "content": [
+      {
+        "status": "pass",
+        "title": "Good homepage content (473 words)",
+        "detail": "Homepage has sufficient text content."
+      },
+      {
+        "status": "pass",
+        "title": "30 pages crawled",
+        "detail": "Site has a reasonable amount of content."
+      },
+      {
+        "status": "pass",
+        "title": "20 project/portfolio pages found",
+        "detail": "20 with descriptions (100+ words), 0 image-only."
+      },
+      {
+        "status": "pass",
+        "title": "All project pages have descriptions",
+        "detail": "Good content coverage across portfolio."
+      },
+      {
+        "status": "pass",
+        "title": "Blog/journal section found (1 pages)",
+        "detail": "Active content publishing helps SEO."
+      }
+    ],
+    "visual_assets": [
+      {
+        "status": "pass",
+        "title": "50 images on homepage",
+        "detail": "Good visual presence."
+      },
+      {
+        "status": "fail",
+        "title": "35 of 50 images missing alt text (70%)",
+        "detail": "Alt text is critical for image SEO and accessibility."
+      },
+      {
+        "status": "pass",
+        "title": "1637 total images across site",
+        "detail": "1435 missing alt text site-wide."
+      },
+      {
+        "status": "pass",
+        "title": "Project pages average 70.7 images",
+        "detail": "Good visual coverage per project."
+      }
+    ]
+  },
+  "meta": {
+    "url": "https://summerhill.build",
+    "company_name": "Summerhill Fine Homes",
+    "location": "Gibsons BC",
+    "pages_crawled": 30,
+    "pages_successful": 30,
+    "pages_errored": 0,
+    "total_word_count": 15169,
+    "total_images": 1637,
+    "total_missing_alt": 1435,
+    "schema_types_found": [],
+    "project_pages_count": 20,
+    "project_pages_with_descriptions": 20,
+    "has_robots_txt": true,
+    "has_sitemap": true,
+    "sitemap_url_count": 8,
+    "ssl_valid": true,
+    "redirect_count": 0,
+    "final_url": "https://summerhill.build/",
+    "homepage_title": "Inspired Building - Summerhill Fine Homes",
+    "homepage_meta_description": "Custom home builder specializing in sustainability and performance, from dream homes to unique commercial projects on BC's Sunshine Coast",
+    "homepage_word_count": 473,
+    "homepage_image_count": 50,
+    "homepage_response_ms": 78,
+    "homepage_size_kb": 192.9,
+    "gbp_detected": false,
+    "directories_checked": {
+      "Houzz": true,
+      "HomeStars": false,
+      "CHBA": false
+    },
+    "project_pages": [
+      {
+        "url": "https://summerhill.build/projects",
+        "title": "Projects - Summerhill Fine Homes",
+        "word_count": 342,
+        "image_count": 16,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/case-study/brads-passion-haus",
+        "title": "Brad's Passion Haus - Summerhill Fine Homes",
+        "word_count": 628,
+        "image_count": 11,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project/wakefield-rooftop-oasis",
+        "title": "Wakefield Rooftop Oasis - Summerhill Fine Homes",
+        "word_count": 549,
+        "image_count": 86,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project/art-deco-reno",
+        "title": "Art Deco Reno - Summerhill Fine Homes",
+        "word_count": 550,
+        "image_count": 82,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project/the-perch",
+        "title": "The Perch - Summerhill Fine Homes",
+        "word_count": 706,
+        "image_count": 104,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/case-study/fern-valley-house",
+        "title": "Fern Valley House - Summerhill Fine Homes",
+        "word_count": 558,
+        "image_count": 11,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/case-study/roberts-creek-tree-house",
+        "title": "Roberts Creek Tree House - Summerhill Fine Homes",
+        "word_count": 654,
+        "image_count": 17,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project/tranquil-retreat",
+        "title": "Tranquil Retreat - Summerhill Fine Homes",
+        "word_count": 699,
+        "image_count": 102,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project/lower-road-residence",
+        "title": "Lower Road Residence - Summerhill Fine Homes",
+        "word_count": 534,
+        "image_count": 80,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project/woodlands-dream",
+        "title": "Woodlands Dream - Summerhill Fine Homes",
+        "word_count": 602,
+        "image_count": 102,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project/tree-house",
+        "title": "Tree House - Summerhill Fine Homes",
+        "word_count": 771,
+        "image_count": 101,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project/liberty-house",
+        "title": "Liberty House - Summerhill Fine Homes",
+        "word_count": 631,
+        "image_count": 102,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project/tsain-ko-corporation-head-office",
+        "title": "Tsain-Ko (TKDC) – Head Office - Summerhill Fine Homes",
+        "word_count": 554,
+        "image_count": 82,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project/twin-peaks",
+        "title": "Twin Peaks - Summerhill Fine Homes",
+        "word_count": 631,
+        "image_count": 102,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project/farrington-cove",
+        "title": "Farrington Cove - Summerhill Fine Homes",
+        "word_count": 640,
+        "image_count": 102,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project/marine-drive",
+        "title": "Marine Drive - Summerhill Fine Homes",
+        "word_count": 603,
+        "image_count": 104,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project-type/residential-fine-homes",
+        "title": "Residential Fine Homes Archives - Summerhill Fine Homes",
+        "word_count": 284,
+        "image_count": 10,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project/seaview-lane-main",
+        "title": "Seaview Lane Main - Summerhill Fine Homes",
+        "word_count": 621,
+        "image_count": 110,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project-type/renovations-energy-retrofits",
+        "title": "Renovations + Energy Retrofits Archives - Summerhill Fine Homes",
+        "word_count": 135,
+        "image_count": 4,
+        "has_description": true
+      },
+      {
+        "url": "https://summerhill.build/project/wilson-creek-reno",
+        "title": "Wilson Creek Reno - Summerhill Fine Homes",
+        "word_count": 595,
+        "image_count": 86,
+        "has_description": true
+      }
+    ],
+    "page_urls": [
+      "https://summerhill.build",
+      "https://summerhill.build/about",
+      "https://summerhill.build/articles",
+      "https://summerhill.build/case-study/brads-passion-haus",
+      "https://summerhill.build/case-study/fern-valley-house",
+      "https://summerhill.build/case-study/roberts-creek-tree-house",
+      "https://summerhill.build/contact",
+      "https://summerhill.build/member/fumi-takahashi",
+      "https://summerhill.build/member/ilan-bitterman",
+      "https://summerhill.build/member/scott-hage",
+      "https://summerhill.build/project-type/renovations-energy-retrofits",
+      "https://summerhill.build/project-type/residential-fine-homes",
+      "https://summerhill.build/project/art-deco-reno",
+      "https://summerhill.build/project/farrington-cove",
+      "https://summerhill.build/project/liberty-house",
+      "https://summerhill.build/project/lower-road-residence",
+      "https://summerhill.build/project/marine-drive",
+      "https://summerhill.build/project/seaview-lane-main",
+      "https://summerhill.build/project/the-perch",
+      "https://summerhill.build/project/tranquil-retreat",
+      "https://summerhill.build/project/tree-house",
+      "https://summerhill.build/project/tsain-ko-corporation-head-office",
+      "https://summerhill.build/project/twin-peaks",
+      "https://summerhill.build/project/wakefield-rooftop-oasis",
+      "https://summerhill.build/project/wilson-creek-reno",
+      "https://summerhill.build/project/woodlands-dream",
+      "https://summerhill.build/projects",
+      "https://summerhill.build/services",
+      "https://summerhill.build/team",
+      "https://summerhill.build/terms"
+    ]
+  }
+}

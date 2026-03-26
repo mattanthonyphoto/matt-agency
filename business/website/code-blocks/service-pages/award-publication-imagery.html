@@ -1,0 +1,1900 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.sv-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a1a18;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+}
+
+.sv-loader.sv-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.sv-loader-brand {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: #f6f4f0;
+  opacity: 0;
+  animation: svLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.sv-loader-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(138,133,121,0.7);
+  margin-top: 8px;
+  opacity: 0;
+  animation: svLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.sv-loader-line {
+  width: 80px;
+  height: 1px;
+  background: rgba(201,169,110,0.12);
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+  opacity: 0;
+  animation: svLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.sv-loader-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  animation: svLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+}
+
+@keyframes svLoaderIn { to { opacity: 1; } }
+@keyframes svLoaderFill { to { left: 100%; } }
+
+/* ── Section nav dots ── */
+.sv-section-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.sv-section-nav.sv-nav-visible {
+  opacity: 1;
+}
+
+.sv-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #8a8579;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.sv-nav-dot:hover {
+  border-color: #c9a96e;
+  transform: scale(1.3);
+}
+
+.sv-nav-dot.sv-nav-active {
+  background: #c9a96e;
+  border-color: #c9a96e;
+  box-shadow: 0 0 8px rgba(201,169,110,0.4);
+}
+
+.sv-nav-dot::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, right 0.3s ease;
+}
+
+.sv-nav-dot:hover::before {
+  opacity: 1;
+  right: 24px;
+}
+
+@media (max-width: 768px) {
+  .sv-section-nav { display: none; }
+}
+
+/* ── Scroll progress bar ── */
+.sv-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.4));
+  z-index: 9999;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px rgba(201,169,110,0.4);
+}
+
+/* ── Headline gold underline on em ── */
+.sv-wrap h2 em {
+  position: relative;
+  display: inline;
+}
+
+.sv-wrap h2 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.2));
+  transition: width 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-wrap h2.sv-underlined em::after {
+  width: 100%;
+}
+
+/* ── Divider draw animation ── */
+.sv-divider {
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-divider.sv-drawn {
+  width: 80px;
+}
+
+/* ── Ken Burns on image breaks ── */
+.sv-img-break.sv-in-view img {
+  animation: svKenBurns 16s ease-in-out infinite alternate;
+}
+
+@keyframes svKenBurns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.06) translate(-4px, -6px); }
+}
+
+/* ── Film grain overlay ── */
+.sv-grain::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.sv-grain {
+  position: relative;
+}
+
+.sv-grain > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Eyebrow gold dash (animated) ── */
+.sv-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sv-eyebrow::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  background: #c9a96e;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-eyebrow.sv-visible::before {
+  width: 24px;
+}
+
+/* ── Photo break depth layers ── */
+.sv-img-break {
+  position: relative;
+  overflow: hidden;
+}
+
+.sv-img-break img {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+.sv-img-break::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(rgba(26,26,24,0.15), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sv-img-break::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: linear-gradient(transparent, rgba(26,26,24,0.55));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Custom cursor ── */
+.sv-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(201,169,110,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
+.sv-cursor.sv-active {
+  opacity: 1;
+}
+
+.sv-cursor.sv-hover {
+  width: 50px;
+  height: 50px;
+  border-color: #c9a96e;
+  background: rgba(201,169,110,0.08);
+}
+
+.sv-cursor.sv-click {
+  width: 14px;
+  height: 14px;
+  background: rgba(201,169,110,0.3);
+}
+
+.sv-cursor-dot {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #c9a96e;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sv-cursor-dot.sv-active {
+  opacity: 1;
+}
+
+/* ── Magnetic button ── */
+.sv-magnetic {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Testimonial word reveal ── */
+.sv-quote-text .sv-qw {
+  display: inline;
+  color: rgba(26,26,24,0.15);
+  transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-quote-text .sv-qw.sv-lit {
+  color: #1a1a18;
+}
+
+.sv-quote-text .sv-qw.sv-gold-word.sv-lit {
+  color: #b8975a;
+}
+
+/* ── Ambient particles canvas ── */
+.sv-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Deliverable card stagger ── */
+.sv-del-card {
+  transform: translateY(12px);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+
+.sv-del-card.sv-entered {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ── Program card hover glow ── */
+.sv-res-c {
+  transition: all 0.35s ease;
+}
+
+.sv-res-c:hover {
+  border-color: #c9a96e;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(201,169,110,0.08);
+}
+
+/* ── Meta bar border draw ── */
+.sv-meta {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  background-image: linear-gradient(#d9d5cd, #d9d5cd), linear-gradient(#d9d5cd, #d9d5cd);
+  background-size: 0% 1px, 0% 1px;
+  background-position: center top, center bottom;
+  background-repeat: no-repeat;
+  transition: background-size 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-meta.sv-drawn {
+  background-size: 100% 1px, 100% 1px;
+}
+
+/* ── CTA background slow zoom ── */
+.sv-cta-bg img {
+  transition: transform 8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-cta.sv-in-view .sv-cta-bg img {
+  transform: scale(1.08);
+}
+
+/* ── CTA button glow pulse ── */
+.sv-cta-btn {
+  animation: svBtnGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes svBtnGlow {
+  0% { box-shadow: none; }
+  100% { box-shadow: 0 0 40px rgba(201,169,110,0.15), 0 0 80px rgba(201,169,110,0.05); }
+}
+
+/* ── Hero scroll fade ── */
+.sv-hero-content {
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* ── Scroll indicator ── */
+.sv-scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 3;
+  transition: opacity 0.4s ease;
+}
+
+.sv-scroll-hint.sv-hidden { opacity: 0; pointer-events: none; }
+
+.sv-scroll-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.45rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.3);
+}
+
+.sv-scroll-line {
+  width: 1px;
+  height: 36px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(246,244,240,0.1);
+}
+
+.sv-scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #c9a96e;
+  animation: svScrollPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes svScrollPulse {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ── Inline gold highlights ── */
+.sv-gold { color: #c9a96e; font-weight: 400; }
+
+/* ── Manifesto ── */
+.sv-manifesto {
+  background: #1a1a18;
+  padding: 8rem 5vw;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.sv-manifesto::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(rgba(201,169,110,0.4), transparent);
+}
+
+.sv-manifesto-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(246,244,240,0.25);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sv-manifesto-text .sv-mw {
+  display: inline;
+  color: rgba(246,244,240,0.15);
+  transition: color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-manifesto-text .sv-mw.sv-lit {
+  color: #f6f4f0;
+}
+
+.sv-manifesto-text .sv-mw.sv-gold-word.sv-lit {
+  color: #c9a96e;
+}
+
+/* ── Accent line ── */
+.sv-accent {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.2) 20%, rgba(201,169,110,0.2) 80%, transparent 100%);
+}
+
+/* ═══ AWARD & PUBLICATION IMAGERY SERVICE PAGE ═══ */
+.sv-wrap {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #1a1a18;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.sv-wrap img {
+  max-width: 100%;
+  display: block;
+}
+
+.sv-wrap a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── HERO ─── */
+.sv-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 6rem 5vw;
+  background: #1a1a18;
+  overflow: hidden;
+}
+
+.sv-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 20%, rgba(26,26,24,0.6) 60%, rgba(26,26,24,0.92) 100%);
+  z-index: 1;
+}
+
+.sv-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.sv-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  filter: saturate(0.6);
+}
+
+.sv-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.sv-hero-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.sv-hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: #f6f4f0;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.sv-hero h1 em {
+  font-style: italic;
+  color: #c9a96e;
+}
+
+.sv-hero-sub {
+  font-size: 1.05rem;
+  color: #d9d5cd;
+  font-weight: 300;
+  max-width: 560px;
+  line-height: 1.8;
+}
+
+/* ─── META BAR ─── */
+.sv-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0;
+  border-top: 1px solid #d9d5cd;
+  border-bottom: 1px solid #d9d5cd;
+}
+
+.sv-meta-item {
+  padding: 2rem 5vw;
+  border-right: 1px solid #d9d5cd;
+}
+
+.sv-meta-item:last-child {
+  border-right: none;
+}
+
+.sv-meta-dt {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8579;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.sv-meta-dd {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #1a1a18;
+}
+
+/* ─── SECTIONS ─── */
+.sv-section {
+  padding: 6rem 5vw;
+}
+
+.sv-narrow {
+  max-width: 720px;
+}
+
+.sv-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #b8975a;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.sv-divider {
+  width: 60px;
+  height: 1px;
+  background: #c9a96e;
+  margin: 0 0 2rem;
+}
+
+.sv-section h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.sv-section p {
+  font-size: 1rem;
+  color: #4a4a46;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.sv-section p:last-child {
+  margin-bottom: 0;
+}
+
+.sv-section p a {
+  color: #b8975a;
+  border-bottom: 1px solid rgba(184,151,90,0.3);
+  transition: border-color 0.3s ease;
+}
+
+.sv-section p a:hover {
+  border-color: #b8975a;
+}
+
+/* ─── IMAGE BREAK ─── */
+.sv-img-break {
+  width: 100%;
+  height: 70vh;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.sv-img-break img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: clip-path 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.1s linear;
+}
+
+/* ─── PROGRAMS & PUBLICATIONS GRID ─── */
+.sv-res {
+  background: #1a1a18;
+  padding: 6rem 5vw;
+}
+
+.sv-res .sv-label {
+  color: #c9a96e;
+  text-align: center;
+}
+
+.sv-res h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: #f6f4f0;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.sv-res-desc {
+  font-size: 1rem;
+  color: rgba(246,244,240,0.65);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.8;
+}
+
+.sv-res-g {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.sv-res-c {
+  display: block;
+  padding: 2rem;
+  border: 1px solid rgba(201,169,110,0.2);
+  border-radius: 2px;
+}
+
+.sv-res-c h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #f6f4f0;
+  margin-bottom: 0.5rem;
+}
+
+.sv-res-c p {
+  font-size: 0.85rem;
+  color: rgba(246,244,240,0.65);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.sv-res-c span {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  font-weight: 500;
+}
+
+/* ─── WHAT'S INCLUDED (DELIVERABLE CARDS) ─── */
+.sv-included {
+  background: #f6f4f0;
+  padding: 6rem 5vw;
+}
+
+.sv-included .sv-label {
+  text-align: center;
+}
+
+.sv-included h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: #1a1a18;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sv-del-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.sv-del-card {
+  padding: 2rem 0;
+  border-top: 2px solid #c9a96e;
+}
+
+.sv-del-card h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  color: #1a1a18;
+}
+
+.sv-del-card p {
+  font-size: 0.9rem;
+  color: #8a8579;
+  line-height: 1.7;
+}
+
+/* ─── GALLERY ─── */
+.sv-g {
+  background: #1a1a18;
+  padding: 5rem 5vw;
+}
+
+.sv-g .sv-label {
+  color: #c9a96e;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sv-gg {
+  column-count: 2;
+  column-gap: 1.25rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sv-gg div {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.sv-gg img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.8s ease;
+}
+
+.sv-gg div:hover img {
+  transform: scale(1.03);
+}
+
+/* ─── TESTIMONIAL ─── */
+.sv-quote {
+  background: #eeece6;
+  padding: 6rem 5vw;
+  text-align: center;
+}
+
+.sv-quote-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+  color: #1a1a18;
+}
+
+.sv-quote-text::before {
+  content: '\201C';
+  display: block;
+  font-size: 4rem;
+  color: #c9a96e;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  font-style: normal;
+  animation: svQuoteFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes svQuoteFloat {
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.05) translateY(-4px); }
+}
+
+.sv-quote-attr {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8579;
+  font-weight: 500;
+}
+
+.sv-quote-attr a {
+  color: #b8975a;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.sv-quote-attr a:hover {
+  border-color: #b8975a;
+}
+
+/* ─── OTHER SERVICES ─── */
+.sv-ot {
+  background: #f6f4f0;
+  padding: 5rem 5vw;
+}
+
+.sv-ot-l {
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #b8975a;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.sv-ot-g {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sv-ot-c {
+  text-align: center;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.sv-ot-c:hover {
+  transform: translateY(-4px);
+}
+
+.sv-ot-c h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+.sv-ot-c p {
+  font-size: 0.85rem;
+  color: #8a8579;
+  line-height: 1.7;
+}
+
+.sv-ot-c a {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  font-weight: 500;
+}
+
+/* ─── CTA ─── */
+.sv-cta {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sv-cta-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.sv-cta-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.4) brightness(0.2);
+}
+
+.sv-cta-c {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 5vw;
+}
+
+.sv-cta-eyebrow {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.sv-cta-eyebrow::before,
+.sv-cta-eyebrow::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: rgba(201,169,110,0.3);
+}
+
+.sv-cta h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 300;
+  color: #f6f4f0;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.sv-cta h2 em {
+  font-style: italic;
+  color: #c9a96e;
+}
+
+.sv-cta-sub {
+  color: rgba(246,244,240,0.65);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto 3rem;
+}
+
+.sv-cta-btn {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 1.2rem 3.5rem;
+  border: 1px solid #c9a96e;
+  background: #c9a96e;
+  color: #1a1a18;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.sv-cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.sv-cta-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.sv-cta-btn:hover {
+  background: transparent !important;
+  color: #c9a96e !important;
+  box-shadow: 0 0 30px rgba(201,169,110,0.2);
+}
+
+.sv-alt-cta {
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  color: rgba(246,244,240,0.65);
+  letter-spacing: 0.05em;
+  font-weight: 300;
+}
+
+.sv-alt-cta a {
+  color: #c9a96e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.3s ease;
+}
+
+.sv-alt-cta a:hover {
+  color: #f6f4f0;
+}
+
+/* ─── FOOTER ─── */
+.sv-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.sv-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.sv-ft-locs a:hover{color:#c9a96e}
+
+.sv-ft {
+  background: #1a1a18;
+  border-top: 1px solid rgba(201,169,110,0.15);
+}
+
+.sv-ft-r {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.25rem 5vw;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.sv-ft-i {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.sv-ft-l {
+  font-size: 7.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sv-ft-dt {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(201,169,110,0.4);
+  flex-shrink: 0;
+  position: relative;
+  top: -2px;
+}
+
+.sv-ft-i p,
+.sv-ft-i a {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(246,244,240,0.8);
+  font-weight: 300;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sv-ft-i a:hover {
+  color: #c9a96e;
+}
+
+.sv-ft-s {
+  display: flex;
+  gap: 18px;
+}
+
+.sv-ft-rl {
+  margin: 0 5vw;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.15) 20%, rgba(201,169,110,0.15) 80%, transparent 100%);
+}
+
+.sv-ft-b {
+    padding-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 5vw;
+}
+
+.sv-ft-cp {
+  font-size: 10px;
+  color: rgba(246,244,240,0.35);
+  letter-spacing: 0.08em;
+}
+
+.sv-ft-n {
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.sv-ft-n a {
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sv-ft-n a:hover {
+  color: #c9a96e;
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .sv-hero {
+    min-height: 75vh;
+    padding: 4rem 6vw;
+  }
+
+  .sv-section {
+    padding: 4rem 6vw;
+  }
+
+  .sv-quote {
+    padding: 4rem 6vw;
+  }
+
+  .sv-meta-item {
+    border-right: none;
+    border-bottom: 1px solid #d9d5cd;
+  }
+
+  .sv-meta-item:last-child {
+    border-bottom: none;
+  }
+
+  .sv-del-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sv-res-g {
+    grid-template-columns: 1fr;
+  }
+
+  .sv-res {
+    padding: 4rem 6vw;
+  }
+
+  .sv-included {
+    padding: 4rem 6vw;
+  }
+
+  .sv-g {
+    padding: 3rem 4vw;
+  }
+
+  .sv-gg {
+    column-count: 1;
+  }
+
+  .sv-gg div {
+    margin-bottom: 0.75rem;
+  }
+
+  .sv-ot-g {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .sv-cta {
+    min-height: 80vh;
+  }
+
+  .sv-manifesto {
+    padding: 5rem 6vw;
+  }
+
+  .sv-img-break {
+    height: 50vh;
+    min-height: 350px;
+  }
+
+  .sv-scroll-hint {
+    bottom: 24px;
+  }
+
+  .sv-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.sv-ft-locs a{font-size:.55rem}
+
+  .sv-ft-r {
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 2rem 6vw;
+  }
+
+  .sv-ft-rl {
+    margin: 0 6vw;
+  }
+
+  .sv-ft-b {
+    padding-bottom: 2rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    padding: 1.25rem 6vw;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sv-del-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sv-res-g {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
+
+<div class="sv-loader" id="svLoader">
+  <div class="sv-loader-brand">Matt Anthony Photography</div>
+  <div class="sv-loader-sub">Award &amp; Publication Imagery</div>
+  <div class="sv-loader-line"></div>
+</div>
+<nav class="sv-section-nav" id="svSectionNav"></nav>
+
+<div class="sv-cursor" id="svCursor"></div>
+<div class="sv-cursor-dot" id="svCursorDot"></div>
+<div class="sv-progress" id="svProgress"></div>
+<div class="sv-wrap">
+
+<!-- ═══ HERO ═══ -->
+<div class="sv-hero sv-grain">
+  <div class="sv-hero-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7ef87751-7049-4003-b0ae-2d83f90f21c4/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-13.jpg" alt="Award-ready architectural photography of Fitzsimmons Residence Whistler by Matt Anthony">
+  </div>
+  <div class="sv-hero-content">
+    <p class="sv-hero-label">Service 02</p>
+    <h1>Award &amp; Publication Imagery: Composed to <em>win</em></h1>
+    <p class="sv-hero-sub">Photography crafted for jurors, editors, and design peers. Not just documentation — visual arguments for why your work deserves recognition.</p>
+  </div>
+  <canvas class="sv-particles" id="svParticles"></canvas>
+  <div class="sv-scroll-hint" id="svScrollHint">
+    <span class="sv-scroll-text">Scroll</span>
+    <span class="sv-scroll-line"></span>
+  </div>
+</div>
+
+<!-- ═══ META BAR ═══ -->
+<dl class="sv-meta">
+  <div class="sv-meta-item">
+    <dt class="sv-meta-dt">For</dt>
+    <dd class="sv-meta-dd">Awards &amp; Editorial</dd>
+  </div>
+  <div class="sv-meta-item">
+    <dt class="sv-meta-dt">Programs</dt>
+    <dd class="sv-meta-dd">Georgie, CHBA, HAVAN, AIBC</dd>
+  </div>
+  <div class="sv-meta-item">
+    <dt class="sv-meta-dt">Publications</dt>
+    <dd class="sv-meta-dd">Western Living, Dwell, Dezeen</dd>
+  </div>
+  <div class="sv-meta-item">
+    <dt class="sv-meta-dt">Approach</dt>
+    <dd class="sv-meta-dd">Jury-Optimized</dd>
+  </div>
+</dl>
+
+<!-- ═══ THE DIFFERENCE ═══ -->
+<section class="sv-section sv-narrow" data-nav="Difference">
+  <p class="sv-label sv-eyebrow">The Difference</p>
+  <div class="sv-divider"></div>
+  <h2>There's a difference between a beautiful photo and <em>an image that wins</em></h2>
+  <p>A beautiful photo documents a finished project. An image that wins communicates a design decision to a specific audience with a specific vocabulary. Jurors evaluating spatial clarity. Editors scanning for material legibility. Peers who understand why that detail, that light, that composition matters. The difference is intent.</p>
+  <p>I study the submission programs and publications your work gets entered into. <a href="/journal/georgie-awards-guide">Georgie Awards</a>, <a href="/journal/chba-national-awards-guide">CHBA</a>, <a href="/journal/havan-awards-guide">HAVAN</a>, <a href="/journal/aibc-awards-guide">AIBC</a>, <a href="/journal/western-living-submissions">Western Living</a>, <a href="/journal/dwell-submissions-guide">Dwell</a>. Each has a visual language. Each evaluates differently. The photography is shaped by that knowledge — composed with the scoring criteria, the submission format, and the category requirements in mind before the shutter opens.</p>
+  <p>This isn't a different camera or a different editing style. It's a different way of seeing the project. Every frame asks: does this communicate the design decision clearly enough for someone who wasn't in the room to understand why it matters?</p>
+</section>
+
+<!-- ═══ FULL-WIDTH IMAGE BREAK ═══ -->
+<div class="sv-img-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/5a40b023-31e7-4a61-be2b-3c8e1217586b/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-45.jpg" alt="Fitzsimmons Residence kitchen interior Whistler award-ready photography" loading="lazy">
+</div>
+
+<!-- ═══ PROGRAMS & PUBLICATIONS ═══ -->
+<div class="sv-res" data-nav="Programs">
+  <p class="sv-label">Resources</p>
+  <h2>Comprehensive guides for every major program</h2>
+  <p class="sv-res-desc">Everything you need to know about submitting your work — deadlines, requirements, what judges look for, and how to prepare.</p>
+  <div class="sv-res-g" id="svResGrid">
+    <a href="/journal/georgie-awards-guide" class="sv-res-c"><h3>Georgie Awards Guide</h3><p>BC's premier housing awards</p><span>Read Guide &#8594;</span></a>
+    <a href="/journal/havan-awards-guide" class="sv-res-c"><h3>HAVAN Awards Guide</h3><p>Metro Vancouver excellence awards</p><span>Read Guide &#8594;</span></a>
+    <a href="/journal/chba-national-awards-guide" class="sv-res-c"><h3>CHBA National Awards</h3><p>Canada's national housing awards</p><span>Read Guide &#8594;</span></a>
+    <a href="/journal/aibc-awards-guide" class="sv-res-c"><h3>AIBC Awards</h3><p>BC's highest architectural honour</p><span>Read Guide &#8594;</span></a>
+    <a href="/journal/raic-awards-guide" class="sv-res-c"><h3>RAIC Awards</h3><p>Governor General's Medals</p><span>Read Guide &#8594;</span></a>
+    <a href="/journal/western-living-submissions" class="sv-res-c"><h3>Western Living</h3><p>Get featured in Western Canada's top magazine</p><span>Read Guide &#8594;</span></a>
+    <a href="/journal/dwell-submissions-guide" class="sv-res-c"><h3>Dwell</h3><p>Reach 14M+ modern design enthusiasts</p><span>Read Guide &#8594;</span></a>
+    <a href="/journal/dezeen-submissions-guide" class="sv-res-c"><h3>Dezeen</h3><p>The world's #1 architecture website</p><span>Read Guide &#8594;</span></a>
+    <a href="/journal/architectural-photography-for-publications" class="sv-res-c"><h3>Publication Overview</h3><p>Universal standards &amp; strategy</p><span>Read Guide &#8594;</span></a>
+  </div>
+</div>
+
+<div class="sv-accent"></div>
+
+<!-- ═══ WHAT'S INCLUDED ═══ -->
+<div class="sv-included" data-nav="Included">
+  <p class="sv-label">Deliverables</p>
+  <h2>What's included in every award shoot</h2>
+  <div class="sv-del-grid" id="svDelGrid">
+    <div class="sv-del-card">
+      <h3>Pre-Shoot Consultation</h3>
+      <p>Review of submission requirements, category criteria, and program-specific image specs before anything is planned.</p>
+    </div>
+    <div class="sv-del-card">
+      <h3>Jury-Optimized Compositions</h3>
+      <p>Every frame composed with scoring rubrics in mind. Spatial clarity, material legibility, design intent made visible.</p>
+    </div>
+    <div class="sv-del-card">
+      <h3>Program-Spec Files</h3>
+      <p>High-resolution deliverables formatted to exact program specifications. Resolution, aspect ratio, file type handled.</p>
+    </div>
+    <div class="sv-del-card">
+      <h3>Curated Selects</h3>
+      <p>Strongest angles identified and sequenced for maximum impact within submission constraints.</p>
+    </div>
+    <div class="sv-del-card">
+      <h3>Short Form Film</h3>
+      <p>Project walkthrough video for digital submission portals and social media amplification.</p>
+    </div>
+    <div class="sv-del-card">
+      <h3>Submission Guidance</h3>
+      <p>Recommendations on which images to pair with each category, based on what judges prioritize.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sv-accent"></div>
+
+<!-- ═══ GALLERY ═══ -->
+<div class="sv-g" data-nav="Gallery">
+  <p class="sv-label">Selected Work</p>
+  <div class="sv-gg">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e07b8aac-c1ec-4293-b956-79b41aa39f33/5322-backhouse-web-1.jpg" alt="The Perch exterior ocean view" loading="lazy"></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/5a40b023-31e7-4a61-be2b-3c8e1217586b/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-45.jpg" alt="Fitzsimmons Residence kitchen" loading="lazy"></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/bf463fcc-0f61-4c27-84d0-46be256bb34c/warbler-whistler-architectural-photography-matt-anthony-.jpg-6.jpg" alt="Warbler Residence open plan" loading="lazy"></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/aaf09b1e-0c8f-4362-bb6b-d1078581c875/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-2.jpg" alt="Sugarloaf Residence Pemberton" loading="lazy"></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/bd45b746-3623-41b7-8016-a94a135bd9b6/5322-backhouse-web-10.jpg" alt="The Perch twilight" loading="lazy"></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8149d10c-1661-4e39-80d9-538f24b4123a/warbler-whistler-architectural-photography-matt-anthony-.jpg-33.jpg" alt="Warbler Residence rear elevation" loading="lazy"></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/5be7e36c-d920-4d5d-9260-da4df4c50415/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-16.jpg" alt="Tranquil Retreat interior" loading="lazy"></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/6c3ffde5-c26e-4796-8551-cfd303e2b0d8/sitelines-SDA-web--11.jpg" alt="SDA headquarters mass timber" loading="lazy"></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/3483950e-abb8-4248-a445-b00c83b5d7f1/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-16.jpg" alt="Fitzsimmons detail" loading="lazy"></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/007d7b9c-5a43-4b2a-8fb5-f6177341404b/browns-road-sunshine-coast-architectural-photographer-matt-anthony-7.jpg" alt="Browns Residence Sunshine Coast" loading="lazy"></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef4086f4-81fa-468f-99bf-966ce7d83d89/warbler-whistler-architectural-photography-matt-anthony-.jpg-11.jpg" alt="Warbler Residence twilight" loading="lazy"></div>
+  </div>
+</div>
+
+<div class="sv-accent"></div>
+
+<!-- ═══ TESTIMONIAL ═══ -->
+<section class="sv-quote" id="svQuote" data-nav="Testimonial">
+  <p class="sv-quote-text"><span class="sv-qw">Matt</span> <span class="sv-qw">understood</span> <span class="sv-qw">exactly</span> <span class="sv-qw">what</span> <span class="sv-qw">the</span> <span class="sv-qw">Georgie</span> <span class="sv-qw">judges</span> <span class="sv-qw">would</span> <span class="sv-qw">be</span> <span class="sv-qw">looking</span> <span class="sv-qw">for.</span> <span class="sv-qw">The</span> <span class="sv-qw">images</span> <span class="sv-qw">didn't</span> <span class="sv-qw">just</span> <span class="sv-qw">show</span> <span class="sv-qw">the</span> <span class="sv-qw">house,</span> <span class="sv-qw">they</span> <span class="sv-qw">told</span> <span class="sv-qw">the</span> <span class="sv-qw sv-gold-word">story</span> <span class="sv-qw">of</span> <span class="sv-qw">every</span> <span class="sv-qw sv-gold-word">design</span> <span class="sv-qw sv-gold-word">decision</span> <span class="sv-qw">we</span> <span class="sv-qw">made.</span></p>
+  <p class="sv-quote-attr">Marc Harvey &mdash; <a href="/balmoral-construction">Balmoral Construction</a></p>
+</section>
+
+<div class="sv-accent"></div>
+
+<!-- ═══ OTHER SERVICES ═══ -->
+<div class="sv-ot"><p class="sv-ot-l">Other Services</p><div class="sv-ot-g"><div class="sv-ot-c"><h3>Project Photography</h3><p>Complete visual documentation of your finished build.</p><a href="/project-photography">Learn More</a></div><div class="sv-ot-c"><h3>Build &amp; Team Content</h3><p>The people and process behind the builds.</p><a href="/construction-team-content">Learn More</a></div><div class="sv-ot-c"><h3>Creative Partner</h3><p>Your embedded creative department, handled.</p><a href="/creative-partner">Learn More</a></div></div></div>
+
+<!-- ═══ MANIFESTO ═══ -->
+<section class="sv-manifesto sv-grain" id="svManifesto">
+  <p class="sv-manifesto-text">
+    <span class="sv-mw">The</span> <span class="sv-mw">best</span> <span class="sv-mw sv-gold-word">award</span> <span class="sv-mw sv-gold-word">imagery</span> <span class="sv-mw">is</span> <span class="sv-mw">planned</span> <span class="sv-mw">before</span> <span class="sv-mw">the</span> <span class="sv-mw">project</span> <span class="sv-mw">is</span> <span class="sv-mw">finished.</span> <span class="sv-mw">If</span> <span class="sv-mw">you're</span> <span class="sv-mw">building</span> <span class="sv-mw">something</span> <span class="sv-mw">worth</span> <span class="sv-mw sv-gold-word">recognizing,</span> <span class="sv-mw">the</span> <span class="sv-mw">conversation</span> <span class="sv-mw">should</span> <span class="sv-mw">start</span> <span class="sv-mw">before</span> <span class="sv-mw">the</span> <span class="sv-mw">drywall</span> <span class="sv-mw">goes</span> <span class="sv-mw">up.</span>
+  </p>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="sv-cta">
+  <div class="sv-cta-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef4086f4-81fa-468f-99bf-966ce7d83d89/warbler-whistler-architectural-photography-matt-anthony-.jpg-11.jpg" alt="Warbler Residence twilight architectural photography" loading="lazy">
+  </div>
+  <div class="sv-cta-c">
+    <p class="sv-cta-eyebrow">Start the Conversation</p>
+    <h2>Building something worth <em>recognizing</em>?<br>Let's talk before the drywall goes up.</h2>
+    <p class="sv-cta-sub">The best award imagery is planned, not retrofitted. Start the conversation early.</p>
+    <a href="/discovery-call" class="sv-cta-btn sv-magnetic" target="_blank" rel="noopener">Book a Discovery Call</a>
+    <p class="sv-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="sv-ft">
+<div class="sv-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+  <div class="sv-ft-r">
+    <div class="sv-ft-i"><span class="sv-ft-l">Based In</span><span class="sv-ft-dt"></span><p>Squamish, British Columbia</p></div>
+    <div class="sv-ft-i"><span class="sv-ft-l">Email</span><span class="sv-ft-dt"></span><a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a></div>
+    <div class="sv-ft-i"><span class="sv-ft-l">Phone</span><span class="sv-ft-dt"></span><a href="tel:6047659270">604.765.9270</a></div>
+    <div class="sv-ft-i"><span class="sv-ft-l">Follow</span><span class="sv-ft-dt"></span><div class="sv-ft-s"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  </div>
+  <div class="sv-ft-rl"></div>
+  <div class="sv-ft-b">
+    <span class="sv-ft-cp">&copy; 2026 Matt Anthony Photography</span>
+    <nav class="sv-ft-n"><a href="/projects">Projects</a><a href="/journal">Journal</a><a href="/journal/georgie-awards-guide">Georgie Awards</a><a href="/bio">About</a><a href="/contact">Contact</a><a href="/pricing-guide-landing">Get Pricing</a></nav>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var isMobile = 'ontouchstart' in window;
+  var wrap = document.querySelector('.sv-wrap');
+  var progressBar = document.getElementById('svProgress');
+  var hero = document.querySelector('.sv-hero');
+  var heroContent = document.querySelector('.sv-hero-content');
+  var heroBg = document.querySelector('.sv-hero-bg');
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader = document.getElementById('svLoader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('sv-done'); }, 1100);
+  });
+
+  /* ═══ SECTION NAV DOTS ═══ */
+  var sectionNav = document.getElementById('svSectionNav');
+  var navSections = document.querySelectorAll('[data-nav]');
+  var navDots = [];
+  navSections.forEach(function(sec){
+    var dot = document.createElement('div');
+    dot.className = 'sv-nav-dot';
+    dot.setAttribute('data-label', sec.getAttribute('data-nav'));
+    dot.addEventListener('click', function(){
+      sec.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+    sectionNav.appendChild(dot);
+    navDots.push({ dot:dot, section:sec });
+  });
+
+  function updateNavDots(){
+    var scrollY = window.scrollY;
+    var winH = window.innerHeight;
+    if(scrollY > winH * 0.5) sectionNav.classList.add('sv-nav-visible');
+    else sectionNav.classList.remove('sv-nav-visible');
+    var active = null;
+    navDots.forEach(function(item){
+      var rect = item.section.getBoundingClientRect();
+      if(rect.top < winH * 0.5 && rect.bottom > winH * 0.3) active = item;
+      item.dot.classList.remove('sv-nav-active');
+    });
+    if(active) active.dot.classList.add('sv-nav-active');
+  }
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  function updateProgress(){
+    var s = window.scrollY;
+    var d = document.documentElement.scrollHeight - window.innerHeight;
+    if(d > 0) progressBar.style.width = (s / d * 100) + '%';
+  }
+
+  /* ═══ HERO PARALLAX + FADE ═══ */
+  function updateHero(){
+    var s = window.scrollY;
+    var h = window.innerHeight;
+    if(s > h) return;
+    var ratio = s / h;
+    if(heroBg) heroBg.style.transform = 'translateY(' + (s * 0.35) + 'px) scale(' + (1 + ratio * 0.05) + ')';
+    if(heroContent){
+      heroContent.style.transform = 'translateY(' + (s * 0.15) + 'px)';
+      heroContent.style.opacity = 1 - ratio * 1.2;
+    }
+  }
+
+  /* ═══ PHOTO BREAK PARALLAX ═══ */
+  var photoBreaks = document.querySelectorAll('.sv-img-break');
+  function updatePhotoParallax(){
+    photoBreaks.forEach(function(pb){
+      var rect = pb.getBoundingClientRect();
+      if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+      var center = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+      var img = pb.querySelector('img');
+      if(img) img.style.transform = 'translateY(' + (center * -30) + 'px) scale(1.08)';
+    });
+  }
+
+  /* ═══ HEADLINE GOLD UNDERLINE ═══ */
+  var headObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-underlined'); headObs.unobserve(e.target); }
+    });
+  }, {threshold:0.4});
+  document.querySelectorAll('.sv-wrap h2').forEach(function(h){ headObs.observe(h); });
+
+  /* ═══ EYEBROW DASH DRAW ═══ */
+  var eyeObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-visible'); eyeObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.sv-eyebrow').forEach(function(el){ eyeObs.observe(el); });
+
+  /* ═══ DIVIDER DRAW ═══ */
+  var divObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-drawn'); divObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.sv-divider').forEach(function(el){ el.style.width = '0'; divObs.observe(el); });
+
+  /* ═══ META BAR BORDER DRAW ═══ */
+  var metaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-drawn'); metaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.sv-meta').forEach(function(el){ metaObs.observe(el); });
+
+  /* ═══ KEN BURNS ═══ */
+  var kenObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) e.target.classList.add('sv-in-view');
+      else e.target.classList.remove('sv-in-view');
+    });
+  }, {threshold:0.1});
+  photoBreaks.forEach(function(el){ kenObs.observe(el); });
+
+  /* ═══ QUOTE SECTION ═══ */
+  var quoteObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-in-view'); quoteObs.unobserve(e.target); }
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.sv-quote').forEach(function(el){ quoteObs.observe(el); });
+
+  /* ═══ CTA ZOOM ═══ */
+  var ctaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-in-view'); ctaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.2});
+  document.querySelectorAll('.sv-cta').forEach(function(el){ ctaObs.observe(el); });
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor = document.getElementById('svCursor');
+  var cursorDot = document.getElementById('svCursorDot');
+  var cx = 0, cy = 0, dx = 0, dy = 0;
+  if(!isMobile && cursor){
+    document.addEventListener('mousemove', function(e){
+      dx = e.clientX; dy = e.clientY;
+      cursorDot.style.left = dx + 'px';
+      cursorDot.style.top = dy + 'px';
+      if(!cursor.classList.contains('sv-active')){
+        cursor.classList.add('sv-active');
+        cursorDot.classList.add('sv-active');
+      }
+    });
+    function tickCursor(){
+      cx += (dx - cx) * 0.12;
+      cy += (dy - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(tickCursor);
+    }
+    tickCursor();
+    var hoverEls = document.querySelectorAll('a, button, .sv-res-c, .sv-del-card, .sv-cta-btn, .sv-ot-c');
+    hoverEls.forEach(function(el){
+      el.addEventListener('mouseenter', function(){ cursor.classList.add('sv-hover'); });
+      el.addEventListener('mouseleave', function(){ cursor.classList.remove('sv-hover'); });
+    });
+    document.addEventListener('mousedown', function(){ cursor.classList.add('sv-click'); });
+    document.addEventListener('mouseup', function(){ cursor.classList.remove('sv-click'); });
+  }
+
+  /* ═══ MAGNETIC BUTTON ═══ */
+  if(!isMobile){
+    document.querySelectorAll('.sv-magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.25) + 'px, ' + (y * 0.25) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  /* ═══ TESTIMONIAL WORD REVEAL ═══ */
+  var quoteEl = document.getElementById('svQuote');
+  var qWords = quoteEl ? quoteEl.querySelectorAll('.sv-qw') : [];
+  var quoteRevealed = false;
+  function updateQuote(){
+    if(!quoteEl || quoteRevealed) return;
+    var rect = quoteEl.getBoundingClientRect();
+    var vh = window.innerHeight;
+    if(rect.top > vh || rect.bottom < 0) return;
+    var progress = 1 - (rect.top / (vh * 0.55));
+    progress = Math.max(0, Math.min(1, progress));
+    var wordsToLight = Math.floor(progress * qWords.length);
+    for(var i = 0; i < qWords.length; i++){
+      if(i < wordsToLight) qWords[i].classList.add('sv-lit');
+    }
+    if(wordsToLight >= qWords.length) quoteRevealed = true;
+  }
+
+  /* ═══ DELIVERABLE CARD STAGGER ═══ */
+  var delObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var cards = e.target.querySelectorAll('.sv-del-card');
+        cards.forEach(function(card, i){
+          setTimeout(function(){ card.classList.add('sv-entered'); }, i * 100);
+        });
+        delObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.2});
+  var delGrid = document.getElementById('svDelGrid');
+  if(delGrid) delObs.observe(delGrid);
+
+  /* ═══ PROGRAM CARD STAGGER ═══ */
+  var resObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var cards = e.target.querySelectorAll('.sv-res-c');
+        cards.forEach(function(card, i){
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(12px)';
+          card.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1)';
+          setTimeout(function(){
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, i * 80);
+        });
+        resObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.2});
+  var resGrid = document.getElementById('svResGrid');
+  if(resGrid) resObs.observe(resGrid);
+
+  /* ═══ AMBIENT PARTICLES ═══ */
+  var canvas = document.getElementById('svParticles');
+  if(canvas){
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    function resizeCanvas(){
+      var parent = canvas.parentElement;
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    for(var p = 0; p < 30; p++){
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -Math.random() * 0.4 - 0.1,
+        r: Math.random() * 1.5 + 0.5,
+        a: Math.random() * 0.3 + 0.05
+      });
+    }
+    function drawParticles(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(function(pt){
+        pt.x += pt.vx;
+        pt.y += pt.vy;
+        if(pt.y < -10) { pt.y = canvas.height + 10; pt.x = Math.random() * canvas.width; }
+        if(pt.x < -10) pt.x = canvas.width + 10;
+        if(pt.x > canvas.width + 10) pt.x = -10;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(201,169,110,' + pt.a + ')';
+        ctx.fill();
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+  }
+
+  /* ═══ SCROLL INDICATOR HIDE ═══ */
+  var scrollHint = document.getElementById('svScrollHint');
+  function updateScrollHint(){
+    if(window.scrollY > 80) scrollHint.classList.add('sv-hidden');
+    else scrollHint.classList.remove('sv-hidden');
+  }
+
+  /* ═══ MANIFESTO WORD REVEAL ═══ */
+  var manifesto = document.getElementById('svManifesto');
+  var mWords = manifesto ? manifesto.querySelectorAll('.sv-mw') : [];
+  var manifestoRevealed = false;
+  function updateManifesto(){
+    if(!manifesto || manifestoRevealed) return;
+    var rect = manifesto.getBoundingClientRect();
+    var vh = window.innerHeight;
+    if(rect.top > vh || rect.bottom < 0) return;
+    var progress = 1 - (rect.top / (vh * 0.6));
+    progress = Math.max(0, Math.min(1, progress));
+    var wordsToLight = Math.floor(progress * mWords.length);
+    for(var i = 0; i < mWords.length; i++){
+      if(i < wordsToLight) mWords[i].classList.add('sv-lit');
+    }
+    if(wordsToLight >= mWords.length) manifestoRevealed = true;
+  }
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateHero();
+        updatePhotoParallax();
+        updateScrollHint();
+        updateManifesto();
+        updateQuote();
+        updateNavDots();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress();
+  updateHero();
+  updateScrollHint();
+  updateNavDots();
+})();
+</script>
+
+<!--
+  Award & Publication Imagery — Service 02 Code Block
+  mattanthonyphoto.com/award-publication-imagery
+
+  Last updated: 2026-03-24
+  Changes:
+    1. Complete rebuild using Creative Partner design template
+    2. Interactive layer: loader, nav dots, particles, parallax, word reveal, custom cursor, magnetic button, card staggers
+    3. Full page: Hero, Meta bar, The Difference, Image break, Programs & Publications (3x3 grid with 9 guide links), What's Included (6 cards), Gallery (11 images), Testimonial (word reveal), Other Services, Manifesto (pre-split spans), CTA (full-screen), Footer
+    4. CSS prefix: sv- throughout. No :root, no global resets
+    5. Dark section text: rgba(246,244,240,0.65) not #8a8579
+    6. Narrow max-width: 720px
+    7. Image break: 70vh / min-height 500px
+    8. Footer: flex-wrap wrap, justify-content center
+    9. SEO meta, canonical, OG tags, JSON-LD Service schema preserved
+-->
+
+<!-- SEO Meta -->
+<meta name="description" content="Award-ready architectural photography for Georgie, CHBA, HAVAN, and AIBC submissions. Publication-quality imagery for Western Living, Dwell, and Dezeen features across British Columbia.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/award-publication-imagery">
+<meta property="og:title" content="Award &amp; Publication Imagery | Georgie &amp; CHBA Ready | Matt Anthony Photography">
+<meta property="og:description" content="Photography composed for award submissions and editorial features. Georgie, CHBA, HAVAN, AIBC programs. Western Living, Dwell, Dezeen publications.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/award-publication-imagery">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7ef87751-7049-4003-b0ae-2d83f90f21c4/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-13.jpg">
+<meta property="og:image:width" content="2500">
+<meta property="og:image:height" content="1667">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Award & Publication Imagery",
+  "description": "Photography and film crafted for award submissions, editorial features, and industry recognition including Georgie Awards, CHBA, HAVAN, AIBC, RAIC, Western Living, Dwell, and Dezeen.",
+  "provider": {
+    "@id": "https://www.mattanthonyphoto.com/#business"
+  },
+  "url": "https://www.mattanthonyphoto.com/award-publication-imagery",
+  "image": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7ef87751-7049-4003-b0ae-2d83f90f21c4/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-13.jpg",
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "British Columbia"
+  },
+  "serviceType": "Award Submission Photography",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Award & Publication Photography Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Pre-Shoot Consultation",
+          "description": "Review of submission requirements, category criteria, and program-specific image specifications"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Jury-Optimized Compositions",
+          "description": "Photography composed with scoring rubrics and evaluation criteria in mind"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Short Form Project Film",
+          "description": "Video walkthrough for digital submission portals and social media"
+        }
+      }
+    ]
+  }
+}
+</script>

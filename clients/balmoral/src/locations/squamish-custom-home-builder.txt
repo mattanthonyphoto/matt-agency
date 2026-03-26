@@ -1,0 +1,346 @@
+<!-- HomeAndConstructionBusiness SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Balmoral Construction Inc.",
+  "url": "https://www.balmoralconstruction.com",
+  "telephone": "(604) 907-2237",
+  "email": "marc@balmoralconstruction.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1704 Sugarloaf Place",
+    "addressLocality": "Pemberton",
+    "addressRegion": "BC",
+    "postalCode": "V0N 2L3",
+    "addressCountry": "CA"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Squamish, BC"
+  },
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Warranty Registration",
+      "name": "BC New Home Warranty"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Warranty Registration",
+      "name": "National Home Warranty"
+    }
+  ],
+  "memberOf": {
+    "@type": "Organization",
+    "name": "Canadian Home Builders Association — Sea to Sky"
+  }
+}
+</script>
+
+<!-- FAQPage SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does it cost to build a custom home in Squamish?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Custom home construction in Squamish typically ranges from $400 to $650 per square foot, depending on site complexity, design specifications, and finishing levels. We provide detailed estimates after evaluating your specific lot, design, and material preferences."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which Squamish neighbourhoods are best for custom builds?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "University Heights offers modern infrastructure, Garibaldi Highlands provides larger lots with a mature residential feel, and Brackendale delivers a quieter rural character. The best choice depends on your lifestyle priorities, budget, and the type of home you want to build."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does building in Squamish differ from Whistler?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Squamish is milder in winter with less snow load but significantly more rain. The permitting process is generally more straightforward. Construction costs are typically lower due to easier access, milder conditions, and less complex site requirements. Moisture management becomes the primary building science focus."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Balmoral build in Squamish from your Pemberton office?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. Our project managers are on site daily regardless of the community. We have established trade relationships throughout the Sea to Sky Corridor, including Squamish-based subcontractors who know local conditions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to build a custom home in Squamish?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most custom homes in Squamish take 12 to 16 months from breaking ground to completion. The milder climate can result in shorter timelines compared to Whistler or Pemberton. Permitting typically takes 2 to 4 months before construction begins."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I know about rain and moisture when building in Squamish?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Squamish receives over 2,200 mm of rainfall annually. Every Balmoral home uses rain screen wall assemblies, robust foundation waterproofing, and detailed flashing at all penetrations. We specify materials rated for persistent moisture and design drainage systems for worst-case conditions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What warranty coverage do Balmoral homes include?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every Balmoral home is registered with BC New Home Warranty and National Home Warranty, providing 2-year materials and labour coverage, 5-year building envelope coverage, and 10-year structural coverage."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bc-accent:#D4722A;--bc-accent-hover:#BF6523;--bc-accent-light:rgba(212,114,42,.1)}
+.bc-progress{position:fixed;top:0;left:0;height:3px;background:var(--bc-accent);z-index:1100;width:0%;transition:none}
+.bc{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a1a;line-height:1.7;font-weight:300;background:#fff}
+.bc img{max-width:100%;display:block}
+.bc a{color:inherit;text-decoration:none}
+.bc-reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.bc-reveal.bc-visible{opacity:1;transform:translateY(0)}
+.bc-reveal-delay-1{transition-delay:.15s}
+.bc-reveal-delay-2{transition-delay:.3s}
+.bc-reveal-delay-3{transition-delay:.45s}
+/* NAV */
+.bc-hd{position:fixed;top:0;left:0;right:0;z-index:99999 !important;transition:background .4s cubic-bezier(.16,1,.3,1)}.bc-hd--top{background:transparent}.bc-hd--scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.bc-hd--mob-open{background:#fff !important;backdrop-filter:none}.bc-hd-inner{max-width:1600px;margin:0 auto;padding:0 clamp(24px,4vw,60px);display:flex;align-items:center;justify-content:space-between;height:80px}.bc-hd-logo img{height:52px;width:auto;transition:filter .4s}.bc-hd--top .bc-hd-logo img{filter:brightness(0) invert(1)}
+.bc-hd--mob-open .bc-hd-logo img{filter:none !important}
+.bc-hd--mob-open.bc-hd--top .bc-hd-logo img{filter:none !important}
+.bc-mob.open ~ .bc-hd .bc-hd-logo img,.bc-hd.bc-mob-open .bc-hd-logo img{filter:none !important}.bc-hd-nav{display:flex;align-items:center;gap:clamp(24px,3.5vw,48px);list-style:none}.bc-hd-link{font-size:13px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#1a1a1a;transition:all .3s;position:relative}.bc-hd--top .bc-hd-link{color:rgba(255,255,255,.75)}.bc-hd--top .bc-hd-link:hover{color:#fff}.bc-hd-link:hover{color:#000}.bc-hd-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:currentColor;transition:width .3s}.bc-hd-link:hover::after{width:100%}.bc-hd-drop{position:relative}.bc-hd-drop-menu{position:absolute;top:calc(100% + 20px);left:-20px;background:#fff;padding:16px 0;min-width:220px;opacity:0;visibility:hidden;transition:all .3s;transform:translateY(8px);box-shadow:0 20px 60px rgba(0,0,0,.08)}.bc-hd-drop:hover .bc-hd-drop-menu{opacity:1;visibility:visible;transform:translateY(0)}.bc-hd-drop-menu a{display:block;padding:10px 28px;font-size:14px;font-weight:400;color:#666;letter-spacing:.04em;transition:all .2s}.bc-hd-drop-menu a:hover{color:var(--bc-accent);padding-left:32px}.bc-hd-mob{display:none;background:none;border:none;cursor:pointer;padding:10px;z-index:100001}.bc-hd-mob span{display:block;width:28px;height:2px;background:#1a1a1a;margin:7px 0;transition:all .4s}.bc-hd--top .bc-hd-mob span{background:#fff}
+.bc-hd--mob-open .bc-hd-mob span{background:#1a1a1a !important}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(2){opacity:0}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.bc-hd-mob.open span{background:#1a1a1a !important}.bc-mob{position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:99998 !important;padding:100px clamp(24px,6vw,60px) 40px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}.bc-mob.open{opacity:1;visibility:visible;display:flex;flex-direction:column}.bc-mob a{display:block;font-size:clamp(28px,6vw,40px);font-weight:200;color:#1a1a1a;padding:12px 0;letter-spacing:-.02em;border-bottom:1px solid #f0f0f0;transition:opacity .3s}.bc-mob a:hover{opacity:.5}.bc-mob-sub{padding-left:0}.bc-mob-sub a{font-size:clamp(14px,3vw,18px);font-weight:400;color:#999;letter-spacing:0;padding:8px 0}
+/* HERO */
+.bc-loc-hero{position:relative;height:65vh;min-height:500px;overflow:hidden}.bc-loc-hero img{width:100%;height:100%;object-fit:cover;transform:scale(1.03);transition:transform 8s cubic-bezier(.16,1,.3,1)}.bc-loc-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.05) 40%,rgba(0,0,0,.5) 100%);z-index:1}.bc-loc-hero-c{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:0 clamp(24px,4vw,60px) clamp(48px,6vw,80px);max-width:1600px;margin:0 auto}.bc-loc-hero-c .bc-section-label{font-size:11px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--bc-accent);margin-bottom:16px;display:block}.bc-loc-hero-c h1{font-size:clamp(32px,5vw,64px);font-weight:200;color:#fff;letter-spacing:-.04em;line-height:1.1;margin-bottom:16px}.bc-loc-hero-c h1 strong{font-weight:600}.bc-loc-hero-c p{font-size:clamp(14px,1.2vw,16px);color:rgba(255,255,255,.6);font-weight:300;max-width:520px;line-height:1.8}
+/* SECTION SHARED */
+.bc-section-pad{padding:clamp(80px,10vw,140px) clamp(24px,4vw,60px)}.bc-section-inner{max-width:1600px;margin:0 auto}.bc-section-label{font-size:11px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:#999;margin-bottom:24px;display:block}.bc-section-h2{font-size:clamp(28px,3.5vw,48px);font-weight:200;letter-spacing:-.03em;line-height:1.15;color:#000;margin-bottom:clamp(20px,3vw,40px)}.bc-section-h2 strong{font-weight:600}.bc-text-link{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s;padding-bottom:1px}.bc-text-link:hover{border-color:var(--bc-accent)}.bc-bg-light{background:#f8f8f6}.bc-bg-dark{background:#0f0f0f;color:#fff}.bc-bg-dark .bc-section-h2{color:#fff}.bc-bg-dark .bc-section-label{color:rgba(255,255,255,.35)}
+/* BODY CONTENT */
+.bc-loc-body{max-width:900px;margin:0 auto}.bc-loc-body h2{font-size:clamp(22px,2.5vw,32px);font-weight:500;line-height:1.3;margin:0 0 20px;letter-spacing:-.02em;color:#1a1a1a}.bc-loc-body h3{font-size:clamp(16px,1.3vw,20px);font-weight:500;margin:clamp(32px,4vw,48px) 0 12px;letter-spacing:-.01em;color:#1a1a1a}.bc-loc-body p{font-size:15px;color:#555;line-height:1.9;margin:0 0 16px;font-weight:300}.bc-loc-body ul{margin:0 0 20px;padding-left:20px}.bc-loc-body ul li{font-size:15px;color:#555;line-height:1.9;font-weight:300;margin-bottom:6px}
+/* SERVICES GRID */
+.bc-loc-svcs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}.bc-loc-svc{padding:clamp(24px,3vw,40px);background:#f8f8f6;border:1px solid #eee;transition:border-color .3s}.bc-loc-svc:hover{border-color:var(--bc-accent)}.bc-loc-svc h3{font-size:clamp(15px,1.2vw,18px);font-weight:500;color:#1a1a1a;margin:0 0 10px}.bc-loc-svc p{font-size:14px;color:#777;line-height:1.8;margin:0;font-weight:300}
+/* PROJECT CARDS */
+.bc-loc-projects{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1.2vw,16px)}.bc-loc-pcard{position:relative;overflow:hidden;display:block}.bc-loc-pcard img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .5s;filter:brightness(.92)}.bc-loc-pcard:hover img{transform:scale(1.03);filter:brightness(.8)}.bc-loc-pcard::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.55) 100%);opacity:0;transition:opacity .5s}.bc-loc-pcard:hover::after{opacity:1}.bc-loc-pcard-info{position:absolute;bottom:clamp(12px,1.5vw,24px);left:clamp(12px,1.5vw,24px);right:clamp(12px,1.5vw,24px);z-index:2;opacity:0;transform:translateY(8px);transition:all .5s}.bc-loc-pcard:hover .bc-loc-pcard-info{opacity:1;transform:translateY(0)}.bc-loc-pcard-info h3{font-size:clamp(16px,1.5vw,22px);font-weight:400;color:#fff;letter-spacing:-.02em}.bc-loc-pcard-info h3 strong{font-weight:600}.bc-loc-pcard-info span{font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px;display:block}
+/* KNOWLEDGE 2-COL */
+.bc-loc-know-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px)}.bc-loc-know-grid h3{font-size:clamp(15px,1.2vw,18px);font-weight:500;color:var(--bc-accent);margin:clamp(24px,3vw,36px) 0 8px}.bc-loc-know-grid p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.9;margin:0 0 12px;font-weight:300}
+/* FAQ */
+.bc-faq-list{max-width:900px}.bc-faq-item{border-bottom:1px solid #eee}.bc-faq-q{display:flex;justify-content:space-between;align-items:center;padding:clamp(18px,2vw,28px) 0;cursor:pointer;background:none;border:none;width:100%;text-align:left;font-family:'Inter',sans-serif;font-size:clamp(17px,1.4vw,20px);font-weight:400;color:#1a1a1a;line-height:1.5;gap:16px}.bc-faq-q:hover{color:#666}.bc-faq-icon{font-size:20px;color:#ccc;transition:transform .3s;flex-shrink:0}.bc-faq-item.open .bc-faq-icon{transform:rotate(45deg)}.bc-faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}.bc-faq-item.open .bc-faq-a{max-height:500px}.bc-faq-a-inner{padding:0 0 clamp(18px,2vw,28px);font-size:16px;color:#666;line-height:1.9}.bc-faq-a-inner a{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s}.bc-faq-a-inner a:hover{border-color:var(--bc-accent)}
+/* CTA */
+.bc-cta{position:relative;height:55vh;min-height:400px;overflow:hidden;display:flex;align-items:center;justify-content:center}.bc-cta img.bc-cta-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}.bc-cta::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:1}.bc-cta-c{position:relative;z-index:2;text-align:center;max-width:600px;padding:0 24px}.bc-cta h2{font-size:clamp(28px,4vw,52px);font-weight:200;color:#fff;letter-spacing:-.03em;margin-bottom:16px;line-height:1.15}.bc-cta h2 strong{font-weight:600}.bc-cta p{font-size:17px;color:rgba(255,255,255,.55);margin-bottom:36px;line-height:1.8;font-weight:300}.bc-btn{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:18px 44px;border:2px solid var(--bc-accent);background:var(--bc-accent);color:#fff;transition:all .4s;cursor:pointer}.bc-btn:hover{background:var(--bc-accent-hover);border-color:var(--bc-accent-hover)}
+/* FOOTER */
+.bc-ft{background:#0a0a0a;color:#fff;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px) clamp(24px,3vw,40px);border-top:3px solid var(--bc-accent)}.bc-ft-inner{max-width:1600px;margin:0 auto}.bc-ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:clamp(24px,4vw,60px);padding-bottom:clamp(40px,5vw,60px);border-bottom:1px solid rgba(255,255,255,.08)}.bc-ft-brand p{font-size:13px;color:rgba(255,255,255,.35);line-height:1.8;margin-top:20px;max-width:300px;font-weight:300}.bc-ft-mark{height:60px;width:auto;opacity:.8;margin-bottom:8px}.bc-ft-col h4{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:20px}.bc-ft-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);line-height:2.2;transition:color .3s;font-weight:300}.bc-ft-col a:hover{color:var(--bc-accent)}.bc-ft-btm{display:flex;justify-content:space-between;align-items:center;padding-top:clamp(20px,3vw,32px)}.bc-ft-copy{font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.02em;font-weight:300}.bc-ft-social{display:flex;gap:24px}.bc-ft-social a{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);transition:color .3s}.bc-ft-social a:hover{color:var(--bc-accent)}
+
+@media(max-width:900px){.bc-hd-nav{display:none}.bc-hd-mob{display:block}}
+@media(max-width:768px){.bc-loc-hero{height:55vh;min-height:400px}.bc-loc-svcs{grid-template-columns:1fr}.bc-loc-projects{grid-template-columns:1fr}.bc-loc-know-grid{grid-template-columns:1fr}.bc-cta{height:50vh;min-height:350px}.bc-ft-top{grid-template-columns:1fr 1fr;gap:32px}.bc-ft-btm{flex-direction:column;gap:12px;text-align:center}.bc-mob a{font-size:clamp(20px,4vw,28px)}}
+@media(max-width:480px){.bc-ft-top{grid-template-columns:1fr}}
+</style>
+
+<div class="bc-progress" id="bcProgress"></div>
+<div class="bc">
+
+<!-- NAV -->
+<header class="bc-hd bc-hd--top" id="bcHd">
+  <div class="bc-hd-inner">
+    <a href="/" class="bc-hd-logo"><img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png" alt="Balmoral Construction — Custom Home Builder in Whistler, Pemberton and Squamish"></a>
+    <ul class="bc-hd-nav">
+      <li><a href="/about" class="bc-hd-link">About</a></li>
+      <li class="bc-hd-drop"><a href="/services" class="bc-hd-link">Services</a><div class="bc-hd-drop-menu"><a href="/custom-home-building">Custom Home Building</a><a href="/home-renovations">Home Renovations</a><a href="/general-contracting">General Contracting</a><a href="/project-management">Project Management</a><a href="/land-consultation">Land Consultation</a><a href="/permit-coordination">Permit Coordination</a></div></li>
+      <li><a href="/work" class="bc-hd-link">Work</a></li>
+      <li class="bc-hd-drop"><a href="javascript:void(0)" class="bc-hd-link">Locations</a><div class="bc-hd-drop-menu"><a href="/whistler-home-builder">Whistler</a><a href="/pemberton-home-builder">Pemberton</a><a href="/squamish-home-builder">Squamish</a></div></li>
+      <li><a href="/blog" class="bc-hd-link">Blog</a></li>
+      <li><a href="/contact" class="bc-hd-link">Contact</a></li>
+    </ul>
+    <button class="bc-hd-mob" aria-label="Menu" onclick="document.getElementById('bcMob').classList.toggle('open');this.classList.toggle('open');document.getElementById('bcHd').classList.toggle('bc-hd--mob-open')"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="bc-mob" id="bcMob">
+  <a href="/about">About</a><a href="/services">Services</a>
+  <div class="bc-mob-sub"><a href="/custom-home-building">Custom Home Building</a><a href="/home-renovations">Home Renovations</a><a href="/general-contracting">General Contracting</a><a href="/project-management">Project Management</a><a href="/land-consultation">Land Consultation</a><a href="/permit-coordination">Permit Coordination</a></div>
+  <a href="/work">Work</a><a href="/whistler-home-builder">Whistler</a><a href="/pemberton-home-builder">Pemberton</a><a href="/squamish-home-builder">Squamish</a><a href="/blog">Blog</a><a href="/contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="bc-loc-hero">
+  <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/00d2881c-a63e-4112-89ac-85586e94ab97/image-1024x683.png" alt="Custom home building in Squamish, BC — Balmoral Construction">
+  <div class="bc-loc-hero-c">
+    <span class="bc-section-label">Squamish, BC</span>
+    <h1><strong>Custom Home Builder</strong> in Squamish, BC</h1>
+    <p>Ground-up custom homes built for the Sea to Sky lifestyle. Balmoral Construction brings 20+ years of corridor expertise to Squamish's fastest-growing neighbourhoods.</p>
+  </div>
+</section>
+
+<!-- BODY CONTENT -->
+<section class="bc-section-pad" style="background:#fff">
+  <div class="bc-section-inner bc-loc-body bc-reveal">
+    <h2>Why build a custom home in Squamish?</h2>
+    <p>Squamish has undergone one of the most dramatic transformations of any community in British Columbia over the past fifteen years. What was once a quiet highway town between Vancouver and Whistler has become the fastest-growing municipality in the Sea to Sky Corridor, attracting young families, outdoor enthusiasts, and professionals who want access to world-class recreation without the price tag of living in <a href="/whistler-home-builder" class="bc-text-link">Whistler</a> or the congestion of Metro Vancouver. For anyone considering building a <a href="/custom-home-building" class="bc-text-link">custom home</a> in the corridor, Squamish presents a compelling combination of location, lifestyle, and long-term value that is difficult to match.</p>
+    <p>The geographic advantage of Squamish is significant. Sitting at the head of Howe Sound with the Sea to Sky Highway connecting it to Vancouver in under an hour, Squamish offers something that Whistler and <a href="/pemberton-home-builder" class="bc-text-link">Pemberton</a> simply cannot: proximity to the city. Professionals who commute to Vancouver, business owners who need access to the airport, and families who want to be within reasonable distance of specialized medical care and urban amenities find Squamish strikes the right balance. You get mountain living without the isolation that comes with communities further up the corridor.</p>
+    <p>The outdoor recreation infrastructure in Squamish is world-renowned and continues to expand. The Stawamus Chief draws climbers from around the globe. The mountain biking trail network in the Squamish Valley rivals any system in North America. Kiteboarding on the Squamish Spit, trail running in the Garibaldi Provincial Park backcountry, skiing at Whistler Blackcomb just forty-five minutes up the highway — these are not vacation activities for Squamish residents, they are Tuesday afternoon routines. Building a custom home here means designing around a lifestyle that prioritizes access to the outdoors, with features like gear rooms, bike storage, outdoor showers, and covered entries that handle the volume of equipment an active family accumulates.</p>
+    <p>Squamish's neighbourhood diversity offers genuine choice in where and how you build. University Heights, the newest major development, delivers modern infrastructure with mountain views and proximity to Quest University. Garibaldi Highlands, established in the 1970s and 1980s but now experiencing significant infill and redevelopment, offers larger lots with mature landscaping and a quieter residential feel. Brackendale, further north along the corridor, provides a rural atmosphere with room to spread out, proximity to the Brackendale Eagles Provincial Park, and a community character that feels distinctly different from the busier southern neighbourhoods. Downtown Squamish and Valleycliffe round out the options, each with their own personality and building considerations.</p>
+    <p>The construction landscape in Squamish reflects the town's rapid growth. Municipal building codes and development standards have been updated to accommodate the volume of new construction while maintaining quality. The District of Squamish building department is accustomed to processing custom home applications and has clear processes for everything from initial permits to occupancy. Compared to Whistler's Resort Municipality framework, which adds layers of design review and resort-specific requirements, Squamish's permitting process is more straightforward — though it still requires careful attention to zoning, setbacks, lot coverage, and environmental considerations.</p>
+    <p>Modern building codes in Squamish reflect BC Energy Step Code requirements that are progressively raising the energy performance bar for new construction. A custom home built in Squamish today will meet or exceed Step 3 energy performance standards, which means superior insulation, airtight construction, high-performance windows, and mechanical ventilation with heat recovery. These requirements align perfectly with what a quality <a href="/custom-home-building" class="bc-text-link">custom builder</a> would specify regardless of code minimums — the result is a home that costs less to operate, maintains consistent indoor comfort, and holds its value better over time.</p>
+
+    <h3>Squamish's climate and what it means for your build</h3>
+    <p>Squamish occupies a unique microclimate within the Sea to Sky Corridor. Sitting at sea level at the head of Howe Sound, it is significantly milder than Whistler or Pemberton in winter. Snow is infrequent at lower elevations, and hard freezes are uncommon compared to communities further up the highway. This creates advantages for construction scheduling — the building season is longer, and fewer weather delays impact project timelines.</p>
+    <p>However, the defining climate characteristic of Squamish is rain. Significant rainfall is part of life here, particularly from October through April. Annual precipitation in Squamish can exceed 2,200 millimetres, which places serious demands on building envelope design, foundation drainage, roofing systems, and site grading. A custom home in Squamish must be designed from the ground up with moisture management as a primary consideration. This means rain screen wall assemblies, properly detailed flashing at every penetration and transition, robust gutter and downspout systems, and foundation drainage that moves water away from the building reliably and permanently.</p>
+    <p>Wind is another factor that distinguishes Squamish construction. The Squamish winds that make the area famous for kiteboarding also test building envelopes, particularly for homes with southern or western exposure near the waterfront. Window specifications, cladding attachment, and roofing details all need to account for sustained winds and gusts that can be substantially stronger than what communities further up the corridor experience.</p>
+
+    <h3>Building in Squamish from our Pemberton base</h3>
+    <p>Balmoral Construction is headquartered in Pemberton, and clients occasionally ask whether that matters for a Squamish project. The straightforward answer is that it does not. Our team has worked across the entire Sea to Sky Corridor for over a decade, and our <a href="/project-management" class="bc-text-link">project management</a> approach is built around daily on-site presence regardless of the community. Jeremy Lewis and Jonny Tweedie, our project managers, are on your site every working day, managing trades, reviewing quality, and solving problems in real time.</p>
+    <p>Our trade network extends throughout the corridor, including established relationships with Squamish-based trades who know the local conditions intimately. We coordinate material deliveries, inspections, and subcontractor schedules with the same precision we apply to every project, whether it is in Whistler, Pemberton, or Squamish. The Sea to Sky Highway connects these communities in a way that makes geographic distance a non-factor for a well-organized builder.</p>
+  </div>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="bc-section-pad bc-bg-light" style="border-top:1px solid #eee;border-bottom:1px solid #eee">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">What We Build</span>
+    <h2 class="bc-section-h2 bc-reveal">Custom home building services in <strong>Squamish</strong></h2>
+    <p class="bc-reveal" style="font-size:15px;color:#777;max-width:600px;margin-bottom:clamp(32px,4vw,48px);font-weight:300;line-height:1.8">From lot evaluation through occupancy — every phase managed by our team.</p>
+    <div class="bc-loc-svcs bc-reveal bc-reveal-delay-1">
+      <div class="bc-loc-svc"><h3>Land Evaluation</h3><p>Site assessment covering soil conditions, slope, access, utility connections, view corridors, and District of Squamish zoning requirements before design begins.</p></div>
+      <div class="bc-loc-svc"><h3>Design Collaboration</h3><p>We work with your architect or connect you with trusted designers. Construction knowledge enters the design phase early, preventing costly surprises during the build.</p></div>
+      <div class="bc-loc-svc"><h3>Permitting &amp; Approvals</h3><p>Complete coordination with the District of Squamish building department, engineers, geotechnical consultants, and environmental assessors as required for your lot.</p></div>
+      <div class="bc-loc-svc"><h3>Full Construction</h3><p>Foundation through finishing, with project managers on site daily. Long-standing trade relationships ensure the right crew for every phase of your Squamish build.</p></div>
+      <div class="bc-loc-svc"><h3>Interior Finishing</h3><p>Custom millwork, cabinetry, tile, and finishing details executed to the standard your home deserves. Our affiliated interior designer has partnered with us since 2014.</p></div>
+      <div class="bc-loc-svc"><h3>Warranty &amp; Support</h3><p>Every Balmoral home is backed by <a href="/reviews" class="bc-text-link">BC New Home Warranty and National Home Warranty</a>. We walk you through every system and remain available long after handover.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section class="bc-section-pad" style="background:#fff">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Our Work Nearby</span>
+    <h2 class="bc-section-h2 bc-reveal">Sea to Sky <strong>projects</strong></h2>
+    <div class="bc-loc-projects bc-reveal bc-reveal-delay-1">
+      <a href="/warbler-way" class="bc-loc-pcard"><img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/cbef60b8-5b6a-4fe1-b8b1-51584675f265/whistler-home-builder-balmoral-construction-warbler-45.jpg" alt="Warbler Way custom home in Whistler by Balmoral Construction" loading="lazy"><div class="bc-loc-pcard-info"><h3><strong>Warbler Way</strong></h3><span>Whistler, BC</span></div></a>
+      <a href="/cerulean" class="bc-loc-pcard"><img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/f5e179b4-accd-4319-8d56-ec7cade57368/7667Cerulean-Dusk-6.jpg" alt="Cerulean custom home in Pemberton by Balmoral Construction" loading="lazy"><div class="bc-loc-pcard-info"><h3><strong>Cerulean</strong></h3><span>Pemberton, BC</span></div></a>
+      <a href="/sugarloaf" class="bc-loc-pcard"><img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/989bc309-dd71-40c1-83b9-0ba6f6523a1e/custom-home-builder-pemberton-balmoral-construction-1.jpg" alt="Sugarloaf custom home in Pemberton by Balmoral Construction" loading="lazy"><div class="bc-loc-pcard-info"><h3><strong>Sugarloaf</strong></h3><span>Pemberton, BC</span></div></a>
+    </div>
+    <div class="bc-reveal bc-reveal-delay-2" style="text-align:center;padding-top:clamp(32px,4vw,48px)"><a href="/work" style="font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#999;transition:color .3s;padding-bottom:4px;border-bottom:1px solid #ddd">View All Projects &rarr;</a></div>
+  </div>
+</section>
+
+<!-- LOCAL KNOWLEDGE -->
+<section class="bc-section-pad bc-bg-dark">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Local Expertise</span>
+    <h2 class="bc-section-h2 bc-reveal">What we know about building in <strong>Squamish</strong></h2>
+    <div class="bc-loc-know-grid bc-reveal bc-reveal-delay-1">
+      <div>
+        <p>Every community in the Sea to Sky Corridor has its own building personality, and Squamish is no exception. The soils vary dramatically across the municipality — alluvial deposits near the Squamish River, glacial till in the Highlands, and rocky outcroppings in areas closer to the Chief. Each soil type demands a different foundation approach, and getting this right from the start is what separates a home that performs for decades from one that develops problems.</p>
+        <p>The District of Squamish has specific requirements around environmental protection, particularly for properties near watercourses, in the floodplain, or within environmentally sensitive areas. Setbacks from riparian zones, stormwater management plans, and environmental impact assessments can all factor into your project timeline and design. We coordinate with environmental consultants and the district from the earliest planning stages to prevent surprises that delay construction.</p>
+        <h3>Moisture management expertise</h3>
+        <p>Building in Squamish means building for rain. Our wall assemblies use rain screen technology with ventilated cavities that allow moisture to drain and dry, preventing the trapped moisture problems that have plagued coastal BC construction for decades. Every window, door, deck attachment, and utility penetration receives detailed flashing and sealant application that exceeds minimum code requirements. We specify materials that perform in persistent moisture conditions — fiber cement siding, membrane-protected decking, stainless steel fasteners — because the cheapest option upfront is rarely the cheapest option over the life of the home.</p>
+      </div>
+      <div>
+        <h3>Foundation waterproofing</h3>
+        <p>Foundation waterproofing in Squamish requires particular attention. High water tables in some neighbourhoods, combined with the volume of rainfall, mean that foundation drainage systems must be designed for the worst-case scenario, not average conditions. We install perimeter drainage with inspection ports, apply rubberized membrane waterproofing to foundation walls, and ensure that grading directs surface water away from the building on all sides.</p>
+        <h3>Wind and coastal exposure</h3>
+        <p>The Squamish winds that make the area famous for kiteboarding also test building envelopes, particularly for homes with southern or western exposure near the waterfront. Window specifications, cladding attachment, and roofing details all need to account for sustained winds and gusts that can be substantially stronger than what communities further up the corridor experience.</p>
+        <h3>District of Squamish permitting</h3>
+        <p>The District of Squamish has clear processes for custom home applications. Compared to Whistler's Resort Municipality framework, permitting is more straightforward, but still requires careful attention to zoning, setbacks, lot coverage, and environmental considerations. We coordinate all required consultant reports and maintain working relationships with district planning and building inspection staff to keep timelines on track.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bc-section-pad bc-bg-light" style="border-top:1px solid #eee;border-bottom:1px solid #eee">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Common Questions</span>
+    <h2 class="bc-section-h2 bc-reveal">Squamish custom home building <strong>FAQ</strong></h2>
+    <div class="bc-faq-list bc-reveal bc-reveal-delay-1">
+      <div class="bc-faq-item"><button class="bc-faq-q" aria-expanded="false">How much does it cost to build a custom home in Squamish?<span class="bc-faq-icon">+</span></button><div class="bc-faq-a"><div class="bc-faq-a-inner">Custom home construction in Squamish typically ranges from $400 to $650 per square foot, depending on site complexity, design specifications, and finishing levels. This is generally lower than Whistler pricing but reflects the high standards of modern BC Building Code and Energy Step Code requirements. We provide detailed estimates after evaluating your specific lot, design, and material preferences. <a href="/contact">Contact us</a> for a consultation.</div></div></div>
+      <div class="bc-faq-item"><button class="bc-faq-q" aria-expanded="false">Which Squamish neighbourhoods are best for custom builds?<span class="bc-faq-icon">+</span></button><div class="bc-faq-a"><div class="bc-faq-a-inner">University Heights offers modern infrastructure and mountain views, Garibaldi Highlands provides larger lots with a mature residential feel, and Brackendale delivers a quieter rural character with room to spread out. Each neighbourhood has different zoning, lot sizes, and building considerations. The best choice depends on your lifestyle priorities, budget, and the type of home you want to build. <a href="/contact">Contact us to discuss</a>.</div></div></div>
+      <div class="bc-faq-item"><button class="bc-faq-q" aria-expanded="false">How does building in Squamish differ from Whistler?<span class="bc-faq-icon">+</span></button><div class="bc-faq-a"><div class="bc-faq-a-inner">Squamish is milder in winter with less snow load but significantly more rain. The permitting process through the District of Squamish is generally more straightforward than Whistler's Resort Municipality framework. Construction costs are typically lower in Squamish due to easier access, milder conditions extending the building season, and less complex site requirements. Moisture management becomes the primary building science focus rather than snow load and freeze-thaw considerations.</div></div></div>
+      <div class="bc-faq-item"><button class="bc-faq-q" aria-expanded="false">Can Balmoral build in Squamish from your Pemberton office?<span class="bc-faq-icon">+</span></button><div class="bc-faq-a"><div class="bc-faq-a-inner">Absolutely. Our project managers are on site daily regardless of the community. We have established trade relationships throughout the Sea to Sky Corridor, including Squamish-based subcontractors who know local conditions. The Sea to Sky Highway connects our communities efficiently, and our project management systems ensure the same hands-on oversight you would get on any Balmoral project. <a href="/work">See our portfolio</a>.</div></div></div>
+      <div class="bc-faq-item"><button class="bc-faq-q" aria-expanded="false">How long does it take to build a custom home in Squamish?<span class="bc-faq-icon">+</span></button><div class="bc-faq-a"><div class="bc-faq-a-inner">Most custom homes in Squamish take 12 to 16 months from breaking ground to completion. The milder climate and longer building season can sometimes result in shorter timelines compared to Whistler or Pemberton. Permitting with the District of Squamish typically takes 2 to 4 months before construction begins, depending on the complexity of the application and any environmental review requirements.</div></div></div>
+      <div class="bc-faq-item"><button class="bc-faq-q" aria-expanded="false">What should I know about rain and moisture when building in Squamish?<span class="bc-faq-icon">+</span></button><div class="bc-faq-a"><div class="bc-faq-a-inner">Squamish receives over 2,200 mm of rainfall annually, making moisture management the single most important building science consideration. Every Balmoral home in Squamish uses rain screen wall assemblies, robust foundation waterproofing, and detailed flashing at all penetrations. We specify materials rated for persistent moisture exposure and design drainage systems for worst-case conditions, not averages.</div></div></div>
+      <div class="bc-faq-item"><button class="bc-faq-q" aria-expanded="false">What warranty coverage do Balmoral homes include?<span class="bc-faq-icon">+</span></button><div class="bc-faq-a"><div class="bc-faq-a-inner">Every Balmoral home is registered with BC New Home Warranty and National Home Warranty, providing 2-year coverage for materials and labour, 5-year coverage for the building envelope, and 10-year structural coverage. We are a registered builder with the Canadian Home Builders Association — Sea to Sky chapter. We walk you through every system in your home at completion and remain available for questions and support long after you move in.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bc-cta">
+  <img class="bc-cta-bg" src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/5c61a29e-68de-4319-9de2-c8f345512926/custom-home-whistler-hillside-exterior-sea-to-sky.jpg" alt="Custom home building in Squamish by Balmoral Construction" loading="lazy">
+  <div class="bc-cta-c bc-reveal">
+    <h2>Ready to build in <strong>Squamish?</strong></h2>
+    <p>Tell us about your lot, your vision, and your timeline. Every Balmoral project starts with a conversation about what you want to build and where.</p>
+    <a href="/contact" class="bc-btn bc-btn--accent">Get in Touch</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bc-ft">
+  <div class="bc-ft-inner">
+    <div class="bc-ft-top">
+      <div class="bc-ft-brand"><img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/83ca6501-705e-43ee-b119-551d0c16ea14/unnamed.png" alt="Balmoral Construction — Custom Home Builder in the Sea to Sky Corridor" class="bc-ft-mark"><p>Boutique custom home builder in the Sea to Sky Corridor. Based in Pemberton, building across Whistler, Pemberton &amp; Squamish since 2011.</p></div>
+      <div class="bc-ft-col"><h4>Services</h4><a href="/custom-home-building">Custom Home Building</a><a href="/home-renovations">Home Renovations</a><a href="/general-contracting">General Contracting</a><a href="/project-management">Project Management</a><a href="/land-consultation">Land Consultation</a><a href="/permit-coordination">Permit Coordination</a><a href="/services">All Services</a></div>
+      <div class="bc-ft-col"><h4>Locations</h4><a href="/whistler-home-builder">Whistler Home Builder</a><a href="/pemberton-home-builder">Pemberton Home Builder</a><a href="/squamish-home-builder">Squamish Home Builder</a><a href="/whistler-home-renovations">Whistler Renovations</a><a href="/pemberton-home-renovations">Pemberton Renovations</a><a href="/squamish-home-renovations">Squamish Renovations</a></div>
+      <div class="bc-ft-col"><h4>Projects</h4><a href="/warbler-way">Warbler Way</a><a href="/cerulean">Cerulean</a><a href="/sugarloaf">Sugarloaf</a><a href="/white-gold-2">White Gold 2</a><a href="/fitzsimmons">Fitzsimmons</a><a href="/work">All Projects</a></div>
+      <div class="bc-ft-col"><h4>Company</h4><a href="/about">About</a><a href="/work">Portfolio</a><a href="/reviews">Reviews</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href="tel:6049072237">604.907.2237</a><a href="mailto:marc@balmoralconstruction.com">marc@balmoralconstruction.com</a></div>
+    </div>
+    <div class="bc-ft-btm">
+      <span class="bc-ft-copy">&copy; 2026 Balmoral Construction Inc. &mdash; Custom Home Builder in Whistler, Pemberton &amp; Squamish, BC</span>
+      <div class="bc-ft-social"><a href="https://www.instagram.com/balmoralconstruction/" target="_blank" rel="noopener">Instagram</a><a href="https://www.houzz.com/professionals/general-contractors/balmoral-construction-pfvwus-pf~1513498919" target="_blank" rel="noopener">Houzz</a></div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var hd=document.getElementById('bcHd');
+  function checkScroll(){var s=window.scrollY>80;hd.classList.toggle('bc-hd--top',!s);hd.classList.toggle('bc-hd--scrolled',s)}
+  window.addEventListener('scroll',checkScroll);checkScroll();
+
+  var prog=document.getElementById('bcProgress');
+  window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;if(h>0)prog.style.width=(window.scrollY/h*100)+'%'});
+
+  var reveals=document.querySelectorAll('.bc-reveal');
+  var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('bc-visible');observer.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  reveals.forEach(function(el){observer.observe(el)});
+
+  document.querySelectorAll('.bc-faq-item').forEach(function(item){
+    var btn=item.querySelector('.bc-faq-q');
+    btn.addEventListener('click',function(){
+      var isOpen=item.classList.contains('open');
+      document.querySelectorAll('.bc-faq-item').forEach(function(i){i.classList.remove('open');i.querySelector('.bc-faq-q').setAttribute('aria-expanded','false')});
+      if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true')}
+    });
+  });
+})();
+</script>
+<style>
+/* Squarespace page wrapper reset */
+.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block{margin:0!important;padding:0!important;max-width:100%!important;width:100%!important}
+.page-section:last-of-type{padding-bottom:0!important;margin-bottom:0!important}
+#footer,.Footer,.footer,footer[data-footer-id],footer:not(.bc-ft){display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important}
+.sqs-block-spacer,.sqs-block-horizontalrule,.section-background{display:none!important}
+@media(max-width:768px){.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block,.Index-page-content,.blog-item-inner-wrapper,article.page,article.Page,.page-content,.Page-content{padding:0!important;margin:0!important}body{padding-bottom:0!important;margin-bottom:0!important}}
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){var f=document.querySelector('.bc-ft');if(f){var p=f.closest('.sqs-block')||f.closest('.page-section')||f.parentElement;while(p){var n=p.nextElementSibling;while(n){n.style.cssText='display:none!important;height:0!important;padding:0!important;margin:0!important;overflow:hidden!important';n=n.nextElementSibling}p=p.parentElement}}});
+</script>

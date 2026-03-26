@@ -1,0 +1,303 @@
+<style>
+#maHeader{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:99999!important;display:flex!important;align-items:center!important;justify-content:space-between!important;padding:26px 64px!important;background-color:transparent!important;transition:background-color .45s ease,padding .45s ease,box-shadow .45s ease;font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;pointer-events:auto!important;visibility:visible!important;opacity:1!important;height:auto!important;overflow:visible!important;animation:none!important}
+#maHeader.scrolled{background-color:#1a1a18!important;padding:16px 64px!important;box-shadow:0 1px 30px rgba(0,0,0,.2)!important}
+#maHeader .ma-logo{display:flex!important;flex-direction:column;align-items:flex-start;text-decoration:none!important;flex-shrink:0;visibility:visible!important;opacity:1!important;height:auto!important;pointer-events:auto!important;animation:none!important}
+#maHeader .ma-logo-name{font-family:'Josefin Sans',sans-serif!important;font-weight:700!important;font-size:15px!important;letter-spacing:.4em!important;text-transform:uppercase!important;line-height:1!important;color:#f6f4f0!important}
+#maHeader .ma-logo-rule{width:100%!important;height:1px!important;background:#c9a96e!important;margin:5px 0!important;display:block!important}
+#maHeader .ma-logo-desc{font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:300!important;font-size:7.5px!important;letter-spacing:.25em!important;text-transform:uppercase!important;color:#b8975a!important}
+#maHeader .ma-nav{display:flex!important;align-items:center;gap:35px;list-style:none!important;margin:0!important;padding:0!important;visibility:visible!important;opacity:1!important;height:auto!important;animation:none!important}
+#maHeader .ma-nav-item{position:relative;list-style:none!important;display:block!important;visibility:visible!important;opacity:1!important;height:auto!important;animation:none!important}
+#maHeader .ma-nav-link{font-family:'DM Sans',sans-serif!important;font-size:12.5px!important;font-weight:400!important;letter-spacing:.18em!important;text-transform:uppercase!important;color:#d9d5cd!important;text-decoration:none!important;position:relative;padding:8px 0!important;cursor:pointer;background:none!important;border:none!important;display:inline-block!important;visibility:visible!important;opacity:1!important;transition:color .3s ease;animation:none!important}
+#maHeader .ma-nav-link::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:#c9a96e;transition:width .3s ease}
+#maHeader .ma-nav-link:hover{color:#f6f4f0!important}
+#maHeader .ma-nav-link:hover::after{width:100%}
+#maHeader .ma-has-dd::before{content:'';display:inline-block;width:0;height:0;border-left:3px solid transparent;border-right:3px solid transparent;border-top:3px solid currentColor;margin-left:6px;vertical-align:middle;position:relative;top:-1px}
+#maHeader .ma-dropdown{position:absolute;top:calc(100% + 12px);left:-16px;background:rgba(26,26,24,.97)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);min-width:260px;padding:12px 0;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s ease,transform .25s ease,visibility .25s ease;border:1px solid rgba(217,213,205,.08);list-style:none!important;margin:0!important;z-index:100000;height:auto!important;display:block!important}
+#maHeader .ma-nav-item:hover .ma-dropdown,#maHeader .ma-nav-item.active .ma-dropdown{opacity:1!important;visibility:visible!important;transform:translateY(0)}
+#maHeader .ma-dropdown li{list-style:none!important;display:block!important;visibility:visible!important;opacity:1!important;height:auto!important}
+#maHeader .ma-dropdown a{display:block!important;padding:10px 24px!important;font-family:'DM Sans',sans-serif!important;font-size:11.5px!important;font-weight:300!important;letter-spacing:.12em!important;color:#8a8579!important;text-decoration:none!important;transition:color .2s ease,padding-left .2s ease}
+#maHeader .ma-dropdown a:hover{color:#f6f4f0!important;padding-left:28px!important}
+#maHeader .ma-toggle{display:none;background:none!important;border:none!important;cursor:pointer;padding:8px;z-index:100001}
+#maHeader .ma-toggle span{display:block;width:24px;height:1.5px;background:#f6f4f0;transition:all .35s ease}
+#maHeader .ma-toggle span:nth-child(1){margin-bottom:6px}
+#maHeader .ma-toggle span:nth-child(2){margin-bottom:6px}
+#maHeader .ma-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+#maHeader .ma-toggle.open span:nth-child(2){opacity:0}
+#maHeader .ma-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+#maMobileNav{display:none;position:fixed;inset:0;z-index:99998;background:rgba(26,26,24,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);flex-direction:column;justify-content:flex-start;align-items:flex-start;padding:100px 40px 64px;overflow-y:auto}
+#maMobileNav.open{display:flex!important}
+#maMobileNav a{font-family:'Josefin Sans',sans-serif!important;font-weight:700;font-size:22px;letter-spacing:.15em;text-transform:uppercase;color:#f6f4f0!important;text-decoration:none!important;margin-bottom:32px;transition:color .3s ease}
+#maMobileNav a:hover{color:#c9a96e!important}
+#maMobileNav .mobile-sub{margin-bottom:36px;width:100%}
+#maMobileNav .mobile-sub-label{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e;margin-bottom:16px;padding-bottom:8px;display:block;font-weight:500;border-bottom:1px solid rgba(201,169,110,.2)}
+#maMobileNav .mobile-sub a{font-family:'DM Sans',sans-serif!important;font-weight:300;font-size:15px;letter-spacing:.08em;color:#d9d5cd!important;margin-bottom:16px;display:block}
+@media(max-width:900px){
+#maHeader{padding:19px 24px!important}
+#maHeader.scrolled{padding:13px 24px!important}
+#maHeader .ma-nav{display:none!important}
+#maHeader .ma-toggle{display:block!important}
+}
+</style>
+
+<div id="maHeader">
+  <a href="/" class="ma-logo">
+    <span class="ma-logo-name">Matt Anthony</span>
+    <span class="ma-logo-rule"></span>
+    <span class="ma-logo-desc">Architectural Photography</span>
+  </a>
+  <ul class="ma-nav">
+    <li class="ma-nav-item">
+      <span class="ma-nav-link ma-has-dd">About</span>
+      <ul class="ma-dropdown">
+        <li><a href="/bio">Bio</a></li>
+        <li><a href="/process">Process</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+      </ul>
+    </li>
+    <li class="ma-nav-item"><a href="/projects" class="ma-nav-link">Projects</a></li>
+    <li class="ma-nav-item">
+      <span class="ma-nav-link ma-has-dd">Services</span>
+      <ul class="ma-dropdown">
+        <li><a href="/project-photography">Project Photography</a></li>
+        <li><a href="/award-publication-imagery">Award & Publication Imagery</a></li>
+        <li><a href="/construction-team-content">Build & Team Content</a></li>
+        <li><a href="/creative-partner">Creative Partner</a></li>
+      </ul>
+    </li>
+    <li class="ma-nav-item">
+      <span class="ma-nav-link ma-has-dd">Case Studies</span>
+      <ul class="ma-dropdown">
+        <li><a href="/summerhill-fine-homes">Summerhill Fine Homes</a></li>
+        <li><a href="/balmoral-construction">Balmoral Construction</a></li>
+        <li><a href="/sitelines-architecture">Sitelines Architecture</a></li>
+        <li><a href="/the-window-merchant">The Window Merchant</a></li>
+        <li><a href="/lrd-studio-interior-design">LRD Studio</a></li>
+      </ul>
+    </li>
+    <li class="ma-nav-item"><a href="/journal" class="ma-nav-link">Journal</a></li>
+    <li class="ma-nav-item"><a href="/contact" class="ma-nav-link">Contact</a></li>
+  </ul>
+  <button class="ma-toggle" id="maToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</div>
+
+<div id="maMobileNav">
+  <div class="mobile-sub">
+    <span class="mobile-sub-label">About</span>
+    <a href="/bio">Bio</a>
+    <a href="/process">Process</a>
+    <a href="/faqs">FAQs</a>
+  </div>
+  <a href="/projects">Projects</a>
+  <div class="mobile-sub">
+    <span class="mobile-sub-label">Services</span>
+    <a href="/project-photography">Project Photography</a>
+    <a href="/award-publication-imagery">Award & Publication Imagery</a>
+    <a href="/construction-team-content">Build & Team Content</a>
+    <a href="/creative-partner">Creative Partner</a>
+  </div>
+  <div class="mobile-sub">
+    <span class="mobile-sub-label">Case Studies</span>
+    <a href="/summerhill-fine-homes">Summerhill Fine Homes</a>
+    <a href="/balmoral-construction">Balmoral Construction</a>
+    <a href="/sitelines-architecture">Sitelines Architecture</a>
+    <a href="/the-window-merchant">The Window Merchant</a>
+    <a href="/lrd-studio-interior-design">LRD Studio</a>
+  </div>
+  <a href="/journal">Journal</a>
+  <a href="/contact">Contact</a>
+</div>
+
+<script>
+(function() {
+  function hideDefault() {
+    var h = document.getElementById('header');
+    if (h) h.style.cssText = 'display:none!important;height:0!important;visibility:hidden!important;overflow:hidden!important;padding:0!important;margin:0!important;position:absolute!important;top:-9999px!important;';
+  }
+  hideDefault();
+  document.addEventListener('DOMContentLoaded', hideDefault);
+  setTimeout(hideDefault, 300);
+  setTimeout(hideDefault, 1000);
+  setTimeout(hideDefault, 2500);
+
+  var header = document.getElementById('maHeader');
+  window.addEventListener('scroll', function() {
+    header.classList.toggle('scrolled', (window.pageYOffset || document.documentElement.scrollTop) > 60);
+  });
+
+  var toggle = document.getElementById('maToggle');
+  var mobileNav = document.getElementById('maMobileNav');
+  toggle.addEventListener('click', function() {
+    toggle.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileNav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      toggle.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  document.querySelectorAll('#maHeader .ma-has-dd').forEach(function(trigger) {
+    trigger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var parent = this.parentElement;
+      var wasActive = parent.classList.contains('active');
+      document.querySelectorAll('#maHeader .ma-nav-item').forEach(function(item) { item.classList.remove('active'); });
+      if (!wasActive) parent.classList.add('active');
+    });
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('#maHeader')) {
+      document.querySelectorAll('#maHeader .ma-nav-item').forEach(function(item) { item.classList.remove('active'); });
+    }
+  });
+})();
+</script>
+
+<!-- Fix og:image to HTTPS -->
+<meta property="og:image" content="https://static1.squarespace.com/static/6824fd48afd1dd40cd73e146/t/68643f2e3cc74f1722c12ce4/1751400238330/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg?format=1500w" />
+
+<!-- Sitewide Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.mattanthonyphoto.com/#business",
+      "name": "Matt Anthony Photography",
+      "alternateName": "Matt Anthony Architectural Photography",
+      "description": "Architectural photography and film for architects, custom builders, and interior designers in British Columbia. Serving Whistler, Pemberton, Squamish, Sunshine Coast, and Vancouver.",
+      "url": "https://www.mattanthonyphoto.com",
+      "telephone": "+16047659270",
+      "email": "info@mattanthonyphoto.com",
+      "image": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/808387ba-bee1-4c46-a4d3-354d7e1f8372/west-10th-vancouver-web--2.jpg",
+      "logo": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e2cf3838-8bb8-4d66-acb2-256392fc34ce/matt-anthony-photography.png",
+      "priceRange": "$$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Squamish",
+        "addressRegion": "BC",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 49.7016,
+        "longitude": -123.1558
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Whistler",
+          "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" }
+        },
+        {
+          "@type": "City",
+          "name": "Pemberton",
+          "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" }
+        },
+        {
+          "@type": "City",
+          "name": "Squamish",
+          "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" }
+        },
+        {
+          "@type": "Place",
+          "name": "Sunshine Coast",
+          "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" }
+        },
+        {
+          "@type": "City",
+          "name": "Vancouver",
+          "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" }
+        }
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://www.mattanthonyphoto.com/#person",
+        "name": "Matt Anthony"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Architectural Photography Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Project Photography",
+              "description": "Complete visual documentation of finished builds including architecture, interiors, aerial, twilight, and short form project film.",
+              "url": "https://www.mattanthonyphoto.com/project-photography"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Award & Publication Imagery",
+              "description": "Photography and film crafted for award submissions, editorial features, and industry recognition.",
+              "url": "https://www.mattanthonyphoto.com/award-publication-imagery"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Build & Team Content",
+              "description": "Lifestyle photography, construction progression, team portraits, and short form video for social media, recruitment, and brand storytelling.",
+              "url": "https://www.mattanthonyphoto.com/construction-team-content"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Creative Partner",
+              "description": "Full embedded creative partnership including photography, marketing strategy, website development, content creation, and brand management for firms building multiple projects per year.",
+              "url": "https://www.mattanthonyphoto.com/creative-partner"
+            }
+          }
+        ]
+      },
+      "sameAs": [
+        "https://www.instagram.com/mattanthonyphoto/",
+        "https://www.linkedin.com/in/mattanthonyphoto/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mattanthonyphoto.com/#person",
+      "name": "Matt Anthony",
+      "jobTitle": "Architectural Photographer & Filmmaker",
+      "url": "https://www.mattanthonyphoto.com/bio",
+      "image": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/78a5df2e-eb81-4c0d-a9f0-9bdea08bdcd9/matt-anthony-photography-squamish.jpg",
+      "worksFor": {
+        "@id": "https://www.mattanthonyphoto.com/#business"
+      },
+      "knowsAbout": [
+        "Architectural Photography",
+        "Interior Design Photography",
+        "Construction Photography",
+        "Aerial Drone Photography",
+        "Short Form Film",
+        "Award Submission Photography"
+      ],
+      "sameAs": [
+        "https://www.instagram.com/mattanthonyphoto/",
+        "https://www.linkedin.com/in/mattanthonyphoto/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mattanthonyphoto.com/#website",
+      "name": "Matt Anthony Photography",
+      "url": "https://www.mattanthonyphoto.com",
+      "publisher": {
+        "@id": "https://www.mattanthonyphoto.com/#business"
+      }
+    }
+  ]
+}
+</script>

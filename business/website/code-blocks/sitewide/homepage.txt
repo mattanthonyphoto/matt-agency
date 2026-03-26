@@ -1,0 +1,1586 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.hp-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a1a18;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+}
+
+.hp-loader.hp-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.hp-loader-brand {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: #f6f4f0;
+  opacity: 0;
+  animation: hpLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.hp-loader-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(138,133,121,0.7);
+  margin-top: 8px;
+  opacity: 0;
+  animation: hpLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.hp-loader-line {
+  width: 80px;
+  height: 1px;
+  background: rgba(201,169,110,0.12);
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+  opacity: 0;
+  animation: hpLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.hp-loader-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  animation: hpLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+}
+
+@keyframes hpLoaderIn { to { opacity: 1; } }
+@keyframes hpLoaderFill { to { left: 100%; } }
+
+/* ── Section nav dots ── */
+.hp-section-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.hp-section-nav.hp-nav-visible {
+  opacity: 1;
+}
+
+.hp-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #8a8579;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.hp-nav-dot:hover {
+  border-color: #c9a96e;
+  transform: scale(1.3);
+}
+
+.hp-nav-dot.hp-nav-active {
+  background: #c9a96e;
+  border-color: #c9a96e;
+  box-shadow: 0 0 8px rgba(201,169,110,0.4);
+}
+
+.hp-nav-dot::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, right 0.3s ease;
+}
+
+.hp-nav-dot:hover::before {
+  opacity: 1;
+  right: 24px;
+}
+
+@media (max-width: 768px) {
+  .hp-section-nav { display: none; }
+}
+
+/* ── Scroll progress bar ── */
+.hp-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.4));
+  z-index: 9999;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px rgba(201,169,110,0.4);
+}
+
+/* ── Headline gold underline on em ── */
+.hp-wrap h2 em {
+  position: relative;
+  display: inline;
+}
+
+.hp-wrap h2 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.2));
+  transition: width 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hp-wrap h2.hp-underlined em::after {
+  width: 100%;
+}
+
+/* ── Divider draw animation ── */
+.hp-divider {
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hp-divider.hp-drawn {
+  width: 80px;
+}
+
+/* ── Ken Burns on image breaks ── */
+.hp-img-break.hp-in-view img {
+  animation: hpKenBurns 16s ease-in-out infinite alternate;
+}
+
+@keyframes hpKenBurns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.06) translate(-4px, -6px); }
+}
+
+/* ── Film grain overlay ── */
+.hp-grain::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.hp-grain {
+  position: relative;
+}
+
+.hp-grain > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Eyebrow gold dash (animated) ── */
+.hp-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hp-eyebrow::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  background: #c9a96e;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hp-eyebrow.hp-visible::before {
+  width: 24px;
+}
+
+/* ── Custom cursor ── */
+.hp-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(201,169,110,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
+.hp-cursor.hp-active {
+  opacity: 1;
+}
+
+.hp-cursor.hp-hover {
+  width: 50px;
+  height: 50px;
+  border-color: #c9a96e;
+  background: rgba(201,169,110,0.08);
+}
+
+.hp-cursor.hp-click {
+  width: 14px;
+  height: 14px;
+  background: rgba(201,169,110,0.3);
+}
+
+.hp-cursor-dot {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #c9a96e;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hp-cursor-dot.hp-active {
+  opacity: 1;
+}
+
+/* ── Magnetic button ── */
+.hp-magnetic {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Ambient particles canvas ── */
+.hp-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Quote mark float ── */
+@keyframes hpQuoteFloat {
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.05) translateY(-4px); }
+}
+
+/* ── CTA button glow pulse ── */
+.hp-cta-btn {
+  animation: hpBtnGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes hpBtnGlow {
+  0% { box-shadow: none; }
+  100% { box-shadow: 0 0 40px rgba(201,169,110,0.15), 0 0 80px rgba(201,169,110,0.05); }
+}
+
+/* ── Accent line pulse ── */
+@keyframes hpAccentPulse {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* ── Scroll indicator ── */
+.hp-scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 3;
+  transition: opacity 0.4s ease;
+}
+
+.hp-scroll-hint.hp-hidden { opacity: 0; pointer-events: none; }
+
+.hp-scroll-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.45rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.3);
+}
+
+.hp-scroll-line {
+  width: 1px;
+  height: 36px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(246,244,240,0.1);
+}
+
+.hp-scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #c9a96e;
+  animation: hpScrollPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes hpScrollPulse {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ── Manifesto word reveal ── */
+.hp-manifesto-text .hp-mw {
+  display: inline;
+  color: rgba(246,244,240,0.12);
+  transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hp-manifesto-text .hp-mw.hp-lit {
+  color: #f6f4f0;
+}
+
+.hp-manifesto-text .hp-mw.hp-gold-word.hp-lit {
+  color: #c9a96e;
+}
+
+/* ── Testimonial text (standard visible) ── */
+.hp-test-quote {
+  color: #d9d5cd !important;
+}
+
+/* ── CTA background slow zoom ── */
+.hp-cta-bg img {
+  transition: transform 8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hp-cta.hp-in-view .hp-cta-bg img {
+  transform: scale(1.08);
+}
+
+/* ── Hero scroll fade ── */
+.hp-hero-content {
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* ── Inline gold highlights ── */
+.hp-gold { color: #c9a96e; font-weight: 400; }
+
+/* ═══ SQUARESPACE OVERRIDES ═══ */
+#header,header,.header{display:none!important;height:0!important;visibility:hidden!important;overflow:hidden!important;padding:0!important;margin:0!important;position:absolute!important;top:-9999px!important}
+#footer,footer#footer,.footer-wrapper,[data-section-type="footer"]{display:none!important}
+.item-pagination{display:none!important}
+.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}
+.sqs-announcement-bar-dropzone{display:none!important}
+body{background:#1a1a18!important}
+#page{background:transparent!important}
+#sections{background:transparent!important}
+.page-section{background:transparent!important;min-height:0!important;padding:0!important;margin:0!important}
+.page-section .content-wrapper{padding:0!important;max-width:none!important}
+.content-wrapper{background:transparent!important;max-width:none!important;padding:0!important}
+.fluid-engine{background:transparent!important;padding:0!important;max-width:none!important;grid-template-columns:none!important;display:block!important}
+.fe-block{margin:0!important;padding:0!important;width:100%!important;max-width:none!important;grid-area:auto!important;position:relative!important}
+.sqs-block-code{padding:0!important;margin:0!important;max-width:none!important;width:100%!important}
+.sqs-block-content{padding:0!important;margin:0!important;max-width:none!important;width:100%!important}
+.sqs-code-container{padding:0!important;margin:0!important;max-width:none!important;width:100%!important;overflow:visible!important}
+/* Kill Squarespace global fade animations on page content */
+.hp-wrap,.hp-wrap>section,.hp-wrap>div,.hp-ft{animation:none!important;-webkit-animation:none!important;opacity:1!important;visibility:visible!important}
+/* Force nav visible — Squarespace animations hide it */
+#maHeader{animation:none!important;opacity:1!important;visibility:visible!important}
+#maHeader .ma-logo,#maHeader .ma-logo *,#maHeader .ma-nav,#maHeader .ma-nav-item,#maHeader .ma-nav-link,#maHeader .ma-toggle,#maHeader .ma-toggle span{animation:none!important;opacity:1!important;visibility:visible!important}
+
+/* ═══ PAGE WRAP ═══ */
+.hp-wrap{font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a18;line-height:1.7;font-weight:300;overflow-x:hidden!important;max-width:100vw!important;width:100%!important;margin:0!important;padding:0!important;box-sizing:border-box!important}
+.hp-wrap *{box-sizing:border-box!important}
+.hp-wrap section{overflow-x:hidden!important}
+.hp-wrap a{color:inherit;text-decoration:none}
+.hp-wrap img{max-width:100%;display:block}
+.hp-label{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:#b8975a;margin-bottom:1.5rem;font-weight:500}
+.hp-divider{width:60px;height:1px;background:#c9a96e;margin-bottom:2rem}
+
+/* ═══ HERO ═══ */
+.hp-wrap section,.hp-wrap>div{position:relative;z-index:1}
+.hp-hero{position:relative;width:100%;height:100vh;min-height:700px;display:flex!important;align-items:center;padding:0 5vw;padding-top:10rem;overflow:hidden!important;z-index:2}
+.hp-hero-bg{position:absolute;inset:0;z-index:0}
+.hp-hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.7) brightness(.45)}
+.hp-hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(26,26,24,.4) 0%,rgba(26,26,24,.15) 30%,rgba(26,26,24,.15) 60%,rgba(26,26,24,.7) 85%,rgba(26,26,24,.9) 100%)}
+.hp-hero-content{position:relative;z-index:2;max-width:850px}
+.hp-hero-tag{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e!important;font-weight:500;margin-bottom:1.5rem}
+.hp-hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:300;line-height:1.05;color:#f6f4f0!important;letter-spacing:-.02em;margin-bottom:1.5rem}
+.hp-hero h1 em{font-style:italic;color:#c9a96e!important}
+.hp-hero-desc{font-size:1.05rem;color:#d9d5cd!important;max-width:500px;line-height:1.8;margin-bottom:2.5rem}
+.hp-hero-btns{display:flex!important;gap:1rem;align-items:center}
+.hp-hero-cta{display:inline-block;font-family:'DM Sans',-apple-system,sans-serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;padding:1rem 2.5rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all .35s ease}
+.hp-hero-cta:hover{background:transparent!important;color:#c9a96e!important}
+.hp-hero-cta-ghost{display:inline-block;font-family:'DM Sans',-apple-system,sans-serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;padding:1rem 2.5rem;border:1px solid #c9a96e!important;background:transparent!important;color:#c9a96e!important;font-weight:500;transition:all .35s ease}
+.hp-hero-cta-ghost:hover{background:#c9a96e!important;color:#1a1a18!important}
+
+/* ═══ PHILOSOPHY ═══ */
+.hp-philosophy{display:grid!important;grid-template-columns:1fr 1fr!important;min-height:80vh;overflow:hidden!important;position:relative;z-index:1}
+.hp-philosophy-text{display:flex!important;flex-direction:column;justify-content:center;padding:6rem 5vw;max-width:600px;margin-left:auto}
+.hp-philosophy-image{position:relative;overflow:hidden!important;max-height:80vh}
+.hp-philosophy-image img{width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
+.hp-philosophy-image:hover img{transform:scale(1.03)}
+.hp-philosophy h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.2;margin-bottom:2rem}
+.hp-philosophy p{font-size:1rem;color:#4a4a46;line-height:1.85;margin-bottom:1.5rem}
+
+/* ═══ STATS STRIP ═══ */
+.hp-stats{background:#1a1a18!important;padding:4rem 5vw;position:relative;z-index:1}
+.hp-stats-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:2rem;max-width:900px;margin:0 auto;text-align:center}
+.hp-stat-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.8rem;font-weight:300;color:#c9a96e!important;line-height:1;margin-bottom:.5rem}
+.hp-stat-lbl{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(246,244,240,0.55)!important;font-weight:400}
+
+/* ═══ FEATURED WORK ═══ */
+.hp-featured{padding:6rem 5vw}
+.hp-featured-header{display:flex!important;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
+.hp-featured-header h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15}
+.hp-view-all{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#b8975a;font-weight:500;border-bottom:1px solid #b8975a;padding-bottom:2px;transition:color .3s ease,border-color .3s ease}
+.hp-view-all:hover{color:#1a1a18;border-color:#1a1a18}
+div.hp-proj-grid{display:flex!important;flex-wrap:wrap!important;gap:2rem!important;width:100%!important}
+a.hp-proj-card{position:relative;overflow:hidden;cursor:pointer;display:block!important;width:calc(33.333% - 1.334rem)!important;aspect-ratio:4/3!important}
+.hp-proj-card img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease,filter .8s ease}
+.hp-proj-card:hover img{transform:scale(1.04);filter:brightness(.75)}
+.hp-proj-overlay{position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(to top,rgba(26,26,24,.85),transparent);opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.hp-proj-card:hover .hp-proj-overlay{opacity:1;transform:translateY(0)}
+.hp-proj-overlay h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.4rem;font-weight:400;color:#f6f4f0!important;margin-bottom:.3rem}
+.hp-proj-overlay p{font-size:.75rem;color:#d9d5cd!important;letter-spacing:.1em}
+.hp-proj-loc-link{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#c9a96e!important;font-weight:500;margin-top:.5rem;display:inline-block;border-bottom:1px solid transparent;transition:border-color .3s ease}
+.hp-proj-card:hover .hp-proj-loc-link{border-color:#c9a96e}
+
+/* ═══ SERVICES ═══ */
+.hp-services{background:#eeece6!important;padding:6rem 5vw}
+.hp-services .hp-label{color:#b8975a}
+.hp-services h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#1a1a18;margin-bottom:4rem}
+.hp-services-grid{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:0}
+.hp-svc{padding:2.5rem 2.5rem 2.5rem 0;border-top:1px solid rgba(26,26,24,.1)}
+.hp-svc:nth-child(even){padding-left:2.5rem;border-left:1px solid rgba(26,26,24,.1)}
+.hp-svc-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:300;color:rgba(201,169,110,.3);margin-bottom:1rem;line-height:1}
+.hp-svc h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.3rem;font-weight:400;color:#1a1a18;margin-bottom:1rem}
+.hp-svc p{font-size:.88rem;color:#8a8579;line-height:1.75}
+.hp-svc a{display:inline-block;margin-top:1.25rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:#b8975a;font-weight:500;border-bottom:1px solid transparent;transition:border-color .3s ease}
+.hp-svc a:hover{border-color:#b8975a}
+
+/* ── Service 04 Creative Partner standout ── */
+.hp-svc-featured{padding:2.5rem;border:2px solid #c9a96e!important;background:rgba(201,169,110,0.04)!important;position:relative}
+.hp-svc-featured .hp-svc-num{color:#c9a96e}
+.hp-svc-featured h3{color:#1a1a18;font-size:1.4rem}
+.hp-svc-featured p{color:#4a4a46}
+.hp-svc-badge{position:absolute;top:0;right:2rem;background:#c9a96e!important;color:#1a1a18!important;font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:.3em;text-transform:uppercase;padding:.45rem 1rem;font-weight:700}
+.hp-svc-featured a{color:#c9a96e!important;border-bottom-color:rgba(201,169,110,.4)}
+.hp-svc-featured a:hover{border-bottom-color:#c9a96e}
+
+/* ═══ CREATIVE PARTNER SPOTLIGHT ═══ */
+.hp-cp-spotlight{background:#1a1a18!important;padding:8rem 5vw;position:relative;overflow:hidden}
+.hp-cp-inner{max-width:900px;margin:0 auto}
+.hp-cp-spotlight .hp-label{color:#c9a96e!important}
+.hp-cp-spotlight h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#f6f4f0!important;margin-bottom:2rem;line-height:1.2}
+.hp-cp-spotlight h2 em{font-style:italic;color:#c9a96e!important}
+.hp-cp-spotlight p{font-size:1rem;color:rgba(246,244,240,0.65)!important;line-height:1.85;margin-bottom:1.5rem}
+.hp-cp-case{margin-top:3rem;padding:2.5rem;border:1px solid rgba(201,169,110,0.15);border-left:3px solid #c9a96e;background:rgba(201,169,110,0.03)}
+.hp-cp-case-label{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:#c9a96e!important;font-weight:500;margin-bottom:1rem}
+.hp-cp-case p{font-size:.95rem;color:#d9d5cd!important;line-height:1.8;margin-bottom:1.25rem}
+.hp-cp-case a{display:inline-block;font-family:'DM Sans',-apple-system,sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a96e!important;font-weight:500;border-bottom:1px solid rgba(201,169,110,.4);padding-bottom:2px;transition:border-color .3s ease}
+.hp-cp-case a:hover{border-color:#c9a96e}
+.hp-cp-cta{margin-top:3rem}
+.hp-cp-btn{display:inline-block;font-family:'DM Sans',-apple-system,sans-serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;padding:1rem 2.5rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all .35s ease}
+.hp-cp-btn:hover{background:transparent!important;color:#c9a96e!important}
+
+/* ═══ IMAGE BREAK ═══ */
+.hp-image-break{position:relative;width:100%;min-height:70vh;display:flex!important;align-items:center;justify-content:center;overflow:hidden}
+.hp-image-break-bg{position:absolute;inset:0;z-index:0}
+.hp-image-break-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.8) brightness(.35);will-change:transform;transition:transform 0.1s linear}
+.hp-image-break::after{content:'';position:absolute;inset:0;z-index:1;background:rgba(26,26,24,.65)}
+.hp-ib-content{position:relative;z-index:2;padding:5rem 5vw;max-width:750px;margin:0 auto;text-align:center}
+.hp-ib-content .hp-label{color:#c9a96e!important}
+.hp-ib-quote{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.2rem,2.2vw,1.5rem);font-weight:300;font-style:italic;line-height:1.6;color:#d9d5cd!important;margin-bottom:1.75rem}
+.hp-ib-quote::before{content:'\201C';display:block;font-size:3.5rem;color:#c9a96e!important;line-height:1;margin-bottom:.5rem;font-style:normal;animation:hpQuoteFloat 6s ease-in-out infinite alternate}
+.hp-ib-attr{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#8a8579!important;font-weight:500;margin-bottom:2rem}
+.hp-ib-links{display:flex!important;gap:1rem;flex-wrap:wrap;justify-content:center}
+.hp-ib-link{display:inline-block;font-family:'DM Sans',-apple-system,sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:.7rem 1.5rem;font-weight:500;transition:all .3s ease}
+.hp-ib-link-primary{background:#c9a96e!important;border:1px solid #c9a96e!important;color:#1a1a18!important}
+.hp-ib-link-primary:hover{background:transparent!important;color:#c9a96e!important}
+.hp-ib-link-ghost{background:transparent!important;border:1px solid rgba(201,169,110,.4)!important;color:#c9a96e!important}
+.hp-ib-link-ghost:hover{border-color:#c9a96e!important;background:#c9a96e!important;color:#1a1a18!important}
+
+/* ═══ ABOUT ═══ */
+.hp-about{display:grid!important;grid-template-columns:1fr 1fr!important}
+.hp-about-image{position:relative;overflow:hidden;min-height:600px}
+.hp-about-image img{width:100%;height:100%;object-fit:cover}
+.hp-about-text{display:flex!important;flex-direction:column;justify-content:center;padding:6rem 5vw}
+.hp-about h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.2;margin-bottom:2rem}
+.hp-about p{font-size:1rem;color:#4a4a46;line-height:1.85;margin-bottom:1.5rem}
+.hp-about p a{color:#b8975a;border-bottom:1px solid rgba(184,151,90,.3);transition:border-color .3s ease}
+.hp-about p a:hover{border-color:#b8975a}
+.hp-about-link{display:inline-block;margin-top:1rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#b8975a;font-weight:500;border-bottom:1px solid #b8975a;padding-bottom:2px;transition:color .3s ease,border-color .3s ease}
+.hp-about-link:hover{color:#1a1a18;border-color:#1a1a18}
+
+/* ═══ CLIENTS ═══ */
+.hp-clients{padding:6rem 5vw;text-align:center}
+.hp-clients-grid{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))!important;gap:.75rem 2rem;max-width:900px;margin:0 auto}
+.hp-clients-grid span{font-size:.85rem;color:#8a8579;line-height:2.2;font-weight:300}
+
+/* ═══ TESTIMONIALS ═══ */
+.hp-testimonials{background:#1a1a18!important;padding:6rem 5vw;color:#d9d5cd!important}
+.hp-testimonials .hp-label{color:#c9a96e!important;text-align:center}
+.hp-test-wrap{display:grid!important;grid-template-columns:1fr 1fr!important;gap:4rem;max-width:1100px;margin:0 auto}
+.hp-test-img{width:100%;aspect-ratio:16/10;overflow:hidden;margin-bottom:2rem;border-radius:2px}
+.hp-test-img img{width:100%;height:100%;object-fit:cover}
+.hp-test-quote{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:300;font-style:italic;line-height:1.6;color:#d9d5cd!important;margin-bottom:1.5rem}
+.hp-test-quote::before{content:'\201C';display:block;font-size:3rem;color:#c9a96e!important;line-height:1;margin-bottom:.5rem;font-style:normal}
+.hp-test-attr{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#8a8579!important;font-weight:500}
+.hp-test-cs{display:inline-block;margin-top:1.25rem;font-family:'DM Sans',-apple-system,sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:.7rem 1.5rem;background:#c9a96e!important;border:1px solid #c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all .3s ease}
+.hp-test-cs:hover{background:transparent!important;color:#c9a96e!important}
+
+/* ═══ JOURNAL ═══ */
+.hp-journal{padding:6rem 5vw}
+.hp-journal-header{display:flex!important;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
+.hp-journal-header h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15}
+.hp-journal-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:2rem}
+.hp-journal-card{display:block;position:relative;overflow:hidden;cursor:pointer}
+.hp-journal-card img{width:100%;aspect-ratio:16/10;object-fit:cover;transition:transform .8s ease,filter .8s ease}
+.hp-journal-card:hover img{transform:scale(1.04);filter:brightness(.75)}
+.hp-journal-cat{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-top:1rem;margin-bottom:.5rem}
+.hp-journal-card h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:400;color:#1a1a18;line-height:1.3}
+
+/* ═══ LEAD MAGNET ═══ */
+.hp-magnet{background:#1e1e1c!important;padding:5rem 5vw;border-top:1px solid rgba(201,169,110,.06)}
+.hp-magnet-inner{display:grid!important;grid-template-columns:1fr 1fr!important;gap:4rem;max-width:1100px;margin:0 auto;align-items:center}
+.hp-magnet-text .hp-label{color:#c9a96e!important}
+.hp-magnet-text h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;color:#f6f4f0!important;margin-bottom:1rem;line-height:1.25}
+.hp-magnet-text h2 em{font-style:italic;color:#c9a96e!important}
+.hp-magnet-text p{font-size:.95rem;color:rgba(246,244,240,0.6)!important;line-height:1.8;margin-bottom:1.5rem}
+.hp-magnet-items{display:flex!important;flex-direction:column;gap:.5rem;margin-bottom:2rem}
+.hp-magnet-item{display:flex!important;align-items:flex-start;gap:.5rem;font-size:.88rem;color:rgba(246,244,240,.7)!important}
+.hp-magnet-item::before{content:'';width:6px;height:6px;border-radius:50%;background:#c9a96e;opacity:.4;flex-shrink:0;margin-top:7px}
+.hp-magnet-btn{display:inline-block;font-family:'DM Sans',-apple-system,sans-serif;font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;padding:1rem 2.5rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all .35s ease}
+.hp-magnet-btn:hover{background:transparent!important;color:#c9a96e!important}
+.hp-magnet-img{position:relative;overflow:hidden;border-radius:2px;aspect-ratio:4/3}
+.hp-magnet-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.7)}
+.hp-magnet-img-badge{position:absolute;top:1.5rem;left:1.5rem;font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:#1a1a18!important;background:#c9a96e!important;padding:.5rem 1rem;font-weight:700}
+
+/* ═══ MANIFESTO ═══ */
+.hp-manifesto {
+  background: #1a1a18;
+  padding: 8rem 5vw;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hp-manifesto::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(rgba(201,169,110,0.4), transparent);
+}
+
+.hp-manifesto-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(246,244,240,0.25);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ═══ FINAL CTA ═══ */
+.hp-cta{position:relative;padding:8rem 5vw;text-align:center;overflow:hidden;min-height:100vh;display:flex!important;flex-direction:column;align-items:center;justify-content:center}
+.hp-cta-bg{position:absolute;inset:0;z-index:0}
+.hp-cta-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.4) brightness(.2)}
+.hp-cta::after{content:'';position:absolute;inset:0;z-index:1;background:rgba(26,26,24,.5)}
+.hp-cta-content{position:relative;z-index:2}
+.hp-cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:300;color:#f6f4f0!important;margin-bottom:1rem;line-height:1.2}
+.hp-cta h2 em{font-style:italic;color:#c9a96e!important}
+.hp-cta p{font-size:1rem;color:rgba(246,244,240,0.6)!important;max-width:480px;margin:0 auto 2.5rem;line-height:1.8}
+.hp-cta-btn{display:inline-block;font-family:'DM Sans',-apple-system,sans-serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;padding:1.1rem 3rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all .35s ease;position:relative;overflow:hidden}
+.hp-cta-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);transform:translateX(-100%);transition:transform 0.6s ease}
+.hp-cta-btn:hover::before{transform:translateX(100%)}
+.hp-cta-btn:hover{background:transparent!important;color:#c9a96e!important;box-shadow:0 0 30px rgba(201,169,110,0.2)}
+.hp-alt-cta{margin-top:1.25rem;font-size:.75rem;color:#8a8579!important;letter-spacing:.05em;font-weight:300}
+.hp-alt-cta a{color:#c9a96e!important;text-decoration:underline;text-underline-offset:3px;transition:color .3s ease}
+.hp-alt-cta a:hover{color:#f6f4f0!important}
+
+/* ═══ FOOTER ═══ */
+.hp-ft{background:#1a1a18!important;border-top:1px solid rgba(201,169,110,.15)}
+.hp-ft-locs{display:flex!important;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}
+.hp-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35)!important;font-weight:500;transition:color .3s ease}
+.hp-ft-locs a:hover{color:#c9a96e!important}
+.hp-ft-row{display:flex!important;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}
+.hp-ft-item{display:flex!important;align-items:baseline;gap:10px}
+.hp-ft-label{font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e!important;font-weight:500;white-space:nowrap}
+.hp-ft-dot{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,.4);flex-shrink:0;position:relative;top:-2px}
+.hp-ft-item p,.hp-ft-item a{margin:0;font-size:12px;color:rgba(246,244,240,.8)!important;font-weight:300;white-space:nowrap;text-decoration:none;transition:color .3s ease}
+.hp-ft-item a:hover{color:#c9a96e!important}
+.hp-ft-social{display:flex!important;gap:18px}
+.hp-ft-social a{transition:color .3s ease}
+.hp-ft-social a:hover{color:#c9a96e!important}
+.hp-ft-rule{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,.15) 20%,rgba(201,169,110,.15) 80%,transparent 100%)}
+.hp-ft-bottom{display:flex!important;justify-content:space-between;align-items:center;padding:1.25rem 5vw}
+.hp-ft-copy{font-size:10px;color:rgba(246,244,240,.35)!important;letter-spacing:.08em}
+.hp-ft-nav{display:flex!important;gap:2.5rem}
+.hp-ft-nav a{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35)!important;text-decoration:none;transition:color .3s ease}
+.hp-ft-nav a:hover{color:#c9a96e!important}
+
+/* ═══ RESPONSIVE 900px ═══ */
+@media(max-width:900px){
+  .hp-hero{min-height:100vh;min-height:100svh;padding:0 6vw;padding-top:6rem}
+  .hp-hero h1{font-size:clamp(2rem,9vw,3.2rem)}
+  .hp-hero-desc{font-size:.95rem}
+  .hp-scroll-hint{bottom:2rem}
+  .hp-hero-btns{flex-direction:column;align-items:flex-start;gap:.75rem}
+  .hp-philosophy{grid-template-columns:1fr!important}
+  .hp-philosophy-text{padding:3rem 6vw;max-width:none;margin-left:0}
+  .hp-philosophy-image{min-height:60vw}
+  .hp-stats{padding:3rem 6vw}
+  .hp-stats-grid{grid-template-columns:repeat(2,1fr)!important;gap:1.5rem}
+  .hp-featured{padding:3rem 4vw}
+  .hp-featured-header{flex-direction:column;align-items:flex-start;gap:1rem;margin-bottom:2rem}
+  div.hp-proj-grid{gap:1rem!important}
+  a.hp-proj-card{width:100%!important;aspect-ratio:16/10!important}
+  .hp-proj-overlay{opacity:1;transform:translateY(0)}
+  .hp-image-break{min-height:50vh}
+  .hp-ib-content{padding:3rem 6vw;max-width:none}
+  .hp-ib-quote{font-size:1.1rem}
+  .hp-services{padding:3rem 6vw}
+  .hp-services h2{margin-bottom:2rem}
+  .hp-services-grid{grid-template-columns:1fr!important}
+  .hp-svc,.hp-svc:nth-child(even){padding:1.5rem 0;border-left:none}
+  .hp-svc-featured{padding:1.5rem;border-left:none}
+  .hp-svc-badge{right:1rem}
+  .hp-cp-spotlight{padding:4rem 6vw}
+  .hp-about{grid-template-columns:1fr!important}
+  .hp-about-image{min-height:60vw}
+  .hp-about-text{padding:3rem 6vw}
+  .hp-clients{padding:3rem 6vw}
+  .hp-clients-grid{grid-template-columns:1fr 1fr!important;gap:.25rem 1rem}
+  .hp-journal{padding:3rem 4vw}
+  .hp-journal-header{flex-direction:column;align-items:flex-start;gap:1rem;margin-bottom:2rem}
+  .hp-journal-grid{grid-template-columns:1fr!important}
+  .hp-testimonials{padding:3rem 6vw}
+  .hp-test-wrap{grid-template-columns:1fr!important;gap:2.5rem}
+  .hp-test-quote{font-size:1rem}
+  .hp-magnet{padding:3.5rem 6vw}
+  .hp-magnet-inner{grid-template-columns:1fr!important;gap:2.5rem}
+  .hp-magnet-text h2{font-size:1.8rem!important}
+  .hp-magnet-text p{font-size:1.05rem}
+  .hp-magnet-item{font-size:1rem}
+  .hp-magnet-btn{font-size:.7rem;padding:1.1rem 2.5rem;width:100%;text-align:center}
+  .hp-magnet-img{aspect-ratio:16/10}
+  .hp-manifesto{padding:4rem 6vw}
+  .hp-cta{padding:4rem 6vw;min-height:50vh}
+  .hp-cta h2{font-size:clamp(1.5rem,6vw,2.2rem)}
+  .hp-cta p{font-size:.9rem}
+  .hp-cta-btn{padding:.9rem 2rem}
+  .hp-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}
+  .hp-ft-locs a{font-size:.55rem}
+  .hp-ft-row{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}
+  .hp-ft-rule{margin:0 6vw}
+  .hp-ft-bottom{flex-direction:column;gap:.75rem;text-align:center;padding:1.25rem 6vw}
+}
+
+/* ═══ RESPONSIVE 600px ═══ */
+@media(max-width:600px){
+  .hp-wrap{overflow-x:hidden!important}
+  .hp-wrap h1,.hp-wrap h2,.hp-wrap h3,.hp-wrap p{word-wrap:break-word!important;overflow-wrap:break-word!important;max-width:100%!important}
+  .hp-hero{padding:0 5vw;padding-top:5rem}
+  .hp-hero h1{font-size:1.8rem}
+  .hp-hero-desc{font-size:.88rem;margin-bottom:2rem}
+  .hp-hero-cta,.hp-hero-cta-ghost{padding:.8rem 1.8rem;font-size:.6rem;max-width:100%!important}
+  .hp-hero-btns{width:100%!important}
+  .hp-philosophy-text{padding:2.5rem 5vw}
+  .hp-stats-grid{grid-template-columns:repeat(2,1fr)!important}
+  .hp-stat-num{font-size:2.2rem}
+  .hp-featured{padding:2.5rem 5vw}
+  .hp-services{padding:2.5rem 5vw}
+  .hp-svc-featured{padding:1.5rem 5vw}
+  .hp-cp-spotlight{padding:3rem 5vw}
+  .hp-cp-case{padding:1.5rem}
+  .hp-about-text{padding:2.5rem 5vw}
+  .hp-clients{padding:2.5rem 5vw}
+  .hp-clients-grid{grid-template-columns:1fr!important}
+  .hp-testimonials{padding:2.5rem 5vw}
+  .hp-test-quote{font-size:.95rem}
+  .hp-test-img{aspect-ratio:16/9}
+  .hp-magnet{padding:3rem 5vw}
+  .hp-magnet-text h2{font-size:1.6rem!important}
+  .hp-magnet-img{display:none}
+  .hp-manifesto{padding:3rem 5vw}
+  .hp-manifesto-text{font-size:clamp(1.3rem,5vw,1.8rem)}
+  .hp-cta{padding:3rem 5vw}
+  .hp-ft-locs{gap:.75rem;justify-content:center}
+  .hp-ft-locs a{font-size:.5rem;letter-spacing:.15em}
+  .hp-ft-nav{gap:1.5rem;flex-wrap:wrap;justify-content:center}
+  .hp-ft-nav a{font-size:8px}
+  .hp-ib-links{flex-direction:column;gap:.75rem;align-items:center}
+  .hp-ib-link{width:100%;text-align:center}
+}
+</style>
+
+<!-- ═══ JSON-LD STRUCTURED DATA ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Matt Anthony Photography — Architectural Photographer in BC",
+  "description": "Architectural photography for architects, custom builders, and interior designers across British Columbia. Based in Squamish, serving Whistler, Sunshine Coast, Vancouver, and beyond.",
+  "url": "https://www.mattanthonyphoto.com/",
+  "mainEntity": {
+    "@id": "https://www.mattanthonyphoto.com/#business"
+  },
+  "isPartOf": {
+    "@id": "https://www.mattanthonyphoto.com/#website"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.mattanthonyphoto.com/"
+      }
+    ]
+  }
+}
+</script>
+
+<!-- ═══ INTERACTIVE LAYER HTML ═══ -->
+<div class="hp-loader" id="hpLoader">
+  <div class="hp-loader-brand">Matt Anthony Photography</div>
+  <div class="hp-loader-sub">Architectural Photography</div>
+  <div class="hp-loader-line"></div>
+</div>
+
+<div class="hp-section-nav" id="hpSectionNav"></div>
+<div class="hp-progress" id="hpProgress"></div>
+<div class="hp-cursor" id="hpCursor"></div>
+<div class="hp-cursor-dot" id="hpCursorDot"></div>
+
+<!-- ═══ PAGE CONTENT ═══ -->
+<div class="hp-wrap">
+
+<!-- ════════════ HERO ════════════ -->
+<section class="hp-hero" data-nav="Home">
+  <div class="hp-hero-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/808387ba-bee1-4c46-a4d3-354d7e1f8372/west-10th-vancouver-web--2.jpg?format=2500w" alt="West 10th Vancouver modern home architectural photography by Matt Anthony">
+  </div>
+  <canvas class="hp-particles" id="hpParticles"></canvas>
+  <div class="hp-hero-content">
+    <p class="hp-hero-tag">Architectural &amp; Interiors Photography &middot; British Columbia</p>
+    <h1>Documenting <em>design intent</em> for those who build with purpose</h1>
+    <p class="hp-hero-desc">Photography, film, and visual strategy for architects, custom home builders, and interior designers across the Sea-to-Sky and beyond.</p>
+    <div class="hp-hero-btns">
+      <a href="/discovery-call" class="hp-hero-cta">Book a Discovery Call</a>
+      <a href="/pricing-guide-landing" class="hp-hero-cta-ghost">Get Pricing</a>
+    </div>
+  </div>
+  <div class="hp-scroll-hint" id="hpScrollHint">
+    <span class="hp-scroll-text">Scroll</span>
+    <div class="hp-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ════════════ PHILOSOPHY / APPROACH ════════════ -->
+<section class="hp-philosophy" data-nav="Philosophy">
+  <div class="hp-philosophy-text">
+    <p class="hp-label hp-eyebrow">Our Approach</p>
+    <div class="hp-divider" style="width:0"></div>
+    <h2>We become an extension of your team</h2>
+    <p>Most firms hire a photographer when a project wraps. We think that misses the point. The strongest brands in construction and design are built through consistent, intentional visual output — not one-off shoots.</p>
+    <p>We embed with your team to understand how you build, why you build, and who you build for. Then we create the photography, video, and content that turns that understanding into a visual identity your market recognizes and trusts.</p>
+  </div>
+  <div class="hp-philosophy-image">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8acad367-9f3e-4b80-8658-e96f7fc6c3a9/5322-backhouse-web-1.1.jpg?format=2500w" alt="The Perch Sunshine Coast architectural interior photography by Matt Anthony" loading="lazy">
+  </div>
+</section>
+
+<!-- ════════════ STATS STRIP ════════════ -->
+<section class="hp-stats">
+  <div class="hp-stats-grid">
+    <div>
+      <div class="hp-stat-num" data-count="19">19+</div>
+      <div class="hp-stat-lbl">Projects</div>
+    </div>
+    <div>
+      <div class="hp-stat-num" data-count="28">28</div>
+      <div class="hp-stat-lbl">Clients</div>
+    </div>
+    <div>
+      <div class="hp-stat-num" data-count="7">7</div>
+      <div class="hp-stat-lbl">Service Areas</div>
+    </div>
+    <div>
+      <div class="hp-stat-num" data-count="5">5</div>
+      <div class="hp-stat-lbl">Case Studies</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FEATURED WORK ════════════ -->
+<section class="hp-featured" data-nav="Work">
+  <div class="hp-featured-header">
+    <div>
+      <p class="hp-label hp-eyebrow">Featured Work</p>
+      <h2>A selection of recent projects</h2>
+    </div>
+    <a href="/projects" class="hp-view-all">View All Projects</a>
+  </div>
+  <div class="hp-proj-grid">
+    <!-- Card 1: The Perch -->
+    <a href="/the-perch-sunshine-coast" class="hp-proj-card">
+      <img src="https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/566f07b0-c1ab-4bf8-b5a8-9dbc69f5f202/5322-backhouse-web-2.jpg?format=1500w" alt="The Perch Sunshine Coast architectural photography by Matt Anthony" loading="lazy">
+      <div class="hp-proj-overlay">
+        <h3>The Perch</h3>
+        <p>Sunshine Coast</p>
+        <span class="hp-proj-loc-link">View Project</span>
+      </div>
+    </a>
+    <!-- Card 2: Warbler -->
+    <a href="/warbler-whistler" class="hp-proj-card">
+      <img src="https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg?format=1500w" alt="Warbler Residence Whistler architectural photography by Matt Anthony" loading="lazy">
+      <div class="hp-proj-overlay">
+        <h3>Warbler Residence</h3>
+        <p>Whistler</p>
+        <span class="hp-proj-loc-link">View Project</span>
+      </div>
+    </a>
+    <!-- Card 3: Fitzsimmons -->
+    <a href="/fitzsimmons-whistler" class="hp-proj-card">
+      <img src="https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/312b0797-a43a-4a51-906e-f913c78c7b79/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-3.jpg?format=1500w" alt="Fitzsimmons Residence Whistler architectural photography by Matt Anthony" loading="lazy">
+      <div class="hp-proj-overlay">
+        <h3>Fitzsimmons Residence</h3>
+        <p>Whistler</p>
+        <span class="hp-proj-loc-link">View Project</span>
+      </div>
+    </a>
+    <!-- Card 4: SDA -->
+    <a href="/seventh-day-adventist-bc-headquarters" class="hp-proj-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ebb37653-5489-4beb-a83f-ad40ed118b6c/sitelines-SDA-web--6.jpg?format=1500w" alt="SDA BC Yukon Headquarters Abbotsford architectural photography by Matt Anthony" loading="lazy">
+      <div class="hp-proj-overlay">
+        <h3>SDA BC &amp; Yukon HQ</h3>
+        <p>Abbotsford</p>
+        <span class="hp-proj-loc-link">View Project</span>
+      </div>
+    </a>
+    <!-- Card 5: Tranquil Retreat -->
+    <a href="/tranquil-retreat" class="hp-proj-card">
+      <img src="https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/62f2712d-a413-46af-bcd8-d0f17957f8ab/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-4.jpg?format=1500w" alt="Tranquil Retreat Sunshine Coast architectural photography by Matt Anthony" loading="lazy">
+      <div class="hp-proj-overlay">
+        <h3>Tranquil Retreat</h3>
+        <p>Sunshine Coast</p>
+        <span class="hp-proj-loc-link">View Project</span>
+      </div>
+    </a>
+    <!-- Card 6: Fraser Valley Vista -->
+    <a href="/fraser-valley-vista" class="hp-proj-card">
+      <img src="https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/66509d6f-8b6e-45c4-af89-cf2632982163/siteline-langley-5.jpg?format=1500w" alt="Fraser Valley Vista Langley architectural photography by Matt Anthony" loading="lazy">
+      <div class="hp-proj-overlay">
+        <h3>Fraser Valley Vista</h3>
+        <p>Langley</p>
+        <span class="hp-proj-loc-link">View Project</span>
+      </div>
+    </a>
+    <!-- Card 7: Browns Residence -->
+    <a href="/browns-residence" class="hp-proj-card">
+      <img src="https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/35e24e7e-8ae5-47fa-9242-792ad3b6e7b9/browns-road-sunshine-coast-architectural-photographer-matt-anthony-7.jpg?format=1500w" alt="Browns Residence Sunshine Coast architectural photography by Matt Anthony" loading="lazy">
+      <div class="hp-proj-overlay">
+        <h3>Browns Residence</h3>
+        <p>Sunshine Coast</p>
+        <span class="hp-proj-loc-link">View Project</span>
+      </div>
+    </a>
+    <!-- Card 8: Sugarloaf Residence -->
+    <a href="/sugarloaf-residence" class="hp-proj-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/df676ea0-2bb8-4e89-91a1-55d3ce883c14/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-19.jpg?format=1500w" alt="Sugarloaf Residence Pemberton mountain backdrop architectural photography by Matt Anthony" loading="lazy">
+      <div class="hp-proj-overlay">
+        <h3>Sugarloaf Residence</h3>
+        <p>Pemberton</p>
+        <span class="hp-proj-loc-link">View Project</span>
+      </div>
+    </a>
+    <!-- Card 9: Osprey -->
+    <a href="/osprey" class="hp-proj-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/112ed2e8-8d83-4a92-8a09-86b9f46af4c2/pit-meadows-architectural-interiors-photography-29.jpg?format=1500w" alt="Osprey kitchen interior renovation architectural photography by Matt Anthony" loading="lazy">
+      <div class="hp-proj-overlay">
+        <h3>Osprey</h3>
+        <p>Pitt Meadows</p>
+        <span class="hp-proj-loc-link">View Project</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ════════════ SERVICES ════════════ -->
+<section class="hp-services" data-nav="Services">
+  <p class="hp-label hp-eyebrow">What We Deliver</p>
+  <div class="hp-divider" style="width:0"></div>
+  <h2>Full-scope visual services for every stage of your brand</h2>
+  <div class="hp-services-grid">
+    <div class="hp-svc">
+      <div class="hp-svc-num">01</div>
+      <h3>Project Photography</h3>
+      <p>Architectural, interiors, aerial, and twilight photography that documents design intent. Built for your website, proposals, awards, and press.</p>
+      <a href="/project-photography">Learn More</a>
+    </div>
+    <div class="hp-svc">
+      <div class="hp-svc-num">02</div>
+      <h3>Award &amp; Publication Imagery</h3>
+      <p>Imagery composed to meet juror expectations and editorial standards. We handle the visual strategy so your submissions stand out at Georgie, CHBA, and beyond.</p>
+      <a href="/award-publication-imagery">Learn More</a>
+      <a href="/journal/architectural-photography-for-publications" style="display:inline-block;margin-top:.5rem;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#8a8579;font-weight:400;border-bottom:1px solid #d9d5cd;transition:color .3s ease,border-color .3s ease">View Award Program Guides &rarr;</a>
+    </div>
+    <div class="hp-svc">
+      <div class="hp-svc-num">03</div>
+      <h3>Build &amp; Team Content</h3>
+      <p>Video, lifestyle, and behind-the-scenes content that shows how you build and who builds it. Designed for social media, recruitment, and the kind of brand presence that attracts the right clients.</p>
+      <a href="/construction-team-content">Learn More</a>
+    </div>
+    <div class="hp-svc hp-svc-featured">
+      <span class="hp-svc-badge">Most Popular</span>
+      <div class="hp-svc-num">04</div>
+      <h3>Creative Partner</h3>
+      <p>An ongoing creative partnership — photography, video, social media, website, SEO, and brand strategy — for firms running multiple projects a year. One retainer. One person who already knows your work inside and out. No re-scoping, no re-briefing, no inconsistency.</p>
+      <a href="/creative-partner">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ CREATIVE PARTNER SPOTLIGHT ════════════ -->
+<section class="hp-cp-spotlight hp-grain" data-nav="Creative Partner">
+  <div class="hp-cp-inner">
+    <p class="hp-label hp-eyebrow">Your Creative Department</p>
+    <div class="hp-divider" style="width:0;background:rgba(201,169,110,0.4)"></div>
+    <h2>Stop hiring photographers. Start <em>building a brand.</em></h2>
+    <p>The real cost is not the invoices. It is the inconsistency, the brand drift, the hours spent re-briefing people who will never understand your work the way someone embedded in your business would.</p>
+    <p>If your firm completes more than a few projects per year, you do not need another photographer. You need a creative partner who already knows your brand, understands your design language, and shows up ready. Photography, video, website, social media, SEO — all handled under one retainer by someone who never stops working on your brand.</p>
+    <p>This is the model the top firms in BC are moving toward. Not vendor relationships. Creative partnerships.</p>
+    <div class="hp-cp-case">
+      <p class="hp-cp-case-label">Case Study: Balmoral Construction</p>
+      <p>Balmoral Construction went from inconsistent imagery to a 42-page custom website, 4 projects documented, and 12+ months of ongoing creative partnership. One relationship replaced their photographer, web designer, and social media manager.</p>
+      <a href="/balmoral-construction">Read the Full Case Study &rarr;</a>
+    </div>
+    <div class="hp-cp-cta">
+      <a href="/creative-partner" class="hp-cp-btn">Learn More About Creative Partner</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ IMAGE BREAK / TESTIMONIAL ════════════ -->
+<section class="hp-image-break hp-img-break">
+  <div class="hp-image-break-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/5be7e36c-d920-4d5d-9260-da4df4c50415/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-16.jpg?format=2500w" alt="Sandy Hook Sunshine Coast luxury home interior architectural photography by Matt Anthony" loading="lazy">
+  </div>
+  <div class="hp-ib-content">
+    <p class="hp-label">Client Testimonial</p>
+    <div class="hp-ib-quote">Matt was a pleasure to work with on our recent architectural project shoots. He was highly responsive and organized pre shoot, and on site he worked efficiently with a professional, calm demeanor. His creative eye brought out the best in the design, and he easily adapted to changing conditions. Highly recommend!</div>
+    <p class="hp-ib-attr">Kyle Paisley, Summerhill Fine Homes</p>
+    <div class="hp-ib-links">
+      <a href="/discovery-call" class="hp-ib-link hp-ib-link-primary">Book a Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ ABOUT ════════════ -->
+<section class="hp-about" data-nav="About">
+  <div class="hp-about-image">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/78a5df2e-eb81-4c0d-a9f0-9bdea08bdcd9/matt-anthony-photography-squamish.jpg?format=1500w" alt="Matt Anthony architectural photographer Squamish BC" loading="lazy">
+  </div>
+  <div class="hp-about-text">
+    <p class="hp-label hp-eyebrow">About</p>
+    <div class="hp-divider" style="width:0"></div>
+    <h2>Matt Anthony</h2>
+    <p>Visual strategist for the construction and design industry. What started as architectural photography has grown into a full creative practice — photo, video, web, social, and brand strategy — built specifically for firms that take their work seriously.</p>
+    <p>Based in <a href="/squamish-architectural-photography">Squamish</a>, serving <a href="/whistler-architectural-photography">Whistler</a>, <a href="/pemberton-photography">Pemberton</a>, the <a href="/sunshine-coast-photography">Sunshine Coast</a>, <a href="/vancouver-architectural-photographer">Vancouver</a>, the <a href="/fraser-valley-photography">Fraser Valley</a>, and the <a href="/okanagan-architectural-photographer">Okanagan</a>. Transport Canada certified Advanced Drone Pilot.</p>
+    <a href="/bio" class="hp-about-link">Read Full Bio</a>
+  </div>
+</section>
+
+<!-- ════════════ TRUSTED BY ════════════ -->
+<section class="hp-clients">
+  <p class="hp-label">Trusted By</p>
+  <div class="hp-divider" style="margin:0 auto 2rem;width:0"></div>
+  <div class="hp-clients-grid">
+    <span>Balmoral Construction</span>
+    <span>Summerhill Fine Homes</span>
+    <span>McKinley Beach</span>
+    <span>Shelter Design Build</span>
+    <span>Refined Glazing</span>
+    <span>The Window Merchant</span>
+    <span>Allester Engineering</span>
+    <span>Rich Built</span>
+    <span>BD Interior Design</span>
+    <span>Britt Lothrop Interior Design</span>
+    <span>Whistler Builder</span>
+    <span>Timco Fine Carpentry</span>
+    <span>Innotech Windows &amp; Doors</span>
+    <span>Keck Architecture</span>
+    <span>Custom Flooring Centre</span>
+    <span>Kolbe Windows</span>
+    <span>Gnar Interior Design</span>
+    <span>Southpaw Homes</span>
+    <span>ID Design</span>
+    <span>KLC Kre-a-tiv</span>
+    <span>First Peak Contracting</span>
+    <span>Sitelines Architecture</span>
+    <span>Koze Design &amp; Build</span>
+    <span>La Roche-Posay</span>
+    <span>Linwood Construction</span>
+    <span>Salish Elements</span>
+    <span>LRD Studios</span>
+    <span>Ian Paine Construction &amp; Design</span>
+  </div>
+</section>
+
+<!-- ════════════ TESTIMONIALS ════════════ -->
+<section class="hp-testimonials" data-nav="Testimonials">
+  <p class="hp-label">What Clients Say</p>
+  <div class="hp-test-wrap">
+    <!-- Testimonial 1: Summerhill -->
+    <div>
+      <div class="hp-test-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8885e535-fd99-48e9-801f-020449535162/5322-backhouse-web-22.jpg?format=1500w" alt="The Perch project photography for Summerhill Fine Homes" loading="lazy">
+      </div>
+      <div class="hp-test-quote hp-quote-text" id="hpQuote1">Matt was a pleasure to work with on our recent architectural project shoots. He was highly responsive and organized pre shoot, and on site he worked efficiently with a professional, calm demeanor. His creative eye brought out the best in the design, and he easily adapted to changing conditions. Highly recommend!</div>
+      <p class="hp-test-attr">Kyle Paisley, Summerhill Fine Homes</p>
+      <a href="/summerhill-fine-homes" class="hp-test-cs">View Case Study &rarr;</a>
+    </div>
+    <!-- Testimonial 2: Sitelines -->
+    <div>
+      <div class="hp-test-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/6c3ffde5-c26e-4796-8551-cfd303e2b0d8/sitelines-SDA-web--11.jpg?format=1500w" alt="SDA headquarters interior photography for Sitelines Architecture" loading="lazy">
+      </div>
+      <div class="hp-test-quote hp-quote-text" id="hpQuote2">What first drew us to Matt's work was his use of natural light. He captures spaces in a way that feels authentic and honest, allowing the materials to shine. Matt truly understands what it takes to showcase a project, and we highly recommend him.</div>
+      <p class="hp-test-attr">Jordan Maddox, Sitelines Architecture</p>
+      <a href="/sitelines-architecture" class="hp-test-cs">View Case Study &rarr;</a>
+    </div>
+    <!-- Testimonial 3: Balmoral (trimmed) -->
+    <div>
+      <div class="hp-test-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg?format=1500w" alt="Warbler Residence Whistler photography for Balmoral Construction" loading="lazy">
+      </div>
+      <div class="hp-test-quote hp-quote-text" id="hpQuote3">Working with Matt was an absolute pleasure from start to finish. The website looks fantastic, and the ongoing maintenance plan gives me peace of mind knowing everything is taken care of.</div>
+      <p class="hp-test-attr">Balmoral Construction</p>
+      <a href="/balmoral-construction" class="hp-test-cs">View Case Study &rarr;</a>
+    </div>
+    <!-- Testimonial 4: Window Merchant (trimmed) -->
+    <div>
+      <div class="hp-test-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/686d53c540bccb49df1c90bc/caf6964d-cbe6-40ea-8939-babd46c8f1b4/window-merchant-saltspring-exterior-windows-full-res-16.jpg?format=1500w" alt="Salt Spring Island window installation photography for The Window Merchant" loading="lazy">
+      </div>
+      <div class="hp-test-quote hp-quote-text" id="hpQuote4">Matt completely redesigned our website and has been documenting our projects through photography, video, and social media ever since. Having him handle everything from content creation to posting has made a big difference in keeping our brand consistent and professional.</div>
+      <p class="hp-test-attr">Jeremy Kirbyson, The Window Merchant</p>
+      <a href="/the-window-merchant" class="hp-test-cs">View Case Study &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ JOURNAL ════════════ -->
+<section class="hp-journal" data-nav="Journal">
+  <div class="hp-journal-header">
+    <div>
+      <p class="hp-label hp-eyebrow">From the Journal</p>
+      <h2>Strategy and insight for builders, architects, and designers</h2>
+    </div>
+    <a href="/journal" class="hp-view-all">View All Articles</a>
+  </div>
+  <div class="hp-journal-grid">
+    <a href="/journal/roi-professional-architectural-photography-builders" class="hp-journal-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83bbba67-7393-4e34-8b4b-bac1600c8110/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-12.jpg?format=1500w" alt="ROI of professional architectural photography for custom home builders" loading="lazy">
+      <p class="hp-journal-cat">Business Case</p>
+      <h3>The ROI of Professional Architectural Photography</h3>
+    </a>
+    <a href="/journal/how-to-photograph-your-project-for-award-submissions" class="hp-journal-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7ef87751-7049-4003-b0ae-2d83f90f21c4/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-13.jpg?format=1500w" alt="How to photograph projects for award submissions guide" loading="lazy">
+      <p class="hp-journal-cat">Awards</p>
+      <h3>How to Photograph Your Project for Award Submissions</h3>
+    </a>
+    <a href="/journal/construction-lifestyle-photography-best-social-media-investment-builders" class="hp-journal-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/99381b00-0337-4207-afdf-fef0d9870acf/construction-lifestyle-photography-sunshine-coast-summerhill18.jpg?format=1500w" alt="Construction lifestyle photography as social media investment for builders" loading="lazy">
+      <p class="hp-journal-cat">Content Strategy</p>
+      <h3>Why Construction Lifestyle Photography is Best Social Media Investment</h3>
+    </a>
+  </div>
+</section>
+
+<!-- ════════════ AWARDS & PUBLICATIONS RESOURCE ROW ════════════ -->
+<section style="background:#eeece6;padding:3rem 5vw">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem">
+    <div>
+      <p class="hp-label" style="margin-bottom:.5rem">Awards &amp; Publications</p>
+      <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.1rem,2vw,1.4rem);font-weight:300;color:#1a1a18;line-height:1.3;margin:0">Free guides to help your projects win awards and get published</p>
+    </div>
+    <div style="display:flex;gap:1.25rem;flex-wrap:wrap">
+      <a href="/journal/architectural-photography-for-publications" style="display:inline-block;font-family:'DM Sans',-apple-system,sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:.7rem 1.5rem;font-weight:500;background:#c9a96e;border:1px solid #c9a96e;color:#1a1a18;transition:all .3s ease">Overview Guide</a>
+      <a href="/award-publication-imagery" style="display:inline-block;font-family:'DM Sans',-apple-system,sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:.7rem 1.5rem;font-weight:500;background:transparent;border:1px solid #b8975a;color:#b8975a;transition:all .3s ease">Award Photography Service</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ LEAD MAGNET / MARKETING PLAN ════════════ -->
+<section class="hp-magnet">
+  <div class="hp-magnet-inner">
+    <div class="hp-magnet-text">
+      <p class="hp-label">Free Resource</p>
+      <h2>Get a personalized <em>marketing plan</em> for your firm</h2>
+      <p>We'll audit your website, analyze your competitors, and build a 90-day roadmap tailored to your market. No cost, no strings.</p>
+      <div class="hp-magnet-items">
+        <div class="hp-magnet-item">Website &amp; SEO scorecard with actionable fixes</div>
+        <div class="hp-magnet-item">Competitor comparison across your local market</div>
+        <div class="hp-magnet-item">Google, social, and content strategy</div>
+        <div class="hp-magnet-item">90-day prioritized action plan you can start this week</div>
+      </div>
+      <a href="/marketing-plan" class="hp-magnet-btn">Get Your Free Plan</a>
+    </div>
+    <div class="hp-magnet-img">
+      <img src="https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/312b0797-a43a-4a51-906e-f913c78c7b79/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-3.jpg?format=1500w" alt="Fitzsimmons Residence Whistler architectural photography by Matt Anthony" loading="lazy">
+      <div class="hp-magnet-img-badge">Free &middot; Personalized</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ MANIFESTO ════════════ -->
+<section class="hp-manifesto hp-grain" id="hpManifesto">
+  <p class="hp-manifesto-text">
+    <span class="hp-mw">The</span> <span class="hp-mw">firms</span> <span class="hp-mw">that</span> <span class="hp-mw hp-gold-word">dominate</span> <span class="hp-mw">their</span> <span class="hp-mw hp-gold-word">market</span> <span class="hp-mw">don't</span> <span class="hp-mw">hire</span> <span class="hp-mw">a</span> <span class="hp-mw">photographer</span> <span class="hp-mw">when</span> <span class="hp-mw">they</span> <span class="hp-mw">need</span> <span class="hp-mw">one.</span> <span class="hp-mw">They</span> <span class="hp-mw">have</span> <span class="hp-mw">a</span> <span class="hp-mw hp-gold-word">creative</span> <span class="hp-mw hp-gold-word">partner</span> <span class="hp-mw">who</span> <span class="hp-mw hp-gold-word">never</span> <span class="hp-mw hp-gold-word">stops</span> <span class="hp-mw hp-gold-word">working.</span> <span class="hp-mw">Every</span> <span class="hp-mw hp-gold-word">project</span> <span class="hp-mw">documented.</span> <span class="hp-mw">Every</span> <span class="hp-mw hp-gold-word">channel</span> <span class="hp-mw">active.</span> <span class="hp-mw">Every</span> <span class="hp-mw hp-gold-word">touchpoint</span> <span class="hp-mw">consistent.</span> <span class="hp-mw">That's</span> <span class="hp-mw">the</span> <span class="hp-mw">difference</span> <span class="hp-mw">between</span> <span class="hp-mw">a</span> <span class="hp-mw">business</span> <span class="hp-mw">and</span> <span class="hp-mw">a</span> <span class="hp-mw hp-gold-word">brand.</span>
+  </p>
+</section>
+
+<!-- ════════════ FINAL CTA ════════════ -->
+<section class="hp-cta">
+  <div class="hp-cta-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83bbba67-7393-4e34-8b4b-bac1600c8110/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-12.jpg?format=2500w" alt="Sandy Hook Sunshine Coast architectural photography by Matt Anthony" loading="lazy">
+  </div>
+  <div class="hp-cta-content">
+    <h2>Your builds deserve a visual identity as strong as the <em>work itself</em></h2>
+    <p>Let's talk about what consistent, strategic visual content could do for your brand. No pitch — just a conversation.</p>
+    <a href="/discovery-call" class="hp-cta-btn hp-magnetic">Book a Discovery Call</a>
+    <p class="hp-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+  </div>
+</section>
+
+<!-- ════════════ FOOTER ════════════ -->
+<div class="hp-ft">
+  <div class="hp-ft-locs">
+    <a href="/squamish-architectural-photography">Squamish</a>
+    <a href="/whistler-architectural-photography">Whistler</a>
+    <a href="/pemberton-photography">Pemberton</a>
+    <a href="/sunshine-coast-photography">Sunshine Coast</a>
+    <a href="/vancouver-architectural-photographer">Vancouver</a>
+    <a href="/fraser-valley-photography">Fraser Valley</a>
+    <a href="/okanagan-architectural-photographer">Okanagan</a>
+  </div>
+  <div class="hp-ft-row">
+    <div class="hp-ft-item">
+      <span class="hp-ft-label">Based In</span>
+      <span class="hp-ft-dot"></span>
+      <p>Squamish, British Columbia</p>
+    </div>
+    <div class="hp-ft-item">
+      <span class="hp-ft-label">Email</span>
+      <span class="hp-ft-dot"></span>
+      <a id="hp-ft-em" href="#">&#105;&#110;&#102;&#111;&#64;&#109;&#97;&#116;&#116;&#97;&#110;&#116;&#104;&#111;&#110;&#121;&#112;&#104;&#111;&#116;&#111;&#46;&#99;&#111;&#109;</a>
+    </div>
+    <div class="hp-ft-item">
+      <span class="hp-ft-label">Phone</span>
+      <span class="hp-ft-dot"></span>
+      <a href="tel:6047659270">604.765.9270</a>
+    </div>
+    <div class="hp-ft-social">
+      <a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:rgba(246,244,240,.5)"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:rgba(246,244,240,.5)"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="hp-ft-rule"></div>
+  <div class="hp-ft-bottom">
+    <span class="hp-ft-copy">&copy; 2026 Matt Anthony Photography</span>
+    <nav class="hp-ft-nav">
+      <a href="/projects">Projects</a>
+      <a href="/journal">Journal</a>
+      <a href="/bio">About</a>
+      <a href="/pricing-guide-landing">Get Pricing</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+</div>
+
+<!-- ═══ INTERACTIVE LAYER JS ═══ -->
+<script>
+(function(){
+  var isMobile = 'ontouchstart' in window;
+  var wrap = document.querySelector('.hp-wrap');
+  var progressBar = document.getElementById('hpProgress');
+  var hero = document.querySelector('.hp-hero');
+  var heroContent = document.querySelector('.hp-hero-content');
+  var heroBg = document.querySelector('.hp-hero-bg');
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader = document.getElementById('hpLoader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('hp-done'); }, 1100);
+  });
+
+  /* ═══ SECTION NAV DOTS ═══ */
+  var sectionNav = document.getElementById('hpSectionNav');
+  var navSections = document.querySelectorAll('[data-nav]');
+  var navDots = [];
+  navSections.forEach(function(sec){
+    var dot = document.createElement('div');
+    dot.className = 'hp-nav-dot';
+    dot.setAttribute('data-label', sec.getAttribute('data-nav'));
+    dot.addEventListener('click', function(){
+      sec.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+    sectionNav.appendChild(dot);
+    navDots.push({ dot:dot, section:sec });
+  });
+
+  function updateNavDots(){
+    var scrollY = window.scrollY;
+    var winH = window.innerHeight;
+    if(scrollY > winH * 0.5) sectionNav.classList.add('hp-nav-visible');
+    else sectionNav.classList.remove('hp-nav-visible');
+    var active = null;
+    navDots.forEach(function(item){
+      var rect = item.section.getBoundingClientRect();
+      if(rect.top < winH * 0.5 && rect.bottom > winH * 0.3) active = item;
+      item.dot.classList.remove('hp-nav-active');
+    });
+    if(active) active.dot.classList.add('hp-nav-active');
+  }
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  function updateProgress(){
+    var s = window.scrollY;
+    var d = document.documentElement.scrollHeight - window.innerHeight;
+    if(d > 0) progressBar.style.width = (s / d * 100) + '%';
+  }
+
+  /* ═══ HERO PARALLAX + FADE ═══ */
+  function updateHero(){
+    var s = window.scrollY;
+    var h = window.innerHeight;
+    if(s > h) return;
+    var ratio = s / h;
+    if(heroBg) heroBg.style.transform = 'translateY(' + (s * 0.35) + 'px) scale(' + (1 + ratio * 0.05) + ')';
+    if(heroContent){
+      heroContent.style.transform = 'translateY(' + (s * 0.15) + 'px)';
+      heroContent.style.opacity = 1 - ratio * 1.2;
+    }
+  }
+
+  /* ═══ PHOTO BREAK PARALLAX ═══ */
+  var photoBreaks = document.querySelectorAll('.hp-img-break');
+  function updatePhotoParallax(){
+    photoBreaks.forEach(function(pb){
+      var rect = pb.getBoundingClientRect();
+      if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+      var center = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+      var img = pb.querySelector('.hp-image-break-bg img');
+      if(img) img.style.transform = 'translateY(' + (center * -30) + 'px) scale(1.08)';
+    });
+  }
+
+  /* ═══ HEADLINE GOLD UNDERLINE ═══ */
+  var headObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('hp-underlined'); headObs.unobserve(e.target); }
+    });
+  }, {threshold:0.4});
+  document.querySelectorAll('.hp-wrap h2').forEach(function(h){ headObs.observe(h); });
+
+  /* ═══ EYEBROW DASH DRAW ═══ */
+  var eyeObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('hp-visible'); eyeObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.hp-eyebrow').forEach(function(el){ eyeObs.observe(el); });
+
+  /* ═══ DIVIDER DRAW ═══ */
+  var divObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('hp-drawn'); divObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.hp-divider').forEach(function(el){ if(el.style.width === '0px' || el.style.width === '0') divObs.observe(el); });
+
+  /* ═══ KEN BURNS ═══ */
+  var kenObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) e.target.classList.add('hp-in-view');
+      else e.target.classList.remove('hp-in-view');
+    });
+  }, {threshold:0.1});
+  photoBreaks.forEach(function(el){ kenObs.observe(el); });
+
+  /* ═══ CTA ZOOM ═══ */
+  var ctaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('hp-in-view'); ctaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.2});
+  document.querySelectorAll('.hp-cta').forEach(function(el){ ctaObs.observe(el); });
+
+  /* ═══ STAT COUNTERS ═══ */
+  function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+  var counterObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting || e.target.classList.contains('hp-counted')) return;
+      e.target.classList.add('hp-counted');
+      var text = e.target.textContent.trim();
+      var hasPlus = text.indexOf('+') !== -1;
+      var num = parseInt(text);
+      if(isNaN(num)) return;
+      var start = performance.now();
+      function tick(now){
+        var t = Math.min((now - start) / 1400, 1);
+        e.target.textContent = Math.round(ease(t) * num) + (hasPlus ? '+' : '');
+        if(t < 1) requestAnimationFrame(tick);
+      }
+      e.target.textContent = '0' + (hasPlus ? '+' : '');
+      requestAnimationFrame(tick);
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.hp-stat-num').forEach(function(el){ counterObs.observe(el); });
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor = document.getElementById('hpCursor');
+  var cursorDot = document.getElementById('hpCursorDot');
+  var cx = 0, cy = 0, dx = 0, dy = 0;
+  if(!isMobile && cursor){
+    document.addEventListener('mousemove', function(e){
+      dx = e.clientX; dy = e.clientY;
+      cursorDot.style.left = dx + 'px';
+      cursorDot.style.top = dy + 'px';
+      if(!cursor.classList.contains('hp-active')){
+        cursor.classList.add('hp-active');
+        cursorDot.classList.add('hp-active');
+      }
+    });
+    function tickCursor(){
+      cx += (dx - cx) * 0.12;
+      cy += (dy - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(tickCursor);
+    }
+    tickCursor();
+    var hoverEls = document.querySelectorAll('a, button, .hp-proj-card, .hp-journal-card, .hp-cta-btn, .hp-svc-featured');
+    hoverEls.forEach(function(el){
+      el.addEventListener('mouseenter', function(){ cursor.classList.add('hp-hover'); });
+      el.addEventListener('mouseleave', function(){ cursor.classList.remove('hp-hover'); });
+    });
+    document.addEventListener('mousedown', function(){ cursor.classList.add('hp-click'); });
+    document.addEventListener('mouseup', function(){ cursor.classList.remove('hp-click'); });
+  }
+
+  /* ═══ MAGNETIC BUTTON ═══ */
+  if(!isMobile){
+    document.querySelectorAll('.hp-magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.25) + 'px, ' + (y * 0.25) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  /* ═══ TESTIMONIAL WORD REVEAL ═══ */
+  var quoteEls = document.querySelectorAll('.hp-quote-text');
+  quoteEls.forEach(function(el){
+    var text = el.textContent.trim();
+    var words = text.split(/\s+/);
+    el.innerHTML = '';
+    words.forEach(function(w){
+      var span = document.createElement('span');
+      span.className = 'hp-qw';
+      span.textContent = w + ' ';
+      el.appendChild(span);
+    });
+  });
+  var quoteWords = [];
+  quoteEls.forEach(function(el){
+    quoteWords.push({el:el, words:el.querySelectorAll('.hp-qw'), revealed:false});
+  });
+  function updateQuotes(){
+    quoteWords.forEach(function(q){
+      if(q.revealed) return;
+      var rect = q.el.getBoundingClientRect();
+      var vh = window.innerHeight;
+      if(rect.top > vh || rect.bottom < 0) return;
+      var progress = 1 - (rect.top / (vh * 0.55));
+      progress = Math.max(0, Math.min(1, progress));
+      var wordsToLight = Math.floor(progress * q.words.length);
+      for(var i = 0; i < q.words.length; i++){
+        if(i < wordsToLight) q.words[i].classList.add('hp-lit');
+      }
+      if(wordsToLight >= q.words.length) q.revealed = true;
+    });
+  }
+
+  /* ═══ AMBIENT PARTICLES ═══ */
+  var canvas = document.getElementById('hpParticles');
+  if(canvas){
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    function resizeCanvas(){
+      var parent = canvas.parentElement;
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    for(var p = 0; p < 30; p++){
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -Math.random() * 0.4 - 0.1,
+        r: Math.random() * 1.5 + 0.5,
+        a: Math.random() * 0.3 + 0.05
+      });
+    }
+    function drawParticles(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(function(pt){
+        pt.x += pt.vx;
+        pt.y += pt.vy;
+        if(pt.y < -10) { pt.y = canvas.height + 10; pt.x = Math.random() * canvas.width; }
+        if(pt.x < -10) pt.x = canvas.width + 10;
+        if(pt.x > canvas.width + 10) pt.x = -10;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(201,169,110,' + pt.a + ')';
+        ctx.fill();
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+  }
+
+  /* ═══ SCROLL INDICATOR HIDE ═══ */
+  var scrollHint = document.getElementById('hpScrollHint');
+  function updateScrollHint(){
+    if(!scrollHint) return;
+    if(window.scrollY > 80) scrollHint.classList.add('hp-hidden');
+    else scrollHint.classList.remove('hp-hidden');
+  }
+
+  /* ═══ MANIFESTO WORD REVEAL ═══ */
+  var manifesto = document.getElementById('hpManifesto');
+  var mWords = manifesto ? manifesto.querySelectorAll('.hp-mw') : [];
+  var manifestoRevealed = false;
+  function updateManifesto(){
+    if(!manifesto || manifestoRevealed) return;
+    var rect = manifesto.getBoundingClientRect();
+    var vh = window.innerHeight;
+    if(rect.top > vh || rect.bottom < 0) return;
+    var progress = 1 - (rect.top / (vh * 0.6));
+    progress = Math.max(0, Math.min(1, progress));
+    var wordsToLight = Math.floor(progress * mWords.length);
+    for(var i = 0; i < mWords.length; i++){
+      if(i < wordsToLight) mWords[i].classList.add('hp-lit');
+    }
+    if(wordsToLight >= mWords.length) manifestoRevealed = true;
+  }
+
+  /* ═══ FOOTER EMAIL DECODE ═══ */
+  var ftEm = document.getElementById('hp-ft-em');
+  if(ftEm){
+    ftEm.addEventListener('click', function(e){
+      e.preventDefault();
+      window.location.href = 'mailto:info@mattanthonyphoto.com';
+    });
+  }
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateHero();
+        updatePhotoParallax();
+        updateScrollHint();
+        updateManifesto();
+        updateQuotes();
+        updateNavDots();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress();
+  updateHero();
+  updateScrollHint();
+  updateNavDots();
+})();
+</script>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Architectural photography for architects, custom builders, and interior designers across British Columbia. Based in Squamish, serving Whistler, Sunshine Coast, Vancouver, and beyond.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/">
+<meta property="og:title" content="Architectural Photographer in Vancouver, Squamish, Whistler & BC | Matt Anthony">
+<meta property="og:description" content="Documenting design intent for those who build with purpose. Architectural photography and film for architects, builders, and designers in British Columbia.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/808387ba-bee1-4c46-a4d3-354d7e1f8372/west-10th-vancouver-web--2.jpg?format=1500w">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Josefin+Sans:wght@600;700&display=swap" rel="stylesheet">

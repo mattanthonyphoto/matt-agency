@@ -1,0 +1,341 @@
+{
+  "client": {
+    "company": "LRD Studio",
+    "slug": "lrd"
+  },
+  "audit_date": "March 2026",
+  "cover": {
+    "headline_html": "LRD Studio<br><em>Site &amp; SEO Audit</em>",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8baad882-d517-4bdd-98fd-09ad2530273d/LRD-2500px-7.jpg",
+    "image_position": "center 40%"
+  },
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9f3611d8-a842-42d6-b65b-cd25ba6920cd/sunridge-whistle-web--32.jpg",
+        "alt": "Sunridge interior design",
+        "caption": "Sunridge &middot; Whistler, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/0b4f9f4d-01c4-4da3-ae8e-1131391d280f/sunridge-whistle-web--39.jpg",
+        "alt": "Sunridge interior detail",
+        "caption": "Sunridge &middot; Whistler, BC &middot; Matt Anthony Photography"
+      }
+    ]
+  },
+  "overall_scores": [
+    {
+      "value": 77,
+      "label": "Overall SEO",
+      "grade": "B",
+      "color": "ok"
+    },
+    {
+      "value": 46,
+      "label": "Local / GEO",
+      "grade": "C-",
+      "color": "bad"
+    },
+    {
+      "value": 84,
+      "label": "Content",
+      "grade": "A-",
+      "color": "good"
+    },
+    {
+      "value": 85,
+      "label": "Visual Assets",
+      "grade": "A-",
+      "color": "good"
+    }
+  ],
+  "sections": [
+    {
+      "type": "seo",
+      "eyebrow": "SEO Audit",
+      "headline_html": "Strong foundation.<br><em>One critical gap.</em>",
+      "lead": "I crawled 30 pages on lrdstudio.ca. The site is well-built with good meta data, a 36-URL sitemap, and fast response times. But one issue is undermining all that photography.",
+      "categories": [
+        {
+          "name": "What’s Working",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "Good Technical Foundation",
+              "detail": "Valid SSL, 91ms response, 36-URL sitemap, proper canonical tags, Open Graph. Solid Squarespace build."
+            },
+            {
+              "status": "pass",
+              "title": "Strong Meta Title",
+              "detail": "\"LRD Studio | Interior Design - Whistler, Squamish\" — clear, branded, includes key locations."
+            },
+            {
+              "status": "pass",
+              "title": "20 Project Pages",
+              "detail": "Extensive portfolio with 34.8 images per page on average. Strong visual coverage."
+            },
+            {
+              "status": "pass",
+              "title": "464-Word Homepage",
+              "detail": "Good content depth. Communicates the studio’s philosophy and approach."
+            },
+            {
+              "status": "pass",
+              "title": "IDIBC Registered + Board Member",
+              "detail": "Lauren Ritz is a registered NCIDQ professional, IDIBC member, and sits on the IDIBC board. Professional credentials are in place."
+            }
+          ]
+        },
+        {
+          "name": "What Needs Fixing",
+          "findings": [
+            {
+              "status": "fail",
+              "title": "699 of 761 Images Missing Alt Text (91.8%)",
+              "detail": "This is the <strong>single biggest issue on the site</strong>. Nearly every image is invisible to Google. For an interior design studio where visual discovery is everything, this means Google Image search (a major source of design-intent traffic) can’t index any of your work."
+            },
+            {
+              "status": "fail",
+              "title": "No Structured Data (Schema.org)",
+              "detail": "Zero JSON-LD markup. Google doesn’t know LRD is an interior design studio, where you’re based, or what services you offer. Adding LocalBusiness + InteriorDesigner schema would improve local search presence."
+            },
+            {
+              "status": "warn",
+              "title": "Meta Description Slightly Long (163 chars)",
+              "detail": "Google truncates at ~155 characters. Trim by 8 characters so the full description displays in search results."
+            },
+            {
+              "status": "warn",
+              "title": "No Blog or Journal",
+              "detail": "No content strategy driving organic traffic. Articles targeting “interior design Whistler,” “Sea-to-Sky interior designer,” or material trend pieces would capture high-intent search traffic."
+            }
+          ]
+        }
+      ],
+      "insight": {
+        "title": "SEO Bottom Line",
+        "content_html": "<p>The site’s technical foundation is <strong>solid</strong>. The critical fix is <strong>alt text on 699 images</strong>, a one-time project that permanently makes your entire portfolio visible to Google Image search. Combined with schema markup, these two fixes would significantly change how the studio appears in search results.</p>"
+      }
+    },
+    {
+      "type": "geo",
+      "eyebrow": "Local SEO &amp; GEO Audit",
+      "headline_html": "Local visibility.<br><em>The biggest gap.</em>",
+      "lead": "When a homeowner in Whistler or Squamish searches “interior designer near me,” can they find LRD Studio?",
+      "categories": [
+        {
+          "name": "Google Business Profile",
+          "findings": [
+            {
+              "status": "fail",
+              "title": "No Google Business Profile Detected",
+              "detail": "LRD Studio doesn’t appear in Google Maps or the Local Pack. For a studio with a physical address in Squamish serving the Sea-to-Sky corridor, this is the <strong>single highest-ROI fix available</strong>."
+            },
+            {
+              "status": "fail",
+              "title": "No LocalBusiness Schema",
+              "detail": "No structured data connecting the website to a local business identity."
+            }
+          ]
+        },
+        {
+          "name": "Directory Presence",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "Listed on Houzz",
+              "detail": "Active Houzz profile. Important for interior designers."
+            },
+            {
+              "status": "warn",
+              "title": "Not Found on HomeStars",
+              "detail": "Consider creating a profile for citation building."
+            },
+            {
+              "status": "warn",
+              "title": "Not Found on IDIBC Directory",
+              "detail": "The Interior Designers Institute of BC directory is an authoritative backlink. Verify membership listing is active."
+            }
+          ]
+        }
+      ],
+      "insight": {
+        "title": "Local SEO Bottom Line",
+        "content_html": "<p><strong>Google Business Profile is the #1 priority.</strong> Free, 30 minutes. Add the Squamish address, service areas (Whistler, Pemberton, Squamish, Vancouver), project photos, and request 5-10 Google reviews from past clients. For a design studio competing with Ashley de Boer (who has a Squamish Chamber listing and multiple award nominations), this is the foundation of local visibility.</p>"
+      }
+    },
+    {
+      "type": "competitors",
+      "eyebrow": "Competitive Landscape",
+      "headline_html": "How you compare.<br><em>In the Sea-to-Sky.</em>",
+      "lead": "Here’s how LRD Studio’s online presence stacks up against interior designers competing for the same clients in the Sea-to-Sky corridor.",
+      "columns": [
+        "Designer",
+        "Website",
+        "SEO",
+        "Photography",
+        "Awards",
+        "Content"
+      ],
+      "rows": [
+        {
+          "highlight": true,
+          "cells": [
+            "<strong>LRD Studio</strong><br><span style='font-size:0.7rem;color:var(--text-muted);'>Squamish</span>",
+            "<span class='dot green'></span>Strong (Squarespace)",
+            "<span class='dot amber'></span>No schema, 699 no-alt",
+            "<span class='dot green'></span>Pro (Matt Anthony)",
+            "<span class='dot green'></span>WL DOTY finalist 2022",
+            "<span class='dot amber'></span>No blog, 20 projects"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Ashley de Boer Interiors<br><span style='font-size:0.7rem;color:var(--text-muted);'>Squamish</span>",
+            "<span class='dot green'></span>Professional",
+            "<span class='dot amber'></span>Basic",
+            "<span class='dot green'></span>Professional",
+            "<span class='dot green'></span>NKBA 30 Under 30, Georgie + HAVAN finalist 2025",
+            "<span class='dot amber'></span>Some"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "STARK Architecture &amp; Interiors<br><span style='font-size:0.7rem;color:var(--text-muted);'>Squamish</span>",
+            "<span class='dot green'></span>Professional",
+            "<span class='dot amber'></span>Basic",
+            "<span class='dot amber'></span>Mixed",
+            "<span class='dot red'></span>None listed",
+            "<span class='dot red'></span>Minimal"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Articulated Design Studio<br><span style='font-size:0.7rem;color:var(--text-muted);'>Squamish / Vancouver</span>",
+            "<span class='dot green'></span>Good",
+            "<span class='dot amber'></span>Location pages",
+            "<span class='dot amber'></span>Decent",
+            "<span class='dot red'></span>None listed",
+            "<span class='dot amber'></span>Service pages"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Beyond Beige Interior Design<br><span style='font-size:0.7rem;color:var(--text-muted);'>Vancouver</span>",
+            "<span class='dot green'></span>Strong",
+            "<span class='dot green'></span>Award pages + blog",
+            "<span class='dot green'></span>Professional",
+            "<span class='dot green'></span>Multiple IDIBC awards",
+            "<span class='dot green'></span>Strong blog"
+          ]
+        }
+      ],
+      "insight": {
+        "title": "The Competitive Gap",
+        "content_html": "<p><strong>Ashley de Boer is gaining ground fast</strong> with multiple 2025 nominations. But Lauren has the Western Living finalist credential and IDIBC board seat. The gap isn’t credentials, it’s <strong>ongoing visibility</strong>: video content, social presence, and continued award submissions to maintain momentum. No Sea-to-Sky designer has professional video content yet.</p>"
+      }
+    },
+    {
+      "type": "content",
+      "eyebrow": "Content &amp; Visual Assets",
+      "headline_html": "What you have.<br><em>What’s missing.</em>",
+      "lead": "LRD Studio’s photography from our work together is strong. Here’s where to build from.",
+      "categories": [
+        {
+          "name": "Strengths",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "20 Project Pages",
+              "detail": "Strong portfolio depth with professional photography from our sessions. Averaging 34.8 images per page."
+            },
+            {
+              "status": "pass",
+              "title": "Professional Photography",
+              "detail": "Images from our Sunridge and other sessions. Design-intent photography that shows material choices, light, and spatial composition."
+            },
+            {
+              "status": "pass",
+              "title": "Clear Brand Voice",
+              "detail": "The site communicates LRD’s design philosophy well. West coast modern influences, material sensitivity, and client-centered approach."
+            },
+            {
+              "status": "pass",
+              "title": "Western Living DOTY Finalist + Build Magazine Feature",
+              "detail": "Lauren Ritz was a 2022 Western Living Designer of the Year finalist. Also featured in Build Magazine (Vancouver & Whistler). Real credentials that competitors respect."
+            }
+          ]
+        },
+        {
+          "name": "Opportunities",
+          "findings": [
+            {
+              "status": "fail",
+              "title": "91.8% of Images Invisible to Google",
+              "detail": "699 images with no alt text. For an interior design studio, Google Image search is one of the most valuable discovery channels. Homeowners search “modern kitchen Whistler” or “log home interior renovation” and the results are images. LRD’s portfolio can’t appear in any of them."
+            },
+            {
+              "status": "fail",
+              "title": "No Video Content",
+              "detail": "Zero project walkthrough videos, zero material reveal reels, zero design process content. For interior design, atmospheric video showing how light moves through a space is the highest-impact content type."
+            },
+            {
+              "status": "warn",
+              "title": "No Blog or Design Journal",
+              "detail": "No content targeting “interior design Whistler” or “Sea-to-Sky interior designer.” Design trend pieces, material stories, and project behind-the-scenes content would drive organic traffic."
+            }
+          ]
+        }
+      ],
+      "insight": {
+        "title": "Content Bottom Line",
+        "content_html": "<p>LRD’s photography portfolio is <strong>genuinely strong</strong> from our work together. The gaps are <strong>discoverability</strong> (alt text, SEO), <strong>media format</strong> (no video), and <strong>credentials</strong> (no awards submitted). Fixing the alt text alone would make 20 projects visible to Google Image search overnight.</p>"
+      }
+    },
+    {
+      "type": "recommendations",
+      "eyebrow": "What I’d Fix First",
+      "headline_html": "The action plan.<br><em>Priority order.</em>",
+      "lead": "Three moves that would have the biggest impact on LRD Studio’s visibility.",
+      "stats": [
+        {
+          "value": "699",
+          "label": "Images Need Alt Text"
+        },
+        {
+          "value": "0",
+          "label": "Video Assets"
+        },
+        {
+          "value": "1",
+          "label": "WL DOTY Finalist"
+        }
+      ],
+      "steps": [
+        {
+          "number": "1",
+          "title": "Fix 699 Image Alt Tags + GBP",
+          "description": "Alt text across the portfolio is a one-time project that permanently makes every project visible to Google Image search. GBP setup adds Google Maps presence. Together, these unlock the two biggest discovery channels."
+        },
+        {
+          "number": "2",
+          "title": "Video + Atmospheric Content",
+          "description": "Interior design sells through atmosphere. A 60-second walkthrough showing how light enters a Sunridge room tells a story that photos alone can’t. No Sea-to-Sky designer has this content. First mover wins."
+        },
+        {
+          "number": "3",
+          "title": "Continue the Awards Momentum",
+          "description": "The Western Living finalist credential opened the door. Keep submitting to IDIBC Awards of Excellence, Georgie, and HAVAN. Each new project photographed to spec is another potential entry. Don’t let the pipeline go cold."
+        }
+      ],
+      "insight": {
+        "title": "This Is Where a Creative Partner Comes In",
+        "content_html": "<p>Every gap in this audit is something I handle. Professional photography with keyword-rich alt text on every image, atmospheric video, social content, and the awards pipeline. One relationship, one monthly investment, and every project LRD designs starts working for the studio’s visibility.</p><p style=\"margin-bottom:0;\"><strong>See the full Creative Partner proposal</strong> for pricing, options, and a pilot roadmap.</p>"
+      }
+    }
+  ]
+}

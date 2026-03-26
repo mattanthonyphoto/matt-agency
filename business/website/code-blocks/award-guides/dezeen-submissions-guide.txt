@@ -1,0 +1,292 @@
+<style>
+.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+.bl-wrap{overflow-x:hidden!important;font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a18;line-height:1.7;font-weight:300}.bl-wrap img{max-width:100%;display:block}.bl-wrap a{color:inherit;text-decoration:none}
+.bl-hero{position:relative;width:100%;height:60vh;min-height:450px;overflow:hidden}.bl-hero>img{width:100%;height:100%;object-fit:cover;filter:saturate(.8) brightness(.4)}.bl-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,24,.2) 0%,rgba(26,26,24,.05) 40%,rgba(26,26,24,.6) 75%,rgba(26,26,24,.95) 100%)}
+.bl-hc{position:absolute;bottom:4rem;left:5vw;z-index:2;max-width:750px}.bl-hl{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:#c9a96e;margin-bottom:1rem;font-weight:500}.bl-hc h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:300;line-height:1.12;color:#f6f4f0;letter-spacing:-.02em;margin-bottom:.75rem}.bl-hc p{font-size:1.15rem;color:#d9d5cd;max-width:520px;line-height:1.8}
+.bl-back{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#b8975a;font-weight:500;padding:2rem 5vw 0;transition:color .3s ease}.bl-back:hover{color:#1a1a18}.bl-back::before{content:'\2190';font-size:.9rem}
+.bl-body{max-width:760px;margin:0 auto;padding:2.5rem 5vw 5rem}.bl-body a{color:#b8975a;transition:color .3s ease}.bl-body a:hover{color:#1a1a18}.bl-body h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;line-height:1.25;margin:3.5rem 0 1.5rem;color:#1a1a18}.bl-body h2:first-of-type{margin-top:0}.bl-body p{font-size:1.2rem;color:#4a4a46;line-height:1.9;margin-bottom:1.5rem}.bl-body strong{font-weight:500;color:#1a1a18}.bl-body blockquote{margin:2.5rem 0;padding:1.5rem 0 1.5rem 2rem;border-left:2px solid #c9a96e;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-style:italic;line-height:1.6;color:#4a4a46}
+.bl-img{margin:2.5rem 0;border-radius:2px;overflow:hidden}.bl-img img{width:100%;height:auto}
+.bl-divider{width:60px;height:1px;background:#c9a96e;margin:3rem 0}
+.bl-callout{background:#f6f4f0;padding:2.5rem;margin:2.5rem 0;border-radius:2px}.bl-callout-label{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:1rem}.bl-callout p{font-size:1.1rem;color:#4a4a46;line-height:1.8;margin-bottom:.75rem}.bl-callout p:last-child{margin-bottom:0}
+.bl-related{padding:4rem 5vw;border-top:1px solid #eeece6}.bl-related-label{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:2rem}.bl-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}.bl-rel-card{display:block;transition:transform .3s ease}.bl-rel-card:hover{transform:translateY(-4px)}.bl-rel-img{overflow:hidden;border-radius:2px;aspect-ratio:16/10;margin-bottom:1rem}.bl-rel-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}.bl-rel-card:hover .bl-rel-img img{transform:scale(1.04)}.bl-rel-cat{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:#c9a96e;font-weight:500;margin-bottom:.4rem}.bl-rel-card h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:400;line-height:1.3;color:#1a1a18;transition:color .3s ease}.bl-rel-card:hover h3{color:#b8975a}
+.bl-cta{position:relative;padding:7rem 5vw;text-align:center;overflow:hidden;min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center}.bl-cta-bg{position:absolute;inset:0;z-index:0}.bl-cta-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.5) brightness(.3)}.bl-cta-c{position:relative;z-index:2}.bl-cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#f6f4f0;margin-bottom:1rem;line-height:1.2}.bl-cta h2 em{font-style:italic;color:#c9a96e}.bl-cta p{font-size:1.15rem;color:#8a8579;max-width:480px;margin:0 auto 2rem;line-height:1.8}.bl-btn{display:inline-block;font-family:'DM Sans',sans-serif;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;padding:1.2rem 3.5rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all .35s ease;text-decoration:none}.bl-btn:hover{background:transparent!important;color:#c9a96e!important;border-color:#c9a96e!important}
+.bl-alt-cta{margin-top:1.25rem;font-size:.75rem;color:#8a8579;letter-spacing:.05em;font-weight:300}.bl-alt-cta a{color:#c9a96e;text-decoration:underline;text-underline-offset:3px;transition:color .3s ease}.bl-alt-cta a:hover{color:#f6f4f0}
+.bl-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.bl-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.bl-ft-locs a:hover{color:#c9a96e}.bl-ft{background:#1a1a18;border-top:1px solid rgba(201,169,110,.15)}.bl-ft-r{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}.bl-ft-i{display:flex;align-items:baseline;gap:10px}.bl-ft-l{font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;white-space:nowrap}.bl-ft-dt{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,.4);flex-shrink:0;position:relative;top:-2px}.bl-ft-i p,.bl-ft-i a{margin:0;font-size:12px;color:rgba(246,244,240,.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color .3s ease}.bl-ft-i a:hover{color:#c9a96e}.bl-ft-s{display:flex;gap:18px}.bl-ft-rl{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,.15) 20%,rgba(201,169,110,.15) 80%,transparent 100%)}.bl-ft-b{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}.bl-ft-cp{font-size:10px;color:rgba(246,244,240,.35);letter-spacing:.08em}.bl-ft-n{display:flex;gap:2.5rem}.bl-ft-n{flex-wrap:wrap;justify-content:center}.bl-ft-n a{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);text-decoration:none;transition:color .3s ease}.bl-ft-n a:hover{color:#c9a96e}
+@media(max-width:768px){.bl-hero{height:50vh;min-height:350px}.bl-hc{bottom:3rem;left:6vw}.bl-back{padding:1.5rem 6vw 0}.bl-body{padding:2rem 6vw 3rem}.bl-body p{font-size:1.1rem}.bl-related{padding:3rem 6vw}.bl-related-grid{grid-template-columns:1fr;gap:1.5rem}.bl-cta{padding:4rem 6vw;min-height:40vh}.bl-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.bl-ft-locs a{font-size:.55rem}.bl-ft-r{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}.bl-ft-rl{margin:0 6vw}.bl-ft-b{flex-direction:column;gap:.75rem;text-align:center;padding:1.25rem 6vw}}
+.bl-ft-email{cursor:pointer}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.bl-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.bl-loader.bl-done{opacity:0;visibility:hidden;pointer-events:none}
+.bl-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:blLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:blLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:blLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:blLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes blLoaderIn{to{opacity:1}}
+@keyframes blLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.bl-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.bl-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.bl-cursor.bl-active{opacity:1}
+.bl-cursor.bl-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.bl-cursor.bl-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.bl-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.bl-cursor-dot.bl-active{opacity:1}
+
+/* ── Section nav dots ── */
+.bl-section-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:99998;display:flex;flex-direction:column;gap:12px;opacity:0;transition:opacity 0.4s ease}
+.bl-section-nav.bl-nav-visible{opacity:1}
+.bl-nav-dot{width:8px;height:8px;border-radius:50%;background:transparent;border:1px solid #8a8579;cursor:pointer;transition:all 0.3s ease;position:relative}
+.bl-nav-dot:hover{border-color:#c9a96e;transform:scale(1.3)}
+.bl-nav-dot.bl-nav-active{background:#c9a96e;border-color:#c9a96e;box-shadow:0 0 8px rgba(201,169,110,0.4)}
+.bl-nav-dot::before{content:attr(data-label);position:absolute;right:20px;top:50%;transform:translateY(-50%);font-family:'Josefin Sans',sans-serif;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a96e;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.3s ease,right 0.3s ease}
+.bl-nav-dot:hover::before{opacity:1;right:24px}
+@media(max-width:768px){.bl-section-nav{display:none}}
+
+/* ── CTA button glow ── */
+.bl-btn{animation:blBtnGlow 3s ease-in-out infinite alternate}
+@keyframes blBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+</style>
+
+<div class="bl-loader" id="blLoader">
+  <div class="bl-loader-brand">Matt Anthony Photography</div>
+  <div class="bl-loader-sub">Dezeen Submissions Guide</div>
+  <div class="bl-loader-line"></div>
+</div>
+<div class="bl-cursor" id="blCursor"></div>
+<div class="bl-cursor-dot" id="blCursorDot"></div>
+<div class="bl-progress" id="blProgress"></div>
+<nav class="bl-section-nav" id="blSectionNav"></nav>
+<div class="bl-wrap">
+
+<div class="bl-hero"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c84d4874-e840-4b3d-ad9f-dcccc5db7749/architectural-interiors-photographer-silverstar-okanagan--23.jpg?format=2500w" alt="Silver Star Residence Okanagan — Dezeen submissions guide"><div class="bl-hc"><p class="bl-hl">Guide</p><h1>How to Get Published on Dezeen</h1><p>Submission guide for architects targeting the world's most-visited architecture and design website.</p></div></div>
+
+<a href="/journal" class="bl-back">Back to Journal</a>
+
+<div class="bl-body">
+
+<h2 data-nav="Overview">What Is Dezeen</h2>
+
+<p>Dezeen is the world's most popular and influential architecture and design website, with more than 3 million monthly readers and over 7 million followers across social media platforms. Founded in 2006, it has become the primary destination for architects, designers, and design-conscious consumers looking for what is new, innovative, and noteworthy in the built environment.</p>
+
+<p>For Canadian architects, and particularly those working in British Columbia, a Dezeen feature positions your practice on the international stage.</p>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Publishable">What Makes a Project Publishable</h2>
+
+<p><strong>Freshness.</strong> The project should feel new and offer something the Dezeen audience has not seen before.</p>
+
+<p><strong>Innovation.</strong> Dezeen's audience expects projects that push the discipline forward in materiality, sustainability, spatial strategy, or cultural response.</p>
+
+<p><strong>Newsworthiness.</strong> Dezeen is a news platform. What is the headline? What makes this project worth writing about today?</p>
+
+<p><strong>A good story.</strong> The client brief, the site challenges, the design evolution, the cultural context.</p>
+
+<p><strong>Fantastic images.</strong> This is non-negotiable. The images must be exceptional.</p>
+
+<blockquote>Dezeen publishes dozens of projects weekly. The photography is the first filter. If the images do not immediately communicate quality and innovation, the submission does not advance.</blockquote>
+
+<div class="bl-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/dbc93525-a291-46b7-8484-df482973ebd2/architectural-interiors-photographer-sunset-beach-vancouver17.jpg?format=2500w" alt="Sunset Beach Residence — architectural photography for Dezeen editorial submission" loading="lazy"></div>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Submission">How to Submit</h2>
+
+<p>Submit your project by email to <strong>press@dezeen.com</strong>. There is no online portal, no form, and no submission fee for editorial consideration.</p>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Contents">What to Include</h2>
+
+<p><strong>JPEG images, minimum 3000 pixels on the shortest side.</strong> This is a hard requirement.</p>
+
+<p><strong>As many images as possible.</strong> 25 to 40 images gives editors the widest selection.</p>
+
+<p><strong>Text about the project.</strong> Write it as you would want it published.</p>
+
+<p><strong>Plans and sections.</strong> Dezeen notes that articles with plans and sections are among their most popular content.</p>
+
+<p><strong>Full credits.</strong> Architect, interior designer, structural engineer, landscape architect, builder, photographer.</p>
+
+<p><strong>Videos.</strong> If you have project video or drone footage, include it.</p>
+
+<p><strong>Materials information.</strong> Specific products, manufacturers, and material choices.</p>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Photography">Photography Technical Requirements</h2>
+
+<p><strong>Format:</strong> JPEG files only.</p>
+
+<p><strong>Resolution:</strong> Minimum 3000 pixels on the shortest side. For lead images, aim for 4000 pixels or more.</p>
+
+<p><strong>Quantity:</strong> Send as many as possible.</p>
+
+<p><strong>Processing:</strong> Dezeen requires images to be "unadulterated." Minor retouching and colour correction are acceptable. Sky replacements, heavy HDR, and dramatic processing are not.</p>
+
+<p><strong>Variety:</strong> Exterior views, interior views, detail shots, aerial/drone views, and context shots.</p>
+
+<div class="bl-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/977dbd95-8a1e-4a62-b00a-4ead2bd17fb8/architectural-interiors-photographer-sunset-beach-vancouver11.jpg?format=2500w" alt="Sunset Beach Residence — interior design and site context documentation" loading="lazy"></div>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Exclusivity">Exclusivity</h2>
+
+<p>This is the single most important strategic consideration. Projects sent exclusively to Dezeen are far more likely to be published. State this clearly in your email: "This project is being offered exclusively to Dezeen."</p>
+
+<p>If Dezeen is your priority target, pitch them first. Hold the project from all other outlets until Dezeen has responded.</p>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Plans">Include Plans and Sections</h2>
+
+<p>Dezeen specifically requests architectural drawings and notes that articles featuring plans and sections are among their most popular and most shared content. Include floor plans, building sections, site plans, and any relevant diagrams.</p>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Awards">Dezeen Awards 2026</h2>
+
+<p>Separate from editorial submissions, Dezeen runs one of the architecture world's most prestigious awards programs with 49 categories in 2026.</p>
+
+<p><strong>Early bird deadline:</strong> March 25, 2026. <strong>Final entry deadline:</strong> June 3, 2026.</p>
+
+<p>New for 2026: <strong>Regional Showcases</strong> recognizing work from specific geographic regions, particularly relevant for Canadian architects.</p>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Strategy">Strategic Tips</h2>
+
+<p><strong>Do not post everything on social media first.</strong> Save the finished project photography for the editorial pitch.</p>
+
+<p><strong>Save your best for press.</strong> Identify your five strongest images and hold them exclusively for the Dezeen pitch.</p>
+
+<p><strong>Tell a story.</strong> Your submission text should read like the beginning of an article.</p>
+
+<p><strong>Pitch at the right time.</strong> Major architecture events generate heavy editorial competition. Pitching during quieter periods can improve your chances.</p>
+
+<div class="bl-callout">
+<p class="bl-callout-label">Dezeen Submission Checklist</p>
+<p>Prepare JPEG images at minimum 3000 pixels on the shortest side</p>
+<p>Include 25 to 40 images covering exteriors, interiors, details, aerials, and context</p>
+<p>Include floor plans, sections, and site plans as high-resolution files</p>
+<p>Write a narrative project description with design intent, site story, and material choices</p>
+<p>Include full credits for all project collaborators</p>
+<p>State explicitly that the project is offered exclusively to Dezeen</p>
+<p>Send to press@dezeen.com with strongest image as the lead attachment</p>
+<p>Do not publish hero images on social media or other platforms first</p>
+<p>Keep processing minimal: colour correction and minor retouching only</p>
+<p>For Dezeen Awards 2026, submit before March 25 early bird deadline</p>
+</div>
+
+</div>
+
+<div class="bl-related">
+<p class="bl-related-label">Related Guides</p>
+<div class="bl-related-grid">
+<a href="/journal/western-living-submissions" class="bl-rel-card">
+<div class="bl-rel-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/35e24e7e-8ae5-47fa-9242-792ad3b6e7b9/browns-road-sunshine-coast-architectural-photographer-matt-anthony-7.jpg?format=750w" alt="Western Living submissions guide" loading="lazy"></div>
+<p class="bl-rel-cat">Guide</p>
+<h3>How to Get Featured in Western Living</h3>
+</a>
+<a href="/journal/dwell-submissions-guide" class="bl-rel-card">
+<div class="bl-rel-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ccfb80fe-3b57-490b-bffb-dfe02f8e174e/linwood-gambier-web-34.jpg?format=750w" alt="Dwell submissions guide" loading="lazy"></div>
+<p class="bl-rel-cat">Guide</p>
+<h3>How to Get Your Project Featured in Dwell</h3>
+</a>
+<a href="/journal/architectural-photography-for-publications" class="bl-rel-card">
+<div class="bl-rel-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/df676ea0-2bb8-4e89-91a1-55d3ce883c14/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-19.jpg?format=750w" alt="Architectural photography for publications" loading="lazy"></div>
+<p class="bl-rel-cat">Guide</p>
+<h3>Architectural Photography for Awards &amp; Publications</h3>
+</a>
+</div>
+</div>
+
+<div class="bl-cta" data-nav="Contact">
+<div class="bl-cta-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/6026f732-c55b-4410-9999-77435ce911f8/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-15.jpg?format=2500w" alt="Architectural detail photography for international publication submission" loading="lazy"></div>
+<div class="bl-cta-c">
+<h2>Ready for <em>international</em> publication?</h2>
+<p>Let's create the imagery that meets Dezeen's editorial standards and gets your project in front of 3 million monthly readers.</p>
+<a href="/discovery-call" class="bl-btn">Book a Discovery Call</a>
+<p class="bl-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+</div>
+</div>
+
+<footer class="bl-ft">
+<div class="bl-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+<div class="bl-ft-r">
+<div class="bl-ft-i"><span class="bl-ft-l">Based In</span><span class="bl-ft-dt"></span><p>Squamish, British Columbia</p></div>
+<div class="bl-ft-i"><span class="bl-ft-l">Email</span><span class="bl-ft-dt"></span><a id="ft-em" class="bl-ft-email"></a></div>
+<div class="bl-ft-i"><span class="bl-ft-l">Phone</span><span class="bl-ft-dt"></span><a href="tel:6047659270">604.765.9270</a></div>
+<div class="bl-ft-i"><span class="bl-ft-l">Follow</span><span class="bl-ft-dt"></span><div class="bl-ft-s"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+</div>
+<div class="bl-ft-rl"></div>
+<div class="bl-ft-b">
+<span class="bl-ft-cp">&copy; 2026 Matt Anthony Photography</span>
+<nav class="bl-ft-n"><a href="/projects">Projects</a><a href="/journal">Journal</a><a href="/bio">About</a><a href="/contact">Contact</a><a href="/pricing-guide-landing">Get Pricing</a></nav>
+</div>
+</footer>
+
+<script>
+(function(){
+  var isMobile='ontouchstart' in window;
+
+  /* EMAIL OBFUSCATION */
+  var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];var e=document.getElementById('ft-em');if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}
+
+  /* LOADING SCREEN */
+  var loader=document.getElementById('blLoader');
+  window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('bl-done');},1100);});
+
+  /* SCROLL PROGRESS */
+  var progressBar=document.getElementById('blProgress');
+  function updateProgress(){var sc=window.scrollY;var d=document.documentElement.scrollHeight-window.innerHeight;if(d>0)progressBar.style.width=(sc/d*100)+'%';}
+
+  /* CUSTOM CURSOR */
+  var cursor=document.getElementById('blCursor');var cursorDot=document.getElementById('blCursorDot');var cx=0,cy=0,dx=0,dy=0;
+  if(!isMobile&&cursor){
+    document.addEventListener('mousemove',function(ev){dx=ev.clientX;dy=ev.clientY;cursorDot.style.left=dx+'px';cursorDot.style.top=dy+'px';if(!cursor.classList.contains('bl-active')){cursor.classList.add('bl-active');cursorDot.classList.add('bl-active');}});
+    function tickCursor(){cx+=(dx-cx)*0.12;cy+=(dy-cy)*0.12;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(tickCursor);}tickCursor();
+    var hoverEls=document.querySelectorAll('a, button, .bl-btn, .bl-rel-card');
+    hoverEls.forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('bl-hover');});el.addEventListener('mouseleave',function(){cursor.classList.remove('bl-hover');});});
+    document.addEventListener('mousedown',function(){cursor.classList.add('bl-click');});
+    document.addEventListener('mouseup',function(){cursor.classList.remove('bl-click');});
+  }
+
+  /* SECTION NAV DOTS */
+  var sectionNav=document.getElementById("blSectionNav");var navSections=document.querySelectorAll("[data-nav]");var navDots=[];
+  navSections.forEach(function(sec){var dot=document.createElement("div");dot.className="bl-nav-dot";dot.setAttribute("data-label",sec.getAttribute("data-nav"));dot.addEventListener("click",function(){sec.scrollIntoView({behavior:"smooth",block:"start"});});sectionNav.appendChild(dot);navDots.push({dot:dot,section:sec});});
+  function updateNavDots(){var scrollY=window.scrollY;var winH=window.innerHeight;if(scrollY>winH*0.5)sectionNav.classList.add("bl-nav-visible");else sectionNav.classList.remove("bl-nav-visible");var active=null;navDots.forEach(function(item){var rect=item.section.getBoundingClientRect();if(rect.top<winH*0.5&&rect.bottom>winH*0.3)active=item;item.dot.classList.remove("bl-nav-active");});if(active)active.dot.classList.add("bl-nav-active");}
+
+  /* COMBINED SCROLL HANDLER */
+  var ticking=false;
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){updateProgress();updateNavDots();ticking=false;});ticking=true;}},{passive:true});
+  updateProgress();updateNavDots();
+})();
+</script>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Get Published on Dezeen | Submission Guide for Architects",
+  "description": "How to get your architecture project published on Dezeen. Submission requirements, photography specs, exclusivity strategy, and Dezeen Awards 2026 guide.",
+  "url": "https://www.mattanthonyphoto.com/journal/dezeen-submissions-guide",
+  "datePublished": "2026-03-19",
+  "dateModified": "2026-03-19",
+  "author": {"@type": "Person", "name": "Matt Anthony", "url": "https://www.mattanthonyphoto.com/bio"},
+  "publisher": {"@type": "Organization", "name": "Matt Anthony Photography", "url": "https://www.mattanthonyphoto.com"},
+  "image": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/architectural-interiors-photographer-silverstar-okanagan--23.jpg",
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.mattanthonyphoto.com/journal/dezeen-submissions-guide"}
+}
+</script>
+
+</div>

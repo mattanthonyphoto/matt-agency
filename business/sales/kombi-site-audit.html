@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site &amp; SEO Audit — Kombi Homes</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #1A1A18;
+  --bg-card: #222220;
+  --bg-surface: #2A2A27;
+  --bg-hover: #333330;
+  --text: #F6F4F0;
+  --text-dim: #B8B2A8;
+  --text-muted: #8A8579;
+  --accent: #C9A96E;
+  --accent-dim: rgba(201,169,110,0.12);
+  --accent-glow: rgba(201,169,110,0.06);
+  --border: rgba(201,169,110,0.08);
+  --border-accent: rgba(201,169,110,0.25);
+  --green: #5B9A6F;
+  --green-bg: rgba(91,154,111,0.12);
+  --green-text: #7BC08E;
+  --amber: #D4A843;
+  --amber-bg: rgba(212,168,67,0.12);
+  --amber-text: #E4C06A;
+  --red: #C45B5B;
+  --red-bg: rgba(196,91,91,0.1);
+  --red-text: #E07A7A;
+  --critical: #A63D3D;
+  --critical-bg: rgba(166,61,61,0.12);
+  --critical-text: #D46A6A;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; scroll-behavior:smooth; }
+body {
+  background:var(--bg); color:var(--text);
+  font-family:'DM Sans',sans-serif; font-weight:300;
+  line-height:1.75; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* PROGRESS BAR */
+.progress { position:fixed; top:0; left:0; height:2px; width:0%; background:var(--accent); z-index:9999; transition:width 0.05s linear; }
+
+/* HEADER */
+.header {
+  position:relative; overflow:hidden; min-height:70vh;
+  display:flex; flex-direction:column; justify-content:flex-end;
+}
+.header-bg {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background-size:cover; background-position:center;
+  filter:brightness(0.3) saturate(0.6);
+}
+.header-bg::after {
+  content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(180deg, rgba(26,26,24,0.2) 0%, rgba(26,26,24,0.95) 100%);
+}
+.header-inner {
+  position:relative; z-index:1; padding:80px 64px 64px; max-width:900px;
+}
+.header-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--accent); background:var(--accent-dim);
+  padding:6px 14px; border-radius:2px; margin-bottom:24px;
+  border:1px solid var(--border-accent);
+}
+.header-badge::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--accent); animation:pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+.header h1 {
+  font-family:'Cormorant Garamond',serif; font-weight:400;
+  font-size:clamp(2.4rem,5vw,3.4rem); line-height:1.1;
+  letter-spacing:-0.01em; margin-bottom:16px;
+}
+.header h1 em { font-style:italic; font-weight:500; color:var(--accent); }
+.header-meta {
+  display:flex; gap:32px; margin-top:24px; padding-top:24px;
+  border-top:1px solid rgba(201,169,110,0.15);
+}
+.header-meta-item { font-size:0.8rem; color:var(--text-muted); }
+.header-meta-item strong {
+  display:block; font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+  font-weight:400; letter-spacing:0.15em;
+  text-transform:uppercase; color:var(--text-dim); margin-bottom:2px;
+}
+
+/* SCORE CARDS */
+.scores {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:var(--border); margin:0;
+}
+.score-card {
+  background:var(--bg-card); text-align:center; padding:48px 24px;
+  position:relative; overflow:hidden;
+}
+.score-card::after {
+  content:''; position:absolute; bottom:0; left:20%; right:20%; height:3px;
+  border-radius:2px;
+}
+.score-card.good::after { background:var(--green); }
+.score-card.ok::after { background:var(--amber); }
+.score-card.bad::after { background:var(--red); }
+.score-card.critical::after { background:var(--critical); }
+.score-ring {
+  width:100px; height:100px; margin:0 auto 20px; position:relative;
+  display:flex; align-items:center; justify-content:center;
+}
+.score-ring svg { position:absolute; top:0; left:0; transform:rotate(-90deg); }
+.score-ring-bg { fill:none; stroke:var(--bg-surface); stroke-width:5; }
+.score-ring-fill { fill:none; stroke-width:5; stroke-linecap:round;
+  stroke-dasharray:276.5; transition:stroke-dashoffset 2s cubic-bezier(0.16,1,0.3,1); }
+.score-ring-fill.good { stroke:var(--green); }
+.score-ring-fill.ok { stroke:var(--amber); }
+.score-ring-fill.bad { stroke:var(--red); }
+.score-ring-fill.critical { stroke:var(--critical); }
+.score-number {
+  font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:500;
+  position:relative; z-index:1;
+}
+.score-number.good { color:var(--green-text); }
+.score-number.ok { color:var(--amber-text); }
+.score-number.bad { color:var(--red-text); }
+.score-number.critical { color:var(--critical-text); }
+.score-label {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px;
+}
+.score-grade {
+  font-family:'Josefin Sans',sans-serif; font-size:0.5rem; font-weight:400;
+  letter-spacing:0.1em; text-transform:uppercase;
+  padding:4px 12px; border-radius:2px; display:inline-block;
+}
+.score-grade.good { background:var(--green-bg); color:var(--green-text); }
+.score-grade.ok { background:var(--amber-bg); color:var(--amber-text); }
+.score-grade.bad { background:var(--red-bg); color:var(--red-text); }
+.score-grade.critical { background:var(--critical-bg); color:var(--critical-text); }
+
+/* SECTIONS */
+.section { max-width:860px; margin:0 auto; padding:80px 64px; }
+.section.wide { max-width:1000px; }
+.section.surface { background:var(--bg-surface); max-width:100%; }
+.section.surface .section-inner { max-width:860px; margin:0 auto; }
+.eyebrow {
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:300;
+  letter-spacing:0.35em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:16px; display:flex; align-items:center; gap:14px;
+}
+.eyebrow::before { content:''; width:24px; height:1px; background:var(--accent); }
+h2 {
+  font-family:'Cormorant Garamond',serif; font-weight:400;
+  font-size:2.4rem; line-height:1.12; letter-spacing:-0.01em; margin-bottom:28px;
+}
+h2 em { font-style:italic; font-weight:500; color:var(--accent); }
+.lead { font-size:1rem; color:var(--text-dim); line-height:1.85; margin-bottom:32px; }
+
+/* CATEGORY HEADERS */
+.category {
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--accent); margin:48px 0 20px; padding-bottom:12px;
+  border-bottom:1px solid var(--border-accent); display:flex; align-items:center; gap:12px;
+}
+.category::before { content:''; width:16px; height:1px; background:var(--accent); }
+
+/* FINDINGS */
+.findings { display:flex; flex-direction:column; gap:2px; }
+.finding {
+  display:grid; grid-template-columns:36px 1fr; gap:16px; padding:16px 20px;
+  background:var(--bg-card); border-radius:6px; align-items:start;
+  border:1px solid var(--border); transition:border-color 0.2s;
+}
+.finding:hover { border-color:var(--border-accent); }
+.finding-status {
+  width:28px; height:28px; border-radius:6px; display:flex;
+  align-items:center; justify-content:center; font-size:0.75rem;
+  font-weight:700; margin-top:1px;
+}
+.finding-status.pass { background:var(--green-bg); color:var(--green-text); }
+.finding-status.warn { background:var(--amber-bg); color:var(--amber-text); }
+.finding-status.fail { background:var(--red-bg); color:var(--red-text); }
+.finding-title { font-weight:500; font-size:0.9rem; margin-bottom:4px; }
+.finding-detail { font-size:0.82rem; color:var(--text-dim); line-height:1.75; }
+
+/* CALLOUT */
+.callout {
+  background:var(--bg-card); border:1px solid var(--border-accent); border-radius:8px;
+  padding:32px; margin:40px 0; position:relative; overflow:hidden;
+}
+.callout::before {
+  content:''; position:absolute; top:0; left:0; width:3px; height:100%;
+  background:var(--accent); border-radius:2px;
+}
+.callout h4 {
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:16px;
+}
+.callout p { font-size:0.9rem; color:var(--text-dim); margin-bottom:12px; }
+.callout p:last-child { margin-bottom:0; }
+.callout strong { color:var(--text); font-weight:600; }
+
+/* COMPETITOR TABLE */
+.compare-table { width:100%; border-collapse:separate; border-spacing:0; margin:32px 0; border-radius:8px; overflow:hidden; border:1px solid var(--border); }
+.compare-table thead th {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem; font-weight:400;
+  letter-spacing:0.15em; text-transform:uppercase;
+  color:var(--accent); padding:14px 16px; text-align:left;
+  background:var(--bg-surface); border-bottom:1px solid var(--border-accent);
+}
+.compare-table tbody td {
+  font-size:0.82rem; padding:14px 16px; border-bottom:1px solid var(--border);
+  vertical-align:middle; background:var(--bg-card);
+}
+.compare-table tbody tr:last-child td { border-bottom:none; }
+.compare-table tbody tr:hover td { background:var(--bg-hover); }
+.compare-table .you-row td { background:var(--accent-dim); }
+.compare-table .you-row td:first-child { color:var(--accent); font-weight:600; }
+.dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:8px; }
+.dot.green { background:var(--green); }
+.dot.amber { background:var(--amber); }
+.dot.red { background:var(--red); }
+.dot.grey { background:var(--text-muted); }
+
+/* STATS BAR */
+.stats-bar {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+  background:var(--border); margin:0;
+}
+.stat-block { background:var(--bg-card); text-align:center; padding:48px 24px; }
+.stat-value {
+  font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:500;
+  color:var(--accent); display:block; line-height:1; margin-bottom:10px;
+  text-shadow:0 0 40px rgba(201,169,110,0.15);
+}
+.stat-label {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted);
+}
+
+/* ACTION STEPS */
+.steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin:40px 0; border-radius:8px; overflow:hidden; }
+.step { background:var(--bg-card); padding:36px 28px; transition:background 0.2s; }
+.step:hover { background:var(--bg-hover); }
+.step-num {
+  font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:500;
+  color:var(--accent); display:block; margin-bottom:16px;
+}
+.step h4 { font-size:0.95rem; font-weight:500; margin-bottom:10px; }
+.step p { font-size:0.82rem; color:var(--text-dim); margin:0; line-height:1.6; }
+
+/* PHOTO BREAK */
+.photo-break {
+  width:100%; height:35vh; min-height:240px; max-height:380px;
+  position:relative; overflow:hidden;
+}
+.photo-break img {
+  width:100%; height:120%; object-fit:cover; display:block;
+  position:absolute; top:-10%; left:0; filter:brightness(0.6) saturate(0.7);
+}
+.photo-break-caption {
+  position:absolute; bottom:0; left:0; right:0; z-index:2; padding:16px 64px;
+  font-size:0.6rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase;
+  color:rgba(226,232,240,0.3);
+}
+
+/* DIVIDER */
+.divider { width:1px; height:60px; background:var(--border); margin:0 auto; }
+
+/* FOOTER */
+.footer {
+  background:var(--bg-card); padding:64px; text-align:center;
+  border-top:1px solid var(--border);
+}
+.footer-brand {
+  font-family:'Josefin Sans',sans-serif; font-size:0.7rem; font-weight:300;
+  letter-spacing:0.4em; text-transform:uppercase;
+  color:var(--text); margin-bottom:16px;
+}
+.footer-info { font-size:0.8rem; color:var(--text-muted); line-height:2.2; }
+.footer-info a { color:var(--accent); text-decoration:none; }
+.footer-note {
+  margin-top:32px; font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+  font-weight:300; letter-spacing:0.15em;
+  text-transform:uppercase; color:var(--text-muted); opacity:0.4;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px) {
+  .header-inner { padding:60px 28px 48px; }
+  .section { padding:56px 28px; }
+  .scores { grid-template-columns:1fr 1fr; }
+  .steps { grid-template-columns:1fr; }
+  .stats-bar { grid-template-columns:1fr; }
+  .compare-table { display:block; overflow-x:auto; }
+  .header-meta { flex-direction:column; gap:12px; }
+  .photo-break { height:180px; min-height:180px; }
+  .photo-break-caption { padding:12px 28px; }
+}
+@media (max-width:480px) {
+  .scores { grid-template-columns:1fr; }
+  h2 { font-size:1.7rem; }
+}
+@media print {
+  .progress { display:none; }
+  body { background:#fff; color:#1a1a1a; }
+  .score-card, .finding, .callout, .step, .stat-block, .compare-table td { background:#fff; border:1px solid #ddd; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progressBar"></div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-bg" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c992d9ce-4647-4129-b03b-6ce9deb487c3/west-10th-vancouver-web--32.jpg');background-position:center 35%;"></div>
+  <div class="header-inner">
+    <div class="header-badge">Live Audit Report</div>
+    <h1>Kombi Homes<br><em>Site &amp; SEO Audit</em></h1>
+    <div class="header-meta">
+      <div class="header-meta-item"><strong>Prepared for</strong>Kombi Homes</div>
+      <div class="header-meta-item"><strong>Prepared by</strong>Matt Anthony Photography</div>
+      <div class="header-meta-item"><strong>Date</strong>March 2026</div>
+    </div>
+  </div>
+</header>
+
+<!-- SCORE CARDS -->
+<div class="scores">
+  
+  <div class="score-card good">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill good" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="41.474999999999994"></circle>
+      </svg>
+      <span class="score-number good" data-count="85">0</span>
+    </div>
+    <div class="score-label">Overall SEO</div>
+    <span class="score-grade good">A-</span>
+  </div>
+  
+  <div class="score-card bad">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill bad" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="149.31"></circle>
+      </svg>
+      <span class="score-number bad" data-count="46">0</span>
+    </div>
+    <div class="score-label">Local / GEO</div>
+    <span class="score-grade bad">C-</span>
+  </div>
+  
+  <div class="score-card mid">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill mid" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="127.19"></circle>
+      </svg>
+      <span class="score-number mid" data-count="54">0</span>
+    </div>
+    <div class="score-label">Content</div>
+    <span class="score-grade mid">C</span>
+  </div>
+  
+  <div class="score-card good">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill good" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="22.120000000000005"></circle>
+      </svg>
+      <span class="score-number good" data-count="92">0</span>
+    </div>
+    <div class="score-label">Visual Assets</div>
+    <span class="score-grade good">A</span>
+  </div>
+  
+</div>
+
+<!-- SECTIONS -->
+
+
+
+<div class="divider"></div>
+<section class="section">
+  <div class="eyebrow">SEO Audit</div>
+  <h2>Search visibility.<br><em>Where you rank today.</em></h2>
+  <p class="lead">Kombi's technical SEO is surprisingly solid for a 2-page site. The gaps are in content volume and structured data.</p>
+  
+  <div class="category">Technical SEO (Strong)</div>
+  <div class="findings">
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Valid SSL certificate</div>
+        <div class="finding-detail">Site served over HTTPS with no mixed content warnings.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Good meta title</div>
+        <div class="finding-detail">"North Shore General Contractor - Kombi Homes" (44 chars). Clear, keyword-rich, proper length.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Meta description present</div>
+        <div class="finding-detail">"Kombi Construction is a residential design and construction company based in North Vancouver, BC" (96 chars).</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Single H1 tag</div>
+        <div class="finding-detail">"KOMBI CONSTRUCTION". Clean heading hierarchy.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Open Graph tags present</div>
+        <div class="finding-detail">og:title and og:image found. Social sharing will display correctly.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Canonical tag present</div>
+        <div class="finding-detail">Self-referencing canonical. No duplicate content issues.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Sitemap found</div>
+        <div class="finding-detail">2 URLs indexed at /sitemap_index.xml.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Good server response</div>
+        <div class="finding-detail">541ms first byte. Clean, fast loading.</div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="category">Structural Gaps</div>
+  <div class="findings">
+    
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">No structured data (schema.org)</div>
+        <div class="finding-detail">Zero JSON-LD markup. Google doesn't know Kombi is a builder, where you're based, what services you offer, or your 31-year track record. Add LocalBusiness and HomeBuilder schema.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Only 2 pages in sitemap</div>
+        <div class="finding-detail">Homepage and contact page. Every competitor has 10-50+ pages indexed. Each missing page is a missed search opportunity.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">No robots.txt customization</div>
+        <div class="finding-detail">Default configuration. Not an issue now but should be reviewed as the site grows.</div>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+</section>
+
+
+
+
+
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/76e4a936-3e97-4510-b280-07e9cda4c3f1/eagle-pemberton-architectural-photography-matt-anthony-.jpg-7.jpg" alt="Eagle Residence Pemberton open plan living space">
+  <div class="photo-break-caption">Eagle Residence &middot; Matt Anthony Photography</div>
+</div>
+
+
+
+
+
+<section class="section surface">
+  <div class="section-inner">
+    <div class="eyebrow">Local SEO &amp; GEO Audit</div>
+    <h2>Local visibility.<br><em>Can North Shore clients find you?</em></h2>
+    <p class="lead">This is the biggest gap. Kombi is invisible in local search results, Google Maps, and the Local Pack for North Vancouver builder searches.</p>
+    
+    <div class="category">Google Business Profile</div>
+    <div class="findings">
+      
+      <div class="finding">
+        <div class="finding-status fail">&#10007;</div>
+        <div>
+          <div class="finding-title">No Google Business Profile detected</div>
+          <div class="finding-detail">Cannot appear in Google Maps, Local Pack, or "near me" searches. This is the single highest-impact fix available. A verified GBP with photos and reviews would immediately improve visibility for "general contractor North Vancouver" searches.</div>
+        </div>
+      </div>
+      
+      <div class="finding">
+        <div class="finding-status fail">&#10007;</div>
+        <div>
+          <div class="finding-title">No LocalBusiness schema</div>
+          <div class="finding-detail">Even without a GBP, schema markup would tell Google your NAP (name, address, phone), service area, and business type. Currently Google has to guess.</div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="category">Directory Presence</div>
+    <div class="findings">
+      
+      <div class="finding">
+        <div class="finding-status pass">&#10003;</div>
+        <div>
+          <div class="finding-title">Listed on Houzz</div>
+          <div class="finding-detail">Active profile found. Good authoritative directory presence for design-build.</div>
+        </div>
+      </div>
+      
+      <div class="finding">
+        <div class="finding-status pass">&#10003;</div>
+        <div>
+          <div class="finding-title">BBB accredited with A+ rating</div>
+          <div class="finding-detail">Strong trust signal. Excellent client reviews mentioning Brian and Ryan by name.</div>
+        </div>
+      </div>
+      
+      <div class="finding">
+        <div class="finding-status warn">!</div>
+        <div>
+          <div class="finding-title">Not found on HomeStars</div>
+          <div class="finding-detail">Major Canadian home services directory. Missing a citation opportunity.</div>
+        </div>
+      </div>
+      
+      <div class="finding">
+        <div class="finding-status warn">!</div>
+        <div>
+          <div class="finding-title">Not found on CHBA member directory</div>
+          <div class="finding-detail">Industry association listing would strengthen local authority and enable award submissions.</div>
+        </div>
+      </div>
+      
+      <div class="finding">
+        <div class="finding-status warn">!</div>
+        <div>
+          <div class="finding-title">NAP consistency unverified</div>
+          <div class="finding-detail">Name, address, and phone should be identical across website footer, Houzz, BBB, and any other listings.</div>
+        </div>
+      </div>
+      
+    </div>
+    
+    
+  </div>
+</section>
+
+
+
+
+
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e6abc23d-4fa1-461f-ba81-ce0448063016/west-10th-vancouver-web--10.jpg" alt="West 10th Avenue Vancouver open plan living room">
+  <div class="photo-break-caption">West 10th Avenue &middot; Matt Anthony Photography</div>
+</div>
+
+
+
+
+
+<div class="divider"></div>
+<section class="section wide">
+  <div class="eyebrow">Competitive Landscape</div>
+  <h2>How you compare.<br><em>Side by side.</em></h2>
+  <p class="lead">Here's how Kombi stacks up against other North Shore custom home builders and general contractors online.</p>
+  <table class="compare-table">
+    <thead><tr><th>Builder</th><th>Pages</th><th>Portfolio</th><th>GBP</th><th>Awards</th><th>Content</th></tr></thead>
+    <tbody>
+      
+      <tr class="you-row">
+        <td>Kombi Homes</td><td>2</td><td>None</td><td>No</td><td>0</td><td>160 words</td>
+      </tr>
+      
+      <tr>
+        <td>Blackfish Homes</td><td>20+</td><td>Full portfolio</td><td>Yes</td><td>Multiple</td><td>Blog + case studies</td>
+      </tr>
+      
+      <tr>
+        <td>Bolder Homes</td><td>15+</td><td>Project pages</td><td>Yes</td><td>HAVAN</td><td>Blog + social</td>
+      </tr>
+      
+      <tr>
+        <td>Goldcon Construction</td><td>25+</td><td>Detailed case studies</td><td>Yes</td><td>Georgie + HAVAN</td><td>Content library</td>
+      </tr>
+      
+      <tr>
+        <td>Barrett Group</td><td>20+</td><td>Project portfolio</td><td>Yes</td><td>Awards listed</td><td>Blog + testimonials</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+</section>
+
+
+
+
+
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8baad882-d517-4bdd-98fd-09ad2530273d/LRD-2500px-7.jpg" alt="Balsam Way Whistler kitchen renovation">
+  <div class="photo-break-caption">Balsam Way &middot; Matt Anthony Photography</div>
+</div>
+
+
+
+
+
+<section class="section">
+  <div class="eyebrow">Content &amp; Visual Assets</div>
+  <h2>What you have.<br><em>What you're missing.</em></h2>
+  <p class="lead">The photography in the homepage carousel is quality work. But 12 images on a single page with no project context isn't a portfolio.</p>
+  
+  <div class="category">Photography & Visuals</div>
+  <div class="findings">
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">12 images on homepage</div>
+        <div class="finding-detail">Good visual presence on the landing page. Carousel shows real craftsmanship.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Alt text on 11 of 12 images</div>
+        <div class="finding-detail">Near-perfect accessibility. Only 1 image missing alt text site-wide.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">No project pages or portfolio</div>
+        <div class="finding-detail">Zero dedicated pages for individual projects. 31 years of custom homes, renovations, and complex builds with no visual documentation online.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">No before/after content</div>
+        <div class="finding-detail">Renovation transformations are the highest-performing content in this market. No before/after documentation exists.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">No video content</div>
+        <div class="finding-detail">No project films, reels, or walkthrough videos. Video is increasingly expected by homeowners evaluating builders.</div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="category">Written Content</div>
+  <div class="findings">
+    
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">160 total words across entire site</div>
+        <div class="finding-detail">The homepage and contact page combined have less content than a single project page should. Google ranks pages based on content depth and relevance.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">No blog or journal</div>
+        <div class="finding-detail">Regular content builds search authority. Competitors post monthly. Kombi has zero posts.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">No testimonials on site</div>
+        <div class="finding-detail">Excellent BBB reviews (Ryan Heathfield praised by name) exist on third-party sites but aren't showcased on kombihomes.com.</div>
+      </div>
+    </div>
+    
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">No service descriptions</div>
+        <div class="finding-detail">Custom homes, renovations, structural concrete, decks, underpinning, these services aren't described anywhere on the site.</div>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+</section>
+
+
+
+
+
+
+
+
+<div class="stats-bar">
+  
+  <div class="stat-block"><span class="stat-value">5</span><span class="stat-label">Critical Fixes</span></div>
+  
+  <div class="stat-block"><span class="stat-value">1</span><span class="stat-label">Week to Launch GBP</span></div>
+  
+  <div class="stat-block"><span class="stat-value">90</span><span class="stat-label">Days to Transform the Site</span></div>
+  
+</div>
+<section class="section">
+  <div class="eyebrow">What I'd Fix First</div>
+  <h2>The action plan.<br><em>Priority order.</em></h2>
+  <p class="lead">These are ordered by impact. The first three can be done in week one.</p>
+  <div class="steps">
+    
+    <div class="step">
+      <span class="step-num">1</span>
+      <h4>Google Business Profile</h4>
+      <p>Create, verify, and optimize a GBP with photos, services, and service area. Immediate visibility in Google Maps and Local Pack for North Shore searches.</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-num">2</span>
+      <h4>Schema Markup</h4>
+      <p>Add LocalBusiness and HomeBuilder JSON-LD schema. Tell Google what Kombi is, where you're based, and what you do. 30-minute fix with massive SEO impact.</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-num">3</span>
+      <h4>Project Portfolio</h4>
+      <p>Build dedicated project pages for your best completed work. Each page is a new search entry point. Start with 3 projects and add one per month.</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-num">4</span>
+      <h4>Professional Photography</h4>
+      <p>Document current and upcoming projects with award-ready photography. Build the visual library that powers everything else, the portfolio, social media, awards, proposals.</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-num">5</span>
+      <h4>Content Strategy</h4>
+      <p>Monthly blog posts, project case studies, and social media content. Build the search authority and online presence that matches 31 years of craftsmanship.</p>
+    </div>
+    
+  </div>
+  
+  <div class="callout">
+    <h4>This Is Where a Creative Partner Comes In</h4>
+    <p>The audit findings above aren't a redesign job. They're a content gap. Kombi needs someone documenting every project, building the portfolio page by page, and fixing the local SEO foundations. That's exactly what the <strong>Creative Partner</strong> model delivers: professional photography, project pages, GBP setup, schema fixes, and a growing content library. All handled, so you can focus on building.</p>
+  </div>
+  
+</section>
+
+
+
+
+
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">Matt Anthony Photography</div>
+  <div class="footer-info">
+    <a href="https://mattanthonyphoto.com">mattanthonyphoto.com</a><br>
+    <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a> &middot; 604.765.9270<br>
+    Squamish, BC
+  </div>
+  <div class="footer-note">This audit is confidential and prepared exclusively for Kombi Homes.</div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* PROGRESS BAR */
+var bar = document.getElementById('progressBar');
+function updateProgress(){
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+}
+
+/* SCORE RING + COUNTER ANIMATION */
+var rings = document.querySelectorAll('.score-ring-fill');
+var numbers = document.querySelectorAll('.score-number[data-count]');
+var animated = false;
+
+function animateScores(){
+  if(animated) return;
+  var cards = document.querySelector('.scores');
+  if(!cards) return;
+  var rect = cards.getBoundingClientRect();
+  if(rect.top < window.innerHeight * 0.8){
+    animated = true;
+    rings.forEach(function(ring){
+      var target = parseFloat(ring.getAttribute('data-target'));
+      ring.style.strokeDashoffset = target;
+    });
+    numbers.forEach(function(num){
+      var target = parseInt(num.getAttribute('data-count'));
+      var duration = 1500;
+      var start = performance.now();
+      function tick(now){
+        var t = Math.min((now - start) / duration, 1);
+        var ease = 1 - Math.pow(1 - t, 3);
+        num.textContent = Math.round(target * ease);
+        if(t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+}
+
+/* FINDING REVEAL */
+var findings = document.querySelectorAll('.finding, .callout, .step');
+findings.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateY(12px)'; el.style.transition='opacity 0.5s ease, transform 0.5s ease'; });
+var revealObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.style.opacity='1';
+      entry.target.style.transform='translateY(0)';
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.1, rootMargin:'0px 0px -20px 0px'});
+findings.forEach(function(el){ revealObserver.observe(el); });
+
+/* SCROLL HANDLER */
+var ticking = false;
+window.addEventListener('scroll', function(){
+  if(!ticking){
+    requestAnimationFrame(function(){
+      updateProgress();
+      animateScores();
+      ticking = false;
+    });
+    ticking = true;
+  }
+},{passive:true});
+
+updateProgress();
+animateScores();
+})();
+</script>
+</body>
+</html>

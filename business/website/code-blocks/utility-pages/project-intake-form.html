@@ -1,0 +1,132 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+.pq-wrap{font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a18;line-height:1.7;font-weight:300}.pq-wrap img{max-width:100%;display:block}.pq-wrap a{color:inherit;text-decoration:none}
+.pq-hero{position:relative;width:100%;height:50vh;min-height:400px;overflow:hidden;display:flex;align-items:flex-end;padding:0 5vw 4rem}.pq-hero-bg{position:absolute;inset:0;z-index:0}.pq-hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.7) brightness(.35)}.pq-hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(26,26,24,.3) 0%,rgba(26,26,24,.05) 40%,rgba(26,26,24,.7) 85%,rgba(26,26,24,.95) 100%)}.pq-hero-c{position:relative;z-index:2;max-width:700px}.pq-hero-l{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;margin-bottom:1rem}.pq-hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,4.5vw,3.5rem);font-weight:300;line-height:1.1;color:#f6f4f0;letter-spacing:-.02em;margin-bottom:.75rem}.pq-hero p{font-size:1rem;color:#d9d5cd;max-width:520px;line-height:1.8}
+.pq-body{background:#f6f4f0;padding:4rem 5vw}.pq-body-inner{max-width:720px;margin:0 auto}
+.pq-progress{display:flex;justify-content:center;gap:2rem;margin-bottom:3rem}.pq-progress-step{display:flex;align-items:center;gap:.5rem;cursor:pointer}.pq-progress-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid #d9d5cd;transition:all .3s ease}.pq-progress-dot.active{border-color:#c9a96e;background:#c9a96e}.pq-progress-dot.done{border-color:#c9a96e;background:#c9a96e}.pq-progress-label{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:#8a8579;font-weight:400;transition:color .3s ease}.pq-progress-step.active .pq-progress-label{color:#1a1a18;font-weight:500}
+.pq-section{display:none}.pq-section.active{display:block}.pq-section-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.4rem;font-weight:300;color:#1a1a18;margin-bottom:.5rem}.pq-section-sub{font-size:.85rem;color:#8a8579;margin-bottom:2.5rem;line-height:1.6}
+.pq-form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}.pq-form-group{margin-bottom:24px}.pq-form-group label{display:block;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:#8a8579;font-weight:500;margin-bottom:8px}.pq-form-group input,.pq-form-group select,.pq-form-group textarea{width:100%;padding:12px 16px;border:1px solid #d9d5cd;background:#fff;font-family:'DM Sans',sans-serif;font-size:.9rem;color:#1a1a18;border-radius:2px;transition:border-color .3s ease;-webkit-appearance:none;appearance:none}.pq-form-group input:focus,.pq-form-group select:focus,.pq-form-group textarea:focus{outline:none;border-color:#c9a96e}.pq-form-group textarea{min-height:100px;resize:vertical}.pq-form-group select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238a8579'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.pq-checks{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}.pq-check{position:relative}.pq-check input{position:absolute;opacity:0;width:0;height:0}.pq-check span{display:inline-block;font-size:.75rem;letter-spacing:.05em;color:#8a8579;padding:8px 16px;border:1px solid #d9d5cd;border-radius:2px;cursor:pointer;transition:all .3s ease}.pq-check input:checked+span{background:#1a1a18!important;color:#f6f4f0!important;border-color:#1a1a18!important}
+.pq-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:2rem;border-top:1px solid #eeece6}.pq-nav-back{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#8a8579;cursor:pointer;transition:color .3s ease;background:none!important;border:none!important;padding:0;font-family:'DM Sans',sans-serif}.pq-nav-back:hover{color:#1a1a18}.pq-nav-next{display:inline-block;font-family:'DM Sans',sans-serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;padding:1rem 2.5rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all .35s ease;cursor:pointer}.pq-nav-next:hover{background:transparent!important;color:#c9a96e!important}
+.pq-success{display:none;text-align:center;padding:4rem 2rem}.pq-success.visible{display:block}.pq-success h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;font-weight:300;color:#1a1a18;margin-bottom:1rem}.pq-success p{font-size:1rem;color:#4a4a46;line-height:1.8;max-width:480px;margin:0 auto 2rem}.pq-success-btn{display:inline-block;font-family:'DM Sans',sans-serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;padding:1rem 2.5rem;border:1px solid #c9a96e!important;background:transparent!important;color:#1a1a18!important;font-weight:500;transition:all .35s ease;cursor:pointer}.pq-success-btn:hover{background:#c9a96e!important}
+.pq-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.pq-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.pq-ft-locs a:hover{color:#c9a96e}.pq-ft{background:#1a1a18;border-top:1px solid rgba(201,169,110,.15)}.pq-ft-r{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}.pq-ft-i{display:flex;align-items:baseline;gap:10px}.pq-ft-l{font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;white-space:nowrap}.pq-ft-dt{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,.4);flex-shrink:0;position:relative;top:-2px}.pq-ft-i p,.pq-ft-i a{margin:0;font-size:12px;color:rgba(246,244,240,.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color .3s ease}.pq-ft-i a:hover{color:#c9a96e}.pq-ft-s{display:flex;gap:18px}.pq-ft-rl{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,.15) 20%,rgba(201,169,110,.15) 80%,transparent 100%)}.pq-ft-b{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}.pq-ft-cp{font-size:10px;color:rgba(246,244,240,.35);letter-spacing:.08em}.pq-ft-n{display:flex;gap:2.5rem}.pq-ft-n a{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);text-decoration:none;transition:color .3s ease}.pq-ft-n a:hover{color:#c9a96e}
+.pq-ft-email::after{content:'info@mattanthonyphoto.com'}.pq-ft-email{cursor:pointer}
+@media(max-width:768px){.pq-hero{height:40vh;min-height:320px}.pq-form-row{grid-template-columns:1fr}.pq-progress{gap:1rem;flex-wrap:wrap;justify-content:center}.pq-progress-label{display:none}.pq-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.pq-ft-locs a{font-size:.55rem}.pq-ft-r{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}.pq-ft-rl{margin:0 6vw}.pq-ft-b{flex-direction:column;gap:.75rem;text-align:center;padding:1.25rem 6vw}}
+</style>
+<div class="pq-wrap">
+<div class="pq-hero"><div class="pq-hero-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg" alt="Warbler Residence Whistler architectural photography by Matt Anthony"></div><div class="pq-hero-c"><p class="pq-hero-l">Client Portal</p><h1>Project Intake</h1><p>Thanks for choosing to work together. Please fill this out for each project you'd like photographed — it helps me plan the shoot, prepare the right equipment, and deliver the strongest images for your goals.</p></div></div>
+
+<div class="pq-body"><div class="pq-body-inner">
+<div class="pq-progress">
+<div class="pq-progress-step active" data-step="0"><div class="pq-progress-dot active"></div><span class="pq-progress-label">The Project</span></div>
+<div class="pq-progress-step" data-step="1"><div class="pq-progress-dot"></div><span class="pq-progress-label">Design Team</span></div>
+<div class="pq-progress-step" data-step="2"><div class="pq-progress-dot"></div><span class="pq-progress-label">Design Details</span></div>
+<div class="pq-progress-step" data-step="3"><div class="pq-progress-dot"></div><span class="pq-progress-label">Shoot Logistics</span></div>
+</div>
+
+<form id="pq-form" novalidate>
+<div class="pq-section active" data-section="0">
+<h2 class="pq-section-title">The Project</h2>
+<p class="pq-section-sub">Basic project information to get us started.</p>
+<div class="pq-form-row"><div class="pq-form-group"><label for="pq-fn">First Name</label><input type="text" id="pq-fn" name="firstName" required></div><div class="pq-form-group"><label for="pq-ln">Last Name</label><input type="text" id="pq-ln" name="lastName" required></div></div>
+<div class="pq-form-row"><div class="pq-form-group"><label for="pq-company">Company</label><input type="text" id="pq-company" name="company"></div><div class="pq-form-group"><label for="pq-phone">Phone</label><input type="tel" id="pq-phone" name="phone"></div></div>
+<div class="pq-form-group"><label for="pq-email">Email</label><input type="email" id="pq-email" name="email" required></div>
+<div class="pq-form-row"><div class="pq-form-group"><label for="pq-projname">Project Name</label><input type="text" id="pq-projname" name="projectName" required></div><div class="pq-form-group"><label for="pq-projtype">Project Type</label><select id="pq-projtype" name="projectType"><option value="">Select type</option><option>Custom Home</option><option>Renovation</option><option>Commercial</option><option>Multi-Residential</option><option>Interior Design</option><option>Landscape / Outdoor</option><option>Other</option></select></div></div>
+<div class="pq-form-group"><label for="pq-address">Project Address</label><input type="text" id="pq-address" name="projectAddress"></div>
+<div class="pq-form-row"><div class="pq-form-group"><label for="pq-sqft">Approx. Square Footage</label><input type="text" id="pq-sqft" name="squareFootage"></div><div class="pq-form-group"><label for="pq-projval">Estimated Project Value</label><input type="text" id="pq-projval" name="projectValue"></div></div>
+<div class="pq-form-row"><div class="pq-form-group"><label for="pq-status">Completion Status</label><select id="pq-status" name="completionStatus"><option value="">Select status</option><option>Complete — ready to shoot</option><option>2 – 4 weeks out</option><option>1 – 3 months out</option><option>3+ months out</option><option>In progress — want progression shots</option></select></div><div class="pq-form-group"><label for="pq-dates">Preferred Shoot Date(s)</label><input type="text" id="pq-dates" name="preferredDates" placeholder="e.g. Late April, flexible"></div></div>
+<div class="pq-nav"><span></span><button type="button" class="pq-nav-next" onclick="pqGoTo(1)">Next</button></div>
+</div>
+
+<div class="pq-section" data-section="1">
+<h2 class="pq-section-title">The Design Team</h2>
+<p class="pq-section-sub">Who should be credited? This helps with tagging, licensing, and multi-party sharing.</p>
+<div class="pq-form-group"><label for="pq-architect">Architect</label><input type="text" id="pq-architect" name="architect"></div>
+<div class="pq-form-group"><label for="pq-builder">Builder / General Contractor</label><input type="text" id="pq-builder" name="builder"></div>
+<div class="pq-form-group"><label for="pq-intdesigner">Interior Designer</label><input type="text" id="pq-intdesigner" name="interiorDesigner"></div>
+<div class="pq-form-group"><label for="pq-landscape">Landscape Architect</label><input type="text" id="pq-landscape" name="landscapeArchitect"></div>
+<div class="pq-form-group"><label for="pq-trades">Other Key Trades / Collaborators</label><input type="text" id="pq-trades" name="otherTrades"></div>
+<div class="pq-nav"><button type="button" class="pq-nav-back" onclick="pqGoTo(0)">Back</button><button type="button" class="pq-nav-next" onclick="pqGoTo(2)">Next</button></div>
+</div>
+
+<div class="pq-section" data-section="2">
+<h2 class="pq-section-title">Design Details &amp; Highlights</h2>
+<p class="pq-section-sub">Help me understand what matters most so I can prioritize the right moments.</p>
+<div class="pq-form-group"><label for="pq-intent">Design Intent / Story</label><textarea id="pq-intent" name="designIntent" placeholder="What was the vision behind this project?"></textarea></div>
+<div class="pq-form-group"><label for="pq-spaces">Key Spaces to Highlight</label><textarea id="pq-spaces" name="keySpaces" placeholder="e.g. Living room, main staircase, outdoor terrace"></textarea></div>
+<div class="pq-form-group"><label for="pq-materials">Signature Materials or Details</label><textarea id="pq-materials" name="signatureMaterials" placeholder="e.g. Reclaimed timber, custom metalwork, floor-to-ceiling glazing"></textarea></div>
+<div class="pq-form-group"><label>What Makes This Project Stand Out</label><div class="pq-checks">
+<label class="pq-check"><input type="checkbox" name="standout" value="Views / Setting"><span>Views / Setting</span></label>
+<label class="pq-check"><input type="checkbox" name="standout" value="Material Quality"><span>Material Quality</span></label>
+<label class="pq-check"><input type="checkbox" name="standout" value="Architectural Design"><span>Architectural Design</span></label>
+<label class="pq-check"><input type="checkbox" name="standout" value="Interior Design"><span>Interior Design</span></label>
+<label class="pq-check"><input type="checkbox" name="standout" value="Sustainability"><span>Sustainability</span></label>
+<label class="pq-check"><input type="checkbox" name="standout" value="Scale / Size"><span>Scale / Size</span></label>
+<label class="pq-check"><input type="checkbox" name="standout" value="Craftsmanship"><span>Craftsmanship</span></label>
+<label class="pq-check"><input type="checkbox" name="standout" value="Innovation / Technology"><span>Innovation / Technology</span></label>
+<label class="pq-check"><input type="checkbox" name="standout" value="Outdoor Living"><span>Outdoor Living</span></label>
+</div></div>
+<div class="pq-nav"><button type="button" class="pq-nav-back" onclick="pqGoTo(1)">Back</button><button type="button" class="pq-nav-next" onclick="pqGoTo(3)">Next</button></div>
+</div>
+
+<div class="pq-section" data-section="3">
+<h2 class="pq-section-title">Shoot Logistics</h2>
+<p class="pq-section-sub">Practical details that help me plan the day.</p>
+<div class="pq-form-row"><div class="pq-form-group"><label for="pq-staging">Staging Situation</label><select id="pq-staging" name="stagingSituation"><option value="">Select</option><option>Fully staged / furnished</option><option>Partially staged</option><option>Unfurnished — empty</option><option>Occupied — lived in</option></select></div><div class="pq-form-group"><label for="pq-occupancy">Occupancy on Shoot Day</label><select id="pq-occupancy" name="occupancy"><option value="">Select</option><option>Vacant — no one present</option><option>Owners present but flexible</option><option>Occupied — coordination needed</option></select></div></div>
+<div class="pq-form-row"><div class="pq-form-group"><label for="pq-orientation">Exterior Orientation</label><select id="pq-orientation" name="orientation"><option value="">Select</option><option>North-facing</option><option>South-facing</option><option>East-facing</option><option>West-facing</option><option>Mixed / not sure</option></select></div><div class="pq-form-group"><label for="pq-levels">Number of Levels</label><select id="pq-levels" name="levels"><option value="">Select</option><option>1 level</option><option>2 levels</option><option>3 levels</option><option>4+ levels</option></select></div></div>
+<div class="pq-form-group"><label for="pq-parking">Parking &amp; Access Notes</label><input type="text" id="pq-parking" name="parkingAccess" placeholder="e.g. Driveway parking, no street parking"></div>
+<div class="pq-form-group"><label for="pq-contact">On-Site Contact for Shoot Day</label><input type="text" id="pq-contact" name="onSiteContact" placeholder="Name and phone number"></div>
+<div class="pq-form-group"><label for="pq-awards">Awards Being Targeted</label><input type="text" id="pq-awards" name="awardsTargeted" placeholder="e.g. Georgie Awards, AIBC, IDIBC"></div>
+<div class="pq-form-group"><label for="pq-notes">Anything Else I Should Know?</label><textarea id="pq-notes" name="additionalNotes" placeholder="Special requests, timing constraints, or anything else"></textarea></div>
+<div class="pq-nav"><button type="button" class="pq-nav-back" onclick="pqGoTo(2)">Back</button><button type="submit" class="pq-nav-next">Submit Project</button></div>
+</div>
+</form>
+
+<div class="pq-success" id="pq-success">
+<h2>Project Submitted</h2>
+<p>Thanks — I've got everything I need to start planning this shoot. I'll be in touch with next steps.</p>
+<button type="button" class="pq-success-btn" onclick="pqReset()">Submit Another Project</button>
+</div>
+</div></div>
+
+<div class="pq-ft"><div class="pq-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+<div class="pq-ft-r"><div class="pq-ft-i"><span class="pq-ft-l">Based In</span><span class="pq-ft-dt"></span><p>Squamish, British Columbia</p></div><div class="pq-ft-i"><span class="pq-ft-l">Email</span><span class="pq-ft-dt"></span><a class="pq-ft-email" id="pq-ft-em"></a></div><div class="pq-ft-i"><span class="pq-ft-l">Phone</span><span class="pq-ft-dt"></span><a href="tel:6047659270">604.765.9270</a></div><div class="pq-ft-i"><span class="pq-ft-l">Follow</span><span class="pq-ft-dt"></span><div class="pq-ft-s"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div></div><div class="pq-ft-rl"></div><div class="pq-ft-b"><span class="pq-ft-cp">Matt Anthony Photography</span><div class="pq-ft-n"><a href="/bio">About</a><a href="/projects">Projects</a><a href="/pricing-guide-landing">Get Pricing</a><a href="/contact">Contact</a></div></div></div>
+</div>
+<script>
+(function(){var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];var e=document.getElementById('pq-ft-em');if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;}})();
+var currentStep=0;
+function pqGoTo(idx){
+var sections=document.querySelectorAll('.pq-section');
+var steps=document.querySelectorAll('.pq-progress-step');
+var dots=document.querySelectorAll('.pq-progress-dot');
+sections.forEach(function(s){s.classList.remove('active')});
+steps.forEach(function(s,i){s.classList.remove('active');if(i<idx)dots[i].classList.add('done');else dots[i].classList.remove('done');if(i===idx){s.classList.add('active');dots[i].classList.add('active')}else{dots[i].classList.remove('active')}});
+document.querySelector('[data-section="'+idx+'"]').classList.add('active');
+currentStep=idx;
+document.querySelector('.pq-body').scrollIntoView({behavior:'smooth',block:'start'});
+}
+var form=document.getElementById('pq-form');
+form.addEventListener('submit',function(ev){
+ev.preventDefault();
+var data={};
+var inputs=form.querySelectorAll('input,select,textarea');
+inputs.forEach(function(f){if(f.type==='checkbox'){return}if(f.name)data[f.name]=f.value});
+var checked=form.querySelectorAll('input[name="standout"]:checked');
+var standoutArr=[];checked.forEach(function(c){standoutArr.push(c.value)});
+data.standoutFeatures=standoutArr.join(', ');
+data.formType='project-intake';
+data.submittedDate=new Date().toISOString();
+fetch('https://n8n.srv1277163.hstgr.cloud/webhook/project-intake',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(function(){});
+form.style.display='none';
+document.querySelector('.pq-progress').style.display='none';
+document.getElementById('pq-success').classList.add('visible');
+});
+function pqReset(){
+form.reset();form.style.display='block';
+document.querySelector('.pq-progress').style.display='flex';
+document.getElementById('pq-success').classList.remove('visible');
+pqGoTo(0);
+}
+</script>
+<meta name="robots" content="noindex">
+<meta name="description" content="Project intake form for Matt Anthony Photography clients. Submit project details for your upcoming architectural photography shoot.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/project-intake-form">

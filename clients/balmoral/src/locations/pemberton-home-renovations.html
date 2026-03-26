@@ -1,0 +1,601 @@
+<!-- HomeAndConstructionBusiness SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Balmoral Construction Inc.",
+  "url": "https://www.balmoralconstruction.com",
+  "telephone": "(604) 907-2237",
+  "email": "marc@balmoralconstruction.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1704 Sugarloaf Place",
+    "addressLocality": "Pemberton",
+    "addressRegion": "BC",
+    "postalCode": "V0N 2L3",
+    "addressCountry": "CA"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Pemberton, BC"
+  },
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Warranty Registration",
+      "name": "BC New Home Warranty"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Warranty Registration",
+      "name": "National Home Warranty"
+    }
+  ],
+  "memberOf": {
+    "@type": "Organization",
+    "name": "Canadian Home Builders Association — Sea to Sky"
+  }
+}
+</script>
+
+<!-- FAQPage SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a home renovation cost in Pemberton?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Renovation costs in Pemberton vary widely based on scope. A kitchen renovation typically ranges from $60,000 to $150,000, a bathroom from $25,000 to $75,000, and a full whole-home renovation can range from $250 to $450 per square foot depending on the level of finishes and structural changes involved."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a building permit for my Pemberton renovation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most renovations that involve structural changes, electrical work, plumbing modifications, or changes to the building envelope require a building permit from the Village of Pemberton. Cosmetic updates like painting, replacing fixtures, or installing new flooring generally do not."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the Agricultural Land Reserve affect my renovation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If your property is within or partially within the ALR, renovations that increase the building footprint or add new structures may require approval from the Agricultural Land Commission. This applies to some residential properties in and around Pemberton."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I add a rental suite to my Pemberton home?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Village of Pemberton permits secondary suites in certain zones, subject to specific requirements around minimum suite size, separate entrances, parking, and fire separation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a typical Pemberton renovation take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Timeline depends on scope. A bathroom renovation might take four to six weeks, a kitchen eight to twelve weeks, and whole-home renovations can take four to eight months. Winter conditions in Pemberton can impact exterior work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I live in my home during the renovation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For targeted renovations like a single bathroom or kitchen remodel, most families stay in the home. For whole-home renovations or projects involving structural work, we generally recommend arranging temporary accommodation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why choose Balmoral for a Pemberton renovation instead of a Whistler-based contractor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Balmoral is based in Pemberton — this is our home. We are not commuting from Whistler or Squamish, which means faster response times, lower travel costs, and a team deeply familiar with local building conditions and municipal processes."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bc-accent:#D4722A;--bc-accent-hover:#BF6523;--bc-accent-light:rgba(212,114,42,.1)}
+.bc-progress{position:fixed;top:0;left:0;height:3px;background:var(--bc-accent);z-index:1100;width:0%;transition:none}
+.bc{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a1a;line-height:1.7;font-weight:300;background:#fff}
+.bc img{max-width:100%;display:block}
+.bc a{color:inherit;text-decoration:none}
+.bc-reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.bc-reveal.bc-visible{opacity:1;transform:translateY(0)}
+.bc-reveal-delay-1{transition-delay:.15s}
+.bc-reveal-delay-2{transition-delay:.3s}
+.bc-reveal-delay-3{transition-delay:.45s}
+
+/* NAV */
+.bc-hd{position:fixed;top:0;left:0;right:0;z-index:99999 !important;transition:background .4s cubic-bezier(.16,1,.3,1)}
+.bc-hd--top{background:transparent}
+.bc-hd--scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.bc-hd--mob-open{background:#fff !important;backdrop-filter:none}
+.bc-hd-inner{max-width:1600px;margin:0 auto;padding:0 clamp(24px,4vw,60px);display:flex;align-items:center;justify-content:space-between;height:80px}
+.bc-hd-logo img{height:52px;width:auto;transition:filter .4s}
+.bc-hd--top .bc-hd-logo img{filter:brightness(0) invert(1)}
+.bc-hd--mob-open .bc-hd-logo img{filter:none !important}
+.bc-hd-nav{display:flex;align-items:center;gap:clamp(24px,3.5vw,48px);list-style:none}
+.bc-hd-link{font-size:13px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#1a1a1a;transition:all .3s;position:relative}
+.bc-hd--top .bc-hd-link{color:rgba(255,255,255,.75)}
+.bc-hd--top .bc-hd-link:hover{color:#fff}
+.bc-hd-link:hover{color:#000}
+.bc-hd-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:currentColor;transition:width .3s}
+.bc-hd-link:hover::after{width:100%}
+.bc-hd-drop{position:relative}
+.bc-hd-drop-menu{position:absolute;top:calc(100% + 20px);left:-20px;background:#fff;padding:16px 0;min-width:220px;opacity:0;visibility:hidden;transition:all .3s;transform:translateY(8px);box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.bc-hd-drop:hover .bc-hd-drop-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.bc-hd-drop-menu a{display:block;padding:10px 28px;font-size:14px;font-weight:400;color:#666;letter-spacing:.04em;transition:all .2s}
+.bc-hd-drop-menu a:hover{color:var(--bc-accent);padding-left:32px}
+.bc-hd-mob{display:none;background:none;border:none;cursor:pointer;padding:10px;z-index:100001}
+.bc-hd-mob span{display:block;width:28px;height:2px;background:#1a1a1a;margin:7px 0;transition:all .4s}
+.bc-hd--top .bc-hd-mob span{background:#fff}
+.bc-hd--mob-open .bc-hd-mob span{background:#1a1a1a !important}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(2){opacity:0}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.bc-mob{position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:99998 !important;padding:100px clamp(24px,6vw,60px) 40px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.bc-mob.open{opacity:1;visibility:visible;display:flex;flex-direction:column}
+.bc-mob a{display:block;font-size:clamp(28px,6vw,40px);font-weight:200;color:#1a1a1a;padding:12px 0;letter-spacing:-.02em;border-bottom:1px solid #f0f0f0;transition:opacity .3s}
+.bc-mob a:hover{opacity:.5}
+.bc-mob-sub{padding-left:0}
+.bc-mob-sub a{font-size:clamp(14px,3vw,18px);font-weight:400;color:#999;letter-spacing:0;padding:8px 0}
+
+/* HERO */
+.bc-loc-hero{position:relative;height:65vh;min-height:500px;overflow:hidden}
+.bc-loc-hero img{width:100%;height:100%;object-fit:cover;transform:scale(1.03);transition:transform 8s cubic-bezier(.16,1,.3,1)}
+.bc-loc-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.05) 40%,rgba(0,0,0,.5) 100%);z-index:1}
+.bc-loc-hero-c{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:0 clamp(24px,4vw,60px) clamp(48px,6vw,80px);max-width:1600px;margin:0 auto}
+.bc-loc-hero-c .bc-section-label{font-size:11px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--bc-accent);margin-bottom:16px;display:block}
+.bc-loc-hero-c h1{font-size:clamp(32px,5vw,64px);font-weight:200;color:#fff;letter-spacing:-.04em;line-height:1.1;margin-bottom:16px}
+.bc-loc-hero-c h1 strong{font-weight:600}
+.bc-loc-hero-c p{font-size:clamp(14px,1.2vw,16px);color:rgba(255,255,255,.6);font-weight:300;max-width:520px;line-height:1.8}
+
+/* SECTION SHARED */
+.bc-section-pad{padding:clamp(80px,10vw,140px) clamp(24px,4vw,60px)}
+.bc-section-inner{max-width:1600px;margin:0 auto}
+.bc-section-label{font-size:11px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:#999;margin-bottom:24px;display:block}
+.bc-section-h2{font-size:clamp(28px,3.5vw,48px);font-weight:200;letter-spacing:-.03em;line-height:1.15;color:#000;margin-bottom:clamp(20px,3vw,40px)}
+.bc-section-h2 strong{font-weight:600}
+.bc-text-link{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s;padding-bottom:1px}
+.bc-text-link:hover{border-color:var(--bc-accent)}
+.bc-bg-light{background:#f8f8f6}
+.bc-bg-dark{background:#0f0f0f;color:#fff}
+.bc-bg-dark .bc-section-h2{color:#fff}
+.bc-bg-dark .bc-section-label{color:rgba(255,255,255,.35)}
+
+/* BODY CONTENT */
+.bc-loc-body{max-width:900px;margin:0 auto}
+.bc-loc-body h2{font-size:clamp(22px,2.5vw,32px);font-weight:500;line-height:1.3;margin:0 0 20px;letter-spacing:-.02em;color:#1a1a1a}
+.bc-loc-body h3{font-size:clamp(16px,1.3vw,20px);font-weight:500;margin:clamp(32px,4vw,48px) 0 12px;letter-spacing:-.01em;color:#1a1a1a}
+.bc-loc-body p{font-size:15px;color:#555;line-height:1.9;margin:0 0 16px;font-weight:300}
+.bc-loc-body ul{margin:0 0 20px;padding-left:20px}
+.bc-loc-body ul li{font-size:15px;color:#555;line-height:1.9;font-weight:300;margin-bottom:6px}
+
+/* SERVICES GRID */
+.bc-loc-svcs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}
+.bc-loc-svc{padding:clamp(24px,3vw,40px);background:#f8f8f6;border:1px solid #eee;transition:border-color .3s}
+.bc-loc-svc:hover{border-color:var(--bc-accent)}
+.bc-loc-svc h3{font-size:clamp(15px,1.2vw,18px);font-weight:500;color:#1a1a1a;margin:0 0 10px}
+.bc-loc-svc p{font-size:14px;color:#777;line-height:1.8;margin:0;font-weight:300}
+
+/* PROJECT CARDS */
+.bc-loc-projects{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1.2vw,16px)}
+.bc-loc-pcard{position:relative;overflow:hidden;display:block}
+.bc-loc-pcard img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .5s;filter:brightness(.92)}
+.bc-loc-pcard:hover img{transform:scale(1.03);filter:brightness(.8)}
+.bc-loc-pcard::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.55) 100%);opacity:0;transition:opacity .5s}
+.bc-loc-pcard:hover::after{opacity:1}
+.bc-loc-pcard-info{position:absolute;bottom:clamp(12px,1.5vw,24px);left:clamp(12px,1.5vw,24px);right:clamp(12px,1.5vw,24px);z-index:2;opacity:0;transform:translateY(8px);transition:all .5s}
+.bc-loc-pcard:hover .bc-loc-pcard-info{opacity:1;transform:translateY(0)}
+.bc-loc-pcard-info h3{font-size:clamp(16px,1.5vw,22px);font-weight:400;color:#fff;letter-spacing:-.02em}
+.bc-loc-pcard-info h3 strong{font-weight:600}
+.bc-loc-pcard-info span{font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px;display:block}
+
+/* KNOWLEDGE 2-COL */
+.bc-loc-know-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px)}
+.bc-loc-know-grid h3{font-size:clamp(15px,1.2vw,18px);font-weight:500;color:var(--bc-accent);margin:clamp(24px,3vw,36px) 0 8px}
+.bc-loc-know-grid p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.9;margin:0 0 12px;font-weight:300}
+
+/* FAQ */
+.bc-faq-list{max-width:900px}
+.bc-faq-item{border-bottom:1px solid #eee}
+.bc-faq-q{display:flex;justify-content:space-between;align-items:center;padding:clamp(18px,2vw,28px) 0;cursor:pointer;background:none;border:none;width:100%;text-align:left;font-family:'Inter',sans-serif;font-size:clamp(17px,1.4vw,20px);font-weight:400;color:#1a1a1a;line-height:1.5;gap:16px}
+.bc-faq-q:hover{color:#666}
+.bc-faq-icon{font-size:20px;color:#ccc;transition:transform .3s;flex-shrink:0}
+.bc-faq-item.open .bc-faq-icon{transform:rotate(45deg)}
+.bc-faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
+.bc-faq-item.open .bc-faq-a{max-height:500px}
+.bc-faq-a-inner{padding:0 0 clamp(18px,2vw,28px);font-size:16px;color:#666;line-height:1.9}
+.bc-faq-a-inner a{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s}
+.bc-faq-a-inner a:hover{border-color:var(--bc-accent)}
+
+/* CTA */
+.bc-cta{position:relative;height:55vh;min-height:400px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bc-cta img.bc-cta-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.bc-cta::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:1}
+.bc-cta-c{position:relative;z-index:2;text-align:center;max-width:600px;padding:0 24px}
+.bc-cta h2{font-size:clamp(28px,4vw,52px);font-weight:200;color:#fff;letter-spacing:-.03em;margin-bottom:16px;line-height:1.15}
+.bc-cta h2 strong{font-weight:600}
+.bc-cta p{font-size:17px;color:rgba(255,255,255,.55);margin-bottom:36px;line-height:1.8;font-weight:300}
+.bc-btn{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:18px 44px;border:2px solid var(--bc-accent);background:var(--bc-accent);color:#fff;transition:all .4s;cursor:pointer}
+.bc-btn:hover{background:var(--bc-accent-hover);border-color:var(--bc-accent-hover)}
+
+/* FOOTER */
+.bc-ft{background:#0a0a0a;color:#fff;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px) clamp(24px,3vw,40px);border-top:3px solid var(--bc-accent)}
+.bc-ft-inner{max-width:1600px;margin:0 auto}
+.bc-ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:clamp(24px,4vw,60px);padding-bottom:clamp(40px,5vw,60px);border-bottom:1px solid rgba(255,255,255,.08)}
+.bc-ft-brand p{font-size:13px;color:rgba(255,255,255,.35);line-height:1.8;margin-top:20px;max-width:300px;font-weight:300}
+.bc-ft-mark{height:60px;width:auto;opacity:.8;margin-bottom:8px}
+.bc-ft-col h4{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:20px}
+.bc-ft-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);line-height:2.2;transition:color .3s;font-weight:300}
+.bc-ft-col a:hover{color:var(--bc-accent)}
+.bc-ft-btm{display:flex;justify-content:space-between;align-items:center;padding-top:clamp(20px,3vw,32px)}
+.bc-ft-copy{font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.02em;font-weight:300}
+.bc-ft-social{display:flex;gap:24px}
+.bc-ft-social a{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);transition:color .3s}
+.bc-ft-social a:hover{color:var(--bc-accent)}
+
+@media(max-width:900px){.bc-hd-nav{display:none}.bc-hd-mob{display:block}}
+@media(max-width:768px){
+.bc-loc-hero{height:55vh;min-height:400px}
+.bc-loc-svcs{grid-template-columns:1fr}
+.bc-loc-projects{grid-template-columns:1fr}
+.bc-loc-know-grid{grid-template-columns:1fr}
+.bc-cta{height:50vh;min-height:350px}
+.bc-ft-top{grid-template-columns:1fr 1fr;gap:32px}
+.bc-ft-btm{flex-direction:column;gap:12px;text-align:center}
+.bc-mob a{font-size:clamp(20px,4vw,28px)}
+}
+@media(max-width:480px){
+.bc-ft-top{grid-template-columns:1fr}
+}
+</style>
+
+<div class="bc-progress" id="bcProgress"></div>
+
+<div class="bc">
+
+<!-- NAV -->
+<header class="bc-hd bc-hd--top" id="bcHd">
+  <div class="bc-hd-inner">
+    <a href="/" class="bc-hd-logo">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png" alt="Balmoral Construction — Custom Home Builder in Whistler, Pemberton and Squamish">
+    </a>
+    <ul class="bc-hd-nav">
+      <li><a href="/about" class="bc-hd-link">About</a></li>
+      <li class="bc-hd-drop">
+        <a href="/services" class="bc-hd-link">Services</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/custom-home-building">Custom Home Building</a>
+          <a href="/home-renovations">Home Renovations</a>
+          <a href="/general-contracting">General Contracting</a>
+          <a href="/project-management">Project Management</a>
+          <a href="/land-consultation">Land Consultation</a>
+          <a href="/permit-coordination">Permit Coordination</a>
+        </div>
+      </li>
+      <li><a href="/work" class="bc-hd-link">Work</a></li>
+      <li class="bc-hd-drop">
+        <a href="javascript:void(0)" class="bc-hd-link">Locations</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/whistler-home-builder">Whistler</a>
+          <a href="/pemberton-home-builder">Pemberton</a>
+          <a href="/squamish-home-builder">Squamish</a>
+        </div>
+      </li>
+      <li><a href="/blog" class="bc-hd-link">Blog</a></li>
+      <li><a href="/contact" class="bc-hd-link">Contact</a></li>
+    </ul>
+    <button class="bc-hd-mob" aria-label="Menu" onclick="document.getElementById('bcMob').classList.toggle('open');this.classList.toggle('open');document.getElementById('bcHd').classList.toggle('bc-hd--mob-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="bc-mob" id="bcMob">
+  <a href="/about">About</a>
+  <a href="/services">Services</a>
+  <div class="bc-mob-sub">
+    <a href="/custom-home-building">Custom Home Building</a>
+    <a href="/home-renovations">Home Renovations</a>
+    <a href="/general-contracting">General Contracting</a>
+    <a href="/project-management">Project Management</a>
+    <a href="/land-consultation">Land Consultation</a>
+    <a href="/permit-coordination">Permit Coordination</a>
+  </div>
+  <a href="/work">Work</a>
+  <a href="javascript:void(0)">Locations</a>
+  <div class="bc-mob-sub">
+    <a href="/whistler-home-builder">Whistler</a>
+    <a href="/pemberton-home-builder">Pemberton</a>
+    <a href="/squamish-home-builder">Squamish</a>
+  </div>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="bc-loc-hero">
+  <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/55944279-692d-4535-9810-25f4fbb17488/LRG-scale-Reno.jpg" alt="Home renovations in Pemberton, BC — Balmoral Construction">
+  <div class="bc-loc-hero-c">
+    <span class="bc-section-label">Pemberton, BC</span>
+    <h1><strong>Home Renovations</strong> in Pemberton, BC</h1>
+    <p>Thoughtful renovations for Pemberton homes — from ranch-style updates to full interior transformations. Built by your neighbours at Balmoral Construction.</p>
+  </div>
+</section>
+
+<!-- BODY CONTENT -->
+<section class="bc-section-pad" style="background:#fff">
+  <div class="bc-section-inner bc-loc-body bc-reveal">
+    <h2>Why renovate your home in Pemberton?</h2>
+    <p>Pemberton sits at the northern end of the Sea to Sky Corridor, a small town with deep roots and a housing stock that reflects decades of evolving lifestyles. Many homes here were built in the 1970s, 1980s, and 1990s — solid structures that have served their owners well but now show their age in layouts, insulation, windows, and mechanical systems. If you own one of these homes, you already know the feeling: the bones are good, but the living spaces no longer match how your family actually uses them.</p>
+    <p>Unlike Whistler, where the real estate market is driven by vacation properties and luxury second homes, Pemberton is a year-round community. Families put down roots here. Kids grow up riding bikes on Portage Road and swimming in One Mile Lake. That permanence changes the calculus around <a href="/home-renovations" class="bc-text-link">renovation</a>. You are not updating a rental property for resale appeal — you are investing in the home where you will raise your children, host holiday dinners, and spend your weekends for years to come. That long-term perspective justifies doing the work properly, with materials and craftsmanship that hold up to the demands of mountain living.</p>
+    <p>The Pemberton real estate market has shifted considerably over the past decade. What was once an affordable alternative to Whistler has become a sought-after community in its own right, with property values reflecting the quality of life that residents have always known about. A well-executed renovation adds meaningful equity to your home while dramatically improving daily comfort. In a market where new builds on available lots can exceed $1.5 million, renovating an existing home often delivers more livable square footage per dollar invested — especially when the foundation, framing, and lot are already paid for.</p>
+    <p>Energy efficiency is another compelling reason to renovate in Pemberton. Winters here are genuinely cold, with temperatures routinely dropping below minus twenty in January and February. Older homes were built to the energy codes of their era, which means single-pane windows, minimal insulation in walls and attics, and heating systems that work overtime to maintain comfort. A renovation that addresses the building envelope — upgrading to high-performance windows, adding spray foam or blown-in insulation, sealing air leaks, and installing a modern heat pump or high-efficiency furnace — can cut heating costs by forty to sixty percent while making the home dramatically more comfortable in every season.</p>
+    <p>Pemberton's rural character is a major part of its appeal, and renovations here should respect that. This is not the place for a glass-and-steel modernist box that looks transplanted from West Vancouver. The best Pemberton renovations enhance the existing character of a home while quietly bringing it into the present. That might mean opening up a closed-off kitchen to create a gathering space with mountain views, adding a covered deck that extends the outdoor living season, or converting an underused garage into a home office or studio. The goal is always to make the home work better for how you actually live, not to impose a style that belongs somewhere else.</p>
+    <p>Growing families represent a significant share of Pemberton renovation projects. A couple who bought a two-bedroom home a decade ago now has school-age children who need their own rooms, a mudroom that can handle the volume of gear that comes with mountain living, and a bathroom that does not require a morning schedule to accommodate everyone. Adding a second storey, bumping out a main floor addition, or finishing a basement are all common approaches to gaining the space that a growing household demands without the disruption and expense of selling and starting over.</p>
+    <p>As Balmoral Construction's home base, Pemberton is where our team lives and works every day. <a href="/about" class="bc-text-link">Marc Harvey</a> built his own home here on Sugarloaf Place. Our project managers, Jeremy Lewis and Jonny Tweedie, live in this community. We shop at the same grocery store, our kids attend the same schools, and we see our clients at the farmers market on Friday evenings. That proximity is not just convenient — it means we are deeply invested in the quality of every renovation we complete here. Our reputation in Pemberton is built one project at a time, and every home we touch reflects directly on the company name we have spent over a decade building.</p>
+
+    <h3>Types of renovations suited to Pemberton homes</h3>
+    <p><strong>Ranch-style home updates</strong> — Many Pemberton homes are single-storey ranch-style builds with long, linear floor plans. These homes often have small, compartmentalized rooms that were fashionable when they were built but feel cramped by today's standards. Opening up the kitchen, dining, and living areas into a single flowing space is one of the most impactful renovations you can make. Combined with new flooring, updated lighting, and modern finishes, this kind of transformation changes how the entire home feels without altering the footprint.</p>
+    <p><strong>Adding space for growing families</strong> — Second-storey additions, main-floor bump-outs, and basement finishing are all effective strategies for gaining square footage in Pemberton. A second storey can double the living area of a ranch home, adding bedrooms, bathrooms, and a dedicated family space upstairs while keeping the main floor as shared living area. Basement finishing is often the most cost-effective approach when the foundation permits it, turning unused space into bedrooms, a recreation room, or a rental suite that offsets your mortgage.</p>
+    <p><strong>Outdoor living spaces</strong> — Pemberton summers are spectacular, with long warm days and mountain views in every direction. Covered decks, screened porches, outdoor kitchens, and landscaped patios extend your living space beyond the walls of the house. A well-designed outdoor area becomes the heart of the home from May through October, perfect for family barbecues, morning coffee with a view of Mount Currie, or simply watching the sunset over the Pemberton Meadows.</p>
+    <p><strong>Garage conversions and accessory buildings</strong> — With Pemberton lot sizes generally larger than what you find in Whistler or Squamish, there is often room to convert an attached garage into living space while building a detached workshop or carport. Alternatively, an accessory dwelling unit above a new garage can provide rental income, guest accommodation, or a home office that is physically separate from the main house.</p>
+
+    <h3>Municipal considerations for Pemberton renovations</h3>
+    <p>The Village of Pemberton (VOPB) has its own building department and permitting process, separate from the RMOW in Whistler or the District of Squamish. Renovation permits in Pemberton are generally straightforward, but there are specific considerations that catch homeowners off guard if they are not familiar with local requirements.</p>
+    <p>For any renovation that alters the structure, changes the building footprint, or modifies the building envelope, you will need a building permit from the VOPB. This includes additions, moving walls, replacing windows where the opening size changes, re-roofing with different materials, and any electrical or plumbing work beyond simple fixture swaps. The village building inspector reviews plans for compliance with BC Building Code, zoning bylaws, and any site-specific conditions that apply to your property.</p>
+    <p>One factor that is unique to Pemberton is the Agricultural Land Reserve. A number of residential properties in and around the village sit on or adjacent to ALR land. If your property has any ALR designation, renovations that increase the building footprint or add accessory structures may require approval from the Agricultural Land Commission in addition to the village building permit. This can add time and complexity to the process, so it is important to verify your property's ALR status before finalizing renovation plans. Balmoral has navigated ALR applications on behalf of clients and can guide you through the requirements if this applies to your situation.</p>
+    <p>Setback requirements, lot coverage maximums, and building height restrictions vary by zone within the village. Properties in the Benchlands area, for example, may have different setback requirements than those closer to the village core. We review these constraints early in the planning process to ensure your renovation design fits within what the municipality will approve, avoiding costly redesigns after the project has already started.</p>
+  </div>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="bc-section-pad bc-bg-light" style="border-top:1px solid #eee;border-bottom:1px solid #eee">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">What We Do</span>
+    <h2 class="bc-section-h2 bc-reveal">Renovation services in <strong>Pemberton</strong></h2>
+    <p class="bc-reveal" style="font-size:15px;color:#777;max-width:600px;margin-bottom:clamp(32px,4vw,48px);font-weight:300;line-height:1.8">Every project is managed personally by our team, from initial planning through final walkthrough.</p>
+    <div class="bc-loc-svcs bc-reveal bc-reveal-delay-1">
+      <div class="bc-loc-svc">
+        <h3>Kitchen Renovations</h3>
+        <p>Complete kitchen redesigns including layout changes, custom cabinetry, countertops, appliance upgrades, and lighting. We work with your existing footprint or expand into adjacent spaces.</p>
+      </div>
+      <div class="bc-loc-svc">
+        <h3>Bathroom Renovations</h3>
+        <p>Full bathroom remodels from tile and fixtures to layout reconfiguration. Heated floors, walk-in showers, soaker tubs, and proper ventilation for Pemberton's cold winters.</p>
+      </div>
+      <div class="bc-loc-svc">
+        <h3>Additions &amp; Bump-Outs</h3>
+        <p>Second-storey additions, main-floor extensions, and bump-outs that add the square footage your family needs while respecting VOPB zoning requirements.</p>
+      </div>
+      <div class="bc-loc-svc">
+        <h3>Basement Finishing</h3>
+        <p>Transform unfinished basements into livable space — bedrooms, recreation rooms, home offices, or legal rental suites with separate entrances.</p>
+      </div>
+      <div class="bc-loc-svc">
+        <h3>Whole-Home Renovations</h3>
+        <p>Comprehensive renovations that update everything from the foundation up — new mechanical systems, insulation, windows, finishes, and layout redesign throughout.</p>
+      </div>
+      <div class="bc-loc-svc">
+        <h3>Outdoor Living</h3>
+        <p>Covered decks, outdoor kitchens, screened porches, and landscaped patios designed to maximize Pemberton's stunning mountain setting and long summer days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section class="bc-section-pad" style="background:#fff">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Our Work in Pemberton</span>
+    <h2 class="bc-section-h2 bc-reveal">Pemberton <strong>projects</strong></h2>
+    <div class="bc-loc-projects bc-reveal bc-reveal-delay-1">
+      <a href="/cerulean" class="bc-loc-pcard">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/f5e179b4-accd-4319-8d56-ec7cade57368/7667Cerulean-Dusk-6.jpg" alt="Cerulean custom home in Pemberton by Balmoral Construction" loading="lazy">
+        <div class="bc-loc-pcard-info"><h3><strong>Cerulean</strong></h3><span>Pemberton, BC</span></div>
+      </a>
+      <a href="/sugarloaf" class="bc-loc-pcard">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/989bc309-dd71-40c1-83b9-0ba6f6523a1e/custom-home-builder-pemberton-balmoral-construction-1.jpg" alt="Sugarloaf custom home in Pemberton by Balmoral Construction" loading="lazy">
+        <div class="bc-loc-pcard-info"><h3><strong>Sugarloaf</strong></h3><span>Pemberton, BC</span></div>
+      </a>
+      <a href="/eagle" class="bc-loc-pcard">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/b8105bdf-c2e5-4daf-a854-6052a8af4cfb/eagle-drive-jpeg-2500px-6.jpg" alt="Eagle project in Pemberton by Balmoral Construction" loading="lazy">
+        <div class="bc-loc-pcard-info"><h3><strong>Eagle</strong></h3><span>Pemberton, BC</span></div>
+      </a>
+    </div>
+    <div class="bc-reveal bc-reveal-delay-2" style="text-align:center;padding-top:clamp(32px,4vw,48px)">
+      <a href="/work" style="font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#999;transition:color .3s;padding-bottom:4px;border-bottom:1px solid #ddd">View All Projects &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL KNOWLEDGE -->
+<section class="bc-section-pad bc-bg-dark">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Local Expertise</span>
+    <h2 class="bc-section-h2 bc-reveal">Built in Pemberton, by <strong>Pemberton</strong></h2>
+    <div class="bc-loc-know-grid bc-reveal bc-reveal-delay-1">
+      <div>
+        <p>Balmoral Construction is not a Whistler company that occasionally takes work in Pemberton. We are a Pemberton company. Our office is here, our team lives here, and this community has been our home base since the company was founded in 2011. That distinction matters when you are trusting someone to work inside your home for weeks or months at a time.</p>
+        <p>We know which local trades deliver consistently and which ones to avoid. We know the VOPB building department and their inspection expectations. We know that the Pemberton soils vary significantly from one neighbourhood to the next — what works for a foundation in the Benchlands is different from what you need closer to the river. We know that deliveries from Vancouver add a day of lead time compared to Whistler or Squamish, and we plan material schedules accordingly.</p>
+
+        <h3>Climate-informed construction</h3>
+        <p>Pemberton has the most extreme temperature range in the Sea to Sky Corridor. Summer highs above thirty-five degrees and winter lows below minus twenty-five create unique demands on building materials and mechanical systems. We specify products and techniques that handle this range — from vapour barriers and insulation strategies that prevent condensation in cold weather, to ventilation systems that keep interiors comfortable during summer heat without relying entirely on air conditioning.</p>
+      </div>
+      <div>
+        <h3>Snow loads and structural considerations</h3>
+        <p>Snow loads in Pemberton are substantial, and any renovation that modifies the roof structure must account for the engineering requirements that come with heavy, wet Coast Range snowfall. We coordinate with structural engineers who understand local snow load data and ensure every renovation meets or exceeds the requirements set out by the BC Building Code for this specific climate zone.</p>
+
+        <h3>ALR and municipal knowledge</h3>
+        <p>A number of Pemberton properties sit on or adjacent to Agricultural Land Reserve land. Renovations that increase the building footprint or add accessory structures may require approval from the Agricultural Land Commission. We check ALR status early and handle any required applications. Our familiarity with VOPB permitting processes means fewer surprises and faster approvals.</p>
+
+        <h3>Material scheduling</h3>
+        <p>Being at the northern end of the Sea to Sky Corridor means material logistics require careful planning. We maintain relationships with suppliers who understand our delivery timelines and schedule materials well in advance to prevent construction delays. Our Pemberton base gives us the advantage of being the closest builder to the job site for every project in this community.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bc-section-pad bc-bg-light" style="border-top:1px solid #eee;border-bottom:1px solid #eee">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Common Questions</span>
+    <h2 class="bc-section-h2 bc-reveal">Pemberton home renovation <strong>FAQ</strong></h2>
+    <div class="bc-faq-list bc-reveal bc-reveal-delay-1">
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">How much does a home renovation cost in Pemberton?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">Renovation costs in Pemberton vary widely based on scope. A kitchen renovation typically ranges from $60,000 to $150,000, a bathroom from $25,000 to $75,000, and a full whole-home renovation can range from $250 to $450 per square foot depending on the level of finishes and structural changes involved. We provide detailed estimates after an on-site assessment of your home and a clear understanding of your priorities. <a href="/contact">Contact us</a> for a consultation.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">Do I need a building permit for my Pemberton renovation?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">Most renovations that involve structural changes, electrical work, plumbing modifications, or changes to the building envelope require a building permit from the Village of Pemberton. Cosmetic updates like painting, replacing fixtures with same-size units, or installing new flooring generally do not. We handle the full permitting process on your behalf, including plan preparation and coordination with the village building department.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">How does the Agricultural Land Reserve affect my renovation?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">If your property is within or partially within the ALR, renovations that increase the building footprint or add new structures may require approval from the Agricultural Land Commission. This applies to some residential properties in and around Pemberton. We check your property's ALR status early in the planning process and handle any required applications if they apply to your situation.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">Can I add a rental suite to my Pemberton home?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">The Village of Pemberton permits secondary suites in certain zones, subject to specific requirements around minimum suite size, separate entrances, parking, and fire separation. A basement suite or above-garage suite can provide rental income that significantly offsets your mortgage. We design and build suites that meet all municipal requirements and pass inspection on the first visit.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">How long does a typical Pemberton renovation take?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">Timeline depends entirely on scope. A single bathroom renovation might take four to six weeks. A kitchen renovation typically runs eight to twelve weeks. Whole-home renovations and additions can take four to eight months from start to completion. We establish a detailed timeline before work begins and communicate schedule updates throughout the project. Winter conditions in Pemberton can impact exterior work, so we plan around seasonal constraints when possible.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">Can I live in my home during the renovation?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">For targeted renovations like a single bathroom or kitchen remodel, most families stay in the home with some temporary adjustments. For whole-home renovations or projects involving structural work, plumbing relocations, or extended periods without a functional kitchen, we generally recommend arranging temporary accommodation. We discuss this during the planning phase so you can make arrangements well in advance.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">Why choose Balmoral for a Pemberton renovation instead of a Whistler-based contractor?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">Balmoral is based in Pemberton — this is our home. We are not commuting from Whistler or Squamish, which means faster response times, lower travel costs passed on to you, and a team that is deeply familiar with local building conditions, municipal processes, and trade networks. <a href="/about">Marc Harvey</a> and our project managers live here and are personally invested in every project we complete in this community.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bc-cta">
+  <img class="bc-cta-bg" src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/8d1fe690-3b0d-4125-b1ca-be9981cb4f07/custom-home-builder-pemberton-balmoral-construction-18.jpg" alt="Pemberton home renovation by Balmoral Construction" loading="lazy">
+  <div class="bc-cta-c bc-reveal">
+    <h2>Ready to renovate your <strong>Pemberton home?</strong></h2>
+    <p>Tell us about your home, what is working, and what is not. Every renovation starts with a conversation about your space and your vision for it.</p>
+    <a href="/contact" class="bc-btn bc-btn--accent">Get in Touch</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bc-ft">
+  <div class="bc-ft-inner">
+    <div class="bc-ft-top">
+      <div class="bc-ft-brand">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/83ca6501-705e-43ee-b119-551d0c16ea14/unnamed.png" alt="Balmoral Construction — Custom Home Builder in the Sea to Sky Corridor" class="bc-ft-mark">
+        <p>Boutique custom home builder in the Sea to Sky Corridor. Based in Pemberton, building across Whistler, Pemberton &amp; Squamish since 2011.</p>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Services</h4>
+        <a href="/custom-home-building">Custom Home Building</a>
+        <a href="/home-renovations">Home Renovations</a>
+        <a href="/general-contracting">General Contracting</a>
+        <a href="/project-management">Project Management</a>
+        <a href="/land-consultation">Land Consultation</a>
+        <a href="/permit-coordination">Permit Coordination</a>
+        <a href="/services">All Services</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Locations</h4>
+        <a href="/whistler-home-builder">Whistler Home Builder</a>
+        <a href="/pemberton-home-builder">Pemberton Home Builder</a>
+        <a href="/squamish-home-builder">Squamish Home Builder</a>
+        <a href="/whistler-home-renovations">Whistler Renovations</a>
+        <a href="/pemberton-home-renovations">Pemberton Renovations</a>
+        <a href="/squamish-home-renovations">Squamish Renovations</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Projects</h4>
+        <a href="/warbler-way">Warbler Way</a>
+        <a href="/cerulean">Cerulean</a>
+        <a href="/sugarloaf">Sugarloaf</a>
+        <a href="/white-gold-2">White Gold 2</a>
+        <a href="/fitzsimmons">Fitzsimmons</a>
+        <a href="/work">All Projects</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Company</h4>
+        <a href="/about">About</a>
+        <a href="/work">Portfolio</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+        <a href="tel:6049072237">604.907.2237</a>
+        <a href="mailto:marc@balmoralconstruction.com">marc@balmoralconstruction.com</a>
+      </div>
+    </div>
+    <div class="bc-ft-btm">
+      <span class="bc-ft-copy">&copy; 2026 Balmoral Construction Inc. &mdash; Custom Home Builder in Whistler, Pemberton &amp; Squamish, BC</span>
+      <div class="bc-ft-social">
+        <a href="https://www.instagram.com/balmoralconstruction/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.houzz.com/professionals/general-contractors/balmoral-construction-pfvwus-pf~1513498919" target="_blank" rel="noopener">Houzz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var hd=document.getElementById('bcHd');
+  function checkScroll(){var s=window.scrollY>80;hd.classList.toggle('bc-hd--top',!s);hd.classList.toggle('bc-hd--scrolled',s)}
+  window.addEventListener('scroll',checkScroll);checkScroll();
+
+  var prog=document.getElementById('bcProgress');
+  window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;if(h>0)prog.style.width=(window.scrollY/h*100)+'%'});
+
+  var reveals=document.querySelectorAll('.bc-reveal');
+  var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('bc-visible');observer.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  reveals.forEach(function(el){observer.observe(el)});
+
+  document.querySelectorAll('.bc-faq-item').forEach(function(item){
+    var btn=item.querySelector('.bc-faq-q');
+    btn.addEventListener('click',function(){
+      var isOpen=item.classList.contains('open');
+      document.querySelectorAll('.bc-faq-item').forEach(function(i){i.classList.remove('open');i.querySelector('.bc-faq-q').setAttribute('aria-expanded','false')});
+      if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true')}
+    });
+  });
+})();
+</script>
+<style>
+/* Squarespace page wrapper reset */
+.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block{margin:0!important;padding:0!important;max-width:100%!important;width:100%!important}
+.page-section:last-of-type{padding-bottom:0!important;margin-bottom:0!important}
+#footer,.Footer,.footer,footer[data-footer-id],footer:not(.bc-ft){display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important}
+.sqs-block-spacer,.sqs-block-horizontalrule,.section-background{display:none!important}
+@media(max-width:768px){.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block,.Index-page-content,.blog-item-inner-wrapper,article.page,article.Page,.page-content,.Page-content{padding:0!important;margin:0!important}body{padding-bottom:0!important;margin-bottom:0!important}}
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){var f=document.querySelector('.bc-ft');if(f){var p=f.closest('.sqs-block')||f.closest('.page-section')||f.parentElement;while(p){var n=p.nextElementSibling;while(n){n.style.cssText='display:none!important;height:0!important;padding:0!important;margin:0!important;overflow:hidden!important';n=n.nextElementSibling}p=p.parentElement}}});
+</script>

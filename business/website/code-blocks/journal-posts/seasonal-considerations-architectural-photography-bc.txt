@@ -1,0 +1,777 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.bl-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.bl-loader.bl-done{opacity:0;visibility:hidden;pointer-events:none}
+.bl-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:blLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:blLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:blLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:blLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes blLoaderIn{to{opacity:1}}
+@keyframes blLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.bl-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.bl-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.bl-cursor.bl-active{opacity:1}
+.bl-cursor.bl-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.bl-cursor.bl-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.bl-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.bl-cursor-dot.bl-active{opacity:1}
+
+/* ── CTA button glow ── */
+.bl-btn,.bl-cta-btn{animation:blBtnGlow 3s ease-in-out infinite alternate}
+@keyframes blBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+  :root {
+    --ink: #1a1a18;
+    --paper: #f6f4f0;
+    --warm: #c9a96e;
+    --warm-muted: #b8975a;
+    --stone: #8a8579;
+    --light-stone: #d9d5cd;
+    --off-white: #eeece6;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+    --display: 'Josefin Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.7; font-weight: 300; -webkit-font-smoothing: antialiased; }
+
+  /* ─── HERO ─── */
+  .bl-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 6rem 5vw;
+    background: var(--ink);
+    overflow: hidden;
+    width: 100%;
+  }
+  .bl-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(26,26,24,0.85) 100%);
+    z-index: 1;
+  }
+  .bl-hero-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    filter: saturate(0.6);
+  }
+  .bl-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .bl-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+  }
+  .bl-hero-label {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    opacity: 0;
+    animation: blFadeUp 0.8s ease forwards 0.3s;
+  }
+  .bl-hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--paper);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: blFadeUp 0.8s ease forwards 0.5s;
+  }
+  .bl-hero h1 em { font-style: italic; color: var(--warm); }
+  .bl-hero-sub {
+    font-family: var(--sans);
+    font-size: 1rem;
+    color: var(--light-stone);
+    font-weight: 300;
+    max-width: 560px;
+    opacity: 0;
+    animation: blFadeUp 0.8s ease forwards 0.7s;
+  }
+
+  /* ─── META BAR ─── */
+  .bl-meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border-top: 1px solid var(--light-stone);
+    border-bottom: 1px solid var(--light-stone);
+    width: 100%;
+  }
+  .bl-meta-item {
+    padding: 1.5rem 5vw;
+    border-right: 1px solid var(--light-stone);
+    flex: 1;
+    min-width: 180px;
+  }
+  .bl-meta-item:last-child { border-right: none; }
+  .bl-meta-item dt {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+  .bl-meta-item dd {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  /* ─── ARTICLE BODY ─── */
+  .bl-body {
+    padding: 5rem 5vw;
+    width: 100%;
+  }
+  .bl-body-inner {
+    max-width: 720px;
+  }
+  .bl-body h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 3.5rem 0 1.5rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .bl-body h2:first-child { margin-top: 0; }
+  .bl-body h3 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin: 2.5rem 0 1rem;
+    color: var(--ink);
+  }
+  .bl-body p {
+    font-size: 1rem;
+    color: #4a4a46;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+  .bl-body p:last-child { margin-bottom: 0; }
+  .bl-body blockquote {
+    border-left: 2px solid var(--warm);
+    padding: 1.25rem 0 1.25rem 2rem;
+    margin: 2.5rem 0;
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .bl-body a {
+    color: var(--warm-muted);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,169,110,0.3);
+    transition: border-color 0.3s ease;
+  }
+  .bl-body a:hover { border-color: var(--warm); }
+
+  /* ─── SECTION LABEL ─── */
+  .bl-section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--warm-muted);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  .bl-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--warm);
+    margin: 0 0 2rem;
+  }
+
+  /* ─── IMAGE BREAK ─── */
+  .bl-image-break {
+    width: 100%;
+    height: 70vh;
+    min-height: 450px;
+    overflow: hidden;
+  }
+  .bl-image-break img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ─── IMAGE PAIR ─── */
+  .bl-image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    width: 100%;
+  }
+  .bl-image-pair img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ─── TABLE ─── */
+  .bl-table-wrap {
+    padding: 4rem 5vw;
+    width: 100%;
+    background: var(--off-white);
+  }
+  .bl-table-wrap h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    color: var(--ink);
+  }
+  .bl-table {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  .bl-table th {
+    text-align: left;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    font-weight: 500;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--light-stone);
+  }
+  .bl-table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--light-stone);
+    color: #4a4a46;
+    line-height: 1.6;
+    vertical-align: top;
+  }
+  .bl-table td:first-child {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  /* ─── PULL QUOTE ─── */
+  .bl-pull-quote {
+    background: var(--off-white);
+    padding: 5rem 5vw;
+    text-align: center;
+    width: 100%;
+  }
+  .bl-pull-quote p {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.4;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--ink);
+  }
+  .bl-pull-quote p::before {
+    content: '\201C';
+    display: block;
+    font-size: 4rem;
+    color: var(--warm);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    font-style: normal;
+  }
+
+  /* ─── RELATED POSTS ─── */
+  .bl-related {
+    padding: 5rem 5vw;
+    width: 100%;
+    background: var(--ink);
+  }
+  .bl-related .bl-section-label { color: var(--warm); }
+  .bl-related h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 300;
+    color: var(--paper);
+    margin-bottom: 2.5rem;
+  }
+  .bl-related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .bl-related-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .bl-related-card img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .bl-related-card:hover img { transform: scale(1.04); }
+  .bl-related-card-body {
+    padding: 1.25rem 0;
+  }
+  .bl-related-card-cat {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  .bl-related-card-title {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--paper);
+    line-height: 1.3;
+  }
+
+  /* ─── CTA ─── */
+  .bl-cta {
+    position: relative;
+    padding: 7rem 5vw;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .bl-cta-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .bl-cta-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.5) brightness(0.25);
+  }
+  .bl-cta-c { position: relative; z-index: 2; }
+  .bl-cta h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    color: var(--paper);
+    margin-bottom: 1rem;
+  }
+  .bl-cta h2 em { font-style: italic; color: var(--warm); }
+  .bl-cta p {
+    color: var(--light-stone);
+    font-size: 1rem;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+  }
+  .bl-cta-btn {
+    display: inline-block !important;
+    font-family: var(--sans) !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.25em !important;
+    text-transform: uppercase !important;
+    padding: 1rem 2.5rem !important;
+    border: 1px solid var(--warm) !important;
+    color: var(--warm) !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    transition: all 0.35s ease;
+  }
+  .bl-cta-btn:hover {
+    background: var(--warm) !important;
+    color: var(--ink) !important;
+  }
+  .bl-alt-cta { margin-top: 1.25rem; font-size: 0.75rem; color: var(--stone); letter-spacing: 0.05em; font-weight: 300; }
+  .bl-alt-cta a { color: var(--warm); text-decoration: underline; text-underline-offset: 3px; transition: color 0.3s ease; }
+  .bl-alt-cta a:hover { color: var(--paper); }
+
+  /* ─── FOOTER ─── */
+  .bl-ft { background: #1a1a18; border-top: 1px solid rgba(201,169,110,0.15); }
+  .bl-ft-row { display: flex; justify-content: space-between; align-items: center; padding: 2.25rem 5vw; gap: 2rem; flex-wrap: wrap; }
+  .bl-ft-item { display: flex; align-items: baseline; gap: 10px; }
+  .bl-ft-label { font-size: 7.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #c9a96e; font-weight: 500; white-space: nowrap; }
+  .bl-ft-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(201,169,110,0.4); flex-shrink: 0; position: relative; top: -2px; }
+  .bl-ft-item p, .bl-ft-item a { margin: 0; font-size: 12px; color: rgba(246,244,240,0.8); font-weight: 300; white-space: nowrap; text-decoration: none; transition: color 0.3s ease; }
+  .bl-ft-item a:hover { color: #c9a96e; }
+  .bl-ft-social { display: flex; gap: 18px; }
+  .bl-ft-rule { margin: 0 5vw; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.15) 20%, rgba(201,169,110,0.15) 80%, transparent 100%); }
+  .bl-ft-bottom { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 5vw; }
+  .bl-ft-copy { font-size: 10px; color: rgba(246,244,240,0.35); letter-spacing: 0.08em; }
+  .bl-ft-nav{ display: flex; gap: 2.5rem; ;flex-wrap:wrap;justify-content:center}
+  .bl-ft-nav a { font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(246,244,240,0.35); text-decoration: none; transition: color 0.3s ease; }
+  .bl-ft-nav a:hover { color: #c9a96e; }
+
+  /* ─── ANIMATION ─── */
+  @keyframes blFadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .bl-hero { min-height: 70vh; padding: 4rem 6vw; }
+    .bl-body { padding: 3.5rem 6vw; }
+    .bl-meta-item { border-right: none; border-bottom: 1px solid var(--light-stone); flex: 100%; }
+    .bl-meta-item:last-child { border-bottom: none; }
+    .bl-image-break { height: 50vh; min-height: 300px; }
+    .bl-image-pair { grid-template-columns: 1fr; }
+    .bl-table-wrap { padding: 3rem 6vw; }
+    .bl-table { font-size: 0.8rem; }
+    .bl-table td, .bl-table th { padding: 0.75rem 0.75rem; }
+    .bl-pull-quote { padding: 3.5rem 6vw; }
+    .bl-related { padding: 3.5rem 6vw; }
+    .bl-related-grid { grid-template-columns: 1fr; }
+    .bl-cta { padding: 4rem 6vw; }
+    .bl-ft-row { flex-direction: column; gap: 1.25rem; align-items: flex-start; padding: 2rem 6vw; }
+    .bl-ft-rule { margin: 0 6vw; }
+    .bl-ft-bottom { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.25rem 6vw; }
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .bl-related-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+.bl-ft-email{cursor:pointer}
+body{overflow-x:hidden!important}
+</style>
+
+<div class="bl-loader" id="blLoader">
+  <div class="bl-loader-brand">Matt Anthony Photography</div>
+  <div class="bl-loader-sub">Seasonal Considerations</div>
+  <div class="bl-loader-line"></div>
+</div>
+<div class="bl-cursor" id="blCursor"></div>
+<div class="bl-cursor-dot" id="blCursorDot"></div>
+<div class="bl-progress" id="blProgress"></div>
+
+<!-- HERO -->
+<section class="bl-hero">
+  <div class="bl-hero-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9e10cdbc-5c6d-4746-934b-3884628143f1/warbler-whistler-architectural-photography-matt-anthony-.jpg-30.jpg?format=2500w" alt="Snow-covered alpine residence in Whistler photographed at twilight during winter season"></div>
+  <div class="bl-hero-content">
+    <p class="bl-hero-label">Journal</p>
+    <h1>Seasonal Considerations for Architectural Photography in <em>British Columbia</em></h1>
+    <p class="bl-hero-sub">When to schedule architectural photography in BC -- light, landscaping, and weather by season.</p>
+  </div>
+</section>
+
+<!-- META BAR -->
+<dl class="bl-meta-bar">
+  <div class="bl-meta-item">
+    <dt>Published</dt>
+    <dd>November 10, 2025</dd>
+  </div>
+  <div class="bl-meta-item">
+    <dt>Category</dt>
+    <dd>Planning &amp; Timing</dd>
+  </div>
+  <div class="bl-meta-item">
+    <dt>Author</dt>
+    <dd>Matt Anthony</dd>
+  </div>
+</dl>
+
+<!-- INTRO -->
+<section class="bl-body">
+  <div class="bl-body-inner">
+    <p>British Columbia presents diverse climates stacked by elevation and geography. The photographer who treats all of BC like a single shooting condition is missing the most important variable in architectural photography: timing. Season selection, time of day, and weather responsiveness determine image quality more than equipment. This guide covers the Sea-to-Sky corridor, Sunshine Coast, and greater Vancouver regions.</p>
+  </div>
+</section>
+
+<!-- IMAGE BREAK -->
+<div class="bl-image-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ea5a91ce-f1ba-4ef1-a35e-c1b88b665823/warbler-whistler-architectural-photography-matt-anthony-.jpg-2.jpg?format=2500w" alt="Warbler Residence outdoor deck and living space with mountain views in warm afternoon light" loading="lazy">
+</div>
+
+<!-- SPRING -->
+<section class="bl-body">
+  <div class="bl-body-inner">
+    <h2>Spring: March Through May</h2>
+    <p>March and early April deliver inconsistent conditions -- rain, cloud breaks, and occasional sun. Light breaks through overcast skies create dramatic, directional qualities suitable for exteriors, but timing remains unpredictable requiring schedule flexibility.</p>
+    <h3>The Landscaping Challenge</h3>
+    <p>Many BC projects complete in late winter or early spring before landscaping establishes. Bare garden beds, newly planted hedges lacking density, and dormant deciduous trees photograph as unfinished. Waiting until May or June allows plantings to fill in and green season to begin.</p>
+    <h3>The Advantage</h3>
+    <p>Spring offers a useful balance between daylight hours and twilight timing. By April, sunset reaches 8pm, providing workable twilight windows without summer's extremely late schedules. Late afternoon light quality appears warm and pleasant, while overcast days remain excellent for interiors.</p>
+
+    <h2>Summer: June Through August</h2>
+    <p>Summer delivers maximum daylight and lush landscaping, making it the preferred client season. However, this period introduces underestimated challenges.</p>
+    <h3>Harsh Midday Light</h3>
+    <p>From 11am to 3pm on clear summer days, high direct sun creates harsh shadows, extreme lit/shade contrast, and blown-out sky highlights. Quality exterior photography occurs in the first two hours after sunrise and final two hours before sunset when light angles warmly. Midday serves interior shooting.</p>
+    <h3>Late Twilight</h3>
+    <p>Summer solstice sunset exceeds 9pm in the Sea-to-Sky corridor, with usable twilight extending past 9:30pm. This produces deep blue sky with warm interior glow but requires client comfort with late schedules -- potentially 10pm wrap times in Whistler.</p>
+    <h3>Wildfire Smoke</h3>
+    <p>This increasingly significant July and August factor reduces visibility, eliminates mountain views, creates warm colour cast, and produces flat diffused light lacking architectural crispness. Years vary considerably; contingency planning is essential with critical exterior work scheduled for June or early July before peak fire season.</p>
+    <h3>Sunshine Coast Advantage</h3>
+    <p>Summer provides calm water conditions where ocean-view properties benefit from glassy reflections adding depth and drama to context views.</p>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="bl-pull-quote">
+  <p>A cedar-clad home framed by golden maples is a different image than the same home against uniform green. Seasonal contrast adds visual interest communicating place.</p>
+</section>
+
+<!-- AUTUMN + WINTER -->
+<section class="bl-body">
+  <div class="bl-body-inner">
+    <h2>Autumn: September Through November</h2>
+    <p>Autumn represents the ideal shooting season for many Sea-to-Sky corridor projects for practical, aesthetic, and logistical reasons.</p>
+    <h3>September and Early October</h3>
+    <p>These months combine summer and winter's best qualities -- warm light, established landscaping, clean air (smoke typically ends by late August), and civilized twilight windows landing 6:30-7:30pm. Lower sun angles produce warm, directional light architectural photography requires without harsh midday conditions.</p>
+    <p>Deciduous tree colour transforms exterior compositions. Seasonal contrast adds visual interest communicating place and time in ways that uniform green cannot.</p>
+    <h3>Late October and November</h3>
+    <p>This window grows riskier. Rain increases in consistency, deciduous trees shed leaves, and landscaping appears dormant. Daylight compresses to approximately nine hours by late November, making this period too narrow and unpredictable for exterior-focused shoots. Interior-focused projects benefit from soft, even overcast light ideal for capturing material quality and spatial atmosphere.</p>
+
+    <h2>Winter: December Through February</h2>
+    <p>Winter divides into two distinct architectural photography conditions.</p>
+    <h3>Coastal BC</h3>
+    <p>Grey, wet winters feature overcast skies, frequent rain, and limited daylight -- roughly eight hours at solstice. Without direct sun, exterior surfaces read flat and materials lose texture and depth. However, interiors photograph beautifully under winter overcast: soft, even light without harsh window glare, plus moody atmosphere enhancing warm interior palettes.</p>
+    <h3>Alpine BC</h3>
+    <p>Snow changes everything. Snow-covered projects rank among the most compelling residential architecture subjects. Contrast between warm interiors and cold white surroundings, simplified landscape, and sculptural roofline qualities create emotional resonance unmatched by other seasons.</p>
+    <h3>Timing Challenge</h3>
+    <p>Best snow shots occur 24-48 hours after significant snowfall -- fresh enough appearing pristine yet settled enough showing visible architectural details with plowed driveways. This requires close weather forecast monitoring and shoot-on-notice readiness. Rigid schedules do not work; flexibility and responsiveness prove essential.</p>
+    <h3>Winter Twilight</h3>
+    <p>Compressed but powerful. December sunset around 4:15pm creates 30-minute twilight windows between 4:30-5pm. Everything requires staging and lighting before 4pm or the opportunity vanishes.</p>
+  </div>
+</section>
+
+<!-- IMAGE PAIR -->
+<div class="bl-image-pair">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8326b868-6819-4578-a6f3-562534e1f013/warbler-whistler-architectural-photography-matt-anthony-.jpg-32.jpg?format=2500w" alt="Warbler Residence landscape and mountainside context in autumn light Whistler" loading="lazy">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/2259280a-792c-45c4-9804-d5185893f695/warbler-whistler-architectural-photography-matt-anthony-.jpg-19.jpg?format=2500w" alt="Warbler Residence warm interior with fireplace and timber details in soft winter light" loading="lazy">
+</div>
+
+<!-- SEASONAL TABLE -->
+<section class="bl-table-wrap">
+  <h2>Seasonal Quick Reference</h2>
+  <table class="bl-table">
+    <thead>
+      <tr>
+        <th>Season</th>
+        <th>Best For</th>
+        <th>Key Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sept - Mid Oct</td>
+        <td>Overall shooting</td>
+        <td>Warm light, established landscaping, clean air, workable twilight</td>
+      </tr>
+      <tr>
+        <td>Dec - Feb (Alpine)</td>
+        <td>Snow exteriors</td>
+        <td>Requires weather flexibility, quick response to fresh snowfall</td>
+      </tr>
+      <tr>
+        <td>Any overcast day</td>
+        <td>Interiors</td>
+        <td>Soft even light captures material quality and spatial atmosphere</td>
+      </tr>
+      <tr>
+        <td>Late Oct - Nov</td>
+        <td>Avoid for exteriors</td>
+        <td>Dormant landscaping, unpredictable weather, limited daylight</td>
+      </tr>
+      <tr>
+        <td>Late Jul - Aug</td>
+        <td>Smoke risk</td>
+        <td>Wildfire smoke reduces visibility, eliminates mountain views</td>
+      </tr>
+      <tr>
+        <td>Twilight</td>
+        <td>All seasons</td>
+        <td>30 minutes (December) to 60+ minutes (June); stage and light before sunset</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- WORKING WITH RAIN + GOLDEN HOUR + MATCHING SEASON -->
+<section class="bl-body">
+  <div class="bl-body-inner">
+    <h2>Working With Rain</h2>
+    <p>Rain is not cancellation -- it is schedule adjustment. In a six-month rain climate, treating every rainy day as lost prevents project completion.</p>
+    <p>The strategy: prioritize interiors on overcast and rainy days. Soft diffused grey-sky light represents the best interior photography condition, eliminating direct sun hot spots on floors and harsh wall shadows. Even light wraps around spaces revealing material textures and accurate colour that direct sun overpowers.</p>
+    <p>Exteriors and aerials reschedule to the next clear or partly cloudy day. Most projects split across two sessions -- an interior day (rain-independent) and exterior day (weather-dependent) -- producing superior results versus forcing everything into single days regardless of conditions.</p>
+
+    <h2>The Golden Hour Myth</h2>
+    <p>Golden hour -- warm first and final hour light -- presents as the only acceptable exterior photography time. BC context requires qualification.</p>
+    <p>Golden hour excels when achievable. Low angles create dimensional shadows. Warm colour temperature flatters cedar, stone, and natural materials. Soft intensity balances interior and exterior exposure.</p>
+    <p>However, golden hour is not guaranteed in the Sea-to-Sky corridor. Mountains flanking valleys block direct sun well before actual sunset, particularly in winter. North-facing valley properties never receive traditional golden hour. Properties surrounded by tall trees see direct light only during midday windows.</p>
+    <p>Understanding specific site light conditions matters more than generic golden hour chasing. Site visits answer critical questions about actual best-light timing versus assumptions.</p>
+
+    <h2>Matching Season to Design Intent</h2>
+    <p>A mountain lodge designed around a massive stone fireplace and warm timber interiors tells a more compelling story in winter showing snow on the roof and visible fire. July shooting misses the point.</p>
+    <p>Coastal homes designed for indoor-outdoor flow with sliding glass walls opening to decks and ocean views tell stories best in summer or early autumn when outdoor spaces remain usable and landscape appears alive.</p>
+    <p>Net-zero homes designed for energy performance might photograph in both winter and summer showing the building performing under both extremes.</p>
+  </div>
+</section>
+
+<!-- CLOSING PULL QUOTE -->
+<section class="bl-pull-quote">
+  <p>The season is not just a scheduling convenience. It is a compositional choice that shapes how the viewer understands the project.</p>
+</section>
+
+<!-- RELATED POSTS -->
+<section class="bl-related">
+  <p class="bl-section-label">Continue Reading</p>
+  <div class="bl-divider"></div>
+  <h2>Related Articles</h2>
+  <div class="bl-related-grid">
+    <a href="/journal/architectural-photography-whistler-mountain-projects" class="bl-related-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg?format=1500w" alt="Warbler Residence Whistler exterior in mountain setting" loading="lazy">
+      <div class="bl-related-card-body">
+        <p class="bl-related-card-cat">Mountain Projects</p>
+        <p class="bl-related-card-title">Architectural Photography in Whistler: What Makes Mountain Projects Different</p>
+      </div>
+    </a>
+    <a href="/journal/how-to-prepare-project-architectural-photo-shoot" class="bl-related-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/b00b123a-10cc-4f9c-981d-f682da605ef7/warbler-whistler-architectural-photography-matt-anthony-.jpg-8.jpg?format=1500w" alt="Interior staging preparation for architectural photo shoot" loading="lazy">
+      <div class="bl-related-card-body">
+        <p class="bl-related-card-cat">Shoot Prep</p>
+        <p class="bl-related-card-title">How to Prepare Your Project for an Architectural Photo Shoot</p>
+      </div>
+    </a>
+    <a href="/journal/documenting-design-intent-photography-before-build-finished" class="bl-related-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7feb0024-6829-459f-96e1-4eff91fb7894/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-9.jpg?format=1500w" alt="Sugarloaf Residence Pemberton interior documenting design intent" loading="lazy">
+      <div class="bl-related-card-body">
+        <p class="bl-related-card-cat">Philosophy</p>
+        <p class="bl-related-card-title">Documenting Design Intent: Why the Best Photography Starts Before the Build is Finished</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bl-cta">
+  <div class="bl-cta-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/15c852b4-ba87-4670-a492-316fc907ad81/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-40.jpg" alt="Fitzsimmons Residence twilight architectural photography Whistler" loading="lazy"></div>
+  <div class="bl-cta-c">
+    <h2>Planning a shoot in <em>any season</em>?</h2>
+    <p>Let's find the right timing for your project's orientation, materials, and design story.</p>
+    <a href="/discovery-call" class="bl-cta-btn">Book a Discovery Call</a>
+    <p class="bl-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="bl-ft">
+<div class="bl-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+  <div class="bl-ft-row">
+    <div class="bl-ft-item"><span class="bl-ft-label">Based In</span><span class="bl-ft-dot"></span><p>Squamish, British Columbia</p></div>
+    <div class="bl-ft-item"><span class="bl-ft-label">Email</span><span class="bl-ft-dot"></span><a id="ft-em" class="bl-ft-email"></a></div>
+    <div class="bl-ft-item"><span class="bl-ft-label">Phone</span><span class="bl-ft-dot"></span><a href="tel:6047659270">604.765.9270</a></div>
+    <div class="bl-ft-item"><span class="bl-ft-label">Follow</span><span class="bl-ft-dot"></span><div class="bl-ft-social"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  </div>
+  <div class="bl-ft-rule"></div>
+  <div class="bl-ft-bottom">
+    <span class="bl-ft-copy">&copy; 2026 Matt Anthony Photography</span>
+    <nav class="bl-ft-nav"><a href="/projects">Projects</a><a href="/journal">Journal</a><a href="/bio">About</a><a href="/contact">Contact</a><a href="/pricing-guide-landing">Get Pricing</a></nav>
+  </div>
+</div>
+
+<!-- SEO Meta -->
+<script>
+(function(){
+  var isMobile='ontouchstart' in window;
+
+  /* ═══ EMAIL OBFUSCATION ═══ */
+  var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];var e=document.getElementById('ft-em');if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader=document.getElementById('blLoader');
+  window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('bl-done');},1100);});
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  var progressBar=document.getElementById('blProgress');
+  function updateProgress(){var sc=window.scrollY;var d=document.documentElement.scrollHeight-window.innerHeight;if(d>0)progressBar.style.width=(sc/d*100)+'%';}
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor=document.getElementById('blCursor');var cursorDot=document.getElementById('blCursorDot');var cx=0,cy=0,dx=0,dy=0;
+  if(!isMobile&&cursor){
+    document.addEventListener('mousemove',function(ev){dx=ev.clientX;dy=ev.clientY;cursorDot.style.left=dx+'px';cursorDot.style.top=dy+'px';if(!cursor.classList.contains('bl-active')){cursor.classList.add('bl-active');cursorDot.classList.add('bl-active');}});
+    function tickCursor(){cx+=(dx-cx)*0.12;cy+=(dy-cy)*0.12;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(tickCursor);}tickCursor();
+    var hoverEls=document.querySelectorAll('a, button, .bl-btn, .bl-cta-btn, .bl-rel-card');
+    hoverEls.forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('bl-hover');});el.addEventListener('mouseleave',function(){cursor.classList.remove('bl-hover');});});
+    document.addEventListener('mousedown',function(){cursor.classList.add('bl-click');});
+    document.addEventListener('mouseup',function(){cursor.classList.remove('bl-click');});
+  }
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking=false;
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){updateProgress();ticking=false;});ticking=true;}},{passive:true});
+  updateProgress();
+})();
+</script>
+
+<meta name="description" content="When to schedule architectural photography in BC — light, landscaping, and weather by season. A seasonal guide covering the Sea-to-Sky corridor, Sunshine Coast, and Vancouver.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/journal/seasonal-considerations-architectural-photography-bc">
+<meta property="og:title" content="Seasonal Considerations for Architectural Photography in BC | Matt Anthony Photography">
+<meta property="og:description" content="When to schedule architectural photography in BC — light, landscaping, and weather by season.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/journal/seasonal-considerations-architectural-photography-bc">
+<meta property="og:type" content="article">
+
+<!-- BlogPosting Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Seasonal Considerations for Architectural Photography in British Columbia",
+  "description": "When to schedule architectural photography in BC — light, landscaping, and weather by season.",
+  "url": "https://www.mattanthonyphoto.com/journal/seasonal-considerations-architectural-photography-bc",
+  "datePublished": "2025-11-10",
+  "dateModified": "2025-11-10",
+  "author": {
+    "@type": "Person",
+    "name": "Matt Anthony",
+    "url": "https://www.mattanthonyphoto.com/bio"
+  },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "Matt Anthony Photography",
+    "url": "https://www.mattanthonyphoto.com"
+  },
+  "image": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9e10cdbc-5c6d-4746-934b-3884628143f1/warbler-whistler-architectural-photography-matt-anthony-.jpg-30.jpg",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.mattanthonyphoto.com/journal/seasonal-considerations-architectural-photography-bc"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Josefin+Sans:wght@600;700&display=swap" rel="stylesheet">

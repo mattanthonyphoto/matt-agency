@@ -1,0 +1,239 @@
+{
+  "scores": {
+    "seo": {
+      "value": 70,
+      "grade": "B",
+      "color": "good"
+    },
+    "local": {
+      "value": 46,
+      "grade": "C-",
+      "color": "bad"
+    },
+    "content": {
+      "value": 76,
+      "grade": "B",
+      "color": "good"
+    },
+    "visual_assets": {
+      "value": 85,
+      "grade": "A-",
+      "color": "good"
+    }
+  },
+  "findings": {
+    "seo": [
+      {
+        "status": "pass",
+        "title": "Valid SSL certificate",
+        "detail": "Site is served over HTTPS."
+      },
+      {
+        "status": "pass",
+        "title": "Good meta title",
+        "detail": "\"KOZE DESIGN AND BUILD | Greater Vancouver Builder\" (49 chars)"
+      },
+      {
+        "status": "fail",
+        "title": "Missing meta description",
+        "detail": "The homepage has no meta description tag. Search engines will auto-generate one."
+      },
+      {
+        "status": "pass",
+        "title": "Single H1 tag",
+        "detail": "\"KOZE HOMES. COZY DREAMS.\""
+      },
+      {
+        "status": "pass",
+        "title": "Open Graph tags present",
+        "detail": "og:title, og:image found."
+      },
+      {
+        "status": "fail",
+        "title": "No structured data (schema.org)",
+        "detail": "No JSON-LD found. Add LocalBusiness, Organization, or WebSite schema."
+      },
+      {
+        "status": "pass",
+        "title": "robots.txt exists",
+        "detail": "20 disallowed paths."
+      },
+      {
+        "status": "pass",
+        "title": "Sitemap found (8 URLs)",
+        "detail": "URL: https://www.kozedesignbuild.ca/sitemap.xml"
+      },
+      {
+        "status": "pass",
+        "title": "Canonical tag present",
+        "detail": "https://www.kozedesignbuild.ca"
+      },
+      {
+        "status": "pass",
+        "title": "Good server response (94ms)",
+        "detail": "First byte returned quickly."
+      }
+    ],
+    "local": [
+      {
+        "status": "fail",
+        "title": "Google Business Profile not detected",
+        "detail": "Google often blocks automated requests. Verify manually. Verify at business.google.com."
+      },
+      {
+        "status": "fail",
+        "title": "No LocalBusiness schema markup",
+        "detail": "Add LocalBusiness or HomeBuilder JSON-LD schema with NAP, hours, and service area."
+      },
+      {
+        "status": "pass",
+        "title": "Listed on Houzz",
+        "detail": "Found at https://www.houzz.com/professionals/hznb/query/nqrwns/probr0-bo~q_koze-design-build"
+      },
+      {
+        "status": "warn",
+        "title": "Not found on HomeStars",
+        "detail": "Consider creating a profile for citation building."
+      },
+      {
+        "status": "warn",
+        "title": "Not found on CHBA",
+        "detail": "Consider creating a profile for citation building."
+      },
+      {
+        "status": "warn",
+        "title": "NAP consistency check needed",
+        "detail": "Verify name, address, and phone are consistent across website footer, GBP, and directory listings."
+      }
+    ],
+    "content": [
+      {
+        "status": "pass",
+        "title": "Good homepage content (398 words)",
+        "detail": "Homepage has sufficient text content."
+      },
+      {
+        "status": "warn",
+        "title": "Small site (9 pages)",
+        "detail": "Consider adding more project pages, blog posts, or service pages."
+      },
+      {
+        "status": "pass",
+        "title": "5 project/portfolio pages found",
+        "detail": "3 with descriptions (100+ words), 2 image-only."
+      },
+      {
+        "status": "warn",
+        "title": "2 project pages could use more content",
+        "detail": "Adding descriptions to all project pages improves search visibility."
+      },
+      {
+        "status": "warn",
+        "title": "No blog or journal section found",
+        "detail": "Regular content (monthly posts) helps build search authority."
+      }
+    ],
+    "visual_assets": [
+      {
+        "status": "pass",
+        "title": "8 images on homepage",
+        "detail": "Good visual presence."
+      },
+      {
+        "status": "fail",
+        "title": "6 of 8 images missing alt text (75%)",
+        "detail": "Alt text is critical for image SEO and accessibility."
+      },
+      {
+        "status": "pass",
+        "title": "130 total images across site",
+        "detail": "69 missing alt text site-wide."
+      },
+      {
+        "status": "pass",
+        "title": "Project pages average 22.6 images",
+        "detail": "Good visual coverage per project."
+      }
+    ]
+  },
+  "meta": {
+    "url": "https://www.kozedesignbuild.ca",
+    "company_name": "Koze Design Build",
+    "location": "Pitt Meadows BC",
+    "pages_crawled": 9,
+    "pages_successful": 9,
+    "pages_errored": 0,
+    "total_word_count": 1697,
+    "total_images": 130,
+    "total_missing_alt": 69,
+    "schema_types_found": [],
+    "project_pages_count": 5,
+    "project_pages_with_descriptions": 3,
+    "has_robots_txt": true,
+    "has_sitemap": true,
+    "sitemap_url_count": 8,
+    "ssl_valid": true,
+    "redirect_count": 0,
+    "final_url": "https://www.kozedesignbuild.ca/",
+    "homepage_title": "KOZE DESIGN AND BUILD | Greater Vancouver Builder",
+    "homepage_meta_description": null,
+    "homepage_word_count": 398,
+    "homepage_image_count": 8,
+    "homepage_response_ms": 94,
+    "homepage_size_kb": 168.1,
+    "gbp_detected": false,
+    "directories_checked": {
+      "Houzz": true,
+      "HomeStars": false,
+      "CHBA": false
+    },
+    "project_pages": [
+      {
+        "url": "https://www.kozedesignbuild.ca",
+        "title": "KOZE DESIGN AND BUILD | Greater Vancouver Builder",
+        "word_count": 398,
+        "image_count": 8,
+        "has_description": true
+      },
+      {
+        "url": "https://www.kozedesignbuild.ca/recent-projects",
+        "title": "Recent Projects — KOZE DESIGN AND BUILD | Greater Vancouver Builder",
+        "word_count": 88,
+        "image_count": 7,
+        "has_description": false
+      },
+      {
+        "url": "https://www.kozedesignbuild.ca/recent-projects/osprey",
+        "title": "osprey — KOZE DESIGN AND BUILD | Greater Vancouver Builder",
+        "word_count": 129,
+        "image_count": 46,
+        "has_description": true
+      },
+      {
+        "url": "https://www.kozedesignbuild.ca/recent-projects/hammond",
+        "title": "hammond — KOZE DESIGN AND BUILD | Greater Vancouver Builder",
+        "word_count": 122,
+        "image_count": 36,
+        "has_description": true
+      },
+      {
+        "url": "https://www.kozedesignbuild.ca/recent-projects/mccallum",
+        "title": "mccallum — KOZE DESIGN AND BUILD | Greater Vancouver Builder",
+        "word_count": 99,
+        "image_count": 16,
+        "has_description": false
+      }
+    ],
+    "page_urls": [
+      "https://www.kozedesignbuild.ca",
+      "https://www.kozedesignbuild.ca/cart",
+      "https://www.kozedesignbuild.ca/contactus",
+      "https://www.kozedesignbuild.ca/letstalk",
+      "https://www.kozedesignbuild.ca/ourprocess",
+      "https://www.kozedesignbuild.ca/recent-projects",
+      "https://www.kozedesignbuild.ca/recent-projects/hammond",
+      "https://www.kozedesignbuild.ca/recent-projects/mccallum",
+      "https://www.kozedesignbuild.ca/recent-projects/osprey"
+    ]
+  }
+}

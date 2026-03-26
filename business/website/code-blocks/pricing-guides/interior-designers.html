@@ -1,0 +1,646 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.pgd-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.pgd-loader.pgd-done{opacity:0;visibility:hidden;pointer-events:none}
+.pgd-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:pgdLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.pgd-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:pgdLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.pgd-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:pgdLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.pgd-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:pgdLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes pgdLoaderIn{to{opacity:1}}
+@keyframes pgdLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.pgd-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.pgd-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.pgd-cursor.pgd-active{opacity:1}
+.pgd-cursor.pgd-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.pgd-cursor.pgd-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.pgd-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.pgd-cursor-dot.pgd-active{opacity:1}
+
+/* ── CTA button glow ── */
+.pgd-btn{animation:pgdBtnGlow 3s ease-in-out infinite alternate}
+@keyframes pgdBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+
+/* ── Ken Burns on image breaks ── */
+.pgd-img-break.pgd-in-view img{animation:pgdKenBurns 16s ease-in-out infinite alternate}
+@keyframes pgdKenBurns{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.06) translate(-4px,-6px)}}
+
+/* ── Film grain overlay ── */
+.pgd-grain::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:128px 128px;pointer-events:none;z-index:0;opacity:0.5}
+.pgd-grain{position:relative}
+.pgd-grain>*{position:relative;z-index:1}
+
+/* ── Eyebrow gold dash (animated) ── */
+.pgd-eyebrow{display:flex;align-items:center;gap:14px}
+.pgd-eyebrow::before{content:'';width:0;height:1px;background:#c9a96e;transition:width 0.6s cubic-bezier(0.16,1,0.3,1)}
+.pgd-eyebrow.pgd-visible::before{width:24px}
+
+/* ── Headline gold underline on em ── */
+.pgd-wrap h2 em{position:relative;display:inline}
+.pgd-wrap h2 em::after{content:'';position:absolute;bottom:2px;left:0;width:0;height:1.5px;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.2));transition:width 1.2s 0.2s cubic-bezier(0.16,1,0.3,1)}
+.pgd-wrap h2.pgd-underlined em::after{width:100%}
+
+/* ── Scroll indicator ── */
+.pgd-scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;z-index:3;transition:opacity 0.4s ease}
+.pgd-scroll-hint.pgd-hidden{opacity:0;pointer-events:none}
+.pgd-scroll-text{font-family:'Josefin Sans',sans-serif;font-size:0.45rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(246,244,240,0.3)}
+.pgd-scroll-line{width:1px;height:36px;position:relative;overflow:hidden;background:rgba(246,244,240,0.1)}
+.pgd-scroll-line::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:#c9a96e;animation:pgdScrollPulse 2s cubic-bezier(0.16,1,0.3,1) infinite}
+@keyframes pgdScrollPulse{0%{top:-100%}100%{top:100%}}
+
+/* ═══ PRICING GUIDE — INTERIOR DESIGNERS ═══ */
+.pgd-wrap{font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a18;line-height:1.7;font-weight:300;overflow-x:hidden!important}
+.pgd-wrap img{max-width:100%;display:block}
+.pgd-wrap a{color:inherit;text-decoration:none}
+
+/* ─── HERO ─── */
+.pgd-hero{position:relative;min-height:90vh;display:flex;align-items:flex-end;padding:6rem 5vw;background:#1a1a18;overflow:hidden}
+.pgd-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(26,26,24,0.6) 60%,rgba(26,26,24,0.92) 100%);z-index:1}
+.pgd-hero-bg{position:absolute;inset:0}
+.pgd-hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.55;filter:saturate(0.6)}
+.pgd-hero-content{position:relative;z-index:2;max-width:900px}
+.pgd-hero-label{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem;font-weight:500}
+.pgd-hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:300;line-height:1.1;color:#f6f4f0;letter-spacing:-0.02em;margin-bottom:1.5rem}
+.pgd-hero h1 em{font-style:italic;color:#c9a96e}
+.pgd-hero-sub{font-size:1.05rem;color:#d9d5cd;font-weight:300;max-width:560px;line-height:1.8}
+
+/* ─── SECTION PRIMITIVES ─── */
+.pgd-section{padding:6rem 5vw}
+.pgd-narrow{max-width:720px}
+.pgd-wide{max-width:1100px;margin:0 auto}
+.pgd-label{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#b8975a;margin-bottom:1.5rem;font-weight:500}
+.pgd-label-dark{color:#c9a96e}
+.pgd-divider{width:60px;height:1px;background:#c9a96e;margin:0 0 2rem}
+.pgd-section h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;margin-bottom:2rem;letter-spacing:-0.01em}
+.pgd-section h2 em{font-style:italic}
+.pgd-section p{font-size:1rem;color:#4a4a46;margin-bottom:1.5rem;line-height:1.8}
+.pgd-section p:last-child{margin-bottom:0}
+
+/* ─── ACCENT LINE ─── */
+.pgd-accent{display:block;width:100%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.2) 20%,rgba(201,169,110,0.2) 80%,transparent 100%)}
+
+/* ─── IMAGE BREAK ─── */
+.pgd-img-break{width:100%;height:70vh;min-height:500px;overflow:hidden;position:relative}
+.pgd-img-break img{width:100%;height:100%;object-fit:cover}
+.pgd-img-break::before{content:'';position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(rgba(26,26,24,0.15),transparent);z-index:1;pointer-events:none}
+.pgd-img-break::after{content:'';position:absolute;bottom:0;left:0;right:0;height:140px;background:linear-gradient(transparent,rgba(26,26,24,0.55));z-index:1;pointer-events:none}
+
+/* ─── IMAGE PAIR ─── */
+.pgd-img-pair{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.pgd-img-half{position:relative;height:420px;overflow:hidden}
+.pgd-img-half img{width:100%;height:100%;object-fit:cover}
+.pgd-img-half::after{content:'';position:absolute;inset:0;background:rgba(26,26,24,0.15)}
+
+/* ─── WHY IT MATTERS (2-col) ─── */
+.pgd-why{background:#f6f4f0;padding:6rem 5vw}
+.pgd-why-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;max-width:1100px}
+.pgd-why-text h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:300;line-height:1.2;margin-bottom:1.5rem;color:#1a1a18}
+.pgd-why-text h2 em{font-style:italic;color:#b8975a}
+.pgd-why-text p{font-size:1rem;line-height:1.8;color:#4a4a46;margin-bottom:1rem}
+.pgd-consequences{border-left:1px solid rgba(26,26,26,0.08);padding-left:2rem}
+.pgd-consequence{margin-bottom:2rem}
+.pgd-consequence:last-child{margin-bottom:0}
+.pgd-consequence h4{font-family:'DM Sans',-apple-system,sans-serif;font-size:.88rem;font-weight:500;color:#1a1a18;margin-bottom:.4rem}
+.pgd-consequence p{font-size:.88rem;line-height:1.7;color:#8a8579;margin-bottom:0}
+
+/* ─── PHILOSOPHY (3-col) ─── */
+.pgd-philosophy{background:#1a1a18;padding:6rem 5vw;position:relative;overflow:hidden}
+.pgd-philosophy::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:80px;background:linear-gradient(rgba(201,169,110,0.4),transparent)}
+.pgd-phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;max-width:1100px;margin:0 auto;text-align:center}
+.pgd-phil-item h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;font-weight:400;margin-bottom:.6rem;color:#f6f4f0}
+.pgd-phil-item p{font-size:.88rem;line-height:1.7;color:#8a8579}
+
+/* ─── ANCHOR BANNER ─── */
+.pgd-anchor{padding:3rem 5vw;border-top:1px solid rgba(26,26,26,0.08);border-bottom:1px solid rgba(26,26,26,0.08);text-align:center;background:#eeece6}
+.pgd-anchor p{font-size:.92rem;color:#4a4a46;line-height:1.7;max-width:640px;margin:0 auto}
+.pgd-anchor strong{color:#b8975a;font-weight:500}
+
+/* ─── LICENSE BANNER ─── */
+.pgd-license{background:#1a1a18;padding:4rem 5vw;text-align:center}
+.pgd-license-inner{max-width:600px;margin:0 auto}
+.pgd-license h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;margin-bottom:.8rem;color:#f6f4f0}
+.pgd-license p{font-size:.92rem;line-height:1.75;color:#d9d5cd}
+.pgd-license-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:1.5rem}
+.pgd-license-tag{font-size:.72rem;letter-spacing:.08em;color:#c9a96e;border:1px solid rgba(201,169,110,0.15);padding:.4rem 1rem}
+
+/* ─── PRICING CARDS ─── */
+.pgd-pricing{background:#1a1a18;padding:6rem 5vw}
+.pgd-pricing-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto 3rem}
+.pgd-card{background:#1e1d1a;border:1px solid rgba(255,255,255,0.05);padding:2.5rem 2rem;position:relative;transition:border-color .4s ease,box-shadow .4s ease}
+.pgd-card:hover{border-color:rgba(201,169,110,0.1);box-shadow:0 8px 40px rgba(0,0,0,.3)}
+.pgd-card.pgd-featured{border-color:#c9a96e;background:#1c1b17}
+.pgd-card.pgd-featured::before{content:'Most Popular';position:absolute;top:-1px;left:2rem;background:#c9a96e;color:#1a1a18;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;padding:.35rem 1rem;font-weight:500}
+.pgd-card-label{font-size:.56rem;letter-spacing:.25em;text-transform:uppercase;color:#5e5a52;margin-bottom:.8rem;font-weight:500}
+.pgd-card-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;margin-bottom:.5rem;color:#f6f4f0}
+.pgd-card-sub{font-size:.84rem;color:#8a8579;line-height:1.6;margin-bottom:1.8rem;min-height:52px}
+.pgd-card-price{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:300;color:#c9a96e;margin-bottom:.2rem}
+.pgd-card-note{font-size:.72rem;color:#5e5a52;margin-bottom:2rem;line-height:1.6}
+.pgd-card-div{width:100%;height:1px;background:rgba(255,255,255,0.05);margin-bottom:1.5rem}
+.pgd-card-outcome-l{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a96e;margin-bottom:.6rem;font-weight:400}
+.pgd-card-outcome{font-size:.88rem;color:#d9d5cd;line-height:1.6;margin-bottom:1.5rem;font-style:italic}
+.pgd-card-inc-l{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#5e5a52;margin-bottom:1rem;font-weight:400}
+.pgd-card-inc{list-style:none;padding:0;margin:0}
+.pgd-card-inc li{font-size:.84rem;color:#b5afa5;padding:.4rem 0 .4rem 1.3rem;position:relative;line-height:1.5;border-bottom:1px solid rgba(255,255,255,.02)}
+.pgd-card-inc li:last-child{border-bottom:none}
+.pgd-card-inc li::before{content:'';position:absolute;left:0;top:.78rem;width:5px;height:1px;background:#c9a96e}
+.pgd-card-inc li.pgd-hl{color:#c9a96e}
+.pgd-pricing-note{text-align:center;max-width:1100px;margin:0 auto}
+.pgd-pricing-note p{font-size:.82rem;color:#5e5a52;max-width:520px;margin:0 auto;line-height:1.7;font-style:italic}
+
+/* ─── COST-SHARE ─── */
+.pgd-share{background:#f6f4f0;padding:6rem 5vw}
+.pgd-share-intro{max-width:620px;margin:0 auto 3.5rem;text-align:center}
+.pgd-share-intro h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:300;line-height:1.25;margin-bottom:1rem;color:#1a1a18}
+.pgd-share-intro h2 em{font-style:italic;color:#b8975a}
+.pgd-share-intro p{font-size:.95rem;line-height:1.8;color:#4a4a46}
+.pgd-share-how{margin-bottom:3rem}
+.pgd-share-how h3{font-family:'DM Sans',-apple-system,sans-serif;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:#b8975a;margin-bottom:1.5rem;text-align:center;font-weight:500}
+.pgd-share-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto}
+.pgd-share-card{background:#fff;border:1px solid rgba(26,26,26,0.08);padding:2rem;text-align:center}
+.pgd-share-card.pgd-share-hl{border-color:#b8975a}
+.pgd-share-parties{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:400;color:#1a1a18;margin-bottom:.3rem}
+.pgd-share-desc{font-size:.76rem;color:#8a8579;margin-bottom:1.2rem}
+.pgd-share-math{font-size:.78rem;color:#4a4a46;line-height:1.7;margin-bottom:1rem}
+.pgd-share-result{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;font-weight:300;color:#b8975a}
+.pgd-share-result-note{font-size:.7rem;color:#8a8579;margin-top:.15rem}
+.pgd-share-nudge{max-width:560px;margin:3rem auto 0;text-align:center;padding:2rem 2.5rem;border:1px solid rgba(26,26,26,0.08);background:#fff}
+.pgd-share-nudge p{font-size:.92rem;line-height:1.75;color:#4a4a46;margin:0}
+.pgd-share-nudge strong{color:#b8975a;font-weight:500}
+
+/* ─── ADD-ONS ─── */
+.pgd-addons{background:#1a1a18;padding:6rem 5vw}
+.pgd-addons-head{max-width:1100px;margin:0 auto 2.5rem}
+.pgd-addons-head h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:400;margin-bottom:.5rem;color:#f6f4f0}
+.pgd-addons-head p{font-size:.88rem;color:#8a8579}
+.pgd-addons-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.05);max-width:1100px;margin:0 auto}
+.pgd-addon{background:#181715;padding:1.5rem 1.8rem;display:flex;justify-content:space-between;align-items:center}
+.pgd-addon-name{font-size:.88rem;color:#e0dbd3;font-weight:400}
+.pgd-addon-desc{font-size:.76rem;color:#5e5a52;margin-top:.15rem}
+.pgd-addon-price{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.05rem;color:#c9a96e;white-space:nowrap;margin-left:2rem;font-weight:400}
+
+/* ─── PROCESS ─── */
+.pgd-process{background:#f6f4f0;padding:6rem 5vw}
+.pgd-process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;max-width:1100px;margin:0 auto}
+.pgd-step-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.8rem;font-weight:300;line-height:1;margin-bottom:.7rem;color:rgba(184,151,90,.2)}
+.pgd-step h4{font-size:.88rem;font-weight:500;letter-spacing:.02em;margin-bottom:.4rem;color:#1a1a18}
+.pgd-step p{font-size:.84rem;line-height:1.7;color:#8a8579;margin:0}
+
+/* ─── TESTIMONIAL ─── */
+.pgd-quote{background:#eeece6;padding:6rem 5vw;text-align:center}
+.pgd-quote-text{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;line-height:1.4;max-width:900px;margin:0 auto 1.5rem;color:#1a1a18}
+.pgd-quote-text::before{content:'\201C';display:block;font-size:4rem;color:#c9a96e;line-height:1;margin-bottom:0.5rem;font-style:normal;animation:pgdQuoteFloat 6s ease-in-out infinite alternate}
+@keyframes pgdQuoteFloat{0%{transform:scale(1) translateY(0)}100%{transform:scale(1.05) translateY(-4px)}}
+.pgd-quote-attr{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:#8a8579;font-weight:500}
+
+/* ─── FAQ ─── */
+.pgd-faq{background:#f6f4f0;padding:6rem 5vw}
+.pgd-faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;max-width:1100px;margin:0 auto}
+.pgd-faq-item{padding-bottom:1.8rem;border-bottom:1px solid rgba(26,26,26,0.08)}
+.pgd-faq-item h4{font-family:'DM Sans',-apple-system,sans-serif;font-size:.92rem;font-weight:400;margin-bottom:.5rem;color:#1a1a18}
+.pgd-faq-item p{font-size:.86rem;line-height:1.7;color:#8a8579;margin:0}
+
+/* ─── CTA ─── */
+.pgd-cta{position:relative;min-height:65vh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center}
+.pgd-cta-bg{position:absolute;inset:0}
+.pgd-cta-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.5) brightness(.3);transition:transform 8s cubic-bezier(0.16,1,0.3,1)}
+.pgd-cta.pgd-in-view .pgd-cta-bg img{transform:scale(1.08)}
+.pgd-cta-content{position:relative;z-index:2;padding:6rem 5vw;width:100%}
+.pgd-cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:300;margin-bottom:1rem;line-height:1.2;color:#f6f4f0}
+.pgd-cta h2 em{font-style:italic;color:#c9a96e}
+.pgd-cta p{font-size:1rem;color:#8a8579;max-width:440px;margin:0 auto 2.5rem;line-height:1.7}
+.pgd-btn{display:inline-block;font-family:'DM Sans',sans-serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;padding:1.1rem 3rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all .35s ease}
+.pgd-btn:hover{background:transparent!important;color:#c9a96e!important}
+.pgd-cta-details{margin-top:2.5rem;font-size:.72rem;color:#5e5a52;letter-spacing:.05em}
+.pgd-cta-details a{color:#8a847a;text-decoration:none}
+
+/* ─── FOOTER ─── */
+.pgd-ft{background:#1a1a18;border-top:1px solid rgba(201,169,110,.15)}
+.pgd-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}
+.pgd-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}
+.pgd-ft-locs a:hover{color:#c9a96e}
+.pgd-ft-r{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}
+.pgd-ft-i{display:flex;align-items:baseline;gap:10px}
+.pgd-ft-l{font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;white-space:nowrap}
+.pgd-ft-dt{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,.4);flex-shrink:0;position:relative;top:-2px}
+.pgd-ft-i p,.pgd-ft-i a{margin:0;font-size:12px;color:rgba(246,244,240,.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color .3s ease}
+.pgd-ft-i a:hover{color:#c9a96e}
+.pgd-ft-s{display:flex;gap:18px}
+.pgd-ft-rl{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,.15) 20%,rgba(201,169,110,.15) 80%,transparent 100%)}
+.pgd-ft-b{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}
+.pgd-ft-cp{font-size:10px;color:rgba(246,244,240,.35);letter-spacing:.08em}
+.pgd-ft-n{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center}
+.pgd-ft-n a{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);text-decoration:none;transition:color .3s ease}
+.pgd-ft-n a:hover{color:#c9a96e}
+.pgd-ft-email{cursor:pointer}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+.pgd-pricing-cards{grid-template-columns:1fr;gap:2rem}
+.pgd-phil-grid{grid-template-columns:1fr;gap:2rem}
+.pgd-process-grid{grid-template-columns:1fr 1fr;gap:2rem}
+.pgd-addons-grid{grid-template-columns:1fr}
+.pgd-why-grid,.pgd-faq-grid{grid-template-columns:1fr;gap:2.5rem}
+.pgd-share-grid{grid-template-columns:1fr;gap:1rem}
+.pgd-img-pair{grid-template-columns:1fr}
+.pgd-img-half{height:280px}
+}
+@media(max-width:768px){
+.pgd-hero{min-height:75vh;padding:4rem 5vw}
+.pgd-section{padding:4rem 5vw}
+.pgd-why{padding:4rem 5vw}
+.pgd-philosophy{padding:4rem 5vw}
+.pgd-addons{padding:4rem 5vw}
+.pgd-process{padding:4rem 5vw}
+.pgd-quote{padding:4rem 5vw}
+.pgd-faq{padding:4rem 5vw}
+.pgd-share{padding:4rem 5vw}
+.pgd-pricing{padding:4rem 5vw}
+.pgd-img-break{height:50vh;min-height:300px}
+.pgd-scroll-hint{display:none}
+.pgd-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}
+.pgd-ft-locs a{font-size:.55rem}
+.pgd-ft-r{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}
+.pgd-ft-rl{margin:0 6vw}
+.pgd-ft-b{flex-direction:column;gap:.75rem;text-align:center;padding:1.25rem 6vw}
+}
+@media(max-width:600px){
+.pgd-process-grid{grid-template-columns:1fr}
+.pgd-addon{flex-direction:column;align-items:flex-start;gap:.4rem}
+.pgd-addon-price{margin-left:0}
+}
+@media print{
+body{background:#fff;color:#1a1a1a}
+.pgd-hero-bg,.pgd-img-break,.pgd-img-pair,.pgd-cta-bg{display:none}
+.pgd-card{break-inside:avoid;border:1px solid #ccc;background:#fff}
+.pgd-loader,.pgd-cursor,.pgd-cursor-dot,.pgd-progress,.pgd-scroll-hint{display:none!important}
+h1,h2,h3,h4,.pgd-card-title{color:#1a1a18!important}
+.pgd-card-price{color:#6b5d4a!important}
+}
+</style>
+<div class="pgd-loader" id="pgdLoader">
+  <div class="pgd-loader-brand">Matt Anthony Photography</div>
+  <div class="pgd-loader-sub">Photography for Interior Designers</div>
+  <div class="pgd-loader-line"></div>
+</div>
+<div class="pgd-cursor" id="pgdCursor"></div>
+<div class="pgd-cursor-dot" id="pgdCursorDot"></div>
+<div class="pgd-progress" id="pgdProgress"></div>
+<div class="pgd-wrap">
+
+<!-- ═══ HERO ═══ -->
+<section class="pgd-hero pgd-grain">
+  <div class="pgd-hero-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9d699cdf-a6ac-442f-b234-97b0aba24035/5322-backhouse-web-5.jpg" alt="Interior design photography by Matt Anthony in British Columbia"></div>
+  <div class="pgd-hero-content">
+    <div class="pgd-eyebrow pgd-hero-label" data-observe>Photography for Interior Designers</div>
+    <h1>The work you put into a space deserves imagery that <em>proves it</em></h1>
+    <p class="pgd-hero-sub">The right photography makes your design decisions visible. To editors, to peers, and to every future client who finds your portfolio.</p>
+  </div>
+  <div class="pgd-scroll-hint" id="pgdScrollHint">
+    <span class="pgd-scroll-text">Scroll</span>
+    <div class="pgd-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ WHY IT MATTERS ═══ -->
+<section class="pgd-why">
+  <div class="pgd-why-grid">
+    <div class="pgd-why-text">
+      <div class="pgd-eyebrow pgd-label" data-observe>Why This Matters</div>
+      <div class="pgd-divider"></div>
+      <h2>What happens when interiors are photographed like <em>everything else</em></h2>
+      <p>Most photographers light a room and shoot wide. The result is flat, bright, and interchangeable. Indistinguishable from the last ten portfolios an editor scrolled past.</p>
+      <p>Your work isn't about brightness. It's about atmosphere, material honesty, and spatial logic. Photography that misses those qualities doesn't just fail to represent your design. It actively undermines it.</p>
+    </div>
+    <div class="pgd-consequences">
+      <div class="pgd-consequence"><h4>Editorial Rejection</h4><p>Publications evaluate spatial clarity and material legibility. Over-lit, over-edited images signal that the photographer didn't understand the design. Editors move on.</p></div>
+      <div class="pgd-consequence"><h4>Portfolio That Doesn't Convert</h4><p>If your imagery looks like every other designer's, prospective clients can't tell why your work is different. The portfolio fills space instead of building reputation.</p></div>
+      <div class="pgd-consequence"><h4>Design Read as Decoration</h4><p>When spatial decisions and material relationships aren't captured with intent, your work gets reduced to "pretty rooms." The thinking behind it becomes invisible.</p></div>
+      <div class="pgd-consequence"><h4>Wasted Investment</h4><p>A $500 shoot that produces unusable images costs far more than the fee itself. It costs you the editorial feature, the award submission, and the next client who never called.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ IMAGE BREAK ═══ -->
+<div class="pgd-img-break" data-observe>
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/aaf09b1e-0c8f-4362-bb6b-d1078581c875/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-2.jpg" alt="Sugarloaf Residence kitchen interior design Pemberton" loading="lazy">
+</div>
+
+<!-- ═══ PHILOSOPHY ═══ -->
+<section class="pgd-philosophy pgd-grain">
+  <div class="pgd-phil-grid">
+    <div class="pgd-phil-item"><h3>Restraint Over Spectacle</h3><p>No over-lighting. No heavy manipulation. No renders, no composites. Spaces are shown as they actually live, with the subtlety and atmosphere your design decisions created.</p></div>
+    <div class="pgd-phil-item"><h3>Atmosphere, Not Decoration</h3><p>Photography that captures spatial logic, material relationships, and the qualities that earn editorial credibility. Not just social media engagement.</p></div>
+    <div class="pgd-phil-item"><h3>Intent Before Coverage</h3><p>Every shoot begins with understanding your design decisions. Compositions are shaped by judgment, not by trying to photograph everything in the room.</p></div>
+  </div>
+</section>
+
+<div class="pgd-accent"></div>
+
+<!-- ═══ RETAINER BANNER ═══ -->
+<section class="pgd-anchor">
+  <p>Managing multiple projects a year? Ask about <strong>Creative Partnerships starting at $2,500/month</strong>.</p>
+</section>
+
+<!-- ═══ LICENSE ═══ -->
+<section class="pgd-license pgd-grain">
+  <div class="pgd-license-inner">
+    <h3>Every shoot includes a full, unlimited use license</h3>
+    <p>Your images. No restrictions. Use them anywhere.</p>
+    <div class="pgd-license-tags">
+      <span class="pgd-license-tag">Website</span>
+      <span class="pgd-license-tag">Social Media</span>
+      <span class="pgd-license-tag">Editorial</span>
+      <span class="pgd-license-tag">Awards</span>
+      <span class="pgd-license-tag">Print</span>
+      <span class="pgd-license-tag">Presentations</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING CARDS ═══ -->
+<section class="pgd-pricing">
+  <div class="pgd-wide" style="text-align:center;margin-bottom:3rem">
+    <div class="pgd-eyebrow pgd-label-dark" data-observe style="justify-content:center">Investment</div>
+    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;color:#f6f4f0;margin-bottom:1rem">Photography that <em style="font-style:italic;color:#c9a96e">earns its keep</em></h2>
+    <p style="max-width:500px;margin:0 auto;font-size:.95rem;line-height:1.75;color:#8a8579">Three ways to work together, each scoped to match where your project sits. No hidden fees. Unlimited usage included.</p>
+  </div>
+  <div class="pgd-pricing-cards">
+
+    <div class="pgd-card">
+      <div class="pgd-card-label">Editorial &amp; Awards</div>
+      <div class="pgd-card-title">Feature-Ready</div>
+      <div class="pgd-card-sub">Publication-grade photography composed for Western Living, Dwell, award submissions, and long-term portfolio anchors.</div>
+      <div class="pgd-card-price">$4,500</div>
+      <div class="pgd-card-note">Full day &middot; 30 to 40 curated images + editorial film + social reel &middot; delivered in 5 to 10 business days</div>
+      <div class="pgd-card-div"></div>
+      <div class="pgd-card-outcome-l">The Outcome</div>
+      <div class="pgd-card-outcome">Images, an editorial film, and a ready-to-post reel. Composed to meet the standards editors and jurors actually evaluate. Spatial clarity, material legibility, and design intent communicated without explanation.</div>
+      <div class="pgd-card-inc-l">Includes</div>
+      <ul class="pgd-card-inc">
+        <li>Extended pre-production and intent alignment</li>
+        <li>Full-day on-site photography</li>
+        <li>30 to 40 curated, publication-grade images</li>
+        <li>Compositions optimized for editorial evaluation</li>
+        <li>Optimized natural light coverage throughout the day</li>
+        <li class="pgd-hl">Editorial project film included (2 to 3 minutes)</li>
+        <li class="pgd-hl">Social media reel included (one 15 to 30 second vertical edit)</li>
+        <li>Guidance on submission image selection</li>
+        <li>Post-delivery portfolio strategy session (30 min)</li>
+        <li>High-res and web-optimized delivery</li>
+        <li>Curated online gallery</li>
+        <li>Full unlimited use license</li>
+      </ul>
+    </div>
+
+    <div class="pgd-card pgd-featured">
+      <div class="pgd-card-label">Portfolio &amp; Web</div>
+      <div class="pgd-card-title">Residential Interior</div>
+      <div class="pgd-card-sub">A dedicated shoot composed entirely around your material, layout, and atmosphere decisions. Your project. Your images.</div>
+      <div class="pgd-card-price">$3,000</div>
+      <div class="pgd-card-note">Full day &middot; 25 to 30 edited images + 60s video + social reel &middot; delivered in 5 to 10 business days</div>
+      <div class="pgd-card-div"></div>
+      <div class="pgd-card-outcome-l">The Outcome</div>
+      <div class="pgd-card-outcome">A complete visual package built around your material and atmosphere decisions. Portfolio images, an atmospheric walkthrough, and a social reel. Everything you need to showcase the work and attract the next one.</div>
+      <div class="pgd-card-inc-l">Includes</div>
+      <ul class="pgd-card-inc">
+        <li>Pre-production consultation and shot planning</li>
+        <li>Full-day on-site photography</li>
+        <li>25 to 30 professionally edited images</li>
+        <li>Interior wide angles capturing spatial flow and atmosphere</li>
+        <li>Detail vignettes of material intersections, textures, and finishes</li>
+        <li>Natural light studies across key moments of the day</li>
+        <li class="pgd-hl">Atmospheric walkthrough video included (60 seconds)</li>
+        <li class="pgd-hl">Social media reel included (one 15 to 30 second vertical edit)</li>
+        <li>Natural, editorial-grade post-production</li>
+        <li>High-res and web-optimized delivery</li>
+        <li>Curated online gallery</li>
+        <li>Full unlimited use license</li>
+      </ul>
+    </div>
+
+    <div class="pgd-card">
+      <div class="pgd-card-label">Photography Only</div>
+      <div class="pgd-card-title">Project Session</div>
+      <div class="pgd-card-sub">Complete interior photography without video. Same eye, same quality, same day. For projects where stills are the priority.</div>
+      <div class="pgd-card-price">$2,000</div>
+      <div class="pgd-card-note">Full day &middot; 20 to 25 edited images &middot; delivered in 5 to 10 business days</div>
+      <div class="pgd-card-div"></div>
+      <div class="pgd-card-outcome-l">The Outcome</div>
+      <div class="pgd-card-outcome">A complete set of publication-quality images for your project. Everything you need for your website, portfolio, and award entries, without the video and reel deliverables.</div>
+      <div class="pgd-card-inc-l">Includes</div>
+      <ul class="pgd-card-inc">
+        <li>Pre-production consultation and shot planning</li>
+        <li>Full-day on-site photography</li>
+        <li>20 to 25 professionally edited images</li>
+        <li>Interior wide angles capturing spatial flow and atmosphere</li>
+        <li>Detail vignettes of material intersections, textures, and finishes</li>
+        <li>Natural, editorial-grade post-production</li>
+        <li>High-res and web-optimized delivery</li>
+        <li>Curated online gallery</li>
+        <li>Full unlimited use license</li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="pgd-pricing-note">
+    <p>All pricing reflects scope, usage, and judgment. Not image count. Final proposals are prepared after a discovery conversation to confirm alignment.</p>
+  </div>
+</section>
+
+<!-- ═══ IMAGE PAIR ═══ -->
+<div class="pgd-img-pair">
+  <div class="pgd-img-half"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/bd45b746-3623-41b7-8016-a94a135bd9b6/5322-backhouse-web-10.jpg" alt="The Perch twilight exterior Sunshine Coast" loading="lazy"></div>
+  <div class="pgd-img-half"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/a2d71eaa-675b-4141-a185-53c56f607478/5322-backhouse-web-16.jpg" alt="The Perch upper interior living space" loading="lazy"></div>
+</div>
+
+<!-- ═══ COST-SHARE ═══ -->
+<section class="pgd-share">
+  <div class="pgd-share-intro">
+    <div class="pgd-eyebrow pgd-label" data-observe style="justify-content:center">Split the Cost, Keep the Quality</div>
+    <h2>Working with a builder or architect? <em>Share the shoot.</em></h2>
+    <p>When multiple professionals collaborate on the same project, there's no reason to book separate shoots. One shoot covers everyone, and the more parties involved, the less each one pays. Each party gets their own curated set composed around their specific priorities, with full unlimited usage rights.</p>
+  </div>
+  <div class="pgd-share-how">
+    <h3>How Cost-Sharing Works, Based on a $3,000 Residential Interior</h3>
+    <div class="pgd-share-grid">
+      <div class="pgd-share-card">
+        <div class="pgd-share-parties">You Alone</div>
+        <div class="pgd-share-desc">One party, full cost</div>
+        <div class="pgd-share-math">$3,000 base<br>&divide; 1 party</div>
+        <div class="pgd-share-result">$3,000</div>
+        <div class="pgd-share-result-note">per party</div>
+      </div>
+      <div class="pgd-share-card pgd-share-hl">
+        <div class="pgd-share-parties">You + Builder</div>
+        <div class="pgd-share-desc">Two parties, +30%</div>
+        <div class="pgd-share-math">$3,000 + 30% = $3,900<br>&divide; 2 parties</div>
+        <div class="pgd-share-result">$1,950</div>
+        <div class="pgd-share-result-note">per party (you save $1,050)</div>
+      </div>
+      <div class="pgd-share-card pgd-share-hl">
+        <div class="pgd-share-parties">You + Builder + Architect</div>
+        <div class="pgd-share-desc">Three parties, +60%</div>
+        <div class="pgd-share-math">$3,000 + 60% = $4,800<br>&divide; 3 parties</div>
+        <div class="pgd-share-result">$1,600</div>
+        <div class="pgd-share-result-note">per party (you save $1,400)</div>
+      </div>
+    </div>
+  </div>
+  <div class="pgd-share-nudge">
+    <p>The best part? <strong>You can be the one to bring the other parties to the table.</strong> If the builder or architect on your project hasn't booked photography yet, reach out to them. Suggest a shared shoot. You'll all get the same publication-grade imagery, and everyone saves.</p>
+  </div>
+</section>
+
+<!-- ═══ ADD-ONS ═══ -->
+<section class="pgd-addons">
+  <div class="pgd-addons-head">
+    <h3>Available Add-Ons</h3>
+    <p>Supplemental services that can be added to any engagement.</p>
+  </div>
+  <div class="pgd-addons-grid">
+    <div class="pgd-addon"><div><div class="pgd-addon-name">Before &amp; After Documentation</div><div class="pgd-addon-desc">Pre-renovation capture paired with final photography</div></div><div class="pgd-addon-price">$400 &ndash; $600</div></div>
+    <div class="pgd-addon"><div><div class="pgd-addon-name">Material &amp; Detail Close-Ups</div><div class="pgd-addon-desc">Macro coverage of textures, hardware, finishes, and joinery</div></div><div class="pgd-addon-price">$300 &ndash; $500</div></div>
+    <div class="pgd-addon"><div><div class="pgd-addon-name">Lived-In Sessions</div><div class="pgd-addon-desc">Lifestyle moments showing how the space is actually used</div></div><div class="pgd-addon-price">Quoted per scope</div></div>
+    <div class="pgd-addon"><div><div class="pgd-addon-name">Extended Project Film</div><div class="pgd-addon-desc">For Project Session tier or standalone video projects</div></div><div class="pgd-addon-price">$3,000 &ndash; $4,500</div></div>
+    <div class="pgd-addon"><div><div class="pgd-addon-name">Platform-Ready Crops</div><div class="pgd-addon-desc">Pinterest vertical, Instagram square, and web banner formats</div></div><div class="pgd-addon-price">Included</div></div>
+    <div class="pgd-addon"><div><div class="pgd-addon-name">Styling Consultation</div><div class="pgd-addon-desc">Pre-shoot prep guide and space checklist</div></div><div class="pgd-addon-price">Included</div></div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="pgd-process">
+  <div class="pgd-wide" style="text-align:center;margin-bottom:3rem">
+    <div class="pgd-eyebrow pgd-label" data-observe style="justify-content:center">How It Works</div>
+    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;color:#1a1a18;margin-bottom:1rem">A calm, structured <em style="font-style:italic;color:#b8975a">process</em></h2>
+    <p style="max-width:500px;margin:0 auto;font-size:.95rem;line-height:1.75;color:#8a8579">No surprises. No re-scoping. Every step is designed to honour your time and your design intent.</p>
+  </div>
+  <div class="pgd-process-grid">
+    <div class="pgd-step"><div class="pgd-step-num">01</div><h4>Discovery</h4><p>We talk about your project, your design intent, and how the images will be used. We also plan around natural light, weather, and seasonal conditions to ensure the best possible result.</p></div>
+    <div class="pgd-step"><div class="pgd-step-num">02</div><h4>Planning</h4><p>I review your plans and material selections, align on natural light timing, and build a shot strategy around your specific design decisions.</p></div>
+    <div class="pgd-step"><div class="pgd-step-num">03</div><h4>Photography</h4><p>On-site, I work quietly and independently. Every composition prioritizes spatial flow, material honesty, and the atmosphere you created.</p></div>
+    <div class="pgd-step"><div class="pgd-step-num">04</div><h4>Delivery</h4><p>Edited images delivered within 5 to 10 business days through a curated online gallery. High-res, web-optimized, and ready for any use.</p></div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIAL ═══ -->
+<section class="pgd-quote">
+  <div class="pgd-quote-text">He didn't just show up with a camera. He took the time to capture the story behind the design. What stood out most was the care he took to truly understand our vision.</div>
+  <div class="pgd-quote-attr">BD Interior Design</div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="pgd-faq">
+  <div class="pgd-wide" style="text-align:center;margin-bottom:3rem">
+    <div class="pgd-eyebrow pgd-label" data-observe style="justify-content:center">Common Questions</div>
+    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;color:#1a1a18;margin-bottom:0">Before you <em style="font-style:italic;color:#b8975a">reach out</em></h2>
+  </div>
+  <div class="pgd-faq-grid">
+    <div class="pgd-faq-item"><h4>How far in advance should I book?</h4><p>Ideally 2 to 4 weeks before the project is photo-ready. For award or editorial submissions, the earlier the conversation starts the better. Ideally before final staging is complete.</p></div>
+    <div class="pgd-faq-item"><h4>Do I need to have the space styled?</h4><p>I photograph interiors as they are, whether lived-in or styled. If staging is needed, I'll provide a shoot-prep checklist and can advise on what to keep, remove, or adjust for maximum impact.</p></div>
+    <div class="pgd-faq-item"><h4>How does cost-sharing work?</h4><p>I coordinate everything. You just need to let me know who else was involved in the project. Or better yet, suggest a shared shoot to the builder or architect yourself. Each party gets their own curated set composed around their specific priorities, with full unlimited usage.</p></div>
+    <div class="pgd-faq-item"><h4>Do you offer video as well?</h4><p>Yes. Both the Residential Interior and Feature-Ready packages include a social media reel and a project video. The Residential tier includes a 60-second atmospheric walkthrough. The Feature-Ready tier includes a longer editorial film. Everything is captured during the same shoot day.</p></div>
+    <div class="pgd-faq-item"><h4>Can I use the images anywhere I want?</h4><p>Yes. Every engagement includes a full unlimited use license. Website, social media, print, editorial, advertising, award submissions. No restrictions. They're your images.</p></div>
+    <div class="pgd-faq-item"><h4>What if I want changes after delivery?</h4><p>The curated gallery is a finished deliverable. If specific adjustments are needed, like colour correction, crop modifications, or additional formats, those are accommodated. Reshoots or significant scope changes are quoted as a separate session.</p></div>
+    <div class="pgd-faq-item"><h4>Do you travel outside the Sea-to-Sky corridor?</h4><p>Yes. I regularly work across Whistler, Pemberton, the Sunshine Coast, Vancouver, and the Fraser Valley. Travel beyond these areas is accommodated and quoted as part of the proposal.</p></div>
+    <div class="pgd-faq-item"><h4>What's the first step?</h4><p>Book a discovery call. We'll talk about your project, your design intent, and what you need the images to do. No pricing at that stage. Just understanding whether we're a good fit. If we are, I'll follow up with a proposal.</p></div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="pgd-cta" data-observe>
+  <div class="pgd-cta-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/fd1ad420-81be-49cf-8171-509b0a8f3328/siteline-langley-21.jpg" alt="Interior design project Langley photographed by Matt Anthony" loading="lazy"></div>
+  <div class="pgd-cta-content">
+    <h2>Your materials. Your atmosphere.<br>Let the imagery <em>communicate it</em>.</h2>
+    <p>Every engagement begins with a conversation about your project and what success looks like. No pressure, no pitch. Just understanding fit.</p>
+    <a href="/discovery-call" class="pgd-btn">Book a Discovery Call</a>
+    <div class="pgd-cta-details"><a class="pgd-ft-email" id="pgd-cta-em"></a> &ensp;&middot;&ensp; 604.765.9270 &ensp;&middot;&ensp; Squamish, BC</div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="pgd-ft">
+  <div class="pgd-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+  <div class="pgd-ft-r">
+    <div class="pgd-ft-i"><span class="pgd-ft-l">Based In</span><span class="pgd-ft-dt"></span><p>Squamish, British Columbia</p></div>
+    <div class="pgd-ft-i"><span class="pgd-ft-l">Email</span><span class="pgd-ft-dt"></span><a class="pgd-ft-email" id="pgd-ft-em"></a></div>
+    <div class="pgd-ft-i"><span class="pgd-ft-l">Phone</span><span class="pgd-ft-dt"></span><a href="tel:6047659270">604.765.9270</a></div>
+    <div class="pgd-ft-i"><span class="pgd-ft-l">Follow</span><span class="pgd-ft-dt"></span><div class="pgd-ft-s"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  </div>
+  <div class="pgd-ft-rl"></div>
+  <div class="pgd-ft-b"><span class="pgd-ft-cp">Matt Anthony Photography</span><div class="pgd-ft-n"><a href="/bio">About</a><a href="/projects">Projects</a><a href="/pricing-guide-landing">Get Pricing</a><a href="/contact">Contact</a></div></div>
+</div>
+
+</div>
+<script>
+(function(){
+var isMobile='ontouchstart' in window;
+
+/* ═══ EMAIL OBFUSCATION ═══ */
+var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];
+function setEmail(id){var e=document.getElementById(id);if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}}
+setEmail('pgd-ft-em');setEmail('pgd-cta-em');
+
+/* ═══ LOADING SCREEN ═══ */
+var loader=document.getElementById('pgdLoader');
+window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('pgd-done');},1100);});
+
+/* ═══ SCROLL PROGRESS ═══ */
+var progressBar=document.getElementById('pgdProgress');
+function updateProgress(){var sc=window.scrollY;var d=document.documentElement.scrollHeight-window.innerHeight;if(d>0)progressBar.style.width=(sc/d*100)+'%';}
+
+/* ═══ SCROLL HINT FADE ═══ */
+var scrollHint=document.getElementById('pgdScrollHint');
+function updateScrollHint(){if(scrollHint){if(window.scrollY>100)scrollHint.classList.add('pgd-hidden');else scrollHint.classList.remove('pgd-hidden');}}
+
+/* ═══ CUSTOM CURSOR ═══ */
+var cursor=document.getElementById('pgdCursor');var cursorDot=document.getElementById('pgdCursorDot');var cx=0,cy=0,dx=0,dy=0;
+if(!isMobile&&cursor){
+  document.addEventListener('mousemove',function(ev){dx=ev.clientX;dy=ev.clientY;cursorDot.style.left=dx+'px';cursorDot.style.top=dy+'px';if(!cursor.classList.contains('pgd-active')){cursor.classList.add('pgd-active');cursorDot.classList.add('pgd-active');}});
+  function tickCursor(){cx+=(dx-cx)*0.12;cy+=(dy-cy)*0.12;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(tickCursor);}tickCursor();
+  var hoverEls=document.querySelectorAll('a, button, .pgd-btn');
+  hoverEls.forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('pgd-hover');});el.addEventListener('mouseleave',function(){cursor.classList.remove('pgd-hover');});});
+  document.addEventListener('mousedown',function(){cursor.classList.add('pgd-click');});
+  document.addEventListener('mouseup',function(){cursor.classList.remove('pgd-click');});
+}
+
+/* ═══ INTERSECTION OBSERVER ═══ */
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){
+  var el=entry.target;
+  if(el.classList.contains('pgd-eyebrow'))el.classList.add('pgd-visible');
+  if(el.tagName==='H2')el.classList.add('pgd-underlined');
+  if(el.classList.contains('pgd-img-break'))el.classList.add('pgd-in-view');
+  if(el.classList.contains('pgd-cta'))el.classList.add('pgd-in-view');
+}});},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+
+document.querySelectorAll('[data-observe]').forEach(function(el){observer.observe(el);});
+document.querySelectorAll('.pgd-wrap h2').forEach(function(el){observer.observe(el);});
+document.querySelectorAll('.pgd-img-break').forEach(function(el){observer.observe(el);});
+document.querySelectorAll('.pgd-cta').forEach(function(el){observer.observe(el);});
+
+/* ═══ COMBINED SCROLL HANDLER ═══ */
+var ticking=false;
+window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){updateProgress();updateScrollHint();ticking=false;});ticking=true;}},{passive:true});
+updateProgress();updateScrollHint();
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Photography for Interior Designers — Pricing Guide | Matt Anthony",
+  "description": "Investment guide for interior design photography services. Residential interiors, editorial-ready imagery, and creative partnerships for designers in British Columbia.",
+  "url": "https://www.mattanthonyphoto.com/pricing-guide-interior-designers",
+  "provider": {
+    "@id": "https://www.mattanthonyphoto.com/#business"
+  }
+}
+</script>
+<meta name="robots" content="noindex">
+<meta name="description" content="Investment guide for interior design photography. Residential interiors from $3,000, feature-ready from $4,500. Serving interior designers across British Columbia.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/pricing-guide-interior-designers">

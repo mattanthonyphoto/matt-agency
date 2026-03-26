@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposal System Overview — Matt Anthony Photography</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1A1A18;
+  --paper: #F6F4F0;
+  --gold: #C9A96E;
+  --gold-dim: rgba(201,169,110,0.12);
+  --gold-border: rgba(201,169,110,0.25);
+  --stone: #8A8579;
+  --white: #FFFFFF;
+  --light: #FAFAF8;
+  --green: #5B9A6F;
+  --green-bg: rgba(91,154,111,0.08);
+  --blue: #5B7A9A;
+  --blue-bg: rgba(91,122,154,0.08);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; scroll-behavior:smooth; }
+body { background:var(--white); color:var(--ink); font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.75; }
+.page { max-width:900px; margin:0 auto; padding:80px 60px; }
+.page + .page { border-top:1px solid var(--gold-dim); }
+
+/* COVER */
+.cover-page {
+  min-height:100vh; background:var(--ink); color:var(--paper);
+  display:flex; flex-direction:column; justify-content:center;
+  padding:80px 80px; position:relative;
+}
+.cover-page::after {
+  content:''; position:absolute; bottom:80px; left:80px; right:80px;
+  height:1px; background:linear-gradient(90deg, var(--gold), transparent 60%);
+}
+.cover-eyebrow {
+  font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+  letter-spacing:0.4em; text-transform:uppercase; color:var(--gold);
+  margin-bottom:24px; display:flex; align-items:center; gap:14px;
+}
+.cover-eyebrow::before { content:''; width:32px; height:1px; background:var(--gold); }
+.cover-page h1 {
+  font-family:'Cormorant Garamond',serif; font-weight:400;
+  font-size:3.6rem; line-height:1.08; letter-spacing:-0.01em; margin-bottom:24px;
+}
+.cover-page h1 em { font-style:italic; font-weight:500; color:var(--gold); }
+.cover-sub {
+  font-size:1rem; color:rgba(246,244,240,0.55); max-width:560px; line-height:1.9;
+  margin-bottom:48px;
+}
+.cover-meta { display:flex; gap:48px; }
+.cover-meta-item { font-size:0.75rem; color:rgba(246,244,240,0.35); }
+.cover-meta-item strong {
+  display:block; font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+  font-weight:400; letter-spacing:0.15em; text-transform:uppercase;
+  color:rgba(246,244,240,0.6); margin-bottom:2px;
+}
+
+/* HEADINGS */
+.eyebrow {
+  font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+  letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+  margin-bottom:16px; display:flex; align-items:center; gap:14px;
+}
+.eyebrow::before { content:''; width:24px; height:1px; background:var(--gold); }
+h2 {
+  font-family:'Cormorant Garamond',serif; font-weight:400;
+  font-size:2.4rem; line-height:1.12; letter-spacing:-0.01em; margin-bottom:24px;
+}
+h2 em { font-style:italic; font-weight:500; }
+h3 {
+  font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.7rem;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
+  margin:48px 0 20px;
+}
+p { margin-bottom:16px; font-size:0.92rem; }
+.lead { font-size:1rem; line-height:1.9; color:var(--stone); margin-bottom:28px; }
+
+/* FLOW DIAGRAM */
+.flow-diagram {
+  display:flex; align-items:center; gap:0; margin:40px 0;
+  flex-wrap:wrap; justify-content:center;
+}
+.flow-step-box {
+  background:var(--ink); color:var(--paper); padding:20px 24px;
+  border-radius:8px; text-align:center; min-width:140px;
+}
+.flow-step-box .num {
+  font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:500;
+  color:var(--gold); display:block; line-height:1; margin-bottom:8px;
+}
+.flow-step-box .label {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem; font-weight:400;
+  letter-spacing:0.15em; text-transform:uppercase; color:rgba(246,244,240,0.6);
+}
+.flow-arrow {
+  font-size:1.2rem; color:var(--gold); padding:0 12px;
+  font-family:'Cormorant Garamond',serif;
+}
+
+/* TOOL CARDS */
+.tools-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:1px;
+  background:var(--gold-dim); margin:32px 0; border-radius:8px; overflow:hidden;
+}
+.tool-card {
+  background:var(--white); padding:28px 24px;
+}
+.tool-name {
+  font-family:'JetBrains Mono',monospace; font-size:0.78rem; font-weight:500;
+  color:var(--ink); margin-bottom:6px;
+}
+.tool-desc { font-size:0.8rem; color:var(--stone); margin:0; line-height:1.6; }
+
+/* CODE BLOCK */
+.code {
+  background:var(--ink); color:rgba(246,244,240,0.8); padding:24px 28px;
+  border-radius:8px; margin:24px 0; font-family:'JetBrains Mono',monospace;
+  font-size:0.75rem; line-height:2; overflow-x:auto;
+}
+.code .comment { color:var(--stone); }
+.code .cmd { color:var(--gold); }
+
+/* STATS */
+.stats-row {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:var(--gold-dim); margin:32px 0; border-radius:8px; overflow:hidden;
+}
+.stat {
+  background:var(--white); text-align:center; padding:32px 16px;
+}
+.stat-val {
+  font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:500;
+  color:var(--gold); display:block; line-height:1; margin-bottom:8px;
+}
+.stat-lbl {
+  font-family:'Josefin Sans',sans-serif; font-size:0.5rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
+}
+
+/* TABLE */
+.overview-table {
+  width:100%; border-collapse:separate; border-spacing:0;
+  margin:24px 0; border:1px solid var(--gold-dim); border-radius:8px; overflow:hidden;
+}
+.overview-table thead th {
+  font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.55rem;
+  letter-spacing:0.15em; text-transform:uppercase; color:var(--gold);
+  padding:14px 16px; text-align:left; background:var(--light);
+  border-bottom:1px solid var(--gold-dim);
+}
+.overview-table tbody td {
+  font-size:0.82rem; padding:12px 16px; border-bottom:1px solid rgba(26,26,24,0.04);
+  vertical-align:top;
+}
+.overview-table tbody tr:last-child td { border-bottom:none; }
+.overview-table tbody tr:hover { background:var(--light); }
+
+/* SCREENSHOT FRAMES */
+.screenshot-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:32px 0;
+}
+.screenshot {
+  border:1px solid var(--gold-dim); border-radius:8px; overflow:hidden;
+  background:var(--light);
+}
+.screenshot-bar {
+  background:var(--ink); padding:8px 16px; display:flex; align-items:center; gap:6px;
+}
+.screenshot-dot { width:8px; height:8px; border-radius:50%; }
+.screenshot-dot.r { background:#EF5350; }
+.screenshot-dot.y { background:#FFB74D; }
+.screenshot-dot.g { background:#66BB6A; }
+.screenshot-url {
+  font-family:'JetBrains Mono',monospace; font-size:0.55rem;
+  color:rgba(246,244,240,0.4); margin-left:8px;
+}
+.screenshot-body { padding:20px; }
+.screenshot-body h4 {
+  font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+  letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;
+}
+.screenshot-body p { font-size:0.75rem; color:var(--stone); margin:0; line-height:1.6; }
+.screenshot-body .tag {
+  display:inline-block; font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+  letter-spacing:0.1em; text-transform:uppercase; padding:3px 8px;
+  border-radius:2px; margin-top:8px;
+}
+.tag.live { background:var(--green-bg); color:var(--green); }
+.tag.draft { background:var(--blue-bg); color:var(--blue); }
+
+/* SECTION BADGES */
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin:16px 0; }
+.badge {
+  font-family:'Josefin Sans',sans-serif; font-size:0.5rem; font-weight:400;
+  letter-spacing:0.12em; text-transform:uppercase;
+  padding:4px 12px; border-radius:2px; border:1px solid var(--gold-border);
+  color:var(--gold);
+}
+
+/* CALLOUT */
+.callout {
+  background:var(--light); border-left:3px solid var(--gold);
+  padding:24px 28px; margin:28px 0; border-radius:0 8px 8px 0;
+}
+.callout p { font-size:0.88rem; margin:0; color:var(--stone); }
+.callout strong { color:var(--ink); }
+
+/* FOOTER */
+.footer {
+  background:var(--ink); padding:48px 60px; text-align:center;
+}
+.footer-brand {
+  font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+  letter-spacing:0.4em; text-transform:uppercase; color:var(--paper); margin-bottom:12px;
+}
+.footer-note {
+  font-size:0.7rem; color:var(--stone);
+}
+
+/* PRINT */
+@media print {
+  .cover-page { min-height:auto; padding:60px; page-break-after:always; }
+  .page { padding:40px; page-break-inside:avoid; }
+  .tools-grid, .stats-row, .screenshot-grid { page-break-inside:avoid; }
+}
+@media (max-width:768px) {
+  .cover-page { padding:48px 28px; }
+  .cover-page h1 { font-size:2.4rem; }
+  .page { padding:48px 28px; }
+  .tools-grid, .stats-row, .screenshot-grid { grid-template-columns:1fr; }
+  .flow-diagram { flex-direction:column; }
+  .flow-arrow { transform:rotate(90deg); }
+  .cover-meta { flex-direction:column; gap:12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover-page">
+  <div class="cover-eyebrow">Internal Documentation</div>
+  <h1>Proposal Generation<br><em>System Overview</em></h1>
+  <p class="cover-sub">A complete end-to-end pipeline for generating client proposals, site audits, and pitch documents. From discovery call to live URL in under an hour.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><strong>Built</strong>March 24, 2026</div>
+    <div class="cover-meta-item"><strong>Version</strong>1.0</div>
+    <div class="cover-meta-item"><strong>Status</strong>Production</div>
+  </div>
+</div>
+
+<!-- THE PIPELINE -->
+<div class="page">
+  <div class="eyebrow">The Pipeline</div>
+  <h2>Five steps. Discovery call to live URL.</h2>
+  <p class="lead">The system turns a prospect conversation into a published, shareable proposal with a verified site audit. Every step is automated or templated.</p>
+
+  <div class="flow-diagram">
+    <div class="flow-step-box"><span class="num">1</span><span class="label">Crawl Site</span></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step-box"><span class="num">2</span><span class="label">Scaffold</span></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step-box"><span class="num">3</span><span class="label">Draft Content</span></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step-box"><span class="num">4</span><span class="label">Generate + Publish</span></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step-box"><span class="num">5</span><span class="label">Email via Gmail</span></div>
+  </div>
+
+  <div class="code">
+    <span class="comment"># 1. Run real audit on prospect's site</span><br>
+    <span class="cmd">python3 tools/site_audit.py</span> https://prospect.com "Company" --location "City BC"<br><br>
+    <span class="comment"># 2. Scaffold config files</span><br>
+    <span class="cmd">python3 tools/generate_proposal.py scaffold</span> creative-partner --client slug --owner "Name" --company "Co"<br>
+    <span class="cmd">python3 tools/generate_audit.py scaffold</span> --client slug --company "Co" --url https://prospect.com<br><br>
+    <span class="comment"># 3. Fill in configs (Claude drafts the content from audit data + Notion ICP intel)</span><br><br>
+    <span class="comment"># 4. Generate + publish</span><br>
+    <span class="cmd">python3 tools/generate_audit.py generate</span> configs/slug-audit.json --publish<br>
+    <span class="cmd">python3 tools/generate_proposal.py generate</span> configs/slug-proposal.json --publish<br><br>
+    <span class="comment"># 5. Draft email via Gmail MCP</span>
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="page">
+  <div class="eyebrow">Tools Built</div>
+  <h2>Five tools. One ecosystem.</h2>
+
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-name">site_audit.py</div>
+      <p class="tool-desc">Crawls a website (up to 30 pages), checks SSL, meta tags, schema, sitemap, GBP, directories, alt text coverage, and content depth. Outputs scored JSON with pass/warn/fail findings.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">generate_audit.py</div>
+      <p class="tool-desc">Renders a visual SEO/GEO audit report from a JSON config. Dark-mode design with animated score rings, traffic-light findings, competitor tables.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">generate_proposal.py</div>
+      <p class="tool-desc">Scaffolds and renders Creative Partner proposals from JSON configs. Full brand design system with cinematic cover, animated roadmap, tier cards.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">publish_proposal.py</div>
+      <p class="tool-desc">Pushes HTML files to GitHub Pages. Handles git clone, commit, push. Returns live URL. Upserts on re-upload (same URL, new content).</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>Note:</strong> Supabase Storage was tested first but blocks HTML rendering (sandbox CSP policy). GitHub Pages serves HTML correctly and is free.</p>
+  </div>
+</div>
+
+<!-- TEMPLATES -->
+<div class="page">
+  <div class="eyebrow">Templates</div>
+  <h2>Two templates. One design system.</h2>
+
+  <h3>Proposal Template</h3>
+  <p>Full Jinja2 template with the complete brand design system: Josefin Sans + Cormorant Garamond + DM Sans typography, gold/ink/paper color palette, 10+ animation types, and 8 configurable section types.</p>
+
+  <div class="badge-row">
+    <span class="badge">Cover</span>
+    <span class="badge">Story</span>
+    <span class="badge">Audit</span>
+    <span class="badge">Services</span>
+    <span class="badge">Pricing</span>
+    <span class="badge">Roadmap</span>
+    <span class="badge">Vision</span>
+    <span class="badge">Numbers</span>
+    <span class="badge">Awards</span>
+    <span class="badge">Next Steps</span>
+  </div>
+
+  <p>Each section is conditionally included based on the config's <code>sections</code> array. Photo breaks are automatically distributed between sections from the <code>images.breaks</code> array.</p>
+
+  <h3>Audit Template</h3>
+  <p>Dark-mode dashboard design with animated score rings, pass/warn/fail finding cards, competitor comparison tables, and action step cards. Uses the brand's warm ink palette with gold accents.</p>
+
+  <div class="badge-row">
+    <span class="badge">Score Cards</span>
+    <span class="badge">SEO Findings</span>
+    <span class="badge">Local/GEO</span>
+    <span class="badge">Competitors</span>
+    <span class="badge">Content Audit</span>
+    <span class="badge">Action Plan</span>
+  </div>
+
+  <h3>Proposal Types</h3>
+  <table class="overview-table">
+    <thead><tr><th>Type</th><th>Scaffold Command</th><th>Sections Included</th></tr></thead>
+    <tbody>
+      <tr><td>Creative Partner Retainer</td><td><code>creative-partner</code></td><td>All sections, 3-tier pricing, roadmap, awards</td></tr>
+      <tr><td>Project Photography</td><td><code>project-photography</code></td><td>Story, services, flat-rate pricing, next steps</td></tr>
+      <tr><td>Site Audit</td><td>generate_audit.py scaffold</td><td>Scores, SEO, GEO, competitors, content, action plan</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- HOSTING -->
+<div class="page">
+  <div class="eyebrow">Hosting</div>
+  <h2>GitHub Pages. Free. Instant.</h2>
+
+  <table class="overview-table">
+    <thead><tr><th>Detail</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>Platform</td><td>GitHub Pages (free tier)</td></tr>
+      <tr><td>Repository</td><td>github.com/mattanthonyphoto/matt-proposals</td></tr>
+      <tr><td>Base URL</td><td>mattanthonyphoto.github.io/matt-proposals/</td></tr>
+      <tr><td>Deploy time</td><td>30-60 seconds after push</td></tr>
+      <tr><td>Content-Type</td><td>text/html; charset=utf-8</td></tr>
+      <tr><td>Re-upload</td><td>Same URL, content overwrites automatically</td></tr>
+    </tbody>
+  </table>
+
+  <h3>URL Structure</h3>
+  <div class="code">
+    <span class="comment"># Pattern</span><br>
+    mattanthonyphoto.github.io/matt-proposals/<span class="cmd">{client}</span>/<span class="cmd">{document}</span>.html<br><br>
+    <span class="comment"># Examples</span><br>
+    /balmoral/creative-partner-proposal.html<br>
+    /balmoral/awards-strategy.html<br>
+    /summerhill/site-audit.html<br>
+    /summerhill/summerhill-creative-partner.html
+  </div>
+</div>
+
+<!-- LIVE DOCUMENTS -->
+<div class="page">
+  <div class="eyebrow">Published Documents</div>
+  <h2>What's live right now.</h2>
+
+  <div class="stats-row">
+    <div class="stat"><span class="stat-val">2</span><span class="stat-lbl">Clients</span></div>
+    <div class="stat"><span class="stat-val">5</span><span class="stat-lbl">Documents Live</span></div>
+    <div class="stat"><span class="stat-val">5</span><span class="stat-lbl">Tools Built</span></div>
+    <div class="stat"><span class="stat-val">2</span><span class="stat-lbl">Templates</span></div>
+  </div>
+
+  <div class="screenshot-grid">
+    <div class="screenshot">
+      <div class="screenshot-bar">
+        <span class="screenshot-dot r"></span><span class="screenshot-dot y"></span><span class="screenshot-dot g"></span>
+        <span class="screenshot-url">/balmoral/creative-partner-proposal.html</span>
+      </div>
+      <div class="screenshot-body">
+        <h4>Balmoral — Creative Partner</h4>
+        <p>$2,500-$3,500/mo retainer for Marc Harvey. Website + SEO + photography + video + social. 3-month pilot with animated roadmap.</p>
+        <span class="tag live">Live</span>
+      </div>
+    </div>
+    <div class="screenshot">
+      <div class="screenshot-bar">
+        <span class="screenshot-dot r"></span><span class="screenshot-dot y"></span><span class="screenshot-dot g"></span>
+        <span class="screenshot-url">/balmoral/awards-strategy.html</span>
+      </div>
+      <div class="screenshot-body">
+        <h4>Balmoral — Awards Strategy</h4>
+        <p>7-section awards &amp; publications pitch. Calendar, specs, publication targets, 12-month roadmap with animated timeline.</p>
+        <span class="tag live">Live</span>
+      </div>
+    </div>
+    <div class="screenshot">
+      <div class="screenshot-bar">
+        <span class="screenshot-dot r"></span><span class="screenshot-dot y"></span><span class="screenshot-dot g"></span>
+        <span class="screenshot-url">/summerhill/site-audit.html</span>
+      </div>
+      <div class="screenshot-body">
+        <h4>Summerhill — Site &amp; SEO Audit</h4>
+        <p>Dark-mode audit with verified scores (85 SEO, 58 Local, 100 Content, 85 Visual). Animated score rings, local competitor table.</p>
+        <span class="tag live">Live</span>
+      </div>
+    </div>
+    <div class="screenshot">
+      <div class="screenshot-bar">
+        <span class="screenshot-dot r"></span><span class="screenshot-dot y"></span><span class="screenshot-dot g"></span>
+        <span class="screenshot-url">/summerhill/summerhill-creative-partner.html</span>
+      </div>
+      <div class="screenshot-body">
+        <h4>Summerhill — Creative Partner</h4>
+        <p>$2,000-$3,500/mo content partner pitch for Kyle Paisley. Audit-backed framing, no website work, pure content at lower tiers.</p>
+        <span class="tag live">Live</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>Summerhill status:</strong> Email drafted in Gmail to kyle@summerhillfinehomes.ca. Subject: "The Perch + spring shoots". Notion lead updated. Follow up March 28 if no reply.</p>
+  </div>
+</div>
+
+<!-- DESIGN SYSTEM -->
+<div class="page">
+  <div class="eyebrow">Design System</div>
+  <h2>Consistent brand across every document.</h2>
+
+  <h3>Typography</h3>
+  <table class="overview-table">
+    <thead><tr><th>Font</th><th>Usage</th><th>Weights</th></tr></thead>
+    <tbody>
+      <tr><td>Josefin Sans</td><td>Eyebrows, labels, nav, captions, badges</td><td>300, 400, 600</td></tr>
+      <tr><td>Cormorant Garamond</td><td>Headlines, stat values, step numbers, tier prices</td><td>400, 500, 600, italic</td></tr>
+      <tr><td>DM Sans</td><td>Body text, descriptions, list items</td><td>300, 400, 500</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Colors</h3>
+  <table class="overview-table">
+    <thead><tr><th>Name</th><th>Hex</th><th>Usage</th></tr></thead>
+    <tbody>
+      <tr><td>Ink</td><td>#1A1A18</td><td>Primary dark backgrounds, body text</td></tr>
+      <tr><td>Paper</td><td>#F6F4F0</td><td>Light backgrounds, cover text</td></tr>
+      <tr><td>Gold</td><td>#C9A96E</td><td>Accents, CTAs, labels, highlights</td></tr>
+      <tr><td>Stone</td><td>#8A8579</td><td>Muted text, captions, descriptions</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Animations</h3>
+  <table class="overview-table">
+    <thead><tr><th>Animation</th><th>Trigger</th><th>Element</th></tr></thead>
+    <tbody>
+      <tr><td>Scroll reveal</td><td>Element enters viewport</td><td>All sections, stats, cards</td></tr>
+      <tr><td>Gold underline</td><td>Headline enters viewport</td><td>h2 em tags</td></tr>
+      <tr><td>Number counter</td><td>Stat enters viewport</td><td>Counts from 0 to target value</td></tr>
+      <tr><td>Roadmap line draw</td><td>Scroll position</td><td>Gold line draws through timeline</td></tr>
+      <tr><td>Cover cascade</td><td>Page load</td><td>Staggered fade-in of cover elements</td></tr>
+      <tr><td>Ken Burns</td><td>Photo break in view</td><td>Subtle zoom/pan on images</td></tr>
+      <tr><td>Score ring fill</td><td>Scores enter viewport</td><td>Animated circle gauge (audit)</td></tr>
+      <tr><td>Finding reveal</td><td>Card enters viewport</td><td>Fade-up on checklist items (audit)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Image Strategy</h3>
+  <p>All images served from Squarespace CDN. No base64 embedding. Project photo libraries indexed in the website code-blocks folder. Cover images and photo breaks selected per client from their project shoots.</p>
+</div>
+
+<!-- KEY LEARNINGS -->
+<div class="page">
+  <div class="eyebrow">Key Learnings</div>
+  <h2>What we learned building this.</h2>
+
+  <div class="callout" style="margin-bottom:20px;">
+    <p><strong>Always run the real audit first.</strong> Summerhill was estimated at 28/100 SEO. Actual score: 85/100. The pitch would have lost credibility with inflated bad scores.</p>
+  </div>
+  <div class="callout" style="margin-bottom:20px;">
+    <p><strong>Competitor analysis must be local.</strong> Comparing a Gibsons builder to Whistler firms was wrong. The real competitors are Lincoln Construction (same town, already winning awards) and Jenkins Construction.</p>
+  </div>
+  <div class="callout" style="margin-bottom:20px;">
+    <p><strong>Adapt tiers to the prospect's situation.</strong> Summerhill already has a web team. Removing website work and lowering the entry point from $2,500 to $2,000 made the pitch more credible and accessible.</p>
+  </div>
+  <div class="callout" style="margin-bottom:20px;">
+    <p><strong>Lower tiers should be pure content.</strong> Blog drafts, SEO strategy, and awards pipeline belong in the top tier only. Foundation and Growth should be strictly content creation.</p>
+  </div>
+  <div class="callout">
+    <p><strong>Supabase Storage can't host HTML.</strong> It forces content-type: text/plain and adds a sandbox CSP that blocks all CSS/JS. GitHub Pages works correctly and is free.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">Matt Anthony Photography</div>
+  <div class="footer-note">Internal system documentation — March 2026</div>
+</div>
+
+</body>
+</html>

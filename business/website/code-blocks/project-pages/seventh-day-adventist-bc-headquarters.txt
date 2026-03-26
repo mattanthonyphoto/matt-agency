@@ -1,0 +1,300 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+.tp-wrap{overflow-x:hidden!important;font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a18;line-height:1.7;font-weight:300}.tp-wrap img{max-width:100%;display:block}.tp-wrap a{color:inherit;text-decoration:none}.tp-hero{position:relative;width:100%;height:85vh;min-height:600px;overflow:hidden}.tp-hero>img{width:100%;height:100%;object-fit:cover;filter:saturate(0.8) brightness(0.45)}.tp-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,24,0.15) 0%,rgba(26,26,24,0.05) 40%,rgba(26,26,24,0.6) 75%,rgba(26,26,24,0.95) 100%)}.tp-hc{position:absolute;bottom:5rem;left:5vw;z-index:2;max-width:700px}.tp-hl{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem;font-weight:500}.tp-hc h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:300;line-height:1.05;color:#f6f4f0;letter-spacing:-0.02em;margin-bottom:0.5rem}.tp-hloc{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:#d9d5cd;font-weight:400}
+.tp-info{display:grid;grid-template-columns:280px 1fr;gap:5rem;padding:5rem 5vw;max-width:1200px;margin:0 auto}.tp-m{padding-top:0.5rem}.tp-mi{margin-bottom:2rem}.tp-ml{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:0.4rem}.tp-mv{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:400;color:#1a1a18;line-height:1.4}.tp-d h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300;line-height:1.3;margin-bottom:2rem;color:#1a1a18}.tp-d p{font-size:1rem;color:#4a4a46;line-height:1.85;margin-bottom:1.5rem;max-width:600px}
+.tp-bk{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:2rem;transition:color 0.3s ease}.tp-bk:hover{color:#1a1a18}.tp-bk::before{content:'\2190';font-size:0.9rem}
+.tp-g{padding:2rem 5vw 4rem}.tp-gg{column-count:2;column-gap:1.25rem}.tp-gg div{break-inside:avoid;margin-bottom:1.25rem;overflow:hidden;border-radius:2px}.tp-gg img{width:100%;height:auto;display:block;transition:transform 0.8s ease}.tp-gg div:hover img{transform:scale(1.03)}
+.tp-cta{position:relative;padding:7rem 5vw;text-align:center;overflow:hidden;min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center}.tp-cta-bg{position:absolute;inset:0;z-index:0}.tp-cta-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(0.5) brightness(0.3)}.tp-cc{position:relative;z-index:2}.tp-cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#f6f4f0;margin-bottom:1rem;line-height:1.2}.tp-cta h2 em{font-style:italic;color:#c9a96e}.tp-cta p{font-size:1rem;color:#8a8579;max-width:480px;margin:0 auto 2.5rem;line-height:1.8;font-weight:300}.tp-cb{display:inline-block;font-family:'DM Sans',sans-serif;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;padding:1.1rem 3rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all 0.35s ease;text-decoration:none}.tp-cb:hover{background:transparent!important;color:#c9a96e!important}
+.tp-alt-cta{margin-top:1.25rem;font-size:.75rem;color:#8a8579;letter-spacing:.05em;font-weight:300}.tp-alt-cta a{color:#c9a96e;text-decoration:underline;text-underline-offset:3px;transition:color .3s ease}.tp-alt-cta a:hover{color:#f6f4f0}
+.tp-nx{position:relative;overflow:hidden;cursor:pointer;height:40vh;min-height:300px;display:flex;align-items:center;justify-content:center;background:#1a1a18;text-decoration:none}.tp-nx-bg{position:absolute;inset:0;z-index:0}.tp-nx-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.35);transition:transform 1s ease,filter 0.5s ease}.tp-nx:hover .tp-nx-bg img{transform:scale(1.04);filter:brightness(0.45)}.tp-nx-c{position:relative;z-index:2;text-align:center}.tp-nx-l{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;margin-bottom:1rem}.tp-nx-c h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:300;color:#f6f4f0;line-height:1.2}.tp-nx-c h3 span{display:block;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:#d9d5cd;font-weight:400;font-family:'DM Sans',sans-serif;margin-top:0.5rem}
+.tp-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.tp-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.tp-ft-locs a:hover{color:#c9a96e}.tp-ft{background:#1a1a18;border-top:1px solid rgba(201,169,110,0.15)}.tp-ft-r{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}.tp-ft-i{display:flex;align-items:baseline;gap:10px}.tp-ft-l{font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;white-space:nowrap}.tp-ft-dt{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,0.4);flex-shrink:0;position:relative;top:-2px}.tp-ft-i p,.tp-ft-i a{margin:0;font-size:12px;color:rgba(246,244,240,0.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color 0.3s ease}.tp-ft-i a:hover{color:#c9a96e}.tp-ft-s{display:flex;gap:18px}.tp-ft-rl{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.15) 20%,rgba(201,169,110,0.15) 80%,transparent 100%)}.tp-ft-b{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}.tp-ft-cp{font-size:10px;color:rgba(246,244,240,0.35);letter-spacing:0.08em}.tp-ft-n{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center}.tp-ft-n a{font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(246,244,240,0.35);text-decoration:none;transition:color 0.3s ease}.tp-ft-n a:hover{color:#c9a96e}
+.tp-ft-email{cursor:pointer}
+@media(max-width:768px){.tp-hero{height:60vh;min-height:400px}.tp-hc{bottom:3rem;left:6vw}.tp-hc h1{font-size:clamp(2rem,9vw,3rem)}.tp-info{grid-template-columns:1fr;gap:2rem;padding:3rem 6vw}.tp-m{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding-bottom:2rem;border-bottom:1px solid #d9d5cd}.tp-mi{margin-bottom:0}.tp-g{padding:1.5rem 4vw 3rem}.tp-gg{column-count:1}.tp-gg div{margin-bottom:0.75rem}.tp-cta{padding:4rem 6vw;min-height:40vh}.tp-cta h2{font-size:clamp(1.5rem,6vw,2rem)}.tp-cb{padding:0.9rem 2rem}.tp-nx{height:30vh;min-height:220px}.tp-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.tp-ft-locs a{font-size:.55rem}.tp-ft-r{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}.tp-ft-rl{margin:0 6vw}.tp-ft-b{flex-direction:column;gap:0.75rem;text-align:center;padding:1.25rem 6vw}}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.tp-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.tp-loader.tp-done{opacity:0;visibility:hidden;pointer-events:none}
+.tp-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:tpLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.tp-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:tpLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.tp-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:tpLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.tp-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:tpLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes tpLoaderIn{to{opacity:1}}
+@keyframes tpLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.tp-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.tp-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.tp-cursor.tp-active{opacity:1}
+.tp-cursor.tp-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.tp-cursor.tp-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.tp-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.tp-cursor-dot.tp-active{opacity:1}
+
+/* ── Section nav dots ── */
+.tp-section-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:99998;display:flex;flex-direction:column;gap:12px;opacity:0;transition:opacity 0.4s ease}
+.tp-section-nav.tp-nav-visible{opacity:1}
+.tp-nav-dot{width:8px;height:8px;border-radius:50%;background:transparent;border:1px solid #8a8579;cursor:pointer;transition:all 0.3s ease;position:relative}
+.tp-nav-dot:hover{border-color:#c9a96e;transform:scale(1.3)}
+.tp-nav-dot.tp-nav-active{background:#c9a96e;border-color:#c9a96e;box-shadow:0 0 8px rgba(201,169,110,0.4)}
+.tp-nav-dot::before{content:attr(data-label);position:absolute;right:20px;top:50%;transform:translateY(-50%);font-family:'Josefin Sans',sans-serif;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a96e;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.3s ease,right 0.3s ease}
+.tp-nav-dot:hover::before{opacity:1;right:24px}
+@media(max-width:768px){.tp-section-nav{display:none}}
+@media(max-width:768px){.tp-cursor,.tp-cursor-dot{display:none}}
+
+/* ── CTA button glow pulse ── */
+.tp-cb{animation:tpBtnGlow 3s ease-in-out infinite alternate}
+@keyframes tpBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+</style>
+
+<div class="tp-wrap">
+<!-- Loader -->
+<div class="tp-loader">
+<div class="tp-loader-brand">Matt Anthony</div>
+<div class="tp-loader-sub">Loading project</div>
+<div class="tp-loader-line"></div>
+</div>
+
+<!-- Scroll Progress -->
+<div class="tp-progress"></div>
+
+<!-- Custom Cursor -->
+<div class="tp-cursor"></div>
+<div class="tp-cursor-dot"></div>
+
+
+<!-- Hero -->
+<div class="tp-hero">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/eb059a83-55ca-4394-8a42-feb000e95d85/sitelines-SDA-web--2.jpg" alt="SDA BC and Yukon Headquarters mass timber architectural photography by Matt Anthony">
+<div class="tp-hc">
+<p class="tp-hl">Featured Project</p>
+<h1>SDA BC &amp; Yukon Headquarters</h1>
+<p class="tp-hloc">Abbotsford, British Columbia</p>
+</div>
+</div>
+
+<!-- Back Link -->
+<div style="padding:2rem 5vw 0;max-width:1200px;margin:0 auto;">
+<a href="/projects" class="tp-bk">All Projects</a>
+</div>
+
+<!-- Project Info -->
+<div class="tp-info" data-nav="Details">
+<div class="tp-m">
+<div class="tp-mi">
+<div class="tp-ml">Location</div>
+<div class="tp-mv">Abbotsford</div>
+</div>
+<div class="tp-mi">
+<div class="tp-ml">Architect</div>
+<div class="tp-mv">Sitelines Architecture</div>
+</div>
+<div class="tp-mi">
+<div class="tp-ml">Size</div>
+<div class="tp-mv">25,678 sq ft</div>
+</div>
+</div>
+<div class="tp-d">
+<h2>Mass timber, twisted beams, and transparent glass creating a regional anchor for faith and service</h2>
+<p>The headquarters for the Seventh Day Adventist BC and Yukon is a pure expression of Sitelines Architecture's innovative and sustainable design ethos, marked by its use of mass timber and distinctive twisted beams that welcome visitors. These beams not only serve as an architectural focal point but also signify the embrace of community and nature.</p>
+<p>The use of natural materials speaks to a commitment to environmental stewardship, while the building's transparent glass allows for a fluid interface with the surrounding landscape. The design's organic forms and warm wood construction create an atmosphere of tranquility and strength, reflective of the organization's values and its role as a regional anchor for faith and service.</p>
+</div>
+</div>
+
+<!-- Gallery -->
+<div class="tp-g" data-nav="Gallery"><div class="tp-gg">
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/eb059a83-55ca-4394-8a42-feb000e95d85/sitelines-SDA-web--2.jpg" alt="SDA Headquarters Abbotsford twisted beam entry mass timber architectural photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/eb5cbc39-ac01-43fb-a632-162ad5fbe515/sitelines-SDA-web--7.jpg" alt="SDA Headquarters Abbotsford timber and glass facade exterior" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ebb37653-5489-4beb-a83f-ad40ed118b6c/sitelines-SDA-web--6.jpg" alt="SDA Headquarters Abbotsford community space interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d5c43274-5e49-42eb-ae23-ecfa5bf377d1/sitelines-SDA-web--4.jpg" alt="SDA Headquarters Abbotsford interior volume mass timber" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/413989e5-ce9b-4afd-bfb7-d7a1416ef8ea/sitelines-SDA-web--5.jpg" alt="SDA Headquarters Abbotsford lobby and reception area" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/982a910e-42db-47d0-8b1a-2a0dab332444/sitelines-SDA-web--3.jpg" alt="SDA Headquarters Abbotsford exterior approach and landscape" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ea3ef8d3-20c6-4aac-a25b-5fc15086dbdd/sitelines-SDA-web--13.jpg" alt="SDA Headquarters Abbotsford interior corridor natural light" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e8a0d959-b9e6-4c01-a325-05c1acfd1e00/sitelines-SDA-web--24.jpg" alt="SDA Headquarters Abbotsford meeting room interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/16975bce-b90a-4574-bf9c-cbfd63aa2f7d/sitelines-SDA-web--12.jpg" alt="SDA Headquarters Abbotsford wood ceiling detail architectural" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/6c3ffde5-c26e-4796-8551-cfd303e2b0d8/sitelines-SDA-web--11.jpg" alt="SDA Headquarters Abbotsford open office workspace" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/2929bda5-5849-483e-aa73-442c7d21185a/sitelines-SDA-web--14.jpg" alt="SDA Headquarters Abbotsford staircase and structural timber" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/29ac5104-3ae8-4a14-a254-2778e5e67d44/sitelines-SDA-web--17.jpg" alt="SDA Headquarters Abbotsford glazing and landscape interface" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/04d988a2-898d-419e-b8cf-4f9c7d69b1f8/sitelines-SDA-web--38.jpg" alt="SDA Headquarters Abbotsford assembly hall interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9ecbe2fd-c699-4c2d-9807-1925710d881d/sitelines-SDA-web--39.jpg" alt="SDA Headquarters Abbotsford gathering space architectural detail" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/937735b9-f3a7-44b7-a4fd-10182a2d5911/sitelines-SDA-web--15.jpg" alt="SDA Headquarters Abbotsford timber connection detail" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/92ca80aa-ccea-49c6-ad0e-cb0713077ab2/sitelines-SDA-web--16.jpg" alt="SDA Headquarters Abbotsford interior millwork and finishes" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/548d6c6d-55b6-4a53-90f2-65d9fd43843f/sitelines-SDA-web--19.jpg" alt="SDA Headquarters Abbotsford upper level interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/51c1678e-954e-4a06-b520-41d51ea78115/sitelines-SDA-web--35.jpg" alt="SDA Headquarters Abbotsford exterior material detail" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/56a3649d-28a8-4b37-a181-9335c163d617/sitelines-SDA-web--30.jpg" alt="SDA Headquarters Abbotsford entrance canopy and signage" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e9fcb49a-408b-4d27-ba54-c83cfe8a82ac/sitelines-SDA-web--32.jpg" alt="SDA Headquarters Abbotsford courtyard and landscape design" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/4b69319d-5ce2-4555-b36b-326f4a8f2972/sitelines-SDA-web--22.jpg" alt="SDA Headquarters Abbotsford interior window wall and natural light" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/87e01833-956b-41b2-a364-aa80168497a9/sitelines-SDA-web--20.jpg" alt="SDA Headquarters Abbotsford hallway and circulation space" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/66ae3f4a-163c-42df-a14d-9e463d1c339f/sitelines-SDA-web--23.jpg" alt="SDA Headquarters Abbotsford office interior design photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/3e562301-7fdb-4b27-be0b-622154ec1d88/sitelines-SDA-web--26.jpg" alt="SDA Headquarters Abbotsford kitchen and break area" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8604b7c9-bfd8-40fd-bc72-5fe48ba7fbb1/sitelines-SDA-web--27.jpg" alt="SDA Headquarters Abbotsford washroom interior design" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/b4211410-fb8d-49d8-a177-9818e1702ac2/sitelines-SDA-web--25.jpg" alt="SDA Headquarters Abbotsford material palette wood and concrete" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/38536348-2cf2-41f3-8994-0c88c8f01ae8/sitelines-SDA-web--29.jpg" alt="SDA Headquarters Abbotsford boardroom interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/574787b6-f031-459b-9719-77c95e2b6b4c/sitelines-SDA-web--31.jpg" alt="SDA Headquarters Abbotsford site context and setting" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/54d425a0-0005-456f-bd56-e0bbff3f4f22/sitelines-SDA-web--42.jpg" alt="SDA Headquarters Abbotsford interior vignette warm wood" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9c6d2525-a86f-439a-8f60-cdae2e977326/sitelines-SDA-web--34.jpg" alt="SDA Headquarters Abbotsford exterior cladding detail" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8c9ab63a-7c6e-4038-a84f-b1a3e4f03c04/sitelines-SDA-web--33.jpg" alt="SDA Headquarters Abbotsford landscape and building integration" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/cc3d56d4-1ccf-43c9-b3b8-1b3f7da84ea9/sitelines-SDA-web--37.jpg" alt="SDA Headquarters Abbotsford structural beam detail photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7e1830a3-b1c7-44c5-a973-dde34637eab7/sitelines-SDA-web--54.jpg" alt="SDA Headquarters Abbotsford chapel interior natural light" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/80cda9fa-9c91-4ced-aec1-659a21f3bf08/sitelines-SDA-web--40.jpg" alt="SDA Headquarters Abbotsford exterior evening photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ba34c0d8-ae7b-4212-8c67-3162bb5ca763/sitelines-SDA-web--51.jpg" alt="SDA Headquarters Abbotsford lounge and seating area" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/285947fb-e110-4249-9eb0-05e9652c96cc/sitelines-SDA-web--47.jpg" alt="SDA Headquarters Abbotsford interior architectural detail" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/91ceea9c-f442-43f6-83b1-f137ce5c6df1/sitelines-SDA-web--56.jpg" alt="SDA Headquarters Abbotsford exterior landscaping and path" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ecb64bfd-d94c-4629-8c8a-c5d8da1a9742/sitelines-SDA-web--63.jpg" alt="SDA Headquarters Abbotsford aerial drone architectural photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/bf3ffd8e-e57c-44c8-89f5-491313288513/sitelines-SDA-web--67.jpg" alt="SDA Headquarters Abbotsford aerial view site and surroundings" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/878b531a-70ef-45d9-95dc-d217ddbd4c4b/sitelines-SDA-web--66.jpg" alt="SDA Headquarters Abbotsford drone photography roof and landscape" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/60712d71-7136-4a4d-93d9-652167cdd65d/sitelines-SDA-web-.jpg" alt="SDA Headquarters Abbotsford final exterior architectural photography" loading="lazy"></div>
+</div></div>
+
+<!-- CTA -->
+<div class="tp-cta" data-nav="Contact">
+<div class="tp-cta-bg">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/982a910e-42db-47d0-8b1a-2a0dab332444/sitelines-SDA-web--3.jpg" alt="SDA Headquarters Abbotsford interior architectural photography">
+</div>
+<div class="tp-cc">
+<h2>Your work defines the space.<br>Let me show the world its <em>full potential</em>.</h2>
+<p>Ready to create visuals that match the quality of your builds? Let's start with a conversation.</p>
+<a href="/discovery-call" class="tp-cb">Book a Discovery Call</a>
+<p class="tp-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+</div>
+</div>
+
+<!-- Next Project -->
+<a href="/pitt-meadows-residence" class="tp-nx">
+<div class="tp-nx-bg">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8e511d08-b65b-4866-860c-4ed802f035e7/pit-meadows-architectural-interiors-photography-12.jpg" alt="Pitt Meadows Residence interior architectural photography" loading="lazy">
+</div>
+<div class="tp-nx-c">
+<div class="tp-nx-l">Next Project</div>
+<h3>Pitt Meadows Residence<span>Pitt Meadows</span></h3>
+</div>
+</a>
+
+<!-- Footer -->
+<footer class="tp-ft">
+<div class="tp-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+<div class="tp-ft-r">
+<div class="tp-ft-i">
+<span class="tp-ft-l">Based In</span>
+<span class="tp-ft-dt"></span>
+<p>Squamish, British Columbia</p>
+</div>
+<div class="tp-ft-i">
+<span class="tp-ft-l">Email</span>
+<span class="tp-ft-dt"></span>
+<a id="ft-em" class="tp-ft-email"></a>
+</div>
+<div class="tp-ft-i">
+<span class="tp-ft-l">Phone</span>
+<span class="tp-ft-dt"></span>
+<a href="tel:6047659270">604.765.9270</a>
+</div>
+<div class="tp-ft-i">
+<span class="tp-ft-l">Follow</span>
+<span class="tp-ft-dt"></span>
+<div class="tp-ft-s">
+<a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a>
+<a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+</div>
+</div>
+<div class="tp-ft-rl"></div>
+<div class="tp-ft-b">
+<p class="tp-ft-cp">&copy; 2026 Matt Anthony Photography</p>
+<nav class="tp-ft-n">
+<a href="/projects">Projects</a>
+<a href="/journal">Journal</a>
+<a href="/bio">About</a>
+<a href="/contact">Contact</a>
+<a href="/pricing-guide-landing">Get Pricing</a>
+</nav>
+</div>
+</footer>
+
+</div>
+
+<script>
+(function(){var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];var e=document.getElementById('ft-em');if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}})();
+</script>
+
+<script>
+(function(){
+  /* ── Loader ── */
+  var loader=document.querySelector('.tp-loader');
+  if(loader){window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('tp-done')},800)})}
+
+  /* ── Scroll progress bar ── */
+  var prog=document.querySelector('.tp-progress');
+  if(prog){window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;prog.style.width=h>0?(window.scrollY/h*100)+'%':'0%'},{ passive:true })}
+
+  /* ── Hero parallax ── */
+  var hero=document.querySelector('.tp-hero>img');
+  if(hero){window.addEventListener('scroll',function(){var s=window.scrollY;if(s<window.innerHeight){hero.style.transform='translateY('+s*0.3+'px) scale('+(1+s*0.0002)+')'}},{ passive:true })}
+
+  /* ── Custom cursor ── */
+  if(window.innerWidth>768){
+    var cursor=document.querySelector('.tp-cursor'),dot=document.querySelector('.tp-cursor-dot'),cx=0,cy=0,dx=0,dy=0;
+    if(cursor&&dot){
+      document.addEventListener('mousemove',function(e){cx=e.clientX;cy=e.clientY;dot.style.left=cx+'px';dot.style.top=cy+'px';if(!cursor.classList.contains('tp-active')){cursor.classList.add('tp-active');dot.classList.add('tp-active')}});
+      (function loop(){dx+=(cx-dx)*0.15;dy+=(cy-dy)*0.15;cursor.style.left=dx+'px';cursor.style.top=dy+'px';requestAnimationFrame(loop)})();
+      document.querySelectorAll('a,button,.tp-cb,.tp-nx,.tp-bk,.tp-gg div').forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('tp-hover')});el.addEventListener('mouseleave',function(){cursor.classList.remove('tp-hover')})});
+      document.addEventListener('mousedown',function(){cursor.classList.add('tp-click')});
+      document.addEventListener('mouseup',function(){cursor.classList.remove('tp-click')});
+    }
+  }
+})();
+</script>
+
+<!--
+  SDA BC & Yukon Headquarters — Project Page Code Block
+  mattanthonyphoto.com/seventh-day-adventist-bc-headquarters
+
+  Last updated: 2026-03-24
+  Changes:
+    1. Added meta description, canonical, and OG tags (replaced generic with project-specific)
+    2. Added page-specific ImageGallery JSON-LD schema
+    3. Rewrote all alt text to descriptive SEO-optimized text
+    4. Added loading="lazy" to all gallery images (not hero)
+    5. Fixed "All Projects" link from /projects-1 to /projects
+    6. Fixed footer LinkedIn link rel attribute
+    7. Added Get Pricing CTA after booking button
+    8. Added Get Pricing to footer nav
+    9. Updated Visual Partner Retainer → Creative Partner
+   10. Fixed "Pit Meadows" → "Pitt Meadows" typo in next project link
+-->
+
+<meta name="description" content="SDA BC & Yukon Headquarters — 25,678 sq ft mass timber institutional building in Abbotsford by Sitelines Architecture featuring twisted beams and sustainable design. Architectural photography by Matt Anthony.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/seventh-day-adventist-bc-headquarters">
+<meta property="og:title" content="SDA BC & Yukon Headquarters | Abbotsford Architectural Photography | Matt Anthony">
+<meta property="og:description" content="Mass timber, twisted beams, and transparent glass creating a regional anchor for faith and service. Abbotsford, BC.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/seventh-day-adventist-bc-headquarters">
+<meta property="og:type" content="website">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "SDA BC & Yukon Headquarters — Abbotsford Architectural Photography",
+  "description": "Mass timber, twisted beams, and transparent glass creating a regional anchor for faith and service. Abbotsford, British Columbia.",
+  "url": "https://www.mattanthonyphoto.com/seventh-day-adventist-bc-headquarters",
+  "author": {
+    "@id": "https://www.mattanthonyphoto.com/#person"
+  },
+  "locationCreated": {
+    "@type": "Place",
+    "name": "Abbotsford, British Columbia"
+  },
+  "about": {
+    "@type": "CivicStructure",
+    "name": "SDA BC & Yukon Headquarters",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Abbotsford",
+      "addressRegion": "BC",
+      "addressCountry": "CA"
+    }
+  }
+}
+</script>

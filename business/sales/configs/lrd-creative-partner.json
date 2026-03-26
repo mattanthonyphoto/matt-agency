@@ -1,0 +1,541 @@
+{
+  "client": {
+    "company": "LRD Studio",
+    "slug": "lrd",
+    "owner": "Lauren Ritz",
+    "owner_title": "Founder",
+    "confidentiality_name": "LRD Studio LTD"
+  },
+  "proposal": {
+    "type": "creative-partner",
+    "title": "Creative Partner",
+    "date": "March 2026",
+    "valid_through": "April 30, 2026",
+    "filename": "lrd-creative-partner.html"
+  },
+  "cover": {
+    "eyebrow": "LRD Studio",
+    "headline_html": "Your designs<br>deserve to be<br><em>discovered.</em>",
+    "subtitle": "Western Living finalist. 20 projects documented. What’s missing: video, discoverability, and the momentum to keep the awards coming.",
+    "cta_text": "View Options",
+    "cta_target": "#tiers",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ae3d0f01-858f-44ca-aafb-bf477ddf9039/LRD-2500px-1.jpg",
+    "image_position": "center 35%"
+  },
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9f3611d8-a842-42d6-b65b-cd25ba6920cd/sunridge-whistle-web--32.jpg",
+        "alt": "Sunridge interior dining room",
+        "caption": "Sunridge &middot; Whistler, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d524d107-05c4-42a3-9357-4303ef3840ad/LRD-2500px-19.jpg",
+        "alt": "LRD Studio project interior",
+        "caption": "LRD Studio &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7ae7f632-ffd4-4990-abae-430431c42a83/sunridge-whistle-web--28.jpg",
+        "alt": "Sunridge interior stone and timber",
+        "caption": "Sunridge &middot; Whistler, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/0b4f9f4d-01c4-4da3-ae8e-1131391d280f/sunridge-whistle-web--39.jpg",
+        "alt": "Sunridge interior detail",
+        "caption": "Sunridge &middot; Whistler, BC &middot; Matt Anthony Photography"
+      }
+    ]
+  },
+  "sections": [
+    "story",
+    "audit",
+    "services",
+    "pricing",
+    "roadmap",
+    "vision",
+    "numbers",
+    "awards",
+    "next_steps"
+  ],
+  "story": {
+    "eyebrow": "Where You Are",
+    "headline_html": "The portfolio is beautiful.<br><em>Google can’t see it.</em>",
+    "lead": "Lauren, I ran a full technical audit on lrdstudio.ca before our coffee this week. Your site scored 84/100 on content and 85/100 on visual assets. 20 project pages, professional photography from our sessions, and a clear design voice. It’s a strong foundation.",
+    "paragraphs": [
+      "But there’s a problem hiding behind that portfolio: 699 of your 761 images have no alt text. That means 91.8% of LRD’s photography is invisible to Google Image search. When a homeowner in Whistler searches “modern kitchen interior design” or “log home renovation interiors,” Google shows image results. LRD can’t appear in any of them.",
+      "You were a 2022 Western Living Designer of the Year finalist. That’s a real credential. But since then, there’s been no video content, no new award submissions, and 699 images Google can’t see. Ashley de Boer in Squamish just racked up Georgie, HAVAN, and NKBA nominations for 2025. The design quality isn’t the gap. The ongoing visibility is.",
+      "This proposal puts a creative partner behind LRD who already knows your aesthetic, captures every project with intent, builds the discoverability layer your portfolio is missing, and keeps the awards pipeline active."
+    ],
+    "stats": [
+      {
+        "value": "84",
+        "label": "Content Score"
+      },
+      {
+        "value": "699",
+        "label": "Images Invisible to Google"
+      },
+      {
+        "value": "0",
+        "label": "Video Assets"
+      },
+      {
+        "value": "1",
+        "label": "WL DOTY Finalist"
+      }
+    ]
+  },
+  "audit": {
+    "eyebrow": "The Audit",
+    "nav_label": "Audit",
+    "headline_html": "What the data says.<br><em>Verified, not estimated.</em>",
+    "lead": "I crawled 30 pages on lrdstudio.ca. Here’s the real picture.",
+    "paragraphs": [],
+    "grades": [
+      {
+        "area": "What’s Strong",
+        "findings": [
+          "<strong>SEO scores 77/100.</strong> Valid SSL, 91ms response, 36-URL sitemap, good meta title including Whistler and Squamish locations.",
+          "<strong>Content scores 84/100.</strong> 20 project pages with an average of 34.8 images each. 464-word homepage. Strong design philosophy articulation.",
+          "<strong>Professional photography.</strong> Images from our Sunridge and other sessions. Design-intent photography that shows material choices, light, and spatial composition.",
+          "<strong>Houzz listing active.</strong> Important directory presence for interior designers.",
+          "<strong>Western Living DOTY finalist (2022).</strong> Real credential. Also featured in Build Magazine. IDIBC registered with board seat. The foundation for awards is already proven."
+        ]
+      },
+      {
+        "area": "The Specific Gaps",
+        "findings": [
+          "<strong>699 of 761 images missing alt text (91.8%).</strong> This is the single biggest issue. Every image without alt text is invisible to Google Image search, which is how homeowners discover interior designers. One-time fix with permanent impact.",
+          "<strong>No Google Business Profile.</strong> Can’t appear on Google Maps or in the Local Pack for “interior designer Squamish” or “interior design Whistler.”",
+          "<strong>No video content.</strong> Zero atmospheric walkthroughs, zero material reveals, zero design process content. For interior design, video showing how light moves through a space is the most compelling content format.",
+          "<strong>Awards momentum has stalled since 2022.</strong> The Western Living finalist credential proved the work qualifies. But no new submissions since then. Ashley de Boer has 5+ nominations for 2025 alone. The pipeline needs to be reactivated.",
+          "<strong>No blog or design journal.</strong> No content targeting “interior design Whistler” or thought leadership around materials, trends, or design process."
+        ]
+      }
+    ],
+    "insight": {
+      "title": "The Bottom Line",
+      "content_html": "<p>LRD’s portfolio is <strong>genuinely beautiful</strong> and the Western Living credential proves the work is award-calibre. The issues are <strong>discoverability</strong> (699 images Google can’t see, no local presence on Maps) and <strong>momentum</strong> (no new submissions since 2022, no video content). A creative partner fixes both while keeping the content pipeline flowing.</p>"
+    }
+  },
+  "services": {
+    "eyebrow": "What This Adds",
+    "headline_html": "Your content partner.<br><em>Design-intent focused.</em>",
+    "intro": "Photography that captures how a space feels, not just how it looks. Video that shows how light enters a room. Material storytelling that communicates design decisions. Everything delivered with SEO-ready alt text so Google can actually find it.",
+    "cards": [
+      {
+        "title": "Design Photography",
+        "is_new": false,
+        "entries": [
+          "1 full-day shoot per month",
+          "20 to 25 edited images per session",
+          "Material and detail close-ups that tell the design story",
+          "Multi-format delivery: web, social, print, award-ready",
+          "Full licensing for all channels",
+          "Every image delivered with keyword-rich alt text"
+        ]
+      },
+      {
+        "title": "Atmospheric Video",
+        "is_new": true,
+        "entries": [
+          "60-second atmospheric walkthroughs per project",
+          "Material reveal and design detail reels",
+          "Monthly social media reel from shoot footage",
+          "Year-end project film (Growth and Full tiers)",
+          "Content formatted for Instagram and Pinterest"
+        ]
+      },
+      {
+        "title": "Discoverability",
+        "is_new": true,
+        "entries": [
+          "Alt text optimization across existing 699 images (month one)",
+          "Schema markup (InteriorDesigner + LocalBusiness)",
+          "Google Business Profile setup + optimization",
+          "Monthly strategy call and content calendar"
+        ]
+      },
+      {
+        "title": "Awards + Publications",
+        "is_new": true,
+        "entries": [
+          "Full Creative Partner tier only",
+          "Every shoot to award-submission spec",
+          "IDIBC, Georgie, HAVAN, and NKBA submissions",
+          "Publication pitches: Western Living, Dwell, ArchDaily",
+          "Full social media management (3x/week)"
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Choose Your Tier",
+    "headline_html": "Three tiers. Same partner.<br><em>Your call.</em>",
+    "intro": "Every tier delivers design-intent photography with proper alt text and basic SEO fixes. The question is how much video, social, and awards strategy you want on top.",
+    "tiers": [
+      {
+        "name": "Foundation",
+        "slug": "foundation",
+        "price": "$2,000",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $6,000 total",
+        "recommended": false,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "20 to 25 edited images with SEO alt text",
+            "included": true
+          },
+          {
+            "text": "Material and detail close-ups",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, social, print, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": false
+          },
+          {
+            "text": "Atmospheric video walkthrough",
+            "included": false
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": false
+          },
+          {
+            "text": "Year-end project film",
+            "included": false
+          },
+          {
+            "text": "Awards + publications + social management",
+            "included": false
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$24,000"
+      },
+      {
+        "name": "Growth",
+        "slug": "growth",
+        "price": "$2,500",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $7,500 total",
+        "recommended": true,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "20 to 25 edited images with SEO alt text",
+            "included": true
+          },
+          {
+            "text": "Material and detail close-ups",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, social, print, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": true
+          },
+          {
+            "text": "60-second atmospheric video per project",
+            "included": true
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": true
+          },
+          {
+            "text": "Year-end project film (60 to 90 seconds)",
+            "included": true
+          },
+          {
+            "text": "Awards + publications + social management",
+            "included": false
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$30,000"
+      },
+      {
+        "name": "Full Creative Partner",
+        "slug": "full",
+        "price": "$3,500",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $10,500 total",
+        "recommended": false,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "25 to 30 edited images with SEO alt text",
+            "included": true
+          },
+          {
+            "text": "Material and detail close-ups",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, social, print, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": true
+          },
+          {
+            "text": "60-second atmospheric video per project",
+            "included": true
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": true
+          },
+          {
+            "text": "Year-end documentary film (2 to 3 minutes)",
+            "included": true
+          },
+          {
+            "text": "IDIBC, Georgie, HAVAN award submissions",
+            "included": true
+          },
+          {
+            "text": "Publication pitches (Western Living, Dwell)",
+            "included": true
+          },
+          {
+            "text": "Full social media management (3x/week)",
+            "included": true
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$42,000"
+      }
+    ],
+    "insight": {
+      "title": "How to Think About This",
+      "content_html": "<p>You paid <strong>$3,150 for two sessions</strong> last year. Here’s what a monthly retainer delivers:</p>",
+      "breakdowns": [
+        {
+          "label": "Foundation $2,000",
+          "desc": "20-25 design-intent images with proper alt text every month. Pure content creation at $850 less than a single session."
+        },
+        {
+          "label": "Growth $2,500",
+          "desc": "Everything above plus atmospheric video, social reels, strategy calls, and a year-end film. The content engine starts compounding."
+        },
+        {
+          "label": "Creative Partner $3,500",
+          "desc": "Content + strategy. Documentary film, IDIBC and Georgie submissions, publication pitches, and full social management."
+        }
+      ],
+      "footer_html": "<p style=\"margin-top:24px;\">Every image delivered with keyword-rich alt text means your portfolio starts appearing in Google Image search from day one.</p>\n<div style=\"margin-top:24px;padding:24px 28px;background:var(--light);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;\">\n<h4 style=\"font-family:'Josefin Sans',sans-serif;font-weight:400;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin:0 0 12px;\">Add-On: Website + Local SEO Package</h4>\n<p style=\"font-size:0.88rem;color:var(--stone);margin:0 0 12px;\">Your audit scored <strong style=\"color:var(--ink);\">46/100 on local SEO</strong>. 699 images with no alt text, no Google Business Profile, no schema markup. The fix isn&rsquo;t patches on the existing site. It&rsquo;s a full website rebuild to modern standards with SEO baked in from the ground up.</p>\n<ul style=\"list-style:none;padding:0;margin:0;\">\n<li style=\"font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);\"><span style=\"position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);\"></span>Full custom Squarespace website rebuild</li>\n<li style=\"font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);\"><span style=\"position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);\"></span>Google Business Profile setup and optimization</li>\n<li style=\"font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);\"><span style=\"position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);\"></span>InteriorDesigner + LocalBusiness schema markup</li>\n<li style=\"font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);\"><span style=\"position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);\"></span>SEO-optimized project pages with proper alt text on every image</li>\n<li style=\"font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);\"><span style=\"position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);\"></span>Service area pages for Whistler, Squamish, Pemberton, Vancouver</li>\n<li style=\"font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);\"><span style=\"position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);\"></span>Monthly SEO blog post + ongoing site maintenance</li>\n<li style=\"font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);\"><span style=\"position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);\"></span>Google review generation strategy</li>\n</ul>\n<p style=\"font-size:0.88rem;color:var(--ink);margin:16px 0 0;font-weight:400;\"><strong>$750 to $1,250/mo</strong> added to any tier. Happy to scope this over coffee.</p>\n</div>"
+    }
+  },
+  "roadmap": {
+    "eyebrow": "3-Month Pilot Roadmap",
+    "headline_html": "What gets done.<br><em>Month by month.</em>",
+    "intro": "The pilot runs May through July. Three months, three projects documented with photography and atmospheric video.",
+    "months": [
+      {
+        "month": "May 2026",
+        "label_html": "Strongest Recent<br>Project",
+        "entries": [
+          "Full-day shoot at your strongest recently completed project",
+          "20 to 25 edited images: spaces, materials, light, composition",
+          "Material and detail close-ups that tell the design story",
+          "60-second atmospheric walkthrough video",
+          "All images with keyword-rich SEO alt text",
+          "Social media reel from shoot footage",
+          "Strategy call to map out summer content calendar"
+        ]
+      },
+      {
+        "month": "June 2026",
+        "label_html": "Design Process:<br>In Progress",
+        "entries": [
+          "Full-day session at a project in the design/install phase",
+          "20 to 25 images: material selections, install progress, before/after moments",
+          "Design process documentation that clients and followers want to see",
+          "Social media reel from shoot content",
+          "Strategy call: review first month, adjust approach"
+        ]
+      },
+      {
+        "month": "July 2026",
+        "label_html": "Summer Light:<br>Hero Spaces",
+        "entries": [
+          "Full-day hero session in peak summer light",
+          "20 to 25 images capturing how natural light transforms LRD spaces",
+          "Atmospheric walkthrough video",
+          "Social media reel + Pinterest content",
+          "Pilot review: what worked, what the data says, what comes next",
+          "If results proven: 12-month continuation locked in"
+        ]
+      }
+    ],
+    "stats": [
+      {
+        "value": "3",
+        "label": "Full-Day Shoots"
+      },
+      {
+        "value": "75",
+        "label": "Professional Images"
+      },
+      {
+        "value": "3",
+        "label": "Social Reels"
+      },
+      {
+        "value": "90",
+        "label": "Days to Prove It"
+      }
+    ]
+  },
+  "vision": {
+    "eyebrow": "The 12-Month Vision",
+    "headline_html": "What a full year of<br><em>content looks like.</em>",
+    "intro": "LRD’s portfolio is already beautiful. A full year of atmospheric video, design documentation, and awards submissions turns it into the most visible interior design studio in the Sea-to-Sky.",
+    "quarters": [
+      {
+        "period": "Q2 2026",
+        "title": "Prove the Model",
+        "description": "3 shoots. 75 images. 3 atmospheric videos. Design process documentation. Every image searchable by Google for the first time. Social channels active with professional content."
+      },
+      {
+        "period": "Q3 2026",
+        "title": "Compound",
+        "description": "Peak season. Summer light in Whistler and Squamish spaces. 150+ images. Atmospheric walkthroughs banked. Design journal content driving organic traffic."
+      },
+      {
+        "period": "Q4 2026",
+        "title": "Leverage",
+        "description": "IDIBC and Georgie award submissions. Publication pitches to Western Living and Dwell. 225+ images. LRD’s online presence matches the calibre of the work."
+      },
+      {
+        "period": "Q1 2027",
+        "title": "Separate",
+        "description": "300+ images, a year-end documentary, and the most visible interior design portfolio in the Sea-to-Sky. When a homeowner in Whistler searches for a designer, LRD shows up first."
+      }
+    ]
+  },
+  "numbers": {
+    "stats": [
+      {
+        "value": "300",
+        "label": "Professional Images"
+      },
+      {
+        "value": "12",
+        "label": "Atmospheric Videos"
+      },
+      {
+        "value": "12",
+        "label": "Social Reels"
+      }
+    ]
+  },
+  "awards": {
+    "eyebrow": "Awards &amp; Publications",
+    "headline_html": "One finalist credential.<br><em>Time to build on it.</em>",
+    "lead": "Lauren, the 2022 Western Living Designer of the Year finalist nod proved LRD’s work belongs at the top. But awards are a momentum game. Ashley de Boer has 5+ nominations for 2025 alone. The studios that submit consistently are the ones editors call first.",
+    "paragraphs": [
+      "The Western Living credential opened the door. Consistent submissions to IDIBC, Georgie, and HAVAN keep it open. Every project photographed to award spec is another entry. The goal isn’t one finalist badge, it’s a track record."
+    ],
+    "competitor_numbers": [
+      {
+        "value": "1",
+        "label": "LRD WL DOTY Finalist"
+      },
+      {
+        "value": "5+",
+        "label": "Ashley de Boer 2025 Nominations"
+      },
+      {
+        "value": "20",
+        "label": "LRD Projects Ready to Submit"
+      }
+    ],
+    "detail_html": "<h3>What I Handle</h3><p>Every shoot is photographed to award-submission spec from day one. 300 DPI JPEG, colour-calibrated, anonymous-ready. When submission season opens, your images are done. I prepare entry materials, identify the right categories, and manage the process. You focus on designing.</p>",
+    "services": [
+      {
+        "title": "Award Submissions",
+        "entries": [
+          "IDIBC Awards of Excellence",
+          "Georgie Awards (Best Interior Design Custom Residence)",
+          "HAVAN Awards",
+          "NKBA Awards",
+          "Dezeen &amp; AZ Awards"
+        ]
+      },
+      {
+        "title": "Publication Pitches",
+        "entries": [
+          "Western Living — BC’s top design magazine",
+          "Dwell — global residential",
+          "ArchDaily &amp; Dezeen",
+          "Azure Magazine",
+          "NUVO Magazine"
+        ]
+      }
+    ],
+    "insight": {
+      "title": "20 Projects, 20 Potential Submissions",
+      "content_html": "<p>LRD has the portfolio and the first credential. Sunridge alone could be submitted to IDIBC, Georgie, and HAVAN. <strong>The difference between one finalist nod and five is consistency, not quality.</strong> Keep the pipeline active.</p>"
+    }
+  },
+  "next_steps": {
+    "eyebrow": "Next Steps",
+    "headline_html": "We already know<br><em>how we work together.</em>",
+    "paragraphs": [
+      "Lauren, we’ve done two sessions and the images speak for themselves. This is the next step: consistent content so every project LRD designs starts working for the studio’s visibility the moment it’s complete.",
+      "The pilot is three months. If it works, we keep going. If it doesn’t, you walk away with 75 professional images (all with proper alt text), atmospheric video of your spaces, three social reels, and a portfolio that’s finally visible to Google. Plus a reactivated awards pipeline. There’s no downside."
+    ],
+    "steps": [
+      {
+        "number": "1",
+        "title": "Pick Your Tier",
+        "description": "Foundation, Growth, or Full Creative Partner. Let’s discuss over coffee."
+      },
+      {
+        "number": "2",
+        "title": "Deposit",
+        "description": "50% of the pilot total to lock in May and guarantee priority scheduling."
+      },
+      {
+        "number": "3",
+        "title": "Plan",
+        "description": "We’re already meeting this week. Let’s map out the summer shoots."
+      }
+    ],
+    "valid_note": "This proposal is valid through <strong style=\"color:var(--ink);\">April 30, 2026</strong>. After that, May availability cannot be guaranteed."
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "builder": {
+    "company": "Balmoral Construction",
+    "slug": "balmoral",
+    "location": "British Columbia",
+    "email": "info@balmoral.com",
+    "phone": "",
+    "colors": {
+      "primary": "#2C3E50",
+      "accent": "#C9A96E",
+      "light": "#F6F4F0",
+      "dark": "#1A1A18"
+    }
+  },
+  "mockup": {
+    "type": "homepage-mockup",
+    "date": "March 2026",
+    "filename": "balmoral-homepage-mockup.html"
+  },
+  "hero": {
+    "eyebrow": "British Columbia",
+    "headline": "Exceptional homes,<br><em>built to last.</em>",
+    "headline_html": "Exceptional homes,<br><em>built to last.</em>",
+    "subtitle": "Custom homes designed for the way you live. Rooted in craftsmanship, shaped by the landscape of British Columbia.",
+    "cta_text": "View Our Work",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/312b0797-a43a-4a51-906e-f913c78c7b79/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-3.jpg",
+    "image_position": "center 25%"
+  },
+  "projects_eyebrow": "Portfolio",
+  "projects_headline_html": "Projects that speak<br>for <em>themselves.</em>",
+  "projects_lead": "A selection of recent builds showcasing Balmoral Construction's commitment to craftsmanship, design, and attention to detail.",
+  "projects": [
+    {
+      "name": "The Warbler Residence",
+      "location": "Whistler, BC",
+      "description": "Mountain modern retreat with floor-to-ceiling glazing",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef4086f4-81fa-468f-99bf-966ce7d83d89/warbler-whistler-architectural-photography-matt-anthony-.jpg-11.jpg"
+    },
+    {
+      "name": "Eagle Residence",
+      "location": "Pemberton, BC",
+      "description": "West Coast contemporary on a forested lot",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ff283fca-be9f-4741-955b-786735c0fd2b/eagle-pemberton-architectural-photography-matt-anthony-.jpg.jpg"
+    },
+    {
+      "name": "The Perch",
+      "location": "Sunshine Coast, BC",
+      "description": "Coastal modern with suspended fireplace",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e07b8aac-c1ec-4293-b956-79b41aa39f33/5322-backhouse-web-1.jpg"
+    }
+  ],
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c938566f-ee96-40da-aec4-d51ac9fa7e09/warbler-whistler-architectural-photography-matt-anthony-.jpg-13.jpg",
+        "alt": "Warbler Residence \u2014 living room with natural materials",
+        "caption": "Warbler Residence &middot; Whistler"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ab8c0b1a-742e-4485-9d50-a19c698594bf/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-4.jpg",
+        "alt": "Fitzsimmons Residence \u2014 open plan interior",
+        "caption": "Fitzsimmons Residence &middot; Whistler"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/52135c1c-0414-47aa-ba78-6d225bc11f6b/siteline-langley.jpg",
+        "alt": "Fraserview Vista \u2014 luxury residence exterior",
+        "caption": "Fraserview Vista &middot; Langley"
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "About",
+    "headline": "The Balmoral Construction approach.",
+    "headline_html": "The Balmoral Construction<br><em>approach.</em>",
+    "paragraphs": [
+      "For over a decade, Balmoral Construction has been building custom homes across British Columbia that balance design ambition with buildability.",
+      "Every project starts with listening. Understanding the site, the vision, and the details that turn a house into a home. From foundation to finishing, we manage every phase with the same standard: build it like it's our own.",
+      "Our portfolio spans mountain retreats, waterfront estates, and modern family homes. What connects them is a shared commitment to materials, craftsmanship, and spaces that feel right from the moment you walk in."
+    ],
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d4768559-4d0d-4403-a58c-02db15d5b177/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-42.jpg"
+  },
+  "stats": [
+    {
+      "value": "15+",
+      "label": "Years Building"
+    },
+    {
+      "value": "80+",
+      "label": "Homes Completed"
+    },
+    {
+      "value": "100%",
+      "label": "Client Referral Rate"
+    }
+  ],
+  "process": {
+    "eyebrow": "Our Process",
+    "headline_html": "How we <em>build.</em>",
+    "lead": "A proven process refined over hundreds of builds.",
+    "steps": [
+      {
+        "title": "Discovery",
+        "description": "We start with the site and your vision. Understanding the land, the light, and how you want to live shapes every decision that follows."
+      },
+      {
+        "title": "Pre-Construction",
+        "description": "Detailed planning, budgeting, and material selection. No surprises. Every choice is made before the first shovel hits the ground."
+      },
+      {
+        "title": "Build & Deliver",
+        "description": "Hands-on project management from foundation to finishing. Regular updates, transparent timelines, and a final walkthrough that exceeds expectations."
+      }
+    ]
+  },
+  "testimonial": {
+    "quote": "They didn't just build our home, they understood what we were trying to create. The attention to detail and communication throughout was exceptional.",
+    "author": "Recent Homeowner",
+    "role": "British Columbia"
+  },
+  "contact": {
+    "eyebrow": "Get in Touch",
+    "headline_html": "Ready to start<br>your <em>next project?</em>",
+    "subtitle": "Whether you're planning a new build or a major renovation in British Columbia, we'd love to hear about your vision.",
+    "cta_text": "Start a Conversation"
+  },
+  "photographer": {
+    "cta_url": "https://mattanthonyphoto.com/discovery-call",
+    "cta_text": "Book a Discovery Call"
+  },
+  "year": "2026"
+}

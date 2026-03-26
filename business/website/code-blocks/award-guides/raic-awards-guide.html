@@ -1,0 +1,313 @@
+<style>
+.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+.bl-wrap{overflow-x:hidden!important;font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a18;line-height:1.7;font-weight:300}.bl-wrap img{max-width:100%;display:block}.bl-wrap a{color:inherit;text-decoration:none}
+.bl-hero{position:relative;width:100%;height:60vh;min-height:450px;overflow:hidden}.bl-hero>img{width:100%;height:100%;object-fit:cover;filter:saturate(.8) brightness(.4)}.bl-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,24,.2) 0%,rgba(26,26,24,.05) 40%,rgba(26,26,24,.6) 75%,rgba(26,26,24,.95) 100%)}
+.bl-hc{position:absolute;bottom:4rem;left:5vw;z-index:2;max-width:750px}.bl-hl{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:#c9a96e;margin-bottom:1rem;font-weight:500}.bl-hc h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:300;line-height:1.12;color:#f6f4f0;letter-spacing:-.02em;margin-bottom:.75rem}.bl-hc p{font-size:1.15rem;color:#d9d5cd;max-width:520px;line-height:1.8}
+.bl-back{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#b8975a;font-weight:500;padding:2rem 5vw 0;transition:color .3s ease}.bl-back:hover{color:#1a1a18}.bl-back::before{content:'\2190';font-size:.9rem}
+.bl-body{max-width:760px;margin:0 auto;padding:2.5rem 5vw 5rem}.bl-body a{color:#b8975a;transition:color .3s ease}.bl-body a:hover{color:#1a1a18}.bl-body h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;line-height:1.25;margin:3.5rem 0 1.5rem;color:#1a1a18}.bl-body h2:first-of-type{margin-top:0}.bl-body p{font-size:1.2rem;color:#4a4a46;line-height:1.9;margin-bottom:1.5rem}.bl-body strong{font-weight:500;color:#1a1a18}.bl-body blockquote{margin:2.5rem 0;padding:1.5rem 0 1.5rem 2rem;border-left:2px solid #c9a96e;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-style:italic;line-height:1.6;color:#4a4a46}
+.bl-img{margin:2.5rem 0;border-radius:2px;overflow:hidden}.bl-img img{width:100%;height:auto}
+.bl-divider{width:60px;height:1px;background:#c9a96e;margin:3rem 0}
+.bl-callout{background:#f6f4f0;padding:2.5rem;margin:2.5rem 0;border-radius:2px}.bl-callout-label{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:1rem}.bl-callout p{font-size:1.1rem;color:#4a4a46;line-height:1.8;margin-bottom:.75rem}.bl-callout p:last-child{margin-bottom:0}
+.bl-related{padding:4rem 5vw;border-top:1px solid #eeece6}.bl-related-label{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:2rem}.bl-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}.bl-rel-card{display:block;transition:transform .3s ease}.bl-rel-card:hover{transform:translateY(-4px)}.bl-rel-img{overflow:hidden;border-radius:2px;aspect-ratio:16/10;margin-bottom:1rem}.bl-rel-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}.bl-rel-card:hover .bl-rel-img img{transform:scale(1.04)}.bl-rel-cat{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:#c9a96e;font-weight:500;margin-bottom:.4rem}.bl-rel-card h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:400;line-height:1.3;color:#1a1a18;transition:color .3s ease}.bl-rel-card:hover h3{color:#b8975a}
+.bl-cta{position:relative;padding:7rem 5vw;text-align:center;overflow:hidden;min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center}.bl-cta-bg{position:absolute;inset:0;z-index:0}.bl-cta-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.5) brightness(.3)}.bl-cta-c{position:relative;z-index:2}.bl-cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#f6f4f0;margin-bottom:1rem;line-height:1.2}.bl-cta h2 em{font-style:italic;color:#c9a96e}.bl-cta p{font-size:1.15rem;color:#8a8579;max-width:480px;margin:0 auto 2rem;line-height:1.8}.bl-btn{display:inline-block;font-family:'DM Sans',sans-serif;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;padding:1.2rem 3.5rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all .35s ease;text-decoration:none}.bl-btn:hover{background:transparent!important;color:#c9a96e!important;border-color:#c9a96e!important}
+.bl-alt-cta{margin-top:1.25rem;font-size:.75rem;color:#8a8579;letter-spacing:.05em;font-weight:300}.bl-alt-cta a{color:#c9a96e;text-decoration:underline;text-underline-offset:3px;transition:color .3s ease}.bl-alt-cta a:hover{color:#f6f4f0}
+.bl-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.bl-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.bl-ft-locs a:hover{color:#c9a96e}.bl-ft{background:#1a1a18;border-top:1px solid rgba(201,169,110,.15)}.bl-ft-r{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}.bl-ft-i{display:flex;align-items:baseline;gap:10px}.bl-ft-l{font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;white-space:nowrap}.bl-ft-dt{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,.4);flex-shrink:0;position:relative;top:-2px}.bl-ft-i p,.bl-ft-i a{margin:0;font-size:12px;color:rgba(246,244,240,.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color .3s ease}.bl-ft-i a:hover{color:#c9a96e}.bl-ft-s{display:flex;gap:18px}.bl-ft-rl{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,.15) 20%,rgba(201,169,110,.15) 80%,transparent 100%)}.bl-ft-b{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}.bl-ft-cp{font-size:10px;color:rgba(246,244,240,.35);letter-spacing:.08em}.bl-ft-n{display:flex;gap:2.5rem}.bl-ft-n{flex-wrap:wrap;justify-content:center}.bl-ft-n a{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);text-decoration:none;transition:color .3s ease}.bl-ft-n a:hover{color:#c9a96e}
+@media(max-width:768px){.bl-hero{height:50vh;min-height:350px}.bl-hc{bottom:3rem;left:6vw}.bl-back{padding:1.5rem 6vw 0}.bl-body{padding:2rem 6vw 3rem}.bl-body p{font-size:1.1rem}.bl-related{padding:3rem 6vw}.bl-related-grid{grid-template-columns:1fr;gap:1.5rem}.bl-cta{padding:4rem 6vw;min-height:40vh}.bl-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.bl-ft-locs a{font-size:.55rem}.bl-ft-r{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}.bl-ft-rl{margin:0 6vw}.bl-ft-b{flex-direction:column;gap:.75rem;text-align:center;padding:1.25rem 6vw}}
+.bl-ft-email{cursor:pointer}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.bl-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.bl-loader.bl-done{opacity:0;visibility:hidden;pointer-events:none}
+.bl-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:blLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:blLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:blLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.bl-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:blLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes blLoaderIn{to{opacity:1}}
+@keyframes blLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.bl-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.bl-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.bl-cursor.bl-active{opacity:1}
+.bl-cursor.bl-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.bl-cursor.bl-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.bl-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.bl-cursor-dot.bl-active{opacity:1}
+
+/* ── Section nav dots ── */
+.bl-section-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:99998;display:flex;flex-direction:column;gap:12px;opacity:0;transition:opacity 0.4s ease}
+.bl-section-nav.bl-nav-visible{opacity:1}
+.bl-nav-dot{width:8px;height:8px;border-radius:50%;background:transparent;border:1px solid #8a8579;cursor:pointer;transition:all 0.3s ease;position:relative}
+.bl-nav-dot:hover{border-color:#c9a96e;transform:scale(1.3)}
+.bl-nav-dot.bl-nav-active{background:#c9a96e;border-color:#c9a96e;box-shadow:0 0 8px rgba(201,169,110,0.4)}
+.bl-nav-dot::before{content:attr(data-label);position:absolute;right:20px;top:50%;transform:translateY(-50%);font-family:'Josefin Sans',sans-serif;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a96e;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.3s ease,right 0.3s ease}
+.bl-nav-dot:hover::before{opacity:1;right:24px}
+@media(max-width:768px){.bl-section-nav{display:none}}
+
+/* ── CTA button glow ── */
+.bl-btn{animation:blBtnGlow 3s ease-in-out infinite alternate}
+@keyframes blBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+</style>
+
+<div class="bl-loader" id="blLoader">
+  <div class="bl-loader-brand">Matt Anthony Photography</div>
+  <div class="bl-loader-sub">RAIC Awards Guide</div>
+  <div class="bl-loader-line"></div>
+</div>
+<div class="bl-cursor" id="blCursor"></div>
+<div class="bl-cursor-dot" id="blCursorDot"></div>
+<div class="bl-progress" id="blProgress"></div>
+<nav class="bl-section-nav" id="blSectionNav"></nav>
+<div class="bl-wrap">
+
+<div class="bl-hero"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/62f2712d-a413-46af-bcd8-d0f17957f8ab/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-4.jpg?format=2500w" alt="Tranquil Retreat Sunshine Coast — RAIC Awards guide"><div class="bl-hc"><p class="bl-hl">Guide</p><h1>RAIC Awards &amp; Governor General's Medals in Architecture</h1><p>Complete guide to Canada's highest architectural honour for Canadian architects.</p></div></div>
+
+<a href="/journal" class="bl-back">Back to Journal</a>
+
+<div class="bl-body">
+
+<h2 data-nav="Overview">Overview: Canada's Highest Architectural Honour</h2>
+
+<p>The Governor General's Medals in Architecture represent the pinnacle of architectural recognition in Canada. Awarded jointly by the Royal Architectural Institute of Canada (RAIC) and the Canada Council for the Arts, these medals carry a history spanning more than 75 years. Recipients are presented their medals by the Governor General at Rideau Hall.</p>
+
+<p>Beyond the Governor General's Medals, the RAIC administers a suite of annual awards recognizing individual achievement, firm practice, and architectural legacy. Together, these programs define what excellence means in Canadian architecture.</p>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="GG Medals">Governor General's Medals in Architecture</h2>
+
+<p>The Governor General's Medals are awarded biennially to <strong>up to 12 projects</strong> that demonstrate design excellence at the highest level. The program evaluates completed buildings. The jury wants to see architecture that has been built, occupied, and tested by real use.</p>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Annual Awards">RAIC Annual Awards</h2>
+
+<p><strong>RAIC Gold Medal.</strong> The highest honour the RAIC confers on an individual. Awarded for a significant and lasting contribution to Canadian architecture over an entire career.</p>
+
+<p><strong>Architectural Firm Award.</strong> Recognizes a firm that has consistently produced distinguished architecture over a sustained period.</p>
+
+<p><strong>Emerging Architectural Practice Award.</strong> Celebrates a firm in the early stages of practice that shows exceptional design promise.</p>
+
+<p><strong>Prix du XXe siecle.</strong> Recognizes a Canadian building of enduring significance that is at least 25 years old.</p>
+
+<p><strong>International Prize.</strong> Awarded to a non-Canadian architect or firm whose work has had a significant impact globally.</p>
+
+<div class="bl-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/eae50d7b-893c-483f-9849-84f06b45e58f/architectural-interiors-photographer-netzero-whistler8.jpg?format=2500w" alt="Net Zero Build — architectural photography for RAIC award submission" loading="lazy"></div>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Eligibility">Eligibility</h2>
+
+<p>The Governor General's Medals are open to <strong>Canadian architects</strong> for projects of <strong>all types and locations</strong>. Unlike provincial programs, the GG Medals program accepts projects built anywhere in the world, provided the architect is Canadian.</p>
+
+<p>For the RAIC Annual Awards, eligibility varies by category. The Gold Medal and Firm Award are nomination-based recognitions of career or body-of-work achievement.</p>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Requirements">Submission Requirements</h2>
+
+<p><strong>Written Statement (750 words).</strong> A concise but substantive description of the project's design intent, the challenges addressed, and the contribution it makes.</p>
+
+<p><strong>Sustainability Text (200 words).</strong> A separate statement addressing the project's approach to environmental sustainability and energy performance.</p>
+
+<p><strong>Mandatory Drawings.</strong> Site plan, building plan, and cross-section.</p>
+
+<p><strong>Seven Press Images.</strong> These are the photographs that represent the project to the jury and, if the project wins, to the public and media.</p>
+
+<p><strong>Energy Performance Metrics.</strong> EUI and TEDI data where available.</p>
+
+<div class="bl-callout">
+<p class="bl-callout-label">Technical Image Specifications</p>
+<p><strong>High-Resolution:</strong> JPEG format, 300 dpi, 4200 x 3150 pixels minimum</p>
+<p><strong>Low-Resolution:</strong> JPEG format, 72 dpi, 1024 x 768 pixels</p>
+<p><strong>Colour Space:</strong> RGB only. No CMYK files accepted</p>
+<p><strong>Both Resolutions Required:</strong> Each image must be submitted in both versions</p>
+<p><strong>Total Images:</strong> 7 press images per submission</p>
+</div>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Criteria">Assessment Criteria</h2>
+
+<p><strong>Innovative vision.</strong> Does the project propose something new in spatial organization, material application, programmatic response, or cultural engagement?</p>
+
+<p><strong>Response to site and context.</strong> How does the building engage with its physical, cultural, and climatic context?</p>
+
+<p><strong>Meaningful experience.</strong> Does the building create spaces that are genuinely worth inhabiting?</p>
+
+<p><strong>Sustainability leadership.</strong> How does the project address environmental responsibility?</p>
+
+<p><strong>Materials selection.</strong> How are materials chosen, detailed, and assembled?</p>
+
+<blockquote>Seven images. That is your entire visual argument for why a project deserves to stand among the twelve best buildings in Canada. Every image must be intentional, technically excellent, and strategically selected.</blockquote>
+
+<div class="bl-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/afaa55f3-200c-44f8-90ea-31a80a294306/architectural-interiors-photographer-netzero-whistler7.jpg?format=2500w" alt="Net Zero Build — interior design and material quality documentation" loading="lazy"></div>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Photography">Why Photography Matters at This Level</h2>
+
+<p>At this level, photography does not just document the building. It makes the case for the building's significance. Each of the seven permitted images must serve a specific purpose: the establishing shot, the approach sequence, the primary interior space, secondary spaces, material details, light and atmosphere, and the singular image that captures what makes this project different from every other submission.</p>
+
+<p>With only seven images allowed, there is no room for redundancy.</p>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Timeline">Timeline</h2>
+
+<div class="bl-callout">
+<p class="bl-callout-label">2025/2026 Key Dates</p>
+<p><strong>GG Medals Submission Deadline:</strong> December 2025</p>
+<p><strong>RAIC Annual Awards Deadline:</strong> January 2026</p>
+<p><strong>RAIC Conference:</strong> Vancouver, May 2026</p>
+<p><strong>GG Medals Ceremony:</strong> Rideau Hall, Ottawa (date TBA)</p>
+</div>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Preparation">How to Prepare Your Submission</h2>
+
+<p><strong>Start with the architectural argument.</strong> Articulate what makes this project significant before you select images or write a word.</p>
+
+<p><strong>Brief your photographer thoroughly.</strong> Share the assessment criteria. Walk through the building together.</p>
+
+<p><strong>Plan for both resolutions from the start.</strong> The 4200 x 3150 pixel high-res requirement means source files need sufficient resolution.</p>
+
+<p><strong>Prepare the sustainability narrative early.</strong> Coordinate with your engineering consultants to compile EUI/TEDI data.</p>
+
+<div class="bl-callout">
+<p class="bl-callout-label">RAIC / GG Medals Submission Checklist</p>
+<p>Confirm project eligibility and completion status</p>
+<p>Articulate the core architectural argument for the project</p>
+<p>Commission professional architectural photography 3+ months before deadline</p>
+<p>Brief photographer on GG Medals assessment criteria and design intent</p>
+<p>Capture context, approach, primary spaces, secondary spaces, details, and atmosphere</p>
+<p>Deliver images in both required resolutions: 300dpi 4200x3150 and 72dpi 1024x768</p>
+<p>Confirm all files are JPEG, RGB colour space only</p>
+<p>Draft 750-word project statement and 200-word sustainability text</p>
+<p>Prepare mandatory drawings: site plan, building plan, cross-section</p>
+<p>Compile EUI and TEDI energy performance data</p>
+<p>Select exactly 7 images with zero redundancy</p>
+<p>Review complete submission package for consistency and quality</p>
+</div>
+
+<div class="bl-divider"></div>
+
+<h2 data-nav="Resources">Key Resources</h2>
+
+<p><a href="https://www.raic.org" target="_blank" rel="noopener">RAIC Official Website</a></p>
+<p><a href="https://canadacouncil.ca" target="_blank" rel="noopener">Canada Council for the Arts</a></p>
+<p><strong>RAIC Conference 2026:</strong> Vancouver, May 2026</p>
+
+<div class="bl-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/33e86fd3-d9ba-44b7-a813-87c65aae8dc9/architectural-interiors-photographer-netzero-whistler9.jpg?format=2500w" alt="Net Zero Build — exterior architecture and site integration" loading="lazy"></div>
+
+</div>
+
+<div class="bl-related">
+<p class="bl-related-label">Related Guides</p>
+<div class="bl-related-grid">
+<a href="/journal/aibc-awards-guide" class="bl-rel-card">
+<div class="bl-rel-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ebb37653-5489-4beb-a83f-ad40ed118b6c/sitelines-SDA-web--6.jpg?format=750w" alt="AIBC Awards guide" loading="lazy"></div>
+<p class="bl-rel-cat">Guide</p>
+<h3>AIBC Architectural Awards of Excellence</h3>
+</a>
+<a href="/journal/chba-national-awards-guide" class="bl-rel-card">
+<div class="bl-rel-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg?format=750w" alt="CHBA National Awards guide" loading="lazy"></div>
+<p class="bl-rel-cat">Guide</p>
+<h3>CHBA National Awards for Housing Excellence</h3>
+</a>
+<a href="/journal/georgie-awards-guide" class="bl-rel-card">
+<div class="bl-rel-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/566f07b0-c1ab-4bf8-b5a8-9dbc69f5f202/5322-backhouse-web-2.jpg?format=750w" alt="Georgie Awards guide" loading="lazy"></div>
+<p class="bl-rel-cat">Guide</p>
+<h3>The Complete Guide to the Georgie Awards</h3>
+</a>
+</div>
+</div>
+
+<div class="bl-cta" data-nav="Contact">
+<div class="bl-cta-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7ef87751-7049-4003-b0ae-2d83f90f21c4/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-13.jpg?format=2500w" alt="Architectural photography for Governor General Medal submission" loading="lazy"></div>
+<div class="bl-cta-c">
+<h2>Submitting for the Governor General's <em>Medals in Architecture</em>?</h2>
+<p>At this level, every one of your seven images needs to be exceptional. Let's plan the photography together.</p>
+<a href="/discovery-call" class="bl-btn">Book a Discovery Call</a>
+<p class="bl-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+</div>
+</div>
+
+<footer class="bl-ft">
+<div class="bl-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+<div class="bl-ft-r">
+<div class="bl-ft-i"><span class="bl-ft-l">Based In</span><span class="bl-ft-dt"></span><p>Squamish, British Columbia</p></div>
+<div class="bl-ft-i"><span class="bl-ft-l">Email</span><span class="bl-ft-dt"></span><a id="ft-em" class="bl-ft-email"></a></div>
+<div class="bl-ft-i"><span class="bl-ft-l">Phone</span><span class="bl-ft-dt"></span><a href="tel:6047659270">604.765.9270</a></div>
+<div class="bl-ft-i"><span class="bl-ft-l">Follow</span><span class="bl-ft-dt"></span><div class="bl-ft-s"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+</div>
+<div class="bl-ft-rl"></div>
+<div class="bl-ft-b">
+<span class="bl-ft-cp">&copy; 2026 Matt Anthony Photography</span>
+<nav class="bl-ft-n"><a href="/projects">Projects</a><a href="/journal">Journal</a><a href="/bio">About</a><a href="/contact">Contact</a><a href="/pricing-guide-landing">Get Pricing</a></nav>
+</div>
+</footer>
+
+<script>
+(function(){
+  var isMobile='ontouchstart' in window;
+
+  /* EMAIL OBFUSCATION */
+  var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];var e=document.getElementById('ft-em');if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}
+
+  /* LOADING SCREEN */
+  var loader=document.getElementById('blLoader');
+  window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('bl-done');},1100);});
+
+  /* SCROLL PROGRESS */
+  var progressBar=document.getElementById('blProgress');
+  function updateProgress(){var sc=window.scrollY;var d=document.documentElement.scrollHeight-window.innerHeight;if(d>0)progressBar.style.width=(sc/d*100)+'%';}
+
+  /* CUSTOM CURSOR */
+  var cursor=document.getElementById('blCursor');var cursorDot=document.getElementById('blCursorDot');var cx=0,cy=0,dx=0,dy=0;
+  if(!isMobile&&cursor){
+    document.addEventListener('mousemove',function(ev){dx=ev.clientX;dy=ev.clientY;cursorDot.style.left=dx+'px';cursorDot.style.top=dy+'px';if(!cursor.classList.contains('bl-active')){cursor.classList.add('bl-active');cursorDot.classList.add('bl-active');}});
+    function tickCursor(){cx+=(dx-cx)*0.12;cy+=(dy-cy)*0.12;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(tickCursor);}tickCursor();
+    var hoverEls=document.querySelectorAll('a, button, .bl-btn, .bl-rel-card');
+    hoverEls.forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('bl-hover');});el.addEventListener('mouseleave',function(){cursor.classList.remove('bl-hover');});});
+    document.addEventListener('mousedown',function(){cursor.classList.add('bl-click');});
+    document.addEventListener('mouseup',function(){cursor.classList.remove('bl-click');});
+  }
+
+  /* SECTION NAV DOTS */
+  var sectionNav=document.getElementById("blSectionNav");var navSections=document.querySelectorAll("[data-nav]");var navDots=[];
+  navSections.forEach(function(sec){var dot=document.createElement("div");dot.className="bl-nav-dot";dot.setAttribute("data-label",sec.getAttribute("data-nav"));dot.addEventListener("click",function(){sec.scrollIntoView({behavior:"smooth",block:"start"});});sectionNav.appendChild(dot);navDots.push({dot:dot,section:sec});});
+  function updateNavDots(){var scrollY=window.scrollY;var winH=window.innerHeight;if(scrollY>winH*0.5)sectionNav.classList.add("bl-nav-visible");else sectionNav.classList.remove("bl-nav-visible");var active=null;navDots.forEach(function(item){var rect=item.section.getBoundingClientRect();if(rect.top<winH*0.5&&rect.bottom>winH*0.3)active=item;item.dot.classList.remove("bl-nav-active");});if(active)active.dot.classList.add("bl-nav-active");}
+
+  /* COMBINED SCROLL HANDLER */
+  var ticking=false;
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){updateProgress();updateNavDots();ticking=false;});ticking=true;}},{passive:true});
+  updateProgress();updateNavDots();
+})();
+</script>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "RAIC Awards & Governor General's Medals in Architecture | Complete Guide",
+  "description": "Complete guide to RAIC Awards and Governor General's Medals in Architecture. Submission requirements, photography technical specs, assessment criteria, and timelines.",
+  "url": "https://www.mattanthonyphoto.com/journal/raic-awards-guide",
+  "datePublished": "2026-03-19",
+  "dateModified": "2026-03-19",
+  "author": {"@type": "Person", "name": "Matt Anthony", "url": "https://www.mattanthonyphoto.com/bio"},
+  "publisher": {"@type": "Organization", "name": "Matt Anthony Photography", "url": "https://www.mattanthonyphoto.com"},
+  "image": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/62f2712d-a413-46af-bcd8-d0f17957f8ab/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-4.jpg",
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.mattanthonyphoto.com/journal/raic-awards-guide"}
+}
+</script>
+
+</div>

@@ -1,0 +1,161 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.pg-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.pg-loader.pg-done{opacity:0;visibility:hidden;pointer-events:none}
+.pg-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:pgLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.pg-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:pgLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.pg-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:pgLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.pg-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:pgLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes pgLoaderIn{to{opacity:1}}
+@keyframes pgLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.pg-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.pg-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.pg-cursor.pg-active{opacity:1}
+.pg-cursor.pg-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.pg-cursor.pg-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.pg-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.pg-cursor-dot.pg-active{opacity:1}
+
+/* ── CTA button glow ── */
+.pg-btn{animation:pgBtnGlow 3s ease-in-out infinite alternate}
+@keyframes pgBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+
+.pg-wrap{overflow-x:hidden!important;font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a18;line-height:1.7;font-weight:300}.pg-wrap img{max-width:100%;display:block}.pg-wrap a{color:inherit;text-decoration:none}
+.pg-hero{position:relative;width:100%;height:100vh;min-height:600px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}.pg-hero-bg{position:absolute;inset:0;z-index:0}.pg-hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.6) brightness(.3)}.pg-hero::after{content:'';position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at center,rgba(26,26,24,.5) 0%,rgba(26,26,24,.85) 100%)}.pg-hero-c{position:relative;z-index:2;max-width:720px;padding:0 5vw}.pg-hero-l{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;margin-bottom:1.25rem}.pg-hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,4.5vw,3.5rem);font-weight:300;line-height:1.15;color:#f6f4f0;letter-spacing:-.02em;margin-bottom:1.25rem}.pg-hero h1 em{font-style:italic;color:#c9a96e}.pg-hero-sub{font-size:1rem;color:#d9d5cd;line-height:1.8;max-width:560px;margin:0 auto 2.5rem}.pg-hero-scroll{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(201,169,110,.5);margin-top:3rem;cursor:pointer}
+.pg-intro{background:#f6f4f0;padding:5rem 5vw}.pg-intro-inner{max-width:700px;margin:0 auto;text-align:center}.pg-intro-l{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:1.5rem}.pg-intro h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:300;line-height:1.3;color:#1a1a18;margin-bottom:1.5rem}.pg-intro p{font-size:1rem;color:#4a4a46;line-height:1.85;margin-bottom:1rem}.pg-intro-list{list-style:none;padding:0;margin:2rem 0 0;text-align:left;max-width:500px;margin-left:auto;margin-right:auto}.pg-intro-list li{font-size:.95rem;color:#4a4a46;line-height:1.8;padding-left:20px;position:relative;margin-bottom:.4rem}.pg-intro-list li::before{content:'';position:absolute;left:0;top:.75em;width:8px;height:1px;background:#c9a96e}
+.pg-select{background:#eeece6;padding:5rem 5vw}.pg-select-inner{max-width:1000px;margin:0 auto;text-align:center}.pg-select-l{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:1rem}.pg-select h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:300;line-height:1.3;color:#1a1a18;margin-bottom:.75rem}.pg-select-sub{font-size:.9rem;color:#8a8579;margin-bottom:3rem}
+.pg-icp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}.pg-icp-card{background:#f6f4f0;padding:2.5rem 1.5rem;border-radius:2px;cursor:pointer;transition:all .35s ease;text-align:center;border:2px solid transparent;position:relative}.pg-icp-card:hover{border-color:#d9d5cd}.pg-icp-card.selected{border-color:#c9a96e}.pg-icp-card.selected::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:40px;height:3px;background:#c9a96e;border-radius:2px}.pg-icp-num{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;margin-bottom:.75rem}.pg-icp-card h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;font-weight:400;margin-bottom:.75rem;color:#1a1a18}.pg-icp-card p{font-size:.8rem;color:#8a8579;line-height:1.65}
+.pg-form-section{background:#f6f4f0;padding:5rem 5vw;display:none}.pg-form-section.visible{display:block}.pg-form-inner{max-width:680px;margin:0 auto}.pg-form-heading{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:300;margin-bottom:.5rem;color:#1a1a18;text-align:center}.pg-form-sub{font-size:.85rem;color:#8a8579;margin-bottom:2.5rem;text-align:center;line-height:1.6}.pg-form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}.pg-form-group{margin-bottom:24px}.pg-form-group label{display:block;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:#8a8579;font-weight:500;margin-bottom:8px}.pg-form-group input,.pg-form-group select{width:100%;padding:12px 16px;border:1px solid #d9d5cd;background:#fff;font-family:'DM Sans',sans-serif;font-size:.9rem;color:#1a1a18;border-radius:2px;transition:border-color .3s ease;-webkit-appearance:none;appearance:none}.pg-form-group input:focus,.pg-form-group select:focus{outline:none;border-color:#c9a96e}.pg-form-group select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238a8579'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.pg-submit-wrap{text-align:center;margin-top:1rem}.pg-submit{display:inline-block;font-family:'DM Sans',sans-serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;padding:1.1rem 3rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all .35s ease;cursor:pointer}.pg-submit:hover{background:transparent!important;color:#c9a96e!important}.pg-submit:disabled{opacity:.5;cursor:not-allowed}
+.pg-redirect{background:#1a1a18;padding:6rem 5vw;text-align:center;display:none}.pg-redirect.visible{display:block}.pg-redirect h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;font-weight:300;color:#f6f4f0;margin-bottom:2rem}.pg-redirect-steps{display:flex;justify-content:center;gap:3rem;margin-bottom:2rem}.pg-redirect-step{text-align:center}.pg-redirect-dot{width:12px;height:12px;border-radius:50%;border:1px solid #c9a96e;margin:0 auto .75rem;transition:background .5s ease}.pg-redirect-dot.done{background:#c9a96e}.pg-redirect-step span{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:#8a8579}
+.pg-trust{background:#1a1a18;padding:5rem 5vw;text-align:center}.pg-trust-inner{max-width:600px;margin:0 auto}.pg-trust-quote{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.4rem;font-weight:300;font-style:italic;color:#f6f4f0;line-height:1.5;margin-bottom:1.5rem}.pg-trust-attr{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#c9a96e;font-weight:400}
+.pg-cta{position:relative;padding:7rem 5vw;text-align:center;overflow:hidden;min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center}.pg-cta-bg{position:absolute;inset:0;z-index:0}.pg-cta-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.5) brightness(.3)}.pg-cta-c{position:relative;z-index:2}.pg-cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#f6f4f0;margin-bottom:1rem;line-height:1.2}.pg-cta h2 em{font-style:italic;color:#c9a96e}.pg-cta p{font-size:1rem;color:#8a8579;max-width:480px;margin:0 auto 2.5rem;line-height:1.8}
+.pg-btn{display:inline-block;font-family:'DM Sans',sans-serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;padding:1.1rem 3rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all .35s ease}.pg-btn:hover{background:transparent!important;color:#c9a96e!important}
+.pg-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.pg-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.pg-ft-locs a:hover{color:#c9a96e}.pg-ft{background:#1a1a18;border-top:1px solid rgba(201,169,110,.15)}.pg-ft-r{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}.pg-ft-i{display:flex;align-items:baseline;gap:10px}.pg-ft-l{font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;white-space:nowrap}.pg-ft-dt{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,.4);flex-shrink:0;position:relative;top:-2px}.pg-ft-i p,.pg-ft-i a{margin:0;font-size:12px;color:rgba(246,244,240,.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color .3s ease}.pg-ft-i a:hover{color:#c9a96e}.pg-ft-s{display:flex;gap:18px}.pg-ft-rl{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,.15) 20%,rgba(201,169,110,.15) 80%,transparent 100%)}.pg-ft-b{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}.pg-ft-cp{font-size:10px;color:rgba(246,244,240,.35);letter-spacing:.08em}.pg-ft-n{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center}.pg-ft-n a{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);text-decoration:none;transition:color .3s ease}.pg-ft-n a:hover{color:#c9a96e}
+.pg-ft-email{cursor:pointer}
+@media(max-width:768px){.pg-hero{height:90vh;min-height:500px}.pg-icp-grid{grid-template-columns:1fr 1fr;gap:.75rem}.pg-form-row{grid-template-columns:1fr}.pg-redirect-steps{gap:1.5rem}.pg-cta{padding:4rem 6vw;min-height:40vh}.pg-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.pg-ft-locs a{font-size:.55rem}.pg-ft-r{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}.pg-ft-rl{margin:0 6vw}.pg-ft-b{flex-direction:column;gap:.75rem;text-align:center;padding:1.25rem 6vw}}
+@media(max-width:480px){.pg-icp-grid{grid-template-columns:1fr}}
+</style>
+<div class="pg-loader" id="pgLoader">
+  <div class="pg-loader-brand">Matt Anthony Photography</div>
+  <div class="pg-loader-sub">Pricing Guide</div>
+  <div class="pg-loader-line"></div>
+</div>
+<div class="pg-cursor" id="pgCursor"></div>
+<div class="pg-cursor-dot" id="pgCursorDot"></div>
+<div class="pg-progress" id="pgProgress"></div>
+<div class="pg-wrap">
+<div class="pg-hero"><div class="pg-hero-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83bbba67-7393-4e34-8b4b-bac1600c8110/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-12.jpg" alt="Sandy Hook Sunshine Coast residential architecture photographed by Matt Anthony"></div><div class="pg-hero-c"><p class="pg-hero-l">Free Resource</p><h1>The Visual Services <em>Pricing Guide</em></h1><p class="pg-hero-sub">A transparent breakdown of our photography, video, and creative services — so you can plan your investment before we ever get on a call.</p><a href="#pg-intro-section" class="pg-btn">Get the Guide</a><p class="pg-hero-scroll" onclick="document.getElementById('pg-intro-section').scrollIntoView({behavior:'smooth'})">Scroll to learn more</p></div></div>
+
+<div class="pg-intro" id="pg-intro-section"><div class="pg-intro-inner"><p class="pg-intro-l">What You Will Get</p><h2>Everything you need to plan your visual investment</h2><p>We offer more than photography. This guide breaks down every service we deliver — from single-project shoots to ongoing creative retainers covering photo, video, social, and web — so you can see exactly where your firm fits and what the investment looks like.</p><ul class="pg-intro-list"><li>Investment ranges for photography, video, and content packages</li><li>Service level inclusions for each tier</li><li>Pricing scalability based on project scope and location</li><li>Add-on options: drone, twilight, film, social media, rush delivery</li><li>Creative Partner retainer mechanics</li></ul></div></div>
+
+<div class="pg-select" id="pg-select-section"><div class="pg-select-inner"><p class="pg-select-l">Step 1</p><h2>Which best describes your firm?</h2><p class="pg-select-sub">Select your category to tailor the guide to your needs.</p><div class="pg-icp-grid">
+<div class="pg-icp-card" data-icp="architect"><p class="pg-icp-num">01</p><h3>Architect</h3><p>Design documentation, award submissions, publications, and portfolio content.</p></div>
+<div class="pg-icp-card" data-icp="builder"><p class="pg-icp-num">02</p><h3>Custom Home Builder</h3><p>Project photography, brand video, team content, website imagery, and ongoing visual strategy.</p></div>
+<div class="pg-icp-card" data-icp="designer"><p class="pg-icp-num">03</p><h3>Interior Designer</h3><p>Portfolio imagery, editorial-ready interiors, social media content, and short-form video.</p></div>
+<div class="pg-icp-card" data-icp="trades"><p class="pg-icp-num">04</p><h3>Trades &amp; Suppliers</h3><p>Product-in-context photography, project documentation, brand video, and multi-party licensed content.</p></div>
+</div></div></div>
+
+<div class="pg-form-section" id="pg-form-section"><div class="pg-form-inner"><h2 class="pg-form-heading">Almost there — tell us a bit about your firm</h2><p class="pg-form-sub">All fields are required so we can tailor your guide and follow-up.</p><form id="pg-form" novalidate>
+<div class="pg-form-row"><div class="pg-form-group"><label for="pg-fn">First Name</label><input type="text" id="pg-fn" name="firstName" required></div><div class="pg-form-group"><label for="pg-ln">Last Name</label><input type="text" id="pg-ln" name="lastName" required></div></div>
+<div class="pg-form-row"><div class="pg-form-group"><label for="pg-email">Email</label><input type="email" id="pg-email" name="email" required></div><div class="pg-form-group"><label for="pg-phone">Phone</label><input type="tel" id="pg-phone" name="phone" required></div></div>
+<div class="pg-form-row"><div class="pg-form-group"><label for="pg-company">Company</label><input type="text" id="pg-company" name="company" required></div><div class="pg-form-group"><label for="pg-role">Role</label><select id="pg-role" name="role" required><option value="">Select your role</option><option>Owner / Principal</option><option>Partner</option><option>Marketing Director</option><option>Project Manager</option><option>Sales / Business Development</option><option>Operations Manager</option><option>Design Director</option><option>Other</option></select></div></div>
+<div class="pg-form-row"><div class="pg-form-group"><label for="pg-projval">Typical Project Value</label><select id="pg-projval" name="projectValue" required><option value="">Select range</option><option>Under $500k</option><option>$500k – $1M</option><option>$1M – $2M</option><option>$2M – $4M</option><option>$4M – $6M</option><option>Over $6M</option></select></div><div class="pg-form-group"><label for="pg-budget">Content &amp; Documentation Budget</label><select id="pg-budget" name="contentBudget" required><option value="">Select range</option><option>Under $5k</option><option>$5k – $10k</option><option>$10k – $20k</option><option>$20k – $50k</option><option>Over $50k</option><option>No budget set yet</option></select></div></div>
+<div class="pg-form-row"><div class="pg-form-group"><label for="pg-projects">Projects to Document in 12 Months</label><select id="pg-projects" name="projectsPerYear" required><option value="">Select</option><option>1 project</option><option>2 – 3 projects</option><option>4 – 6 projects</option><option>7+</option><option>Ongoing / continuous</option></select></div><div class="pg-form-group"><label for="pg-timeline">Timeline for Next Shoot</label><select id="pg-timeline" name="timeline" required><option value="">Select</option><option>1 – 3 months</option><option>3 – 6 months</option><option>6 – 12 months</option><option>12+ months / researching</option></select></div></div>
+<div class="pg-form-row"><div class="pg-form-group"><label for="pg-location">Primary Location Focus</label><select id="pg-location" name="locationFocus" required><option value="">Select region</option><option>Sea to Sky</option><option>Sunshine Coast</option><option>Vancouver</option><option>Fraser Valley</option><option>Okanagan</option><option>Other</option></select></div><div class="pg-form-group"><label for="pg-ongoing">Ongoing Content Potential</label><select id="pg-ongoing" name="ongoingPotential" required><option value="">Select</option><option>Yes — 3+ projects per year</option><option>Possibly — 1 to 2 projects</option><option>Not sure yet</option></select></div></div>
+<div class="pg-form-group"><label for="pg-source">How Did You Hear About My Work?</label><select id="pg-source" name="referralSource" required><option value="">Select</option><option>Google search</option><option>Instagram</option><option>LinkedIn</option><option>Referral</option><option>Houzz</option><option>Industry event</option><option>Saw my work on a project</option><option>Other</option></select></div>
+<div class="pg-submit-wrap"><button type="submit" class="pg-submit" disabled>Send Me the Guide</button></div>
+</form></div></div>
+
+<div class="pg-redirect" id="pg-redirect"><h2>Preparing your guide...</h2><div class="pg-redirect-steps"><div class="pg-redirect-step"><div class="pg-redirect-dot" id="pg-dot-1"></div><span>Received</span></div><div class="pg-redirect-step"><div class="pg-redirect-dot" id="pg-dot-2"></div><span>Processing</span></div><div class="pg-redirect-step"><div class="pg-redirect-dot" id="pg-dot-3"></div><span>Sending</span></div></div></div>
+
+<div class="pg-trust"><div class="pg-trust-inner"><p class="pg-trust-quote">"Matt's photography helped us win two Georgie Awards. The images captured exactly what we were going for with the design."</p><p class="pg-trust-attr">Balmoral Construction</p></div></div>
+
+<div class="pg-cta"><div class="pg-cta-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/5be7e36c-d920-4d5d-9260-da4df4c50415/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-16.jpg" alt="Tranquil Retreat Sunshine Coast interior photography" loading="lazy"></div><div class="pg-cta-c"><h2>Already know what you need?<br>Let's <em>talk scope</em>.</h2><p>Skip the guide and book a discovery call to discuss your next project directly.</p><a href="/discovery-call" class="pg-btn">Book a Discovery Call</a></div></div>
+
+<div class="pg-ft"><div class="pg-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+<div class="pg-ft-r"><div class="pg-ft-i"><span class="pg-ft-l">Based In</span><span class="pg-ft-dt"></span><p>Squamish, British Columbia</p></div><div class="pg-ft-i"><span class="pg-ft-l">Email</span><span class="pg-ft-dt"></span><a class="pg-ft-email" id="pg-ft-em"></a></div><div class="pg-ft-i"><span class="pg-ft-l">Phone</span><span class="pg-ft-dt"></span><a href="tel:6047659270">604.765.9270</a></div><div class="pg-ft-i"><span class="pg-ft-l">Follow</span><span class="pg-ft-dt"></span><div class="pg-ft-s"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div></div><div class="pg-ft-rl"></div><div class="pg-ft-b"><span class="pg-ft-cp">Matt Anthony Photography</span><div class="pg-ft-n"><a href="/bio">About</a><a href="/projects">Projects</a><a href="/contact">Contact</a></div></div></div>
+</div>
+<script>
+(function(){
+var isMobile='ontouchstart' in window;
+
+/* ═══ EMAIL OBFUSCATION ═══ */
+var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];var e=document.getElementById('pg-ft-em');if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}
+
+/* ═══ LOADING SCREEN ═══ */
+var loader=document.getElementById('pgLoader');
+window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('pg-done');},1100);});
+
+/* ═══ SCROLL PROGRESS ═══ */
+var progressBar=document.getElementById('pgProgress');
+function updateProgress(){var sc=window.scrollY;var d=document.documentElement.scrollHeight-window.innerHeight;if(d>0)progressBar.style.width=(sc/d*100)+'%';}
+
+/* ═══ CUSTOM CURSOR ═══ */
+var cursor=document.getElementById('pgCursor');var cursorDot=document.getElementById('pgCursorDot');var cx=0,cy=0,dx=0,dy=0;
+if(!isMobile&&cursor){
+  document.addEventListener('mousemove',function(ev){dx=ev.clientX;dy=ev.clientY;cursorDot.style.left=dx+'px';cursorDot.style.top=dy+'px';if(!cursor.classList.contains('pg-active')){cursor.classList.add('pg-active');cursorDot.classList.add('pg-active');}});
+  function tickCursor(){cx+=(dx-cx)*0.12;cy+=(dy-cy)*0.12;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(tickCursor);}tickCursor();
+  var hoverEls=document.querySelectorAll('a, button, .pg-icp-card, .pg-btn, .pg-submit');
+  hoverEls.forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('pg-hover');});el.addEventListener('mouseleave',function(){cursor.classList.remove('pg-hover');});});
+  document.addEventListener('mousedown',function(){cursor.classList.add('pg-click');});
+  document.addEventListener('mouseup',function(){cursor.classList.remove('pg-click');});
+}
+
+/* ═══ COMBINED SCROLL HANDLER ═══ */
+var ticking=false;
+window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){updateProgress();ticking=false;});ticking=true;}},{passive:true});
+updateProgress();
+
+var selectedIcp='';
+var cards=document.querySelectorAll('.pg-icp-card');
+var formSection=document.getElementById('pg-form-section');
+var submitBtn=document.querySelector('.pg-submit');
+cards.forEach(function(card){card.addEventListener('click',function(){cards.forEach(function(c){c.classList.remove('selected')});card.classList.add('selected');selectedIcp=card.getAttribute('data-icp');formSection.classList.add('visible');submitBtn.disabled=false;formSection.scrollIntoView({behavior:'smooth',block:'start'})})});
+var form=document.getElementById('pg-form');
+form.addEventListener('submit',function(ev){
+ev.preventDefault();
+if(!selectedIcp){alert('Please select your firm type above.');return;}
+var fields=form.querySelectorAll('[required]');var valid=true;
+fields.forEach(function(f){if(!f.value||!f.value.trim()){valid=false;f.style.borderColor='#c47a5a';f.style.boxShadow='0 0 0 2px rgba(196,122,90,0.15)'}else{f.style.borderColor='#d9d5cd';f.style.boxShadow='none'}});
+if(!valid){var firstInvalid=form.querySelector('[required]:invalid')||form.querySelector('[style*="c47a5a"]');if(firstInvalid)firstInvalid.scrollIntoView({behavior:'smooth',block:'center'});return;}
+var emailF=document.getElementById('pg-email');if(emailF.value&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailF.value)){valid=false;emailF.style.borderColor='#c47a5a'}
+if(!valid)return;
+var u=new URL(window.location.href);
+var payload={firstName:document.getElementById('pg-fn').value,lastName:document.getElementById('pg-ln').value,email:document.getElementById('pg-email').value,phone:document.getElementById('pg-phone').value,company:document.getElementById('pg-company').value,role:document.getElementById('pg-role').value,projectValue:document.getElementById('pg-projval').value,contentBudget:document.getElementById('pg-budget').value,projectsPerYear:document.getElementById('pg-projects').value,timeline:document.getElementById('pg-timeline').value,locationFocus:document.getElementById('pg-location').value,ongoingPotential:document.getElementById('pg-ongoing').value,referralSource:document.getElementById('pg-source').value,icpType:selectedIcp,formType:'pricing-guide',submittedDate:new Date().toISOString(),utm_source:u.searchParams.get('utm_source')||'',utm_medium:u.searchParams.get('utm_medium')||'',utm_campaign:u.searchParams.get('utm_campaign')||''};
+formSection.style.display='none';
+var redirect=document.getElementById('pg-redirect');redirect.classList.add('visible');
+setTimeout(function(){document.getElementById('pg-dot-1').classList.add('done')},600);
+setTimeout(function(){document.getElementById('pg-dot-2').classList.add('done')},1400);
+setTimeout(function(){document.getElementById('pg-dot-3').classList.add('done')},2200);
+fetch('https://n8n.srv1277163.hstgr.cloud/webhook/pricing-guide',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(){});
+setTimeout(function(){window.location.href='/pricing-guide-thank-you'},3000);
+});
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Visual Services Pricing Guide",
+  "description": "Free pricing guide for architectural photography, video, and creative services including project documentation, award submissions, brand content, and creative retainers.",
+  "url": "https://www.mattanthonyphoto.com/pricing-guide-landing",
+  "provider": {
+    "@id": "https://www.mattanthonyphoto.com/#business"
+  }
+}
+</script>
+<meta name="description" content="Free pricing guide for architectural photography, video, and creative services. Investment ranges, service inclusions, and Creative Partner retainer details for architects, builders, and designers in BC.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/pricing-guide-landing">
+<meta property="og:title" content="Visual Services Pricing Guide | Matt Anthony Photography">
+<meta property="og:description" content="A transparent breakdown of photography, video, and creative services — plan your investment before we ever get on a call.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/pricing-guide-landing">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83bbba67-7393-4e34-8b4b-bac1600c8110/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-12.jpg?format=1500w">

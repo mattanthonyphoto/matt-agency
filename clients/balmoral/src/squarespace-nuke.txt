@@ -1,0 +1,95 @@
+/* SQUARESPACE CSS NUKE — Paste into Design > Custom CSS */
+/* Strips all default Squarespace styling so your injected code blocks render clean */
+
+/* ── HIDE SQUARESPACE HEADER & FOOTER ── */
+#header, .header, .Header, .header-nav, .Header-nav,
+#footer, .footer, .Footer,
+.sqs-announcement-bar, .sqs-cookie-banner { display: none !important; }
+
+/* ── RESET SITE WRAPPER ── */
+body { margin: 0 !important; padding: 0 !important; background: #fff !important; }
+#siteWrapper, .Site, .Site-inner, #page, .Index, .Main, .Main-content {
+  margin: 0 !important; padding: 0 !important; max-width: 100% !important; width: 100% !important;
+}
+
+/* ── KILL PAGE SECTION PADDING & MARGINS ── */
+.page-section, .content-wrapper, .sqs-layout, .sqs-row, .sqs-col,
+.section-background, .content, .page-section .content-wrapper {
+  margin: 0 !important; padding: 0 !important; max-width: 100% !important; width: 100% !important;
+}
+
+/* ── STRIP SECTION BACKGROUNDS & BORDERS ── */
+.page-section { background: none !important; border: none !important; }
+.section-background { display: none !important; }
+
+/* ── RESET CODE BLOCKS ── */
+.sqs-block-code, .sqs-block-code .sqs-block-content {
+  margin: 0 !important; padding: 0 !important; max-width: 100% !important; width: 100% !important;
+  overflow: visible !important;
+}
+
+/* ── KILL SQUARESPACE TYPOGRAPHY OVERRIDES ── */
+.sqs-block-code h1, .sqs-block-code h2, .sqs-block-code h3,
+.sqs-block-code h4, .sqs-block-code h5, .sqs-block-code h6,
+.sqs-block-code p, .sqs-block-code a, .sqs-block-code span,
+.sqs-block-code li, .sqs-block-code blockquote {
+  font-family: inherit !important; font-size: inherit !important;
+  font-weight: inherit !important; line-height: inherit !important;
+  letter-spacing: inherit !important; color: inherit !important;
+  text-transform: inherit !important; margin: inherit !important;
+  padding: inherit !important;
+}
+
+/* ── KILL IMAGE OVERRIDES ── */
+.sqs-block-code img {
+  max-width: 100% !important; height: auto !important;
+  margin: 0 !important; padding: 0 !important;
+}
+
+/* ── KILL LINK STYLING ── */
+.sqs-block-code a { color: inherit !important; text-decoration: inherit !important; }
+
+/* ── REMOVE MOBILE NAV OVERLAY ── */
+.Mobile-overlay, .Mobile-overlay-nav { display: none !important; }
+
+/* ── REMOVE PAGE TITLE BARS ── */
+.page-title-wrapper, .page-description-wrapper,
+.collection-title-wrapper { display: none !important; }
+
+/* ── REMOVE BLOG DEFAULTS ── */
+.blog-item-wrapper, .blog-item-top-wrapper, .blog-meta-section {
+  margin: 0 !important; padding: 0 !important; max-width: 100% !important;
+}
+
+/* ── REMOVE SQUARESPACE BADGES & BRANDING ── */
+.sqs-popup-overlay, .sqs-cookie-banner-v2,
+[data-squarespace-customization] { display: none !important; }
+
+/* ── KILL SECTION SPACING & GAP ── */
+.page-section .section-border { display: none !important; }
+.page-section + .page-section { margin-top: 0 !important; }
+.sqs-block { padding: 0 !important; margin: 0 !important; }
+.sqs-block + .sqs-block { margin-top: 0 !important; }
+.sqs-block-content { padding: 0 !important; margin: 0 !important; }
+.fluid-engine { padding: 0 !important; margin: 0 !important; gap: 0 !important; }
+.fe-block { padding: 0 !important; margin: 0 !important; }
+
+/* ── KILL TOP/BOTTOM PAGE PADDING ── */
+.page-section:first-child { padding-top: 0 !important; }
+.page-section:last-child { padding-bottom: 0 !important; }
+article.page, article.Page { padding: 0 !important; margin: 0 !important; }
+.Index-page-content { padding: 0 !important; margin: 0 !important; }
+
+/* ── SQUARESPACE 7.1 SPECIFIC ── */
+[data-section-id] { padding: 0 !important; margin: 0 !important; }
+[data-section-id] .section-background { display: none !important; }
+.page-section--height-custom { min-height: 0 !important; height: auto !important; }
+.content-fill { padding: 0 !important; }
+
+/* ── KILL EMPTY SPACER BLOCKS ── */
+.sqs-block-spacer { display: none !important; }
+.sqs-block-horizontalrule { display: none !important; }
+
+/* ── FIX SCROLL BEHAVIOR ── */
+html { scroll-behavior: smooth; }
+body.sqs-modal-lightbox-open { overflow: auto !important; }

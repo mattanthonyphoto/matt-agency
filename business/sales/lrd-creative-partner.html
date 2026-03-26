@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Partner — LRD Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A18;
+    --paper: #F6F4F0;
+    --gold: #C9A96E;
+    --gold-dim: rgba(201,169,110,0.12);
+    --gold-border: rgba(201,169,110,0.25);
+    --gold-glow: rgba(201,169,110,0.06);
+    --stone: #8A8579;
+    --white: #FFFFFF;
+    --light: #FAFAF8;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; -webkit-print-color-adjust:exact; print-color-adjust:exact; scroll-behavior:smooth; }
+  body { background:var(--white); color:var(--ink); font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.75; overflow-x:hidden; }
+
+
+  /* ═══════════════════════════════════════
+     COVER — FULL BLEED CINEMATIC
+     ═══════════════════════════════════════ */
+  .cover {
+    min-height:100vh; background:var(--ink); color:var(--paper);
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding:0 0 0 0; position:relative; page-break-after:always; overflow:hidden;
+  }
+  .cover-image {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    background-image:url("https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/312b0797-a43a-4a51-906e-f913c78c7b79/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-3.jpg");
+    background-size:cover; background-position:center 25%;
+  }
+  .cover-image::after {
+    content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+    background:linear-gradient(
+      to bottom,
+      rgba(26,26,24,0.45) 0%,
+      rgba(26,26,24,0.35) 30%,
+      rgba(26,26,24,0.6) 55%,
+      rgba(26,26,24,0.94) 80%,
+      rgba(26,26,24,0.99) 100%
+    );
+  }
+  .cover-top {
+    position:absolute; top:0; left:0; right:0; z-index:3;
+    padding:40px 60px; display:flex; justify-content:space-between; align-items:center;
+  }
+  .cover-logo {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:rgba(246,244,240,0.6);
+  }
+  .cover-date {
+    font-family:'Josefin Sans',sans-serif; font-size:0.65rem;
+    letter-spacing:0.2em; color:rgba(246,244,240,0.4);
+  }
+  .cover-content {
+    position:relative; z-index:2; padding:0 60px 80px;
+    max-width:720px;
+  }
+  .cover-eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.4em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:20px; display:flex; align-items:center; gap:16px;
+  }
+  .cover-eyebrow::before {
+    content:''; width:32px; height:1px; background:var(--gold);
+  }
+  .cover h1 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:clamp(3rem,6vw,5rem); line-height:1.05; margin-bottom:20px;
+    letter-spacing:-0.01em;
+  }
+  .cover h1 em {
+    font-style:italic; font-weight:500; color:var(--gold);
+  }
+  .cover-sub {
+    font-size:1rem; color:rgba(246,244,240,0.75); max-width:480px;
+    line-height:1.8; margin-bottom:56px;
+  }
+  .cover-meta-bar {
+    display:flex; gap:48px; padding-top:32px;
+    border-top:1px solid rgba(201,169,110,0.15);
+  }
+  .cover-meta-item {
+    font-size:0.75rem; color:rgba(246,244,240,0.35); line-height:1.8;
+  }
+  .cover-meta-item strong {
+    display:block; color:rgba(246,244,240,0.7); font-weight:400;
+    font-family:'Josefin Sans',sans-serif; font-size:0.6rem;
+    letter-spacing:0.15em; text-transform:uppercase; margin-bottom:2px;
+  }
+
+  /* ═══════════════════════════════════════
+     PHOTO MOSAIC
+     ═══════════════════════════════════════ */
+  .mosaic {
+    display:grid; grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-template-rows:200px 200px; gap:3px; background:var(--ink);
+  }
+  .mosaic img {
+    width:100%; height:100%; object-fit:cover; display:block;
+    filter:brightness(0.92); transition:filter 0.5s ease;
+  }
+  .mosaic img:hover { filter:brightness(1.05); }
+  .mosaic img:nth-child(1) { grid-column:1/3; grid-row:1/3; }
+  .mosaic img:nth-child(2) { grid-column:3/4; grid-row:1/2; }
+  .mosaic img:nth-child(3) { grid-column:4/5; grid-row:1/2; }
+  .mosaic img:nth-child(4) { grid-column:3/5; grid-row:2/3; }
+  .mosaic-caption {
+    background:var(--ink); padding:20px 60px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.3em; text-transform:uppercase;
+    color:rgba(246,244,240,0.3); text-align:center;
+  }
+
+  /* ═══════════════════════════════════════
+     LAYOUT
+     ═══════════════════════════════════════ */
+  .section { padding:120px 60px; max-width:1000px; margin:0 auto; }
+  .section.wide { max-width:1200px; }
+  .section.full { max-width:100%; }
+  .section.dark { background:var(--ink); color:var(--paper); }
+  .section.cream { background:var(--paper); }
+  .section.light { background:var(--light); }
+
+  .eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; display:flex; align-items:center; gap:14px;
+  }
+  .eyebrow::before { content:''; width:24px; height:1px; background:var(--gold); }
+
+  h2 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:2.6rem; line-height:1.12; margin-bottom:32px;
+    letter-spacing:-0.01em;
+  }
+  h2 em { font-style:italic; font-weight:500; }
+  h3 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.75rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
+    margin:56px 0 20px;
+  }
+  p { margin-bottom:20px; font-size:0.95rem; }
+  .lead { font-size:1.05rem; line-height:1.9; color:var(--stone); }
+
+  .divider {
+    width:1px; height:80px; background:var(--gold-dim);
+    margin:0 auto; border:none; display:block;
+  }
+  .spacer { height:80px; }
+
+  /* ═══════════════════════════════════════
+     STATS
+     ═══════════════════════════════════════ */
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .stat { background:var(--white); text-align:center; padding:36px 16px; }
+  .section.cream .stat { background:var(--paper); }
+  .stat-val {
+    font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:500;
+    color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+  }
+  .stat-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--stone);
+  }
+
+  /* ═══════════════════════════════════════
+     SERVICES GRID
+     ═══════════════════════════════════════ */
+  .services { display:grid; grid-template-columns:1fr 1fr; gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .svc {
+    background:var(--white); padding:40px 36px; position:relative;
+  }
+  .svc.new { background:var(--light); }
+  .svc-badge {
+    position:absolute; top:20px; right:20px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--gold-border); padding:4px 12px;
+  }
+  .svc h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.7rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:20px;
+  }
+  .svc ul { list-style:none; }
+  .svc li {
+    font-size:0.85rem; padding:8px 0 8px 24px; position:relative;
+    color:var(--stone); border-bottom:1px solid rgba(26,26,24,0.04);
+  }
+  .svc li:last-child { border:none; }
+  .svc li::before {
+    content:''; position:absolute; left:0; top:16px;
+    width:8px; height:1px; background:var(--gold);
+  }
+
+  /* ═══════════════════════════════════════
+     PRICING TIERS
+     ═══════════════════════════════════════ */
+  .tiers {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+    margin:56px 0; position:relative;
+  }
+  .tier {
+    padding:48px 32px 40px; border:1px solid rgba(26,26,24,0.06);
+    background:var(--white); position:relative;
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .tier:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,0.08); z-index:1; }
+  .tier + .tier { border-left:none; }
+  .tier.rec {
+    background:var(--ink); color:var(--paper); border-color:var(--gold);
+    transform:scaleY(1.02); z-index:2;
+    box-shadow:0 12px 48px rgba(0,0,0,0.15);
+  }
+  .tier.rec:hover { transform:scaleY(1.02) translateY(-6px); box-shadow:0 24px 64px rgba(0,0,0,0.22); }
+  .tier-badge {
+    position:absolute; top:-1px; left:0; right:0;
+    height:3px; background:var(--gold);
+  }
+  .tier-badge span {
+    position:absolute; top:8px; left:50%; transform:translateX(-50%);
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--gold); white-space:nowrap;
+  }
+  .tier-name {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--gold);
+    margin:24px 0 12px;
+  }
+  .tier-price {
+    font-family:'Cormorant Garamond',serif; font-size:3.2rem;
+    font-weight:400; line-height:1; margin-bottom:6px;
+  }
+  .tier:not(.rec) .tier-price { color:var(--ink); }
+  .tier.rec .tier-price { color:var(--paper); }
+  .tier-price span { font-size:1rem; color:var(--stone); font-family:'DM Sans',sans-serif; font-weight:300; }
+  .tier-term {
+    font-size:0.75rem; color:var(--stone); margin-bottom:32px;
+    padding-bottom:24px; border-bottom:1px solid var(--gold-dim);
+  }
+  .tier.rec .tier-term { border-color:rgba(201,169,110,0.2); }
+  .tier ul { list-style:none; }
+  .tier li {
+    font-size:0.8rem; padding:7px 0 7px 22px; position:relative;
+    border-bottom:1px solid rgba(26,26,24,0.03);
+  }
+  .tier.rec li { color:rgba(246,244,240,0.75); border-color:rgba(246,244,240,0.05); }
+  .tier li:last-child { border:none; }
+  .tier li::before {
+    content:''; position:absolute; left:0; top:14px;
+    width:8px; height:1px; background:var(--gold);
+  }
+  .tier li.off { opacity:0.25; }
+  .tier li.off::before { background:var(--stone); }
+  .tier-bottom {
+    margin-top:28px; padding-top:20px; border-top:1px solid var(--gold-dim);
+    font-size:0.7rem; color:var(--stone);
+  }
+  .tier.rec .tier-bottom { border-color:rgba(201,169,110,0.2); }
+  .tier-bottom strong { color:var(--gold); font-weight:500; font-size:0.85rem; }
+
+  /* ═══════════════════════════════════════
+     COMPARISON CALLOUT
+     ═══════════════════════════════════════ */
+  .insight {
+    background:var(--light); padding:48px 56px; margin:56px 0;
+    position:relative;
+  }
+  .insight::before {
+    content:''; position:absolute; top:0; left:0; bottom:0;
+    width:3px; background:var(--gold);
+  }
+  .insight h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;
+  }
+  .insight p { font-size:0.9rem; margin-bottom:10px; }
+  .insight p:last-child { margin-bottom:0; }
+  .insight .tier-breakdown {
+    margin-top:20px; display:flex; flex-direction:column; gap:8px;
+  }
+  .insight .tb {
+    display:flex; align-items:baseline; gap:12px; font-size:0.88rem;
+  }
+  .insight .tb-label {
+    font-weight:500; color:var(--gold); min-width:160px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.7rem;
+    letter-spacing:0.1em; text-transform:uppercase;
+  }
+  .insight .tb-desc { color:var(--stone); }
+
+  /* ═══════════════════════════════════════
+     ROADMAP
+     ═══════════════════════════════════════ */
+  .roadmap { margin:56px 0; }
+  .rm {
+    display:grid; grid-template-columns:200px 1fr; gap:0;
+    border-bottom:1px solid rgba(26,26,24,0.06); min-height:0;
+  }
+  .rm:last-child { border:none; }
+  .rm-left {
+    padding:40px 32px 40px 0; border-right:2px solid var(--gold-dim);
+    position:relative;
+  }
+  .rm-left::after {
+    content:''; position:absolute; right:-5px; top:48px;
+    width:8px; height:8px; border-radius:50%; background:var(--gold);
+  }
+  .rm-month {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:4px;
+  }
+  .rm-label {
+    font-family:'Cormorant Garamond',serif; font-size:1.3rem;
+    font-weight:400; font-style:italic; color:var(--ink); line-height:1.3;
+  }
+  .rm-right { padding:40px 0 40px 40px; }
+  .rm-right ul { list-style:none; }
+  .rm-right li {
+    font-size:0.85rem; padding:6px 0 6px 24px; position:relative; color:var(--stone);
+  }
+  .rm-right li::before {
+    content:''; position:absolute; left:0; top:14px;
+    width:8px; height:1px; background:var(--gold);
+  }
+
+  /* ═══════════════════════════════════════
+     TIMELINE (12-month)
+     ═══════════════════════════════════════ */
+  .tl { margin:56px 0; }
+  .tl-item {
+    display:grid; grid-template-columns:160px 1fr;
+    gap:0; padding:32px 0; border-bottom:1px solid rgba(26,26,24,0.06);
+  }
+  .tl-item:last-child { border:none; }
+  .tl-q {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); padding-top:4px;
+  }
+  .tl-content h4 {
+    font-family:'Cormorant Garamond',serif; font-weight:500;
+    font-size:1.4rem; margin-bottom:8px; font-style:italic;
+  }
+  .tl-content p { font-size:0.85rem; color:var(--stone); margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     BY THE NUMBERS
+     ═══════════════════════════════════════ */
+  .numbers {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    margin:56px 0; background:var(--gold-dim);
+  }
+  .num {
+    background:var(--ink); text-align:center; padding:48px 24px;
+  }
+  .num-val {
+    font-family:'Cormorant Garamond',serif; font-size:3.5rem;
+    font-weight:500; color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+  }
+  .num-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:rgba(246,244,240,0.4);
+  }
+
+  /* ═══════════════════════════════════════
+     NEXT STEPS
+     ═══════════════════════════════════════ */
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .step {
+    background:var(--white); padding:40px 32px;
+  }
+  .step-num {
+    font-family:'Cormorant Garamond',serif; font-size:3rem;
+    font-weight:400; color:var(--gold); line-height:1; margin-bottom:16px;
+    display:block;
+  }
+  .step h4 {
+    font-family:'DM Sans',sans-serif; font-weight:500; font-size:0.95rem; margin-bottom:10px;
+  }
+  .step p { font-size:0.82rem; color:var(--stone); margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     ADDON
+     ═══════════════════════════════════════ */
+  .addons { max-width:560px; margin:40px 0; }
+  .addon {
+    display:flex; justify-content:space-between; padding:16px 0;
+    border-bottom:1px solid rgba(246,244,240,0.06); font-size:0.88rem;
+    color:rgba(246,244,240,0.5);
+  }
+  .addon span:last-child { color:var(--gold); font-weight:400; }
+
+  /* ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ */
+  .footer {
+    background:var(--ink); padding:80px 60px; text-align:center;
+    border-top:1px solid rgba(201,169,110,0.1);
+  }
+  .footer-mark {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.7rem;
+    letter-spacing:0.4em; text-transform:uppercase; color:var(--paper); margin-bottom:20px;
+  }
+  .footer-info {
+    font-size:0.8rem; color:var(--stone); line-height:2.2;
+  }
+  .footer-info a { color:var(--gold); text-decoration:none; }
+  .footer-note {
+    margin-top:40px; font-size:0.6rem; letter-spacing:0.15em;
+    text-transform:uppercase; font-family:'Josefin Sans',sans-serif;
+    color:rgba(246,244,240,0.15);
+  }
+
+  /* ═══════════════════════════════════════
+     SCROLL PROGRESS BAR
+     ═══════════════════════════════════════ */
+  .scroll-progress {
+    position:fixed; top:0; left:0; height:2px; width:0%;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.4));
+    z-index:9999; transition:width 0.05s linear;
+    box-shadow:0 0 8px rgba(201,169,110,0.3);
+  }
+
+  /* ═══════════════════════════════════════
+     SCROLL REVEAL ANIMATIONS
+     ═══════════════════════════════════════ */
+  .reveal {
+    opacity:0; transform:translateY(32px);
+    transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible {
+    opacity:1; transform:translateY(0);
+  }
+  .reveal-delay-1 { transition-delay:0.1s; }
+  .reveal-delay-2 { transition-delay:0.2s; }
+  .reveal-delay-3 { transition-delay:0.3s; }
+  .reveal-delay-4 { transition-delay:0.4s; }
+  .reveal-delay-5 { transition-delay:0.5s; }
+
+  /* ═══════════════════════════════════════
+     COVER CASCADE
+     ═══════════════════════════════════════ */
+  .cover .cover-eyebrow,
+  .cover h1,
+  .cover .cover-sub,
+  .cover .cover-meta-bar {
+    opacity:0; transform:translateY(24px);
+    animation:coverFade 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover .cover-eyebrow { animation-delay:0.3s; }
+  .cover h1 { animation-delay:0.6s; }
+  .cover .cover-sub { animation-delay:0.9s; }
+  .cover .cover-meta-bar { animation-delay:1.2s; }
+  @keyframes coverFade {
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  /* ═══════════════════════════════════════
+     COVER PARALLAX
+     ═══════════════════════════════════════ */
+  .cover-image {
+    will-change:transform;
+    transition:transform 0.1s linear;
+  }
+
+  /* ═══════════════════════════════════════
+     FILM GRAIN OVERLAY
+     ═══════════════════════════════════════ */
+  .grain-section::after {
+    content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size:128px 128px;
+    pointer-events:none; z-index:0; opacity:0.5;
+  }
+  .grain-section { position:relative; }
+  .grain-section > * { position:relative; z-index:1; }
+
+  /* ═══════════════════════════════════════
+     ROADMAP LINE DRAW
+     ═══════════════════════════════════════ */
+  .roadmap { position:relative; }
+  .roadmap-line {
+    position:absolute; left:200px; top:48px; width:2px;
+    height:0; background:var(--gold);
+    transition:height 0.05s linear; z-index:1;
+    box-shadow:0 0 6px rgba(201,169,110,0.3);
+  }
+  .roadmap-line::after {
+    content:''; position:absolute; bottom:-4px; left:-3px;
+    width:8px; height:8px; border-radius:50%;
+    background:var(--gold); box-shadow:0 0 12px rgba(201,169,110,0.5);
+  }
+
+  /* ═══════════════════════════════════════
+     ENHANCED TIER INTERACTIONS
+     ═══════════════════════════════════════ */
+  .tier {
+    transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .tier:hover {
+    box-shadow:0 20px 60px rgba(0,0,0,0.08), 0 0 0 1px var(--gold-border);
+  }
+  .tier.rec:hover {
+    box-shadow:0 24px 64px rgba(0,0,0,0.22), 0 0 40px rgba(201,169,110,0.08);
+  }
+
+  /* ═══════════════════════════════════════
+     MOSAIC ENHANCED
+     ═══════════════════════════════════════ */
+  .mosaic img {
+    transition:filter 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+  }
+  .mosaic img:hover {
+    filter:brightness(1.05); transform:scale(1.015);
+  }
+
+  /* ═══════════════════════════════════════
+     PHOTO BREAK — PARALLAX BANNERS
+     ═══════════════════════════════════════ */
+  .photo-break {
+    width:100%; height:45vh; min-height:320px; max-height:480px;
+    position:relative; overflow:hidden;
+  }
+  .photo-break img {
+    width:100%; height:120%; object-fit:cover; display:block;
+    position:absolute; top:-10%; left:0;
+    filter:brightness(0.85);
+    transition:filter 0.8s cubic-bezier(0.16,1,0.3,1);
+    will-change:transform;
+  }
+  .photo-break:hover img { filter:brightness(0.95); }
+  .photo-break::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:80px;
+    background:linear-gradient(rgba(26,26,24,0.15), transparent);
+    z-index:1; pointer-events:none;
+  }
+  .photo-break::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:120px;
+    background:linear-gradient(transparent, rgba(26,26,24,0.6));
+    z-index:1; pointer-events:none;
+  }
+  .photo-break-caption {
+    position:absolute; bottom:0; left:0; right:0; z-index:2;
+    padding:24px 60px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.3em; text-transform:uppercase;
+    color:rgba(246,244,240,0.5);
+  }
+
+  /* ═══════════════════════════════════════
+     PHOTO BREAK — CURTAIN REVEAL
+     ═══════════════════════════════════════ */
+  .photo-break {
+    clip-path:inset(0 0 0 0);
+    transition:clip-path 1.2s cubic-bezier(0.16,1,0.3,1);
+  }
+  .photo-break.revealed {
+    clip-path:inset(0 0 0 0);
+  }
+
+  /* ═══════════════════════════════════════
+     PHOTO KEN BURNS
+     ═══════════════════════════════════════ */
+  .photo-break.in-view img {
+    animation:kenBurns 12s ease-in-out infinite alternate;
+  }
+  @keyframes kenBurns {
+    0% { transform:scale(1) translateY(0); }
+    100% { transform:scale(1.06) translateY(-8px); }
+  }
+
+  /* ═══════════════════════════════════════
+     HEADLINE GOLD UNDERLINE
+     ═══════════════════════════════════════ */
+  h2 em {
+    position:relative; display:inline;
+  }
+  h2 em::after {
+    content:''; position:absolute; bottom:2px; left:0;
+    width:0; height:1.5px;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.3));
+    transition:width 1s 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  h2.underlined em::after {
+    width:100%;
+  }
+
+  /* ═══════════════════════════════════════
+     COVER SCROLL INDICATOR
+     ═══════════════════════════════════════ */
+  .scroll-indicator {
+    position:absolute; bottom:40px; left:50%;
+    transform:translateX(-50%); display:flex; flex-direction:column;
+    align-items:center; gap:8px;
+    opacity:0; animation:coverFade 0.9s 1.8s cubic-bezier(0.16,1,0.3,1) forwards;
+    transition:opacity 0.4s ease;
+  }
+  .scroll-indicator.hidden { opacity:0 !important; }
+  .scroll-indicator-text {
+    font-family:'Josefin Sans',sans-serif; font-size:0.45rem;
+    letter-spacing:0.3em; text-transform:uppercase;
+    color:rgba(246,244,240,0.3);
+  }
+  .scroll-indicator-line {
+    width:1px; height:32px; position:relative; overflow:hidden;
+    background:rgba(246,244,240,0.1);
+  }
+  .scroll-indicator-line::after {
+    content:''; position:absolute; top:-100%; left:0;
+    width:100%; height:100%; background:var(--gold);
+    animation:scrollPulse 2s cubic-bezier(0.16,1,0.3,1) infinite;
+  }
+  @keyframes scrollPulse {
+    0% { top:-100%; }
+    50% { top:100%; }
+    100% { top:100%; }
+  }
+
+  /* ═══════════════════════════════════════
+     TIER 3D TILT
+     ═══════════════════════════════════════ */
+  .tier {
+    transform-style:preserve-3d;
+    perspective:800px;
+  }
+
+  /* ═══════════════════════════════════════
+     STAT COUNTER ANIMATION
+     ═══════════════════════════════════════ */
+  .stat-val, .num-val {
+    transition:opacity 0.4s ease;
+  }
+
+  /* ═══════════════════════════════════════
+     LOADING SCREEN — REFINED
+     ═══════════════════════════════════════ */
+  .loader {
+    position:fixed; top:0; left:0; right:0; bottom:0;
+    background:var(--ink); z-index:99999;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+  }
+  .loader.done {
+    opacity:0; visibility:hidden; pointer-events:none;
+  }
+  .loader-brand {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.6em; text-transform:uppercase; color:var(--paper);
+    opacity:0; animation:loaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-sub {
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.9rem;
+    color:var(--stone); margin-top:8px;
+    opacity:0; animation:loaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line {
+    width:80px; height:1px; background:var(--gold-dim); margin-top:24px;
+    position:relative; overflow:hidden; border-radius:1px;
+    opacity:0; animation:loaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line::after {
+    content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation:loaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+  }
+  @keyframes loaderIn { to { opacity:1; } }
+  @keyframes loaderFill { to { left:100%; } }
+
+  /* ═══════════════════════════════════════
+     GOLD ACCENT GLOW — PREMIUM DETAILS
+     ═══════════════════════════════════════ */
+  .stat-val, .num-val, .step-num {
+    text-shadow:0 0 40px rgba(201,169,110,0.15);
+  }
+  .tier.rec {
+    border-color:rgba(201,169,110,0.3);
+  }
+  .tier.rec::before {
+    content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+    background:linear-gradient(180deg, rgba(201,169,110,0.03) 0%, transparent 40%);
+    pointer-events:none;
+  }
+  .tier-badge {
+    background:linear-gradient(135deg, var(--gold), rgba(201,169,110,0.8));
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION DIVIDER — GOLD HAIRLINE
+     ═══════════════════════════════════════ */
+  .section + .photo-break,
+  .photo-break + .section {
+    border:none;
+  }
+  .section::after {
+    content:none;
+  }
+
+  /* ═══════════════════════════════════════
+     REFINED TYPOGRAPHY
+     ═══════════════════════════════════════ */
+  h2 {
+    text-wrap:balance;
+  }
+  .lead {
+    text-wrap:pretty;
+  }
+  .cover h1 {
+    text-shadow:0 2px 40px rgba(0,0,0,0.5), 0 4px 80px rgba(0,0,0,0.3);
+  }
+  .cover .cover-sub {
+    text-shadow:0 1px 20px rgba(0,0,0,0.4), 0 2px 40px rgba(0,0,0,0.2);
+  }
+
+  /* ═══════════════════════════════════════
+     INSIGHT BOX GLOW
+     ═══════════════════════════════════════ */
+  .insight {
+    border:1px solid rgba(201,169,110,0.08);
+    box-shadow:0 8px 32px rgba(0,0,0,0.03);
+  }
+  .insight::before {
+    box-shadow:4px 0 16px rgba(201,169,110,0.08);
+  }
+
+  /* ═══════════════════════════════════════
+     NUMBERS BAR GLOW
+     ═══════════════════════════════════════ */
+  .numbers .num-val {
+    text-shadow:0 0 60px rgba(201,169,110,0.25), 0 0 120px rgba(201,169,110,0.1);
+  }
+
+  /* ═══════════════════════════════════════
+     STEP CARDS HOVER
+     ═══════════════════════════════════════ */
+  .step {
+    transition:background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .step:hover {
+    background:var(--light);
+    box-shadow:0 4px 24px rgba(0,0,0,0.04);
+  }
+
+  /* ═══════════════════════════════════════
+     SERVICE CARDS — REFINED
+     ═══════════════════════════════════════ */
+  .svc-badge {
+    background:linear-gradient(135deg, rgba(201,169,110,0.08), transparent);
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION NAV DOTS
+     ═══════════════════════════════════════ */
+  .section-nav {
+    position:fixed; right:24px; top:50%; transform:translateY(-50%);
+    z-index:9998; display:flex; flex-direction:column; gap:12px;
+    opacity:0; transition:opacity 0.4s ease;
+  }
+  .section-nav.visible { opacity:1; }
+  .section-nav-dot {
+    width:8px; height:8px; border-radius:50%;
+    background:transparent; border:1px solid var(--stone);
+    cursor:pointer; transition:all 0.3s ease;
+    position:relative;
+  }
+  .section-nav-dot:hover {
+    border-color:var(--gold); transform:scale(1.3);
+  }
+  .section-nav-dot.active {
+    background:var(--gold); border-color:var(--gold);
+    box-shadow:0 0 8px rgba(201,169,110,0.4);
+  }
+  .section-nav-dot::before {
+    content:attr(data-label);
+    position:absolute; right:20px; top:50%; transform:translateY(-50%);
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--gold);
+    white-space:nowrap; opacity:0; pointer-events:none;
+    transition:opacity 0.3s ease, right 0.3s ease;
+  }
+  .section-nav-dot:hover::before {
+    opacity:1; right:24px;
+  }
+
+  /* ═══════════════════════════════════════
+     ANIMATED EYEBROW LINE
+     ═══════════════════════════════════════ */
+  .eyebrow::before {
+    width:0; transition:width 0.6s 0.2s cubic-bezier(0.16,1,0.3,1);
+  }
+  .eyebrow.visible::before {
+    width:24px;
+  }
+
+  /* ═══════════════════════════════════════
+     TIER SELECTION
+     ═══════════════════════════════════════ */
+  .tier { cursor:pointer; position:relative; }
+  .tier.selected:not(.rec) {
+    box-shadow:0 0 0 2px var(--gold), 0 20px 60px rgba(0,0,0,0.1);
+  }
+  .tier.rec.selected {
+    box-shadow:0 0 0 2px var(--gold), 0 24px 64px rgba(0,0,0,0.22), 0 0 40px rgba(201,169,110,0.12);
+  }
+  .tier-selected-badge {
+    position:absolute; top:12px; right:12px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.45rem;
+    letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--gold);
+    padding:3px 10px; border-radius:2px;
+    opacity:0; transform:translateY(-4px);
+    transition:opacity 0.3s ease, transform 0.3s ease;
+  }
+  .tier.selected .tier-selected-badge {
+    opacity:1; transform:translateY(0);
+  }
+
+  /* ═══════════════════════════════════════
+     SERVICE CARD HOVER
+     ═══════════════════════════════════════ */
+  .svc {
+    transition:all 0.3s cubic-bezier(0.16,1,0.3,1);
+    border-left:3px solid transparent;
+  }
+  .svc:hover {
+    border-left-color:var(--gold);
+    background:var(--light);
+  }
+  .svc.new:hover {
+    background:var(--white);
+  }
+
+  /* ═══════════════════════════════════════
+     COVER CTA BUTTON
+     ═══════════════════════════════════════ */
+  .cover-cta {
+    display:inline-flex; align-items:center; gap:10px;
+    margin-top:32px; padding:12px 28px;
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--paper); border:1px solid rgba(246,244,240,0.25);
+    text-decoration:none; cursor:pointer;
+    transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+    opacity:0; animation:coverFade 0.9s 1.5s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover-cta:hover {
+    border-color:var(--gold); color:var(--gold);
+    padding-right:36px;
+  }
+  .cover-cta-arrow {
+    display:inline-block; transition:transform 0.3s ease;
+    font-size:0.8rem;
+  }
+  .cover-cta:hover .cover-cta-arrow { transform:translateY(3px); }
+
+  @media print {
+    .cover { min-height:100vh; }
+    .section { padding:60px; }
+    .tier.rec { transform:none; box-shadow:none; }
+    .tier:hover { transform:none; box-shadow:none; }
+    .scroll-progress, .section-nav, .loader, .cover-cta, .scroll-indicator { display:none; }
+    .photo-break { height:200px; page-break-inside:avoid; clip-path:none !important; }
+    h2 em::after { width:100% !important; }
+    .reveal { opacity:1 !important; transform:none !important; }
+    .eyebrow::before { width:24px !important; }
+    .grain-section::after { display:none; }
+  }
+  @media (max-width:768px) {
+    .cover-content,.cover-top { padding-left:32px; padding-right:32px; }
+    .section { padding:80px 32px; }
+    .mosaic { grid-template-columns:1fr 1fr; grid-template-rows:200px 200px 200px; }
+    .mosaic img:nth-child(1) { grid-column:1/3; grid-row:1/2; }
+    .mosaic img:nth-child(2) { grid-column:1/2; grid-row:2/3; }
+    .mosaic img:nth-child(3) { grid-column:2/3; grid-row:2/3; }
+    .mosaic img:nth-child(4) { grid-column:1/3; grid-row:3/4; }
+    .stats,.services,.tiers,.steps,.numbers { grid-template-columns:1fr; }
+    .tier + .tier { border-left:1px solid rgba(26,26,24,0.06); border-top:none; }
+    .tier.rec { transform:none; }
+    .rm { grid-template-columns:1fr; }
+    .rm-left { border-right:none; border-bottom:2px solid var(--gold-dim); padding:24px 0; }
+    .rm-left::after { display:none; }
+    .rm-right { padding:24px 0; }
+    .roadmap::before, .roadmap-line { display:none; }
+    .tl-item { grid-template-columns:1fr; }
+    .tl-q { margin-bottom:8px; }
+    .cover-meta-bar { flex-direction:column; gap:16px; }
+    .footer { padding:60px 32px; }
+    .section-nav { display:none; }
+    .svc { border-left:none !important; }
+    .svc:hover { border-left:none !important; }
+    .photo-break { height:200px; min-height:200px; }
+    .photo-break-caption { padding:12px 32px; }
+    .scroll-indicator { display:none; }
+  }
+</style>
+
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div class="loader" id="loader">
+  <div class="loader-brand">Matt Anthony Photography</div>
+  <div class="loader-sub" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:loaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;">Creative Partner</div>
+  <div class="loader-line"></div>
+</div>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav class="section-nav" id="sectionNav"></nav>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-image" id="coverImg" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ae3d0f01-858f-44ca-aafb-bf477ddf9039/LRD-2500px-1.jpg');background-position:center 35%;"></div>
+  <div class="cover-top">
+    <div class="cover-logo">Matt Anthony Photography</div>
+    <div class="cover-date">March 2026</div>
+  </div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">LRD Studio</div>
+    <h1>Your designs<br>deserve to be<br><em>discovered.</em></h1>
+    <p class="cover-sub">Western Living finalist. 20 projects documented. What’s missing: video, discoverability, and the momentum to keep the awards coming.</p>
+    <div class="cover-meta-bar">
+      <div class="cover-meta-item"><strong>Prepared for</strong>Lauren Ritz, Founder</div>
+      <div class="cover-meta-item"><strong>Prepared by</strong>Matt Anthony</div>
+      <div class="cover-meta-item"><strong>Valid through</strong>April 30, 2026</div>
+    </div>
+    
+    <a class="cover-cta" href="#tiers"><span>View Options</span><span class="cover-cta-arrow">&darr;</span></a>
+    
+  </div>
+  <div class="scroll-indicator" id="scrollIndicator">
+    <div class="scroll-indicator-text">Scroll</div>
+    <div class="scroll-indicator-line"></div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="section cream" data-nav="Story">
+  <div class="eyebrow">Where You Are</div>
+  <h2>The portfolio is beautiful.<br><em>Google can’t see it.</em></h2>
+  <p class="lead">Lauren, I ran a full technical audit on lrdstudio.ca before our coffee this week. Your site scored 84/100 on content and 85/100 on visual assets. 20 project pages, professional photography from our sessions, and a clear design voice. It’s a strong foundation.</p>
+  
+  <p>But there’s a problem hiding behind that portfolio: 699 of your 761 images have no alt text. That means 91.8% of LRD’s photography is invisible to Google Image search. When a homeowner in Whistler searches “modern kitchen interior design” or “log home renovation interiors,” Google shows image results. LRD can’t appear in any of them.</p>
+  
+  <p>You were a 2022 Western Living Designer of the Year finalist. That’s a real credential. But since then, there’s been no video content, no new award submissions, and 699 images Google can’t see. Ashley de Boer in Squamish just racked up Georgie, HAVAN, and NKBA nominations for 2025. The design quality isn’t the gap. The ongoing visibility is.</p>
+  
+  <p>This proposal puts a creative partner behind LRD who already knows your aesthetic, captures every project with intent, builds the discoverability layer your portfolio is missing, and keeps the awards pipeline active.</p>
+  
+  
+  <div class="stats">
+    
+    <div class="stat"><span class="stat-val">84</span><span class="stat-lbl">Content Score</span></div>
+    
+    <div class="stat"><span class="stat-val">699</span><span class="stat-lbl">Images Invisible to Google</span></div>
+    
+    <div class="stat"><span class="stat-val">0</span><span class="stat-lbl">Video Assets</span></div>
+    
+    <div class="stat"><span class="stat-val">1</span><span class="stat-lbl">WL DOTY Finalist</span></div>
+    
+  </div>
+  
+</div>
+
+
+
+
+
+
+
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9f3611d8-a842-42d6-b65b-cd25ba6920cd/sunridge-whistle-web--32.jpg" alt="Sunridge interior dining room">
+  <div class="photo-break-caption">Sunridge &middot; Whistler, BC &middot; Matt Anthony Photography</div>
+</div>
+
+
+
+
+
+
+<div class="section" data-nav="Audit">
+  <div class="eyebrow">The Audit</div>
+  <h2>What the data says.<br><em>Verified, not estimated.</em></h2>
+  <p class="lead">I crawled 30 pages on lrdstudio.ca. Here’s the real picture.</p>
+  
+  
+  <div class="services" style="margin:40px 0;">
+    
+    <div class="svc">
+      <h4>What’s Strong</h4>
+      <ul>
+        
+        <li><strong>SEO scores 77/100.</strong> Valid SSL, 91ms response, 36-URL sitemap, good meta title including Whistler and Squamish locations.</li>
+        
+        <li><strong>Content scores 84/100.</strong> 20 project pages with an average of 34.8 images each. 464-word homepage. Strong design philosophy articulation.</li>
+        
+        <li><strong>Professional photography.</strong> Images from our Sunridge and other sessions. Design-intent photography that shows material choices, light, and spatial composition.</li>
+        
+        <li><strong>Houzz listing active.</strong> Important directory presence for interior designers.</li>
+        
+        <li><strong>Western Living DOTY finalist (2022).</strong> Real credential. Also featured in Build Magazine. IDIBC registered with board seat. The foundation for awards is already proven.</li>
+        
+      </ul>
+    </div>
+    
+    <div class="svc">
+      <h4>The Specific Gaps</h4>
+      <ul>
+        
+        <li><strong>699 of 761 images missing alt text (91.8%).</strong> This is the single biggest issue. Every image without alt text is invisible to Google Image search, which is how homeowners discover interior designers. One-time fix with permanent impact.</li>
+        
+        <li><strong>No Google Business Profile.</strong> Can’t appear on Google Maps or in the Local Pack for “interior designer Squamish” or “interior design Whistler.”</li>
+        
+        <li><strong>No video content.</strong> Zero atmospheric walkthroughs, zero material reveals, zero design process content. For interior design, video showing how light moves through a space is the most compelling content format.</li>
+        
+        <li><strong>Awards momentum has stalled since 2022.</strong> The Western Living finalist credential proved the work qualifies. But no new submissions since then. Ashley de Boer has 5+ nominations for 2025 alone. The pipeline needs to be reactivated.</li>
+        
+        <li><strong>No blog or design journal.</strong> No content targeting “interior design Whistler” or thought leadership around materials, trends, or design process.</li>
+        
+      </ul>
+    </div>
+    
+  </div>
+  
+  
+  <div class="insight">
+    <h4>The Bottom Line</h4>
+    <p>LRD’s portfolio is <strong>genuinely beautiful</strong> and the Western Living credential proves the work is award-calibre. The issues are <strong>discoverability</strong> (699 images Google can’t see, no local presence on Maps) and <strong>momentum</strong> (no new submissions since 2022, no video content). A creative partner fixes both while keeping the content pipeline flowing.</p>
+  </div>
+  
+</div>
+
+
+
+
+
+
+
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d524d107-05c4-42a3-9357-4303ef3840ad/LRD-2500px-19.jpg" alt="LRD Studio project interior">
+  <div class="photo-break-caption">LRD Studio &middot; Matt Anthony Photography</div>
+</div>
+
+
+
+
+
+
+<div class="section" data-nav="Services">
+  <div class="eyebrow">What This Adds</div>
+  <h2>Your content partner.<br><em>Design-intent focused.</em></h2>
+  <p>Photography that captures how a space feels, not just how it looks. Video that shows how light enters a room. Material storytelling that communicates design decisions. Everything delivered with SEO-ready alt text so Google can actually find it.</p>
+  <div class="services">
+    
+    <div class="svc">
+      
+      <h4>Design Photography</h4>
+      <ul>
+        
+        <li>1 full-day shoot per month</li>
+        
+        <li>20 to 25 edited images per session</li>
+        
+        <li>Material and detail close-ups that tell the design story</li>
+        
+        <li>Multi-format delivery: web, social, print, award-ready</li>
+        
+        <li>Full licensing for all channels</li>
+        
+        <li>Every image delivered with keyword-rich alt text</li>
+        
+      </ul>
+    </div>
+    
+    <div class="svc new">
+      <div class="svc-badge">New</div>
+      <h4>Atmospheric Video</h4>
+      <ul>
+        
+        <li>60-second atmospheric walkthroughs per project</li>
+        
+        <li>Material reveal and design detail reels</li>
+        
+        <li>Monthly social media reel from shoot footage</li>
+        
+        <li>Year-end project film (Growth and Full tiers)</li>
+        
+        <li>Content formatted for Instagram and Pinterest</li>
+        
+      </ul>
+    </div>
+    
+    <div class="svc new">
+      <div class="svc-badge">New</div>
+      <h4>Discoverability</h4>
+      <ul>
+        
+        <li>Alt text optimization across existing 699 images (month one)</li>
+        
+        <li>Schema markup (InteriorDesigner + LocalBusiness)</li>
+        
+        <li>Google Business Profile setup + optimization</li>
+        
+        <li>Monthly strategy call and content calendar</li>
+        
+      </ul>
+    </div>
+    
+    <div class="svc new">
+      <div class="svc-badge">New</div>
+      <h4>Awards + Publications</h4>
+      <ul>
+        
+        <li>Full Creative Partner tier only</li>
+        
+        <li>Every shoot to award-submission spec</li>
+        
+        <li>IDIBC, Georgie, HAVAN, and NKBA submissions</li>
+        
+        <li>Publication pitches: Western Living, Dwell, ArchDaily</li>
+        
+        <li>Full social media management (3x/week)</li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7ae7f632-ffd4-4990-abae-430431c42a83/sunridge-whistle-web--28.jpg" alt="Sunridge interior stone and timber">
+  <div class="photo-break-caption">Sunridge &middot; Whistler, BC &middot; Matt Anthony Photography</div>
+</div>
+
+
+
+
+
+
+<div class="section wide" id="tiers" data-nav="Pricing">
+  <div class="eyebrow">Choose Your Tier</div>
+  <h2>Three tiers. Same partner.<br><em>Your call.</em></h2>
+  <p>Every tier delivers design-intent photography with proper alt text and basic SEO fixes. The question is how much video, social, and awards strategy you want on top.</p>
+  <div class="tiers">
+    
+    <div class="tier" data-tier="foundation">
+      <div class="tier-selected-badge">Selected</div>
+      
+      <div class="tier-name">Foundation</div>
+      <div class="tier-price">$2,000 <span>/ mo</span></div>
+      <div class="tier-term">3-month pilot &middot; $6,000 total</div>
+      <ul>
+        
+        <li>1 full-day shoot / month</li>
+        
+        <li>20 to 25 edited images with SEO alt text</li>
+        
+        <li>Material and detail close-ups</li>
+        
+        <li>Multi-format delivery (web, social, print, award)</li>
+        
+        <li>Full image licensing</li>
+        
+        <li class="off">Monthly social media reel</li>
+        
+        <li class="off">Atmospheric video walkthrough</li>
+        
+        <li class="off">Monthly strategy call</li>
+        
+        <li class="off">Year-end project film</li>
+        
+        <li class="off">Awards + publications + social management</li>
+        
+      </ul>
+      <div class="tier-bottom">Annual investment<br><strong>$24,000</strong></div>
+    </div>
+    
+    <div class="tier rec" data-tier="growth">
+      <div class="tier-selected-badge">Selected</div>
+      <div class="tier-badge"><span>Recommended</span></div>
+      <div class="tier-name">Growth</div>
+      <div class="tier-price">$2,500 <span>/ mo</span></div>
+      <div class="tier-term">3-month pilot &middot; $7,500 total</div>
+      <ul>
+        
+        <li>1 full-day shoot / month</li>
+        
+        <li>20 to 25 edited images with SEO alt text</li>
+        
+        <li>Material and detail close-ups</li>
+        
+        <li>Multi-format delivery (web, social, print, award)</li>
+        
+        <li>Full image licensing</li>
+        
+        <li>Monthly social media reel</li>
+        
+        <li>60-second atmospheric video per project</li>
+        
+        <li>Monthly strategy call</li>
+        
+        <li>Year-end project film (60 to 90 seconds)</li>
+        
+        <li class="off">Awards + publications + social management</li>
+        
+      </ul>
+      <div class="tier-bottom">Annual investment<br><strong>$30,000</strong></div>
+    </div>
+    
+    <div class="tier" data-tier="full">
+      <div class="tier-selected-badge">Selected</div>
+      
+      <div class="tier-name">Full Creative Partner</div>
+      <div class="tier-price">$3,500 <span>/ mo</span></div>
+      <div class="tier-term">3-month pilot &middot; $10,500 total</div>
+      <ul>
+        
+        <li>1 full-day shoot / month</li>
+        
+        <li>25 to 30 edited images with SEO alt text</li>
+        
+        <li>Material and detail close-ups</li>
+        
+        <li>Multi-format delivery (web, social, print, award)</li>
+        
+        <li>Full image licensing</li>
+        
+        <li>Monthly social media reel</li>
+        
+        <li>60-second atmospheric video per project</li>
+        
+        <li>Monthly strategy call</li>
+        
+        <li>Year-end documentary film (2 to 3 minutes)</li>
+        
+        <li>IDIBC, Georgie, HAVAN award submissions</li>
+        
+        <li>Publication pitches (Western Living, Dwell)</li>
+        
+        <li>Full social media management (3x/week)</li>
+        
+      </ul>
+      <div class="tier-bottom">Annual investment<br><strong>$42,000</strong></div>
+    </div>
+    
+  </div>
+  
+  <div class="insight">
+    <h4>How to Think About This</h4>
+    <p>You paid <strong>$3,150 for two sessions</strong> last year. Here’s what a monthly retainer delivers:</p>
+    
+    <div class="tier-breakdown">
+      
+      <div class="tb"><span class="tb-label">Foundation $2,000</span><span class="tb-desc">20-25 design-intent images with proper alt text every month. Pure content creation at $850 less than a single session.</span></div>
+      
+      <div class="tb"><span class="tb-label">Growth $2,500</span><span class="tb-desc">Everything above plus atmospheric video, social reels, strategy calls, and a year-end film. The content engine starts compounding.</span></div>
+      
+      <div class="tb"><span class="tb-label">Creative Partner $3,500</span><span class="tb-desc">Content + strategy. Documentary film, IDIBC and Georgie submissions, publication pitches, and full social management.</span></div>
+      
+    </div>
+    
+    
+    <p style="margin-top:24px;">Every image delivered with keyword-rich alt text means your portfolio starts appearing in Google Image search from day one.</p>
+<div style="margin-top:24px;padding:24px 28px;background:var(--light);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;">
+<h4 style="font-family:'Josefin Sans',sans-serif;font-weight:400;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin:0 0 12px;">Add-On: Website + Local SEO Package</h4>
+<p style="font-size:0.88rem;color:var(--stone);margin:0 0 12px;">Your audit scored <strong style="color:var(--ink);">46/100 on local SEO</strong>. 699 images with no alt text, no Google Business Profile, no schema markup. The fix isn&rsquo;t patches on the existing site. It&rsquo;s a full website rebuild to modern standards with SEO baked in from the ground up.</p>
+<ul style="list-style:none;padding:0;margin:0;">
+<li style="font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);"><span style="position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);"></span>Full custom Squarespace website rebuild</li>
+<li style="font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);"><span style="position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);"></span>Google Business Profile setup and optimization</li>
+<li style="font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);"><span style="position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);"></span>InteriorDesigner + LocalBusiness schema markup</li>
+<li style="font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);"><span style="position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);"></span>SEO-optimized project pages with proper alt text on every image</li>
+<li style="font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);"><span style="position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);"></span>Service area pages for Whistler, Squamish, Pemberton, Vancouver</li>
+<li style="font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);"><span style="position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);"></span>Monthly SEO blog post + ongoing site maintenance</li>
+<li style="font-size:0.85rem;padding:5px 0 5px 20px;position:relative;color:var(--stone);"><span style="position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);"></span>Google review generation strategy</li>
+</ul>
+<p style="font-size:0.88rem;color:var(--ink);margin:16px 0 0;font-weight:400;"><strong>$750 to $1,250/mo</strong> added to any tier. Happy to scope this over coffee.</p>
+</div>
+    
+  </div>
+  
+</div>
+
+
+
+
+
+
+
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/0b4f9f4d-01c4-4da3-ae8e-1131391d280f/sunridge-whistle-web--39.jpg" alt="Sunridge interior detail">
+  <div class="photo-break-caption">Sunridge &middot; Whistler, BC &middot; Matt Anthony Photography</div>
+</div>
+
+
+
+
+
+
+<div class="section light" data-nav="Roadmap">
+  <div class="eyebrow">3-Month Pilot Roadmap</div>
+  <h2>What gets done.<br><em>Month by month.</em></h2>
+  <p>The pilot runs May through July. Three months, three projects documented with photography and atmospheric video.</p>
+  <div class="roadmap">
+    <div class="roadmap-line" id="roadmapLine"></div>
+    
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">May 2026</div>
+        <div class="rm-label">Strongest Recent<br>Project</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          
+          <li>Full-day shoot at your strongest recently completed project</li>
+          
+          <li>20 to 25 edited images: spaces, materials, light, composition</li>
+          
+          <li>Material and detail close-ups that tell the design story</li>
+          
+          <li>60-second atmospheric walkthrough video</li>
+          
+          <li>All images with keyword-rich SEO alt text</li>
+          
+          <li>Social media reel from shoot footage</li>
+          
+          <li>Strategy call to map out summer content calendar</li>
+          
+        </ul>
+      </div>
+    </div>
+    
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">June 2026</div>
+        <div class="rm-label">Design Process:<br>In Progress</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          
+          <li>Full-day session at a project in the design/install phase</li>
+          
+          <li>20 to 25 images: material selections, install progress, before/after moments</li>
+          
+          <li>Design process documentation that clients and followers want to see</li>
+          
+          <li>Social media reel from shoot content</li>
+          
+          <li>Strategy call: review first month, adjust approach</li>
+          
+        </ul>
+      </div>
+    </div>
+    
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">July 2026</div>
+        <div class="rm-label">Summer Light:<br>Hero Spaces</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          
+          <li>Full-day hero session in peak summer light</li>
+          
+          <li>20 to 25 images capturing how natural light transforms LRD spaces</li>
+          
+          <li>Atmospheric walkthrough video</li>
+          
+          <li>Social media reel + Pinterest content</li>
+          
+          <li>Pilot review: what worked, what the data says, what comes next</li>
+          
+          <li>If results proven: 12-month continuation locked in</li>
+          
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="stats">
+    
+    <div class="stat"><span class="stat-val">3</span><span class="stat-lbl">Full-Day Shoots</span></div>
+    
+    <div class="stat"><span class="stat-val">75</span><span class="stat-lbl">Professional Images</span></div>
+    
+    <div class="stat"><span class="stat-val">3</span><span class="stat-lbl">Social Reels</span></div>
+    
+    <div class="stat"><span class="stat-val">90</span><span class="stat-lbl">Days to Prove It</span></div>
+    
+  </div>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="section" data-nav="Vision">
+  <div class="eyebrow">The 12-Month Vision</div>
+  <h2>What a full year of<br><em>content looks like.</em></h2>
+  <p>LRD’s portfolio is already beautiful. A full year of atmospheric video, design documentation, and awards submissions turns it into the most visible interior design studio in the Sea-to-Sky.</p>
+  <div class="tl">
+    
+    <div class="tl-item">
+      <div class="tl-q">Q2 2026</div>
+      <div class="tl-content">
+        <h4>Prove the Model</h4>
+        <p>3 shoots. 75 images. 3 atmospheric videos. Design process documentation. Every image searchable by Google for the first time. Social channels active with professional content.</p>
+      </div>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-q">Q3 2026</div>
+      <div class="tl-content">
+        <h4>Compound</h4>
+        <p>Peak season. Summer light in Whistler and Squamish spaces. 150+ images. Atmospheric walkthroughs banked. Design journal content driving organic traffic.</p>
+      </div>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-q">Q4 2026</div>
+      <div class="tl-content">
+        <h4>Leverage</h4>
+        <p>IDIBC and Georgie award submissions. Publication pitches to Western Living and Dwell. 225+ images. LRD’s online presence matches the calibre of the work.</p>
+      </div>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-q">Q1 2027</div>
+      <div class="tl-content">
+        <h4>Separate</h4>
+        <p>300+ images, a year-end documentary, and the most visible interior design portfolio in the Sea-to-Sky. When a homeowner in Whistler searches for a designer, LRD shows up first.</p>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="numbers grain-section">
+  
+  <div class="num"><span class="num-val">300</span><span class="num-lbl">Professional Images</span></div>
+  
+  <div class="num"><span class="num-val">12</span><span class="num-lbl">Atmospheric Videos</span></div>
+  
+  <div class="num"><span class="num-val">12</span><span class="num-lbl">Social Reels</span></div>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="section cream" data-nav="Awards">
+  <div class="eyebrow">Awards &amp; Publications</div>
+  <h2>One finalist credential.<br><em>Time to build on it.</em></h2>
+  <p class="lead">Lauren, the 2022 Western Living Designer of the Year finalist nod proved LRD’s work belongs at the top. But awards are a momentum game. Ashley de Boer has 5+ nominations for 2025 alone. The studios that submit consistently are the ones editors call first.</p>
+  
+  <p>The Western Living credential opened the door. Consistent submissions to IDIBC, Georgie, and HAVAN keep it open. Every project photographed to award spec is another entry. The goal isn’t one finalist badge, it’s a track record.</p>
+  
+  
+  <div class="numbers grain-section" style="margin:56px 0;">
+    
+    <div class="num"><span class="num-val">1</span><span class="num-lbl">LRD WL DOTY Finalist</span></div>
+    
+    <div class="num"><span class="num-val">5+</span><span class="num-lbl">Ashley de Boer 2025 Nominations</span></div>
+    
+    <div class="num"><span class="num-val">20</span><span class="num-lbl">LRD Projects Ready to Submit</span></div>
+    
+  </div>
+  
+  
+  <h3>What I Handle</h3><p>Every shoot is photographed to award-submission spec from day one. 300 DPI JPEG, colour-calibrated, anonymous-ready. When submission season opens, your images are done. I prepare entry materials, identify the right categories, and manage the process. You focus on designing.</p>
+  
+  
+  <div class="services" style="margin:40px 0;">
+    
+    <div class="svc">
+      <h4>Award Submissions</h4>
+      <ul>
+        
+        <li>IDIBC Awards of Excellence</li>
+        
+        <li>Georgie Awards (Best Interior Design Custom Residence)</li>
+        
+        <li>HAVAN Awards</li>
+        
+        <li>NKBA Awards</li>
+        
+        <li>Dezeen &amp; AZ Awards</li>
+        
+      </ul>
+    </div>
+    
+    <div class="svc">
+      <h4>Publication Pitches</h4>
+      <ul>
+        
+        <li>Western Living — BC’s top design magazine</li>
+        
+        <li>Dwell — global residential</li>
+        
+        <li>ArchDaily &amp; Dezeen</li>
+        
+        <li>Azure Magazine</li>
+        
+        <li>NUVO Magazine</li>
+        
+      </ul>
+    </div>
+    
+  </div>
+  
+  
+  <div class="insight">
+    <h4>20 Projects, 20 Potential Submissions</h4>
+    <p>LRD has the portfolio and the first credential. Sunridge alone could be submitted to IDIBC, Georgie, and HAVAN. <strong>The difference between one finalist nod and five is consistency, not quality.</strong> Keep the pipeline active.</p>
+  </div>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="section" data-nav="Next Steps">
+  <div class="eyebrow">Next Steps</div>
+  <h2>We already know<br><em>how we work together.</em></h2>
+  
+  <p>Lauren, we’ve done two sessions and the images speak for themselves. This is the next step: consistent content so every project LRD designs starts working for the studio’s visibility the moment it’s complete.</p>
+  
+  <p>The pilot is three months. If it works, we keep going. If it doesn’t, you walk away with 75 professional images (all with proper alt text), atmospheric video of your spaces, three social reels, and a portfolio that’s finally visible to Google. Plus a reactivated awards pipeline. There’s no downside.</p>
+  
+  
+  <div class="steps">
+    
+    <div class="step">
+      <span class="step-num">1</span>
+      <h4>Pick Your Tier</h4>
+      <p>Foundation, Growth, or Full Creative Partner. Let’s discuss over coffee.</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-num">2</span>
+      <h4>Deposit</h4>
+      <p>50% of the pilot total to lock in May and guarantee priority scheduling.</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-num">3</span>
+      <h4>Plan</h4>
+      <p>We’re already meeting this week. Let’s map out the summer shoots.</p>
+    </div>
+    
+  </div>
+  
+  
+  <p style="margin-top:24px; font-size:0.85rem; color:var(--stone);">This proposal is valid through <strong style="color:var(--ink);">April 30, 2026</strong>. After that, May availability cannot be guaranteed.</p>
+  
+</div>
+
+
+
+
+
+
+
+<!-- FOOTER -->
+<div class="footer grain-section">
+  <div class="footer-mark">Matt Anthony Photography</div>
+  <div class="footer-info">
+    <a href="https://mattanthonyphoto.com">mattanthonyphoto.com</a><br>
+    <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a> &middot; 604.765.9270<br>
+    Squamish, BC
+  </div>
+  <div class="footer-note">This proposal is confidential and prepared exclusively for LRD Studio LTD.</div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ═══════ LOADING SCREEN ═══════ */
+  var loader = document.getElementById('loader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('done'); }, 1100);
+  });
+
+  /* ═══════ SCROLL PROGRESS BAR ═══════ */
+  var progressBar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var s = window.scrollY;
+    progressBar.style.width = (h > 0 ? (s / h) * 100 : 0) + '%';
+  }
+
+  /* ═══════ COVER PARALLAX ═══════ */
+  var coverImg = document.querySelector('.cover-image');
+  function updateParallax(){
+    if(window.scrollY < window.innerHeight){
+      coverImg.style.transform = 'scale(1.08) translateY(' + (window.scrollY * 0.3) + 'px)';
+    }
+  }
+
+  /* ═══════ PHOTO BREAK PARALLAX + KEN BURNS ═══════ */
+  var isTouchDevice = 'ontouchstart' in window;
+  var photoBreakEls = document.querySelectorAll('.photo-break');
+  var photoBreakImgs = document.querySelectorAll('.photo-break img');
+  function updatePhotoParallax(){
+    photoBreakEls.forEach(function(pb){
+      var rect = pb.getBoundingClientRect();
+      var inView = rect.bottom > 0 && rect.top < window.innerHeight;
+      if(inView){
+        pb.classList.add('in-view');
+      } else {
+        pb.classList.remove('in-view');
+      }
+    });
+  }
+
+  /* ═══════ SECTION NAV DOTS ═══════ */
+  var sectionNav = document.getElementById('sectionNav');
+  var navSections = document.querySelectorAll('[data-nav]');
+  var navDots = [];
+  navSections.forEach(function(sec){
+    var dot = document.createElement('div');
+    dot.className = 'section-nav-dot';
+    dot.setAttribute('data-label', sec.getAttribute('data-nav'));
+    dot.addEventListener('click', function(){
+      sec.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+    sectionNav.appendChild(dot);
+    navDots.push({ dot:dot, section:sec });
+  });
+
+  function updateNavDots(){
+    var scrollY = window.scrollY;
+    var winH = window.innerHeight;
+    // Show/hide nav (hide on cover)
+    if(scrollY > winH * 0.5){
+      sectionNav.classList.add('visible');
+    } else {
+      sectionNav.classList.remove('visible');
+    }
+    // Highlight active section
+    var active = null;
+    navDots.forEach(function(item){
+      var rect = item.section.getBoundingClientRect();
+      if(rect.top < winH * 0.5 && rect.bottom > winH * 0.3){
+        active = item;
+      }
+      item.dot.classList.remove('active');
+    });
+    if(active) active.dot.classList.add('active');
+  }
+
+  /* ═══════ SCROLL REVEAL ═══════ */
+  var revealTargets = [];
+  document.querySelectorAll('.section, .numbers, .mosaic').forEach(function(section){
+    section.querySelectorAll('.eyebrow, h2, .lead, .stats, .services, .tiers, .insight, .roadmap, .tl, .numbers, .steps, .addons').forEach(function(el, i){
+      el.classList.add('reveal');
+      if(i > 0 && i < 6) el.classList.add('reveal-delay-' + i);
+      revealTargets.push(el);
+    });
+    section.querySelectorAll('.stat, .svc, .tier, .step, .num, .rm, .tl-item').forEach(function(el, i){
+      el.classList.add('reveal');
+      el.classList.add('reveal-delay-' + Math.min(i + 1, 5));
+      revealTargets.push(el);
+    });
+    Array.prototype.forEach.call(section.children, function(child){
+      if(child.tagName === 'P' && !child.classList.contains('lead') && !child.classList.contains('cover-sub')){
+        child.classList.add('reveal');
+        revealTargets.push(child);
+      }
+    });
+  });
+
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+        animateCounter(entry.target);
+      }
+    });
+  }, { threshold:0.15, rootMargin:'0px 0px -40px 0px' });
+
+  revealTargets.forEach(function(el){ revealObserver.observe(el); });
+
+  /* ═══════ EYEBROW LINE ANIMATION ═══════ */
+  var eyebrows = document.querySelectorAll('.eyebrow');
+  var eyebrowObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        eyebrowObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.5 });
+  eyebrows.forEach(function(eb){ eyebrowObserver.observe(eb); });
+
+  /* ═══════ NUMBER COUNTER ANIMATION ═══════ */
+  function animateCounter(el){
+    var valEl = el.querySelector('.stat-val, .num-val');
+    if(!valEl || valEl.dataset.counted) return;
+    valEl.dataset.counted = 'true';
+    var text = valEl.textContent.trim();
+    var hasPlus = text.indexOf('+') > -1;
+    var num = parseInt(text.replace(/[^0-9]/g,''), 10);
+    if(isNaN(num) || num === 0) return;
+    var duration = 1200;
+    var start = performance.now();
+    function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+    function tick(now){
+      var t = Math.min((now - start) / duration, 1);
+      var val = Math.round(ease(t) * num);
+      valEl.textContent = val + (hasPlus ? '+' : '');
+      if(t < 1) requestAnimationFrame(tick);
+    }
+    valEl.textContent = '0' + (hasPlus ? '+' : '');
+    requestAnimationFrame(tick);
+  }
+
+  /* ═══════ PHOTO BREAK CURTAIN REVEAL ═══════ */
+  var photoRevealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('revealed');
+        photoRevealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.1 });
+  photoBreakEls.forEach(function(pb){ photoRevealObserver.observe(pb); });
+
+  /* ═══════ HEADLINE GOLD UNDERLINE ═══════ */
+  var headlines = document.querySelectorAll('h2');
+  var headlineObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('underlined');
+        headlineObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.5 });
+  headlines.forEach(function(h){ headlineObserver.observe(h); });
+
+  /* ═══════ SCROLL INDICATOR HIDE ═══════ */
+  var scrollIndicator = document.getElementById('scrollIndicator');
+  function updateScrollIndicator(){
+    if(window.scrollY > 100){
+      scrollIndicator.classList.add('hidden');
+    } else {
+      scrollIndicator.classList.remove('hidden');
+    }
+  }
+
+  /* ═══════ TIER SELECTION + 3D TILT ═══════ */
+  var tiers = document.querySelectorAll('.tier[data-tier]');
+  tiers.forEach(function(tier){
+    tier.addEventListener('click', function(){
+      tiers.forEach(function(t){ t.classList.remove('selected'); });
+      tier.classList.add('selected');
+    });
+    if(!isTouchDevice){
+      tier.addEventListener('mousemove', function(e){
+        var rect = tier.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        tier.style.transform = tier.classList.contains('rec')
+          ? 'scaleY(1.02) perspective(800px) rotateY(' + (x * 4) + 'deg) rotateX(' + (-y * 4) + 'deg)'
+          : 'perspective(800px) rotateY(' + (x * 4) + 'deg) rotateX(' + (-y * 4) + 'deg)';
+      });
+      tier.addEventListener('mouseleave', function(){
+        tier.style.transform = tier.classList.contains('rec') ? 'scaleY(1.02)' : '';
+      });
+    }
+  });
+
+  /* ═══════ ROADMAP LINE DRAW ═══════ */
+  var roadmapLine = document.getElementById('roadmapLine');
+  var roadmap = document.querySelector('.roadmap');
+  function updateRoadmapLine(){
+    if(!roadmap || !roadmapLine) return;
+    var rect = roadmap.getBoundingClientRect();
+    var roadmapTop = rect.top + window.scrollY;
+    var roadmapHeight = rect.height - 96;
+    var scrollPos = window.scrollY + window.innerHeight * 0.6;
+    var progress = (scrollPos - roadmapTop - 48) / roadmapHeight;
+    progress = Math.max(0, Math.min(1, progress));
+    roadmapLine.style.height = (progress * roadmapHeight) + 'px';
+  }
+
+  /* ═══════ SMOOTH SCROLL FOR CTA ═══════ */
+  document.querySelector('.cover-cta').addEventListener('click', function(e){
+    e.preventDefault();
+    var target = document.querySelector(this.getAttribute('href'));
+    if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+  });
+
+  /* ═══════ COMBINED SCROLL HANDLER ═══════ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateParallax();
+        updatePhotoParallax();
+        updateScrollIndicator();
+        updateRoadmapLine();
+        updateNavDots();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  // Init
+  updateProgress();
+  updateParallax();
+  updatePhotoParallax();
+  updateRoadmapLine();
+  updateNavDots();
+
+})();
+</script>
+
+</body>
+</html>

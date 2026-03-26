@@ -1,0 +1,497 @@
+{
+  "client": {
+    "company": "Site Lines Architecture",
+    "slug": "sitelines",
+    "owner": "Jordan Maddox",
+    "owner_title": "Partner, Interior Design Lead",
+    "confidentiality_name": "Site Lines Architecture Inc."
+  },
+  "proposal": {
+    "type": "creative-partner",
+    "title": "Creative Partner",
+    "date": "March 2026",
+    "valid_through": "April 15, 2026",
+    "filename": "sitelines-creative-partner.html"
+  },
+  "cover": {
+    "eyebrow": "Site Lines Architecture",
+    "headline_html": "Your creative<br>department.<br><em>Without the overhead.</em>",
+    "subtitle": "Award-level photography. Social content. Design narratives. One retainer. One partner who understands how architects think about space.",
+    "cta_text": "View Options",
+    "cta_target": "#tiers",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e07b8aac-c1ec-4293-b956-79b41aa39f33/5322-backhouse-web-1.jpg",
+    "image_position": "center 25%"
+  },
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8b5d40eb-2ba1-47ff-864f-7d85f45395ba/architectural-interiors-photographer-sunset-beach-vancouver6.jpg",
+        "alt": "Sunset Beach Residence — panoramic living room, Vancouver",
+        "caption": "Sunset Beach Residence &middot; Vancouver, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ccfb80fe-3b57-490b-bffb-dfe02f8e174e/linwood-gambier-web-34.jpg",
+        "alt": "Gambier Island Residence — aerial view through forest canopy",
+        "caption": "Gambier Island Residence &middot; Gambier Island, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c992d9ce-4647-4129-b03b-6ce9deb487c3/west-10th-vancouver-web--32.jpg",
+        "alt": "West 10th Avenue — contemporary exterior facade, Vancouver",
+        "caption": "West 10th Avenue &middot; Vancouver, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ff283fca-be9f-4741-955b-786735c0fd2b/eagle-pemberton-architectural-photography-matt-anthony-.jpg.jpg",
+        "alt": "Eagle Residence — insulated concrete exterior, Pemberton",
+        "caption": "Eagle Residence &middot; Pemberton, BC &middot; Matt Anthony Photography"
+      }
+    ]
+  },
+  "sections": [
+    "story",
+    "services",
+    "pricing",
+    "roadmap",
+    "vision",
+    "numbers",
+    "awards",
+    "next_steps"
+  ],
+  "story": {
+    "eyebrow": "The Story So Far",
+    "headline_html": "You design exceptional spaces.<br><em>People should see the intent.</em>",
+    "lead": "Jordan, Site Lines has been designing across residential, commercial, and institutional for 25 years. The portfolio runs deep. But when I look at how that work is being presented, there's a gap between the quality of the design and how it's being documented.",
+    "paragraphs": [
+      "Several of your best multi-family projects are represented by renderings, not photography of built work. Your LinkedIn has been quiet for over seven months. Your website has 320 images and not a single one has alt text, which means Google Image Search can't find any of them. The interior design work you lead is underrepresented visually. And after a quarter century of practice, there are no major industry awards on the wall.",
+      "This proposal closes that gap. It puts a dedicated creative partner behind Site Lines who documents your projects at a level that earns recognition, feeds your social channels, and builds the kind of visual library that wins work. Photography, video, social content, and award submissions, all handled by one person who understands how architects think about space."
+    ],
+    "stats": [
+      {
+        "value": "25",
+        "label": "Years in Practice"
+      },
+      {
+        "value": "320",
+        "label": "Images — Zero Alt Text"
+      },
+      {
+        "value": "0",
+        "label": "Major Industry Awards"
+      },
+      {
+        "value": "7+",
+        "label": "Months LinkedIn Dark"
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "What's Included",
+    "headline_html": "Everything Site Lines needs.<br><em>Nothing it doesn't.</em>",
+    "intro": "One retainer covers project photography, social content, and award submissions. No juggling vendors. No coordinating between a photographer, a videographer, and a social media manager. One partner who learns how Site Lines works and gets better every month.",
+    "cards": [
+      {
+        "title": "Project Photography",
+        "is_new": true,
+        "entries": [
+          "1 full-day shoot per month",
+          "20 to 25 edited images per session",
+          "Drone and aerial coverage included",
+          "Interiors shot to capture design intent, not just finishes",
+          "Multi-format delivery: web, print, social, award-ready",
+          "Full licensing for all channels"
+        ]
+      },
+      {
+        "title": "Design Documentation",
+        "is_new": true,
+        "entries": [
+          "Material and detail close-ups: joinery, glazing, custom elements",
+          "Site context and landscape integration",
+          "Interior design moments: lighting, texture, spatial flow",
+          "Content built for proposals, competitions, and presentations"
+        ]
+      },
+      {
+        "title": "Video and Social",
+        "is_new": true,
+        "entries": [
+          "Monthly social media reel from shoot footage",
+          "Year-end project film (Growth and Full tiers)",
+          "Content repurposed for Instagram and LinkedIn",
+          "Monthly strategy call and content calendar"
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Choose Your Tier",
+    "headline_html": "Three tiers. Same partner.<br><em>Your call.</em>",
+    "intro": "Start where it makes sense. Every tier includes full-day shoots, drone coverage, and multi-format delivery. The only question is how much content and strategy you want layered on top.",
+    "tiers": [
+      {
+        "name": "Foundation",
+        "slug": "foundation",
+        "price": "$2,500",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $7,500 total",
+        "recommended": false,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "20 to 25 edited images",
+            "included": true
+          },
+          {
+            "text": "Drone and aerial coverage",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, print, social, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Project page per shoot",
+            "included": true
+          },
+          {
+            "text": "Design documentation (details, materials, context)",
+            "included": false
+          },
+          {
+            "text": "Year-end project film",
+            "included": false
+          },
+          {
+            "text": "Social media reel",
+            "included": false
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": false
+          },
+          {
+            "text": "Full social media management",
+            "included": false
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$30,000"
+      },
+      {
+        "name": "Growth",
+        "slug": "growth",
+        "price": "$3,000",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $9,000 total",
+        "recommended": true,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "20 to 25 edited images",
+            "included": true
+          },
+          {
+            "text": "Drone and aerial coverage",
+            "included": true
+          },
+          {
+            "text": "Design documentation (details, materials, context)",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, print, social, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Project page per shoot",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": true
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": true
+          },
+          {
+            "text": "Year-end project film (60 to 90 seconds)",
+            "included": true
+          },
+          {
+            "text": "Full social media management",
+            "included": false
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$36,000"
+      },
+      {
+        "name": "Full Creative Partner",
+        "slug": "full",
+        "price": "$3,500",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $10,500 total",
+        "recommended": false,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "25 to 30 edited images",
+            "included": true
+          },
+          {
+            "text": "Drone and aerial coverage",
+            "included": true
+          },
+          {
+            "text": "Design documentation (details, materials, context)",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, print, social, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Project page per shoot",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": true
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": true
+          },
+          {
+            "text": "Year-end documentary film (2 to 3 minutes)",
+            "included": true
+          },
+          {
+            "text": "Full social media management (3x/week)",
+            "included": true
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$42,000"
+      }
+    ],
+    "insight": {
+      "title": "How to Think About This",
+      "content_html": "<p>A single standalone project shoot with drone and multi-format delivery runs <strong>$3,500 to $5,500</strong>. Any of these tiers delivers that same value every month, plus strategy, social content, and a partner who improves with every session.</p>",
+      "breakdowns": [
+        {
+          "label": "Foundation $2,500",
+          "desc": "20-25 images per shoot. Your completed projects finally get documented properly."
+        },
+        {
+          "label": "Growth $3,000",
+          "desc": "Plus design documentation, detail photography, strategy calls, and a year-end highlight film."
+        },
+        {
+          "label": "Creative Partner $3,500",
+          "desc": "The full stack. 25-30 images, year-end documentary, full social management. You never think about content again."
+        }
+      ]
+    }
+  },
+  "roadmap": {
+    "eyebrow": "3-Month Pilot Roadmap",
+    "headline_html": "What gets done.<br><em>Month by month.</em>",
+    "intro": "The pilot runs April through June. Three months, three shoots, three chances to prove this works. We start with a completed project and build from there.",
+    "months": [
+      {
+        "month": "April 2026",
+        "label_html": "First Project:<br>Set the Standard",
+        "entries": [
+          "Full-day session at a recently completed residential or commercial project",
+          "20 to 25 edited images: exteriors, interiors, material details, spatial flow",
+          "Design documentation: joinery close-ups, glazing details, interior design moments",
+          "Drone aerials showing site context and building form",
+          "First social media reel cut from shoot footage",
+          "Strategy call to map out Q2 content calendar and prioritize projects"
+        ]
+      },
+      {
+        "month": "May 2026",
+        "label_html": "Build the Library:<br>Second Project",
+        "entries": [
+          "Full-day session, second completed project or institutional work",
+          "20 to 25 edited images + drone aerials",
+          "Interior design focus: lighting, texture, spatial relationships",
+          "LinkedIn reactivated with professional project content",
+          "Social media reel from shoot content",
+          "Strategy call: review engagement and adjust approach"
+        ]
+      },
+      {
+        "month": "June 2026",
+        "label_html": "Prove It:<br>Results and Decision",
+        "entries": [
+          "Full-day session, third project",
+          "20 to 25 edited images + drone aerials",
+          "Award-submission portfolio review: which projects are ready to enter",
+          "Social media reel + LinkedIn content",
+          "Pilot review: what worked, what the numbers say, what comes next",
+          "If results proven: 12-month continuation locked in"
+        ]
+      }
+    ],
+    "stats": [
+      {
+        "value": "3",
+        "label": "Full-Day Shoots"
+      },
+      {
+        "value": "75",
+        "label": "Professional Images"
+      },
+      {
+        "value": "3",
+        "label": "Social Reels"
+      },
+      {
+        "value": "90",
+        "label": "Days to Prove It"
+      }
+    ]
+  },
+  "vision": {
+    "eyebrow": "The 12-Month Vision",
+    "headline_html": "What a full year<br><em>looks like.</em>",
+    "intro": "The pilot proves the concept. A full year changes the trajectory of Site Lines' brand. Most architecture firms have a portfolio. Very few have a content engine. Here's the difference:",
+    "quarters": [
+      {
+        "period": "Q2 2026",
+        "title": "Prove the Model",
+        "description": "3 shoots. 75 images. 3 social reels. LinkedIn reactivated with professional content. The first completed projects documented at award-submission level. Interior design work showcased as a distinct strength."
+      },
+      {
+        "period": "Q3 2026",
+        "title": "Scale the Library",
+        "description": "Peak season. Long summer light for hero exteriors and twilight sessions. 150+ professional images banked. Six months of social reels and content ready to deploy. Portfolio pages telling design stories, not just showing galleries."
+      },
+      {
+        "period": "Q4 2026",
+        "title": "Leverage the Work",
+        "description": "Award-ready photography for AIBC, RAIC, and publication submissions. Year-in-review content for proposals and RFPs. 225+ images. Site Lines' online presence is unrecognizable from 12 months ago."
+      },
+      {
+        "period": "Q1 2027",
+        "title": "The Advantage Compounds",
+        "description": "12 months of content compounding in search rankings. 300+ images, a year-end documentary film, and a complete project documentation library. Award submissions filed. Publication pitches sent. Whether you're at the drafting table or on site, your portfolio is winning the next project."
+      }
+    ]
+  },
+  "numbers": {
+    "stats": [
+      {
+        "value": "300",
+        "label": "Professional Images"
+      },
+      {
+        "value": "12",
+        "label": "Drone Flights"
+      },
+      {
+        "value": "12",
+        "label": "Social Reels"
+      }
+    ]
+  },
+  "awards": {
+    "eyebrow": "Awards &amp; Publications",
+    "headline_html": "The credentials your<br><em>peers already have.</em>",
+    "lead": "Site Lines has been designing across residential, commercial, and institutional for 25 years. In that time, the firm hasn't entered major industry awards. Meanwhile, peers like Keystone Architecture are winning Fraser Valley Commercial Building Awards and firms across BC are collecting AIBC and RAIC recognition.",
+    "paragraphs": [
+      "For an architecture firm, awards and publications are more than prestige. They're how institutional clients, developers, and design-conscious homeowners shortlist. They're the difference between being considered and being overlooked. Every completed project that goes unsubmitted is a missed credential."
+    ],
+    "competitor_numbers": [
+      {
+        "value": "0",
+        "label": "Site Lines Major Awards"
+      },
+      {
+        "value": "4+",
+        "label": "Keystone FV Commercial Awards"
+      },
+      {
+        "value": "25",
+        "label": "Years of Work — Unsubmitted"
+      }
+    ],
+    "detail_html": "<h3>What I Handle</h3><p>As your Creative Partner, every shoot is photographed to award-submission specifications from day one. High-resolution, colour-calibrated, composition framed for jury review. When submission season opens, your images are already done. I identify the right categories, prepare the entry materials, and manage the submission process. You focus on design.</p>",
+    "services": [
+      {
+        "title": "Award Submissions",
+        "entries": [
+          "AIBC Architectural Awards of Excellence",
+          "RAIC Awards — national recognition",
+          "Lieutenant Governor of BC Medal in Architecture",
+          "AZ Awards &amp; Dezeen Awards — global stage",
+          "Fraser Valley Commercial Building Awards"
+        ]
+      },
+      {
+        "title": "Publication Pitches",
+        "entries": [
+          "Western Living — BC's top design magazine",
+          "Azure Magazine — Canadian architecture + design",
+          "ArchDaily &amp; Dezeen — world's largest architecture platforms",
+          "Canadian Architect — national professional journal",
+          "Dwell — global residential architecture"
+        ]
+      }
+    ],
+    "insight": {
+      "title": "One Project, Multiple Credentials",
+      "content_html": "<p>A single project photographed to spec can generate <strong>3 to 5 credentials</strong>: an AIBC nomination, an AZ Awards entry, a Western Living feature, an ArchDaily publication, and social content that references all of them. The photography is the foundation. Everything else builds from there.</p>"
+    }
+  },
+  "next_steps": {
+    "eyebrow": "Next Steps",
+    "headline_html": "Let's start with<br><em>your strongest project.</em>",
+    "paragraphs": [
+      "Jordan, Site Lines has 25 years of work that deserves better documentation. You lead the interior design practice, and that work is barely visible online. This is the partnership that changes that. Pick the tier that feels right, and let's get your best completed project shot at a level that earns recognition.",
+      "The pilot is three months. If it works, we keep going. If it doesn't, you still walk away with 75 professional images, three social reels, a reactivated LinkedIn presence, and a portfolio that's stronger than it was before. There's no downside."
+    ],
+    "steps": [
+      {
+        "number": "1",
+        "title": "Pick Your Tier",
+        "description": "Foundation, Growth, or Full Creative Partner. Just let me know which feels right."
+      },
+      {
+        "number": "2",
+        "title": "Deposit",
+        "description": "50% of the pilot total to lock in April and guarantee priority scheduling."
+      },
+      {
+        "number": "3",
+        "title": "Plan",
+        "description": "Quick 20-minute call to pick the first project and plan the shoot."
+      }
+    ],
+    "valid_note": "This proposal is valid through <strong style=\"color:var(--ink);\">April 15, 2026</strong>. After that, April availability cannot be guaranteed."
+  }
+}

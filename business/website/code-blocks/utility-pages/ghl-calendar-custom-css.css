@@ -1,0 +1,257 @@
+/* ═══════════════════════════════════════════════════
+   MATT ANTHONY PHOTOGRAPHY — GHL CALENDAR STYLING
+   Paste this into GHL > Settings > Calendars >
+   [Your Calendar] > Appearance > Custom CSS
+   ═══════════════════════════════════════════════════ */
+
+/* ── Base / Container ── */
+.hl_calendars-widget-wrapper {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background: #1a1a18 !important;
+  color: #f6f4f0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/* ── Header / Title ── */
+.hl_calendars-widget-wrapper .calendar-header,
+.hl_calendars-widget-wrapper .calendar-title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  color: #f6f4f0 !important;
+  font-weight: 300 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.hl_calendars-widget-wrapper .calendar-subtitle,
+.hl_calendars-widget-wrapper .calendar-description {
+  color: rgba(246,244,240,0.6) !important;
+  font-size: 0.9rem !important;
+  font-weight: 300 !important;
+}
+
+/* ── Month Navigation ── */
+.hl_calendars-widget-wrapper .month-navigation {
+  color: #f6f4f0 !important;
+}
+
+.hl_calendars-widget-wrapper .month-navigation button,
+.hl_calendars-widget-wrapper .month-navigation .nav-btn {
+  color: #c9a96e !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer;
+  transition: opacity 0.3s ease !important;
+}
+
+.hl_calendars-widget-wrapper .month-navigation button:hover {
+  opacity: 0.7 !important;
+}
+
+/* ── Day Headers (Mon, Tue, etc.) ── */
+.hl_calendars-widget-wrapper .day-header,
+.hl_calendars-widget-wrapper .weekday {
+  color: rgba(246,244,240,0.4) !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+}
+
+/* ── Calendar Days ── */
+.hl_calendars-widget-wrapper .day,
+.hl_calendars-widget-wrapper .calendar-day {
+  color: rgba(246,244,240,0.5) !important;
+  border: none !important;
+  border-radius: 4px !important;
+  transition: all 0.25s ease !important;
+}
+
+/* Available days */
+.hl_calendars-widget-wrapper .day.available,
+.hl_calendars-widget-wrapper .calendar-day.available,
+.hl_calendars-widget-wrapper .day:not(.disabled):not(.past) {
+  color: #f6f4f0 !important;
+  cursor: pointer !important;
+}
+
+.hl_calendars-widget-wrapper .day.available:hover,
+.hl_calendars-widget-wrapper .calendar-day.available:hover,
+.hl_calendars-widget-wrapper .day:not(.disabled):not(.past):hover {
+  background: rgba(201,169,110,0.15) !important;
+  color: #c9a96e !important;
+}
+
+/* Selected day */
+.hl_calendars-widget-wrapper .day.selected,
+.hl_calendars-widget-wrapper .calendar-day.selected,
+.hl_calendars-widget-wrapper .day.active {
+  background: #c9a96e !important;
+  color: #1a1a18 !important;
+  font-weight: 500 !important;
+  border-radius: 4px !important;
+}
+
+/* Today indicator */
+.hl_calendars-widget-wrapper .day.today {
+  border: 1px solid rgba(201,169,110,0.3) !important;
+}
+
+/* Disabled / past days */
+.hl_calendars-widget-wrapper .day.disabled,
+.hl_calendars-widget-wrapper .day.past,
+.hl_calendars-widget-wrapper .calendar-day.disabled {
+  color: rgba(246,244,240,0.15) !important;
+  cursor: default !important;
+}
+
+/* ── Time Slots ── */
+.hl_calendars-widget-wrapper .time-slot,
+.hl_calendars-widget-wrapper .slot-button {
+  background: transparent !important;
+  border: 1px solid rgba(201,169,110,0.25) !important;
+  color: #f6f4f0 !important;
+  border-radius: 4px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.85rem !important;
+  font-weight: 400 !important;
+  padding: 10px 16px !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+}
+
+.hl_calendars-widget-wrapper .time-slot:hover,
+.hl_calendars-widget-wrapper .slot-button:hover {
+  background: rgba(201,169,110,0.1) !important;
+  border-color: #c9a96e !important;
+  color: #c9a96e !important;
+}
+
+.hl_calendars-widget-wrapper .time-slot.selected,
+.hl_calendars-widget-wrapper .slot-button.selected {
+  background: #c9a96e !important;
+  border-color: #c9a96e !important;
+  color: #1a1a18 !important;
+  font-weight: 500 !important;
+}
+
+/* ── Form Fields ── */
+.hl_calendars-widget-wrapper input,
+.hl_calendars-widget-wrapper textarea,
+.hl_calendars-widget-wrapper select {
+  background: rgba(246,244,240,0.05) !important;
+  border: 1px solid rgba(201,169,110,0.2) !important;
+  color: #f6f4f0 !important;
+  border-radius: 4px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 300 !important;
+  padding: 12px 14px !important;
+  transition: border-color 0.3s ease !important;
+}
+
+.hl_calendars-widget-wrapper input:focus,
+.hl_calendars-widget-wrapper textarea:focus,
+.hl_calendars-widget-wrapper select:focus {
+  border-color: #c9a96e !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(201,169,110,0.1) !important;
+}
+
+.hl_calendars-widget-wrapper input::placeholder,
+.hl_calendars-widget-wrapper textarea::placeholder {
+  color: rgba(246,244,240,0.3) !important;
+}
+
+/* ── Labels ── */
+.hl_calendars-widget-wrapper label {
+  color: rgba(246,244,240,0.6) !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.05em !important;
+  font-weight: 400 !important;
+}
+
+/* ── Submit / Confirm Button ── */
+.hl_calendars-widget-wrapper button[type="submit"],
+.hl_calendars-widget-wrapper .submit-btn,
+.hl_calendars-widget-wrapper .confirm-btn,
+.hl_calendars-widget-wrapper .hl_cta-btn {
+  background: #c9a96e !important;
+  color: #1a1a18 !important;
+  border: 1px solid #c9a96e !important;
+  border-radius: 0 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  padding: 14px 32px !important;
+  cursor: pointer !important;
+  transition: all 0.35s ease !important;
+}
+
+.hl_calendars-widget-wrapper button[type="submit"]:hover,
+.hl_calendars-widget-wrapper .submit-btn:hover,
+.hl_calendars-widget-wrapper .confirm-btn:hover,
+.hl_calendars-widget-wrapper .hl_cta-btn:hover {
+  background: transparent !important;
+  color: #c9a96e !important;
+}
+
+/* ── Timezone Selector ── */
+.hl_calendars-widget-wrapper .timezone-select,
+.hl_calendars-widget-wrapper .timezone {
+  color: rgba(246,244,240,0.4) !important;
+  font-size: 0.75rem !important;
+}
+
+/* ── Scrollbar (for time slot overflow) ── */
+.hl_calendars-widget-wrapper ::-webkit-scrollbar {
+  width: 4px;
+}
+
+.hl_calendars-widget-wrapper ::-webkit-scrollbar-track {
+  background: rgba(246,244,240,0.05);
+}
+
+.hl_calendars-widget-wrapper ::-webkit-scrollbar-thumb {
+  background: rgba(201,169,110,0.3);
+  border-radius: 2px;
+}
+
+/* ── Loading State ── */
+.hl_calendars-widget-wrapper .loading,
+.hl_calendars-widget-wrapper .spinner {
+  border-color: rgba(201,169,110,0.2) !important;
+  border-top-color: #c9a96e !important;
+}
+
+/* ── Powered By — hidden ── */
+.hl_calendars-widget-wrapper .powered-by,
+.hl_calendars-widget-wrapper .hl-powered-by,
+.hl_calendars-widget-wrapper [class*="powered"],
+.hl_calendars-widget-wrapper footer,
+.hl_calendars-widget-wrapper .footer {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* ── Overall darker treatment ── */
+.hl_calendars-widget-wrapper * {
+  border-color: rgba(201,169,110,0.12) !important;
+}
+
+.hl_calendars-widget-wrapper .calendar-container,
+.hl_calendars-widget-wrapper .time-picker-container,
+.hl_calendars-widget-wrapper .form-container {
+  background: #141412 !important;
+}
+
+/* Darken all panel/card backgrounds */
+.hl_calendars-widget-wrapper div[class*="card"],
+.hl_calendars-widget-wrapper div[class*="panel"],
+.hl_calendars-widget-wrapper div[class*="container"] {
+  background: #141412 !important;
+}

@@ -1,0 +1,650 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.pgt-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.pgt-loader.pgt-done{opacity:0;visibility:hidden;pointer-events:none}
+.pgt-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:pgtLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.pgt-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:pgtLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.pgt-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:pgtLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.pgt-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:pgtLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes pgtLoaderIn{to{opacity:1}}
+@keyframes pgtLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.pgt-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.pgt-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.pgt-cursor.pgt-active{opacity:1}
+.pgt-cursor.pgt-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.pgt-cursor.pgt-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.pgt-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.pgt-cursor-dot.pgt-active{opacity:1}
+
+/* ── CTA button glow ── */
+.pgt-btn{animation:pgtBtnGlow 3s ease-in-out infinite alternate}
+@keyframes pgtBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+
+/* ── Ken Burns on image breaks ── */
+.pgt-img-break.pgt-in-view img{animation:pgtKenBurns 16s ease-in-out infinite alternate}
+@keyframes pgtKenBurns{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.06) translate(-4px,-6px)}}
+
+/* ── Film grain overlay ── */
+.pgt-grain::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:128px 128px;pointer-events:none;z-index:0;opacity:0.5}
+.pgt-grain{position:relative}
+.pgt-grain>*{position:relative;z-index:1}
+
+/* ── Eyebrow gold dash (animated) ── */
+.pgt-eyebrow{display:flex;align-items:center;gap:14px}
+.pgt-eyebrow::before{content:'';width:0;height:1px;background:#c9a96e;transition:width 0.6s cubic-bezier(0.16,1,0.3,1)}
+.pgt-eyebrow.pgt-visible::before{width:24px}
+
+/* ── Headline gold underline on em ── */
+.pgt-wrap h2 em{position:relative;display:inline}
+.pgt-wrap h2 em::after{content:'';position:absolute;bottom:2px;left:0;width:0;height:1.5px;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.2));transition:width 1.2s 0.2s cubic-bezier(0.16,1,0.3,1)}
+.pgt-wrap h2.pgt-underlined em::after{width:100%}
+
+/* ── Scroll indicator ── */
+.pgt-scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;z-index:3;transition:opacity 0.4s ease}
+.pgt-scroll-hint.pgt-hidden{opacity:0;pointer-events:none}
+.pgt-scroll-text{font-family:'Josefin Sans',sans-serif;font-size:0.45rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(246,244,240,0.3)}
+.pgt-scroll-line{width:1px;height:36px;position:relative;overflow:hidden;background:rgba(246,244,240,0.1)}
+.pgt-scroll-line::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:#c9a96e;animation:pgtScrollPulse 2s cubic-bezier(0.16,1,0.3,1) infinite}
+@keyframes pgtScrollPulse{0%{top:-100%}100%{top:100%}}
+
+/* ═══ PRICING GUIDE — TRADES & SUPPLIERS ═══ */
+.pgt-wrap{font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a18;line-height:1.7;font-weight:300;overflow-x:hidden!important}
+.pgt-wrap img{max-width:100%;display:block}
+.pgt-wrap a{color:inherit;text-decoration:none}
+
+/* ─── HERO ─── */
+.pgt-hero{position:relative;min-height:90vh;display:flex;align-items:flex-end;padding:6rem 5vw;background:#1a1a18;overflow:hidden}
+.pgt-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(26,26,24,0.6) 60%,rgba(26,26,24,0.92) 100%);z-index:1}
+.pgt-hero-bg{position:absolute;inset:0}
+.pgt-hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.55;filter:saturate(0.6)}
+.pgt-hero-content{position:relative;z-index:2;max-width:900px}
+.pgt-hero-label{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem;font-weight:500}
+.pgt-hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:300;line-height:1.1;color:#f6f4f0;letter-spacing:-0.02em;margin-bottom:1.5rem}
+.pgt-hero h1 em{font-style:italic;color:#c9a96e}
+.pgt-hero-sub{font-size:1.05rem;color:#d9d5cd;font-weight:300;max-width:560px;line-height:1.8}
+
+/* ─── SECTION PRIMITIVES ─── */
+.pgt-wide{max-width:1100px;margin:0 auto}
+.pgt-label{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#b8975a;margin-bottom:1.5rem;font-weight:500}
+.pgt-label-dark{color:#c9a96e}
+.pgt-divider{width:60px;height:1px;background:#c9a96e;margin:0 0 2rem}
+
+/* ─── ACCENT LINE ─── */
+.pgt-accent{display:block;width:100%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.2) 20%,rgba(201,169,110,0.2) 80%,transparent 100%)}
+
+/* ─── IMAGE BREAK ─── */
+.pgt-img-break{width:100%;height:70vh;min-height:500px;overflow:hidden;position:relative}
+.pgt-img-break img{width:100%;height:100%;object-fit:cover}
+.pgt-img-break::before{content:'';position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(rgba(26,26,24,0.15),transparent);z-index:1;pointer-events:none}
+.pgt-img-break::after{content:'';position:absolute;bottom:0;left:0;right:0;height:140px;background:linear-gradient(transparent,rgba(26,26,24,0.55));z-index:1;pointer-events:none}
+
+/* ─── IMAGE PAIR ─── */
+.pgt-img-pair{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.pgt-img-half{position:relative;height:420px;overflow:hidden}
+.pgt-img-half img{width:100%;height:100%;object-fit:cover}
+.pgt-img-half::after{content:'';position:absolute;inset:0;background:rgba(26,26,24,0.15)}
+
+/* ─── WHY IT MATTERS (2-col) ─── */
+.pgt-why{background:#f6f4f0;padding:6rem 5vw}
+.pgt-why-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;max-width:1100px}
+.pgt-why-text h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:300;line-height:1.2;margin-bottom:1.5rem;color:#1a1a18}
+.pgt-why-text h2 em{font-style:italic;color:#b8975a}
+.pgt-why-text p{font-size:1rem;line-height:1.8;color:#4a4a46;margin-bottom:1rem}
+.pgt-consequences{border-left:1px solid rgba(26,26,26,0.08);padding-left:2rem}
+.pgt-consequence{margin-bottom:2rem}
+.pgt-consequence:last-child{margin-bottom:0}
+.pgt-consequence h4{font-family:'DM Sans',-apple-system,sans-serif;font-size:.88rem;font-weight:500;color:#1a1a18;margin-bottom:.4rem}
+.pgt-consequence p{font-size:.88rem;line-height:1.7;color:#8a8579;margin-bottom:0}
+
+/* ─── PHILOSOPHY (3-col) ─── */
+.pgt-philosophy{background:#1a1a18;padding:6rem 5vw;position:relative;overflow:hidden}
+.pgt-philosophy::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:80px;background:linear-gradient(rgba(201,169,110,0.4),transparent)}
+.pgt-phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;max-width:1100px;margin:0 auto;text-align:center}
+.pgt-phil-item h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;font-weight:400;margin-bottom:.6rem;color:#f6f4f0}
+.pgt-phil-item p{font-size:.88rem;line-height:1.7;color:#8a8579}
+
+/* ─── WHO THIS IS FOR ─── */
+.pgt-for{background:#eeece6;padding:6rem 5vw}
+.pgt-for-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;max-width:1100px;margin:0 auto}
+.pgt-for-card{padding:2rem 0;border-top:1px solid rgba(26,26,26,0.12)}
+.pgt-for-card h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:400;margin-bottom:.6rem;color:#1a1a18}
+.pgt-for-card p{font-size:.84rem;color:#8a8579;line-height:1.7}
+
+/* ─── LICENSE BANNER ─── */
+.pgt-license{background:#1a1a18;padding:4rem 5vw;text-align:center}
+.pgt-license-inner{max-width:600px;margin:0 auto}
+.pgt-license h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;margin-bottom:.8rem;color:#f6f4f0}
+.pgt-license p{font-size:.92rem;line-height:1.75;color:#d9d5cd}
+.pgt-license-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:1.5rem}
+.pgt-license-tag{font-size:.72rem;letter-spacing:.08em;color:#c9a96e;border:1px solid rgba(201,169,110,0.15);padding:.4rem 1rem}
+
+/* ─── PRICING CARDS ─── */
+.pgt-pricing{background:#1a1a18;padding:6rem 5vw}
+.pgt-pricing-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto 3rem}
+.pgt-card{background:#1e1d1a;border:1px solid rgba(255,255,255,0.05);padding:2.5rem 2rem;position:relative;transition:border-color .4s ease,box-shadow .4s ease}
+.pgt-card:hover{border-color:rgba(201,169,110,0.1);box-shadow:0 8px 40px rgba(0,0,0,.3)}
+.pgt-card.pgt-featured{border-color:#c9a96e;background:#1c1b17}
+.pgt-card.pgt-featured::before{content:'Most Common';position:absolute;top:-1px;left:2rem;background:#c9a96e;color:#1a1a18;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;padding:.35rem 1rem;font-weight:500}
+.pgt-card-label{font-size:.56rem;letter-spacing:.25em;text-transform:uppercase;color:#5e5a52;margin-bottom:.8rem;font-weight:500}
+.pgt-card-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;margin-bottom:.5rem;color:#f6f4f0}
+.pgt-card-sub{font-size:.84rem;color:#8a8579;line-height:1.6;margin-bottom:1.8rem;min-height:52px}
+.pgt-card-price{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:300;color:#c9a96e;margin-bottom:.2rem}
+.pgt-card-note{font-size:.72rem;color:#5e5a52;margin-bottom:2rem;line-height:1.6}
+.pgt-card-div{width:100%;height:1px;background:rgba(255,255,255,0.05);margin-bottom:1.5rem}
+.pgt-card-outcome-l{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a96e;margin-bottom:.6rem;font-weight:400}
+.pgt-card-outcome{font-size:.88rem;color:#d9d5cd;line-height:1.6;margin-bottom:1.5rem;font-style:italic}
+.pgt-card-inc-l{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#5e5a52;margin-bottom:1rem;font-weight:400}
+.pgt-card-inc{list-style:none;padding:0;margin:0}
+.pgt-card-inc li{font-size:.84rem;color:#b5afa5;padding:.4rem 0 .4rem 1.3rem;position:relative;line-height:1.5;border-bottom:1px solid rgba(255,255,255,.02)}
+.pgt-card-inc li:last-child{border-bottom:none}
+.pgt-card-inc li::before{content:'';position:absolute;left:0;top:.78rem;width:5px;height:1px;background:#c9a96e}
+.pgt-card-inc li.pgt-hl{color:#c9a96e}
+.pgt-pricing-note{text-align:center;max-width:1100px;margin:0 auto}
+.pgt-pricing-note p{font-size:.82rem;color:#5e5a52;max-width:520px;margin:0 auto;line-height:1.7;font-style:italic}
+
+/* ─── COST-SHARE ─── */
+.pgt-share{background:#f6f4f0;padding:6rem 5vw}
+.pgt-share-intro{max-width:620px;margin:0 auto 3.5rem;text-align:center}
+.pgt-share-intro h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:300;line-height:1.25;margin-bottom:1rem;color:#1a1a18}
+.pgt-share-intro h2 em{font-style:italic;color:#b8975a}
+.pgt-share-intro p{font-size:.95rem;line-height:1.8;color:#4a4a46}
+.pgt-share-how{margin-bottom:3rem}
+.pgt-share-how h3{font-family:'DM Sans',-apple-system,sans-serif;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:#b8975a;margin-bottom:1.5rem;text-align:center;font-weight:500}
+.pgt-share-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto}
+.pgt-share-card{background:#fff;border:1px solid rgba(26,26,26,0.08);padding:2rem;text-align:center}
+.pgt-share-card.pgt-share-hl{border-color:#b8975a}
+.pgt-share-parties{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:400;color:#1a1a18;margin-bottom:.3rem}
+.pgt-share-desc{font-size:.76rem;color:#8a8579;margin-bottom:1.2rem}
+.pgt-share-math{font-size:.78rem;color:#4a4a46;line-height:1.7;margin-bottom:1rem}
+.pgt-share-result{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;font-weight:300;color:#b8975a}
+.pgt-share-result-note{font-size:.7rem;color:#8a8579;margin-top:.15rem}
+.pgt-share-nudge{max-width:560px;margin:3rem auto 0;text-align:center;padding:2rem 2.5rem;border:1px solid rgba(26,26,26,0.08);background:#fff}
+.pgt-share-nudge p{font-size:.92rem;line-height:1.75;color:#4a4a46;margin:0}
+.pgt-share-nudge strong{color:#b8975a;font-weight:500}
+
+/* ─── ADD-ONS ─── */
+.pgt-addons{background:#1a1a18;padding:6rem 5vw}
+.pgt-addons-head{max-width:1100px;margin:0 auto 2.5rem}
+.pgt-addons-head h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:400;margin-bottom:.5rem;color:#f6f4f0}
+.pgt-addons-head p{font-size:.88rem;color:#8a8579}
+.pgt-addons-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.05);max-width:1100px;margin:0 auto}
+.pgt-addon{background:#181715;padding:1.5rem 1.8rem;display:flex;justify-content:space-between;align-items:center}
+.pgt-addon-name{font-size:.88rem;color:#e0dbd3;font-weight:400}
+.pgt-addon-desc{font-size:.76rem;color:#5e5a52;margin-top:.15rem}
+.pgt-addon-price{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.05rem;color:#c9a96e;white-space:nowrap;margin-left:2rem;font-weight:400}
+
+/* ─── PROCESS ─── */
+.pgt-process{background:#f6f4f0;padding:6rem 5vw}
+.pgt-process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;max-width:1100px;margin:0 auto}
+.pgt-step-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.8rem;font-weight:300;line-height:1;margin-bottom:.7rem;color:rgba(184,151,90,.2)}
+.pgt-step h4{font-size:.88rem;font-weight:500;letter-spacing:.02em;margin-bottom:.4rem;color:#1a1a18}
+.pgt-step p{font-size:.84rem;line-height:1.7;color:#8a8579;margin:0}
+
+/* ─── TESTIMONIAL ─── */
+.pgt-quote{background:#eeece6;padding:6rem 5vw;text-align:center}
+.pgt-quote-text{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;line-height:1.4;max-width:900px;margin:0 auto 1.5rem;color:#1a1a18}
+.pgt-quote-text::before{content:'\201C';display:block;font-size:4rem;color:#c9a96e;line-height:1;margin-bottom:0.5rem;font-style:normal;animation:pgtQuoteFloat 6s ease-in-out infinite alternate}
+@keyframes pgtQuoteFloat{0%{transform:scale(1) translateY(0)}100%{transform:scale(1.05) translateY(-4px)}}
+.pgt-quote-attr{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:#8a8579;font-weight:500}
+.pgt-quote-attr a{color:#b8975a;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .3s ease}
+.pgt-quote-attr a:hover{border-color:#b8975a}
+
+/* ─── FAQ ─── */
+.pgt-faq{background:#f6f4f0;padding:6rem 5vw}
+.pgt-faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;max-width:1100px;margin:0 auto}
+.pgt-faq-item{padding-bottom:1.8rem;border-bottom:1px solid rgba(26,26,26,0.08)}
+.pgt-faq-item h4{font-family:'DM Sans',-apple-system,sans-serif;font-size:.92rem;font-weight:400;margin-bottom:.5rem;color:#1a1a18}
+.pgt-faq-item p{font-size:.86rem;line-height:1.7;color:#8a8579;margin:0}
+
+/* ─── CTA ─── */
+.pgt-cta{position:relative;min-height:65vh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center}
+.pgt-cta-bg{position:absolute;inset:0}
+.pgt-cta-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.5) brightness(.3);transition:transform 8s cubic-bezier(0.16,1,0.3,1)}
+.pgt-cta.pgt-in-view .pgt-cta-bg img{transform:scale(1.08)}
+.pgt-cta-content{position:relative;z-index:2;padding:6rem 5vw;width:100%}
+.pgt-cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:300;margin-bottom:1rem;line-height:1.2;color:#f6f4f0}
+.pgt-cta h2 em{font-style:italic;color:#c9a96e}
+.pgt-cta p{font-size:1rem;color:#8a8579;max-width:440px;margin:0 auto 2.5rem;line-height:1.7}
+.pgt-btn{display:inline-block;font-family:'DM Sans',sans-serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;padding:1.1rem 3rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all .35s ease}
+.pgt-btn:hover{background:transparent!important;color:#c9a96e!important}
+.pgt-cta-details{margin-top:2.5rem;font-size:.72rem;color:#5e5a52;letter-spacing:.05em}
+.pgt-cta-details a{color:#8a847a;text-decoration:none}
+
+/* ─── FOOTER ─── */
+.pgt-ft{background:#1a1a18;border-top:1px solid rgba(201,169,110,.15)}
+.pgt-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}
+.pgt-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}
+.pgt-ft-locs a:hover{color:#c9a96e}
+.pgt-ft-r{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}
+.pgt-ft-i{display:flex;align-items:baseline;gap:10px}
+.pgt-ft-l{font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;white-space:nowrap}
+.pgt-ft-dt{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,.4);flex-shrink:0;position:relative;top:-2px}
+.pgt-ft-i p,.pgt-ft-i a{margin:0;font-size:12px;color:rgba(246,244,240,.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color .3s ease}
+.pgt-ft-i a:hover{color:#c9a96e}
+.pgt-ft-s{display:flex;gap:18px}
+.pgt-ft-rl{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,.15) 20%,rgba(201,169,110,.15) 80%,transparent 100%)}
+.pgt-ft-b{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}
+.pgt-ft-cp{font-size:10px;color:rgba(246,244,240,.35);letter-spacing:.08em}
+.pgt-ft-n{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center}
+.pgt-ft-n a{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);text-decoration:none;transition:color .3s ease}
+.pgt-ft-n a:hover{color:#c9a96e}
+.pgt-ft-email{cursor:pointer}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+.pgt-pricing-cards{grid-template-columns:1fr;gap:2rem}
+.pgt-phil-grid{grid-template-columns:1fr;gap:2rem}
+.pgt-process-grid{grid-template-columns:1fr 1fr;gap:2rem}
+.pgt-addons-grid{grid-template-columns:1fr}
+.pgt-why-grid,.pgt-faq-grid{grid-template-columns:1fr;gap:2.5rem}
+.pgt-share-grid{grid-template-columns:1fr;gap:1rem}
+.pgt-img-pair{grid-template-columns:1fr}
+.pgt-img-half{height:280px}
+.pgt-for-grid{grid-template-columns:1fr 1fr;gap:2rem}
+}
+@media(max-width:768px){
+.pgt-hero{min-height:75vh;padding:4rem 5vw}
+.pgt-why{padding:4rem 5vw}
+.pgt-philosophy{padding:4rem 5vw}
+.pgt-for{padding:4rem 5vw}
+.pgt-addons{padding:4rem 5vw}
+.pgt-process{padding:4rem 5vw}
+.pgt-quote{padding:4rem 5vw}
+.pgt-faq{padding:4rem 5vw}
+.pgt-share{padding:4rem 5vw}
+.pgt-pricing{padding:4rem 5vw}
+.pgt-img-break{height:50vh;min-height:300px}
+.pgt-scroll-hint{display:none}
+.pgt-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}
+.pgt-ft-locs a{font-size:.55rem}
+.pgt-ft-r{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}
+.pgt-ft-rl{margin:0 6vw}
+.pgt-ft-b{flex-direction:column;gap:.75rem;text-align:center;padding:1.25rem 6vw}
+}
+@media(max-width:600px){
+.pgt-process-grid{grid-template-columns:1fr}
+.pgt-for-grid{grid-template-columns:1fr}
+.pgt-addon{flex-direction:column;align-items:flex-start;gap:.4rem}
+.pgt-addon-price{margin-left:0}
+}
+@media print{
+body{background:#fff;color:#1a1a1a}
+.pgt-hero-bg,.pgt-img-break,.pgt-img-pair,.pgt-cta-bg{display:none}
+.pgt-card{break-inside:avoid;border:1px solid #ccc;background:#fff}
+.pgt-loader,.pgt-cursor,.pgt-cursor-dot,.pgt-progress,.pgt-scroll-hint{display:none!important}
+h1,h2,h3,h4,.pgt-card-title{color:#1a1a18!important}
+.pgt-card-price{color:#6b5d4a!important}
+}
+</style>
+<div class="pgt-loader" id="pgtLoader">
+  <div class="pgt-loader-brand">Matt Anthony Photography</div>
+  <div class="pgt-loader-sub">Photography for Trades &amp; Suppliers</div>
+  <div class="pgt-loader-line"></div>
+</div>
+<div class="pgt-cursor" id="pgtCursor"></div>
+<div class="pgt-cursor-dot" id="pgtCursorDot"></div>
+<div class="pgt-progress" id="pgtProgress"></div>
+<div class="pgt-wrap">
+
+<!-- ═══ HERO ═══ -->
+<section class="pgt-hero pgt-grain">
+  <div class="pgt-hero-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d88d0860-1975-4b2f-8443-ade1c0bb286a/steel-wood-structures-2500px-10.jpg" alt="Mass timber beam structure with CLT panel suspended by crane photographed by Matt Anthony"></div>
+  <div class="pgt-hero-content">
+    <div class="pgt-eyebrow pgt-hero-label" data-observe>Photography for Trades &amp; Suppliers</div>
+    <h1>Your craft disappears into buildings. The photography should make it <em>visible</em></h1>
+    <p class="pgt-hero-sub">Custom millwork, architectural glazing, structural fabrication, specialty finishes. Your work enables architecture. The right photography documents it before the next project covers it up.</p>
+  </div>
+  <div class="pgt-scroll-hint" id="pgtScrollHint">
+    <span class="pgt-scroll-text">Scroll</span>
+    <div class="pgt-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ WHY IT MATTERS ═══ -->
+<section class="pgt-why">
+  <div class="pgt-why-grid">
+    <div class="pgt-why-text">
+      <div class="pgt-eyebrow pgt-label" data-observe>Why This Matters</div>
+      <div class="pgt-divider"></div>
+      <h2>What happens when craft is <em>invisible</em></h2>
+      <p>Your best work lives inside architect-designed homes and commercial builds. But once the project is complete, you rarely get credited. The builder's photographer shoots wide angles. Your three months of custom fabrication becomes background.</p>
+      <p>Without photography that isolates and documents your specific contribution, architects and designers evaluating future partners have no way to see what you actually do.</p>
+    </div>
+    <div class="pgt-consequences">
+      <div class="pgt-consequence"><h4>Your Work Gets Credited to Someone Else</h4><p>When a builder or architect shares project photos, your millwork, windows, or fabrication is visible but unattributed. The architect gets the credit. You get nothing for your portfolio.</p></div>
+      <div class="pgt-consequence"><h4>Architects Can't Find You</h4><p>Design professionals evaluate trades by portfolio quality. If your website shows phone shots or supplier stock images, you look like a commodity, not a craft partner.</p></div>
+      <div class="pgt-consequence"><h4>Product-in-Context is Missing</h4><p>Isolated product shots on a white background don't show how your work performs in real architecture. Architects want to see installations, integrations, and detail in context.</p></div>
+      <div class="pgt-consequence"><h4>Award Opportunities Are Lost</h4><p>Projects you contributed to win Georgie and CHBA awards, but without your own photography of the installation, you can't leverage those wins in your own marketing.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ IMAGE BREAK ═══ -->
+<div class="pgt-img-break" data-observe>
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ce75c95f-d959-4ce2-ad5b-4b976cc71317/_DSC7112-Edit.jpg" alt="Construction detail with ocean and mountain view through floor-to-ceiling architectural glazing" loading="lazy">
+</div>
+
+<!-- ═══ PHILOSOPHY ═══ -->
+<section class="pgt-philosophy pgt-grain">
+  <div class="pgt-phil-grid">
+    <div class="pgt-phil-item"><h3>Context Over Isolation</h3><p>Your work photographed inside the buildings it was made for. Not product shots on a white background, but custom installations in architect-designed spaces where your craft is part of the design story.</p></div>
+    <div class="pgt-phil-item"><h3>Detail at the Right Scale</h3><p>Macro detail of joinery, material transitions, and fabrication precision alongside wider compositions that show how your work integrates into the architecture. Both scales matter.</p></div>
+    <div class="pgt-phil-item"><h3>Portfolio Assets That Last</h3><p>Every image is composed for your website, proposals, trade show displays, and architect presentations. One shoot produces years of marketing material across every channel.</p></div>
+  </div>
+</section>
+
+<div class="pgt-accent"></div>
+
+<!-- ═══ WHO THIS IS FOR ═══ -->
+<section class="pgt-for">
+  <div class="pgt-wide" style="text-align:center;margin-bottom:3rem">
+    <div class="pgt-eyebrow pgt-label" data-observe style="justify-content:center">Who This Is For</div>
+    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;color:#1a1a18;margin-bottom:0">Specialists whose work enables <em style="font-style:italic;color:#b8975a">architecture</em></h2>
+  </div>
+  <div class="pgt-for-grid">
+    <div class="pgt-for-card"><h3>Millwork &amp; Cabinetry</h3><p>Custom built-ins, architectural paneling, and bespoke cabinetry documented in the residential and commercial spaces they were fabricated for.</p></div>
+    <div class="pgt-for-card"><h3>Windows &amp; Glazing</h3><p>Architectural fenestration, operable glass walls, and custom door systems photographed to show how your engineering integrates with the design.</p></div>
+    <div class="pgt-for-card"><h3>Structural Fabrication</h3><p>Custom steel, heavy timber, engineered connections, and mass timber systems. Your precision documented where it's structurally and visually exposed.</p></div>
+    <div class="pgt-for-card"><h3>Specialty Trades</h3><p>Stone and tile, lighting design, hardware, flooring, landscape architecture, cladding, and building envelope. Any craft that deserves better documentation than it currently has.</p></div>
+  </div>
+</section>
+
+<!-- ═══ LICENSE ═══ -->
+<section class="pgt-license pgt-grain">
+  <div class="pgt-license-inner">
+    <h3>Every shoot includes a full, unlimited use license</h3>
+    <p>Your images. No restrictions. Use them anywhere.</p>
+    <div class="pgt-license-tags">
+      <span class="pgt-license-tag">Website</span>
+      <span class="pgt-license-tag">Trade Shows</span>
+      <span class="pgt-license-tag">Proposals</span>
+      <span class="pgt-license-tag">Architect Presentations</span>
+      <span class="pgt-license-tag">Social Media</span>
+      <span class="pgt-license-tag">Print</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING CARDS ═══ -->
+<section class="pgt-pricing">
+  <div class="pgt-wide" style="text-align:center;margin-bottom:3rem">
+    <div class="pgt-eyebrow pgt-label-dark" data-observe style="justify-content:center">Investment</div>
+    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;color:#f6f4f0;margin-bottom:1rem">Two ways to get your work <em style="font-style:italic;color:#c9a96e">documented</em></h2>
+    <p style="max-width:540px;margin:0 auto;font-size:.95rem;line-height:1.75;color:#8a8579">Book your own dedicated shoot, or join an existing project shoot through cost-sharing. Most trades start with a shared shoot, then book dedicated sessions once they see the results.</p>
+  </div>
+  <div class="pgt-pricing-cards">
+
+    <div class="pgt-card">
+      <div class="pgt-card-label">Dedicated Shoot</div>
+      <div class="pgt-card-title">Installation Documentation</div>
+      <div class="pgt-card-sub">A full shoot focused entirely on your work. Product-in-context photography of your installations across one or more completed projects.</div>
+      <div class="pgt-card-price">$2,000</div>
+      <div class="pgt-card-note">Full day &middot; 20 to 25 edited images &middot; delivered in 5 to 10 business days</div>
+      <div class="pgt-card-div"></div>
+      <div class="pgt-card-outcome-l">The Outcome</div>
+      <div class="pgt-card-outcome">A complete set of product-in-context images showing your installations in architect-designed spaces. Portfolio, website, proposals, trade show displays, and architect presentations covered.</div>
+      <div class="pgt-card-inc-l">Includes</div>
+      <ul class="pgt-card-inc">
+        <li>Pre-production consultation and shot planning</li>
+        <li>Full-day on-site photography</li>
+        <li>20 to 25 professionally edited images</li>
+        <li>Wide context shots showing integration with the architecture</li>
+        <li>Detail and macro coverage of craftsmanship and materiality</li>
+        <li>Natural, editorial-grade post-production</li>
+        <li>High-res and web-optimized delivery</li>
+        <li>Curated online gallery</li>
+        <li>Full unlimited use license</li>
+      </ul>
+    </div>
+
+    <div class="pgt-card pgt-featured">
+      <div class="pgt-card-label">Shared Shoot</div>
+      <div class="pgt-card-title">Cost-Share Licensing</div>
+      <div class="pgt-card-sub">Join an existing builder or architect project shoot. Your installations are documented alongside the main project. Same quality, lower cost.</div>
+      <div class="pgt-card-price">$500 &ndash; $1,500</div>
+      <div class="pgt-card-note">Per project &middot; curated set of your specific work &middot; delivered with the main project</div>
+      <div class="pgt-card-div"></div>
+      <div class="pgt-card-outcome-l">The Outcome</div>
+      <div class="pgt-card-outcome">Your own curated image set composed around your specific contribution to the project. Full unlimited usage rights. Publication-grade images of your work in context, without booking a separate shoot.</div>
+      <div class="pgt-card-inc-l">Includes</div>
+      <ul class="pgt-card-inc">
+        <li>Documentation of your specific installations within the project</li>
+        <li>Context shots showing your work within the overall design</li>
+        <li>Detail coverage of craftsmanship, materials, and integration</li>
+        <li class="pgt-hl">Curated set composed around your contribution</li>
+        <li class="pgt-hl">Full unlimited use license on your images</li>
+        <li>Natural, editorial-grade post-production</li>
+        <li>High-res and web-optimized delivery</li>
+        <li>Curated online gallery</li>
+      </ul>
+    </div>
+
+    <div class="pgt-card">
+      <div class="pgt-card-label">Premium</div>
+      <div class="pgt-card-title">Craft Showcase</div>
+      <div class="pgt-card-sub">The full treatment for your flagship installations. Photography, video, and detail coverage composed for trade publications, awards, and architect presentations.</div>
+      <div class="pgt-card-price">$3,500</div>
+      <div class="pgt-card-note">Full day &middot; 25 to 30 images + 60s video + social reel &middot; delivered in 5 to 10 business days</div>
+      <div class="pgt-card-div"></div>
+      <div class="pgt-card-outcome-l">The Outcome</div>
+      <div class="pgt-card-outcome">The definitive visual record of your best work. Photography, video, and detail coverage that positions your firm as a craft partner, not a supplier. Everything you need for your website, proposals, and the presentations that win your next architect collaboration.</div>
+      <div class="pgt-card-inc-l">Includes</div>
+      <ul class="pgt-card-inc">
+        <li>Extended pre-production and shot planning</li>
+        <li>Full-day on-site photography</li>
+        <li>25 to 30 curated, publication-grade images</li>
+        <li>Wide context and detail coverage of your installations</li>
+        <li>Process and craftsmanship documentation where accessible</li>
+        <li class="pgt-hl">Short-form project video included (60 seconds)</li>
+        <li class="pgt-hl">Social media reel included (one 15 to 30 second vertical edit)</li>
+        <li>Natural, editorial-grade post-production</li>
+        <li>High-res and web-optimized delivery</li>
+        <li>Curated online gallery</li>
+        <li>Full unlimited use license</li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="pgt-pricing-note">
+    <p>Most trades start with cost-share licensing on a project I'm already shooting for a builder or architect. Once you see how the images perform, dedicated shoots are the natural next step.</p>
+  </div>
+</section>
+
+<!-- ═══ IMAGE PAIR ═══ -->
+<div class="pgt-img-pair">
+  <div class="pgt-img-half"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c19496e4-9295-4d7c-8b69-13bb310c51ec/steel-wood-structures-2500px-16.jpg" alt="Worker cutting mass timber with saw, craftsmanship in action" loading="lazy"></div>
+  <div class="pgt-img-half"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/43ce9776-2d74-4728-ad29-a987976ef156/_DSC7185.jpg" alt="Dark stained wood siding detail with tree shadow, material craftsmanship" loading="lazy"></div>
+</div>
+
+<!-- ═══ COST-SHARE ═══ -->
+<section class="pgt-share">
+  <div class="pgt-share-intro">
+    <div class="pgt-eyebrow pgt-label" data-observe style="justify-content:center">The Easiest Way to Start</div>
+    <h2>Already involved in a project being photographed? <em>Join the shoot.</em></h2>
+    <p>When a builder or architect books a project shoot, I ask who else contributed to the build. If your millwork, windows, or fabrication is part of that project, you can join the existing shoot and get your own curated image set at a fraction of the cost of booking separately.</p>
+  </div>
+  <div class="pgt-share-how">
+    <h3>How Cost-Share Licensing Works</h3>
+    <div class="pgt-share-grid">
+      <div class="pgt-share-card">
+        <div class="pgt-share-parties">Builder Books Alone</div>
+        <div class="pgt-share-desc">$3,500 project, one party</div>
+        <div class="pgt-share-math">Builder pays full<br>$3,500</div>
+        <div class="pgt-share-result">$3,500</div>
+        <div class="pgt-share-result-note">builder only</div>
+      </div>
+      <div class="pgt-share-card pgt-share-hl">
+        <div class="pgt-share-parties">Builder + You</div>
+        <div class="pgt-share-desc">You join for +30%</div>
+        <div class="pgt-share-math">$3,500 + 30% = $4,550<br>&divide; 2 parties</div>
+        <div class="pgt-share-result">$2,275</div>
+        <div class="pgt-share-result-note">per party (you save vs. solo shoot)</div>
+      </div>
+      <div class="pgt-share-card pgt-share-hl">
+        <div class="pgt-share-parties">Builder + Architect + You</div>
+        <div class="pgt-share-desc">Three parties, +60%</div>
+        <div class="pgt-share-math">$3,500 + 60% = $5,600<br>&divide; 3 parties</div>
+        <div class="pgt-share-result">$1,867</div>
+        <div class="pgt-share-result-note">per party</div>
+      </div>
+    </div>
+  </div>
+  <div class="pgt-share-nudge">
+    <p><strong>You don't need to wait for someone else to suggest it.</strong> If a builder or architect you work with is planning a project shoot, reach out and ask about joining. Or let me know which projects you've contributed to, and I'll coordinate with the other parties.</p>
+  </div>
+</section>
+
+<!-- ═══ ADD-ONS ═══ -->
+<section class="pgt-addons">
+  <div class="pgt-addons-head">
+    <h3>Available Add-Ons</h3>
+    <p>Supplemental services that can be added to any engagement.</p>
+  </div>
+  <div class="pgt-addons-grid">
+    <div class="pgt-addon"><div><div class="pgt-addon-name">Process Documentation</div><div class="pgt-addon-desc">In-shop or on-site fabrication and installation coverage</div></div><div class="pgt-addon-price">Quoted per scope</div></div>
+    <div class="pgt-addon"><div><div class="pgt-addon-name">Material &amp; Detail Macro</div><div class="pgt-addon-desc">Close-up coverage of joinery, hardware, finishes, and material quality</div></div><div class="pgt-addon-price">$300 &ndash; $500</div></div>
+    <div class="pgt-addon"><div><div class="pgt-addon-name">Extended Project Film</div><div class="pgt-addon-desc">Standalone video showcasing fabrication and installation</div></div><div class="pgt-addon-price">$3,000 &ndash; $4,500</div></div>
+    <div class="pgt-addon"><div><div class="pgt-addon-name">Social Media Reels</div><div class="pgt-addon-desc">Short vertical clips for Instagram, LinkedIn, TikTok</div></div><div class="pgt-addon-price">Quoted per scope</div></div>
+    <div class="pgt-addon"><div><div class="pgt-addon-name">Multi-Project Coverage</div><div class="pgt-addon-desc">Document installations across 2 to 3 completed projects in one day</div></div><div class="pgt-addon-price">Quoted per scope</div></div>
+    <div class="pgt-addon"><div><div class="pgt-addon-name">Trade Show Formats</div><div class="pgt-addon-desc">Large-format prints, display panels, and presentation-ready exports</div></div><div class="pgt-addon-price">Included</div></div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="pgt-process">
+  <div class="pgt-wide" style="text-align:center;margin-bottom:3rem">
+    <div class="pgt-eyebrow pgt-label" data-observe style="justify-content:center">How It Works</div>
+    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;color:#1a1a18;margin-bottom:1rem">Simple, whether you book solo or <em style="font-style:italic;color:#b8975a">join a shoot</em></h2>
+    <p style="max-width:500px;margin:0 auto;font-size:.95rem;line-height:1.75;color:#8a8579">The process is the same either way. Your work gets documented with the same quality and care as the main project.</p>
+  </div>
+  <div class="pgt-process-grid">
+    <div class="pgt-step"><div class="pgt-step-num">01</div><h4>Discovery</h4><p>We talk about your installations, your specific craft, and what you need the images to do. If you're joining an existing shoot, I'll coordinate timing with the other parties.</p></div>
+    <div class="pgt-step"><div class="pgt-step-num">02</div><h4>Planning</h4><p>I study your specific work within the project. What materials, what details, what integration points need to be documented. Shot strategy is built around your contribution.</p></div>
+    <div class="pgt-step"><div class="pgt-step-num">03</div><h4>Photography</h4><p>On-site, I photograph your installations with the same editorial quality as the overall project. Context shots, detail coverage, and material close-ups that make your craft visible.</p></div>
+    <div class="pgt-step"><div class="pgt-step-num">04</div><h4>Delivery</h4><p>Your own curated set delivered within 5 to 10 business days. High-res, web-optimized, and ready for your website, proposals, and architect presentations.</p></div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIAL ═══ -->
+<section class="pgt-quote">
+  <div class="pgt-quote-text">Matt's photography completely changed how architects perceive our work. For the first time, we have portfolio images that show our windows in context, in the buildings they were designed for. That's what wins the next specification.</div>
+  <div class="pgt-quote-attr"><a href="/case-studies/the-window-merchant">The Window Merchant</a></div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="pgt-faq">
+  <div class="pgt-wide" style="text-align:center;margin-bottom:3rem">
+    <div class="pgt-eyebrow pgt-label" data-observe style="justify-content:center">Common Questions</div>
+    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;color:#1a1a18;margin-bottom:0">Before you <em style="font-style:italic;color:#b8975a">reach out</em></h2>
+  </div>
+  <div class="pgt-faq-grid">
+    <div class="pgt-faq-item"><h4>Do I need to book my own shoot, or can I join an existing one?</h4><p>Either. Most trades start by joining a project shoot I'm already doing for a builder or architect. You get your own curated set of images focused on your work, at a lower cost. Dedicated shoots are available when you want to document multiple installations or need deeper coverage.</p></div>
+    <div class="pgt-faq-item"><h4>How do I find out about upcoming shoots I can join?</h4><p>Let me know which builders and architects you work with, or which projects you've recently completed installations on. I'll check whether any of those projects have photography scheduled and coordinate your inclusion.</p></div>
+    <div class="pgt-faq-item"><h4>What if the project has already been photographed?</h4><p>If I shot the project, I may already have images that feature your work. We can discuss licensing those images directly. If another photographer shot it, a dedicated session to document your installations is the best path.</p></div>
+    <div class="pgt-faq-item"><h4>Can you photograph our work in the shop or during installation?</h4><p>Yes. Process and fabrication documentation is available as an add-on. It's valuable for social media, recruitment, and showing architects the craft that goes into every piece before it leaves your shop.</p></div>
+    <div class="pgt-faq-item"><h4>Do we get our own images, separate from the builder's?</h4><p>Yes. Every party in a cost-share arrangement receives their own curated set composed specifically around their contribution. Your images highlight your work. Full unlimited usage rights included.</p></div>
+    <div class="pgt-faq-item"><h4>Can I use the images for trade shows and architect presentations?</h4><p>Yes. Every engagement includes a full unlimited use license. Website, trade shows, architect presentations, proposals, social media, print. No restrictions.</p></div>
+    <div class="pgt-faq-item"><h4>We work across multiple projects a year. Is there a way to cover them all?</h4><p>Yes. If you're contributing to 4+ projects annually, a retainer or multi-project arrangement ensures your installations are documented consistently. We can discuss the right structure on a discovery call.</p></div>
+    <div class="pgt-faq-item"><h4>What's the first step?</h4><p>Book a discovery call. We'll talk about your craft, the projects you've contributed to, and whether a dedicated shoot or cost-share arrangement makes more sense. No pricing at that stage. Just a conversation about fit.</p></div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="pgt-cta" data-observe>
+  <div class="pgt-cta-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/fb20117e-2070-46d4-9b30-65e7e2bd59fe/steel-wood-structures-2500px-5.jpg" alt="Crane lifting CLT panel with mountains and fog behind" loading="lazy"></div>
+  <div class="pgt-cta-content">
+    <h2>Your craft enables architecture.<br>Let the imagery <em>prove it</em>.</h2>
+    <p>Whether you book a dedicated shoot or join an existing project, every engagement starts with a conversation about your work and what you need the images to do.</p>
+    <a href="/discovery-call" class="pgt-btn">Book a Discovery Call</a>
+    <div class="pgt-cta-details"><a class="pgt-ft-email" id="pgt-cta-em"></a> &ensp;&middot;&ensp; 604.765.9270 &ensp;&middot;&ensp; Squamish, BC</div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="pgt-ft">
+  <div class="pgt-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+  <div class="pgt-ft-r">
+    <div class="pgt-ft-i"><span class="pgt-ft-l">Based In</span><span class="pgt-ft-dt"></span><p>Squamish, British Columbia</p></div>
+    <div class="pgt-ft-i"><span class="pgt-ft-l">Email</span><span class="pgt-ft-dt"></span><a class="pgt-ft-email" id="pgt-ft-em"></a></div>
+    <div class="pgt-ft-i"><span class="pgt-ft-l">Phone</span><span class="pgt-ft-dt"></span><a href="tel:6047659270">604.765.9270</a></div>
+    <div class="pgt-ft-i"><span class="pgt-ft-l">Follow</span><span class="pgt-ft-dt"></span><div class="pgt-ft-s"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  </div>
+  <div class="pgt-ft-rl"></div>
+  <div class="pgt-ft-b"><span class="pgt-ft-cp">Matt Anthony Photography</span><div class="pgt-ft-n"><a href="/bio">About</a><a href="/projects">Projects</a><a href="/pricing-guide-landing">Get Pricing</a><a href="/contact">Contact</a></div></div>
+</div>
+
+</div>
+<script>
+(function(){
+var isMobile='ontouchstart' in window;
+
+/* ═══ EMAIL OBFUSCATION ═══ */
+var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];
+function setEmail(id){var e=document.getElementById(id);if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}}
+setEmail('pgt-ft-em');setEmail('pgt-cta-em');
+
+/* ═══ LOADING SCREEN ═══ */
+var loader=document.getElementById('pgtLoader');
+window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('pgt-done');},1100);});
+
+/* ═══ SCROLL PROGRESS ═══ */
+var progressBar=document.getElementById('pgtProgress');
+function updateProgress(){var sc=window.scrollY;var d=document.documentElement.scrollHeight-window.innerHeight;if(d>0)progressBar.style.width=(sc/d*100)+'%';}
+
+/* ═══ SCROLL HINT FADE ═══ */
+var scrollHint=document.getElementById('pgtScrollHint');
+function updateScrollHint(){if(scrollHint){if(window.scrollY>100)scrollHint.classList.add('pgt-hidden');else scrollHint.classList.remove('pgt-hidden');}}
+
+/* ═══ CUSTOM CURSOR ═══ */
+var cursor=document.getElementById('pgtCursor');var cursorDot=document.getElementById('pgtCursorDot');var cx=0,cy=0,dx=0,dy=0;
+if(!isMobile&&cursor){
+  document.addEventListener('mousemove',function(ev){dx=ev.clientX;dy=ev.clientY;cursorDot.style.left=dx+'px';cursorDot.style.top=dy+'px';if(!cursor.classList.contains('pgt-active')){cursor.classList.add('pgt-active');cursorDot.classList.add('pgt-active');}});
+  function tickCursor(){cx+=(dx-cx)*0.12;cy+=(dy-cy)*0.12;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(tickCursor);}tickCursor();
+  var hoverEls=document.querySelectorAll('a, button, .pgt-btn');
+  hoverEls.forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('pgt-hover');});el.addEventListener('mouseleave',function(){cursor.classList.remove('pgt-hover');});});
+  document.addEventListener('mousedown',function(){cursor.classList.add('pgt-click');});
+  document.addEventListener('mouseup',function(){cursor.classList.remove('pgt-click');});
+}
+
+/* ═══ INTERSECTION OBSERVER ═══ */
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){
+  var el=entry.target;
+  if(el.classList.contains('pgt-eyebrow'))el.classList.add('pgt-visible');
+  if(el.tagName==='H2')el.classList.add('pgt-underlined');
+  if(el.classList.contains('pgt-img-break'))el.classList.add('pgt-in-view');
+  if(el.classList.contains('pgt-cta'))el.classList.add('pgt-in-view');
+}});},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+
+document.querySelectorAll('[data-observe]').forEach(function(el){observer.observe(el);});
+document.querySelectorAll('.pgt-wrap h2').forEach(function(el){observer.observe(el);});
+document.querySelectorAll('.pgt-img-break').forEach(function(el){observer.observe(el);});
+document.querySelectorAll('.pgt-cta').forEach(function(el){observer.observe(el);});
+
+/* ═══ COMBINED SCROLL HANDLER ═══ */
+var ticking=false;
+window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){updateProgress();updateScrollHint();ticking=false;});ticking=true;}},{passive:true});
+updateProgress();updateScrollHint();
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Photography for Trades & Suppliers — Pricing Guide | Matt Anthony",
+  "description": "Investment guide for trades and supplier photography. Product-in-context documentation, cost-share licensing, and dedicated shoots for millwork, glazing, and specialty trades in British Columbia.",
+  "url": "https://www.mattanthonyphoto.com/pricing-guide-trades-suppliers",
+  "provider": {
+    "@id": "https://www.mattanthonyphoto.com/#business"
+  }
+}
+</script>
+<meta name="robots" content="noindex">
+<meta name="description" content="Investment guide for trades and supplier photography. Cost-share licensing from $500, dedicated shoots from $2,000. Millwork, glazing, fabrication, and specialty trades in BC.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/pricing-guide-trades-suppliers">

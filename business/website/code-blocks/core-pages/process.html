@@ -1,0 +1,1919 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.pr-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a1a18;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+}
+
+.pr-loader.pr-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.pr-loader-brand {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: #f6f4f0 !important;
+  opacity: 0;
+  animation: prLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.pr-loader-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(138,133,121,0.7) !important;
+  margin-top: 8px;
+  opacity: 0;
+  animation: prLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.pr-loader-line {
+  width: 80px;
+  height: 1px;
+  background: rgba(201,169,110,0.12);
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+  opacity: 0;
+  animation: prLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.pr-loader-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  animation: prLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+}
+
+@keyframes prLoaderIn { to { opacity: 1; } }
+@keyframes prLoaderFill { to { left: 100%; } }
+
+/* ── Section nav dots ── */
+.pr-section-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.pr-section-nav.pr-nav-visible {
+  opacity: 1;
+}
+
+.pr-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #8a8579;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.pr-nav-dot:hover {
+  border-color: #c9a96e !important;
+  transform: scale(1.3);
+}
+
+.pr-nav-dot.pr-nav-active {
+  background: #c9a96e !important;
+  border-color: #c9a96e !important;
+  box-shadow: 0 0 8px rgba(201,169,110,0.4);
+}
+
+.pr-nav-dot::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, right 0.3s ease;
+}
+
+.pr-nav-dot:hover::before {
+  opacity: 1;
+  right: 24px;
+}
+
+@media (max-width: 768px) {
+  .pr-section-nav { display: none; }
+}
+
+/* ── Scroll progress bar ── */
+.pr-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.4));
+  z-index: 9999;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px rgba(201,169,110,0.4);
+}
+
+/* ── Headline gold underline on em ── */
+.pr-wrap h2 em {
+  position: relative;
+  display: inline;
+}
+
+.pr-wrap h2 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.2));
+  transition: width 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pr-wrap h2.pr-underlined em::after {
+  width: 100%;
+}
+
+/* ── Divider draw animation ── */
+.pr-divider {
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pr-divider.pr-drawn {
+  width: 80px;
+}
+
+/* ── Ken Burns on image breaks ── */
+.pr-img-break.pr-in-view img {
+  animation: prKenBurns 16s ease-in-out infinite alternate;
+}
+
+@keyframes prKenBurns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.06) translate(-4px, -6px); }
+}
+
+/* ── Film grain overlay ── */
+.pr-grain::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.pr-grain {
+  position: relative;
+}
+
+.pr-grain > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Eyebrow gold dash (animated) ── */
+.pr-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.pr-eyebrow::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  background: #c9a96e;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pr-eyebrow.pr-visible::before {
+  width: 24px;
+}
+
+/* ── Photo break depth layers ── */
+.pr-img-break {
+  position: relative;
+  overflow: hidden;
+}
+
+.pr-img-break img {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+.pr-img-break::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(rgba(26,26,24,0.15), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pr-img-break::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: linear-gradient(transparent, rgba(26,26,24,0.55));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Custom cursor ── */
+.pr-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(201,169,110,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
+.pr-cursor.pr-active {
+  opacity: 1;
+}
+
+.pr-cursor.pr-hover {
+  width: 50px;
+  height: 50px;
+  border-color: #c9a96e !important;
+  background: rgba(201,169,110,0.08);
+}
+
+.pr-cursor.pr-click {
+  width: 14px;
+  height: 14px;
+  background: rgba(201,169,110,0.3);
+}
+
+.pr-cursor-dot {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #c9a96e !important;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pr-cursor-dot.pr-active {
+  opacity: 1;
+}
+
+/* ── Magnetic button ── */
+.pr-magnetic {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Testimonial word reveal ── */
+.pr-quote-text .pr-qw {
+  display: inline;
+  color: rgba(26,26,24,0.15) !important;
+  transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pr-quote-text .pr-qw.pr-lit {
+  color: #1a1a18 !important;
+}
+
+.pr-quote-text .pr-qw.pr-gold-word.pr-lit {
+  color: #b8975a !important;
+}
+
+/* ── Ambient particles canvas ── */
+.pr-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Manifesto ── */
+.pr-manifesto {
+  background: #1a1a18 !important;
+  padding: 8rem 5vw;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pr-manifesto::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(rgba(201,169,110,0.4), transparent);
+}
+
+.pr-manifesto-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(246,244,240,0.25) !important;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pr-manifesto-text .pr-mw {
+  display: inline;
+  color: rgba(246,244,240,0.15) !important;
+  transition: color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pr-manifesto-text .pr-mw.pr-lit {
+  color: #f6f4f0 !important;
+}
+
+.pr-manifesto-text .pr-mw.pr-gold-word.pr-lit {
+  color: #c9a96e !important;
+}
+
+/* ── Accent line ── */
+.pr-accent {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.2) 20%, rgba(201,169,110,0.2) 80%, transparent 100%);
+}
+
+/* ── Inline gold highlights ── */
+.pr-gold { color: #c9a96e !important; font-weight: 400; }
+
+/* ── CTA background slow zoom ── */
+.pr-cta-bg img {
+  transition: transform 8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pr-cta.pr-in-view .pr-cta-bg img {
+  transform: scale(1.08);
+}
+
+/* ── CTA button glow pulse ── */
+.pr-cta-btn {
+  animation: prBtnGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes prBtnGlow {
+  0% { box-shadow: none; }
+  100% { box-shadow: 0 0 40px rgba(201,169,110,0.15), 0 0 80px rgba(201,169,110,0.05); }
+}
+
+/* ── Hero scroll fade ── */
+.pr-hero-content {
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* ── Scroll indicator ── */
+.pr-scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 3;
+  transition: opacity 0.4s ease;
+}
+
+.pr-scroll-hint.pr-hidden { opacity: 0; pointer-events: none; }
+
+.pr-scroll-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.45rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.3) !important;
+}
+
+.pr-scroll-line {
+  width: 1px;
+  height: 36px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(246,244,240,0.1);
+}
+
+.pr-scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #c9a96e;
+  animation: prScrollPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes prScrollPulse {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ═══ PROCESS PAGE ═══ */
+.pr-wrap {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #1a1a18 !important;
+  line-height: 1.7;
+  font-weight: 300;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.pr-wrap * {
+  box-sizing: border-box;
+}
+
+.pr-wrap img {
+  max-width: 100%;
+  display: block;
+}
+
+.pr-wrap a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.pr-ft-email::after { content: 'info@mattanthonyphoto.com'; }
+.pr-ft-email { cursor: pointer; }
+
+/* ─── HERO ─── */
+.pr-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 6rem 5vw;
+  background: #1a1a18 !important;
+  overflow: hidden;
+}
+
+.pr-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 20%, rgba(26,26,24,0.6) 60%, rgba(26,26,24,0.92) 100%);
+  z-index: 1;
+}
+
+.pr-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.pr-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  filter: saturate(0.6);
+}
+
+.pr-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.pr-hero-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.pr-hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: #f6f4f0 !important;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.pr-hero h1 em {
+  font-style: italic;
+  color: #c9a96e !important;
+}
+
+.pr-hero-sub {
+  font-size: 1.05rem;
+  color: #d9d5cd !important;
+  font-weight: 300;
+  max-width: 560px;
+  line-height: 1.8;
+}
+
+/* ─── PHILOSOPHY 2-COL ─── */
+.pr-phil {
+  display: flex;
+  min-height: 75vh;
+  overflow: hidden;
+}
+
+.pr-phil-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 5vw;
+  max-width: 600px;
+  margin-left: auto;
+}
+
+.pr-phil-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #b8975a !important;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.pr-phil-divider {
+  width: 60px;
+  height: 1px;
+  background: #c9a96e;
+  margin-bottom: 2rem;
+}
+
+.pr-phil-text h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: #1a1a18 !important;
+  margin-bottom: 2rem;
+}
+
+.pr-phil-text p {
+  font-size: 1rem;
+  color: #4a4a46 !important;
+  line-height: 1.85;
+  margin-bottom: 1.25rem;
+}
+
+.pr-phil-img {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+}
+
+.pr-phil-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 8s ease;
+}
+
+.pr-phil-img:hover img {
+  transform: scale(1.03);
+}
+
+/* ─── FULL-WIDTH IMAGE BREAK (Steps 01, 03, 05) ─── */
+.pr-break {
+  position: relative;
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.pr-break-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.pr-break-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.7) brightness(0.3);
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+.pr-break::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(26,26,24,0.6);
+}
+
+.pr-break-content {
+  position: relative;
+  z-index: 2;
+  padding: 5rem 5vw;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pr-break-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(6rem, 12vw, 10rem);
+  font-weight: 300;
+  color: rgba(201,169,110,0.08) !important;
+  line-height: 1;
+  position: absolute;
+  top: -1rem;
+  left: 5vw;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pr-break-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.pr-break h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: #f6f4f0 !important;
+  margin-bottom: 0.5rem;
+}
+
+.pr-break-sub {
+  font-size: 0.85rem;
+  color: #c9a96e !important;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.5rem;
+}
+
+.pr-break p.pr-break-desc {
+  font-size: 1rem;
+  color: #d9d5cd !important;
+  line-height: 1.85;
+  max-width: 650px;
+}
+
+.pr-break p.pr-break-desc a {
+  color: #c9a96e !important;
+  border-bottom: 1px solid rgba(201,169,110,0.3);
+  transition: border-color 0.3s ease;
+}
+
+.pr-break p.pr-break-desc a:hover {
+  border-color: #c9a96e;
+}
+
+/* ─── 2-COL STEP SECTIONS (Steps 02, 04) ─── */
+.pr-split {
+  display: flex;
+  min-height: 65vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.pr-split-img {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  min-height: 450px;
+}
+
+.pr-split-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 8s ease;
+}
+
+.pr-split-img:hover img {
+  transform: scale(1.03);
+}
+
+.pr-split-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 5vw;
+  position: relative;
+}
+
+.pr-split-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(8rem, 14vw, 12rem);
+  font-weight: 300;
+  color: rgba(201,169,110,0.06) !important;
+  line-height: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pr-split-num.pr-num-left { left: 2vw; }
+.pr-split-num.pr-num-right { right: 2vw; }
+
+.pr-split-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+}
+
+.pr-split-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #b8975a !important;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.pr-split-text h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: #1a1a18 !important;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.pr-split-sub {
+  font-size: 0.85rem;
+  color: #b8975a !important;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.pr-split-text p.pr-split-desc {
+  font-size: 0.95rem;
+  color: #4a4a46 !important;
+  line-height: 1.85;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── TIMELINE ─── */
+.pr-timeline {
+  background: #f6f4f0 !important;
+  padding: 5rem 5vw;
+}
+
+.pr-timeline-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pr-timeline-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #b8975a !important;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.pr-timeline h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 300;
+  color: #1a1a18 !important;
+  margin-bottom: 3rem;
+  line-height: 1.25;
+}
+
+.pr-tl-track {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.pr-tl-track::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9a96e 10%, #c9a96e 90%, transparent);
+}
+
+.pr-tl-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.pr-tl-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c9a96e !important;
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.pr-tl-week {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  white-space: nowrap;
+}
+
+.pr-tl-name {
+  font-size: 0.8rem;
+  color: #4a4a46 !important;
+  line-height: 1.4;
+  text-align: center;
+  max-width: 120px;
+}
+
+/* ─── TESTIMONIAL ─── */
+.pr-quote {
+  background: #eeece6 !important;
+  padding: 6rem 5vw;
+  text-align: center;
+}
+
+.pr-quote-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+  color: #1a1a18 !important;
+}
+
+.pr-quote-text::before {
+  content: '\201C';
+  display: block;
+  font-size: 4rem;
+  color: #c9a96e !important;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  font-style: normal;
+  animation: prQuoteFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes prQuoteFloat {
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.05) translateY(-4px); }
+}
+
+.pr-quote-attr {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8579 !important;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.pr-quote-attr a {
+  color: #b8975a !important;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.pr-quote-attr a:hover {
+  border-color: #b8975a;
+}
+
+.pr-test-cs {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.5rem;
+  background: #c9a96e !important;
+  border: 1px solid #c9a96e !important;
+  color: #1a1a18 !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.pr-test-cs:hover {
+  background: transparent !important;
+  color: #c9a96e !important;
+}
+
+/* ─── CTA ─── */
+.pr-cta {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pr-cta-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.pr-cta-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.4) brightness(0.2);
+}
+
+.pr-cta-c {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 5vw;
+}
+
+.pr-cta-eyebrow {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.pr-cta-eyebrow::before,
+.pr-cta-eyebrow::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: rgba(201,169,110,0.3);
+}
+
+.pr-cta h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 300;
+  color: #f6f4f0 !important;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.pr-cta h2 em {
+  font-style: italic;
+  color: #c9a96e !important;
+}
+
+.pr-cta-sub {
+  color: #8a8579 !important;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto 3rem;
+}
+
+.pr-cta-btn {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 1.2rem 3.5rem;
+  border: 1px solid #c9a96e !important;
+  background: #c9a96e !important;
+  color: #1a1a18 !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.pr-cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.pr-cta-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.pr-cta-btn:hover {
+  background: transparent !important;
+  color: #c9a96e !important;
+  box-shadow: 0 0 30px rgba(201,169,110,0.2);
+}
+
+.pr-alt-cta {
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  color: #8a8579 !important;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+}
+
+.pr-alt-cta a {
+  color: #c9a96e !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.3s ease;
+}
+
+.pr-alt-cta a:hover {
+  color: #f6f4f0 !important;
+}
+
+/* ─── FOOTER ─── */
+.pr-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.pr-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35)!important;font-weight:500;transition:color .3s ease}.pr-ft-locs a:hover{color:#c9a96e!important}
+
+.pr-ft {
+  background: #1a1a18 !important;
+  border-top: 1px solid rgba(201,169,110,0.15);
+}
+
+.pr-ft-r {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.25rem 5vw;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.pr-ft-i {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.pr-ft-l {
+  font-size: 7.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.pr-ft-dt {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(201,169,110,0.4);
+  flex-shrink: 0;
+  position: relative;
+  top: -2px;
+}
+
+.pr-ft-i p,
+.pr-ft-i a {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(246,244,240,0.8) !important;
+  font-weight: 300;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.pr-ft-i a:hover {
+  color: #c9a96e !important;
+}
+
+.pr-ft-s {
+  display: flex;
+  gap: 18px;
+}
+
+.pr-ft-rl {
+  margin: 0 5vw;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.15) 20%, rgba(201,169,110,0.15) 80%, transparent 100%);
+}
+
+.pr-ft-b {
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 5vw;
+}
+
+.pr-ft-cp {
+  font-size: 10px;
+  color: rgba(246,244,240,0.35) !important;
+  letter-spacing: 0.08em;
+}
+
+.pr-ft-n {
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.pr-ft-n a {
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.35) !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.pr-ft-n a:hover {
+  color: #c9a96e !important;
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .pr-hero {
+    min-height: 75vh;
+    padding: 4rem 6vw;
+  }
+
+  .pr-phil {
+    flex-direction: column;
+  }
+
+  .pr-phil-text {
+    padding: 3rem 6vw;
+    max-width: none;
+    margin-left: 0;
+  }
+
+  .pr-phil-img {
+    min-height: 60vw;
+  }
+
+  .pr-break {
+    min-height: 55vh;
+  }
+
+  .pr-break-content {
+    padding: 4rem 6vw;
+  }
+
+  .pr-break-num {
+    font-size: clamp(4rem, 10vw, 6rem);
+    left: 6vw;
+  }
+
+  .pr-split {
+    flex-direction: column;
+  }
+
+  .pr-split.pr-split-reverse {
+    flex-direction: column;
+  }
+
+  .pr-split-img {
+    min-height: 55vw;
+  }
+
+  .pr-split-text {
+    padding: 3rem 6vw;
+  }
+
+  .pr-split-num {
+    font-size: clamp(6rem, 12vw, 8rem);
+  }
+
+  .pr-split-inner {
+    max-width: none;
+  }
+
+  .pr-tl-track {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.75rem;
+    padding: 0;
+  }
+
+  .pr-tl-track::before {
+    display: none;
+  }
+
+  .pr-tl-node {
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  .pr-tl-dot {
+    margin-bottom: 0;
+  }
+
+  .pr-tl-name {
+    text-align: left;
+    max-width: none;
+  }
+
+  .pr-quote {
+    padding: 4rem 6vw;
+  }
+
+  .pr-timeline {
+    padding: 3rem 6vw;
+  }
+
+  .pr-cta {
+    min-height: 80vh;
+  }
+
+  .pr-manifesto {
+    padding: 5rem 6vw;
+  }
+
+  .pr-scroll-hint {
+    bottom: 24px;
+  }
+
+  .pr-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.pr-ft-locs a{font-size:.55rem}
+
+  .pr-ft-r {
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 2rem 6vw;
+  }
+
+  .pr-ft-rl {
+    margin: 0 6vw;
+  }
+
+  .pr-ft-b {
+    padding-bottom: 2rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    padding: 1.25rem 6vw;
+  }
+
+  .pr-ft-n {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pr-ft-n a {
+    font-size: 8px;
+  }
+}
+</style>
+
+<div class="pr-loader" id="prLoader">
+  <div class="pr-loader-brand">Matt Anthony Photography</div>
+  <div class="pr-loader-sub">Process</div>
+  <div class="pr-loader-line"></div>
+</div>
+<nav class="pr-section-nav" id="prSectionNav"></nav>
+
+<div class="pr-cursor" id="prCursor"></div>
+<div class="pr-cursor-dot" id="prCursorDot"></div>
+<div class="pr-progress" id="prProgress"></div>
+<div class="pr-wrap">
+
+<!-- ═══ HERO ═══ -->
+<div class="pr-hero pr-grain">
+  <div class="pr-hero-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/f5587052-bcdb-4b1b-8f61-84f98ba1adfb/warbler-whistler-architectural-photography-matt-anthony-.jpg-22.jpg?format=2500w" alt="Warbler Residence Whistler moody interior architectural photography by Matt Anthony">
+  </div>
+  <div class="pr-hero-content">
+    <p class="pr-hero-label">Our Process</p>
+    <h1>From first conversation to <em>final delivery</em></h1>
+    <p class="pr-hero-sub">A calm, structured approach designed to honour your work and make the experience effortless. Five steps from consultation to finished images.</p>
+  </div>
+  <canvas class="pr-particles" id="prParticles"></canvas>
+  <div class="pr-scroll-hint" id="prScrollHint">
+    <span class="pr-scroll-text">Scroll</span>
+    <span class="pr-scroll-line"></span>
+  </div>
+</div>
+
+<!-- ═══ PHILOSOPHY 2-COL ═══ -->
+<section class="pr-phil" data-nav="Philosophy">
+  <div class="pr-phil-text">
+    <p class="pr-phil-label pr-eyebrow">Our Approach</p>
+    <div class="pr-phil-divider pr-divider"></div>
+    <h2>Every frame begins long before the camera comes out</h2>
+    <p>Photography that reflects the same intention you bring to your design. Working with architects, builders, and interior designers across British Columbia, I approach each project with the same care and attention you bring to your work.</p>
+    <p>From concept to delivery, the process is tailored to capture your project at its highest potential — visually, emotionally, and professionally. The structure exists so you can focus on your work while I focus on documenting it.</p>
+  </div>
+  <div class="pr-phil-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/bf463fcc-0f61-4c27-84d0-46be256bb34c/warbler-whistler-architectural-photography-matt-anthony-.jpg-13.jpg?format=2500w" alt="Warbler Residence Whistler interior living space warm natural light architectural photography" loading="lazy">
+  </div>
+</section>
+
+<!-- ═══ STEP 01: PRE-SHOOT CONSULTATION ═══ -->
+<section class="pr-break pr-img-break" data-nav="Consultation">
+  <div class="pr-break-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/23aedb76-4c10-4a31-ba9c-9ebd434a25bc/5322-backhouse-web-2.jpg?format=2500w" alt="The Perch Sunshine Coast exterior at dusk architectural photography by Matt Anthony" loading="lazy">
+  </div>
+  <span class="pr-break-num">01</span>
+  <div class="pr-break-content">
+    <p class="pr-break-label pr-eyebrow">Step 01</p>
+    <h3>Pre-Shoot Consultation</h3>
+    <p class="pr-break-sub">Understanding Your Project and Vision</p>
+    <p class="pr-break-desc">Every project begins with a discovery call or email exchange. We discuss your goals — whether it's building a portfolio, entering an award, publishing, or client presentation. We'll cover design narrative and key architectural features, ideal image style, scope and access, intended usage, and any <a href="/journal/architectural-photography-for-publications">publication or award submission specs</a>. This ensures the photography supports your design intent and professional objectives from the very beginning.</p>
+  </div>
+</section>
+
+<!-- ═══ STEP 02: CREATIVE PLANNING ═══ -->
+<section class="pr-split" data-nav="Planning">
+  <div class="pr-split-img pr-img-break">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/66509d6f-8b6e-45c4-af89-cf2632982163/siteline-langley-5.jpg?format=2500w" alt="Fraser Valley Vista interior natural light architectural photography Langley by Matt Anthony" loading="lazy">
+  </div>
+  <div class="pr-split-text">
+    <span class="pr-split-num pr-num-right">02</span>
+    <div class="pr-split-inner">
+      <p class="pr-split-label pr-eyebrow">Step 02</p>
+      <h3>Creative Planning &amp; Site Review</h3>
+      <p class="pr-split-sub">Strategic Preparation for Visual Impact</p>
+      <p class="pr-split-desc">Before the shoot, I review architectural plans, renderings, or previous photos to understand orientation and composition opportunities. We align on optimal natural light timing, drone permissions, on-site logistics, weather considerations, and any site-specific challenges. You'll receive a shoot prep checklist to ensure the space is photo-ready, including staging tips and key design details to highlight.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STEP 03: PHOTOGRAPHY DAY ═══ -->
+<section class="pr-break pr-img-break" data-nav="Shoot Day">
+  <div class="pr-break-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/5be7e36c-d920-4d5d-9260-da4df4c50415/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-16.jpg?format=2500w" alt="Tranquil Retreat Sunshine Coast interior living room natural light architectural photography by Matt Anthony" loading="lazy">
+  </div>
+  <span class="pr-break-num">03</span>
+  <div class="pr-break-content">
+    <p class="pr-break-label pr-eyebrow">Step 03</p>
+    <h3>Photography Day</h3>
+    <p class="pr-break-sub">Intentional Composition. Calm, Professional Presence.</p>
+    <p class="pr-break-desc">On shoot day, I work independently or alongside your team. I carefully compose images that balance space, structure, light, and material. Coverage includes hero exterior shots, interior wide angles, intimate vignettes, architectural details, material intersections, and aerial perspectives where applicable. I work quietly and respectfully on site, always aligning with the rhythm of your team and environment.</p>
+  </div>
+</section>
+
+<!-- ═══ STEP 04: POST-PRODUCTION ═══ -->
+<section class="pr-split pr-split-reverse" style="flex-direction:row-reverse" data-nav="Editing">
+  <div class="pr-split-img pr-img-break">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7ef87751-7049-4003-b0ae-2d83f90f21c4/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-13.jpg?format=2500w" alt="Fitzsimmons Residence Whistler detail shot material texture architectural photography by Matt Anthony" loading="lazy">
+  </div>
+  <div class="pr-split-text">
+    <span class="pr-split-num pr-num-left">04</span>
+    <div class="pr-split-inner">
+      <p class="pr-split-label pr-eyebrow">Step 04</p>
+      <h3>Post-Production &amp; Editing</h3>
+      <p class="pr-split-sub">Subtle, Editorial-Grade Finishing</p>
+      <p class="pr-split-desc">Images are professionally edited with a restrained, natural approach that enhances clarity without artificial distortion. Post-processing includes colour correction, perspective alignment, retouching distractions, and tonal balancing to reflect how the space feels, not just how it looks. The final product: clean, timeless images with editorial polish. Ready for publication, awards, or portfolio use.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STEP 05: DELIVERY & LICENSING ═══ -->
+<section class="pr-break pr-img-break" data-nav="Delivery">
+  <div class="pr-break-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ebb37653-5489-4beb-a83f-ad40ed118b6c/sitelines-SDA-web--6.jpg?format=2500w" alt="SDA BC Yukon Headquarters Abbotsford commercial interior architectural photography by Matt Anthony" loading="lazy">
+  </div>
+  <span class="pr-break-num">05</span>
+  <div class="pr-break-content">
+    <p class="pr-break-label pr-eyebrow">Step 05</p>
+    <h3>Delivery &amp; Licensing</h3>
+    <p class="pr-break-sub">On-Brand Assets, Delivered Professionally</p>
+    <p class="pr-break-desc">Final high-resolution images are delivered in a curated online gallery, typically within 5 to 10 business days. You'll receive full-res files for print, web-optimized versions, social-ready crops if requested, and clear licensing terms suited to your usage. Optional add-ons include press kits, social-ready image sets, and <a href="/journal/architectural-photography-for-publications">award submission preparation</a>.</p>
+  </div>
+</section>
+
+<div class="pr-accent"></div>
+
+<!-- ═══ TIMELINE ═══ -->
+<section class="pr-timeline" data-nav="Timeline">
+  <div class="pr-timeline-inner">
+    <p class="pr-timeline-label pr-eyebrow">Typical Project Timeline</p>
+    <div class="pr-divider" style="margin:0 auto 2rem;width:60px;height:1px;background:#c9a96e"></div>
+    <h2>From conversation to delivery in <em>six weeks</em></h2>
+    <div class="pr-tl-track">
+      <div class="pr-tl-node">
+        <div class="pr-tl-dot"></div>
+        <p class="pr-tl-week">Week 1</p>
+        <p class="pr-tl-name">Consultation</p>
+      </div>
+      <div class="pr-tl-node">
+        <div class="pr-tl-dot"></div>
+        <p class="pr-tl-week">Week 2</p>
+        <p class="pr-tl-name">Site Visit</p>
+      </div>
+      <div class="pr-tl-node">
+        <div class="pr-tl-dot"></div>
+        <p class="pr-tl-week">Week 3</p>
+        <p class="pr-tl-name">Shoot Day</p>
+      </div>
+      <div class="pr-tl-node">
+        <div class="pr-tl-dot"></div>
+        <p class="pr-tl-week">Week 4 &ndash; 5</p>
+        <p class="pr-tl-name">Editing</p>
+      </div>
+      <div class="pr-tl-node">
+        <div class="pr-tl-dot"></div>
+        <p class="pr-tl-week">Week 6</p>
+        <p class="pr-tl-name">Delivery</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pr-accent"></div>
+
+<!-- ═══ TESTIMONIAL ═══ -->
+<section class="pr-quote" id="prQuote" data-nav="Testimonial">
+  <p class="pr-quote-text"><span class="pr-qw">Matt</span> <span class="pr-qw">was</span> <span class="pr-qw">a</span> <span class="pr-qw pr-gold-word">pleasure</span> <span class="pr-qw">to</span> <span class="pr-qw">work</span> <span class="pr-qw">with</span> <span class="pr-qw">on</span> <span class="pr-qw">our</span> <span class="pr-qw">recent</span> <span class="pr-qw">architectural</span> <span class="pr-qw">project</span> <span class="pr-qw">shoots.</span> <span class="pr-qw">He</span> <span class="pr-qw">was</span> <span class="pr-qw">highly</span> <span class="pr-qw pr-gold-word">responsive</span> <span class="pr-qw">and</span> <span class="pr-qw pr-gold-word">organized</span> <span class="pr-qw">pre-shoot,</span> <span class="pr-qw">and</span> <span class="pr-qw">on</span> <span class="pr-qw">site</span> <span class="pr-qw">he</span> <span class="pr-qw">worked</span> <span class="pr-qw pr-gold-word">efficiently</span> <span class="pr-qw">with</span> <span class="pr-qw">a</span> <span class="pr-qw pr-gold-word">professional,</span> <span class="pr-qw pr-gold-word">calm</span> <span class="pr-qw">demeanor.</span> <span class="pr-qw">His</span> <span class="pr-qw pr-gold-word">creative</span> <span class="pr-qw pr-gold-word">eye</span> <span class="pr-qw">brought</span> <span class="pr-qw">out</span> <span class="pr-qw">the</span> <span class="pr-qw">best</span> <span class="pr-qw">in</span> <span class="pr-qw">the</span> <span class="pr-qw">design,</span> <span class="pr-qw">and</span> <span class="pr-qw">he</span> <span class="pr-qw">easily</span> <span class="pr-qw pr-gold-word">adapted</span> <span class="pr-qw">to</span> <span class="pr-qw">changing</span> <span class="pr-qw">conditions.</span> <span class="pr-qw">Highly</span> <span class="pr-qw pr-gold-word">recommend!</span></p>
+  <p class="pr-quote-attr">Kyle Paisley, Summerhill Fine Homes &middot; <a href="/summerhill-fine-homes">View Case Study</a></p>
+</section>
+
+<div class="pr-accent"></div>
+
+<!-- ═══ MANIFESTO ═══ -->
+<section class="pr-manifesto pr-grain" id="prManifesto">
+  <p class="pr-manifesto-text">
+    <span class="pr-mw">Every</span> <span class="pr-mw">project</span> <span class="pr-mw">starts</span> <span class="pr-mw">with</span> <span class="pr-mw pr-gold-word">understanding</span> <span class="pr-mw">what</span> <span class="pr-mw">you</span> <span class="pr-mw">built</span> <span class="pr-mw">and</span> <span class="pr-mw pr-gold-word">why.</span> <span class="pr-mw">The</span> <span class="pr-mw pr-gold-word">photography</span> <span class="pr-mw">follows.</span>
+  </p>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="pr-cta">
+  <div class="pr-cta-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83bbba67-7393-4e34-8b4b-bac1600c8110/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-12.jpg?format=2500w" alt="Sunshine Coast architectural photography by Matt Anthony" loading="lazy">
+  </div>
+  <div class="pr-cta-c">
+    <p class="pr-cta-eyebrow">Ready to Start</p>
+    <h2>Ready to start with <em>a conversation?</em></h2>
+    <p class="pr-cta-sub">Let's talk about your project, your goals, and how we can bring your vision to life through intentional photography.</p>
+    <a href="/discovery-call" class="pr-cta-btn pr-magnetic">Book a Discovery Call</a>
+    <p class="pr-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="pr-ft">
+<div class="pr-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+  <div class="pr-ft-r">
+    <div class="pr-ft-i"><span class="pr-ft-l">Based In</span><span class="pr-ft-dt"></span><p>Squamish, British Columbia</p></div>
+    <div class="pr-ft-i"><span class="pr-ft-l">Email</span><span class="pr-ft-dt"></span><a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a></div>
+    <div class="pr-ft-i"><span class="pr-ft-l">Phone</span><span class="pr-ft-dt"></span><a href="tel:6047659270">604.765.9270</a></div>
+    <div class="pr-ft-i"><span class="pr-ft-l">Follow</span><span class="pr-ft-dt"></span><div class="pr-ft-s"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  </div>
+  <div class="pr-ft-rl"></div>
+  <div class="pr-ft-b">
+    <span class="pr-ft-cp">&copy; 2026 Matt Anthony Photography</span>
+    <nav class="pr-ft-n"><a href="/projects">Projects</a><a href="/journal">Journal</a><a href="/journal/georgie-awards-guide">Georgie Awards</a><a href="/bio">About</a><a href="/contact">Contact</a><a href="/pricing-guide-landing">Get Pricing</a></nav>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var isMobile = 'ontouchstart' in window;
+  var wrap = document.querySelector('.pr-wrap');
+  var progressBar = document.getElementById('prProgress');
+  var hero = document.querySelector('.pr-hero');
+  var heroContent = document.querySelector('.pr-hero-content');
+  var heroBg = document.querySelector('.pr-hero-bg');
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader = document.getElementById('prLoader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('pr-done'); }, 1100);
+  });
+
+  /* ═══ SECTION NAV DOTS ═══ */
+  var sectionNav = document.getElementById('prSectionNav');
+  var navSections = document.querySelectorAll('[data-nav]');
+  var navDots = [];
+  navSections.forEach(function(sec){
+    var dot = document.createElement('div');
+    dot.className = 'pr-nav-dot';
+    dot.setAttribute('data-label', sec.getAttribute('data-nav'));
+    dot.addEventListener('click', function(){
+      sec.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+    sectionNav.appendChild(dot);
+    navDots.push({ dot:dot, section:sec });
+  });
+
+  function updateNavDots(){
+    var scrollY = window.scrollY;
+    var winH = window.innerHeight;
+    if(scrollY > winH * 0.5) sectionNav.classList.add('pr-nav-visible');
+    else sectionNav.classList.remove('pr-nav-visible');
+    var active = null;
+    navDots.forEach(function(item){
+      var rect = item.section.getBoundingClientRect();
+      if(rect.top < winH * 0.5 && rect.bottom > winH * 0.3) active = item;
+      item.dot.classList.remove('pr-nav-active');
+    });
+    if(active) active.dot.classList.add('pr-nav-active');
+  }
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  function updateProgress(){
+    var s = window.scrollY;
+    var d = document.documentElement.scrollHeight - window.innerHeight;
+    if(d > 0) progressBar.style.width = (s / d * 100) + '%';
+  }
+
+  /* ═══ HERO PARALLAX + FADE ═══ */
+  function updateHero(){
+    var s = window.scrollY;
+    var h = window.innerHeight;
+    if(s > h) return;
+    var ratio = s / h;
+    if(heroBg) heroBg.style.transform = 'translateY(' + (s * 0.35) + 'px) scale(' + (1 + ratio * 0.05) + ')';
+    if(heroContent){
+      heroContent.style.transform = 'translateY(' + (s * 0.15) + 'px)';
+      heroContent.style.opacity = 1 - ratio * 1.2;
+    }
+  }
+
+  /* ═══ PHOTO BREAK PARALLAX ═══ */
+  var photoBreaks = document.querySelectorAll('.pr-img-break');
+  function updatePhotoParallax(){
+    photoBreaks.forEach(function(pb){
+      var rect = pb.getBoundingClientRect();
+      if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+      var center = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+      var img = pb.querySelector('.pr-break-bg img') || pb.querySelector('img');
+      if(img) img.style.transform = 'translateY(' + (center * -30) + 'px) scale(1.08)';
+    });
+  }
+
+  /* ═══ HEADLINE GOLD UNDERLINE ═══ */
+  var headObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('pr-underlined'); headObs.unobserve(e.target); }
+    });
+  }, {threshold:0.4});
+  document.querySelectorAll('.pr-wrap h2').forEach(function(h){ headObs.observe(h); });
+
+  /* ═══ EYEBROW DASH DRAW ═══ */
+  var eyeObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('pr-visible'); eyeObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.pr-eyebrow').forEach(function(el){ eyeObs.observe(el); });
+
+  /* ═══ DIVIDER DRAW ═══ */
+  var divObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('pr-drawn'); divObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.pr-divider').forEach(function(el){ el.style.width = '0'; divObs.observe(el); });
+
+  /* ═══ KEN BURNS ═══ */
+  var kenObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) e.target.classList.add('pr-in-view');
+      else e.target.classList.remove('pr-in-view');
+    });
+  }, {threshold:0.1});
+  photoBreaks.forEach(function(el){ kenObs.observe(el); });
+
+  /* ═══ QUOTE WORD REVEAL ═══ */
+  var quoteEl = document.getElementById('prQuote');
+  var qWords = quoteEl ? quoteEl.querySelectorAll('.pr-qw') : [];
+  var quoteRevealed = false;
+  function updateQuote(){
+    if(!quoteEl || quoteRevealed) return;
+    var rect = quoteEl.getBoundingClientRect();
+    var vh = window.innerHeight;
+    if(rect.top > vh || rect.bottom < 0) return;
+    var progress = 1 - (rect.top / (vh * 0.55));
+    progress = Math.max(0, Math.min(1, progress));
+    var wordsToLight = Math.floor(progress * qWords.length);
+    for(var i = 0; i < qWords.length; i++){
+      if(i < wordsToLight) qWords[i].classList.add('pr-lit');
+    }
+    if(wordsToLight >= qWords.length) quoteRevealed = true;
+  }
+
+  /* ═══ CTA ZOOM ═══ */
+  var ctaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('pr-in-view'); ctaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.2});
+  document.querySelectorAll('.pr-cta').forEach(function(el){ ctaObs.observe(el); });
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor = document.getElementById('prCursor');
+  var cursorDot = document.getElementById('prCursorDot');
+  var cx = 0, cy = 0, dx = 0, dy = 0;
+  if(!isMobile && cursor){
+    document.addEventListener('mousemove', function(e){
+      dx = e.clientX; dy = e.clientY;
+      cursorDot.style.left = dx + 'px';
+      cursorDot.style.top = dy + 'px';
+      if(!cursor.classList.contains('pr-active')){
+        cursor.classList.add('pr-active');
+        cursorDot.classList.add('pr-active');
+      }
+    });
+    function tickCursor(){
+      cx += (dx - cx) * 0.12;
+      cy += (dy - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(tickCursor);
+    }
+    tickCursor();
+    var hoverEls = document.querySelectorAll('a, button, .pr-cta-btn, .pr-test-cs');
+    hoverEls.forEach(function(el){
+      el.addEventListener('mouseenter', function(){ cursor.classList.add('pr-hover'); });
+      el.addEventListener('mouseleave', function(){ cursor.classList.remove('pr-hover'); });
+    });
+    document.addEventListener('mousedown', function(){ cursor.classList.add('pr-click'); });
+    document.addEventListener('mouseup', function(){ cursor.classList.remove('pr-click'); });
+  }
+
+  /* ═══ MAGNETIC BUTTON ═══ */
+  if(!isMobile){
+    document.querySelectorAll('.pr-magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.25) + 'px, ' + (y * 0.25) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  /* ═══ MANIFESTO WORD REVEAL ═══ */
+  var manifesto = document.getElementById('prManifesto');
+  var mWords = manifesto ? manifesto.querySelectorAll('.pr-mw') : [];
+  var manifestoRevealed = false;
+  function updateManifesto(){
+    if(!manifesto || manifestoRevealed) return;
+    var rect = manifesto.getBoundingClientRect();
+    var vh = window.innerHeight;
+    if(rect.top > vh || rect.bottom < 0) return;
+    var progress = 1 - (rect.top / (vh * 0.6));
+    progress = Math.max(0, Math.min(1, progress));
+    var wordsToLight = Math.floor(progress * mWords.length);
+    for(var i = 0; i < mWords.length; i++){
+      if(i < wordsToLight) mWords[i].classList.add('pr-lit');
+    }
+    if(wordsToLight >= mWords.length) manifestoRevealed = true;
+  }
+
+  /* ═══ AMBIENT PARTICLES ═══ */
+  var canvas = document.getElementById('prParticles');
+  if(canvas){
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    function resizeCanvas(){
+      var parent = canvas.parentElement;
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    for(var p = 0; p < 30; p++){
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -Math.random() * 0.4 - 0.1,
+        r: Math.random() * 1.5 + 0.5,
+        a: Math.random() * 0.3 + 0.05
+      });
+    }
+    function drawParticles(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(function(pt){
+        pt.x += pt.vx;
+        pt.y += pt.vy;
+        if(pt.y < -10) { pt.y = canvas.height + 10; pt.x = Math.random() * canvas.width; }
+        if(pt.x < -10) pt.x = canvas.width + 10;
+        if(pt.x > canvas.width + 10) pt.x = -10;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(201,169,110,' + pt.a + ')';
+        ctx.fill();
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+  }
+
+  /* ═══ SCROLL INDICATOR HIDE ═══ */
+  var scrollHint = document.getElementById('prScrollHint');
+  function updateScrollHint(){
+    if(window.scrollY > 80) scrollHint.classList.add('pr-hidden');
+    else scrollHint.classList.remove('pr-hidden');
+  }
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateHero();
+        updatePhotoParallax();
+        updateScrollHint();
+        updateManifesto();
+        updateQuote();
+        updateNavDots();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress();
+  updateHero();
+  updateScrollHint();
+  updateNavDots();
+})();
+</script>
+
+<!-- HowTo Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Matt Anthony's Architectural Photography Process",
+  "description": "A five-step process from initial consultation through final delivery for architectural photography projects in British Columbia.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Pre-Shoot Consultation",
+      "text": "Review architectural plans, renderings, and project details to understand design intent, orientation, and composition opportunities.",
+      "position": 1
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Creative Planning & Site Review",
+      "text": "Visit the site to assess natural light, identify key compositions, and plan the shoot schedule around optimal conditions.",
+      "position": 2
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Photography Day",
+      "text": "Full-day shoot covering architecture, interiors, details, aerial, and twilight. Calm, professional presence with minimal disruption.",
+      "position": 3
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Post-Production & Editing",
+      "text": "Professional editing with a natural, restrained approach. Color correction, perspective alignment, and careful retouching.",
+      "position": 4
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Delivery & Licensing",
+      "text": "High-resolution files delivered via online gallery. Clear licensing terms for web, print, social media, and client presentations.",
+      "position": 5
+    }
+  ]
+}
+</script>
+
+<!--
+  PROCESS PAGE — Code Block (Interactive Layer Rebuild)
+  mattanthonyphoto.com/process
+
+  Last updated: 2026-03-24
+  Complete rebuild using Creative Partner service page as design template:
+    - Interactive layer: loader, section nav dots, particles, parallax, word reveal, custom cursor, magnetic button
+    - 90vh hero with parallax, particles, scroll indicator
+    - 2-column philosophy intro with image
+    - 5 process steps alternating dark image breaks (01, 03, 05) and 2-col light sections (02, 04)
+    - Eyebrow draws, divider draws, Ken Burns on image breaks
+    - Horizontal timeline with gold dots
+    - Testimonial with word reveal (Kyle Paisley, Summerhill Fine Homes)
+    - Manifesto with word reveal
+    - Full-screen CTA with background zoom
+    - Standard footer with location pages
+    - pr- CSS prefix throughout
+    - JS IDs: prLoader, prCursor, prCursorDot, prProgress, prSectionNav, prScrollHint
+    - HowTo JSON-LD schema preserved
+    - OG tags added
+    - No :root, no global resets
+    - !important on colors
+    - /discovery-call links
+    - Responsive at 768px
+    - All images loading="lazy" below fold
+-->
+
+<meta name="description" content="A calm, structured approach to every architectural photography project — from pre-shoot consultation through final delivery. See how Matt Anthony works with architects, builders, and designers across British Columbia.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/process">
+<meta property="og:title" content="Architectural Photography Process | Matt Anthony">
+<meta property="og:description" content="Five steps from consultation to delivery. A calm, structured approach to documenting your finished build with clarity and intention.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/process">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/f5587052-bcdb-4b1b-8f61-84f98ba1adfb/warbler-whistler-architectural-photography-matt-anthony-.jpg-22.jpg?format=1500w">

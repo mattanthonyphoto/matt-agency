@@ -1,0 +1,1530 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Josefin+Sans:wght@700&display=swap');
+
+/* Kill Squarespace white gap */
+body { background: #1a1a18 !important; }
+#page { background: transparent !important; }
+#sections { background: transparent !important; }
+.page-section { background: transparent !important; min-height: 0 !important; }
+.content-wrapper { background: transparent !important; }
+.fluid-engine { background: transparent !important; }
+#footer { display: none !important; }
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.ct-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a1a18 !important;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+}
+
+.ct-loader.ct-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.ct-loader-brand {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: #f6f4f0 !important;
+  opacity: 0;
+  animation: ctLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.ct-loader-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(138,133,121,0.7) !important;
+  margin-top: 8px;
+  opacity: 0;
+  animation: ctLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.ct-loader-line {
+  width: 80px;
+  height: 1px;
+  background: rgba(201,169,110,0.12) !important;
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+  opacity: 0;
+  animation: ctLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.ct-loader-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent) !important;
+  animation: ctLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+}
+
+@keyframes ctLoaderIn { to { opacity: 1; } }
+@keyframes ctLoaderFill { to { left: 100%; } }
+
+/* ── Scroll progress bar ── */
+.ct-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.4)) !important;
+  z-index: 9999;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px rgba(201,169,110,0.4);
+}
+
+/* ── Custom cursor ── */
+.ct-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(201,169,110,0.5) !important;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
+.ct-cursor.ct-active { opacity: 1; }
+
+.ct-cursor.ct-hover {
+  width: 50px;
+  height: 50px;
+  border-color: #c9a96e !important;
+  background: rgba(201,169,110,0.08) !important;
+}
+
+.ct-cursor.ct-click {
+  width: 14px;
+  height: 14px;
+  background: rgba(201,169,110,0.3) !important;
+}
+
+.ct-cursor-dot {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #c9a96e !important;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ct-cursor-dot.ct-active { opacity: 1; }
+
+/* ── Magnetic button ── */
+.ct-magnetic { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* ── Hero scroll fade ── */
+.ct-hero-content { transition: transform 0.1s linear, opacity 0.1s linear; }
+
+/* ── Headline gold underline on em ── */
+.ct-wrap h2 em {
+  position: relative;
+  display: inline;
+}
+
+.ct-wrap h2 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.2)) !important;
+  transition: width 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ct-wrap h2.ct-underlined em::after { width: 100%; }
+
+/* ── Eyebrow gold dash ── */
+.ct-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ct-eyebrow::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  background: #c9a96e !important;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ct-eyebrow.ct-visible::before { width: 24px; }
+
+/* ── Divider draw animation ── */
+.ct-divider { transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.ct-divider.ct-drawn { width: 80px; }
+
+/* ── Film grain overlay ── */
+.ct-grain::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.ct-grain { position: relative; }
+.ct-grain > * { position: relative; z-index: 1; }
+
+/* ── Ambient particles canvas ── */
+.ct-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── CTA background slow zoom ── */
+.ct-cta-bg img { transition: transform 8s cubic-bezier(0.16, 1, 0.3, 1); }
+.ct-cta.ct-in-view .ct-cta-bg img { transform: scale(1.08); }
+
+/* ── CTA button glow pulse ── */
+.ct-cta-btn { animation: ctBtnGlow 3s ease-in-out infinite alternate; }
+@keyframes ctBtnGlow {
+  0% { box-shadow: none; }
+  100% { box-shadow: 0 0 40px rgba(201,169,110,0.15), 0 0 80px rgba(201,169,110,0.05); }
+}
+
+/* ── Testimonial word reveal ── */
+.ct-quote-text .ct-qw {
+  display: inline;
+  color: rgba(26,26,24,0.15) !important;
+  transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ct-quote-text .ct-qw.ct-lit { color: #1a1a18 !important; }
+.ct-quote-text .ct-qw.ct-gold-word.ct-lit { color: #b8975a !important; }
+
+/* ── Stat counter glow ── */
+.ct-stat-num { transition: text-shadow 0.6s ease; }
+.ct-stat-num.ct-counted { text-shadow: 0 0 20px rgba(201,169,110,0.3); }
+
+/* ── Accent line ── */
+.ct-accent {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.2) 20%, rgba(201,169,110,0.2) 80%, transparent 100%) !important;
+}
+
+/* ═══ CONTACT PAGE ═══ */
+.ct-wrap {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #1a1a18 !important;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.ct-wrap img { max-width: 100%; display: block; }
+.ct-wrap a { color: inherit; text-decoration: none; }
+
+/* ─── HERO ─── */
+.ct-hero {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 6rem 5vw 4rem;
+  background: #1a1a18 !important;
+  overflow: hidden;
+}
+
+.ct-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 20%, rgba(26,26,24,0.6) 60%, rgba(26,26,24,0.92) 100%) !important;
+  z-index: 1;
+}
+
+.ct-hero-bg { position: absolute; inset: 0; }
+
+.ct-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  opacity: 0.45;
+  filter: saturate(0.5);
+}
+
+.ct-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+}
+
+.ct-hero-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.ct-hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  font-weight: 300;
+  line-height: 1.08;
+  color: #f6f4f0 !important;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.ct-hero h1 em { font-style: italic; color: #c9a96e !important; }
+
+.ct-hero-sub {
+  font-size: 1.05rem;
+  color: #d9d5cd !important;
+  font-weight: 300;
+  line-height: 1.8;
+  max-width: 520px;
+}
+
+/* ─── BODY 2-COL ─── */
+.ct-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 0;
+}
+
+/* ─── INFO PANEL (LEFT) ─── */
+.ct-info {
+  background: #f6f4f0 !important;
+  padding: 5rem 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.ct-info-section { margin-bottom: 3.5rem; }
+.ct-info-section:last-child { margin-bottom: 0; }
+
+.ct-info-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #b8975a !important;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.ct-info-rule {
+  width: 40px;
+  height: 1px;
+  background: #c9a96e !important;
+  margin-bottom: 1.5rem;
+}
+
+.ct-info-section p {
+  font-size: 0.95rem;
+  color: #4a4a46 !important;
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+}
+
+.ct-info-section p a {
+  color: #b8975a !important;
+  border-bottom: 1px solid rgba(184,151,90,0.3) !important;
+  transition: border-color 0.3s ease;
+}
+
+.ct-info-section p a:hover { border-color: #b8975a !important; }
+
+.ct-contact-main { display: flex; flex-direction: column; gap: 8px; }
+
+.ct-email-link {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #1a1a18 !important;
+  border-bottom: 1px solid #d9d5cd !important;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+.ct-email-link:hover { color: #b8975a !important; border-color: #c9a96e !important; }
+
+.ct-phone {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #8a8579 !important;
+  display: inline-block;
+}
+
+.ct-phone:hover { color: #b8975a !important; }
+
+.ct-location {
+  font-size: 0.95rem;
+  color: #8a8579 !important;
+  margin-top: 4px;
+}
+
+.ct-social-links { display: flex; gap: 16px; margin-top: 12px; }
+
+.ct-social-link {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8579 !important;
+  font-weight: 500;
+  border-bottom: 1px solid transparent !important;
+  transition: all 0.3s ease;
+}
+
+.ct-social-link:hover { color: #c9a96e !important; border-color: rgba(201,169,110,0.3) !important; }
+
+.ct-hours {
+  font-size: 0.9rem;
+  color: #4a4a46 !important;
+  line-height: 1.8;
+}
+
+.ct-hours-note {
+  font-size: 0.8rem;
+  color: #8a8579 !important;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* ── Inline Testimonial ── */
+.ct-testimonial {
+  background: #eeece6 !important;
+  padding: 2rem 2rem;
+  border-left: 2px solid #c9a96e !important;
+  border-radius: 0 2px 2px 0;
+}
+
+.ct-testimonial-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.5;
+  color: #1a1a18 !important;
+  margin-bottom: 1rem;
+}
+
+.ct-testimonial-text::before {
+  content: '\201C';
+  display: block;
+  font-size: 2.5rem;
+  color: #c9a96e !important;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+  font-style: normal;
+}
+
+.ct-testimonial-attr {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8a8579 !important;
+  font-weight: 500;
+}
+
+.ct-testimonial-attr a {
+  color: #b8975a !important;
+  border-bottom: 1px solid transparent !important;
+  transition: border-color 0.3s ease;
+}
+
+.ct-testimonial-attr a:hover { border-color: #b8975a !important; }
+
+/* ─── FORM PANEL (RIGHT) ─── */
+.ct-form-panel {
+  background: #f6f4f0 !important;
+  padding: 5rem 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.ct-form-heading {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  color: #1a1a18 !important;
+}
+
+.ct-form-sub {
+  font-size: 0.85rem;
+  color: #4a4a46 !important;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.ct-form-sub a {
+  color: #b8975a !important;
+  border-bottom: 1px solid rgba(184,151,90,0.3) !important;
+  transition: border-color 0.3s ease;
+}
+
+.ct-form-sub a:hover { border-color: #b8975a !important; }
+
+.ct-form { display: flex; flex-direction: column; gap: 0; }
+.ct-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.ct-form-group { margin-bottom: 24px; }
+
+.ct-form-group label {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #8a8579 !important;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.ct-form-group input,
+.ct-form-group select,
+.ct-form-group textarea {
+  width: 100% !important;
+  font-family: 'DM Sans', -apple-system, sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 300 !important;
+  color: #1a1a18 !important;
+  background: #fff !important;
+  border: 1px solid #d9d5cd !important;
+  border-radius: 2px !important;
+  padding: 14px 16px !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+  color-scheme: light !important;
+}
+
+.ct-form-group input::placeholder,
+.ct-form-group textarea::placeholder {
+  color: #b8b3ab !important;
+  font-weight: 300;
+}
+
+.ct-form-group input:focus,
+.ct-form-group select:focus,
+.ct-form-group textarea:focus {
+  border-color: #c9a96e !important;
+  box-shadow: 0 0 0 3px rgba(201,169,110,0.12) !important;
+}
+
+.ct-form-group textarea {
+  min-height: 140px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.ct-form-group select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%238a8579' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  padding-right: 40px !important;
+  background-color: #fff !important;
+  color: #1a1a18 !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+}
+
+.ct-form-group select:invalid,
+.ct-form-group select option[value=""] {
+  color: #b8b3ab !important;
+}
+
+.ct-form-group select option {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: #fff !important;
+  color: #1a1a18 !important;
+  padding: 8px !important;
+}
+
+.ct-form-submit { margin-top: 8px; }
+
+.ct-submit-btn {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 16px 40px;
+  background: #c9a96e !important;
+  color: #1a1a18 !important;
+  border: 1px solid #c9a96e !important;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ct-submit-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent) !important;
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.ct-submit-btn:hover::before { transform: translateX(100%); }
+.ct-submit-btn:hover { background: transparent !important; color: #c9a96e !important; box-shadow: 0 0 30px rgba(201,169,110,0.2); }
+.ct-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.ct-form-note {
+  font-size: 0.75rem;
+  color: rgba(138,133,121,0.6) !important;
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+.ct-form-error {
+  display: none;
+  font-size: 0.8rem;
+  color: #c0392b !important;
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+.ct-form-error a { color: #c9a96e !important; }
+
+/* ─── SUCCESS STATE ─── */
+.ct-success {
+  display: none;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.ct-success-icon {
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid #c9a96e !important;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.ct-success-icon svg { width: 20px; height: 20px; stroke: #c9a96e !important; fill: none; stroke-width: 2; }
+
+.ct-success h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #f6f4f0 !important;
+  margin-bottom: 0.75rem;
+}
+
+.ct-success p {
+  font-size: 0.9rem;
+  color: #8a8579 !important;
+  line-height: 1.7;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* ─── STATS STRIP ─── */
+.ct-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: #f6f4f0 !important;
+  border-top: 1px solid #d9d5cd !important;
+  border-bottom: 1px solid #d9d5cd !important;
+}
+
+.ct-stat {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  border-right: 1px solid #d9d5cd !important;
+}
+
+.ct-stat:last-child { border-right: none !important; }
+
+.ct-stat-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: #b8975a !important;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.ct-stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8a8579 !important;
+  font-weight: 400;
+}
+
+/* ─── ALT CTA SECTION ─── */
+.ct-cta {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ct-cta-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.ct-cta-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.4) brightness(0.2);
+}
+
+.ct-cta-c {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 5vw;
+}
+
+.ct-cta-eyebrow {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.ct-cta-eyebrow::before,
+.ct-cta-eyebrow::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: rgba(201,169,110,0.3) !important;
+}
+
+.ct-cta h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 300;
+  color: #f6f4f0 !important;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.ct-cta h2 em { font-style: italic; color: #c9a96e !important; }
+
+.ct-cta-sub {
+  color: #8a8579 !important;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto 3rem;
+}
+
+.ct-cta-btn {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 1.2rem 3.5rem;
+  border: 1px solid #c9a96e !important;
+  background: #c9a96e !important;
+  color: #1a1a18 !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.ct-cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent) !important;
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.ct-cta-btn:hover::before { transform: translateX(100%); }
+.ct-cta-btn:hover { background: transparent !important; color: #c9a96e !important; box-shadow: 0 0 30px rgba(201,169,110,0.2); }
+
+.ct-alt-cta {
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  color: #8a8579 !important;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+}
+
+.ct-alt-cta a {
+  color: #c9a96e !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.3s ease;
+}
+
+.ct-alt-cta a:hover { color: #f6f4f0 !important; }
+
+/* ─── FOOTER ─── */
+.ct-ft { background: #1a1a18 !important; border-top: 1px solid rgba(201,169,110,0.15) !important; }
+
+.ct-ft-locs {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.75rem 5vw;
+  border-bottom: 1px solid rgba(201,169,110,0.08) !important;
+  flex-wrap: wrap;
+}
+
+.ct-ft-locs a {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.35) !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.ct-ft-locs a:hover { color: #c9a96e !important; }
+
+.ct-ft-r {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.25rem 5vw;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.ct-ft-i { display: flex; align-items: baseline; gap: 10px; }
+
+.ct-ft-l {
+  font-size: 7.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.ct-ft-dt {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(201,169,110,0.4) !important;
+  flex-shrink: 0;
+  position: relative;
+  top: -2px;
+}
+
+.ct-ft-i p, .ct-ft-i a {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(246,244,240,0.8) !important;
+  font-weight: 300;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.ct-ft-i a:hover { color: #c9a96e !important; }
+.ct-ft-s { display: flex; gap: 18px; }
+
+.ct-ft-rl {
+  margin: 0 5vw;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.15) 20%, rgba(201,169,110,0.15) 80%, transparent 100%) !important;
+}
+
+.ct-ft-b {
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 5vw;
+}
+
+.ct-ft-cp {
+  font-size: 10px;
+  color: rgba(246,244,240,0.35) !important;
+  letter-spacing: 0.08em;
+}
+
+.ct-ft-n {
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.ct-ft-n a {
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.35) !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.ct-ft-n a:hover { color: #c9a96e !important; }
+
+.ct-ft-email::after { content: 'info@mattanthonyphoto.com'; }
+.ct-ft-email { cursor: pointer; }
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .ct-hero { min-height: 45vh; padding: 4rem 6vw 3rem; }
+  .ct-hero h1 { font-size: clamp(2rem, 7vw, 2.8rem); }
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-info { padding: 3rem 6vw; }
+  .ct-info-section { margin-bottom: 2.5rem; }
+  .ct-form-panel { padding: 3rem 6vw; }
+  .ct-form-row { grid-template-columns: 1fr; column-gap: 0; row-gap: 0; }
+  .ct-form-group { margin-bottom: 20px; }
+  .ct-form-group:last-child { margin-bottom: 20px; }
+  .ct-submit-btn { width: 100%; text-align: center; }
+  .ct-stats { grid-template-columns: repeat(2, 1fr); }
+  .ct-stat { border-bottom: 1px solid #d9d5cd !important; }
+  .ct-stat:nth-child(even) { border-right: none !important; }
+  .ct-stat:nth-last-child(-n+2) { border-bottom: none !important; }
+  .ct-cta { min-height: 50vh; }
+  .ct-ft-locs { gap: 1rem; padding: 1.5rem 6vw; justify-content: flex-start; }
+  .ct-ft-locs a { font-size: 0.55rem; }
+  .ct-ft-r { flex-direction: column; gap: 1.25rem; align-items: flex-start; padding: 2rem 6vw; }
+  .ct-ft-rl { margin: 0 6vw; }
+  .ct-ft-b { padding-bottom: 2rem; flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.25rem 6vw; }
+  .ct-ft-n { gap: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .ct-hero { min-height: 40vh; padding: 4rem 6vw 2.5rem; }
+  .ct-hero-sub { font-size: 0.9rem; }
+  .ct-info { padding: 2.5rem 6vw; }
+  .ct-info-section { margin-bottom: 2rem; }
+  .ct-form-panel { padding: 2.5rem 6vw; }
+  .ct-form-heading { font-size: 1.4rem; }
+  .ct-email-link { font-size: 1.15rem; }
+  .ct-testimonial { padding: 1.5rem; }
+  .ct-testimonial-text { font-size: 1rem; }
+}
+</style>
+
+<div class="ct-loader" id="ctLoader">
+  <div class="ct-loader-brand">Matt Anthony Photography</div>
+  <div class="ct-loader-sub">Contact</div>
+  <div class="ct-loader-line"></div>
+</div>
+
+<div class="ct-cursor" id="ctCursor"></div>
+<div class="ct-cursor-dot" id="ctCursorDot"></div>
+<div class="ct-progress" id="ctProgress"></div>
+<div class="ct-wrap">
+
+<!-- ═══ HERO ═══ -->
+<div class="ct-hero ct-grain">
+  <div class="ct-hero-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/450a7fc3-25a9-4668-8662-90111e476240/architectural-interiors-photographer-morden-project-sunshine-coast--6.jpg" alt="Sunshine Coast architectural interior by Matt Anthony Photography">
+  </div>
+  <div class="ct-hero-content">
+    <p class="ct-hero-label">Get in Touch</p>
+    <h1>Let's start a <em>conversation</em></h1>
+    <p class="ct-hero-sub">Whether you're planning a single project shoot or looking for an ongoing creative partner, I'd love to hear about what you're building.</p>
+  </div>
+  <canvas class="ct-particles" id="ctParticles"></canvas>
+</div>
+
+<!-- ═══ BODY ═══ -->
+<div class="ct-body">
+
+<!-- ── INFO PANEL ── -->
+<div class="ct-info">
+
+<div class="ct-info-section">
+<p class="ct-info-label">Contact</p>
+<div class="ct-info-rule"></div>
+<div class="ct-contact-main">
+<a class="ct-email-link ct-ft-email" id="ct-em"></a>
+<a href="tel:6047659270" class="ct-phone">604.765.9270</a>
+<p class="ct-location">Squamish, British Columbia</p>
+</div>
+<div class="ct-social-links">
+<a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener" class="ct-social-link">Instagram</a>
+<a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener" class="ct-social-link">LinkedIn</a>
+</div>
+</div>
+
+<div class="ct-info-section">
+<p class="ct-info-label">Service Areas</p>
+<div class="ct-info-rule"></div>
+<p>Serving architects, builders, and designers across British Columbia.</p>
+<p><a href="/squamish-architectural-photography">Squamish</a> &middot; <a href="/whistler-architectural-photography">Whistler</a> &middot; <a href="/pemberton-photography">Pemberton</a> &middot; <a href="/sunshine-coast-photography">Sunshine Coast</a> &middot; <a href="/vancouver-architectural-photographer">Vancouver</a> &middot; <a href="/fraser-valley-photography">Fraser Valley</a> &middot; <a href="/okanagan-architectural-photographer">Okanagan</a></p>
+</div>
+
+<div class="ct-info-section">
+<p class="ct-info-label">Availability</p>
+<div class="ct-info-rule"></div>
+<p class="ct-hours">Monday through Friday, 9am to 5pm PST. Shoots are scheduled on evenings and weekends as needed for optimal light.</p>
+<p class="ct-hours-note">I typically respond within 24 hours.</p>
+</div>
+
+<div class="ct-info-section">
+<div class="ct-testimonial">
+<p class="ct-testimonial-text">Working with Matt was an absolute pleasure. The entire process was seamless and professional. The website looks fantastic, and the ongoing maintenance gives me peace of mind knowing everything is taken care of.</p>
+<p class="ct-testimonial-attr">Marc Harvey, Balmoral Construction &middot; <a href="https://www.balmoralconstruction.com/" target="_blank" rel="noopener">balmoralconstruction.com</a></p>
+</div>
+</div>
+
+</div>
+
+<!-- ── FORM PANEL ── -->
+<div class="ct-form-panel">
+<h2 class="ct-form-heading">Send an inquiry</h2>
+<p class="ct-form-sub">Tell me about your project and I'll get back to you with next steps. Prefer to talk? <a href="/discovery-call">Book a discovery call</a> instead.</p>
+<form class="ct-form" id="ctForm">
+<!-- Row 1: First Name / Last Name -->
+<div class="ct-form-row">
+<div class="ct-form-group"><label for="ct-fname">First Name</label><input type="text" id="ct-fname" name="firstName" placeholder="First name" required></div>
+<div class="ct-form-group"><label for="ct-lname">Last Name</label><input type="text" id="ct-lname" name="lastName" placeholder="Last name" required></div>
+</div>
+<!-- Row 2: Company / Role -->
+<div class="ct-form-row">
+<div class="ct-form-group"><label for="ct-company">Company</label><input type="text" id="ct-company" name="company" placeholder="Your company or firm"></div>
+<div class="ct-form-group">
+<label for="ct-role">Your Role</label>
+<select id="ct-role" name="role">
+<option value="" disabled selected>Select your role</option>
+<option value="Owner / Principal">Owner / Principal</option>
+<option value="Project Manager">Project Manager</option>
+<option value="Marketing Manager">Marketing Manager</option>
+<option value="Design Director">Design Director</option>
+<option value="Operations Manager">Operations Manager</option>
+<option value="Estimator">Estimator</option>
+<option value="Other">Other</option>
+</select>
+</div>
+</div>
+<!-- Row 3: Email / Phone -->
+<div class="ct-form-row">
+<div class="ct-form-group"><label for="ct-email-input">Email</label><input type="email" id="ct-email-input" name="email" placeholder="you@company.com" required></div>
+<div class="ct-form-group"><label for="ct-phone-input">Phone <span style="color: rgba(138,133,121,0.5); font-weight: 300; letter-spacing: 0.05em; text-transform: none;">(optional)</span></label><input type="tel" id="ct-phone-input" name="phone" placeholder="604.000.0000"></div>
+</div>
+<!-- Row 4: Client Type / Service -->
+<div class="ct-form-row">
+<div class="ct-form-group">
+<label for="ct-client-type">I Am A...</label>
+<select id="ct-client-type" name="clientType">
+<option value="" disabled selected>Select client type</option>
+<option value="Architect">Architect</option>
+<option value="Custom Home Builder">Custom Home Builder</option>
+<option value="Interior Designer">Interior Designer</option>
+<option value="Construction Firm">Construction Firm</option>
+<option value="Trades / Fabricator">Trades / Fabricator</option>
+<option value="Window / Glazing Co">Window / Glazing Co</option>
+<option value="Developer">Developer</option>
+<option value="Homeowner">Homeowner</option>
+<option value="Other">Other</option>
+</select>
+</div>
+<div class="ct-form-group">
+<label for="ct-service">Service Interested In</label>
+<select id="ct-service" name="service">
+<option value="" disabled selected>Select a service</option>
+<option value="Project Photography">Project Photography</option>
+<option value="Award & Publication Imagery">Award & Publication Imagery</option>
+<option value="Build & Team Content">Build & Team Content</option>
+<option value="Creative Partner">Creative Partner</option>
+<option value="Multiple Services">Multiple Services</option>
+<option value="Other / Not Sure">Other / Not Sure</option>
+</select>
+</div>
+</div>
+<!-- Region -->
+<div class="ct-form-group">
+<label for="ct-region">Project Region</label>
+<select id="ct-region" name="region">
+<option value="" disabled selected>Where is your project?</option>
+<option value="Squamish">Squamish</option>
+<option value="Whistler">Whistler</option>
+<option value="Pemberton">Pemberton</option>
+<option value="Sunshine Coast">Sunshine Coast</option>
+<option value="Vancouver">Vancouver</option>
+<option value="Fraser Valley">Fraser Valley</option>
+<option value="Okanagan">Okanagan</option>
+<option value="Other BC">Other BC</option>
+<option value="Out of Province">Out of Province</option>
+</select>
+</div>
+<!-- Project Details -->
+<div class="ct-form-group"><label for="ct-message">Project Details</label><textarea id="ct-message" name="notes" placeholder="Tell me about your project — what's being built, the timeline, and what you're hoping to achieve with the imagery."></textarea></div>
+<!-- Row 5: Source / Referral From -->
+<div class="ct-form-group">
+<label for="ct-source">How Did You Find Me?</label>
+<select id="ct-source" name="source">
+<option value="" disabled selected>Select one</option>
+<option value="Google Search">Google Search</option>
+<option value="Instagram">Instagram</option>
+<option value="LinkedIn">LinkedIn</option>
+<option value="Referral">Referral</option>
+<option value="Publication / Award">Publication / Award</option>
+<option value="Houzz">Houzz</option>
+<option value="Repeat Client">Repeat Client</option>
+<option value="Website Direct">Website Direct</option>
+<option value="Other">Other</option>
+</select>
+</div>
+<div class="ct-form-group ct-referral-from" id="ctReferralGroup" style="display:none;">
+<label for="ct-referral-from">Who Referred You?</label>
+<input type="text" id="ct-referral-from" name="referralFrom" placeholder="Name of person or company">
+</div>
+<div class="ct-form-submit">
+<button type="submit" class="ct-submit-btn ct-magnetic" id="ctSubmitBtn">Send Inquiry</button>
+<p class="ct-form-note">I'll get back to you within 24 hours, typically sooner.</p>
+<p class="ct-form-error" id="ctError">Something went wrong. Please email <a class="ct-ft-email" id="ct-em-err"></a> directly.</p>
+</div>
+</form>
+<div class="ct-success" id="ctSuccess">
+<div class="ct-success-icon"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+<h3>Message sent</h3>
+<p>Thanks for reaching out. I'll review your inquiry and get back to you within 24 hours.</p>
+</div>
+</div>
+
+</div>
+
+<!-- ═══ STATS ═══ -->
+<div class="ct-stats" id="ctStats">
+<div class="ct-stat">
+<div class="ct-stat-num">19</div>
+<div class="ct-stat-label">Projects Documented</div>
+</div>
+<div class="ct-stat">
+<div class="ct-stat-num">7</div>
+<div class="ct-stat-label">Regions Served</div>
+</div>
+<div class="ct-stat">
+<div class="ct-stat-num">24</div>
+<div class="ct-stat-label">Hour Response Time</div>
+</div>
+<div class="ct-stat">
+<div class="ct-stat-num">4</div>
+<div class="ct-stat-label">Services Offered</div>
+</div>
+</div>
+
+<div class="ct-accent"></div>
+
+<!-- ═══ ALT CTA ═══ -->
+<section class="ct-cta">
+<div class="ct-cta-bg">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83bbba67-7393-4e34-8b4b-bac1600c8110/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-12.jpg" alt="Sunshine Coast architectural photography by Matt Anthony" loading="lazy">
+</div>
+<div class="ct-cta-c">
+<p class="ct-cta-eyebrow">Prefer to Talk</p>
+<h2>Skip the form. <em>Book a call.</em></h2>
+<p class="ct-cta-sub">A 15-minute discovery call to discuss your project scope, timeline, and creative goals. No pitch decks, just a conversation.</p>
+<a href="/discovery-call" class="ct-cta-btn ct-magnetic">Book a Discovery Call</a>
+<p class="ct-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="ct-ft">
+<div class="ct-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+<div class="ct-ft-r">
+<div class="ct-ft-i"><span class="ct-ft-l">Based In</span><span class="ct-ft-dt"></span><p>Squamish, British Columbia</p></div>
+<div class="ct-ft-i"><span class="ct-ft-l">Email</span><span class="ct-ft-dt"></span><a class="ct-ft-email" id="ct-ft-em"></a></div>
+<div class="ct-ft-i"><span class="ct-ft-l">Phone</span><span class="ct-ft-dt"></span><a href="tel:6047659270">604.765.9270</a></div>
+<div class="ct-ft-i"><span class="ct-ft-l">Follow</span><span class="ct-ft-dt"></span><div class="ct-ft-s"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+</div>
+<div class="ct-ft-rl"></div>
+<div class="ct-ft-b">
+<span class="ct-ft-cp">&copy; 2026 Matt Anthony Photography</span>
+<nav class="ct-ft-n"><a href="/projects">Projects</a><a href="/journal">Journal</a><a href="/journal/georgie-awards-guide">Georgie Awards</a><a href="/bio">About</a><a href="/contact">Contact</a><a href="/pricing-guide-landing">Get Pricing</a></nav>
+</div>
+</footer>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Matt Anthony Photography",
+  "url": "https://www.mattanthonyphoto.com/contact",
+  "mainEntity": {
+    "@type": "LocalBusiness",
+    "@id": "https://www.mattanthonyphoto.com/#business",
+    "name": "Matt Anthony Photography",
+    "telephone": "+1-604-765-9270",
+    "email": "info@mattanthonyphoto.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Squamish",
+      "addressRegion": "BC",
+      "addressCountry": "CA"
+    },
+    "url": "https://www.mattanthonyphoto.com",
+    "image": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/450a7fc3-25a9-4668-8662-90111e476240/architectural-interiors-photographer-morden-project-sunshine-coast--6.jpg",
+    "priceRange": "$$",
+    "openingHours": "Mo-Fr 09:00-17:00"
+  }
+}
+</script>
+
+<script>
+/* ── Email obfuscation ── */
+(function(){
+  var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];
+  var m=[109,97,105,108,116,111,58];
+  var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);
+  var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);
+  var els=document.querySelectorAll('.ct-ft-email');
+  els.forEach(function(e){e.href=h+s;});
+  var em=document.getElementById('ct-em');
+  if(em){em.href=h+s;}
+  var emErr=document.getElementById('ct-em-err');
+  if(emErr){emErr.href=h+s;}
+})();
+
+/* ── Show/hide Referral From field ── */
+(function(){
+  var sourceEl = document.getElementById('ct-source');
+  var refGroup = document.getElementById('ctReferralGroup');
+  if(sourceEl && refGroup){
+    sourceEl.addEventListener('change', function(){
+      refGroup.style.display = this.value === 'Referral' ? 'block' : 'none';
+      if(this.value !== 'Referral'){
+        var refInput = document.getElementById('ct-referral-from');
+        if(refInput) refInput.value = '';
+      }
+    });
+  }
+})();
+
+/* ── Contact Form → n8n Webhook ── */
+/* Payload keys map 1:1 to Lead Database spreadsheet columns (Pipeline sheet) */
+(function(){
+  var WEBHOOK = 'https://n8n.srv1277163.hstgr.cloud/webhook/contact-form';
+  var form = document.getElementById('ctForm');
+  if(!form) return;
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    var btn = document.getElementById('ctSubmitBtn');
+    var errEl = document.getElementById('ctError');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    errEl.style.display = 'none';
+
+    /* ── Collect fields (keys match spreadsheet column names) ── */
+    var payload = {
+      /* CONTACT group (cols A–H) */
+      firstName:    (form.querySelector('[name="firstName"]').value || '').trim(),
+      lastName:     (form.querySelector('[name="lastName"]').value || '').trim(),
+      company:      (form.querySelector('[name="company"]').value || '').trim(),
+      role:         form.querySelector('[name="role"]').value || '',
+      email:        (form.querySelector('[name="email"]').value || '').trim(),
+      phone:        (form.querySelector('[name="phone"]').value || '').trim(),
+
+      /* SOURCE group (cols I–K) */
+      source:       form.querySelector('[name="source"]').value || '',
+      referralFrom: (form.querySelector('[name="referralFrom"]').value || '').trim(),
+      clientType:   form.querySelector('[name="clientType"]').value || '',
+
+      /* SERVICE group (cols L–M) */
+      service:      form.querySelector('[name="service"]').value || '',
+      region:       form.querySelector('[name="region"]').value || '',
+
+      /* PIPELINE (col N — auto-set) */
+      stage:        'New Lead',
+
+      /* NOTES (col AM) */
+      notes:        (form.querySelector('[name="notes"]').value || '').trim(),
+
+      /* META */
+      dateAdded:    new Date().toISOString(),
+      formSource:   'Website Contact Form'
+    };
+
+    fetch(WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(r){
+      if(!r.ok) throw new Error('Webhook returned ' + r.status);
+      form.style.display = 'none';
+      document.querySelector('.ct-form-heading').style.display = 'none';
+      document.querySelector('.ct-form-sub').style.display = 'none';
+      document.getElementById('ctSuccess').style.display = 'block';
+    })
+    .catch(function(err){
+      console.error('Contact form error:', err);
+      btn.textContent = 'Send Inquiry';
+      btn.disabled = false;
+      errEl.style.display = 'block';
+    });
+  });
+})();
+
+/* ── Interactive Layer ── */
+(function(){
+  var isMobile = 'ontouchstart' in window;
+  var progressBar = document.getElementById('ctProgress');
+  var hero = document.querySelector('.ct-hero');
+  var heroContent = document.querySelector('.ct-hero-content');
+  var heroBg = document.querySelector('.ct-hero-bg');
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader = document.getElementById('ctLoader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('ct-done'); }, 1100);
+  });
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  function updateProgress(){
+    var s = window.scrollY;
+    var d = document.documentElement.scrollHeight - window.innerHeight;
+    if(d > 0) progressBar.style.width = (s / d * 100) + '%';
+  }
+
+  /* ═══ HERO PARALLAX + FADE ═══ */
+  function updateHero(){
+    var s = window.scrollY;
+    var h = window.innerHeight;
+    if(s > h) return;
+    var ratio = s / h;
+    if(heroBg) heroBg.style.transform = 'translateY(' + (s * 0.35) + 'px) scale(' + (1 + ratio * 0.05) + ')';
+    if(heroContent){
+      heroContent.style.transform = 'translateY(' + (s * 0.15) + 'px)';
+      heroContent.style.opacity = 1 - ratio * 1.2;
+    }
+  }
+
+  /* ═══ HEADLINE GOLD UNDERLINE ═══ */
+  var headObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('ct-underlined'); headObs.unobserve(e.target); }
+    });
+  }, {threshold:0.4});
+  document.querySelectorAll('.ct-wrap h2').forEach(function(h){ headObs.observe(h); });
+
+  /* ═══ EYEBROW DASH DRAW ═══ */
+  var eyeObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('ct-visible'); eyeObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.ct-eyebrow').forEach(function(el){ eyeObs.observe(el); });
+
+  /* ═══ DIVIDER DRAW ═══ */
+  var divObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('ct-drawn'); divObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.ct-divider').forEach(function(el){ el.style.width = '0'; divObs.observe(el); });
+
+  /* ═══ STAT COUNTERS ═══ */
+  function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+  var counterObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting || e.target.classList.contains('ct-counted')) return;
+      e.target.classList.add('ct-counted');
+      var text = e.target.textContent.trim();
+      var hasPlus = text.indexOf('+') !== -1;
+      var num = parseInt(text);
+      if(isNaN(num)) return;
+      var start = performance.now();
+      function tick(now){
+        var t = Math.min((now - start) / 1400, 1);
+        e.target.textContent = Math.round(ease(t) * num) + (hasPlus ? '+' : '');
+        if(t < 1) requestAnimationFrame(tick);
+      }
+      e.target.textContent = '0' + (hasPlus ? '+' : '');
+      requestAnimationFrame(tick);
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.ct-stat-num').forEach(function(el){ counterObs.observe(el); });
+
+  /* ═══ CTA ZOOM ═══ */
+  var ctaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('ct-in-view'); ctaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.2});
+  document.querySelectorAll('.ct-cta').forEach(function(el){ ctaObs.observe(el); });
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor = document.getElementById('ctCursor');
+  var cursorDot = document.getElementById('ctCursorDot');
+  var cx = 0, cy = 0, dx = 0, dy = 0;
+  if(!isMobile && cursor){
+    document.addEventListener('mousemove', function(e){
+      dx = e.clientX; dy = e.clientY;
+      cursorDot.style.left = dx + 'px';
+      cursorDot.style.top = dy + 'px';
+      if(!cursor.classList.contains('ct-active')){
+        cursor.classList.add('ct-active');
+        cursorDot.classList.add('ct-active');
+      }
+    });
+    function tickCursor(){
+      cx += (dx - cx) * 0.12;
+      cy += (dy - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(tickCursor);
+    }
+    tickCursor();
+    var hoverEls = document.querySelectorAll('a, button, .ct-cta-btn, .ct-submit-btn, .ct-social-link');
+    hoverEls.forEach(function(el){
+      el.addEventListener('mouseenter', function(){ cursor.classList.add('ct-hover'); });
+      el.addEventListener('mouseleave', function(){ cursor.classList.remove('ct-hover'); });
+    });
+    document.addEventListener('mousedown', function(){ cursor.classList.add('ct-click'); });
+    document.addEventListener('mouseup', function(){ cursor.classList.remove('ct-click'); });
+  }
+
+  /* ═══ MAGNETIC BUTTON ═══ */
+  if(!isMobile){
+    document.querySelectorAll('.ct-magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.25) + 'px, ' + (y * 0.25) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  /* ═══ AMBIENT PARTICLES ═══ */
+  var canvas = document.getElementById('ctParticles');
+  if(canvas){
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    function resizeCanvas(){
+      var parent = canvas.parentElement;
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    for(var p = 0; p < 30; p++){
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -Math.random() * 0.4 - 0.1,
+        r: Math.random() * 1.5 + 0.5,
+        a: Math.random() * 0.3 + 0.05
+      });
+    }
+    function drawParticles(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(function(pt){
+        pt.x += pt.vx;
+        pt.y += pt.vy;
+        if(pt.y < -10) { pt.y = canvas.height + 10; pt.x = Math.random() * canvas.width; }
+        if(pt.x < -10) pt.x = canvas.width + 10;
+        if(pt.x > canvas.width + 10) pt.x = -10;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(201,169,110,' + pt.a + ')';
+        ctx.fill();
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+  }
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateHero();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress();
+  updateHero();
+})();
+</script>
+
+<!-- SEO Meta -->
+<meta name="description" content="Book an architectural photography discovery call or send an inquiry. Matt Anthony Photography serves Whistler, Squamish, Sunshine Coast, Vancouver, and all of BC.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/contact">
+<meta property="og:title" content="Contact Matt Anthony | Architectural Photographer BC">
+<meta property="og:description" content="Ready to document your next project? Book a discovery call or send an inquiry. Based in Squamish, serving all of British Columbia.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/contact">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/450a7fc3-25a9-4668-8662-90111e476240/architectural-interiors-photographer-morden-project-sunshine-coast--6.jpg">

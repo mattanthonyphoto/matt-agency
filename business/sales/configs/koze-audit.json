@@ -1,0 +1,346 @@
+{
+  "client": {
+    "company": "Koze Design Build",
+    "slug": "koze"
+  },
+  "audit_date": "March 2026",
+  "cover": {
+    "headline_html": "Koze Design Build<br><em>Site &amp; SEO Audit</em>",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/30c29423-2b28-4164-8efb-809c0496af43/pit-meadows-architectural-interiors-photography-1.jpg",
+    "image_position": "center 40%"
+  },
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/6a71ac21-6a63-46ca-a7b6-b19e142e7283/pit-meadows-architectural-interiors-photography-3.jpg",
+        "alt": "Pitt Meadows Residence living space",
+        "caption": "Pitt Meadows Residence &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/b636f6ff-da12-4498-a69e-98518d2a279a/pit-meadows-architectural-interiors-photography-8.jpg",
+        "alt": "Pitt Meadows Residence powder room",
+        "caption": "Pitt Meadows Residence &middot; Interior &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ed33540a-6c85-4590-a116-2aeeb6ddc4bb/pit-meadows-architectural-interiors-photography-15.jpg",
+        "alt": "Pitt Meadows Residence arched passageway",
+        "caption": "Pitt Meadows Residence &middot; Detail &middot; Matt Anthony Photography"
+      }
+    ]
+  },
+  "overall_scores": [
+    {
+      "value": 70,
+      "label": "Overall SEO",
+      "grade": "B",
+      "color": "ok"
+    },
+    {
+      "value": 46,
+      "label": "Local / GEO",
+      "grade": "C-",
+      "color": "bad"
+    },
+    {
+      "value": 76,
+      "label": "Content",
+      "grade": "B",
+      "color": "ok"
+    },
+    {
+      "value": 85,
+      "label": "Visual Assets",
+      "grade": "A-",
+      "color": "good"
+    }
+  ],
+  "sections": [
+    {
+      "type": "seo",
+      "eyebrow": "SEO Audit",
+      "headline_html": "Search visibility.<br><em>Solid start, specific gaps.</em>",
+      "lead": "I crawled 9 pages on kozedesignbuild.ca. The site has a fast, clean Squarespace foundation with good basics in place, but two critical SEO elements are missing.",
+      "categories": [
+        {
+          "name": "What’s Working",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "Valid SSL + Fast Server",
+              "detail": "HTTPS active, 94ms response time. Clean, fast foundation."
+            },
+            {
+              "status": "pass",
+              "title": "Strong Meta Title",
+              "detail": "Clear branded title in place. Google knows who you are."
+            },
+            {
+              "status": "pass",
+              "title": "Open Graph Tags Present",
+              "detail": "Social sharing will display correctly with og:title and og:image."
+            },
+            {
+              "status": "pass",
+              "title": "Sitemap Exists (8 URLs)",
+              "detail": "Google can discover your pages. Sitemap is properly configured."
+            },
+            {
+              "status": "pass",
+              "title": "Single H1 Tag",
+              "detail": "Clean heading hierarchy with no duplicates."
+            }
+          ]
+        },
+        {
+          "name": "What Needs Fixing",
+          "findings": [
+            {
+              "status": "fail",
+              "title": "No Meta Description",
+              "detail": "The homepage has no meta description. Google is pulling random text instead of a crafted description that sells the click. This is the single easiest SEO fix available."
+            },
+            {
+              "status": "fail",
+              "title": "No Structured Data (Schema.org)",
+              "detail": "Zero JSON-LD markup. Google doesn’t know Koze is a builder, where you’re based, or what services you offer. Adding LocalBusiness schema would immediately improve local search presence."
+            },
+            {
+              "status": "fail",
+              "title": "75% of Images Missing Alt Text",
+              "detail": "6 of 8 homepage images have no alt text. Across the full site, this means your project photography is invisible to Google Image search, which is a major discovery channel for renovation and design-build firms."
+            }
+          ]
+        }
+      ],
+      "insight": {
+        "title": "SEO Bottom Line",
+        "content_html": "<p>The foundation is <strong>solid</strong> (SSL, speed, sitemap, headings). Three targeted fixes would move the needle significantly: <strong>meta description</strong> (5 minutes), <strong>schema markup</strong> (30 minutes), and <strong>image alt text</strong> across all project photos. These are one-time fixes with permanent impact.</p>"
+      }
+    },
+    {
+      "type": "geo",
+      "eyebrow": "Local SEO &amp; GEO Audit",
+      "headline_html": "Local visibility.<br><em>The biggest opportunity.</em>",
+      "lead": "When someone searches “design build Pitt Meadows” or “custom renovation Maple Ridge,” can they find Koze? Right now, the local presence has gaps.",
+      "categories": [
+        {
+          "name": "Google Business Profile",
+          "findings": [
+            {
+              "status": "fail",
+              "title": "No Google Business Profile Detected",
+              "detail": "Koze does not appear to have an active, optimized Google Business Profile. This is the <strong>single most important local SEO asset</strong>. Without it, you can’t appear in Google Maps or the Local Pack where 46% of local search clicks go."
+            },
+            {
+              "status": "fail",
+              "title": "No LocalBusiness Schema",
+              "detail": "No structured data connecting your website to a local business identity. Google doesn’t know your address, service area, or business hours from the site alone."
+            }
+          ]
+        },
+        {
+          "name": "Directory Presence",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "Listed on Houzz",
+              "detail": "Active Houzz profile with project photos. Strong authoritative backlink for a design-build firm."
+            },
+            {
+              "status": "warn",
+              "title": "Not Found on HomeStars",
+              "detail": "HomeStars ranks well for “contractor” and “renovation” searches in the Lower Mainland. A profile would add another citation and trust signal."
+            },
+            {
+              "status": "warn",
+              "title": "Not Found on CHBA Directory",
+              "detail": "No CHBA Fraser Valley listing detected. This is an authoritative industry backlink and required for housing award eligibility."
+            }
+          ]
+        }
+      ],
+      "insight": {
+        "title": "Local SEO Bottom Line",
+        "content_html": "<p><strong>Google Business Profile is the #1 priority.</strong> Free, 30 minutes to set up. Add your Pitt Meadows address, service areas (Maple Ridge, Coquitlam, Port Moody, Fraser Valley), project photos, and request 5-10 Google reviews from past clients. This single action changes local visibility within 60 days.</p>"
+      }
+    },
+    {
+      "type": "competitors",
+      "eyebrow": "Competitive Landscape",
+      "headline_html": "How you compare.<br><em>In the Fraser Valley.</em>",
+      "lead": "Here’s how Koze’s online presence stacks up against design-build firms competing for the same clients in Pitt Meadows, Maple Ridge, and the Fraser Valley.",
+      "columns": [
+        "Builder",
+        "Website",
+        "SEO",
+        "Photography",
+        "Awards",
+        "Content"
+      ],
+      "rows": [
+        {
+          "highlight": true,
+          "cells": [
+            "<strong>Koze Design Build</strong><br><span style='font-size:0.7rem;color:var(--text-muted);'>Pitt Meadows</span>",
+            "<span class='dot green'></span>Clean (Squarespace)",
+            "<span class='dot amber'></span>No schema/meta desc",
+            "<span class='dot green'></span>Pro (Pitt Meadows)",
+            "<span class='dot red'></span>None submitted",
+            "<span class='dot red'></span>No blog, 9 pages"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Copper Creek Homes<br><span style='font-size:0.7rem;color:var(--text-muted);'>Abbotsford</span>",
+            "<span class='dot green'></span>Pro (Squarespace)",
+            "<span class='dot amber'></span>Basic",
+            "<span class='dot green'></span>Strong portfolio",
+            "<span class='dot green'></span>CHBA FV 2024 Winner",
+            "<span class='dot green'></span>Blog + planning guide"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Opulence Custom Homes<br><span style='font-size:0.7rem;color:var(--text-muted);'>Abbotsford</span>",
+            "<span class='dot green'></span>Professional",
+            "<span class='dot amber'></span>Basic",
+            "<span class='dot green'></span>Extensive portfolio",
+            "<span class='dot amber'></span>Industry affiliations",
+            "<span class='dot red'></span>No blog"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Noura Homes<br><span style='font-size:0.7rem;color:var(--text-muted);'>Coquitlam / Maple Ridge</span>",
+            "<span class='dot green'></span>Strong SEO",
+            "<span class='dot green'></span>Location pages",
+            "<span class='dot amber'></span>Mixed quality",
+            "<span class='dot amber'></span>Since 1992 branding",
+            "<span class='dot amber'></span>Service area pages"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Distrikt Homes<br><span style='font-size:0.7rem;color:var(--text-muted);'>Langley / Pitt Meadows</span>",
+            "<span class='dot green'></span>Modern",
+            "<span class='dot amber'></span>Basic",
+            "<span class='dot amber'></span>Decent",
+            "<span class='dot red'></span>None listed",
+            "<span class='dot red'></span>Minimal"
+          ]
+        }
+      ],
+      "insight": {
+        "title": "The Competitive Gap",
+        "content_html": "<p><strong>Copper Creek is the firm to watch.</strong> They won a 2024 CHBA Fraser Valley award, have a blog, a downloadable planning guide, and an active Instagram with professional photography. Koze’s design-build quality matches or exceeds this level, but the online presence doesn’t reflect it yet. The good news: most Fraser Valley competitors are weak on content too. <strong>First mover with video, build docs, and awards wins this market.</strong></p>"
+      }
+    },
+    {
+      "type": "content",
+      "eyebrow": "Content &amp; Visual Assets",
+      "headline_html": "What you have.<br><em>What you could do with it.</em>",
+      "lead": "An audit of Koze’s current photography, content, and visual assets.",
+      "categories": [
+        {
+          "name": "Strengths",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "5 Project Pages with Photography",
+              "detail": "Portfolio section has real project documentation. The Pitt Meadows Residence shoot (our project) averages 22+ images per page. This is strong visual coverage."
+            },
+            {
+              "status": "pass",
+              "title": "Good Homepage Content (398 Words)",
+              "detail": "Homepage communicates Koze’s value proposition clearly. Above the 300-word SEO minimum."
+            },
+            {
+              "status": "pass",
+              "title": "Strong Testimonials",
+              "detail": "Three detailed client reviews featured prominently. Social proof is in place and credible."
+            }
+          ]
+        },
+        {
+          "name": "Opportunities",
+          "findings": [
+            {
+              "status": "warn",
+              "title": "Only 9 Pages Total",
+              "detail": "Small site footprint limits search visibility. More project pages, service area pages, and a blog would expand the surface area for organic traffic."
+            },
+            {
+              "status": "warn",
+              "title": "2 Project Pages Need More Content",
+              "detail": "Some portfolio pages are image-heavy but text-light. Google needs 300+ words per page to rank effectively."
+            },
+            {
+              "status": "fail",
+              "title": "No Blog or Content Strategy",
+              "detail": "Zero blog posts. No organic content driving search traffic. Articles targeting “design build Pitt Meadows” or “whole home renovation Maple Ridge” would capture high-intent local traffic."
+            },
+            {
+              "status": "fail",
+              "title": "No Video Content",
+              "detail": "Zero project films, zero reels, zero renovation documentation. Before/after video of renovations is the highest-performing content format for design-build firms on social media."
+            },
+            {
+              "status": "fail",
+              "title": "No Build Process Documentation",
+              "detail": "Renovation transformations are inherently compelling content. The process of taking a home from original state to finished product is exactly what prospective clients want to see."
+            }
+          ]
+        }
+      ],
+      "insight": {
+        "title": "Content Bottom Line",
+        "content_html": "<p>Koze has a clean site with good project photography from our Pitt Meadows shoot. The gaps are <strong>volume and variety</strong>: no video, no build process content, no blog, and a small page footprint. For a design-build firm, renovation transformation content (before/during/after) is the highest-value content type and none of it exists yet.</p>"
+      }
+    },
+    {
+      "type": "recommendations",
+      "eyebrow": "What I’d Fix First",
+      "headline_html": "The action plan.<br><em>Priority order.</em>",
+      "lead": "Three moves that would have the biggest impact on Koze’s visibility, based on what the audit found.",
+      "stats": [
+        {
+          "value": "9",
+          "label": "Total Site Pages"
+        },
+        {
+          "value": "0",
+          "label": "Video Assets"
+        },
+        {
+          "value": "0",
+          "label": "Awards Submitted"
+        }
+      ],
+      "steps": [
+        {
+          "number": "1",
+          "title": "Google Business Profile + Meta Description",
+          "description": "GBP is free and takes 30 minutes. Add a meta description to the homepage (5 minutes). These two fixes alone change how Koze appears in every local search result."
+        },
+        {
+          "number": "2",
+          "title": "Video + Build Documentation",
+          "description": "Capture renovation transformations professionally. Before/during/after content for social, proposals, and the website. This is the content type design-build clients search for and competitors don’t have."
+        },
+        {
+          "number": "3",
+          "title": "Expand the Portfolio",
+          "description": "Document more projects with professional photography. Each new project page is another search entry point. Pair with a monthly blog post targeting Fraser Valley renovation search terms."
+        }
+      ],
+      "insight": {
+        "title": "This Is Where a Creative Partner Comes In",
+        "content_html": "<p>Every gap in this audit is something I handle as part of the Creative Partner retainer. Professional photography, video, build documentation, social content, and the asset pipeline that feeds your site and proposals. One relationship, one monthly investment.</p><p style=\"margin-bottom:0;\"><strong>See the full Creative Partner proposal</strong> for pricing, options, and a pilot roadmap.</p>"
+      }
+    }
+  ]
+}

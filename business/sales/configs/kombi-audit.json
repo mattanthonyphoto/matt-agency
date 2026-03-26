@@ -1,0 +1,153 @@
+{
+  "client": {"company": "Kombi Homes", "slug": "kombi"},
+  "audit_date": "March 2026",
+  "cover": {
+    "headline_html": "Kombi Homes<br><em>Site &amp; SEO Audit</em>",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c992d9ce-4647-4129-b03b-6ce9deb487c3/west-10th-vancouver-web--32.jpg",
+    "image_position": "center 35%"
+  },
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/76e4a936-3e97-4510-b280-07e9cda4c3f1/eagle-pemberton-architectural-photography-matt-anthony-.jpg-7.jpg",
+        "alt": "Eagle Residence Pemberton open plan living space",
+        "caption": "Eagle Residence &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e6abc23d-4fa1-461f-ba81-ce0448063016/west-10th-vancouver-web--10.jpg",
+        "alt": "West 10th Avenue Vancouver open plan living room",
+        "caption": "West 10th Avenue &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8baad882-d517-4bdd-98fd-09ad2530273d/LRD-2500px-7.jpg",
+        "alt": "Balsam Way Whistler kitchen renovation",
+        "caption": "Balsam Way &middot; Matt Anthony Photography"
+      }
+    ]
+  },
+  "overall_scores": [
+    {"value": 85, "label": "Overall SEO", "grade": "A-", "color": "good"},
+    {"value": 46, "label": "Local / GEO", "grade": "C-", "color": "bad"},
+    {"value": 54, "label": "Content", "grade": "C", "color": "mid"},
+    {"value": 92, "label": "Visual Assets", "grade": "A", "color": "good"}
+  ],
+  "sections": [
+    {
+      "type": "seo",
+      "eyebrow": "SEO Audit",
+      "headline_html": "Search visibility.<br><em>Where you rank today.</em>",
+      "lead": "Kombi's technical SEO is surprisingly solid for a 2-page site. The gaps are in content volume and structured data.",
+      "categories": [
+        {
+          "name": "Technical SEO (Strong)",
+          "findings": [
+            {"status": "pass", "title": "Valid SSL certificate", "detail": "Site served over HTTPS with no mixed content warnings."},
+            {"status": "pass", "title": "Good meta title", "detail": "\"North Shore General Contractor - Kombi Homes\" (44 chars). Clear, keyword-rich, proper length."},
+            {"status": "pass", "title": "Meta description present", "detail": "\"Kombi Construction is a residential design and construction company based in North Vancouver, BC\" (96 chars)."},
+            {"status": "pass", "title": "Single H1 tag", "detail": "\"KOMBI CONSTRUCTION\". Clean heading hierarchy."},
+            {"status": "pass", "title": "Open Graph tags present", "detail": "og:title and og:image found. Social sharing will display correctly."},
+            {"status": "pass", "title": "Canonical tag present", "detail": "Self-referencing canonical. No duplicate content issues."},
+            {"status": "pass", "title": "Sitemap found", "detail": "2 URLs indexed at /sitemap_index.xml."},
+            {"status": "pass", "title": "Good server response", "detail": "541ms first byte. Clean, fast loading."}
+          ]
+        },
+        {
+          "name": "Structural Gaps",
+          "findings": [
+            {"status": "fail", "title": "No structured data (schema.org)", "detail": "Zero JSON-LD markup. Google doesn't know Kombi is a builder, where you're based, what services you offer, or your 31-year track record. Add LocalBusiness and HomeBuilder schema."},
+            {"status": "fail", "title": "Only 2 pages in sitemap", "detail": "Homepage and contact page. Every competitor has 10-50+ pages indexed. Each missing page is a missed search opportunity."},
+            {"status": "warn", "title": "No robots.txt customization", "detail": "Default configuration. Not an issue now but should be reviewed as the site grows."}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "geo",
+      "eyebrow": "Local SEO &amp; GEO Audit",
+      "headline_html": "Local visibility.<br><em>Can North Shore clients find you?</em>",
+      "lead": "This is the biggest gap. Kombi is invisible in local search results, Google Maps, and the Local Pack for North Vancouver builder searches.",
+      "categories": [
+        {
+          "name": "Google Business Profile",
+          "findings": [
+            {"status": "fail", "title": "No Google Business Profile detected", "detail": "Cannot appear in Google Maps, Local Pack, or \"near me\" searches. This is the single highest-impact fix available. A verified GBP with photos and reviews would immediately improve visibility for \"general contractor North Vancouver\" searches."},
+            {"status": "fail", "title": "No LocalBusiness schema", "detail": "Even without a GBP, schema markup would tell Google your NAP (name, address, phone), service area, and business type. Currently Google has to guess."}
+          ]
+        },
+        {
+          "name": "Directory Presence",
+          "findings": [
+            {"status": "pass", "title": "Listed on Houzz", "detail": "Active profile found. Good authoritative directory presence for design-build."},
+            {"status": "pass", "title": "BBB accredited with A+ rating", "detail": "Strong trust signal. Excellent client reviews mentioning Brian and Ryan by name."},
+            {"status": "warn", "title": "Not found on HomeStars", "detail": "Major Canadian home services directory. Missing a citation opportunity."},
+            {"status": "warn", "title": "Not found on CHBA member directory", "detail": "Industry association listing would strengthen local authority and enable award submissions."},
+            {"status": "warn", "title": "NAP consistency unverified", "detail": "Name, address, and phone should be identical across website footer, Houzz, BBB, and any other listings."}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "competitors",
+      "eyebrow": "Competitive Landscape",
+      "headline_html": "How you compare.<br><em>Side by side.</em>",
+      "lead": "Here's how Kombi stacks up against other North Shore custom home builders and general contractors online.",
+      "columns": ["Builder", "Pages", "Portfolio", "GBP", "Awards", "Content"],
+      "rows": [
+        {"highlight": true, "cells": ["Kombi Homes", "2", "None", "No", "0", "160 words"]},
+        {"highlight": false, "cells": ["Blackfish Homes", "20+", "Full portfolio", "Yes", "Multiple", "Blog + case studies"]},
+        {"highlight": false, "cells": ["Bolder Homes", "15+", "Project pages", "Yes", "HAVAN", "Blog + social"]},
+        {"highlight": false, "cells": ["Goldcon Construction", "25+", "Detailed case studies", "Yes", "Georgie + HAVAN", "Content library"]},
+        {"highlight": false, "cells": ["Barrett Group", "20+", "Project portfolio", "Yes", "Awards listed", "Blog + testimonials"]}
+      ]
+    },
+    {
+      "type": "content",
+      "eyebrow": "Content &amp; Visual Assets",
+      "headline_html": "What you have.<br><em>What you're missing.</em>",
+      "lead": "The photography in the homepage carousel is quality work. But 12 images on a single page with no project context isn't a portfolio.",
+      "categories": [
+        {
+          "name": "Photography & Visuals",
+          "findings": [
+            {"status": "pass", "title": "12 images on homepage", "detail": "Good visual presence on the landing page. Carousel shows real craftsmanship."},
+            {"status": "pass", "title": "Alt text on 11 of 12 images", "detail": "Near-perfect accessibility. Only 1 image missing alt text site-wide."},
+            {"status": "fail", "title": "No project pages or portfolio", "detail": "Zero dedicated pages for individual projects. 31 years of custom homes, renovations, and complex builds with no visual documentation online."},
+            {"status": "fail", "title": "No before/after content", "detail": "Renovation transformations are the highest-performing content in this market. No before/after documentation exists."},
+            {"status": "fail", "title": "No video content", "detail": "No project films, reels, or walkthrough videos. Video is increasingly expected by homeowners evaluating builders."}
+          ]
+        },
+        {
+          "name": "Written Content",
+          "findings": [
+            {"status": "fail", "title": "160 total words across entire site", "detail": "The homepage and contact page combined have less content than a single project page should. Google ranks pages based on content depth and relevance."},
+            {"status": "fail", "title": "No blog or journal", "detail": "Regular content builds search authority. Competitors post monthly. Kombi has zero posts."},
+            {"status": "fail", "title": "No testimonials on site", "detail": "Excellent BBB reviews (Ryan Heathfield praised by name) exist on third-party sites but aren't showcased on kombihomes.com."},
+            {"status": "fail", "title": "No service descriptions", "detail": "Custom homes, renovations, structural concrete, decks, underpinning, these services aren't described anywhere on the site."}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "recommendations",
+      "eyebrow": "What I'd Fix First",
+      "headline_html": "The action plan.<br><em>Priority order.</em>",
+      "lead": "These are ordered by impact. The first three can be done in week one.",
+      "stats": [
+        {"value": "5", "label": "Critical Fixes"},
+        {"value": "1", "label": "Week to Launch GBP"},
+        {"value": "90", "label": "Days to Transform the Site"}
+      ],
+      "steps": [
+        {"number": "1", "title": "Google Business Profile", "description": "Create, verify, and optimize a GBP with photos, services, and service area. Immediate visibility in Google Maps and Local Pack for North Shore searches."},
+        {"number": "2", "title": "Schema Markup", "description": "Add LocalBusiness and HomeBuilder JSON-LD schema. Tell Google what Kombi is, where you're based, and what you do. 30-minute fix with massive SEO impact."},
+        {"number": "3", "title": "Project Portfolio", "description": "Build dedicated project pages for your best completed work. Each page is a new search entry point. Start with 3 projects and add one per month."},
+        {"number": "4", "title": "Professional Photography", "description": "Document current and upcoming projects with award-ready photography. Build the visual library that powers everything else, the portfolio, social media, awards, proposals."},
+        {"number": "5", "title": "Content Strategy", "description": "Monthly blog posts, project case studies, and social media content. Build the search authority and online presence that matches 31 years of craftsmanship."}
+      ],
+      "insight": {
+        "title": "This Is Where a Creative Partner Comes In",
+        "content_html": "<p>The audit findings above aren't a redesign job. They're a content gap. Kombi needs someone documenting every project, building the portfolio page by page, and fixing the local SEO foundations. That's exactly what the <strong>Creative Partner</strong> model delivers: professional photography, project pages, GBP setup, schema fixes, and a growing content library. All handled, so you can focus on building.</p>"
+      }
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.pgt-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.pgt-loader.pgt-done{opacity:0;visibility:hidden;pointer-events:none}
+.pgt-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:pgtLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.pgt-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:pgtLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.pgt-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:pgtLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.pgt-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:pgtLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes pgtLoaderIn{to{opacity:1}}
+@keyframes pgtLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.pgt-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.pgt-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.pgt-cursor.pgt-active{opacity:1}
+.pgt-cursor.pgt-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.pgt-cursor.pgt-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.pgt-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.pgt-cursor-dot.pgt-active{opacity:1}
+
+/* ── CTA button glow ── */
+.pgt-btn{animation:pgtBtnGlow 3s ease-in-out infinite alternate}
+@keyframes pgtBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+
+.pgt-wrap{overflow-x:hidden!important;font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a18;line-height:1.7;font-weight:300}.pgt-wrap img{max-width:100%;display:block}.pgt-wrap a{color:inherit;text-decoration:none}
+.pgt-hero{position:relative;width:100%;height:60vh;min-height:450px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}.pgt-hero-bg{position:absolute;inset:0;z-index:0}.pgt-hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.6) brightness(.3)}.pgt-hero::after{content:'';position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at center,rgba(26,26,24,.4) 0%,rgba(26,26,24,.85) 100%)}.pgt-hero-c{position:relative;z-index:2;max-width:620px;padding:0 5vw}.pgt-hero-l{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;margin-bottom:1.25rem}.pgt-hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.15;color:#f6f4f0;letter-spacing:-.02em;margin-bottom:1.25rem}.pgt-hero h1 em{font-style:italic;color:#c9a96e}.pgt-hero-sub{font-size:1rem;color:#d9d5cd;line-height:1.8;max-width:520px;margin:0 auto}
+.pgt-body{background:#f6f4f0;padding:5rem 5vw}.pgt-body-inner{max-width:700px;margin:0 auto}.pgt-body-l{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:1.5rem}.pgt-body h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:300;line-height:1.3;color:#1a1a18;margin-bottom:1.5rem}.pgt-body p{font-size:1rem;color:#4a4a46;line-height:1.85;margin-bottom:1rem}.pgt-body p a{color:#b8975a;border-bottom:1px solid rgba(184,151,90,.3);transition:border-color .3s ease}.pgt-body p a:hover{border-color:#b8975a}
+.pgt-steps{background:#eeece6;padding:4rem 5vw}.pgt-steps-inner{max-width:800px;margin:0 auto}.pgt-steps-l{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:2rem;text-align:center}.pgt-steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}.pgt-step{text-align:center;padding:1.5rem}.pgt-step-num{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;margin-bottom:.75rem}.pgt-step h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;font-weight:400;margin-bottom:.75rem;color:#1a1a18}.pgt-step p{font-size:.85rem;color:#8a8579;line-height:1.65}
+.pgt-image{width:100%;height:45vh;min-height:350px;overflow:hidden}.pgt-image img{width:100%;height:100%;object-fit:cover}
+.pgt-cta{position:relative;padding:7rem 5vw;text-align:center;overflow:hidden;min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center}.pgt-cta-bg{position:absolute;inset:0;z-index:0}.pgt-cta-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.5) brightness(.3)}.pgt-cta-c{position:relative;z-index:2}.pgt-cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#f6f4f0;margin-bottom:1rem;line-height:1.2}.pgt-cta h2 em{font-style:italic;color:#c9a96e}.pgt-cta p{font-size:1rem;color:#8a8579;max-width:480px;margin:0 auto 2.5rem;line-height:1.8}
+.pgt-btn{display:inline-block;font-family:'DM Sans',sans-serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;padding:1.1rem 3rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all .35s ease}.pgt-btn:hover{background:transparent!important;color:#c9a96e!important}
+.pgt-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.pgt-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.pgt-ft-locs a:hover{color:#c9a96e}.pgt-ft{background:#1a1a18;border-top:1px solid rgba(201,169,110,.15)}.pgt-ft-r{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}.pgt-ft-i{display:flex;align-items:baseline;gap:10px}.pgt-ft-l{font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;white-space:nowrap}.pgt-ft-dt{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,.4);flex-shrink:0;position:relative;top:-2px}.pgt-ft-i p,.pgt-ft-i a{margin:0;font-size:12px;color:rgba(246,244,240,.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color .3s ease}.pgt-ft-i a:hover{color:#c9a96e}.pgt-ft-s{display:flex;gap:18px}.pgt-ft-rl{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,.15) 20%,rgba(201,169,110,.15) 80%,transparent 100%)}.pgt-ft-b{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}.pgt-ft-cp{font-size:10px;color:rgba(246,244,240,.35);letter-spacing:.08em}.pgt-ft-n{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center}.pgt-ft-n a{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);text-decoration:none;transition:color .3s ease}.pgt-ft-n a:hover{color:#c9a96e}
+.pgt-ft-email{cursor:pointer}
+@media(max-width:768px){.pgt-hero{height:50vh;min-height:380px}.pgt-steps-grid{grid-template-columns:1fr;gap:1rem}.pgt-image{height:35vh;min-height:250px}.pgt-cta{padding:4rem 6vw;min-height:40vh}.pgt-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.pgt-ft-locs a{font-size:.55rem}.pgt-ft-r{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}.pgt-ft-rl{margin:0 6vw}.pgt-ft-b{flex-direction:column;gap:.75rem;text-align:center;padding:1.25rem 6vw}}
+</style>
+<div class="pgt-loader" id="pgtLoader">
+  <div class="pgt-loader-brand">Matt Anthony Photography</div>
+  <div class="pgt-loader-sub">Pricing Guide</div>
+  <div class="pgt-loader-line"></div>
+</div>
+<div class="pgt-cursor" id="pgtCursor"></div>
+<div class="pgt-cursor-dot" id="pgtCursorDot"></div>
+<div class="pgt-progress" id="pgtProgress"></div>
+<div class="pgt-wrap">
+<div class="pgt-hero"><div class="pgt-hero-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e07b8aac-c1ec-4293-b956-79b41aa39f33/5322-backhouse-web-1.jpg" alt="The Perch Sunshine Coast modern coastal residence photographed by Matt Anthony"></div><div class="pgt-hero-c"><p class="pgt-hero-l">Confirmed</p><h1>Your guide is on its <em>way</em></h1><p class="pgt-hero-sub">I've emailed you a copy of the Visual Services Pricing Guide. It usually arrives within a few minutes — check your promotions or spam folder if you don't see it.</p></div></div>
+
+<div class="pgt-body"><div class="pgt-body-inner"><p class="pgt-body-l">Next Steps</p><h2>If you already have projects in mind, let's talk</h2><p>Now that you have the pricing guide, the next step is a quick discovery call. We'll talk through your projects, locations, and timelines — and I'll share how the visual services can support your awards, publications, and proposals.</p><p>You can also reply directly to the guide email with project details or drawings if you'd prefer to start there.</p></div></div>
+
+<div class="pgt-steps"><div class="pgt-steps-inner"><p class="pgt-steps-l">What Happens Next</p><div class="pgt-steps-grid">
+<div class="pgt-step"><p class="pgt-step-num">01</p><h3>Guide Arrives</h3><p>Your pricing guide arrives via email within a few minutes. Full investment ranges, service breakdowns, and add-on options.</p></div>
+<div class="pgt-step"><p class="pgt-step-num">02</p><h3>Follow-Up Sequence</h3><p>Over the next few days, you'll receive examples of completed work and planning tools relevant to your firm type.</p></div>
+<div class="pgt-step"><p class="pgt-step-num">03</p><h3>Discovery Call</h3><p>If it looks like a good fit, book a call and we'll map out the right approach for your upcoming projects.</p></div>
+</div></div></div>
+
+<div class="pgt-image"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e07b8aac-c1ec-4293-b956-79b41aa39f33/5322-backhouse-web-1.jpg" alt="The Perch Sunshine Coast architectural interior with ocean views" loading="lazy"></div>
+
+<div class="pgt-cta"><div class="pgt-cta-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83bbba67-7393-4e34-8b4b-bac1600c8110/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-12.jpg" alt="Sandy Hook Sunshine Coast residential architecture" loading="lazy"></div><div class="pgt-cta-c"><h2>Ready to talk <em>scope</em>?</h2><p>Let's discuss your next project and figure out the best approach for your visual needs.</p><a href="/discovery-call" class="pgt-btn">Book a Discovery Call</a></div></div>
+
+<div class="pgt-ft"><div class="pgt-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+<div class="pgt-ft-r"><div class="pgt-ft-i"><span class="pgt-ft-l">Based In</span><span class="pgt-ft-dt"></span><p>Squamish, British Columbia</p></div><div class="pgt-ft-i"><span class="pgt-ft-l">Email</span><span class="pgt-ft-dt"></span><a class="pgt-ft-email" id="pgt-ft-em"></a></div><div class="pgt-ft-i"><span class="pgt-ft-l">Phone</span><span class="pgt-ft-dt"></span><a href="tel:6047659270">604.765.9270</a></div><div class="pgt-ft-i"><span class="pgt-ft-l">Follow</span><span class="pgt-ft-dt"></span><div class="pgt-ft-s"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div></div><div class="pgt-ft-rl"></div><div class="pgt-ft-b"><span class="pgt-ft-cp">Matt Anthony Photography</span><div class="pgt-ft-n"><a href="/bio">About</a><a href="/projects">Projects</a><a href="/pricing-guide-landing">Get Pricing</a><a href="/contact">Contact</a></div></div></div>
+</div>
+<script>
+(function(){
+var isMobile='ontouchstart' in window;
+
+/* ═══ EMAIL OBFUSCATION ═══ */
+var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];var e=document.getElementById('pgt-ft-em');if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}
+
+/* ═══ LOADING SCREEN ═══ */
+var loader=document.getElementById('pgtLoader');
+window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('pgt-done');},1100);});
+
+/* ═══ SCROLL PROGRESS ═══ */
+var progressBar=document.getElementById('pgtProgress');
+function updateProgress(){var sc=window.scrollY;var d=document.documentElement.scrollHeight-window.innerHeight;if(d>0)progressBar.style.width=(sc/d*100)+'%';}
+
+/* ═══ CUSTOM CURSOR ═══ */
+var cursor=document.getElementById('pgtCursor');var cursorDot=document.getElementById('pgtCursorDot');var cx=0,cy=0,dx=0,dy=0;
+if(!isMobile&&cursor){
+  document.addEventListener('mousemove',function(ev){dx=ev.clientX;dy=ev.clientY;cursorDot.style.left=dx+'px';cursorDot.style.top=dy+'px';if(!cursor.classList.contains('pgt-active')){cursor.classList.add('pgt-active');cursorDot.classList.add('pgt-active');}});
+  function tickCursor(){cx+=(dx-cx)*0.12;cy+=(dy-cy)*0.12;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(tickCursor);}tickCursor();
+  var hoverEls=document.querySelectorAll('a, button, .pgt-btn');
+  hoverEls.forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('pgt-hover');});el.addEventListener('mouseleave',function(){cursor.classList.remove('pgt-hover');});});
+  document.addEventListener('mousedown',function(){cursor.classList.add('pgt-click');});
+  document.addEventListener('mouseup',function(){cursor.classList.remove('pgt-click');});
+}
+
+/* ═══ COMBINED SCROLL HANDLER ═══ */
+var ticking=false;
+window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){updateProgress();ticking=false;});ticking=true;}},{passive:true});
+updateProgress();
+})();
+</script>
+<meta name="robots" content="noindex">
+<meta name="description" content="Your Visual Services Pricing Guide is on its way. Book a discovery call to discuss your next architectural photography project.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/pricing-guide-thank-you">

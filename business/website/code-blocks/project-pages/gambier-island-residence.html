@@ -1,0 +1,296 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+.tp-wrap{overflow-x:hidden!important;font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a18;line-height:1.7;font-weight:300}.tp-wrap img{max-width:100%;display:block}.tp-wrap a{color:inherit;text-decoration:none}.tp-hero{position:relative;width:100%;height:85vh;min-height:600px;overflow:hidden}.tp-hero>img{width:100%;height:100%;object-fit:cover;filter:saturate(0.8) brightness(0.45)}.tp-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,24,0.15) 0%,rgba(26,26,24,0.05) 40%,rgba(26,26,24,0.6) 75%,rgba(26,26,24,0.95) 100%)}.tp-hc{position:absolute;bottom:5rem;left:5vw;z-index:2;max-width:700px}.tp-hl{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem;font-weight:500}.tp-hc h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:300;line-height:1.05;color:#f6f4f0;letter-spacing:-0.02em;margin-bottom:0.5rem}.tp-hloc{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:#d9d5cd;font-weight:400}
+.tp-info{display:grid;grid-template-columns:280px 1fr;gap:5rem;padding:5rem 5vw;max-width:1200px;margin:0 auto}.tp-m{padding-top:0.5rem}.tp-mi{margin-bottom:2rem}.tp-ml{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:0.4rem}.tp-mv{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:400;color:#1a1a18;line-height:1.4}.tp-d h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300;line-height:1.3;margin-bottom:2rem;color:#1a1a18}.tp-d p{font-size:1rem;color:#4a4a46;line-height:1.85;margin-bottom:1.5rem;max-width:600px}
+.tp-bk{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:2rem;transition:color 0.3s ease}.tp-bk:hover{color:#1a1a18}.tp-bk::before{content:'\2190';font-size:0.9rem}
+.tp-g{padding:2rem 5vw 4rem}.tp-gg{column-count:2;column-gap:1.25rem}.tp-gg div{break-inside:avoid;margin-bottom:1.25rem;overflow:hidden;border-radius:2px}.tp-gg img{width:100%;height:auto;display:block;transition:transform 0.8s ease}.tp-gg div:hover img{transform:scale(1.03)}
+.tp-cta{position:relative;padding:7rem 5vw;text-align:center;overflow:hidden;min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center}.tp-cta-bg{position:absolute;inset:0;z-index:0}.tp-cta-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(0.5) brightness(0.3)}.tp-cc{position:relative;z-index:2}.tp-cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#f6f4f0;margin-bottom:1rem;line-height:1.2}.tp-cta h2 em{font-style:italic;color:#c9a96e}.tp-cta p{font-size:1rem;color:#8a8579;max-width:480px;margin:0 auto 2.5rem;line-height:1.8;font-weight:300}.tp-cb{display:inline-block;font-family:'DM Sans',sans-serif;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;padding:1.1rem 3rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all 0.35s ease;text-decoration:none}.tp-cb:hover{background:transparent!important;color:#c9a96e!important}
+.tp-alt-cta{margin-top:1.25rem;font-size:.75rem;color:#8a8579;letter-spacing:.05em;font-weight:300}.tp-alt-cta a{color:#c9a96e;text-decoration:underline;text-underline-offset:3px;transition:color .3s ease}.tp-alt-cta a:hover{color:#f6f4f0}
+.tp-nx{position:relative;overflow:hidden;cursor:pointer;height:40vh;min-height:300px;display:flex;align-items:center;justify-content:center;background:#1a1a18;text-decoration:none}.tp-nx-bg{position:absolute;inset:0;z-index:0}.tp-nx-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.35);transition:transform 1s ease,filter 0.5s ease}.tp-nx:hover .tp-nx-bg img{transform:scale(1.04);filter:brightness(0.45)}.tp-nx-c{position:relative;z-index:2;text-align:center}.tp-nx-l{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;margin-bottom:1rem}.tp-nx-c h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:300;color:#f6f4f0;line-height:1.2}.tp-nx-c h3 span{display:block;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:#d9d5cd;font-weight:400;font-family:'DM Sans',sans-serif;margin-top:0.5rem}
+.tp-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.tp-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.tp-ft-locs a:hover{color:#c9a96e}.tp-ft{background:#1a1a18;border-top:1px solid rgba(201,169,110,0.15)}.tp-ft-r{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}.tp-ft-i{display:flex;align-items:baseline;gap:10px}.tp-ft-l{font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;white-space:nowrap}.tp-ft-dt{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,0.4);flex-shrink:0;position:relative;top:-2px}.tp-ft-i p,.tp-ft-i a{margin:0;font-size:12px;color:rgba(246,244,240,0.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color 0.3s ease}.tp-ft-i a:hover{color:#c9a96e}.tp-ft-s{display:flex;gap:18px}.tp-ft-rl{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.15) 20%,rgba(201,169,110,0.15) 80%,transparent 100%)}.tp-ft-b{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}.tp-ft-cp{font-size:10px;color:rgba(246,244,240,0.35);letter-spacing:0.08em}.tp-ft-n{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center}.tp-ft-n a{font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(246,244,240,0.35);text-decoration:none;transition:color 0.3s ease}.tp-ft-n a:hover{color:#c9a96e}
+.tp-ft-email{cursor:pointer}
+@media(max-width:768px){.tp-hero{height:60vh;min-height:400px}.tp-hc{bottom:3rem;left:6vw}.tp-hc h1{font-size:clamp(2rem,9vw,3rem)}.tp-info{grid-template-columns:1fr;gap:2rem;padding:3rem 6vw}.tp-m{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding-bottom:2rem;border-bottom:1px solid #d9d5cd}.tp-mi{margin-bottom:0}.tp-g{padding:1.5rem 4vw 3rem}.tp-gg{column-count:1}.tp-gg div{margin-bottom:0.75rem}.tp-cta{padding:4rem 6vw;min-height:40vh}.tp-cta h2{font-size:clamp(1.5rem,6vw,2rem)}.tp-cb{padding:0.9rem 2rem}.tp-nx{height:30vh;min-height:220px}.tp-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.tp-ft-locs a{font-size:.55rem}.tp-ft-r{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}.tp-ft-rl{margin:0 6vw}.tp-ft-b{flex-direction:column;gap:0.75rem;text-align:center;padding:1.25rem 6vw}}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.tp-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.tp-loader.tp-done{opacity:0;visibility:hidden;pointer-events:none}
+.tp-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:tpLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.tp-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:tpLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.tp-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:tpLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.tp-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:tpLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes tpLoaderIn{to{opacity:1}}
+@keyframes tpLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.tp-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.tp-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.tp-cursor.tp-active{opacity:1}
+.tp-cursor.tp-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.tp-cursor.tp-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.tp-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.tp-cursor-dot.tp-active{opacity:1}
+
+/* ── Section nav dots ── */
+.tp-section-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:99998;display:flex;flex-direction:column;gap:12px;opacity:0;transition:opacity 0.4s ease}
+.tp-section-nav.tp-nav-visible{opacity:1}
+.tp-nav-dot{width:8px;height:8px;border-radius:50%;background:transparent;border:1px solid #8a8579;cursor:pointer;transition:all 0.3s ease;position:relative}
+.tp-nav-dot:hover{border-color:#c9a96e;transform:scale(1.3)}
+.tp-nav-dot.tp-nav-active{background:#c9a96e;border-color:#c9a96e;box-shadow:0 0 8px rgba(201,169,110,0.4)}
+.tp-nav-dot::before{content:attr(data-label);position:absolute;right:20px;top:50%;transform:translateY(-50%);font-family:'Josefin Sans',sans-serif;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a96e;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.3s ease,right 0.3s ease}
+.tp-nav-dot:hover::before{opacity:1;right:24px}
+@media(max-width:768px){.tp-section-nav{display:none}}
+@media(max-width:768px){.tp-cursor,.tp-cursor-dot{display:none}}
+
+/* ── CTA button glow pulse ── */
+.tp-cb{animation:tpBtnGlow 3s ease-in-out infinite alternate}
+@keyframes tpBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+</style>
+
+<div class="tp-wrap">
+<!-- Loader -->
+<div class="tp-loader">
+<div class="tp-loader-brand">Matt Anthony</div>
+<div class="tp-loader-sub">Loading project</div>
+<div class="tp-loader-line"></div>
+</div>
+
+<!-- Scroll Progress -->
+<div class="tp-progress"></div>
+
+<!-- Custom Cursor -->
+<div class="tp-cursor"></div>
+<div class="tp-cursor-dot"></div>
+
+
+<!-- Hero -->
+<div class="tp-hero">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ccfb80fe-3b57-490b-bffb-dfe02f8e174e/linwood-gambier-web-34.jpg" alt="Gambier Island Residence aerial view forest and ocean setting architectural photography by Matt Anthony">
+<div class="tp-hc">
+<p class="tp-hl">Featured Project</p>
+<h1>Gambier Island Residence</h1>
+<p class="tp-hloc">Gambier Island, British Columbia</p>
+</div>
+</div>
+
+<!-- Back Link -->
+<div style="padding:2rem 5vw 0;max-width:1200px;margin:0 auto;">
+<a href="/projects" class="tp-bk">All Projects</a>
+</div>
+
+<!-- Project Info -->
+<div class="tp-info" data-nav="Details">
+<div class="tp-m">
+<div class="tp-mi">
+<div class="tp-ml">Location</div>
+<div class="tp-mv">Gambier Island</div>
+</div>
+<div class="tp-mi">
+<div class="tp-ml">Designer</div>
+<div class="tp-mv">Linwood Homes</div>
+</div>
+<div class="tp-mi">
+<div class="tp-ml">Builder</div>
+<div class="tp-mv">Black Thumb Contracting</div>
+</div>
+</div>
+<div class="tp-d">
+<h2>Craftsmanship and family legacy on a remote, generational property</h2>
+<p>This Gambier Island residence features soaring wood ceilings, expansive windows, and a natural material palette that connects interiors directly to the surrounding landscape. Built by Hayden Killam of Black Thumb Contracting using pre-packaged Linwood Homes materials delivered by barge and helicopter, the home embodies the logistical ingenuity required for remote island construction.</p>
+<p>Every detail reflects the family's deep connection to this generational property, from the wood ceiling structure to the carefully framed forest and ocean views throughout the home.</p>
+</div>
+</div>
+
+<!-- Gallery -->
+<div class="tp-g" data-nav="Gallery"><div class="tp-gg">
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/581535dc-1328-416b-a7ee-c9a0534fa608/linwood-gambier-web.jpg" alt="Gambier Island Residence aerial drone view forest canopy" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/f6f66a30-fbaa-4a09-ab89-ce9f0785ed96/linwood-gambier-web-32.jpg" alt="Gambier Island Residence exterior facade forest setting" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d69a2c85-d169-4fd7-b43f-2d0b9e5a7bbe/linwood-gambier-web-37.jpg" alt="Gambier Island Residence drone perspective roofline and trees" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e13eccd9-ffa9-4d25-84ec-e6b54a06605b/linwood-gambier-web-26.jpg" alt="Gambier Island Residence front approach through forest" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d80fa4cc-21d0-4281-900c-e6906eea5fae/linwood-gambier-web-36.jpg" alt="Gambier Island Residence twilight exterior warm interior glow" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/93c8e4df-9922-4f20-a0e9-d86ff44d8767/linwood-gambier-web-39.jpg" alt="Gambier Island Residence dusk exterior elevated view" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/1ed11097-2564-4243-aa85-7ba1856fc4b1/linwood-gambier-web-38.jpg" alt="Gambier Island Residence landscape and ocean backdrop" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/91bd25de-8c4e-4d47-838a-ec934e7350b0/linwood-gambier-web-35.jpg" alt="Gambier Island Residence deck and outdoor living area" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/4063e175-9089-4581-922c-77350286bb53/linwood-gambier-web-24.jpg" alt="Gambier Island Residence entry path and wood detailing" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/3359506c-2361-4517-8375-9b121efe499c/linwood-gambier-web-25.jpg" alt="Gambier Island Residence porch and covered entry" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/640a53a3-ed15-452a-9fa9-b87ffa45efee/linwood-gambier-web-22.jpg" alt="Gambier Island Residence exterior wood siding detail" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d546959c-6398-42d2-b558-ea70ac059b91/linwood-gambier-web-27.jpg" alt="Gambier Island Residence living room soaring wood ceiling" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/6e3a80e2-4983-4878-8895-7e05c2b42a30/linwood-gambier-web-23.jpg" alt="Gambier Island Residence open plan kitchen and dining" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/5e029a51-6b86-4bd3-9809-e3e30339e259/linwood-gambier-web-19.jpg" alt="Gambier Island Residence kitchen island natural materials" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/b814b2d5-3d7d-4329-af9a-d3ce9820d331/linwood-gambier-web-2.jpg" alt="Gambier Island Residence wood ceiling structure and beams" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/6fc3f1f0-8018-4f48-b45f-3e0a9ec434d6/linwood-gambier-web-20.jpg" alt="Gambier Island Residence dining area window views" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/5dcf2b94-fea4-4dc4-97c8-516eb28197ed/linwood-gambier-web-21.jpg" alt="Gambier Island Residence living space fireplace and seating" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9e358439-f24a-4c68-becd-926d6c3c6b18/linwood-gambier-web-13.jpg" alt="Gambier Island Residence primary bedroom natural light" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8a208a20-b6e1-4bbf-9c0c-7f232afe25f4/linwood-gambier-web-15.jpg" alt="Gambier Island Residence loft space and staircase" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/dea5905f-0c5f-42ca-ae51-7606fc730e3f/linwood-gambier-web-17.jpg" alt="Gambier Island Residence bathroom timber and tile" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/519fa7ee-6d87-4dc8-bd5f-429063b7dfae/linwood-gambier-web-16.jpg" alt="Gambier Island Residence hallway wood panelling" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64fe5838-ce28-44c9-94cf-6f98da7be1d3/linwood-gambier-web-14.jpg" alt="Gambier Island Residence guest bedroom forest views" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/73ed997d-e7b6-4d04-8662-002881a5a190/linwood-gambier-web-18.jpg" alt="Gambier Island Residence material detail and texture" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/01893150-5d74-4b4b-8592-3d5613bb42c9/linwood-gambier-web-10.jpg" alt="Gambier Island Residence sitting area window seat" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/94b344f9-9a5d-422d-9834-a1389d203f8c/linwood-gambier-web-7.jpg" alt="Gambier Island Residence interior vignette warm wood" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/794e6758-87b5-4513-9bbe-3040531a2b48/linwood-gambier-web-8.jpg" alt="Gambier Island Residence staircase and railing detail" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e3d03588-ddc7-4317-89f0-d070113574bc/linwood-gambier-web-4.jpg" alt="Gambier Island Residence expansive glazing forest view" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/0ecb4a25-d2a3-4486-8525-185fd7c9a7b5/linwood-gambier-web-6.jpg" alt="Gambier Island Residence interior living space detail" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/3a48ade9-a8be-4e39-8469-1774eab84ed1/linwood-gambier-web-5.jpg" alt="Gambier Island Residence kitchen cabinetry and island" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9b348671-a65b-4155-8120-b3b26b05c438/linwood-gambier-web-3.jpg" alt="Gambier Island Residence open plan interior natural light" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7de6c8b1-331c-431e-a9f2-8d415cdc31f5/linwood-gambier-web-9.jpg" alt="Gambier Island Residence bedroom ocean view" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c3ef686c-cb33-4868-9f78-8c32dfeef937/linwood-gambier-web-31.jpg" alt="Gambier Island Residence evening exterior warm glow" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c9516374-cca7-4655-aa63-c11f4f9cb2fd/linwood-gambier-web-30.jpg" alt="Gambier Island Residence night photography exterior" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9d98b6da-e925-4580-ac48-cb040659c9cd/linwood-gambier-web-29.jpg" alt="Gambier Island Residence ocean and island landscape" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c28df343-a859-4d37-9409-56cc6e44198d/linwood-gambier-web-28.jpg" alt="Gambier Island Residence waterfront and dock view" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/892c72af-cc8d-41d2-be9c-0892af249603/linwood-gambier-web-40.jpg" alt="Gambier Island Residence final aerial site photography" loading="lazy"></div>
+</div></div>
+
+<!-- CTA -->
+<div class="tp-cta" data-nav="Contact">
+<div class="tp-cta-bg">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d546959c-6398-42d2-b558-ea70ac059b91/linwood-gambier-web-27.jpg" alt="Gambier Island Residence living room soaring wood ceiling interior architectural photography">
+</div>
+<div class="tp-cc">
+<h2>Your work defines the space.<br>Let me show the world its <em>full potential</em>.</h2>
+<p>Ready to create visuals that match the quality of your builds? Let's start with a conversation.</p>
+<a href="/discovery-call" class="tp-cb">Book a Discovery Call</a>
+<p class="tp-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+</div>
+</div>
+
+<!-- Next Project -->
+<a href="/art-deco-reno" class="tp-nx">
+<div class="tp-nx-bg">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d57ad7a9-35d6-47b7-ad79-3f27d382b478/architectural-interiors-photographer-gillespie-sunshine-coast.jpg" alt="Art Deco Reno Roberts Creek renovation architectural photography" loading="lazy">
+</div>
+<div class="tp-nx-c">
+<div class="tp-nx-l">Next Project</div>
+<h3>Art Deco Reno<span>Roberts Creek, Sunshine Coast</span></h3>
+</div>
+</a>
+
+<!-- Footer -->
+<footer class="tp-ft">
+<div class="tp-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+<div class="tp-ft-r">
+<div class="tp-ft-i">
+<span class="tp-ft-l">Based In</span>
+<span class="tp-ft-dt"></span>
+<p>Squamish, British Columbia</p>
+</div>
+<div class="tp-ft-i">
+<span class="tp-ft-l">Email</span>
+<span class="tp-ft-dt"></span>
+<a id="ft-em" class="tp-ft-email"></a>
+</div>
+<div class="tp-ft-i">
+<span class="tp-ft-l">Phone</span>
+<span class="tp-ft-dt"></span>
+<a href="tel:6047659270">604.765.9270</a>
+</div>
+<div class="tp-ft-i">
+<span class="tp-ft-l">Follow</span>
+<span class="tp-ft-dt"></span>
+<div class="tp-ft-s">
+<a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a>
+<a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+</div>
+</div>
+<div class="tp-ft-rl"></div>
+<div class="tp-ft-b">
+<p class="tp-ft-cp">&copy; 2026 Matt Anthony Photography</p>
+<nav class="tp-ft-n">
+<a href="/projects">Projects</a>
+<a href="/journal">Journal</a>
+<a href="/bio">About</a>
+<a href="/contact">Contact</a>
+<a href="/pricing-guide-landing">Get Pricing</a>
+</nav>
+</div>
+</footer>
+
+</div>
+
+<script>
+(function(){var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];var e=document.getElementById('ft-em');if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}})();
+</script>
+
+<script>
+(function(){
+  /* ── Loader ── */
+  var loader=document.querySelector('.tp-loader');
+  if(loader){window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('tp-done')},800)})}
+
+  /* ── Scroll progress bar ── */
+  var prog=document.querySelector('.tp-progress');
+  if(prog){window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;prog.style.width=h>0?(window.scrollY/h*100)+'%':'0%'},{ passive:true })}
+
+  /* ── Hero parallax ── */
+  var hero=document.querySelector('.tp-hero>img');
+  if(hero){window.addEventListener('scroll',function(){var s=window.scrollY;if(s<window.innerHeight){hero.style.transform='translateY('+s*0.3+'px) scale('+(1+s*0.0002)+')'}},{ passive:true })}
+
+  /* ── Custom cursor ── */
+  if(window.innerWidth>768){
+    var cursor=document.querySelector('.tp-cursor'),dot=document.querySelector('.tp-cursor-dot'),cx=0,cy=0,dx=0,dy=0;
+    if(cursor&&dot){
+      document.addEventListener('mousemove',function(e){cx=e.clientX;cy=e.clientY;dot.style.left=cx+'px';dot.style.top=cy+'px';if(!cursor.classList.contains('tp-active')){cursor.classList.add('tp-active');dot.classList.add('tp-active')}});
+      (function loop(){dx+=(cx-dx)*0.15;dy+=(cy-dy)*0.15;cursor.style.left=dx+'px';cursor.style.top=dy+'px';requestAnimationFrame(loop)})();
+      document.querySelectorAll('a,button,.tp-cb,.tp-nx,.tp-bk,.tp-gg div').forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('tp-hover')});el.addEventListener('mouseleave',function(){cursor.classList.remove('tp-hover')})});
+      document.addEventListener('mousedown',function(){cursor.classList.add('tp-click')});
+      document.addEventListener('mouseup',function(){cursor.classList.remove('tp-click')});
+    }
+  }
+})();
+</script>
+
+<!--
+  Gambier Island Residence — Project Page Code Block
+  mattanthonyphoto.com/gambier-island-residence
+
+  Last updated: 2026-03-24
+  Changes:
+    1. Added meta description, canonical, and OG tags
+    2. Added page-specific ImageGallery JSON-LD schema
+    3. Descriptive SEO-optimized alt text on all images
+    4. Added loading="lazy" to all gallery images (not hero)
+    5. Fixed "All Projects" link from /projects-1 to /projects
+    6. Fixed footer LinkedIn link rel attribute
+    7. Added Get Pricing CTA after booking button
+    8. Added Get Pricing to footer nav
+   10. Added interactive layer: loader, scroll progress bar, custom cursor, hero parallax, CTA button glow
+   11. Fixed email duplication (removed ::after, set text via JS)
+   12. Added flex-wrap + justify-content:center to footer nav
+-->
+
+<meta name="description" content="Gambier Island Residence — craftsmanship and family legacy on a remote generational property. Architectural photography by Matt Anthony.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/gambier-island-residence">
+<meta property="og:title" content="Gambier Island Residence | Gambier Island Architectural Photography | Matt Anthony">
+<meta property="og:description" content="Craftsmanship and family legacy on a remote, generational property featuring soaring wood ceilings and natural materials. Gambier Island, BC.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/gambier-island-residence">
+<meta property="og:type" content="website">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "Gambier Island Residence — Gambier Island Architectural Photography",
+  "description": "Craftsmanship and family legacy on a remote, generational property featuring soaring wood ceilings and expansive windows. Gambier Island, British Columbia.",
+  "url": "https://www.mattanthonyphoto.com/gambier-island-residence",
+  "author": {
+    "@id": "https://www.mattanthonyphoto.com/#person"
+  },
+  "locationCreated": {
+    "@type": "Place",
+    "name": "Gambier Island, British Columbia"
+  },
+  "about": {
+    "@type": "Residence",
+    "name": "Gambier Island Residence",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Gambier Island",
+      "addressRegion": "BC",
+      "addressCountry": "CA"
+    }
+  }
+}
+</script>

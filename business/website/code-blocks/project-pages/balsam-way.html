@@ -1,0 +1,335 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+.tp-wrap{overflow-x:hidden!important;font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a18;line-height:1.7;font-weight:300}.tp-wrap img{max-width:100%;display:block}.tp-wrap a{color:inherit;text-decoration:none}.tp-hero{position:relative;width:100%;height:85vh;min-height:600px;overflow:hidden}.tp-hero>img{width:100%;height:100%;object-fit:cover;filter:saturate(0.8) brightness(0.45)}.tp-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,24,0.15) 0%,rgba(26,26,24,0.05) 40%,rgba(26,26,24,0.6) 75%,rgba(26,26,24,0.95) 100%)}.tp-hc{position:absolute;bottom:5rem;left:5vw;z-index:2;max-width:700px}.tp-hl{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem;font-weight:500}.tp-hc h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:300;line-height:1.05;color:#f6f4f0;letter-spacing:-0.02em;margin-bottom:0.5rem}.tp-hloc{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:#d9d5cd;font-weight:400}
+.tp-info{display:grid;grid-template-columns:280px 1fr;gap:5rem;padding:5rem 5vw;max-width:1200px;margin:0 auto}.tp-m{padding-top:0.5rem}.tp-mi{margin-bottom:2rem}.tp-ml{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:0.4rem}.tp-mv{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:400;color:#1a1a18;line-height:1.4}.tp-d h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300;line-height:1.3;margin-bottom:2rem;color:#1a1a18}.tp-d p{font-size:1rem;color:#4a4a46;line-height:1.85;margin-bottom:1.5rem;max-width:600px}
+.tp-bk{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:2rem;transition:color 0.3s ease}.tp-bk:hover{color:#1a1a18}.tp-bk::before{content:'\2190';font-size:0.9rem}
+.tp-g{padding:2rem 5vw 4rem}.tp-gg{column-count:2;column-gap:1.25rem}.tp-gg div{break-inside:avoid;margin-bottom:1.25rem;overflow:hidden;border-radius:2px}.tp-gg img{width:100%;height:auto;display:block;transition:transform 0.8s ease}.tp-gg div:hover img{transform:scale(1.03)}
+.tp-cta{position:relative;padding:7rem 5vw;text-align:center;overflow:hidden;min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center}.tp-cta-bg{position:absolute;inset:0;z-index:0}.tp-cta-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(0.5) brightness(0.3)}.tp-cc{position:relative;z-index:2}.tp-cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#f6f4f0;margin-bottom:1rem;line-height:1.2}.tp-cta h2 em{font-style:italic;color:#c9a96e}.tp-cta p{font-size:1rem;color:#8a8579;max-width:480px;margin:0 auto 2.5rem;line-height:1.8;font-weight:300}.tp-cb{display:inline-block;font-family:'DM Sans',sans-serif;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;padding:1.1rem 3rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all 0.35s ease;text-decoration:none}.tp-cb:hover{background:transparent!important;color:#c9a96e!important}
+.tp-alt-cta{margin-top:1.25rem;font-size:.75rem;color:#8a8579;letter-spacing:.05em;font-weight:300}.tp-alt-cta a{color:#c9a96e;text-decoration:underline;text-underline-offset:3px;transition:color .3s ease}.tp-alt-cta a:hover{color:#f6f4f0}
+.tp-nx{position:relative;overflow:hidden;cursor:pointer;height:40vh;min-height:300px;display:flex;align-items:center;justify-content:center;background:#1a1a18;text-decoration:none}.tp-nx-bg{position:absolute;inset:0;z-index:0}.tp-nx-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.35);transition:transform 1s ease,filter 0.5s ease}.tp-nx:hover .tp-nx-bg img{transform:scale(1.04);filter:brightness(0.45)}.tp-nx-c{position:relative;z-index:2;text-align:center}.tp-nx-l{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;margin-bottom:1rem}.tp-nx-c h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:300;color:#f6f4f0;line-height:1.2}.tp-nx-c h3 span{display:block;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:#d9d5cd;font-weight:400;font-family:'DM Sans',sans-serif;margin-top:0.5rem}
+.tp-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.tp-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.tp-ft-locs a:hover{color:#c9a96e}.tp-ft{background:#1a1a18;border-top:1px solid rgba(201,169,110,0.15)}.tp-ft-r{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}.tp-ft-i{display:flex;align-items:baseline;gap:10px}.tp-ft-l{font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;white-space:nowrap}.tp-ft-dt{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,0.4);flex-shrink:0;position:relative;top:-2px}.tp-ft-i p,.tp-ft-i a{margin:0;font-size:12px;color:rgba(246,244,240,0.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color 0.3s ease}.tp-ft-i a:hover{color:#c9a96e}.tp-ft-s{display:flex;gap:18px}.tp-ft-rl{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.15) 20%,rgba(201,169,110,0.15) 80%,transparent 100%)}.tp-ft-b{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}.tp-ft-cp{font-size:10px;color:rgba(246,244,240,0.35);letter-spacing:0.08em}.tp-ft-n{display:flex;gap:2.5rem}.tp-ft-n a{font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(246,244,240,0.35);text-decoration:none;transition:color 0.3s ease}.tp-ft-n a:hover{color:#c9a96e}
+.tp-ft-email{cursor:pointer}
+@media(max-width:768px){.tp-hero{height:60vh;min-height:400px}.tp-hc{bottom:3rem;left:6vw}.tp-hc h1{font-size:clamp(2rem,9vw,3rem)}.tp-info{grid-template-columns:1fr;gap:2rem;padding:3rem 6vw}.tp-m{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding-bottom:2rem;border-bottom:1px solid #d9d5cd}.tp-mi{margin-bottom:0}.tp-g{padding:1.5rem 4vw 3rem}.tp-gg{column-count:1}.tp-gg div{margin-bottom:0.75rem}.tp-cta{padding:4rem 6vw;min-height:40vh}.tp-cta h2{font-size:clamp(1.5rem,6vw,2rem)}.tp-cb{padding:0.9rem 2rem}.tp-nx{height:30vh;min-height:220px}.tp-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.tp-ft-locs a{font-size:.55rem}.tp-ft-r{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}.tp-ft-rl{margin:0 6vw}.tp-ft-b{flex-direction:column;gap:0.75rem;text-align:center;padding:1.25rem 6vw}}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.tp-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.tp-loader.tp-done{opacity:0;visibility:hidden;pointer-events:none}
+.tp-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:tpLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.tp-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:tpLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.tp-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:tpLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.tp-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:tpLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes tpLoaderIn{to{opacity:1}}
+@keyframes tpLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.tp-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.tp-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.tp-cursor.tp-active{opacity:1}
+.tp-cursor.tp-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.tp-cursor.tp-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.tp-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.tp-cursor-dot.tp-active{opacity:1}
+
+/* ── Section nav dots ── */
+.tp-section-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:99998;display:flex;flex-direction:column;gap:12px;opacity:0;transition:opacity 0.4s ease}
+.tp-section-nav.tp-nav-visible{opacity:1}
+.tp-nav-dot{width:8px;height:8px;border-radius:50%;background:transparent;border:1px solid #8a8579;cursor:pointer;transition:all 0.3s ease;position:relative}
+.tp-nav-dot:hover{border-color:#c9a96e;transform:scale(1.3)}
+.tp-nav-dot.tp-nav-active{background:#c9a96e;border-color:#c9a96e;box-shadow:0 0 8px rgba(201,169,110,0.4)}
+.tp-nav-dot::before{content:attr(data-label);position:absolute;right:20px;top:50%;transform:translateY(-50%);font-family:'Josefin Sans',sans-serif;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a96e;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.3s ease,right 0.3s ease}
+.tp-nav-dot:hover::before{opacity:1;right:24px}
+@media(max-width:768px){.tp-section-nav{display:none}}
+
+/* ── CTA button glow pulse ── */
+.tp-cb{animation:tpBtnGlow 3s ease-in-out infinite alternate}
+@keyframes tpBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+
+/* ── Footer nav wrap fix ── */
+.tp-ft-n{flex-wrap:wrap;justify-content:center}
+</style>
+
+<div class="tp-wrap">
+
+<!-- Loading Screen -->
+<div class="tp-loader" id="tpLoader">
+  <div class="tp-loader-brand">Matt Anthony Photography</div>
+  <div class="tp-loader-sub">Balsam Way</div>
+  <div class="tp-loader-line"></div>
+</div>
+
+<!-- Custom Cursor -->
+<div class="tp-cursor" id="tpCursor"></div>
+<div class="tp-cursor-dot" id="tpCursorDot"></div>
+
+<!-- Scroll Progress -->
+<div class="tp-progress" id="tpProgress"></div>
+<nav class="tp-section-nav" id="tpSectionNav"></nav>
+
+<!-- Hero -->
+<div class="tp-hero">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8baad882-d517-4bdd-98fd-09ad2530273d/LRD-2500px-7.jpg" alt="Balsam Way Whistler kitchen renovation architectural photography by Matt Anthony">
+<div class="tp-hc">
+<p class="tp-hl">Featured Project</p>
+<h1>Balsam Way</h1>
+<p class="tp-hloc">Whistler, British Columbia</p>
+</div>
+</div>
+
+<!-- Back Link -->
+<div style="padding:2rem 5vw 0;max-width:1200px;margin:0 auto;">
+<a href="/projects" class="tp-bk">All Projects</a>
+</div>
+
+<!-- Project Info -->
+<div class="tp-info" data-nav="Details">
+<div class="tp-m">
+<div class="tp-mi">
+<div class="tp-ml">Location</div>
+<div class="tp-mv">Whistler, BC</div>
+</div>
+<div class="tp-mi">
+<div class="tp-ml">Builder</div>
+<div class="tp-mv">Tymac Construction</div>
+</div>
+<div class="tp-mi">
+<div class="tp-ml">Service</div>
+<div class="tp-mv">Major Renovation + Interior Design</div>
+</div>
+<div class="tp-mi">
+<div class="tp-ml">Styling</div>
+<div class="tp-mv">LRD Studio</div>
+</div>
+</div>
+<div class="tp-d">
+<h2>A classic Whistler log home transformed with modern interior design and renewed warmth</h2>
+<p>This transformation was so rewarding. A classic Whistler home once filled with well-aged patina fir got a custom overhaul and brightened our clients' lives for years to come. With white washing, refinishing, and splashes of colour, there was real fun in putting the palette together for this lovely family.</p>
+</div>
+</div>
+
+<!-- Gallery -->
+<div class="tp-g" data-nav="Gallery"><div class="tp-gg">
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c25eea53-7418-447e-82f8-79e1fe5586d0/LRD-2500px-16.jpg" alt="Balsam Way Whistler living room timber ceiling renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ae3d0f01-858f-44ca-aafb-bf477ddf9039/LRD-2500px-1.jpg" alt="Balsam Way Whistler exterior log home front elevation renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8baad882-d517-4bdd-98fd-09ad2530273d/LRD-2500px-7.jpg" alt="Balsam Way Whistler kitchen white cabinetry renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/2218819f-678b-4b8e-b314-adcfdbe44928/LRD-2500px-5.jpg" alt="Balsam Way Whistler open plan living and dining renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/5003c7a6-1fda-4caf-ab4e-252dff8d276e/LRD-2500px-10.jpg" alt="Balsam Way Whistler kitchen island natural light renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/b2523d53-f5e1-4105-8b4f-f8391df7ccc4/LRD-2500px-14.jpg" alt="Balsam Way Whistler fireplace log detail living area renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/935388d3-9559-4f8f-8476-6ece3d403cad/LRD-2500px-2.jpg" alt="Balsam Way Whistler entry foyer whitewashed timber renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/5b5c5cb1-92a0-4fb7-81f7-879a2c5eec27/LRD-2500px-13.jpg" alt="Balsam Way Whistler dining room colour accent renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/b7187cda-fe06-4ea8-a4ce-7e023f055cf9/LRD-2500px-11.jpg" alt="Balsam Way Whistler kitchen detail countertop renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/eb7c79d1-ee3d-4ae7-870b-d04e81299ab4/LRD-2500px-15.jpg" alt="Balsam Way Whistler living room window natural light renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/6d7b84a1-73f4-4342-84cb-855a8887c75b/LRD-2500px-23.jpg" alt="Balsam Way Whistler primary bedroom log wall renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/82993c36-cc91-4e84-aa3e-e5e7ad599ad5/LRD-2500px-12.jpg" alt="Balsam Way Whistler hallway timber frame transition renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/edb7f585-637c-4a1c-ae3a-0969479c5809/LRD-2500px-21.jpg" alt="Balsam Way Whistler bathroom vanity modern fixtures renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/4e8866ac-d524-44d1-b2c1-57ddbb5bbd08/LRD-2500px-6.jpg" alt="Balsam Way Whistler staircase refinished wood renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d524d107-05c4-42a3-9357-4303ef3840ad/LRD-2500px-19.jpg" alt="Balsam Way Whistler ensuite shower glass enclosure renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/56851517-af7e-4a73-828e-914c9997a5e9/LRD-2500px-8.jpg" alt="Balsam Way Whistler kitchen shelving material detail renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c3f4c710-1f6e-420e-8421-4333404f46f5/LRD-2500px-4.jpg" alt="Balsam Way Whistler living area seating and log beams renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9aff9fb6-2055-4879-b018-f9ca5badcc15/LRD-2500px-26.jpg" alt="Balsam Way Whistler secondary bedroom warm palette renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/6227534f-b0d2-4f61-ba8d-c885893b8e06/LRD-2500px-9.jpg" alt="Balsam Way Whistler millwork cabinetry built-in renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/cbfc806c-d306-4e66-9234-55a04294bb9e/LRD-2500px-29.jpg" alt="Balsam Way Whistler guest bedroom natural light renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/618513b5-d463-4a58-afac-fc4281e32f8d/LRD-2500px-17.jpg" alt="Balsam Way Whistler upper level landing timber ceiling renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/f065d7f2-39fb-4e6a-a967-38f93bc7d89b/LRD-2500px-32.jpg" alt="Balsam Way Whistler mudroom entry storage renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/91f96cef-fbde-414d-b3e9-83f47a16acaa/LRD-2500px-22.jpg" alt="Balsam Way Whistler bathroom tile and fixture detail renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/158eb178-0436-438f-bd85-51f42ea083b3/LRD-2500px-37.jpg" alt="Balsam Way Whistler deck outdoor living mountain view renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/0a3e8b95-645e-4b65-b1ad-cea8bd176639/LRD-2500px-27.jpg" alt="Balsam Way Whistler laundry room cabinetry renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c104f79a-a599-45f0-828e-7bcbf733fa3b/LRD-2500px-25.jpg" alt="Balsam Way Whistler powder room vanity renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/93a486f5-3280-4e92-b5fe-34729e29a5f7/LRD-2500px-20.jpg" alt="Balsam Way Whistler ensuite double vanity renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/1a299103-3583-427c-b162-5a9eb4081290/LRD-2500px-18.jpg" alt="Balsam Way Whistler window seat reading nook renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9fb8c663-277d-4d25-b564-10ce1a8a57cf/LRD-2500px-38.jpg" alt="Balsam Way Whistler exterior rear elevation landscape renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/b25e3c1d-98d2-41a1-8e37-bea99d8bfa82/LRD-2500px-35.jpg" alt="Balsam Way Whistler outdoor patio seating area renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/dd07d9b8-3f2f-4edd-9831-81a091e6d870/LRD-2500px-40.jpg" alt="Balsam Way Whistler exterior dusk twilight warm glow renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/3a1ce15d-c7af-4ab1-80eb-25043c9c21ac/LRD-2500px-31.jpg" alt="Balsam Way Whistler log detail whitewash texture renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/149c16d5-7a39-4814-8cf8-6248909f663d/LRD-2500px-33.jpg" alt="Balsam Way Whistler material palette wood and stone renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/296be4c2-9bc0-494d-8860-b7d75fb29d89/LRD-2500px-39.jpg" alt="Balsam Way Whistler aerial drone site overview renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/6554fc43-64b6-462c-9ae4-5b059ce417af/LRD-2500px-34.jpg" alt="Balsam Way Whistler drone roof and forest canopy renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/350c6f23-5983-4e0e-8ed7-de8a73da690b/LRD-2500px-36.jpg" alt="Balsam Way Whistler final exterior streetscape renovation photography" loading="lazy"></div>
+</div></div>
+
+<!-- CTA -->
+<div class="tp-cta" data-nav="Contact">
+<div class="tp-cta-bg">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/5b5c5cb1-92a0-4fb7-81f7-879a2c5eec27/LRD-2500px-13.jpg" alt="Balsam Way Whistler dining room interior architectural photography">
+</div>
+<div class="tp-cc">
+<h2>Your work defines the space.<br>Let me show the world its <em>full potential</em>.</h2>
+<p>Ready to create visuals that match the quality of your builds? Let's start with a conversation.</p>
+<a href="/discovery-call" class="tp-cb" target="_blank" rel="noopener">Book a Discovery Call</a>
+<p class="tp-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+</div>
+</div>
+
+<!-- Next Project -->
+<a href="/sunset-beach" class="tp-nx">
+<div class="tp-nx-bg">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8b5d40eb-2ba1-47ff-864f-7d85f45395ba/architectural-interiors-photographer-sunset-beach-vancouver6.jpg" alt="Sunset Beach Vancouver penthouse architectural photography" loading="lazy">
+</div>
+<div class="tp-nx-c">
+<div class="tp-nx-l">Next Project</div>
+<h3>Sunset Beach Residence<span>Vancouver</span></h3>
+</div>
+</a>
+
+<!-- Footer -->
+<footer class="tp-ft">
+<div class="tp-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+<div class="tp-ft-r">
+<div class="tp-ft-i">
+<span class="tp-ft-l">Based In</span>
+<span class="tp-ft-dt"></span>
+<p>Squamish, British Columbia</p>
+</div>
+<div class="tp-ft-i">
+<span class="tp-ft-l">Email</span>
+<span class="tp-ft-dt"></span>
+<a id="ft-em" class="tp-ft-email">info@mattanthonyphoto.com</a>
+</div>
+<div class="tp-ft-i">
+<span class="tp-ft-l">Phone</span>
+<span class="tp-ft-dt"></span>
+<a href="tel:6047659270">604.765.9270</a>
+</div>
+<div class="tp-ft-i">
+<span class="tp-ft-l">Follow</span>
+<span class="tp-ft-dt"></span>
+<div class="tp-ft-s">
+<a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a>
+<a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+</div>
+</div>
+<div class="tp-ft-rl"></div>
+<div class="tp-ft-b">
+<p class="tp-ft-cp">&copy; 2026 Matt Anthony Photography</p>
+<nav class="tp-ft-n">
+<a href="/projects">Projects</a>
+<a href="/journal">Journal</a>
+<a href="/bio">About</a>
+<a href="/contact">Contact</a>
+<a href="/pricing-guide-landing">Get Pricing</a>
+</nav>
+</div>
+</footer>
+
+</div>
+
+<script>
+(function(){var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];var e=document.getElementById('ft-em');if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}})();
+</script>
+
+<script>
+(function(){
+  var isMobile = 'ontouchstart' in window;
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader = document.getElementById('tpLoader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('tp-done'); }, 1100);
+  });
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  var progressBar = document.getElementById('tpProgress');
+  function updateProgress(){
+    var s = window.scrollY;
+    var d = document.documentElement.scrollHeight - window.innerHeight;
+    if(d > 0) progressBar.style.width = (s / d * 100) + '%';
+  }
+
+  /* ═══ HERO PARALLAX ═══ */
+  var hero = document.querySelector('.tp-hero');
+  var heroBg = hero ? hero.querySelector('img') : null;
+  var heroContent = hero ? hero.querySelector('.tp-hc') : null;
+  function updateHero(){
+    var s = window.scrollY;
+    var h = window.innerHeight;
+    if(s > h) return;
+    var ratio = s / h;
+    if(heroBg) heroBg.style.transform = 'translateY(' + (s * 0.35) + 'px) scale(' + (1 + ratio * 0.05) + ')';
+    if(heroContent){
+      heroContent.style.transform = 'translateY(' + (s * 0.15) + 'px)';
+      heroContent.style.opacity = 1 - ratio * 1.2;
+    }
+  }
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor = document.getElementById('tpCursor');
+  var cursorDot = document.getElementById('tpCursorDot');
+  var cx = 0, cy = 0, dx = 0, dy = 0;
+  if(!isMobile && cursor){
+    document.addEventListener('mousemove', function(e){
+      dx = e.clientX; dy = e.clientY;
+      cursorDot.style.left = dx + 'px';
+      cursorDot.style.top = dy + 'px';
+      if(!cursor.classList.contains('tp-active')){
+        cursor.classList.add('tp-active');
+        cursorDot.classList.add('tp-active');
+      }
+    });
+    function tickCursor(){
+      cx += (dx - cx) * 0.12;
+      cy += (dy - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(tickCursor);
+    }
+    tickCursor();
+    var hoverEls = document.querySelectorAll('a, button, .tp-cb, .tp-nx, .tp-gg div');
+    hoverEls.forEach(function(el){
+      el.addEventListener('mouseenter', function(){ cursor.classList.add('tp-hover'); });
+      el.addEventListener('mouseleave', function(){ cursor.classList.remove('tp-hover'); });
+    });
+    document.addEventListener('mousedown', function(){ cursor.classList.add('tp-click'); });
+    document.addEventListener('mouseup', function(){ cursor.classList.remove('tp-click'); });
+  }
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateHero();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress();
+  updateHero();
+})();
+</script>
+
+<!--
+  Balsam Way — Project Page Code Block
+  mattanthonyphoto.com/balsam-way
+
+  Last updated: 2026-03-24
+  Changes:
+    1. Added meta description, canonical, and OG tags
+    2. Added page-specific ImageGallery JSON-LD schema
+    3. Rewrote all 36 gallery alt texts from generic numbered to descriptive SEO-optimized text
+    4. Added loading="lazy" to all gallery images (not hero)
+    5. Fixed "All Projects" link from /projects-1 to /projects
+    6. Fixed footer LinkedIn link with rel="noopener"
+    7. Added "Get Pricing" alt CTA below booking button
+    8. Added "Get Pricing" to footer nav
+    9. Added interactive layer (loader, scroll progress, custom cursor, hero parallax, CTA glow)
+    10. Fixed email duplication (removed ::after, using textContent)
+    11. Added target="_blank" to discovery call CTA
+    12. Fixed footer nav wrapping
+-->
+
+<meta name="description" content="Balsam Way — Whistler renovation by LRD Studio featuring modern interior updates within a classic log home structure. Architectural photography by Matt Anthony.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/balsam-way">
+<meta property="og:title" content="Balsam Way Whistler | Architectural Photography | Matt Anthony">
+<meta property="og:description" content="Whistler log home renovation blending modern interior design with mountain character. Interior design by LRD Studio. Photography by Matt Anthony.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/balsam-way">
+<meta property="og:type" content="website">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ImageGallery","name":"Balsam Way — Whistler Architectural Photography","description":"Whistler renovation blending modern interior design with classic log home character. Interior design by LRD Studio.","url":"https://www.mattanthonyphoto.com/balsam-way","author":{"@id":"https://www.mattanthonyphoto.com/#person"},"locationCreated":{"@type":"Place","name":"Whistler, British Columbia"}}
+</script>

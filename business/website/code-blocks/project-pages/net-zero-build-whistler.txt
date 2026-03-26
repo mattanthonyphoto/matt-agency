@@ -1,0 +1,299 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+.tp-wrap{overflow-x:hidden!important;font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a18;line-height:1.7;font-weight:300}.tp-wrap img{max-width:100%;display:block}.tp-wrap a{color:inherit;text-decoration:none}.tp-hero{position:relative;width:100%;height:85vh;min-height:600px;overflow:hidden}.tp-hero>img{width:100%;height:100%;object-fit:cover;filter:saturate(0.8) brightness(0.45)}.tp-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,24,0.15) 0%,rgba(26,26,24,0.05) 40%,rgba(26,26,24,0.6) 75%,rgba(26,26,24,0.95) 100%)}.tp-hc{position:absolute;bottom:5rem;left:5vw;z-index:2;max-width:700px}.tp-hl{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem;font-weight:500}.tp-hc h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:300;line-height:1.05;color:#f6f4f0;letter-spacing:-0.02em;margin-bottom:0.5rem}.tp-hloc{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:#d9d5cd;font-weight:400}
+.tp-info{display:grid;grid-template-columns:280px 1fr;gap:5rem;padding:5rem 5vw;max-width:1200px;margin:0 auto}.tp-m{padding-top:0.5rem}.tp-mi{margin-bottom:2rem}.tp-ml{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:0.4rem}.tp-mv{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:400;color:#1a1a18;line-height:1.4}.tp-d h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300;line-height:1.3;margin-bottom:2rem;color:#1a1a18}.tp-d p{font-size:1rem;color:#4a4a46;line-height:1.85;margin-bottom:1.5rem;max-width:600px}
+.tp-bk{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:2rem;transition:color 0.3s ease}.tp-bk:hover{color:#1a1a18}.tp-bk::before{content:'\2190';font-size:0.9rem}
+.tp-g{padding:2rem 5vw 4rem}.tp-gg{column-count:2;column-gap:1.25rem}.tp-gg div{break-inside:avoid;margin-bottom:1.25rem;overflow:hidden;border-radius:2px}.tp-gg img{width:100%;height:auto;display:block;transition:transform 0.8s ease}.tp-gg div:hover img{transform:scale(1.03)}
+.tp-cta{position:relative;padding:7rem 5vw;text-align:center;overflow:hidden;min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center}.tp-cta-bg{position:absolute;inset:0;z-index:0}.tp-cta-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(0.5) brightness(0.3)}.tp-cc{position:relative;z-index:2}.tp-cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#f6f4f0;margin-bottom:1rem;line-height:1.2}.tp-cta h2 em{font-style:italic;color:#c9a96e}.tp-cta p{font-size:1rem;color:#8a8579;max-width:480px;margin:0 auto 2.5rem;line-height:1.8;font-weight:300}.tp-cb{display:inline-block;font-family:'DM Sans',sans-serif;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;padding:1.1rem 3rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all 0.35s ease;text-decoration:none}.tp-cb:hover{background:transparent!important;color:#c9a96e!important}
+.tp-alt-cta{margin-top:1.25rem;font-size:.75rem;color:#8a8579;letter-spacing:.05em;font-weight:300}.tp-alt-cta a{color:#c9a96e;text-decoration:underline;text-underline-offset:3px;transition:color .3s ease}.tp-alt-cta a:hover{color:#f6f4f0}
+.tp-nx{position:relative;overflow:hidden;cursor:pointer;height:40vh;min-height:300px;display:flex;align-items:center;justify-content:center;background:#1a1a18;text-decoration:none}.tp-nx-bg{position:absolute;inset:0;z-index:0}.tp-nx-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.35);transition:transform 1s ease,filter 0.5s ease}.tp-nx:hover .tp-nx-bg img{transform:scale(1.04);filter:brightness(0.45)}.tp-nx-c{position:relative;z-index:2;text-align:center}.tp-nx-l{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;margin-bottom:1rem}.tp-nx-c h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:300;color:#f6f4f0;line-height:1.2}.tp-nx-c h3 span{display:block;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:#d9d5cd;font-weight:400;font-family:'DM Sans',sans-serif;margin-top:0.5rem}
+.tp-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.tp-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.tp-ft-locs a:hover{color:#c9a96e}.tp-ft{background:#1a1a18;border-top:1px solid rgba(201,169,110,0.15)}.tp-ft-r{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}.tp-ft-i{display:flex;align-items:baseline;gap:10px}.tp-ft-l{font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;white-space:nowrap}.tp-ft-dt{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,0.4);flex-shrink:0;position:relative;top:-2px}.tp-ft-i p,.tp-ft-i a{margin:0;font-size:12px;color:rgba(246,244,240,0.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color 0.3s ease}.tp-ft-i a:hover{color:#c9a96e}.tp-ft-s{display:flex;gap:18px}.tp-ft-rl{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.15) 20%,rgba(201,169,110,0.15) 80%,transparent 100%)}.tp-ft-b{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}.tp-ft-cp{font-size:10px;color:rgba(246,244,240,0.35);letter-spacing:0.08em}.tp-ft-n{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center}.tp-ft-n a{font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(246,244,240,0.35);text-decoration:none;transition:color 0.3s ease}.tp-ft-n a:hover{color:#c9a96e}
+.tp-ft-email{cursor:pointer}
+@media(max-width:768px){.tp-hero{height:60vh;min-height:400px}.tp-hc{bottom:3rem;left:6vw}.tp-hc h1{font-size:clamp(2rem,9vw,3rem)}.tp-info{grid-template-columns:1fr;gap:2rem;padding:3rem 6vw}.tp-m{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding-bottom:2rem;border-bottom:1px solid #d9d5cd}.tp-mi{margin-bottom:0}.tp-g{padding:1.5rem 4vw 3rem}.tp-gg{column-count:1}.tp-gg div{margin-bottom:0.75rem}.tp-cta{padding:4rem 6vw;min-height:40vh}.tp-cta h2{font-size:clamp(1.5rem,6vw,2rem)}.tp-cb{padding:0.9rem 2rem}.tp-nx{height:30vh;min-height:220px}.tp-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.tp-ft-locs a{font-size:.55rem}.tp-ft-r{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}.tp-ft-rl{margin:0 6vw}.tp-ft-b{flex-direction:column;gap:0.75rem;text-align:center;padding:1.25rem 6vw}}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.tp-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.tp-loader.tp-done{opacity:0;visibility:hidden;pointer-events:none}
+.tp-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:tpLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.tp-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:tpLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.tp-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:tpLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.tp-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:tpLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes tpLoaderIn{to{opacity:1}}
+@keyframes tpLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.tp-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.tp-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.tp-cursor.tp-active{opacity:1}
+.tp-cursor.tp-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.tp-cursor.tp-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.tp-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.tp-cursor-dot.tp-active{opacity:1}
+
+/* ── Section nav dots ── */
+.tp-section-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:99998;display:flex;flex-direction:column;gap:12px;opacity:0;transition:opacity 0.4s ease}
+.tp-section-nav.tp-nav-visible{opacity:1}
+.tp-nav-dot{width:8px;height:8px;border-radius:50%;background:transparent;border:1px solid #8a8579;cursor:pointer;transition:all 0.3s ease;position:relative}
+.tp-nav-dot:hover{border-color:#c9a96e;transform:scale(1.3)}
+.tp-nav-dot.tp-nav-active{background:#c9a96e;border-color:#c9a96e;box-shadow:0 0 8px rgba(201,169,110,0.4)}
+.tp-nav-dot::before{content:attr(data-label);position:absolute;right:20px;top:50%;transform:translateY(-50%);font-family:'Josefin Sans',sans-serif;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a96e;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.3s ease,right 0.3s ease}
+.tp-nav-dot:hover::before{opacity:1;right:24px}
+@media(max-width:768px){.tp-section-nav{display:none}}
+@media(max-width:768px){.tp-cursor,.tp-cursor-dot{display:none}}
+
+/* ── CTA button glow pulse ── */
+.tp-cb{animation:tpBtnGlow 3s ease-in-out infinite alternate}
+@keyframes tpBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+</style>
+
+<div class="tp-wrap">
+<!-- Loader -->
+<div class="tp-loader">
+<div class="tp-loader-brand">Matt Anthony</div>
+<div class="tp-loader-sub">Loading project</div>
+<div class="tp-loader-line"></div>
+</div>
+
+<!-- Scroll Progress -->
+<div class="tp-progress"></div>
+
+<!-- Custom Cursor -->
+<div class="tp-cursor"></div>
+<div class="tp-cursor-dot"></div>
+
+
+<!-- Hero -->
+<div class="tp-hero">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/eae50d7b-893c-483f-9849-84f06b45e58f/architectural-interiors-photographer-netzero-whistler8.jpg" alt="Net Zero Build Whistler sustainable mountain home exterior architectural photography">
+<div class="tp-hc">
+<p class="tp-hl">Featured Project</p>
+<h1>Net Zero Build</h1>
+<p class="tp-hloc">Whistler, British Columbia</p>
+</div>
+</div>
+
+<!-- Back Link -->
+<div style="padding:2rem 5vw 0;max-width:1200px;margin:0 auto;">
+<a href="/projects" class="tp-bk">All Projects</a>
+</div>
+
+<!-- Project Info -->
+<div class="tp-info" data-nav="Details">
+<div class="tp-m">
+<div class="tp-mi">
+<div class="tp-ml">Location</div>
+<div class="tp-mv">Whistler</div>
+</div>
+<div class="tp-mi">
+<div class="tp-ml">Builder</div>
+<div class="tp-mv">Peak Ventures</div>
+</div>
+<div class="tp-mi">
+<div class="tp-ml">Interior Designer</div>
+<div class="tp-mv">Gnar Interior Design</div>
+</div>
+</div>
+<div class="tp-d">
+<h2>Bold architectural form meets sustainable innovation against Whistler's dramatic mountain backdrop</h2>
+<p>This net-zero home in Whistler, built by Peak Ventures with interiors by Gnar Interior Design, showcases how high-performance building can coexist with striking design. The structure commands its mountain setting with confident form and purposeful material choices.</p>
+<p>Inside, copper accents, minimalist kitchens, and layered living spaces create an interior that is as refined as the engineering behind it. From the stone entry to the twilight exteriors, every angle tells the story of sustainable architecture at its most ambitious.</p>
+</div>
+</div>
+
+<!-- Gallery -->
+<div class="tp-g" data-nav="Gallery"><div class="tp-gg">
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/eae50d7b-893c-483f-9849-84f06b45e58f/architectural-interiors-photographer-netzero-whistler8.jpg" alt="Net Zero Build Whistler front exterior mountain setting architectural photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/afaa55f3-200c-44f8-90ea-31a80a294306/architectural-interiors-photographer-netzero-whistler7.jpg" alt="Net Zero Build Whistler mountain view panoramic architectural photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/33e86fd3-d9ba-44b7-a813-87c65aae8dc9/architectural-interiors-photographer-netzero-whistler9.jpg" alt="Net Zero Build Whistler facade detail cladding architectural photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d179ae25-d65f-4bb7-a2a1-1f0312edf8b7/architectural-interiors-photographer-netzero-whistler2.jpg" alt="Net Zero Build Whistler approach driveway exterior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/cf14b73a-43fa-486e-88de-d15184751825/architectural-interiors-photographer-netzero-whistler4.jpg" alt="Net Zero Build Whistler entry foyer architectural photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/3f495bf1-e575-4188-97df-1bba9c50fda8/architectural-interiors-photographer-netzero-whistler54.jpg" alt="Net Zero Build Whistler wood cladding exterior detail photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/f1189ba1-b9b8-4793-914a-679fb2589a7d/architectural-interiors-photographer-netzero-whistler1.jpg" alt="Net Zero Build Whistler stonework entry feature architectural photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/4954da17-60e3-4eb0-9f2b-539afdc34a6e/architectural-interiors-photographer-netzero-whistler10.jpg" alt="Net Zero Build Whistler living room open plan interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/2bda71eb-6146-4cf1-948f-2fb4c8e60c78/architectural-interiors-photographer-netzero-whistler11.jpg" alt="Net Zero Build Whistler great room vaulted ceiling interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/418d21f5-614e-4e95-984a-3f4549a0d8af/architectural-interiors-photographer-netzero-whistler17.jpg" alt="Net Zero Build Whistler kitchen island countertop interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/4b536b01-52a7-4e8f-94d8-b61b07667c43/architectural-interiors-photographer-netzero-whistler15.jpg" alt="Net Zero Build Whistler minimalist kitchen cabinetry interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ee07e631-7476-4825-87db-69bd3ac96295/architectural-interiors-photographer-netzero-whistler16.jpg" alt="Net Zero Build Whistler copper range hood kitchen detail photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/0bc8339e-e902-40fd-8307-ae3ce62aa69f/architectural-interiors-photographer-netzero-whistler18.jpg" alt="Net Zero Build Whistler dining room interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/b22db23e-de50-4bfe-aa50-95d90989c019/architectural-interiors-photographer-netzero-whistler23.jpg" alt="Net Zero Build Whistler primary bedroom mountain views interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/b280c5f9-587e-4afa-abbc-6758b19b46dd/architectural-interiors-photographer-netzero-whistler19.jpg" alt="Net Zero Build Whistler staircase architectural detail photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/29ea52dc-2f90-4898-86d3-4a221b898732/architectural-interiors-photographer-netzero-whistler22.jpg" alt="Net Zero Build Whistler hallway corridor interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/6e2476ba-eafc-4bb1-8e89-593d3a96f049/architectural-interiors-photographer-netzero-whistler20.jpg" alt="Net Zero Build Whistler bathroom vanity interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/90b89857-19c6-4b14-b3fe-d7b5bc2eb5b6/architectural-interiors-photographer-netzero-whistler27.jpg" alt="Net Zero Build Whistler ensuite shower interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e2362a15-60dd-4b9c-9ada-5e844e22ddf7/architectural-interiors-photographer-netzero-whistler24.jpg" alt="Net Zero Build Whistler secondary bedroom interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/673aaef1-67c4-454a-9774-4afc0ce2e390/architectural-interiors-photographer-netzero-whistler31.jpg" alt="Net Zero Build Whistler secondary living room interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/edde87f7-ed38-497a-8138-e2b00509545a/architectural-interiors-photographer-netzero-whistler28.jpg" alt="Net Zero Build Whistler lower level recreation space interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/3244c556-a2b9-46ff-8967-fbdd19b057b9/architectural-interiors-photographer-netzero-whistler26.jpg" alt="Net Zero Build Whistler rec room media area interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/f79b7710-6104-497a-8e54-8f96b81e1bb9/architectural-interiors-photographer-netzero-whistler29.jpg" alt="Net Zero Build Whistler wine storage cellar interior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/43974e8e-410f-40fa-a16a-3a02fd62f2f8/architectural-interiors-photographer-netzero-whistler32.jpg" alt="Net Zero Build Whistler garage interior architectural photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8df753b0-55ea-48ec-8a93-9274bb597229/architectural-interiors-photographer-netzero-whistler39.jpg" alt="Net Zero Build Whistler outdoor deck mountain views photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c4a9567c-f56a-47de-88c7-c4ab8deb203a/architectural-interiors-photographer-netzero-whistler30.jpg" alt="Net Zero Build Whistler rear deck exterior photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8cf974f4-ff86-402e-8764-f5d7c7d67f6d/architectural-interiors-photographer-netzero-whistler35.jpg" alt="Net Zero Build Whistler aerial drone site overview photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/65312049-3526-40ad-8837-b9a2a0e3af42/architectural-interiors-photographer-netzero-whistler37.jpg" alt="Net Zero Build Whistler drone aerial mountain context photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8ab9417d-f724-4d8e-b666-2a3be29702a4/architectural-interiors-photographer-netzero-whistler38.jpg" alt="Net Zero Build Whistler aerial roof and landscape photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/88534cf7-c0e5-494b-913f-3d1fe9e26197/architectural-interiors-photographer-netzero-whistler40.jpg" alt="Net Zero Build Whistler wide aerial site photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/98efffa5-fe36-495e-8585-71cbe416fdfd/architectural-interiors-photographer-netzero-whistler36.jpg" alt="Net Zero Build Whistler twilight exterior glow architectural photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d64a460a-986c-4e39-b3a7-72cf52868ad8/architectural-interiors-photographer-netzero-whistler47.jpg" alt="Net Zero Build Whistler dusk rear elevation architectural photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef5535ee-83d6-4122-bb79-a722a55362f2/architectural-interiors-photographer-netzero-whistler43.jpg" alt="Net Zero Build Whistler evening front exterior architectural photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/519a169c-7610-4d64-8f1c-13f3646895c9/architectural-interiors-photographer-netzero-whistler50.jpg" alt="Net Zero Build Whistler night exterior illuminated photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/38a597bb-58d6-48d8-8cf5-045657f4b50f/architectural-interiors-photographer-netzero-whistler46.jpg" alt="Net Zero Build Whistler blue hour exterior architectural photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d1493fae-5793-43c2-bbb9-2f33fd31f794/architectural-interiors-photographer-netzero-whistler45.jpg" alt="Net Zero Build Whistler dusk side elevation architectural photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ccafb6e0-0b66-4fcb-9215-1239d5aba13d/architectural-interiors-photographer-netzero-whistler52.jpg" alt="Net Zero Build Whistler twilight landscape architectural photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/2bbd9b47-3e9c-4757-950f-7f14eb61120d/architectural-interiors-photographer-netzero-whistler51.jpg" alt="Net Zero Build Whistler evening wide exterior architectural photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8e6822f4-2f63-4b0a-82ab-4ec20166dd3c/architectural-interiors-photographer-netzero-whistler49.jpg" alt="Net Zero Build Whistler final night exterior architectural photography" loading="lazy"></div>
+</div></div>
+
+<!-- CTA -->
+<div class="tp-cta" data-nav="Contact">
+<div class="tp-cta-bg">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c4a9567c-f56a-47de-88c7-c4ab8deb203a/architectural-interiors-photographer-netzero-whistler30.jpg" alt="Net Zero Build Whistler rear deck exterior architectural photography">
+</div>
+<div class="tp-cc">
+<h2>Your work defines the space.<br>Let me show the world its <em>full potential</em>.</h2>
+<p>Ready to create visuals that match the quality of your builds? Let's start with a conversation.</p>
+<a href="/discovery-call" class="tp-cb">Book a Discovery Call</a>
+<p class="tp-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+</div>
+</div>
+
+<!-- Next Project -->
+<a href="/silver-star-residence" class="tp-nx">
+<div class="tp-nx-bg">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ddb16910-92c2-4a07-956a-2975018022ef/architectural-interiors-photographer-silverstar-okanagan--17.jpg" alt="Silver Star Residence Okanagan architectural photography" loading="lazy">
+</div>
+<div class="tp-nx-c">
+<div class="tp-nx-l">Next Project</div>
+<h3>Silver Star Residence<span>Okanagan</span></h3>
+</div>
+</a>
+
+<!-- Footer -->
+<footer class="tp-ft">
+<div class="tp-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+<div class="tp-ft-r">
+<div class="tp-ft-i">
+<span class="tp-ft-l">Based In</span>
+<span class="tp-ft-dt"></span>
+<p>Squamish, British Columbia</p>
+</div>
+<div class="tp-ft-i">
+<span class="tp-ft-l">Email</span>
+<span class="tp-ft-dt"></span>
+<a id="ft-em" class="tp-ft-email"></a>
+</div>
+<div class="tp-ft-i">
+<span class="tp-ft-l">Phone</span>
+<span class="tp-ft-dt"></span>
+<a href="tel:6047659270">604.765.9270</a>
+</div>
+<div class="tp-ft-i">
+<span class="tp-ft-l">Follow</span>
+<span class="tp-ft-dt"></span>
+<div class="tp-ft-s">
+<a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a>
+<a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+</div>
+</div>
+<div class="tp-ft-rl"></div>
+<div class="tp-ft-b">
+<p class="tp-ft-cp">&copy; 2026 Matt Anthony Photography</p>
+<nav class="tp-ft-n">
+<a href="/projects">Projects</a>
+<a href="/journal">Journal</a>
+<a href="/bio">About</a>
+<a href="/contact">Contact</a>
+<a href="/pricing-guide-landing">Get Pricing</a>
+</nav>
+</div>
+</footer>
+
+</div>
+
+<script>
+(function(){var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];var e=document.getElementById('ft-em');if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}})();
+</script>
+
+<script>
+(function(){
+  /* ── Loader ── */
+  var loader=document.querySelector('.tp-loader');
+  if(loader){window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('tp-done')},800)})}
+
+  /* ── Scroll progress bar ── */
+  var prog=document.querySelector('.tp-progress');
+  if(prog){window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;prog.style.width=h>0?(window.scrollY/h*100)+'%':'0%'},{ passive:true })}
+
+  /* ── Hero parallax ── */
+  var hero=document.querySelector('.tp-hero>img');
+  if(hero){window.addEventListener('scroll',function(){var s=window.scrollY;if(s<window.innerHeight){hero.style.transform='translateY('+s*0.3+'px) scale('+(1+s*0.0002)+')'}},{ passive:true })}
+
+  /* ── Custom cursor ── */
+  if(window.innerWidth>768){
+    var cursor=document.querySelector('.tp-cursor'),dot=document.querySelector('.tp-cursor-dot'),cx=0,cy=0,dx=0,dy=0;
+    if(cursor&&dot){
+      document.addEventListener('mousemove',function(e){cx=e.clientX;cy=e.clientY;dot.style.left=cx+'px';dot.style.top=cy+'px';if(!cursor.classList.contains('tp-active')){cursor.classList.add('tp-active');dot.classList.add('tp-active')}});
+      (function loop(){dx+=(cx-dx)*0.15;dy+=(cy-dy)*0.15;cursor.style.left=dx+'px';cursor.style.top=dy+'px';requestAnimationFrame(loop)})();
+      document.querySelectorAll('a,button,.tp-cb,.tp-nx,.tp-bk,.tp-gg div').forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('tp-hover')});el.addEventListener('mouseleave',function(){cursor.classList.remove('tp-hover')})});
+      document.addEventListener('mousedown',function(){cursor.classList.add('tp-click')});
+      document.addEventListener('mouseup',function(){cursor.classList.remove('tp-click')});
+    }
+  }
+})();
+</script>
+
+<!--
+  Net Zero Build — Project Page Code Block
+  mattanthonyphoto.com/net-zero-build-whistler
+
+  Last updated: 2026-03-24
+  Changes:
+    1. Added meta description, canonical, and OG tags
+    2. Added page-specific ImageGallery JSON-LD schema
+    3. Rewrote all alt text to descriptive SEO-optimized text
+    4. Added loading="lazy" to all gallery images (not hero)
+    5. Fixed "All Projects" link from /projects-1 to /projects
+    6. Fixed footer LinkedIn link rel attribute
+    7. Added Get Pricing CTA after booking button
+    8. Added Get Pricing to footer nav
+   10. Added interactive layer: loader, scroll progress bar, custom cursor, hero parallax, CTA button glow
+   11. Fixed email duplication (removed ::after, set text via JS)
+   12. Added flex-wrap + justify-content:center to footer nav
+-->
+
+<meta name="description" content="Net Zero Build — bold sustainable architecture against Whistler's mountain backdrop by Peak Ventures and Gnar Interior Design. Architectural photography by Matt Anthony.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/net-zero-build-whistler">
+<meta property="og:title" content="Net Zero Build Whistler | Sustainable Home Photography | Matt Anthony">
+<meta property="og:description" content="Bold architectural form meets sustainable innovation against Whistler's dramatic mountain backdrop. Whistler, BC.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/net-zero-build-whistler">
+<meta property="og:type" content="website">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "Net Zero Build — Whistler Architectural Photography",
+  "description": "Bold architectural form meets sustainable innovation against Whistler's dramatic mountain backdrop. Whistler, British Columbia.",
+  "url": "https://www.mattanthonyphoto.com/net-zero-build-whistler",
+  "author": {
+    "@id": "https://www.mattanthonyphoto.com/#person"
+  },
+  "locationCreated": {
+    "@type": "Place",
+    "name": "Whistler, British Columbia"
+  },
+  "about": {
+    "@type": "Residence",
+    "name": "Net Zero Build",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Whistler",
+      "addressRegion": "BC",
+      "addressCountry": "CA"
+    }
+  }
+}
+</script>

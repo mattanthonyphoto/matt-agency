@@ -1,0 +1,572 @@
+<!-- JSON-LD SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "BC Energy Step Code: What Homeowners Need to Know",
+  "description": "A practical guide to the BC Energy Step Code for homeowners building in Whistler, Pemberton, and Squamish. Understand the 5 steps, cost impacts, municipal requirements, and building science fundamentals.",
+  "image": "https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/0a60d65a-be47-4e06-be7b-d649e5347ed1/Newhomeconstruction.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Marc Harvey",
+    "jobTitle": "Owner & Founder",
+    "url": "https://www.balmoralconstruction.com/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Balmoral Construction Inc.",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png"
+    }
+  },
+  "datePublished": "2026-03-18",
+  "dateModified": "2026-03-18",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.balmoralconstruction.com/blog/bc-energy-step-code-for-homeowners"
+  },
+  "keywords": ["BC Energy Step Code", "energy efficient homes BC", "Step Code requirements Whistler", "building science custom homes", "net zero homes BC"]
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{--bc-accent:#D4722A;--bc-accent-hover:#BF6523;--bc-accent-light:rgba(212,114,42,.1)}
+
+.bc-progress{position:fixed;top:0;left:0;height:3px;background:var(--bc-accent);z-index:1100;width:0%;transition:none}
+
+.bc{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a1a;line-height:1.7;font-weight:300;background:#fff}
+.bc img{max-width:100%;display:block}
+.bc a{color:inherit;text-decoration:none}
+
+/* NAV */
+.bc-hd{position:fixed;top:0;left:0;right:0;z-index:99999 !important;transition:background .4s cubic-bezier(.16,1,.3,1)}
+.bc-hd--top{background:transparent}
+.bc-hd--scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.bc-hd--mob-open{background:#fff !important;backdrop-filter:none}
+.bc-hd-inner{max-width:1600px;margin:0 auto;padding:0 clamp(24px,4vw,60px);display:flex;align-items:center;justify-content:space-between;height:80px}
+.bc-hd-logo img{height:52px;width:auto;transition:filter .4s}
+.bc-hd--top .bc-hd-logo img{filter:brightness(0) invert(1)}
+.bc-hd--mob-open .bc-hd-logo img{filter:none !important}
+.bc-hd-nav{display:flex;align-items:center;gap:clamp(24px,3.5vw,48px);list-style:none}
+.bc-hd-link{font-size:13px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#1a1a1a;transition:all .3s;position:relative}
+.bc-hd--top .bc-hd-link{color:rgba(255,255,255,.75)}
+.bc-hd--top .bc-hd-link:hover{color:#fff}
+.bc-hd-link:hover{color:#000}
+.bc-hd-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:currentColor;transition:width .3s}
+.bc-hd-link:hover::after{width:100%}
+.bc-hd-drop{position:relative}
+.bc-hd-drop-menu{position:absolute;top:calc(100% + 20px);left:-20px;background:#fff;padding:16px 0;min-width:220px;opacity:0;visibility:hidden;transition:all .3s;transform:translateY(8px);box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.bc-hd-drop:hover .bc-hd-drop-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.bc-hd-drop-menu a{display:block;padding:10px 28px;font-size:14px;font-weight:400;color:#666;letter-spacing:.04em;transition:all .2s}
+.bc-hd-drop-menu a:hover{color:var(--bc-accent);padding-left:32px}
+.bc-hd-mob{display:none;background:none;border:none;cursor:pointer;padding:10px;z-index:100001}
+.bc-hd-mob span{display:block;width:28px;height:2px;background:#1a1a1a;margin:7px 0;transition:all .4s}
+.bc-hd--top .bc-hd-mob span{background:#fff}
+.bc-hd--mob-open .bc-hd-mob span{background:#1a1a1a !important}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(2){opacity:0}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.bc-mob{position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:99998 !important;padding:100px clamp(24px,6vw,60px) 40px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.bc-mob.open{opacity:1;visibility:visible;display:flex;flex-direction:column}
+.bc-mob a{display:block;font-size:clamp(28px,6vw,40px);font-weight:200;color:#1a1a1a;padding:12px 0;letter-spacing:-.02em;border-bottom:1px solid #f0f0f0;transition:opacity .3s}
+.bc-mob a:hover{opacity:.5}
+.bc-mob-sub{padding-left:0}
+.bc-mob-sub a{font-size:clamp(14px,3vw,18px);font-weight:400;color:#999;letter-spacing:0;padding:8px 0}
+
+.bc-reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.bc-reveal.bc-visible{opacity:1;transform:translateY(0)}
+.bc-reveal-delay-1{transition-delay:.15s}
+.bc-reveal-delay-2{transition-delay:.3s}
+
+/* BLOG HERO */
+.bc-blog-hero{position:relative;height:70vh;min-height:500px;overflow:hidden;display:flex;align-items:flex-end}
+.bc-blog-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bc-blog-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.6) 100%);z-index:1}
+.bc-blog-hero-content{position:relative;z-index:2;max-width:1600px;margin:0 auto;padding:0 clamp(24px,4vw,60px) clamp(48px,6vw,80px);width:100%}
+.bc-blog-hero-content h1{font-size:clamp(28px,4.5vw,56px);font-weight:200;color:#fff;letter-spacing:-.03em;line-height:1.15;margin-bottom:20px;max-width:900px}
+.bc-blog-hero-content h1 strong{font-weight:600}
+.bc-blog-meta{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.bc-blog-meta span{font-size:12px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.bc-blog-meta span strong{color:rgba(255,255,255,.85);font-weight:500}
+
+/* BLOG BODY */
+.bc-blog-body{max-width:800px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px)}
+.bc-blog-body h2{font-size:clamp(24px,2.5vw,36px);font-weight:300;letter-spacing:-.02em;color:#1a1a1a;margin:clamp(40px,5vw,64px) 0 20px;line-height:1.2}
+.bc-blog-body h2 strong{font-weight:600}
+.bc-blog-body h3{font-size:clamp(18px,1.5vw,24px);font-weight:500;color:#1a1a1a;margin:32px 0 12px;letter-spacing:-.01em}
+.bc-blog-body p{font-size:16px;color:#444;line-height:1.9;margin-bottom:20px;font-weight:300}
+.bc-blog-body ul,.bc-blog-body ol{margin:0 0 20px 24px;color:#444;font-size:16px;line-height:1.9;font-weight:300}
+.bc-blog-body li{margin-bottom:8px}
+.bc-blog-body a{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s;padding-bottom:1px}
+.bc-blog-body a:hover{border-color:var(--bc-accent)}
+.bc-blog-body blockquote{border-left:3px solid var(--bc-accent);padding:16px 24px;margin:32px 0;background:var(--bc-accent-light);font-style:italic;color:#555}
+.bc-blog-body .bc-table-wrap{overflow-x:auto;margin:24px 0}
+.bc-blog-body table{width:100%;border-collapse:collapse;font-size:15px}
+.bc-blog-body table th{text-align:left;padding:12px 16px;background:#f8f8f6;font-weight:500;color:#1a1a1a;border-bottom:2px solid #eee;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.bc-blog-body table td{padding:12px 16px;border-bottom:1px solid #f0f0f0;color:#555}
+.bc-blog-body .bc-highlight{background:#f8f8f6;border:1px solid #eee;padding:clamp(20px,3vw,32px);margin:32px 0}
+.bc-blog-body .bc-highlight h3{margin-top:0}
+
+/* RELATED POSTS */
+.bc-related{padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px);background:#f8f8f6;border-top:1px solid #eee}
+.bc-related-inner{max-width:1600px;margin:0 auto}
+.bc-related h2{font-size:clamp(24px,2.5vw,36px);font-weight:200;letter-spacing:-.02em;color:#1a1a1a;margin-bottom:clamp(32px,4vw,48px)}
+.bc-related h2 strong{font-weight:600}
+.bc-related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(24px,3vw,40px)}
+.bc-related-card{background:#fff;overflow:hidden;transition:transform .3s}
+.bc-related-card:hover{transform:translateY(-4px)}
+.bc-related-card img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:brightness(.95);transition:filter .3s}
+.bc-related-card:hover img{filter:brightness(.88)}
+.bc-related-card-body{padding:20px 24px 24px}
+.bc-related-card-body h3{font-size:clamp(15px,1.2vw,18px);font-weight:500;color:#1a1a1a;margin-bottom:8px;line-height:1.4}
+.bc-related-card-body p{font-size:13px;color:#888;line-height:1.7;margin-bottom:8px}
+.bc-related-card-body .bc-blog-date{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:#bbb}
+
+/* CTA */
+.bc-cta{position:relative;height:60vh;min-height:400px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bc-cta img.bc-cta-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.bc-cta::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:1}
+.bc-cta-c{position:relative;z-index:2;text-align:center;max-width:600px;padding:0 24px}
+.bc-cta h2{font-size:clamp(28px,4vw,52px);font-weight:200;color:#fff;letter-spacing:-.03em;margin-bottom:16px;line-height:1.15}
+.bc-cta h2 strong{font-weight:600}
+.bc-cta p{font-size:17px;color:rgba(255,255,255,.55);margin-bottom:36px;line-height:1.8;font-weight:300}
+.bc-btn{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:18px 44px;border:2px solid rgba(255,255,255,.6);color:#fff;background:transparent;transition:all .4s;cursor:pointer}
+.bc-btn:hover{background:#fff;color:#1a1a1a;border-color:#fff}
+.bc-btn--accent{background:var(--bc-accent);color:#fff;border-color:var(--bc-accent);border-width:2px}
+.bc-btn--accent:hover{background:var(--bc-accent-hover);border-color:var(--bc-accent-hover);color:#fff}
+
+/* FOOTER */
+.bc-ft{background:#0a0a0a;color:#fff;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px) clamp(24px,3vw,40px);border-top:3px solid var(--bc-accent)}
+.bc-ft-inner{max-width:1600px;margin:0 auto}
+.bc-ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:clamp(24px,4vw,60px);padding-bottom:clamp(40px,5vw,60px);border-bottom:1px solid rgba(255,255,255,.08)}
+.bc-ft-brand p{font-size:13px;color:rgba(255,255,255,.35);line-height:1.8;margin-top:20px;max-width:300px;font-weight:300}
+.bc-ft-mark{height:60px;width:auto;opacity:.8;margin-bottom:8px}
+.bc-ft-col h4{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:20px}
+.bc-ft-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);line-height:2.2;transition:color .3s;font-weight:300}
+.bc-ft-col a:hover{color:var(--bc-accent)}
+.bc-ft-btm{display:flex;justify-content:space-between;align-items:center;padding-top:clamp(20px,3vw,32px)}
+.bc-ft-copy{font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.02em;font-weight:300}
+.bc-ft-social{display:flex;gap:24px}
+.bc-ft-social a{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);transition:color .3s}
+.bc-ft-social a:hover{color:var(--bc-accent)}
+
+@media(max-width:900px){
+.bc-hd-nav{display:none}
+.bc-hd-mob{display:block}
+}
+@media(max-width:768px){
+.bc-blog-hero{min-height:400px;height:60vh}
+.bc-related-grid{grid-template-columns:1fr}
+.bc-cta{height:50vh;min-height:350px}
+.bc-ft-top{grid-template-columns:1fr 1fr;gap:32px}
+.bc-ft-btm{flex-direction:column;gap:12px;text-align:center}
+}
+@media(max-width:480px){
+.bc-ft-top{grid-template-columns:1fr}
+}
+</style>
+
+<div class="bc-progress" id="bcProgress"></div>
+
+<div class="bc">
+
+<!-- NAV -->
+<header class="bc-hd bc-hd--top" id="bcHd">
+  <div class="bc-hd-inner">
+    <a href="/" class="bc-hd-logo">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png" alt="Balmoral Construction — Custom Home Builder in Whistler, Pemberton and Squamish">
+    </a>
+    <ul class="bc-hd-nav">
+      <li><a href="/about" class="bc-hd-link">About</a></li>
+      <li class="bc-hd-drop">
+        <a href="/services" class="bc-hd-link">Services</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/custom-home-building">Custom Home Building</a>
+          <a href="/home-renovations">Home Renovations</a>
+          <a href="/general-contracting">General Contracting</a>
+          <a href="/project-management">Project Management</a>
+          <a href="/land-consultation">Land Consultation</a>
+          <a href="/permit-coordination">Permit Coordination</a>
+        </div>
+      </li>
+      <li><a href="/work" class="bc-hd-link">Work</a></li>
+      <li class="bc-hd-drop">
+        <a href="javascript:void(0)" class="bc-hd-link">Locations</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/whistler-home-builder">Whistler</a>
+          <a href="/pemberton-home-builder">Pemberton</a>
+          <a href="/squamish-home-builder">Squamish</a>
+        </div>
+      </li>
+      <li><a href="/blog" class="bc-hd-link">Blog</a></li>
+      <li><a href="/contact" class="bc-hd-link">Contact</a></li>
+    </ul>
+    <button class="bc-hd-mob" aria-label="Menu" onclick="document.getElementById('bcMob').classList.toggle('open');this.classList.toggle('open');document.getElementById('bcHd').classList.toggle('bc-hd--mob-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="bc-mob" id="bcMob">
+  <a href="/about">About</a>
+  <a href="/services">Services</a>
+  <div class="bc-mob-sub">
+    <a href="/custom-home-building">Custom Home Building</a>
+    <a href="/home-renovations">Home Renovations</a>
+    <a href="/general-contracting">General Contracting</a>
+    <a href="/project-management">Project Management</a>
+    <a href="/land-consultation">Land Consultation</a>
+    <a href="/permit-coordination">Permit Coordination</a>
+  </div>
+  <a href="/work">Work</a>
+  <a href="javascript:void(0)">Locations</a>
+  <div class="bc-mob-sub">
+    <a href="/whistler-home-builder">Whistler</a>
+    <a href="/pemberton-home-builder">Pemberton</a>
+    <a href="/squamish-home-builder">Squamish</a>
+  </div>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="bc-blog-hero">
+  <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/0a60d65a-be47-4e06-be7b-d649e5347ed1/Newhomeconstruction.jpg" alt="New home construction in the Sea to Sky — BC Energy Step Code compliant building by Balmoral Construction">
+  <div class="bc-blog-hero-content">
+    <h1>BC Energy Step Code: What Homeowners <strong>Need to Know</strong></h1>
+    <div class="bc-blog-meta">
+      <span><strong>Marc Harvey</strong></span>
+      <span>March 2026</span>
+      <span>11 min read</span>
+    </div>
+  </div>
+</section>
+
+<!-- BODY -->
+<article class="bc-blog-body bc-reveal">
+
+  <p>If you are planning to build a custom home anywhere in British Columbia, the BC Energy Step Code is something you need to understand. It is not optional, it is not going away, and it directly affects how your home is designed, how much it costs to build, and how it performs for decades to come. The good news is that the Step Code, when implemented well, results in a better, more comfortable, and more efficient home.</p>
+
+  <p>At <a href="/custom-home-building">Balmoral Construction</a>, we have been building energy-efficient custom homes across the Sea to Sky Corridor since well before the Step Code became mandatory. This guide breaks down what the Step Code means for you as a homeowner, what it costs, what you gain, and how to think about it as you plan your build.</p>
+
+  <h2>What Is the <strong>Energy Step Code?</strong></h2>
+
+  <p>The BC Energy Step Code is a provincial performance-based standard that establishes increasingly stringent energy-efficiency requirements for new buildings. Rather than prescribing specific materials or systems, the Step Code sets measurable performance targets that a building must meet. How you get there — the specific insulation values, window types, mechanical systems, and air-sealing strategies — is up to your design and construction team.</p>
+
+  <p>The Step Code was introduced in 2017 and is being phased in across BC, with the goal of making all new buildings net-zero energy ready by 2032. Individual municipalities can adopt whichever step they choose, at whatever pace they want, as long as they do not fall below the provincial baseline. This means the requirements you face depend on where you are building.</p>
+
+  <p>For homeowners, the key takeaway is this: the Step Code is a performance standard, not a checklist. Your builder and energy advisor will work together to model your home's energy performance and ensure it meets the required targets through a combination of envelope design, mechanical systems, and air-sealing measures.</p>
+
+  <h2>The 5 Steps <strong>Explained</strong></h2>
+
+  <p>The Step Code defines five levels of energy performance for residential buildings, from a modest improvement over the base building code (Step 1) to net-zero energy ready (Step 5). Here is what each step means in practical terms:</p>
+
+  <div class="bc-highlight">
+    <h3>Step 1 — Enhanced Compliance</h3>
+    <p>The entry point. Step 1 requires energy modelling and a blower door test to verify air tightness, but the performance targets are only marginally above the base building code. Think of it as the code baseline with accountability — you have to prove your building works, not just assume it does.</p>
+  </div>
+
+  <div class="bc-highlight">
+    <h3>Step 2 — Improved Performance</h3>
+    <p>Step 2 pushes further on both energy use and air tightness. You will see better insulation values, improved window specifications, and tighter construction. Most homes at Step 2 feel noticeably more comfortable than code-minimum builds — fewer drafts, more consistent temperatures, and quieter interiors.</p>
+  </div>
+
+  <div class="bc-highlight">
+    <h3>Step 3 — High Performance</h3>
+    <p>This is where things get serious. Step 3 requires a significant reduction in total energy use and very good air tightness. Homes at this level typically feature continuous exterior insulation, high-performance windows (often triple-glazed), heat recovery ventilation (HRV), and careful attention to thermal bridging. This is the current requirement in many Sea to Sky municipalities.</p>
+  </div>
+
+  <div class="bc-highlight">
+    <h3>Step 4 — Superior Performance</h3>
+    <p>Step 4 homes approach passive house levels of efficiency. The envelope performance is excellent, mechanical systems are highly efficient, and energy consumption is dramatically lower than a standard home. Achieving Step 4 requires careful integration of design, engineering, and construction from the earliest stages of the project.</p>
+  </div>
+
+  <div class="bc-highlight">
+    <h3>Step 5 — Net-Zero Energy Ready</h3>
+    <p>The ultimate target. A Step 5 home uses so little energy that its annual consumption could theoretically be offset by on-site renewable energy generation (typically solar). The building envelope is exceptional, mechanical systems are optimized, and every detail — from framing to flashing — is designed to minimize energy loss. This is where the province is heading by 2032.</p>
+  </div>
+
+  <h2>Current Requirements <strong>by Municipality</strong></h2>
+
+  <p>Requirements vary across the Sea to Sky Corridor, and they continue to evolve as municipalities adopt higher steps over time. Here is where things stand for the communities we build in most frequently:</p>
+
+  <div class="bc-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Municipality</th>
+          <th>Current Requirement</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Resort Municipality of Whistler (RMOW)</td>
+          <td>Step 3</td>
+          <td>Whistler has been aggressive on Step Code adoption. Step 3 has been required for new residential construction since 2023, with plans to move to Step 4 in the coming years. The RMOW also has its own green building policies that layer on top of Step Code requirements.</td>
+        </tr>
+        <tr>
+          <td>Village of Pemberton / SLRD</td>
+          <td>Step 3</td>
+          <td>Pemberton and the Squamish-Lillooet Regional District currently require Step 3 for new residential buildings. Builds outside the Village boundary under SLRD jurisdiction follow the same requirement.</td>
+        </tr>
+        <tr>
+          <td>District of Squamish</td>
+          <td>Step 3</td>
+          <td>Squamish adopted Step 3 for Part 9 residential buildings. The district is actively engaged in the transition toward higher steps and has incentive programs for exceeding minimum requirements.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>These requirements apply to new construction. Renovations may trigger Step Code compliance depending on scope and whether the project requires a building permit for new construction elements. Your builder and building official can clarify what applies to your specific project.</p>
+
+  <h2>Impact on <strong>Building Costs</strong></h2>
+
+  <p>This is the question every homeowner asks, and the answer is more encouraging than most people expect. Building to the current Step Code requirements (Step 3 across the Sea to Sky) typically adds <strong>1% to 5%</strong> to total construction costs compared to what the same home would have cost under the old prescriptive code.</p>
+
+  <p>That percentage varies based on several factors:</p>
+
+  <ul>
+    <li><strong>Home size</strong> — Larger homes absorb Step Code costs more efficiently because many upgrades (like the HRV system) are fixed costs regardless of home size.</li>
+    <li><strong>Design efficiency</strong> — A compact, well-designed floor plan meets Step Code targets more easily than a sprawling home with lots of corners and roofline changes. Simple geometry is your friend.</li>
+    <li><strong>Window-to-wall ratio</strong> — Homes with extensive glazing (common in mountain architecture) need to compensate with higher-performing windows and better insulation elsewhere. This can add cost, but the views are worth it.</li>
+    <li><strong>Builder experience</strong> — A builder who has been constructing to Step Code standards for years will be more efficient than one who treats it as an afterthought. Experience matters enormously here.</li>
+  </ul>
+
+  <p>For a typical 3,000 sq ft custom home in the Sea to Sky built at $500/sq ft, a 3% Step Code premium represents about $45,000. Over the life of the home, that investment pays for itself many times over through reduced energy costs, improved comfort, and higher resale value.</p>
+
+  <h2>Benefits of Building to <strong>Higher Steps</strong></h2>
+
+  <h3>Lower Energy Bills</h3>
+
+  <p>A Step 3 home uses significantly less energy than a code-minimum home. In the Sea to Sky, where heating is the dominant energy cost, the savings are substantial. Many of our clients report heating bills that are 40% to 60% lower than comparable older homes, even in the coldest months.</p>
+
+  <h3>Superior Comfort</h3>
+
+  <p>This is the benefit that surprises people the most. A well-built Step Code home is noticeably more comfortable than a standard home. Consistent temperatures from room to room, no cold spots near windows, no drafts, and a quieter interior are all direct results of better air sealing, insulation, and ventilation. Once you have lived in a tight, well-insulated home, you cannot go back.</p>
+
+  <h3>Better Indoor Air Quality</h3>
+
+  <p>A tighter building envelope paired with mechanical ventilation (HRV or ERV) means your home is constantly supplied with filtered fresh air while exhausting stale air. This is a fundamentally better approach to ventilation than relying on air leaking through gaps in the building envelope, which is what happens in older homes.</p>
+
+  <h3>Higher Resale Value</h3>
+
+  <p>Energy-efficient homes command a premium in the resale market, and that premium is growing as energy costs rise and buyer awareness increases. Building beyond the minimum Step Code requirement today is an investment in your home's future marketability.</p>
+
+  <h3>Reduced Carbon Footprint</h3>
+
+  <p>For homeowners who care about environmental impact — and many of our <a href="/whistler-home-builder">Whistler</a> and <a href="/services">Sea to Sky clients</a> do — building to a higher step is one of the most impactful things you can do. Residential buildings account for a significant portion of BC's greenhouse gas emissions, and the Step Code is the province's primary tool for addressing that.</p>
+
+  <h2>Key Building Science <strong>Concepts</strong></h2>
+
+  <p>You do not need to become a building science expert to build a custom home, but understanding a few core concepts will help you have more informed conversations with your builder and make better decisions during the design process.</p>
+
+  <h3>Air Tightness</h3>
+
+  <p>Air tightness measures how well your home prevents uncontrolled air leakage through the building envelope. It is measured in air changes per hour at 50 Pascals of pressure (ACH50), using a blower door test. A lower number means a tighter home. Step 3 requires significantly better air tightness than the base building code, and achieving it requires meticulous attention to every penetration, joint, and transition in the building envelope. This is where builder skill and experience make the biggest difference.</p>
+
+  <h3>Insulation and R-Values</h3>
+
+  <p>Insulation slows heat transfer through walls, roofs, and floors. The effectiveness of insulation is measured in R-values — higher is better. Step Code homes typically feature higher R-values than code minimum, with continuous insulation on the exterior of the building to reduce thermal bridging. In the Sea to Sky, where winter temperatures regularly dip well below freezing, adequate insulation is non-negotiable.</p>
+
+  <h3>Thermal Bridging</h3>
+
+  <p>Thermal bridging occurs when materials that conduct heat well (like wood studs or steel beams) create paths for heat to escape through the building envelope. In a standard 2x6 wall, the studs themselves conduct significantly more heat than the insulation between them. Addressing thermal bridging — through continuous exterior insulation, thermally broken connections, and careful detailing — is a critical part of achieving Step Code performance targets.</p>
+
+  <h3>Heat Recovery Ventilation (HRV)</h3>
+
+  <p>An HRV is a mechanical ventilation system that continuously exchanges stale indoor air for fresh outdoor air while recovering most of the heat from the outgoing air. In a tight building envelope, an HRV is essential — it provides controlled ventilation without the energy penalty of simply opening a window in January. Modern HRV systems recover 80% or more of the heat from exhaust air, making them remarkably efficient.</p>
+
+  <h2>Windows and <strong>Their Role</strong></h2>
+
+  <p>Windows are one of the most important — and most expensive — components of a Step Code home. They are also the weakest link in the thermal envelope, even at their best. A triple-glazed, thermally broken window still insulates far less than a well-built wall. This is why the window-to-wall ratio is such a critical design consideration.</p>
+
+  <p>For custom homes in the Sea to Sky, where panoramic mountain views are often the whole point, achieving Step Code targets with extensive glazing requires high-performance windows. Products like Innotech, which we used in our <a href="/custom-home-building">Sugarloaf project</a>, deliver excellent thermal performance while allowing the floor-to-ceiling views that define modern mountain architecture.</p>
+
+  <p>Key specifications to understand when evaluating windows:</p>
+
+  <ul>
+    <li><strong>U-value</strong> — Measures heat transfer. Lower is better. Step Code homes typically need windows with U-values well below 1.4 W/m2K.</li>
+    <li><strong>Solar Heat Gain Coefficient (SHGC)</strong> — Measures how much solar heat passes through the glass. This is a balance: you want solar gain on south-facing windows (free heating) but may want to limit it on west-facing windows (overheating).</li>
+    <li><strong>Triple glazing</strong> — Three panes of glass with insulating gas fills between them. Standard for Step 3 and above in the Sea to Sky climate.</li>
+    <li><strong>Thermal breaks</strong> — Insulating barriers within the window frame that prevent the frame itself from conducting heat. Essential for any high-performance window system.</li>
+  </ul>
+
+  <h2>How Balmoral Approaches <strong>Energy Efficiency</strong></h2>
+
+  <p>At Balmoral, energy efficiency is not a box we check — it is woven into how we build. Every <a href="/custom-home-building">custom home</a> we construct meets or exceeds the current Step Code requirements, and we actively work with our clients to push beyond minimums where it makes sense for their budget and goals.</p>
+
+  <p>Our approach includes:</p>
+
+  <ul>
+    <li><strong>Early energy modelling</strong> — We involve an energy advisor from the design phase, not after the plans are finalized. This allows us to optimize the building envelope, window placement, and mechanical systems before construction begins.</li>
+    <li><strong>Experienced trades</strong> — Air tightness is achieved on the job site, not on paper. Our framing crews, insulation teams, and mechanical contractors understand what Step Code performance requires and have the skills to deliver it consistently.</li>
+    <li><strong>Quality materials</strong> — We specify products that perform. From high-density spray foam and mineral wool insulation to Innotech and similar high-performance window systems, we use materials that deliver real-world results, not just catalogue claims.</li>
+    <li><strong>Verification</strong> — Every home undergoes blower door testing and energy modelling verification to confirm performance. We do not guess — we measure.</li>
+  </ul>
+
+  <h2>Planning for <strong>Future Steps</strong></h2>
+
+  <p>The Step Code is a moving target, and municipalities will continue to adopt higher steps over the coming years. If you are building a custom home today that you plan to live in for decades, it is worth considering building beyond the current minimum. A home built to Step 4 today will still be ahead of code requirements years from now, and the incremental cost of going from Step 3 to Step 4 is often modest when incorporated from the start of design.</p>
+
+  <p>Some forward-thinking upgrades to consider:</p>
+
+  <ul>
+    <li><strong>Solar-ready rough-in</strong> — Even if you do not install solar panels now, having the conduit, panel space, and structural capacity in place costs very little during construction and saves thousands if you add solar later.</li>
+    <li><strong>Electrification-ready design</strong> — Consider heat pump systems for heating and cooling, induction cooking, and heat pump water heaters. These all-electric systems are more efficient and position your home well for the shift away from natural gas.</li>
+    <li><strong>Enhanced envelope</strong> — Going from Step 3 to Step 4 insulation and air-tightness levels during construction is far less expensive than retrofitting later. The walls are open, the trades are on site, and the incremental material cost is manageable.</li>
+    <li><strong>Battery storage readiness</strong> — As battery technology improves and costs come down, home energy storage will become increasingly common. Allocating space and wiring for a future battery system is a low-cost, high-value decision during construction.</li>
+  </ul>
+
+  <h2>Ready to Build <strong>an Efficient Home?</strong></h2>
+
+  <p>The BC Energy Step Code is not an obstacle — it is a framework for building better homes. At Balmoral Construction, we see it as an opportunity to deliver custom homes that are more comfortable, more efficient, and more durable than anything built under the old code. If you are planning a build in <a href="/whistler-home-builder">Whistler</a>, Pemberton, or Squamish and want to understand how the Step Code affects your project, we are happy to walk you through it.</p>
+
+  <p><a href="/contact">Get in touch</a> to start the conversation, or explore our <a href="/services">full range of services</a> to learn more about how we approach every build.</p>
+
+</article>
+
+<!-- RELATED POSTS -->
+<section class="bc-related">
+  <div class="bc-related-inner">
+    <h2>Related <strong>Posts</strong></h2>
+    <div class="bc-related-grid">
+      <a href="/blog/how-much-does-it-cost-to-build-a-custom-home-in-whistler" class="bc-related-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/a426db85-f990-4801-b038-978af5d9685c/whistler-custom-home-builder-pinewood-14.jpg" alt="Custom home in Whistler — construction cost guide" loading="lazy">
+        <div class="bc-related-card-body">
+          <h3>How Much Does It Cost to Build a Custom Home in Whistler?</h3>
+          <p>A transparent breakdown of what drives custom home construction costs in Whistler.</p>
+          <span class="bc-blog-date">February 2026</span>
+        </div>
+      </a>
+      <a href="/blog/how-much-does-it-cost-to-build-a-custom-home-in-pemberton" class="bc-related-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/989bc309-dd71-40c1-83b9-0ba6f6523a1e/custom-home-builder-pemberton-balmoral-construction-1.jpg" alt="Custom home in Pemberton — construction cost guide" loading="lazy">
+        <div class="bc-related-card-body">
+          <h3>How Much Does It Cost to Build a Custom Home in Pemberton?</h3>
+          <p>A Pemberton-specific cost guide covering per-square-foot pricing, ALR considerations, and budget ranges.</p>
+          <span class="bc-blog-date">March 2026</span>
+        </div>
+      </a>
+      <a href="/blog/building-in-pemberton-vs-whistler" class="bc-related-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/b4f7fef9-3851-4035-93fd-981fe221853a/9-balmoral-construction-wedge.jpg" alt="Comparing building in Pemberton vs Whistler" loading="lazy">
+        <div class="bc-related-card-body">
+          <h3>Building in Pemberton vs. Whistler: What to Know</h3>
+          <p>Comparing lot costs, regulations, lifestyle, and timelines between Pemberton and Whistler.</p>
+          <span class="bc-blog-date">March 2026</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bc-cta">
+  <img class="bc-cta-bg" src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/6a0569c9-3137-4978-940e-5be53aa5b23a/ext-SE-entry-comp-1024x683+%281%29.jpeg" alt="Start your custom home build with Balmoral Construction" loading="lazy">
+  <div class="bc-cta-c bc-reveal">
+    <h2>Ready to discuss<br><strong>your project?</strong></h2>
+    <p>Every project starts with a conversation about your vision, your land, and how you want to live. Reach out to start planning your energy-efficient custom home.</p>
+    <a href="/contact" class="bc-btn bc-btn--accent">Start a Conversation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bc-ft">
+  <div class="bc-ft-inner">
+    <div class="bc-ft-top">
+      <div class="bc-ft-brand">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/83ca6501-705e-43ee-b119-551d0c16ea14/unnamed.png" alt="Balmoral Construction — Custom Home Builder in the Sea to Sky Corridor" class="bc-ft-mark">
+        <p>Boutique custom home builder in the Sea to Sky Corridor. Based in Pemberton, building across Whistler, Pemberton &amp; Squamish since 2011.</p>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Services</h4>
+        <a href="/custom-home-building">Custom Home Building</a>
+        <a href="/home-renovations">Home Renovations</a>
+        <a href="/general-contracting">General Contracting</a>
+        <a href="/project-management">Project Management</a>
+        <a href="/land-consultation">Land Consultation</a>
+        <a href="/permit-coordination">Permit Coordination</a>
+        <a href="/services">All Services</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Locations</h4>
+        <a href="/whistler-home-builder">Whistler Home Builder</a>
+        <a href="/pemberton-home-builder">Pemberton Home Builder</a>
+        <a href="/squamish-home-builder">Squamish Home Builder</a>
+        <a href="/whistler-home-renovations">Whistler Renovations</a>
+        <a href="/pemberton-home-renovations">Pemberton Renovations</a>
+        <a href="/squamish-home-renovations">Squamish Renovations</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Projects</h4>
+        <a href="/warbler-way">Warbler Way</a>
+        <a href="/cerulean">Cerulean</a>
+        <a href="/sugarloaf">Sugarloaf</a>
+        <a href="/white-gold-2">White Gold 2</a>
+        <a href="/fitzsimmons">Fitzsimmons</a>
+        <a href="/work">All Projects</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Company</h4>
+        <a href="/about">About</a>
+        <a href="/work">Portfolio</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+        <a href="tel:6049072237">604.907.2237</a>
+        <a href="mailto:marc@balmoralconstruction.com">marc@balmoralconstruction.com</a>
+      </div>
+    </div>
+    <div class="bc-ft-btm">
+      <span class="bc-ft-copy">&copy; 2026 Balmoral Construction Inc. &mdash; Custom Home Builder in Whistler, Pemberton &amp; Squamish, BC</span>
+      <div class="bc-ft-social">
+        <a href="https://www.instagram.com/balmoralconstruction/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.houzz.com/professionals/general-contractors/balmoral-construction-pfvwus-pf~1513498919" target="_blank" rel="noopener">Houzz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var hd=document.getElementById('bcHd');
+  function checkScroll(){
+    var s=window.scrollY>80;
+    hd.classList.toggle('bc-hd--top',!s);
+    hd.classList.toggle('bc-hd--scrolled',s);
+  }
+  window.addEventListener('scroll',checkScroll);
+  checkScroll();
+
+  var prog=document.getElementById('bcProgress');
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(h>0) prog.style.width=(window.scrollY/h*100)+'%';
+  });
+
+  var reveals=document.querySelectorAll('.bc-reveal');
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('bc-visible');observer.unobserve(e.target)}
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  reveals.forEach(function(el){observer.observe(el)});
+})();
+</script>
+<style>
+/* Squarespace page wrapper reset */
+.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block{margin:0!important;padding:0!important;max-width:100%!important;width:100%!important}
+.page-section:last-of-type{padding-bottom:0!important;margin-bottom:0!important}
+#footer,.Footer,.footer,footer[data-footer-id],footer:not(.bc-ft){display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important}
+.sqs-block-spacer,.sqs-block-horizontalrule,.section-background{display:none!important}
+@media(max-width:768px){.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block,.Index-page-content,.blog-item-inner-wrapper,article.page,article.Page,.page-content,.Page-content{padding:0!important;margin:0!important}body{padding-bottom:0!important;margin-bottom:0!important}}
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){var f=document.querySelector('.bc-ft');if(f){var p=f.closest('.sqs-block')||f.closest('.page-section')||f.parentElement;while(p){var n=p.nextElementSibling;while(n){n.style.cssText='display:none!important;height:0!important;padding:0!important;margin:0!important;overflow:hidden!important';n=n.nextElementSibling}p=p.parentElement}}});
+</script>

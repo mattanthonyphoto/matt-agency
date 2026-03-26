@@ -1,0 +1,681 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+:root{--ink:#1a1a18;--paper:#f6f4f0;--gold:#c9a96e;--warm-muted:#b8975a;--stone:#8a8579;--light-stone:#d9d5cd;--off-white:#eeece6;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',-apple-system,sans-serif;--display:'Josefin Sans',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+
+.sq-wrap{font-family:var(--sans);-webkit-font-smoothing:antialiased;color:var(--ink);line-height:1.7;font-weight:300;overflow-x:hidden;max-width:none!important;width:100%!important;margin:0!important;padding:0!important}
+.sq-wrap img{max-width:100%;display:block}
+.sq-wrap a{color:inherit;text-decoration:none}
+
+.sq-ft-email{cursor:pointer}
+
+/* Hero */
+.sq-hero{position:relative;min-height:70vh;display:flex;align-items:flex-end;padding:6rem 5vw 4rem;background:var(--ink);overflow:hidden}
+.sq-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,24,0.2) 0%,rgba(26,26,24,0.85) 100%);z-index:1}
+.sq-hero-img{position:absolute;inset:0}
+.sq-hero-img img{width:100%;height:100%;object-fit:cover;opacity:0.4;filter:saturate(0.6)}
+.sq-hero-content{position:relative;z-index:2;max-width:720px}
+.sq-hero-label{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.25rem}
+.sq-hero h1{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4.2rem);font-weight:300;line-height:1.08;color:var(--paper);letter-spacing:-0.02em;margin-bottom:1.25rem}
+.sq-hero h1 em{font-style:italic;color:var(--gold)}
+.sq-hero-sub{font-size:1rem;color:var(--light-stone);font-weight:300;line-height:1.7;max-width:560px}
+
+/* Info bar */
+.sq-info{background:var(--ink);padding:2.5rem 5vw;border-top:1px solid rgba(201,169,110,0.15)}
+.sq-info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:1200px;margin:0 auto}
+.sq-info-item span:first-child{display:block;font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:0.4rem}
+.sq-info-item span:last-child{font-size:0.85rem;color:rgba(246,244,240,0.7);line-height:1.5}
+
+/* Intro */
+.sq-intro{max-width:820px;margin:0 auto;padding:5rem 5vw 4rem}
+.sq-intro h2{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:300;line-height:1.25;margin-bottom:2rem}
+.sq-intro p{font-size:1rem;color:#4a4a46;line-height:1.85;margin-bottom:1.5rem}
+.sq-intro p:last-child{margin-bottom:0}
+.sq-inline-link{color:var(--ink);font-weight:400;border-bottom:1px solid var(--gold);transition:color 0.3s ease,border-color 0.3s ease}
+.sq-inline-link:hover{color:var(--warm-muted);border-color:var(--warm-muted)}
+
+/* Image break */
+.sq-img-break{width:100%;height:55vh;min-height:380px;overflow:hidden}
+.sq-img-break img{width:100%;height:100%;object-fit:cover}
+
+/* Expertise section */
+.sq-expertise{padding:5rem 5vw}
+.sq-expertise-inner{max-width:1200px;margin:0 auto}
+.sq-expertise-label{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--warm-muted);font-weight:500;margin-bottom:1rem}
+.sq-expertise-rule{width:50px;height:1px;background:var(--gold);margin-bottom:1.5rem}
+.sq-expertise h2{font-family:var(--serif);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300;line-height:1.3;margin-bottom:1rem;max-width:600px}
+.sq-expertise-lead{font-size:1rem;color:#4a4a46;line-height:1.85;max-width:680px;margin-bottom:3rem}
+.sq-expertise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem}
+.sq-expertise-card{padding-top:2rem;border-top:1px solid var(--light-stone)}
+.sq-expertise-card h3{font-family:var(--serif);font-size:1.25rem;font-weight:400;margin-bottom:0.75rem}
+.sq-expertise-card p{font-size:0.92rem;color:var(--stone);line-height:1.8}
+
+/* Featured work */
+.sq-work{background:var(--ink);padding:5rem 5vw}
+.sq-work-inner{max-width:1200px;margin:0 auto}
+.sq-work-label{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1rem}
+.sq-work-rule{width:50px;height:1px;background:rgba(201,169,110,0.4);margin-bottom:1.5rem}
+.sq-work h2{font-family:var(--serif);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300;line-height:1.3;color:var(--paper);margin-bottom:3rem}
+.sq-work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2.5rem}
+.sq-work-card{position:relative;overflow:hidden;aspect-ratio:4/3;border-radius:2px}
+.sq-work-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease}
+.sq-work-card:hover img{transform:scale(1.03)}
+.sq-work-card-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(26,26,24,0.85) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.25rem}
+.sq-work-card-title{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--paper);margin-bottom:0.25rem}
+.sq-work-card-meta{font-size:0.72rem;color:var(--stone);line-height:1.5}
+.sq-work-all{display:inline-block;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(201,169,110,0.4);padding-bottom:2px;transition:color 0.3s ease}
+.sq-work-all:hover{color:var(--paper)}
+
+/* Services */
+.sq-services{padding:5rem 5vw}
+.sq-services-inner{max-width:1200px;margin:0 auto}
+.sq-services-label{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--warm-muted);font-weight:500;margin-bottom:1rem}
+.sq-services-rule{width:50px;height:1px;background:var(--gold);margin-bottom:1.5rem}
+.sq-services h2{font-family:var(--serif);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300;line-height:1.3;margin-bottom:3rem;max-width:600px}
+.sq-services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2.5rem}
+.sq-service-card{padding:2rem;border:1px solid var(--light-stone);border-radius:2px}
+.sq-service-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;margin-bottom:0.75rem}
+.sq-service-card p{font-size:0.92rem;color:var(--stone);line-height:1.8}
+.sq-service-card a.sq-service-link{font-size:0.75rem;color:var(--warm-muted);border-bottom:1px solid var(--light-stone);transition:color 0.3s ease,border-color 0.3s ease}
+.sq-service-card a.sq-service-link:hover{color:var(--gold);border-color:var(--gold)}
+
+/* Testimonial */
+.sq-testimonial{position:relative;padding:6rem 5vw;background:var(--ink);overflow:hidden;min-height:45vh;display:flex;align-items:center}
+.sq-testimonial-bg{position:absolute;inset:0}
+.sq-testimonial-bg img{width:100%;height:100%;object-fit:cover;opacity:0.15;filter:saturate(0.4)}
+.sq-testimonial-content{position:relative;z-index:2;max-width:720px;margin:0 auto;text-align:center}
+.sq-testimonial blockquote{font-family:var(--serif);font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:300;font-style:italic;color:var(--paper);line-height:1.6;margin-bottom:2rem}
+.sq-testimonial-attr{font-size:0.85rem;color:var(--stone);margin-bottom:0.25rem}
+.sq-testimonial-attr strong{color:var(--paper);font-weight:400}
+.sq-testimonial-role{font-size:0.75rem;color:var(--stone)}
+.sq-testimonial-link{display:inline-block;margin-top:1.5rem;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(201,169,110,0.4);padding-bottom:2px;transition:color 0.3s ease}
+.sq-testimonial-link:hover{color:var(--paper)}
+
+/* Architecture section */
+.sq-arch{padding:5rem 5vw}
+.sq-arch-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1200px;margin:0 auto;align-items:center}
+.sq-arch-img{overflow:hidden;border-radius:2px}
+.sq-arch-img img{width:100%;height:auto}
+.sq-arch-text-label{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--warm-muted);font-weight:500;margin-bottom:1rem}
+.sq-arch-text-rule{width:50px;height:1px;background:var(--gold);margin-bottom:1.5rem}
+.sq-arch h2{font-family:var(--serif);font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:300;line-height:1.3;margin-bottom:1.5rem}
+.sq-arch p{font-size:0.95rem;color:#4a4a46;line-height:1.85;margin-bottom:1.25rem}
+.sq-arch p:last-of-type{margin-bottom:1.5rem}
+
+/* Working together */
+.sq-together{background:var(--off-white);padding:5rem 5vw}
+.sq-together-inner{max-width:820px;margin:0 auto}
+.sq-together-label{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--warm-muted);font-weight:500;margin-bottom:1rem}
+.sq-together-rule{width:50px;height:1px;background:var(--gold);margin-bottom:1.5rem}
+.sq-together h2{font-family:var(--serif);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300;line-height:1.3;margin-bottom:2rem}
+.sq-together p{font-size:1rem;color:#4a4a46;line-height:1.85;margin-bottom:1.5rem}
+.sq-together p:last-of-type{margin-bottom:1.5rem}
+
+/* FAQ */
+.sq-faq{padding:5rem 5vw}
+.sq-faq-inner{max-width:820px;margin:0 auto}
+.sq-faq-label{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--warm-muted);font-weight:500;margin-bottom:1rem}
+.sq-faq-rule{width:50px;height:1px;background:var(--gold);margin-bottom:1.5rem}
+.sq-faq h2{font-family:var(--serif);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300;line-height:1.3;margin-bottom:3rem}
+.sq-faq-item{border-top:1px solid var(--light-stone);padding:1.75rem 0}
+.sq-faq-item:last-child{border-bottom:1px solid var(--light-stone)}
+.sq-faq-q{font-family:var(--serif);font-size:1.1rem;font-weight:400;margin-bottom:0.75rem;cursor:pointer}
+.sq-faq-a{font-size:0.92rem;color:var(--stone);line-height:1.85}
+.sq-faq-a a{color:var(--warm-muted);border-bottom:1px solid var(--light-stone);transition:color 0.3s ease}
+.sq-faq-a a:hover{color:var(--gold)}
+.sq-faq-all{display:inline-block;margin-top:2rem;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--warm-muted);border-bottom:1px solid var(--light-stone);padding-bottom:2px;transition:color 0.3s ease}
+.sq-faq-all:hover{color:var(--gold)}
+
+/* CTA */
+.sq-cta{position:relative;padding:7rem 5vw;text-align:center;overflow:hidden;min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.sq-cta-bg{position:absolute;inset:0;z-index:0}
+.sq-cta-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(0.5) brightness(0.25)}
+.sq-cta-content{position:relative;z-index:2}
+.sq-cta h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;color:var(--paper);margin-bottom:1rem;line-height:1.2}
+.sq-cta p{font-size:1rem;color:var(--stone);max-width:480px;margin:0 auto 2.5rem;line-height:1.8}
+.sq-cta-btn{display:inline-block;font-family:var(--sans);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;padding:1rem 2.5rem;border:1px solid var(--gold)!important;background:var(--gold)!important;color:var(--ink)!important;font-weight:500;transition:all 0.35s ease;text-decoration:none}
+.sq-cta-btn:hover{background:transparent!important;color:var(--gold)!important}
+.sq-alt-cta{margin-top:1.25rem;font-size:.75rem;color:#8a8579;letter-spacing:.05em;font-weight:300}.sq-alt-cta a{color:#c9a96e;text-decoration:underline;text-underline-offset:3px;transition:color .3s ease}.sq-alt-cta a:hover{color:#f6f4f0}
+
+/* Footer */
+.sq-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.sq-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.sq-ft-locs a:hover{color:#c9a96e}.sq-ft{background:var(--ink);border-top:1px solid rgba(201,169,110,0.15)}
+.sq-ft-r{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}
+.sq-ft-i{display:flex;align-items:baseline;gap:10px}
+.sq-ft-l{font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);font-weight:500;white-space:nowrap}
+.sq-ft-dt{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,0.4);flex-shrink:0;position:relative;top:-2px}
+.sq-ft-i p,.sq-ft-i a{margin:0;font-size:12px;color:rgba(246,244,240,0.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color 0.3s ease}
+.sq-ft-i a:hover{color:var(--gold)}
+.sq-ft-s{display:flex;gap:18px}
+.sq-ft-rl{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.15) 20%,rgba(201,169,110,0.15) 80%,transparent 100%)}
+.sq-ft-b{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}
+.sq-ft-cp{font-size:10px;color:rgba(246,244,240,0.35);letter-spacing:0.08em}
+.sq-ft-n{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center}
+.sq-ft-n a{font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(246,244,240,0.35);text-decoration:none;transition:color 0.3s ease}
+.sq-ft-n a:hover{color:var(--gold)}
+
+/* Responsive */
+@media(max-width:900px){
+  .sq-hero{min-height:55vh;padding:4rem 6vw 3rem}
+  .sq-info-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem}
+  .sq-intro{padding:3.5rem 6vw 3rem}
+  .sq-img-break{height:40vh;min-height:280px}
+  .sq-expertise-grid{grid-template-columns:1fr;gap:2rem}
+  .sq-work-grid{grid-template-columns:repeat(2,1fr)}
+  .sq-services-grid{grid-template-columns:1fr}
+  .sq-arch-inner{grid-template-columns:1fr;gap:2rem}
+  .sq-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.sq-ft-locs a{font-size:.55rem}.sq-ft-r{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}
+  .sq-ft-rl{margin:0 6vw}
+  .sq-ft-b{flex-direction:column;gap:0.75rem;text-align:center;padding:1.25rem 6vw}
+}
+@media(max-width:600px){
+  .sq-info-grid{grid-template-columns:1fr}
+  .sq-work-grid{grid-template-columns:1fr}
+  .sq-hero{min-height:50vh;padding:3rem 6vw 2.5rem}
+}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.sq-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.sq-loader.sq-done{opacity:0;visibility:hidden;pointer-events:none}
+.sq-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:sqLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.sq-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:sqLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.sq-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:sqLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.sq-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:sqLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes sqLoaderIn{to{opacity:1}}
+@keyframes sqLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.sq-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.sq-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.sq-cursor.sq-active{opacity:1}
+.sq-cursor.sq-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.sq-cursor.sq-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.sq-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.sq-cursor-dot.sq-active{opacity:1}
+
+/* ── Section nav dots ── */
+.sq-section-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:99998;display:flex;flex-direction:column;gap:12px;opacity:0;transition:opacity 0.4s ease}
+.sq-section-nav.sq-nav-visible{opacity:1}
+.sq-nav-dot{width:8px;height:8px;border-radius:50%;background:transparent;border:1px solid #8a8579;cursor:pointer;transition:all 0.3s ease;position:relative}
+.sq-nav-dot:hover{border-color:#c9a96e;transform:scale(1.3)}
+.sq-nav-dot.sq-nav-active{background:#c9a96e;border-color:#c9a96e;box-shadow:0 0 8px rgba(201,169,110,0.4)}
+.sq-nav-dot::before{content:attr(data-label);position:absolute;right:20px;top:50%;transform:translateY(-50%);font-family:'Josefin Sans',sans-serif;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a96e;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.3s ease,right 0.3s ease}
+.sq-nav-dot:hover::before{opacity:1;right:24px}
+@media(max-width:768px){.sq-section-nav{display:none}}
+
+/* ── Hero parallax ── */
+.sq-hero-content{transition:transform 0.1s linear,opacity 0.1s linear}
+
+/* ── CTA button glow ── */
+.sq-cta-btn{animation:sqBtnGlow 3s ease-in-out infinite alternate}
+@keyframes sqBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+</style>
+
+<div class="sq-loader" id="sqLoader">
+  <div class="sq-loader-brand">Matt Anthony Photography</div>
+  <div class="sq-loader-sub">Squamish, British Columbia</div>
+  <div class="sq-loader-line"></div>
+</div>
+<div class="sq-cursor" id="sqCursor"></div>
+<div class="sq-cursor-dot" id="sqCursorDot"></div>
+<div class="sq-progress" id="sqProgress"></div>
+<nav class="sq-section-nav" id="sqSectionNav"></nav>
+<div class="sq-wrap">
+
+<!-- Hero -->
+<div class="sq-hero">
+  <div class="sq-hero-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/808387ba-bee1-4c46-a4d3-354d7e1f8372/west-10th-vancouver-web--2.jpg" alt="Squamish architectural photography by Matt Anthony — modern home interior with natural light">
+  </div>
+  <div class="sq-hero-content">
+    <p class="sq-hero-label">Squamish, British Columbia</p>
+    <h1>Architectural Photography in <em>Squamish, BC</em></h1>
+    <p class="sq-hero-sub">Professional architectural and interiors photography based in Squamish. Documenting custom homes, renovations, and commercial spaces for architects, builders, and designers across the Sea-to-Sky corridor.</p>
+  </div>
+</div>
+
+<!-- Info Bar -->
+<div class="sq-info">
+  <div class="sq-info-grid">
+    <div class="sq-info-item">
+      <span>Based In</span>
+      <span>Squamish, BC · Sea-to-Sky Corridor</span>
+    </div>
+    <div class="sq-info-item">
+      <span>Serving</span>
+      <span>Garibaldi Highlands to Britannia Beach · Downtown, Valleycliffe, Brackendale, Hospital Hill, the Estates, Dentville</span>
+    </div>
+    <div class="sq-info-item">
+      <span>Certification</span>
+      <span>Advanced Drone Pilot · Transport Canada Certified</span>
+    </div>
+    <div class="sq-info-item">
+      <span>Also Covering</span>
+      <span>Whistler · Pemberton · Sunshine Coast · Vancouver · Fraser Valley · Okanagan</span>
+    </div>
+  </div>
+</div>
+
+<!-- Intro -->
+<div class="sq-intro" data-nav="About">
+  <h2>Your architectural photographer, based right here in Squamish</h2>
+  <p>Squamish is one of British Columbia's fastest-growing communities. Oceanfront mega-developments, sustainable net-zero builds in Garibaldi Estates, and ambitious custom homes on the benchlands are reshaping the town year over year. The architects, builders, and designers behind that work need imagery that communicates the same level of care they put into every project.</p>
+  <p><a href="/bio" class="sq-inline-link">I'm Matt Anthony</a>, and I live and work in Squamish. Being local means I understand the light here — how the Stawamus Chief casts deep shadows across western facades in winter, how Howe Sound reflects soft diffused light on overcast mornings, and why scheduling a twilight exterior around the coastal mountain ridgeline matters more than the clock.</p>
+  <p>Local knowledge translates directly into better photographs. I know which Squamish neighbourhoods catch the best afternoon light, when the morning fog lifts off the sound, and how to plan around the Sea-to-Sky's rapidly shifting weather. For architects and builders working in Squamish, that means fewer scheduling delays, no travel charges, and imagery that captures your project in the context it was designed for.</p>
+  <p>Every shoot begins with understanding design intent. I review plans, walk the site, and talk through your vision before composing a single frame. The result is photography and short-form film that communicates your decisions with the clarity and precision they deserve — whether that's a spec home in Brackendale, a heritage renovation in downtown, or a multi-million dollar custom build with views of the Tantalus Range.</p>
+</div>
+
+<!-- Image Break -->
+<div class="sq-img-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/5be7e36c-d920-4d5d-9260-da4df4c50415/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-16.jpg" alt="Squamish architectural photography interior detail with natural light by Matt Anthony" loading="lazy">
+</div>
+
+<!-- Local Expertise -->
+<div class="sq-expertise" data-nav="Expertise">
+  <div class="sq-expertise-inner">
+    <p class="sq-expertise-label">Local Expertise</p>
+    <div class="sq-expertise-rule"></div>
+    <h2>Why a Squamish-based architectural photographer makes the difference</h2>
+    <p class="sq-expertise-lead">Squamish sits at the meeting point of ocean and alpine environments. The light, weather, and landscape here are unlike anywhere else in the Lower Mainland — and photographing architecture in this setting requires someone who knows it intimately.</p>
+    <div class="sq-expertise-grid">
+      <div class="sq-expertise-card">
+        <h3>Mountain Light &amp; Coastal Weather</h3>
+        <p>The Stawamus Chief and surrounding peaks create dramatic, fast-changing shadow patterns. Howe Sound produces soft, reflective light on overcast days and vivid colour during golden hour. I track these conditions daily and schedule shoots to capture your project at its absolute best — not when it's merely convenient.</p>
+      </div>
+      <div class="sq-expertise-card">
+        <h3>Zero Travel Overhead</h3>
+        <p>Being based in Squamish means no travel fees, no overnight costs, and the flexibility to reschedule same-day when weather shifts. For builders and architects working against tight project timelines, having a photographer ten minutes away eliminates a major variable from your schedule.</p>
+      </div>
+      <div class="sq-expertise-card">
+        <h3>Architecture in Context</h3>
+        <p>Squamish homes are defined by their setting — mountain panoramas framed by floor-to-ceiling glazing, exteriors clad in materials chosen to weather coastal conditions, site plans shaped by terrain and viewscapes. I photograph buildings in relationship to their landscape, capturing the dialogue between built form and the natural environment.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Featured Work -->
+<div class="sq-work" data-nav="Work">
+  <div class="sq-work-inner">
+    <p class="sq-work-label">Featured Work</p>
+    <div class="sq-work-rule"></div>
+    <h2>Recent Sea-to-Sky projects</h2>
+    <div class="sq-work-grid">
+      <a href="/warbler-whistler" class="sq-work-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/40f0f4b4-0146-4139-8682-d3505ba00ba2/warbler-whistler-architectural-photography-matt-anthony-.jpg-36.jpg" alt="Squamish architectural photography Warbler Residence contemporary alpine home in Whistler by Matt Anthony" loading="lazy">
+        <div class="sq-work-card-overlay">
+          <span class="sq-work-card-title">Warbler Residence</span>
+          <span class="sq-work-card-meta">Whistler, BC · Shelter Residential Design · Balmoral Construction</span>
+        </div>
+      </a>
+      <a href="/fitzsimmons-whistler" class="sq-work-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/312b0797-a43a-4a51-906e-f913c78c7b79/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-3.jpg" alt="Squamish architectural photography Fitzsimmons Residence modern alpine exterior in snow by Matt Anthony" loading="lazy">
+        <div class="sq-work-card-overlay">
+          <span class="sq-work-card-title">Fitzsimmons Residence</span>
+          <span class="sq-work-card-meta">Whistler, BC · Balmoral Construction · Britt Lothrop</span>
+        </div>
+      </a>
+      <a href="/sugarloaf-residence" class="sq-work-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/df676ea0-2bb8-4e89-91a1-55d3ce883c14/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-19.jpg" alt="Squamish architectural photography Sugarloaf Residence modern mountain home in Pemberton by Matt Anthony" loading="lazy">
+        <div class="sq-work-card-overlay">
+          <span class="sq-work-card-title">Sugarloaf Residence</span>
+          <span class="sq-work-card-meta">Pemberton, BC · Stark Architecture · Britt Lothrop</span>
+        </div>
+      </a>
+      <a href="/net-zero-build-whistler" class="sq-work-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/eae50d7b-893c-483f-9849-84f06b45e58f/architectural-interiors-photographer-netzero-whistler8.jpg" alt="Squamish architectural photography Net Zero sustainable custom home exterior in Whistler by Matt Anthony" loading="lazy">
+        <div class="sq-work-card-overlay">
+          <span class="sq-work-card-title">Net Zero Build</span>
+          <span class="sq-work-card-meta">Whistler, BC · Peak Ventures · Gnar Interior Design</span>
+        </div>
+      </a>
+      <a href="/eagle-residence" class="sq-work-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/4355dd8f-a134-48f2-99bd-83f775956131/eagle-pemberton-architectural-photography-matt-anthony-.jpg-5.jpg" alt="Squamish architectural photography Eagle Residence mountain home exterior in Pemberton by Matt Anthony" loading="lazy">
+        <div class="sq-work-card-overlay">
+          <span class="sq-work-card-title">Eagle Residence</span>
+          <span class="sq-work-card-meta">Pemberton, BC · Steve Clark · Britt Lothrop</span>
+        </div>
+      </a>
+      <a href="/the-perch-sunshine-coast" class="sq-work-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/23aedb76-4c10-4a31-ba9c-9ebd434a25bc/5322-backhouse-web-2.jpg" alt="Squamish architectural photography The Perch modern coastal home exterior on Sunshine Coast by Matt Anthony" loading="lazy">
+        <div class="sq-work-card-overlay">
+          <span class="sq-work-card-title">The Perch</span>
+          <span class="sq-work-card-meta">Sunshine Coast, BC · Michel Laflamme Architect · Summerhill Fine Homes</span>
+        </div>
+      </a>
+    </div>
+    <a href="/projects" class="sq-work-all">View All Projects</a>
+  </div>
+</div>
+
+<!-- Services -->
+<div class="sq-services" data-nav="Services">
+  <div class="sq-services-inner">
+    <p class="sq-services-label">Services in Squamish</p>
+    <div class="sq-services-rule"></div>
+    <h2>Photography services for Squamish architects, builders &amp; designers</h2>
+    <div class="sq-services-grid">
+      <a href="/project-photography" class="sq-service-card">
+        <h3>Project Photography</h3>
+        <p>Complete documentation of finished residential and commercial builds. Architecture, interiors, detail vignettes, aerial drone, and twilight coverage — composed to honour design intent and showcase craftsmanship for your website, proposals, and social media.</p>
+      </a>
+      <a href="/award-publication-imagery" class="sq-service-card">
+        <h3>Award &amp; Publication Imagery</h3>
+        <p>Purpose-shot photography for Georgie, CHBA, HAVAN, and other BC industry award submissions. Styled and composed to meet publication standards for Western Living, BC Home Magazine, and architectural editorial features. <span class="sq-service-link">Read more about photographing for award submissions.</span></p>
+      </a>
+      <a href="/construction-team-content" class="sq-service-card">
+        <h3>Build &amp; Team Content</h3>
+        <p>Construction progress documentation, team portraits, jobsite photography, and lifestyle content. Built for Squamish builders who need authentic social media, recruitment materials, and brand storytelling that reflects the people behind the projects.</p>
+      </a>
+      <a href="/creative-partner" class="sq-service-card">
+        <h3>Creative Partner</h3>
+        <p>An ongoing creative partnership for firms building multiple projects across the Sea-to-Sky corridor. Monthly photography, video, and content creation — consistent, on-brand visual output without rescoping every engagement.</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Testimonial -->
+<div class="sq-testimonial" data-nav="Testimonial">
+  <div class="sq-testimonial-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg" alt="Squamish architectural photography Warbler Residence interior Whistler by Matt Anthony" loading="lazy">
+  </div>
+  <div class="sq-testimonial-content">
+    <blockquote>&ldquo;Working with Matt was an absolute pleasure from start to finish. The entire process, from our initial contact to the delivery of stunning photos, was seamless and professional. He took the time to understand my needs, and the trust we built made every step effortless.&rdquo;</blockquote>
+    <p class="sq-testimonial-attr"><strong>Balmoral Construction</strong></p>
+    <p class="sq-testimonial-role">Custom Home Builder · Whistler &amp; Sea-to-Sky</p>
+    <a href="/balmoral-construction" class="sq-testimonial-link">View Case Study &rarr;</a>
+  </div>
+</div>
+
+<!-- Squamish Architecture -->
+<div class="sq-arch">
+  <div class="sq-arch-inner">
+    <div class="sq-arch-img">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83bbba67-7393-4e34-8b4b-bac1600c8110/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-12.jpg" alt="Squamish architectural photography coastal home exterior Sea-to-Sky by Matt Anthony" loading="lazy">
+    </div>
+    <div class="sq-arch-text">
+      <p class="sq-arch-text-label">Squamish Architecture</p>
+      <div class="sq-arch-text-rule"></div>
+      <h2>A design community that's growing fast</h2>
+      <p>Squamish has evolved from a resource and recreation town into one of BC's most dynamic building markets. Major waterfront developments like Oceanfront Squamish and Sea and Sky Waterfront Landing are bringing thousands of new homes to the corridor, while custom builders in the Garibaldi Highlands, the Estates, and University Heights are pushing architectural standards higher with every project.</p>
+      <p>Net-zero and high-performance homes are increasingly common here — Squamish requires Step 4 of the BC Energy Step Code for new residential construction, and many builders are pushing to Step 5 and beyond. Finch Drive, one of the corridor's first net-zero-ready communities, is leading the way. This kind of forward-thinking construction deserves photography that captures not just what a building looks like, but how it performs and why it matters.</p>
+      <p>I work with the architects, builders, interior designers, and trades professionals shaping Squamish's built environment — from the kitchen suppliers and millwork shops to the window companies and glazing specialists whose products define these spaces.</p>
+      <a href="/journal/roi-professional-architectural-photography-builders" class="sq-inline-link">Read: The ROI of Professional Architectural Photography</a> · <a href="/journal/architectural-photography-for-publications" class="sq-inline-link">Photographing for Publications</a>
+    </div>
+  </div>
+</div>
+
+<!-- Working Together -->
+<div class="sq-together" data-nav="Process">
+  <div class="sq-together-inner">
+    <p class="sq-together-label">Working Together</p>
+    <div class="sq-together-rule"></div>
+    <h2>What to expect when you hire a local architectural photographer</h2>
+    <p>Every engagement begins with a discovery call. We talk about what you've built, who you built it for, and what the imagery needs to accomplish — whether that's winning a <a href="/journal/georgie-awards-guide" class="sq-inline-link">Georgie Award</a>, refreshing your website, or building a social media library you can draw from for months. Sea-to-Sky projects are eligible for BC's premier housing recognition program — read our <a href="/journal/georgie-awards-guide" class="sq-inline-link">complete Georgie Awards guide</a> to understand what judges look for.</p>
+    <p>From there, I handle the entire process: scheduling around optimal light conditions, coordinating with stagers and designers if needed, shooting, editing, and delivering a complete set of high-resolution files ready for print and digital use. Turnaround is typically two weeks.</p>
+    <p>No add-ons, no surprise line items. Exterior architecture, interior wide angles, detail vignettes, aerial drone coverage, and twilight shots are all part of a standard project engagement. You get a complete visual record — not a piecemeal quote you have to assemble yourself.</p>
+    <p>I work as a creative partner, not a vendor. That means I'm invested in helping your imagery work as hard as your builds do — across award submissions, proposals, websites, and social media channels.</p>
+    <p><a href="/process" class="sq-inline-link">View my full process</a> · <a href="/journal/what-architects-should-look-for-hiring-photographer" class="sq-inline-link">Read: What Architects Should Look for When Hiring a Photographer</a></p>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="sq-faq" data-nav="FAQ">
+  <div class="sq-faq-inner">
+    <p class="sq-faq-label">Common Questions</p>
+    <div class="sq-faq-rule"></div>
+    <h2>Architectural photography in Squamish — FAQ</h2>
+
+    <div class="sq-faq-item">
+      <h3 class="sq-faq-q">How much does architectural photography cost in Squamish?</h3>
+      <p class="sq-faq-a">Pricing depends on the scope of the project — number of spaces, whether aerial and twilight coverage is needed, and whether you require short-form video alongside stills. I offer all-inclusive project rates with no add-on fees for drone, twilight, or editing. <a href="/discovery-call">Book a discovery call</a> and I'll provide a detailed quote based on your specific project.</p>
+    </div>
+
+    <div class="sq-faq-item">
+      <h3 class="sq-faq-q">Do you charge travel fees for shoots in Squamish?</h3>
+      <p class="sq-faq-a">No. I'm based in Squamish, so there are no travel charges for local projects. For shoots in Whistler, Pemberton, or the Sunshine Coast, travel is typically included as well since these are all within my regular service area along the Sea-to-Sky corridor.</p>
+    </div>
+
+    <div class="sq-faq-item">
+      <h3 class="sq-faq-q">What if the weather is bad on shoot day?</h3>
+      <p class="sq-faq-a">Being local means I can reschedule same-day if conditions shift. Squamish weather changes fast — a rainy morning can turn into a clear afternoon. I monitor conditions closely and will always recommend a reschedule if it means significantly better results. There's no cost for weather-related rescheduling.</p>
+    </div>
+
+    <div class="sq-faq-item">
+      <h3 class="sq-faq-q">Can you photograph projects for award submissions like the Georgie Awards?</h3>
+      <p class="sq-faq-a">Yes — award and publication imagery is one of my core services. I understand what Georgie, CHBA, and HAVAN judges look for and compose specifically for submission requirements and editorial standards. I also offer a <a href="/free-guide">free guide on preparing your project for award submissions</a>.</p>
+    </div>
+
+    <div class="sq-faq-item">
+      <h3 class="sq-faq-q">Do you offer drone photography for Squamish builds?</h3>
+      <p class="sq-faq-a">Yes. I'm a Transport Canada certified Advanced Drone Pilot, which is required for commercial drone operations. Aerial coverage is included in every standard project engagement — there's no separate add-on fee. This is particularly valuable for Squamish projects where the mountain and water setting is a defining feature of the architecture.</p>
+    </div>
+
+    <div class="sq-faq-item">
+      <h3 class="sq-faq-q">How far in advance should I book?</h3>
+      <p class="sq-faq-a">Two to four weeks in advance is ideal, especially during the busy season (May through October). For retainer clients, I reserve dedicated monthly capacity so scheduling is always flexible. If you have an urgent need — a listing going live, a last-minute award deadline — reach out and I'll do my best to accommodate.</p>
+    </div>
+
+    <a href="/faqs" class="sq-faq-all">View All FAQs</a>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="sq-cta" data-nav="Contact">
+  <div class="sq-cta-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/78a5df2e-eb81-4c0d-a9f0-9bdea08bdcd9/matt-anthony-photography-squamish.jpg" alt="Squamish architectural photographer Matt Anthony" loading="lazy">
+  </div>
+  <div class="sq-cta-content">
+    <h2>Have a Squamish project worth documenting?</h2>
+    <p>I'd love to hear about what you're building. Let's start with a conversation about your project and how the right imagery can help you win more work, attract better clients, and build a visual portfolio that reflects the quality of your craft.</p>
+    <a href="/discovery-call" class="sq-cta-btn">Book a Discovery Call</a>
+    <p class="sq-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="sq-ft">
+  <div class="sq-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+<div class="sq-ft-r">
+    <div class="sq-ft-i">
+      <span class="sq-ft-l">Based In</span>
+      <span class="sq-ft-dt"></span>
+      <p>Squamish, British Columbia</p>
+    </div>
+    <div class="sq-ft-i">
+      <span class="sq-ft-l">Email</span>
+      <span class="sq-ft-dt"></span>
+      <a class="sq-ft-email" id="sq-ft-em"></a>
+    </div>
+    <div class="sq-ft-i">
+      <span class="sq-ft-l">Phone</span>
+      <span class="sq-ft-dt"></span>
+      <a href="tel:6047659270">604.765.9270</a>
+    </div>
+    <div class="sq-ft-i">
+      <span class="sq-ft-l">Follow</span>
+      <span class="sq-ft-dt"></span>
+      <div class="sq-ft-s">
+        <a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <div class="sq-ft-rl"></div>
+  <div class="sq-ft-b">
+    <span class="sq-ft-cp">&copy; 2026 Matt Anthony Photography</span>
+    <div class="sq-ft-n">
+      <a href="/projects">Projects</a>
+      <a href="/journal">Journal</a>
+      <a href="/bio">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/pricing-guide-landing">Get Pricing</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+(function(){
+  var isMobile='ontouchstart' in window;
+
+  /* ═══ EMAIL OBFUSCATION ═══ */
+  var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];var e=document.getElementById('sq-ft-em');if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader=document.getElementById('sqLoader');
+  window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('sq-done');},1100);});
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  var progressBar=document.getElementById('sqProgress');
+  function updateProgress(){var sc=window.scrollY;var d=document.documentElement.scrollHeight-window.innerHeight;if(d>0)progressBar.style.width=(sc/d*100)+'%';}
+
+  /* ═══ HERO PARALLAX ═══ */
+  var heroImg=document.querySelector('.sq-hero-img');
+  var heroContent=document.querySelector('.sq-hero-content');
+  function updateHero(){var sc=window.scrollY;var h=window.innerHeight;if(sc>h)return;var ratio=sc/h;if(heroImg)heroImg.style.transform='translateY('+(sc*0.15)+'px)';if(heroContent){heroContent.style.transform='translateY('+(sc*0.15)+'px)';heroContent.style.opacity=1-ratio*1.2;}}
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor=document.getElementById('sqCursor');var cursorDot=document.getElementById('sqCursorDot');var cx=0,cy=0,dx=0,dy=0;
+  if(!isMobile&&cursor){
+    document.addEventListener('mousemove',function(ev){dx=ev.clientX;dy=ev.clientY;cursorDot.style.left=dx+'px';cursorDot.style.top=dy+'px';if(!cursor.classList.contains('sq-active')){cursor.classList.add('sq-active');cursorDot.classList.add('sq-active');}});
+    function tickCursor(){cx+=(dx-cx)*0.12;cy+=(dy-cy)*0.12;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(tickCursor);}tickCursor();
+    var hoverEls=document.querySelectorAll('a, button, .sq-work-card, .sq-cta-btn');
+    hoverEls.forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('sq-hover');});el.addEventListener('mouseleave',function(){cursor.classList.remove('sq-hover');});});
+    document.addEventListener('mousedown',function(){cursor.classList.add('sq-click');});
+    document.addEventListener('mouseup',function(){cursor.classList.remove('sq-click');});
+  }
+
+  /* ═══ SECTION NAV DOTS ═══ */
+  var sectionNav=document.getElementById("sqSectionNav");var navSections=document.querySelectorAll("[data-nav]");var navDots=[];
+  navSections.forEach(function(sec){var dot=document.createElement("div");dot.className="sq-nav-dot";dot.setAttribute("data-label",sec.getAttribute("data-nav"));dot.addEventListener("click",function(){sec.scrollIntoView({behavior:"smooth",block:"start"});});sectionNav.appendChild(dot);navDots.push({dot:dot,section:sec});});
+  function updateNavDots(){var scrollY=window.scrollY;var winH=window.innerHeight;if(scrollY>winH*0.5)sectionNav.classList.add("sq-nav-visible");else sectionNav.classList.remove("sq-nav-visible");var active=null;navDots.forEach(function(item){var rect=item.section.getBoundingClientRect();if(rect.top<winH*0.5&&rect.bottom>winH*0.3)active=item;item.dot.classList.remove("sq-nav-active");});if(active)active.dot.classList.add("sq-nav-active");}
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking=false;
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){updateProgress();updateHero();updateNavDots();ticking=false;});ticking=true;}},{passive:true});
+  updateProgress();updateHero();updateNavDots();
+})();
+</script>
+
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does architectural photography cost in Squamish?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pricing depends on the scope of the project — number of spaces, whether aerial and twilight coverage is needed, and whether you require short-form video alongside stills. All-inclusive project rates with no add-on fees for drone, twilight, or editing. Book a discovery call for a detailed quote."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you charge travel fees for shoots in Squamish?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Based in Squamish, there are no travel charges for local projects. Whistler, Pemberton, and Sunshine Coast travel is typically included within the Sea-to-Sky service area."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if the weather is bad on shoot day?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Being local means same-day rescheduling when conditions shift. Squamish weather changes fast. Conditions are monitored closely and rescheduling is recommended for significantly better results. No cost for weather-related rescheduling."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you photograph projects for award submissions like the Georgie Awards?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — award and publication imagery is a core service. Composed specifically for Georgie, CHBA, and HAVAN submission requirements and editorial standards."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer drone photography for Squamish builds?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Transport Canada certified Advanced Drone Pilot. Aerial coverage is included in every standard project engagement — no separate add-on fee."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How far in advance should I book?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two to four weeks in advance is ideal, especially during the busy season (May through October). Retainer clients receive dedicated monthly capacity. Urgent needs can often be accommodated."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- LocalBusiness Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.mattanthonyphoto.com/#business",
+  "name": "Matt Anthony Photography",
+  "description": "Architectural photography in Squamish, BC — custom homes, renovations, and commercial projects for architects, builders, and designers in the Sea-to-Sky Corridor.",
+  "url": "https://www.mattanthonyphoto.com/squamish-architectural-photography",
+  "telephone": "+16047659270",
+  "email": "info@mattanthonyphoto.com",
+  "image": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/808387ba-bee1-4c46-a4d3-354d7e1f8372/west-10th-vancouver-web--2.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Squamish",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.7016,
+    "longitude": -123.1558
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Squamish" },
+    { "@type": "City", "name": "Whistler" },
+    { "@type": "City", "name": "Pemberton" },
+    { "@type": "Place", "name": "Sunshine Coast" },
+    { "@type": "City", "name": "Vancouver" }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/mattanthonyphoto/",
+    "https://www.linkedin.com/in/mattanthonyphoto/"
+  ]
+}
+</script>
+
+<!--
+  SQUAMISH LOCATION LANDING PAGE — Code Block
+  mattanthonyphoto.com/squamish-architectural-photography
+
+  Last updated: 2026-03-19
+  Changes:
+    1. Added meta description, canonical, and OG tags
+    2. Added descriptive alt text to ALL 11 images (were all missing)
+    3. Added loading="lazy" to all below-fold images
+    4. Updated nav/footer: /projects-1 → /projects, Visual Partner Retainer → Creative Partner
+    5. Fixed footer LinkedIn — full URL with rel="noopener"
+    6. Added LocalBusiness + FAQPage schema
+    7. Email obfuscation to bypass CloudFlare mangling
+    8. Added internal links to /georgie-awards-guide and /architectural-photography-for-publications
+-->
+
+<meta name="description" content="Architectural photography in Squamish, BC — custom homes, renovations, and commercial projects. Documenting design intent in the Sea-to-Sky Corridor.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/squamish-architectural-photography">
+<meta property="og:title" content="Squamish Architectural Photography | Matt Anthony">
+<meta property="og:description" content="Architectural and interior photography for custom homes and commercial projects in Squamish, BC. Based locally in the Sea-to-Sky Corridor.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/squamish-architectural-photography">
+<meta property="og:type" content="website">

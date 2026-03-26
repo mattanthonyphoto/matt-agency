@@ -1,0 +1,329 @@
+{
+  "client": {
+    "company": "Site Lines Architecture",
+    "slug": "sitelines"
+  },
+  "audit_date": "March 2026",
+  "cover": {
+    "headline_html": "Site Lines Architecture<br><em>Site &amp; SEO Audit</em>",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ff283fca-be9f-4741-955b-786735c0fd2b/eagle-pemberton-architectural-photography-matt-anthony-.jpg.jpg",
+    "image_position": "center 30%"
+  },
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8b5d40eb-2ba1-47ff-864f-7d85f45395ba/architectural-interiors-photographer-sunset-beach-vancouver6.jpg",
+        "alt": "Sunset Beach Residence — panoramic living room, Vancouver",
+        "caption": "Sunset Beach Residence &middot; Vancouver, BC &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c992d9ce-4647-4129-b03b-6ce9deb487c3/west-10th-vancouver-web--32.jpg",
+        "alt": "West 10th Avenue — contemporary exterior facade, Vancouver",
+        "caption": "West 10th Avenue &middot; Vancouver, BC &middot; Matt Anthony Photography"
+      }
+    ]
+  },
+  "overall_scores": [
+    {
+      "value": 69,
+      "label": "Overall SEO",
+      "grade": "B-",
+      "color": "mid"
+    },
+    {
+      "value": 46,
+      "label": "Local / GEO",
+      "grade": "C-",
+      "color": "bad"
+    },
+    {
+      "value": 100,
+      "label": "Content",
+      "grade": "A",
+      "color": "good"
+    },
+    {
+      "value": 77,
+      "label": "Visual Assets",
+      "grade": "B",
+      "color": "good"
+    }
+  ],
+  "sections": [
+    {
+      "type": "seo",
+      "eyebrow": "SEO Audit",
+      "headline_html": "Search visibility.<br><em>Where you rank today.</em>",
+      "lead": "Your site loads fast and the technical foundation is solid. But missing structured data and incomplete Open Graph tags mean Google and AI search engines can't fully understand what Site Lines does, and social shares look generic instead of professional.",
+      "categories": [
+        {
+          "name": "Technical SEO",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "Valid SSL certificate",
+              "detail": "Site is served over HTTPS with no redirect issues."
+            },
+            {
+              "status": "pass",
+              "title": "Fast server response (77ms)",
+              "detail": "First byte returned quickly. No performance concerns."
+            },
+            {
+              "status": "pass",
+              "title": "Sitemap found (97 URLs)",
+              "detail": "Sitemap is present and indexable at sitemap.xml."
+            },
+            {
+              "status": "pass",
+              "title": "Canonical tag present",
+              "detail": "Prevents duplicate content issues across pages."
+            }
+          ]
+        },
+        {
+          "name": "On-Page SEO",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "Good meta title (52 chars)",
+              "detail": "\"site lines architecture | Transform Your Space Today\" — clear and within range."
+            },
+            {
+              "status": "warn",
+              "title": "Meta description too long (195 chars)",
+              "detail": "Google truncates descriptions over 155 characters. The current one gets cut off in search results, losing your key message."
+            },
+            {
+              "status": "warn",
+              "title": "Missing Open Graph image",
+              "detail": "When someone shares your site on LinkedIn or Facebook, there's no preview image. It looks like a broken link instead of a portfolio piece."
+            },
+            {
+              "status": "fail",
+              "title": "No structured data (schema.org)",
+              "detail": "No JSON-LD markup found. Google, ChatGPT, and Perplexity can't parse your firm type, location, services, or project portfolio. This is the single biggest SEO gap."
+            }
+          ]
+        },
+        {
+          "name": "Content & Keywords",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "Strong homepage content (858 words)",
+              "detail": "Well-written copy with good keyword density for architecture-related terms."
+            },
+            {
+              "status": "pass",
+              "title": "28 pages crawled successfully",
+              "detail": "Good site depth with dedicated pages for services, projects, and team."
+            },
+            {
+              "status": "warn",
+              "title": "Blog section exists but minimal (1 page)",
+              "detail": "A single blog post doesn't move the needle on SEO. Competitors publishing monthly are building topical authority you're missing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "geo",
+      "eyebrow": "Local SEO &amp; GEO Audit",
+      "headline_html": "Local visibility.<br><em>Can they find you?</em>",
+      "lead": "When a developer in Langley or an institutional client in Abbotsford searches for an architect, Google serves results based on local signals: Google Business Profile, directory citations, and LocalBusiness schema. Site Lines is missing all three.",
+      "categories": [
+        {
+          "name": "Google Business Profile",
+          "findings": [
+            {
+              "status": "fail",
+              "title": "Google Business Profile not detected",
+              "detail": "GBP is the single most important local ranking factor. Without it, Site Lines doesn't appear in Google Maps or the local pack. Every competitor with a GBP outranks you for local searches."
+            },
+            {
+              "status": "fail",
+              "title": "No LocalBusiness schema markup",
+              "detail": "Add ArchitecturalFirm or LocalBusiness JSON-LD schema with NAP, hours, and service area. This feeds Google's Knowledge Panel directly."
+            }
+          ]
+        },
+        {
+          "name": "Directory Presence",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "Listed on Houzz",
+              "detail": "Houzz profile exists with 6 awards. Good baseline citation."
+            },
+            {
+              "status": "warn",
+              "title": "Not found on HomeStars",
+              "detail": "HomeStars is a high-authority Canadian directory. A profile here builds citation consistency."
+            },
+            {
+              "status": "warn",
+              "title": "NAP consistency needs verification",
+              "detail": "Name, address, and phone must match exactly across website footer, Houzz, and any other listings. Inconsistencies confuse Google."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "competitors",
+      "eyebrow": "Competitive Landscape",
+      "headline_html": "How you compare.<br><em>Side by side.</em>",
+      "lead": "Here's how Site Lines stacks up against other Fraser Valley architecture firms across key digital marketing metrics.",
+      "columns": [
+        "Firm",
+        "Website",
+        "SEO",
+        "Social",
+        "Awards"
+      ],
+      "rows": [
+        {
+          "highlight": true,
+          "cells": [
+            "Site Lines Architecture",
+            "Modern, clean",
+            "69/100 — No schema",
+            "LinkedIn dormant 7mo",
+            "6 Houzz badges"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Keystone Architecture",
+            "Strong portfolio",
+            "Structured pages",
+            "IG + LinkedIn active",
+            "Multiple FV Commercial Awards"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Station One Architects",
+            "Professional photography",
+            "Good depth",
+            "IG, FB, LinkedIn, YouTube",
+            "Institutional credibility"
+          ]
+        },
+        {
+          "highlight": false,
+          "cells": [
+            "Willson Design",
+            "Recently redesigned",
+            "Basic SEO",
+            "FB active",
+            "Georgie Award nominees"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "eyebrow": "Content &amp; Visual Assets",
+      "headline_html": "What you have.<br><em>What you're missing.</em>",
+      "lead": "Your site has 320 images across 28 pages. The volume is there. But two critical issues are undermining the work those images could be doing for you.",
+      "categories": [
+        {
+          "name": "Image SEO",
+          "findings": [
+            {
+              "status": "fail",
+              "title": "320 of 320 images missing alt text (100%)",
+              "detail": "Every single image on the site lacks alt text. This means Google Image Search can't index your portfolio. For an architecture firm, image search is one of the highest-intent discovery channels. Prospects searching for 'modern home Fort Langley' or 'commercial architecture Fraser Valley' will never find your work."
+            },
+            {
+              "status": "warn",
+              "title": "No Open Graph image set",
+              "detail": "When your projects are shared on LinkedIn or Facebook, they appear without a preview image. For a visual firm, this is a missed opportunity every time someone shares your work."
+            }
+          ]
+        },
+        {
+          "name": "Photography Quality",
+          "findings": [
+            {
+              "status": "pass",
+              "title": "Professional photography on completed projects",
+              "detail": "Residential projects like Panorama Ridge and Windermere Lakeside have solid architectural photography with good exterior and interior coverage."
+            },
+            {
+              "status": "warn",
+              "title": "Multiple projects showing renders only",
+              "detail": "BC Housing, Squamish Nexus, and other multi-family projects show 3D renderings instead of built photography. Renders don't win awards and don't build trust the same way."
+            },
+            {
+              "status": "warn",
+              "title": "No video content anywhere on the site",
+              "detail": "No walkthrough videos, no project stories, no behind-the-scenes. Static imagery only. Video is the highest-engagement content type on every platform."
+            }
+          ]
+        },
+        {
+          "name": "Content Strategy",
+          "findings": [
+            {
+              "status": "warn",
+              "title": "No case studies or design narratives",
+              "detail": "Project pages are image galleries with minimal storytelling. No design intent, no client quotes, no before/after, no process documentation. The design thinking behind each project is invisible."
+            },
+            {
+              "status": "fail",
+              "title": "LinkedIn dormant for 7+ months",
+              "detail": "For a B2B architecture firm, LinkedIn is the highest-value social platform. Developers, institutional clients, and design professionals are all there. Seven months of silence means seven months of missed visibility."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "recommendations",
+      "eyebrow": "What I'd Fix First",
+      "headline_html": "The action plan.<br><em>Priority order.</em>",
+      "lead": "Site Lines has a strong foundation: 25 years of work, a clean website, and real project depth. But the digital infrastructure isn't working as hard as it should. Here's where to focus.",
+      "stats": [
+        {
+          "value": "320",
+          "label": "Images With No Alt Text"
+        },
+        {
+          "value": "0",
+          "label": "Industry Awards Won"
+        },
+        {
+          "value": "7+",
+          "label": "Months LinkedIn Dark"
+        }
+      ],
+      "steps": [
+        {
+          "number": "1",
+          "title": "Add Structured Data + Fix Image SEO",
+          "description": "Implement ArchitecturalFirm JSON-LD schema and add descriptive alt text to all 320 images. This unlocks Google Image Search and AI search engines like ChatGPT and Perplexity. Highest ROI fix on this list."
+        },
+        {
+          "number": "2",
+          "title": "Claim Google Business Profile",
+          "description": "Set up GBP with consistent NAP, project photos, and service areas. This is the only way to appear in Google Maps and the local pack when developers and institutional clients search for architects in the Fraser Valley."
+        },
+        {
+          "number": "3",
+          "title": "Document Built Work at Award Level",
+          "description": "Replace renderings with professional photography of completed projects. Shoot to award-submission specifications so every completed project becomes a potential AIBC, RAIC, or publication credential. After 25 years, the portfolio should be generating recognition, not just filling a gallery."
+        }
+      ],
+      "insight": {
+        "title": "This Is Where a Creative Partner Comes In",
+        "content_html": "<p>The technical SEO fixes are straightforward. The real gap is content: award-level photography, design narratives, social content, and a consistent visual presence that matches the calibre of work Site Lines has been producing for 25 years.</p><p>That's what I do. One partner, one retainer, everything from project photography to award submissions to social strategy. See the proposal for details.</p>"
+      }
+    }
+  ]
+}

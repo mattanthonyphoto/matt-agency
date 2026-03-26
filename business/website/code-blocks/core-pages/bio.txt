@@ -1,0 +1,2099 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.bio-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a1a18;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+}
+
+.bio-loader.bio-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.bio-loader-brand {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: #f6f4f0;
+  opacity: 0;
+  animation: bioLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.bio-loader-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(138,133,121,0.7);
+  margin-top: 8px;
+  opacity: 0;
+  animation: bioLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.bio-loader-line {
+  width: 80px;
+  height: 1px;
+  background: rgba(201,169,110,0.12);
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+  opacity: 0;
+  animation: bioLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.bio-loader-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  animation: bioLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+}
+
+@keyframes bioLoaderIn { to { opacity: 1; } }
+@keyframes bioLoaderFill { to { left: 100%; } }
+
+/* ── Section nav dots ── */
+.bio-section-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.bio-section-nav.bio-nav-visible {
+  opacity: 1;
+}
+
+.bio-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #8a8579;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.bio-nav-dot:hover {
+  border-color: #c9a96e;
+  transform: scale(1.3);
+}
+
+.bio-nav-dot.bio-nav-active {
+  background: #c9a96e;
+  border-color: #c9a96e;
+  box-shadow: 0 0 8px rgba(201,169,110,0.4);
+}
+
+.bio-nav-dot::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, right 0.3s ease;
+}
+
+.bio-nav-dot:hover::before {
+  opacity: 1;
+  right: 24px;
+}
+
+@media (max-width: 768px) {
+  .bio-section-nav { display: none; }
+}
+
+/* ── Scroll progress bar ── */
+.bio-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.4));
+  z-index: 9999;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px rgba(201,169,110,0.4);
+}
+
+/* ── Headline gold underline on em ── */
+.bio-wrap h2 em {
+  position: relative;
+  display: inline;
+}
+
+.bio-wrap h2 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.2));
+  transition: width 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bio-wrap h2.bio-underlined em::after {
+  width: 100%;
+}
+
+/* ── Divider draw animation ── */
+.bio-divider {
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bio-divider.bio-drawn {
+  width: 80px;
+}
+
+/* ── Ken Burns on image breaks ── */
+.bio-img-break.bio-in-view img {
+  animation: bioKenBurns 16s ease-in-out infinite alternate;
+}
+
+@keyframes bioKenBurns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.06) translate(-4px, -6px); }
+}
+
+/* ── Film grain overlay ── */
+.bio-grain::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.bio-grain {
+  position: relative;
+}
+
+.bio-grain > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Eyebrow gold dash (animated) ── */
+.bio-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.bio-eyebrow::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  background: #c9a96e;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bio-eyebrow.bio-visible::before {
+  width: 24px;
+}
+
+/* ── Photo break depth layers ── */
+.bio-img-break {
+  position: relative;
+  overflow: hidden;
+}
+
+.bio-img-break img {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+.bio-img-break::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(rgba(26,26,24,0.15), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bio-img-break::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: linear-gradient(transparent, rgba(26,26,24,0.55));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Custom cursor ── */
+.bio-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(201,169,110,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
+.bio-cursor.bio-active {
+  opacity: 1;
+}
+
+.bio-cursor.bio-hover {
+  width: 50px;
+  height: 50px;
+  border-color: #c9a96e;
+  background: rgba(201,169,110,0.08);
+}
+
+.bio-cursor.bio-click {
+  width: 14px;
+  height: 14px;
+  background: rgba(201,169,110,0.3);
+}
+
+.bio-cursor-dot {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #c9a96e;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bio-cursor-dot.bio-active {
+  opacity: 1;
+}
+
+/* ── Magnetic button ── */
+.bio-magnetic {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Testimonial word reveal ── */
+.bio-quote-text .bio-qw {
+  display: inline;
+  color: rgba(26,26,24,0.15) !important;
+  transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bio-quote-text .bio-qw.bio-lit {
+  color: #1a1a18 !important;
+}
+
+.bio-quote-text .bio-qw.bio-gold-word.bio-lit {
+  color: #b8975a !important;
+}
+
+/* ── Ambient particles canvas ── */
+.bio-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Meta bar border draw ── */
+.bio-meta {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  background-image: linear-gradient(#d9d5cd, #d9d5cd), linear-gradient(#d9d5cd, #d9d5cd);
+  background-size: 0% 1px, 0% 1px;
+  background-position: center top, center bottom;
+  background-repeat: no-repeat;
+  transition: background-size 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bio-meta.bio-drawn {
+  background-size: 100% 1px, 100% 1px;
+}
+
+/* ── CTA background slow zoom ── */
+.bio-cta-bg img {
+  transition: transform 8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bio-cta.bio-in-view .bio-cta-bg img {
+  transform: scale(1.08);
+}
+
+/* ── CTA button glow pulse ── */
+.bio-cta-btn {
+  animation: bioBtnGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes bioBtnGlow {
+  0% { box-shadow: none; }
+  100% { box-shadow: 0 0 40px rgba(201,169,110,0.15), 0 0 80px rgba(201,169,110,0.05); }
+}
+
+/* ── Hero scroll fade ── */
+.bio-hero-content {
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* ── Scroll indicator ── */
+.bio-scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 3;
+  transition: opacity 0.4s ease;
+}
+
+.bio-scroll-hint.bio-hidden { opacity: 0; pointer-events: none; }
+
+.bio-scroll-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.45rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.3) !important;
+}
+
+.bio-scroll-line {
+  width: 1px;
+  height: 36px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(246,244,240,0.1);
+}
+
+.bio-scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #c9a96e;
+  animation: bioScrollPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes bioScrollPulse {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ── Inline gold highlights ── */
+.bio-gold { color: #c9a96e !important; font-weight: 400; }
+
+/* ── Manifesto ── */
+.bio-manifesto {
+  background: #1a1a18;
+  padding: 8rem 5vw;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bio-manifesto::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(rgba(201,169,110,0.4), transparent);
+}
+
+.bio-manifesto-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(246,244,240,0.25) !important;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.bio-manifesto-text .bio-mw {
+  display: inline;
+  color: rgba(246,244,240,0.15) !important;
+  transition: color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bio-manifesto-text .bio-mw.bio-lit {
+  color: #f6f4f0 !important;
+}
+
+.bio-manifesto-text .bio-mw.bio-gold-word.bio-lit {
+  color: #c9a96e !important;
+}
+
+/* ── Accent line ── */
+.bio-accent {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.2) 20%, rgba(201,169,110,0.2) 80%, transparent 100%);
+}
+
+/* ── Stat counter glow ── */
+.bio-stat-num {
+  transition: text-shadow 0.6s ease;
+}
+
+.bio-stat-num.bio-counted {
+  text-shadow: 0 0 20px rgba(201,169,110,0.3);
+}
+
+/* ═══ BIO PAGE ═══ */
+.bio-wrap {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #1a1a18 !important;
+  line-height: 1.7;
+  font-weight: 300;
+  overflow-x: hidden;
+  max-width: none !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding: 0 !important;
+}
+
+.bio-wrap img {
+  max-width: 100%;
+  display: block;
+}
+
+.bio-wrap a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── HERO ─── */
+.bio-hero {
+  position: relative;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  min-height: 92vh;
+  max-height: 100vh;
+  width: 100%;
+  background: #1a1a18;
+  overflow: hidden;
+}
+
+.bio-hero-image {
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.bio-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  inset: 0;
+  max-width: none !important;
+}
+
+.bio-hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 5vw 6rem 4vw;
+  background: #1a1a18;
+  position: relative;
+  z-index: 2;
+}
+
+.bio-hero-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.bio-hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: #f6f4f0 !important;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.bio-hero-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 300;
+  font-style: italic;
+  color: #c9a96e !important;
+  margin-bottom: 2.5rem;
+}
+
+.bio-hero-rule {
+  width: 50px;
+  height: 1px;
+  background: rgba(201,169,110,0.4);
+  margin-bottom: 2.5rem;
+}
+
+.bio-hero-intro {
+  font-size: 1.05rem;
+  color: #d9d5cd !important;
+  line-height: 1.85;
+  max-width: 480px;
+}
+
+.bio-hero-intro strong {
+  color: #f6f4f0 !important;
+  font-weight: 400;
+}
+
+/* ─── META BAR ─── */
+.bio-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0;
+  border-top: 1px solid #d9d5cd;
+  border-bottom: 1px solid #d9d5cd;
+}
+
+.bio-meta-item {
+  padding: 2rem 5vw;
+  border-right: 1px solid #d9d5cd;
+}
+
+.bio-meta-item:last-child {
+  border-right: none;
+}
+
+.bio-meta-dt {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8579 !important;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.bio-meta-dd {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #1a1a18 !important;
+}
+
+/* ─── SECTIONS ─── */
+.bio-section {
+  padding: 6rem 5vw;
+}
+
+.bio-narrow {
+  max-width: 720px;
+}
+
+.bio-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #b8975a !important;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.bio-divider {
+  width: 60px;
+  height: 1px;
+  background: #c9a96e;
+  margin: 0 0 2rem;
+}
+
+.bio-section h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.bio-section h2 em {
+  font-style: italic;
+  color: #c9a96e !important;
+}
+
+.bio-section p {
+  font-size: 1rem;
+  color: #4a4a46 !important;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.bio-section p:last-child {
+  margin-bottom: 0;
+}
+
+.bio-inline-link {
+  color: #1a1a18 !important;
+  font-weight: 400;
+  border-bottom: 1px solid #c9a96e;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.bio-inline-link:hover {
+  color: #b8975a !important;
+  border-color: #b8975a;
+}
+
+/* ─── IMAGE BREAK ─── */
+.bio-img-break {
+  width: 100%;
+  height: 70vh;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.bio-img-break img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: clip-path 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.1s linear;
+}
+
+/* ─── APPROACH GRID ─── */
+.bio-approach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.bio-approach-card {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(201,169,110,0.2);
+  transform: translateY(12px);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+
+.bio-approach-card.bio-entered {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.bio-approach-card h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #1a1a18 !important;
+  margin-bottom: 0.75rem;
+}
+
+.bio-approach-card p {
+  font-size: 0.9rem;
+  color: #8a8579 !important;
+  line-height: 1.75;
+}
+
+/* ─── VALUES (DARK) ─── */
+.bio-values {
+  background: #1a1a18;
+  padding: 6rem 5vw;
+}
+
+.bio-values-inner {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  width: 100%;
+}
+
+.bio-values .bio-label {
+  color: #c9a96e !important;
+}
+
+.bio-values .bio-divider {
+  background: rgba(201,169,110,0.4);
+}
+
+.bio-values h2 {
+  color: #f6f4f0 !important;
+}
+
+.bio-values h2 em {
+  font-style: italic;
+  color: #c9a96e !important;
+}
+
+.bio-val-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.bio-val-item {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(201,169,110,0.2);
+}
+
+.bio-val-item h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #f6f4f0 !important;
+  margin-bottom: 0.75rem;
+}
+
+.bio-val-item p {
+  font-size: 0.9rem;
+  color: rgba(246,244,240,0.65) !important;
+  line-height: 1.75;
+}
+
+.bio-val-item a {
+  color: #c9a96e !important;
+  border-bottom: 1px solid rgba(201,169,110,0.3);
+  transition: border-color 0.3s ease;
+}
+
+.bio-val-item a:hover {
+  border-color: #c9a96e;
+}
+
+/* ─── STATS STRIP ─── */
+.bio-stats {
+  background: #f6f4f0;
+  padding: 4rem 5vw;
+}
+
+.bio-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.bio-stat-card {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.bio-stat-card .bio-stat-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: #b8975a !important;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.bio-stat-card .bio-stat-lbl {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8a8579 !important;
+  font-weight: 400;
+}
+
+/* ─── SERVICES CARDS ─── */
+.bio-services {
+  padding: 6rem 5vw;
+}
+
+.bio-services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+  max-width: 1100px;
+}
+
+.bio-service-card {
+  padding: 2rem;
+  border: 1px solid #eeece6;
+  border-radius: 2px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.bio-service-card:hover {
+  border-color: rgba(201,169,110,0.4);
+  transform: translateY(-4px);
+}
+
+.bio-service-card h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #1a1a18 !important;
+  margin-bottom: 0.75rem;
+}
+
+.bio-service-card p {
+  font-size: 0.85rem;
+  color: #8a8579 !important;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.bio-service-card a {
+  display: inline-block;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  font-weight: 500;
+}
+
+/* ─── TESTIMONIAL ─── */
+.bio-quote {
+  background: #eeece6;
+  padding: 6rem 5vw;
+  text-align: center;
+}
+
+.bio-quote-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+  color: #1a1a18 !important;
+}
+
+.bio-quote-text::before {
+  content: '\201C';
+  display: block;
+  font-size: 4rem;
+  color: #c9a96e !important;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  font-style: normal;
+  animation: bioQuoteFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes bioQuoteFloat {
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.05) translateY(-4px); }
+}
+
+.bio-quote-attr {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8579 !important;
+  font-weight: 500;
+}
+
+.bio-quote-attr a {
+  color: #b8975a !important;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.bio-quote-attr a:hover {
+  border-color: #b8975a;
+}
+
+/* ─── CTA ─── */
+.bio-cta {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bio-cta-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bio-cta-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.4) brightness(0.2);
+}
+
+.bio-cta-c {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 5vw;
+}
+
+.bio-cta-eyebrow {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.bio-cta-eyebrow::before,
+.bio-cta-eyebrow::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: rgba(201,169,110,0.3);
+}
+
+.bio-cta h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 300;
+  color: #f6f4f0 !important;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.bio-cta h2 em {
+  font-style: italic;
+  color: #c9a96e !important;
+}
+
+.bio-cta-sub {
+  color: #8a8579 !important;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto 3rem;
+}
+
+.bio-cta-btn {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 1.2rem 3.5rem;
+  border: 1px solid #c9a96e !important;
+  background: #c9a96e !important;
+  color: #1a1a18 !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.bio-cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.bio-cta-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.bio-cta-btn:hover {
+  background: transparent !important;
+  color: #c9a96e !important;
+  box-shadow: 0 0 30px rgba(201,169,110,0.2);
+}
+
+.bio-alt-cta {
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  color: #8a8579 !important;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+}
+
+.bio-alt-cta a {
+  color: #c9a96e !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.3s ease;
+}
+
+.bio-alt-cta a:hover {
+  color: #f6f4f0 !important;
+}
+
+/* ─── FOOTER ─── */
+.bio-ft-locs {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.75rem 5vw;
+  border-bottom: 1px solid rgba(201,169,110,0.08);
+  flex-wrap: wrap;
+}
+
+.bio-ft-locs a {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.35) !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.bio-ft-locs a:hover {
+  color: #c9a96e !important;
+}
+
+.bio-ft {
+  background: #1a1a18;
+  border-top: 1px solid rgba(201,169,110,0.15);
+}
+
+.bio-ft-r {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.25rem 5vw;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.bio-ft-i {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.bio-ft-l {
+  font-size: 7.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.bio-ft-dt {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(201,169,110,0.4);
+  flex-shrink: 0;
+  position: relative;
+  top: -2px;
+}
+
+.bio-ft-i p,
+.bio-ft-i a {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(246,244,240,0.8) !important;
+  font-weight: 300;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.bio-ft-i a:hover {
+  color: #c9a96e !important;
+}
+
+.bio-ft-s {
+  display: flex;
+  gap: 18px;
+}
+
+.bio-ft-rl {
+  margin: 0 5vw;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.15) 20%, rgba(201,169,110,0.15) 80%, transparent 100%);
+}
+
+.bio-ft-b {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 5vw 2rem;
+}
+
+.bio-ft-cp {
+  font-size: 10px;
+  color: rgba(246,244,240,0.35) !important;
+  letter-spacing: 0.08em;
+}
+
+.bio-ft-n {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.bio-ft-n a {
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.35) !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.bio-ft-n a:hover {
+  color: #c9a96e !important;
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .bio-hero {
+    grid-template-columns: 1fr;
+    max-height: none;
+  }
+
+  .bio-hero-image {
+    min-height: 50vh;
+  }
+
+  .bio-hero-content {
+    padding: 4rem 6vw;
+  }
+
+  .bio-section {
+    padding: 4rem 6vw;
+  }
+
+  .bio-quote {
+    padding: 4rem 6vw;
+  }
+
+  .bio-meta-item {
+    border-right: none;
+    border-bottom: 1px solid #d9d5cd;
+  }
+
+  .bio-meta-item:last-child {
+    border-bottom: none;
+  }
+
+  .bio-approach-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .bio-values {
+    padding: 4rem 6vw;
+  }
+
+  .bio-val-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .bio-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bio-services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .bio-img-break {
+    height: 50vh;
+    min-height: 350px;
+  }
+
+  .bio-cta {
+    min-height: 80vh;
+  }
+
+  .bio-manifesto {
+    padding: 5rem 6vw;
+  }
+
+  .bio-scroll-hint {
+    bottom: 24px;
+  }
+
+  .bio-ft-locs {
+    gap: 1rem;
+    padding: 1.5rem 6vw;
+    justify-content: flex-start;
+  }
+
+  .bio-ft-locs a {
+    font-size: 0.55rem;
+  }
+
+  .bio-ft-r {
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 2rem 6vw;
+  }
+
+  .bio-ft-rl {
+    margin: 0 6vw;
+  }
+
+  .bio-ft-b {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    padding: 1.25rem 6vw 2rem;
+  }
+}
+
+body { background: #1a1a18 !important; }
+#page { background: transparent !important; }
+#sections { background: transparent !important; }
+.page-section { background: transparent !important; min-height: 0 !important; }
+.content-wrapper { background: transparent !important; }
+.fluid-engine { background: transparent !important; }
+#footer { display: none !important; }
+header, .header, #header { display: none !important; }
+</style>
+
+<div class="bio-loader" id="bioLoader">
+  <div class="bio-loader-brand">Matt Anthony Photography</div>
+  <div class="bio-loader-sub">About</div>
+  <div class="bio-loader-line"></div>
+</div>
+<nav class="bio-section-nav" id="bioSectionNav"></nav>
+
+<div class="bio-cursor" id="bioCursor"></div>
+<div class="bio-cursor-dot" id="bioCursorDot"></div>
+<div class="bio-progress" id="bioProgress"></div>
+<div class="bio-wrap">
+
+<!-- ═══ HERO ═══ -->
+<div class="bio-hero bio-grain">
+  <div class="bio-hero-image">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/78a5df2e-eb81-4c0d-a9f0-9bdea08bdcd9/matt-anthony-photography-squamish.jpg" alt="Matt Anthony — architectural and interiors photographer based in Squamish, British Columbia">
+  </div>
+  <div class="bio-hero-content">
+    <p class="bio-hero-label">About</p>
+    <h1>Matt Anthony</h1>
+    <p class="bio-hero-title">Architectural Photographer &middot; Squamish, BC</p>
+    <div class="bio-hero-rule"></div>
+    <p class="bio-hero-intro">I photograph architecture with the same care and intention that goes into designing and building it. My work is about <strong>documenting design intent</strong> — capturing not just how a space looks, but how it feels, how it sits in the landscape, and why it matters.</p>
+  </div>
+  <canvas class="bio-particles" id="bioParticles"></canvas>
+  <div class="bio-scroll-hint" id="bioScrollHint">
+    <span class="bio-scroll-text">Scroll</span>
+    <span class="bio-scroll-line"></span>
+  </div>
+</div>
+
+<!-- ═══ META BAR ═══ -->
+<dl class="bio-meta">
+  <div class="bio-meta-item">
+    <dt class="bio-meta-dt">Based In</dt>
+    <dd class="bio-meta-dd">Squamish, BC</dd>
+  </div>
+  <div class="bio-meta-item">
+    <dt class="bio-meta-dt">Serving</dt>
+    <dd class="bio-meta-dd">7 Regions Across BC</dd>
+  </div>
+  <div class="bio-meta-item">
+    <dt class="bio-meta-dt">Certified</dt>
+    <dd class="bio-meta-dd">Transport Canada Advanced Drone Pilot</dd>
+  </div>
+  <div class="bio-meta-item">
+    <dt class="bio-meta-dt">Since</dt>
+    <dd class="bio-meta-dd">2019</dd>
+  </div>
+</dl>
+
+<!-- ═══ STORY ═══ -->
+<section class="bio-section bio-narrow" data-nav="Story">
+  <p class="bio-label bio-eyebrow">The Story</p>
+  <div class="bio-divider"></div>
+  <h2>I got into this work because I believe <em>great design deserves to be seen</em></h2>
+
+  <p>I'm based in Squamish, British Columbia, right in the heart of the Sea to Sky Corridor. It's a place where the built environment meets some of the most dramatic natural landscapes in the country, and that tension between architecture and nature is something I think about constantly in my work.</p>
+
+  <p>I started Matt Anthony Photography with a straightforward belief: the people who design and build remarkable spaces deserve imagery that does that work justice. Not overly stylized, not artificially staged. Just honest, refined photography that captures the real character of a project and the intent behind it.</p>
+
+  <p>Most of my clients are architects, custom home builders, and interior designers across the <a href="/projects" class="bio-inline-link">Sea to Sky</a> and <a href="/projects" class="bio-inline-link">Sunshine Coast</a>. I work with them not just as a photographer, but as a creative partner — someone who takes the time to understand design language, material choices, and the story a project is trying to tell before I pick up a camera.</p>
+
+  <p>Whether it's a single <a href="/project-photography" class="bio-inline-link">completed residence</a> or an <a href="/creative-partner" class="bio-inline-link">ongoing retainer</a> across multiple builds, I approach every project the same way: with preparation, presence, and a commitment to getting it right.</p>
+
+  <p>I'm also a certified Advanced Drone Pilot. Aerial perspectives are part of how I work. They add context, reveal a project's relationship to its surroundings, and give clients a dimension of their work that ground level photography can't capture on its own.</p>
+</section>
+
+<!-- ═══ FULL-WIDTH IMAGE BREAK ═══ -->
+<div class="bio-img-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/5be7e36c-d920-4d5d-9260-da4df4c50415/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-16.jpg" alt="Sunshine Coast custom home interior — architectural interiors photography by Matt Anthony" loading="lazy">
+</div>
+
+<!-- ═══ APPROACH ═══ -->
+<section class="bio-section" data-nav="Approach">
+  <div class="bio-narrow">
+    <p class="bio-label bio-eyebrow">The Approach</p>
+    <div class="bio-divider"></div>
+    <h2>How I work with <em>architects and builders</em></h2>
+    <p>Every shoot starts long before I arrive on site. I review drawings, study material palettes, and understand the design intent behind every decision. This is not about showing up and taking photos. It is about translating the architect's or builder's vision into imagery that communicates the same care and intelligence that went into the build itself.</p>
+  </div>
+  <div class="bio-approach-grid" id="bioApproachGrid">
+    <div class="bio-approach-card">
+      <h3>Pre-shoot Research</h3>
+      <p>I study the project before arrival. Floor plans, material specs, orientation, and the design narrative. When I walk onto a site, I already know what matters and where to find it.</p>
+    </div>
+    <div class="bio-approach-card">
+      <h3>Light-Led Timing</h3>
+      <p>I schedule around the best natural light for each space. Morning east-facing rooms, afternoon west-facing living areas, twilight for exterior presence. No shortcuts, no composites.</p>
+    </div>
+    <div class="bio-approach-card">
+      <h3>Design Intent Framing</h3>
+      <p>Every composition is built around the decisions you made: the cantilever, the material transition, the way a hallway frames a view. I photograph the intelligence of the design, not just the surfaces.</p>
+    </div>
+  </div>
+</section>
+
+<div class="bio-accent"></div>
+
+<!-- ═══ VALUES ═══ -->
+<section class="bio-values bio-grain" data-nav="Values">
+  <div class="bio-values-inner">
+    <p class="bio-label bio-eyebrow">What Sets Us Apart</p>
+    <div class="bio-divider"></div>
+    <h2>Every frame is built on the same <em>principles</em></h2>
+
+    <div class="bio-val-grid" id="bioValGrid">
+      <div class="bio-val-item">
+        <h3>Design Intent First</h3>
+        <p>I start every project by understanding the architect's or builder's vision. The material choices, the spatial flow, the relationship to site. The photography follows from that understanding, not the other way around.</p>
+      </div>
+      <div class="bio-val-item">
+        <h3>Natural Light, Real Spaces</h3>
+        <p>I time every shoot around the best available light. No heavy handed HDR, no artificial composites. The goal is imagery that feels true to the experience of being in the space. Honest, warm, and considered.</p>
+      </div>
+      <div class="bio-val-item">
+        <h3>Calm, Professional Presence</h3>
+        <p>I work quietly, independently, and with respect for the site. Whether I'm shooting alongside a construction crew or in a staged home, I adapt to the rhythm of your team and environment.</p>
+      </div>
+      <div class="bio-val-item">
+        <h3>Built for Recognition</h3>
+        <p>The imagery I deliver is designed to perform — in <a href="/journal/architectural-photography-for-publications">award submissions and publications</a>, on refreshed websites, across social media, and in editorial features. Every image is composed with your professional goals in mind.</p>
+      </div>
+      <div class="bio-val-item">
+        <h3>Partnership, Not Transactions</h3>
+        <p>My best client relationships are ongoing. I work with builders and architects across multiple projects over time, developing a visual language that becomes part of their brand identity.</p>
+      </div>
+      <div class="bio-val-item">
+        <h3>Full Spectrum Coverage</h3>
+        <p>Photography, videography, drone, team portraits, progression documentation. I offer everything under one roof so your visual identity stays cohesive across every touchpoint.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS STRIP ═══ -->
+<section class="bio-stats" id="bioStats">
+  <div class="bio-stats-grid">
+    <div class="bio-stat-card">
+      <div class="bio-stat-num">19</div>
+      <div class="bio-stat-lbl">Projects</div>
+    </div>
+    <div class="bio-stat-card">
+      <div class="bio-stat-num">28</div>
+      <div class="bio-stat-lbl">Clients</div>
+    </div>
+    <div class="bio-stat-card">
+      <div class="bio-stat-num">7</div>
+      <div class="bio-stat-lbl">Service Areas</div>
+    </div>
+    <div class="bio-stat-card">
+      <div class="bio-stat-num">5</div>
+      <div class="bio-stat-lbl">Case Studies</div>
+    </div>
+  </div>
+</section>
+
+<div class="bio-accent"></div>
+
+<!-- ═══ WHAT WE DELIVER ═══ -->
+<section class="bio-services bio-section" data-nav="Services">
+  <div class="bio-narrow">
+    <p class="bio-label bio-eyebrow">What We Deliver</p>
+    <div class="bio-divider"></div>
+    <h2>Services built for the <em>design and construction industry</em></h2>
+  </div>
+  <div class="bio-services-grid" id="bioServicesGrid">
+    <div class="bio-service-card">
+      <h3>Project Photography</h3>
+      <p>Complete visual documentation of your finished build. Architecture, interiors, aerial, twilight, and short form film.</p>
+      <a href="/project-photography">Learn More</a>
+    </div>
+    <div class="bio-service-card">
+      <h3>Award &amp; Publication Imagery</h3>
+      <p>Photography composed for jurors, editors, and industry recognition. Georgie Awards, Western Living, and beyond.</p>
+      <a href="/award-publication-imagery">Learn More</a>
+    </div>
+    <div class="bio-service-card">
+      <h3>Build &amp; Team Content</h3>
+      <p>The people and process behind the builds. Construction progression, team portraits, and recruitment content.</p>
+      <a href="/construction-team-content">Learn More</a>
+    </div>
+    <div class="bio-service-card">
+      <h3>Creative Partner</h3>
+      <p>Your embedded creative department. Photography, video, website, social, and SEO under one monthly retainer.</p>
+      <a href="/creative-partner">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<div class="bio-accent"></div>
+
+<!-- ═══ TESTIMONIAL ═══ -->
+<section class="bio-quote" id="bioQuote" data-nav="Testimonial">
+  <p class="bio-quote-text"><span class="bio-qw">Working</span> <span class="bio-qw">with</span> <span class="bio-qw">Matt</span> <span class="bio-qw">was</span> <span class="bio-qw">an</span> <span class="bio-qw bio-gold-word">absolute</span> <span class="bio-qw bio-gold-word">pleasure.</span> <span class="bio-qw">The</span> <span class="bio-qw">entire</span> <span class="bio-qw">process</span> <span class="bio-qw">was</span> <span class="bio-qw bio-gold-word">seamless</span> <span class="bio-qw">and</span> <span class="bio-qw bio-gold-word">professional.</span> <span class="bio-qw">The</span> <span class="bio-qw">website</span> <span class="bio-qw">looks</span> <span class="bio-qw bio-gold-word">fantastic,</span> <span class="bio-qw">and</span> <span class="bio-qw">the</span> <span class="bio-qw">ongoing</span> <span class="bio-qw">maintenance</span> <span class="bio-qw">gives</span> <span class="bio-qw">me</span> <span class="bio-qw bio-gold-word">peace</span> <span class="bio-qw bio-gold-word">of</span> <span class="bio-qw bio-gold-word">mind</span> <span class="bio-qw">knowing</span> <span class="bio-qw">everything</span> <span class="bio-qw">is</span> <span class="bio-qw">taken</span> <span class="bio-qw">care</span> <span class="bio-qw">of.</span></p>
+  <p class="bio-quote-attr">Marc Harvey, Balmoral Construction &middot; <a href="https://www.balmoralconstruction.com/" target="_blank" rel="noopener">balmoralconstruction.com</a></p>
+</section>
+
+<!-- ═══ MANIFESTO ═══ -->
+<section class="bio-manifesto bio-grain" id="bioManifesto">
+  <p class="bio-manifesto-text">
+    <span class="bio-mw">I</span> <span class="bio-mw">don't</span> <span class="bio-mw">just</span> <span class="bio-mw">photograph</span> <span class="bio-mw bio-gold-word">buildings.</span> <span class="bio-mw">I</span> <span class="bio-mw">document</span> <span class="bio-mw">the</span> <span class="bio-mw bio-gold-word">decisions</span> <span class="bio-mw">behind</span> <span class="bio-mw">them.</span> <span class="bio-mw">The</span> <span class="bio-mw bio-gold-word">material</span> <span class="bio-mw bio-gold-word">choices.</span> <span class="bio-mw">The</span> <span class="bio-mw">way</span> <span class="bio-mw bio-gold-word">light</span> <span class="bio-mw">enters</span> <span class="bio-mw">a</span> <span class="bio-mw">room.</span> <span class="bio-mw">The</span> <span class="bio-mw">relationship</span> <span class="bio-mw">between</span> <span class="bio-mw bio-gold-word">structure</span> <span class="bio-mw">and</span> <span class="bio-mw bio-gold-word">site.</span> <span class="bio-mw">That's</span> <span class="bio-mw">the</span> <span class="bio-mw">difference</span> <span class="bio-mw">between</span> <span class="bio-mw">a</span> <span class="bio-mw bio-gold-word">photo</span> <span class="bio-mw">and</span> <span class="bio-mw">a</span> <span class="bio-mw bio-gold-word">visual</span> <span class="bio-mw bio-gold-word">identity.</span>
+  </p>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="bio-cta">
+  <div class="bio-cta-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83bbba67-7393-4e34-8b4b-bac1600c8110/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-12.jpg" alt="Sunshine Coast architectural photography by Matt Anthony" loading="lazy">
+  </div>
+  <div class="bio-cta-c">
+    <p class="bio-cta-eyebrow">Let's Connect</p>
+    <h2>Ready to <em>work together?</em></h2>
+    <p class="bio-cta-sub">If you're building something worth seeing, I'd love to hear about it. Start with a conversation.</p>
+    <a href="/discovery-call" class="bio-cta-btn bio-magnetic">Book a Discovery Call</a>
+    <p class="bio-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="bio-ft">
+  <div class="bio-ft-locs">
+    <a href="/squamish-architectural-photography">Squamish</a>
+    <a href="/whistler-architectural-photography">Whistler</a>
+    <a href="/pemberton-photography">Pemberton</a>
+    <a href="/sunshine-coast-photography">Sunshine Coast</a>
+    <a href="/vancouver-architectural-photographer">Vancouver</a>
+    <a href="/fraser-valley-photography">Fraser Valley</a>
+    <a href="/okanagan-architectural-photographer">Okanagan</a>
+  </div>
+  <div class="bio-ft-r">
+    <div class="bio-ft-i"><span class="bio-ft-l">Based In</span><span class="bio-ft-dt"></span><p>Squamish, British Columbia</p></div>
+    <div class="bio-ft-i"><span class="bio-ft-l">Email</span><span class="bio-ft-dt"></span><a class="bio-ob-email" href="#">&nbsp;</a></div>
+    <div class="bio-ft-i"><span class="bio-ft-l">Phone</span><span class="bio-ft-dt"></span><a href="tel:6047659270">604.765.9270</a></div>
+    <div class="bio-ft-i"><span class="bio-ft-l">Follow</span><span class="bio-ft-dt"></span><div class="bio-ft-s"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  </div>
+  <div class="bio-ft-rl"></div>
+  <div class="bio-ft-b">
+    <span class="bio-ft-cp">&copy; 2026 Matt Anthony Photography</span>
+    <nav class="bio-ft-n"><a href="/projects">Projects</a><a href="/journal">Journal</a><a href="/journal/georgie-awards-guide">Georgie Awards</a><a href="/bio">About</a><a href="/contact">Contact</a><a href="/pricing-guide-landing">Get Pricing</a></nav>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var isMobile = 'ontouchstart' in window;
+  var wrap = document.querySelector('.bio-wrap');
+  var progressBar = document.getElementById('bioProgress');
+  var hero = document.querySelector('.bio-hero');
+  var heroContent = document.querySelector('.bio-hero-content');
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader = document.getElementById('bioLoader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('bio-done'); }, 1100);
+  });
+
+  /* ═══ SECTION NAV DOTS ═══ */
+  var sectionNav = document.getElementById('bioSectionNav');
+  var navSections = document.querySelectorAll('[data-nav]');
+  var navDots = [];
+  navSections.forEach(function(sec){
+    var dot = document.createElement('div');
+    dot.className = 'bio-nav-dot';
+    dot.setAttribute('data-label', sec.getAttribute('data-nav'));
+    dot.addEventListener('click', function(){
+      sec.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+    sectionNav.appendChild(dot);
+    navDots.push({ dot:dot, section:sec });
+  });
+
+  function updateNavDots(){
+    var scrollY = window.scrollY;
+    var winH = window.innerHeight;
+    if(scrollY > winH * 0.5) sectionNav.classList.add('bio-nav-visible');
+    else sectionNav.classList.remove('bio-nav-visible');
+    var active = null;
+    navDots.forEach(function(item){
+      var rect = item.section.getBoundingClientRect();
+      if(rect.top < winH * 0.5 && rect.bottom > winH * 0.3) active = item;
+      item.dot.classList.remove('bio-nav-active');
+    });
+    if(active) active.dot.classList.add('bio-nav-active');
+  }
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  function updateProgress(){
+    var s = window.scrollY;
+    var d = document.documentElement.scrollHeight - window.innerHeight;
+    if(d > 0) progressBar.style.width = (s / d * 100) + '%';
+  }
+
+  /* ═══ PHOTO BREAK PARALLAX ═══ */
+  var photoBreaks = document.querySelectorAll('.bio-img-break');
+  function updatePhotoParallax(){
+    photoBreaks.forEach(function(pb){
+      var rect = pb.getBoundingClientRect();
+      if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+      var center = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+      var img = pb.querySelector('img');
+      if(img) img.style.transform = 'translateY(' + (center * -30) + 'px) scale(1.08)';
+    });
+  }
+
+  /* ═══ HEADLINE GOLD UNDERLINE ═══ */
+  var headObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('bio-underlined'); headObs.unobserve(e.target); }
+    });
+  }, {threshold:0.4});
+  document.querySelectorAll('.bio-wrap h2').forEach(function(h){ headObs.observe(h); });
+
+  /* ═══ EYEBROW DASH DRAW ═══ */
+  var eyeObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('bio-visible'); eyeObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.bio-eyebrow').forEach(function(el){ eyeObs.observe(el); });
+
+  /* ═══ DIVIDER DRAW ═══ */
+  var divObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('bio-drawn'); divObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.bio-divider').forEach(function(el){ el.style.width = '0'; divObs.observe(el); });
+
+  /* ═══ META BAR BORDER DRAW ═══ */
+  var metaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('bio-drawn'); metaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.bio-meta').forEach(function(el){ metaObs.observe(el); });
+
+  /* ═══ KEN BURNS ═══ */
+  var kenObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) e.target.classList.add('bio-in-view');
+      else e.target.classList.remove('bio-in-view');
+    });
+  }, {threshold:0.1});
+  photoBreaks.forEach(function(el){ kenObs.observe(el); });
+
+  /* ═══ QUOTE WORD REVEAL ═══ */
+  var quoteEl = document.getElementById('bioQuote');
+  var qWords = quoteEl ? quoteEl.querySelectorAll('.bio-qw') : [];
+  var quoteRevealed = false;
+  function updateQuote(){
+    if(!quoteEl || quoteRevealed) return;
+    var rect = quoteEl.getBoundingClientRect();
+    var vh = window.innerHeight;
+    if(rect.top > vh || rect.bottom < 0) return;
+    var progress = 1 - (rect.top / (vh * 0.55));
+    progress = Math.max(0, Math.min(1, progress));
+    var wordsToLight = Math.floor(progress * qWords.length);
+    for(var i = 0; i < qWords.length; i++){
+      if(i < wordsToLight) qWords[i].classList.add('bio-lit');
+    }
+    if(wordsToLight >= qWords.length) quoteRevealed = true;
+  }
+
+  /* ═══ CTA ZOOM ═══ */
+  var ctaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('bio-in-view'); ctaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.2});
+  document.querySelectorAll('.bio-cta').forEach(function(el){ ctaObs.observe(el); });
+
+  /* ═══ STAT COUNTERS ═══ */
+  function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+  var counterObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting || e.target.classList.contains('bio-counted')) return;
+      e.target.classList.add('bio-counted');
+      var text = e.target.textContent.trim();
+      var hasPlus = text.indexOf('+') !== -1;
+      var num = parseInt(text);
+      if(isNaN(num)) return;
+      var start = performance.now();
+      function tick(now){
+        var t = Math.min((now - start) / 1400, 1);
+        e.target.textContent = Math.round(ease(t) * num) + (hasPlus ? '+' : '');
+        if(t < 1) requestAnimationFrame(tick);
+      }
+      e.target.textContent = '0' + (hasPlus ? '+' : '');
+      requestAnimationFrame(tick);
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.bio-stat-num').forEach(function(el){ counterObs.observe(el); });
+
+  /* ═══ APPROACH CARDS STAGGER ═══ */
+  var approachObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var cards = e.target.querySelectorAll('.bio-approach-card');
+        cards.forEach(function(card, i){
+          setTimeout(function(){ card.classList.add('bio-entered'); }, i * 150);
+        });
+        approachObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.2});
+  var approachGrid = document.getElementById('bioApproachGrid');
+  if(approachGrid) approachObs.observe(approachGrid);
+
+  /* ═══ SERVICE CARDS STAGGER ═══ */
+  var svcObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var cards = e.target.querySelectorAll('.bio-service-card');
+        cards.forEach(function(card, i){
+          setTimeout(function(){
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, i * 120);
+        });
+        svcObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.2});
+  var svcGrid = document.getElementById('bioServicesGrid');
+  if(svcGrid){
+    var svcCards = svcGrid.querySelectorAll('.bio-service-card');
+    svcCards.forEach(function(card){
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(12px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1)';
+    });
+    svcObs.observe(svcGrid);
+  }
+
+  /* ═══ VALUE ITEMS STAGGER ═══ */
+  var valObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var items = e.target.querySelectorAll('.bio-val-item');
+        items.forEach(function(item, i){
+          setTimeout(function(){
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          }, i * 120);
+        });
+        valObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.2});
+  var valGrid = document.getElementById('bioValGrid');
+  if(valGrid){
+    var valItems = valGrid.querySelectorAll('.bio-val-item');
+    valItems.forEach(function(item){
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(12px)';
+      item.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1)';
+    });
+    valObs.observe(valGrid);
+  }
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor = document.getElementById('bioCursor');
+  var cursorDot = document.getElementById('bioCursorDot');
+  var cx = 0, cy = 0, dx = 0, dy = 0;
+  if(!isMobile && cursor){
+    document.addEventListener('mousemove', function(e){
+      dx = e.clientX; dy = e.clientY;
+      cursorDot.style.left = dx + 'px';
+      cursorDot.style.top = dy + 'px';
+      if(!cursor.classList.contains('bio-active')){
+        cursor.classList.add('bio-active');
+        cursorDot.classList.add('bio-active');
+      }
+    });
+    function tickCursor(){
+      cx += (dx - cx) * 0.12;
+      cy += (dy - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(tickCursor);
+    }
+    tickCursor();
+    var hoverEls = document.querySelectorAll('a, button, .bio-approach-card, .bio-service-card, .bio-val-item, .bio-cta-btn');
+    hoverEls.forEach(function(el){
+      el.addEventListener('mouseenter', function(){ cursor.classList.add('bio-hover'); });
+      el.addEventListener('mouseleave', function(){ cursor.classList.remove('bio-hover'); });
+    });
+    document.addEventListener('mousedown', function(){ cursor.classList.add('bio-click'); });
+    document.addEventListener('mouseup', function(){ cursor.classList.remove('bio-click'); });
+  }
+
+  /* ═══ MAGNETIC BUTTON ═══ */
+  if(!isMobile){
+    document.querySelectorAll('.bio-magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.25) + 'px, ' + (y * 0.25) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  /* ═══ MANIFESTO WORD REVEAL ═══ */
+  var manifesto = document.getElementById('bioManifesto');
+  var mWords = manifesto ? manifesto.querySelectorAll('.bio-mw') : [];
+  var manifestoRevealed = false;
+  function updateManifesto(){
+    if(!manifesto || manifestoRevealed) return;
+    var rect = manifesto.getBoundingClientRect();
+    var vh = window.innerHeight;
+    if(rect.top > vh || rect.bottom < 0) return;
+    var progress = 1 - (rect.top / (vh * 0.6));
+    progress = Math.max(0, Math.min(1, progress));
+    var wordsToLight = Math.floor(progress * mWords.length);
+    for(var i = 0; i < mWords.length; i++){
+      if(i < wordsToLight) mWords[i].classList.add('bio-lit');
+    }
+    if(wordsToLight >= mWords.length) manifestoRevealed = true;
+  }
+
+  /* ═══ AMBIENT PARTICLES ═══ */
+  var canvas = document.getElementById('bioParticles');
+  if(canvas){
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    function resizeCanvas(){
+      var parent = canvas.parentElement;
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    for(var p = 0; p < 30; p++){
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -Math.random() * 0.4 - 0.1,
+        r: Math.random() * 1.5 + 0.5,
+        a: Math.random() * 0.3 + 0.05
+      });
+    }
+    function drawParticles(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(function(pt){
+        pt.x += pt.vx;
+        pt.y += pt.vy;
+        if(pt.y < -10) { pt.y = canvas.height + 10; pt.x = Math.random() * canvas.width; }
+        if(pt.x < -10) pt.x = canvas.width + 10;
+        if(pt.x > canvas.width + 10) pt.x = -10;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(201,169,110,' + pt.a + ')';
+        ctx.fill();
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+  }
+
+  /* ═══ SCROLL INDICATOR HIDE ═══ */
+  var scrollHint = document.getElementById('bioScrollHint');
+  function updateScrollHint(){
+    if(window.scrollY > 80) scrollHint.classList.add('bio-hidden');
+    else scrollHint.classList.remove('bio-hidden');
+  }
+
+  /* ═══ EMAIL OBFUSCATION ═══ */
+  var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];
+  var m=[109,97,105,108,116,111,58];
+  var s='',h='';
+  for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);
+  for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);
+  var els=document.querySelectorAll('.bio-ob-email');
+  for(var k=0;k<els.length;k++){els[k].href=h+s;els[k].textContent=s}
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updatePhotoParallax();
+        updateScrollHint();
+        updateManifesto();
+        updateQuote();
+        updateNavDots();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress();
+  updateScrollHint();
+  updateNavDots();
+})();
+</script>
+
+<!--
+  Bio / About Page — Code Block
+  mattanthonyphoto.com/bio
+
+  Last updated: 2026-03-24
+  Changes:
+    1. Complete rebuild using Creative Partner template (interactive layer: loader, nav dots, particles, parallax, word reveal, custom cursor, magnetic button, stat counters)
+    2. Hero: split layout with headshot + dark text panel
+    3. Meta bar: Based In, Serving, Certified, Since
+    4. Story section with full bio text
+    5. Image break with parallax + Ken Burns
+    6. Approach section: 3-column grid (Pre-shoot Research, Light-Led Timing, Design Intent Framing)
+    7. Values: 6-item dark grid (Design Intent First, Natural Light, Professional Presence, Built for Recognition, Partnership, Full Spectrum)
+    8. Stats strip: 19 Projects, 28 Clients, 7 Service Areas, 5 Case Studies
+    9. Services: 4 cards linking to service pages
+    10. Testimonial with word reveal
+    11. Manifesto with word reveal
+    12. CTA: /discovery-call link
+    13. Footer with location pages, obfuscated email
+    14. All classes use bio- prefix, JS IDs use bio prefix
+    15. JSON-LD Person + LocalBusiness + ProfilePage schema from original
+    16. OG image meta tag added
+-->
+
+<!-- SEO Meta & Open Graph -->
+<meta name="description" content="Matt Anthony is an architectural photographer based in Squamish, BC — serving Whistler, Sunshine Coast, Vancouver, and across British Columbia with clarity and intention.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/bio">
+<meta property="og:title" content="About Matt Anthony | Architectural Photographer in BC">
+<meta property="og:description" content="Architectural photographer based in Squamish, BC. Documenting design intent for architects, builders, and interior designers across British Columbia.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/bio">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/78a5df2e-eb81-4c0d-a9f0-9bdea08bdcd9/matt-anthony-photography-squamish.jpg">
+
+<!-- ProfilePage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@id": "https://www.mattanthonyphoto.com/#person"
+  },
+  "url": "https://www.mattanthonyphoto.com/bio"
+}
+</script>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.mattanthonyphoto.com/#business",
+      "name": "Matt Anthony Photography",
+      "alternateName": "Matt Anthony Architectural Photography",
+      "description": "Architectural photography and film for architects, custom builders, and interior designers in British Columbia. Serving Whistler, Pemberton, Squamish, Sunshine Coast, and Vancouver.",
+      "url": "https://www.mattanthonyphoto.com",
+      "telephone": "+16047659270",
+      "email": "info@mattanthonyphoto.com",
+      "image": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/808387ba-bee1-4c46-a4d3-354d7e1f8372/west-10th-vancouver-web--2.jpg",
+      "logo": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e2cf3838-8bb8-4d66-acb2-256392fc34ce/matt-anthony-photography.png",
+      "priceRange": "$$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Squamish",
+        "addressRegion": "BC",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 49.7016,
+        "longitude": -123.1558
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Whistler", "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" } },
+        { "@type": "City", "name": "Pemberton", "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" } },
+        { "@type": "City", "name": "Squamish", "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" } },
+        { "@type": "Place", "name": "Sunshine Coast", "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" } },
+        { "@type": "City", "name": "Vancouver", "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" } }
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://www.mattanthonyphoto.com/#person",
+        "name": "Matt Anthony"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Architectural Photography Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Project Photography",
+              "description": "Complete visual documentation of finished builds including architecture, interiors, aerial, twilight, and short form project film.",
+              "url": "https://www.mattanthonyphoto.com/services/project-photography"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Award & Publication Imagery",
+              "description": "Photography and film crafted for award submissions, editorial features, and industry recognition.",
+              "url": "https://www.mattanthonyphoto.com/services/award-publication-imagery"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Build & Team Content",
+              "description": "Lifestyle photography, construction progression, team portraits, and short form video for social media, recruitment, and brand storytelling.",
+              "url": "https://www.mattanthonyphoto.com/services/construction-team-content"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Creative Partner",
+              "description": "Ongoing creative partnership providing consistent photography and film for firms building multiple projects per year.",
+              "url": "https://www.mattanthonyphoto.com/services/creative-partner"
+            }
+          }
+        ]
+      },
+      "sameAs": [
+        "https://www.instagram.com/mattanthonyphoto/",
+        "https://www.linkedin.com/in/mattanthonyphoto/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.mattanthonyphoto.com/#person",
+      "name": "Matt Anthony",
+      "jobTitle": "Architectural Photographer & Filmmaker",
+      "url": "https://www.mattanthonyphoto.com/bio",
+      "image": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/78a5df2e-eb81-4c0d-a9f0-9bdea08bdcd9/matt-anthony-photography-squamish.jpg",
+      "worksFor": {
+        "@id": "https://www.mattanthonyphoto.com/#business"
+      },
+      "knowsAbout": [
+        "Architectural Photography",
+        "Interior Design Photography",
+        "Construction Photography",
+        "Aerial Drone Photography",
+        "Short Form Film",
+        "Award Submission Photography"
+      ],
+      "sameAs": [
+        "https://www.instagram.com/mattanthonyphoto/",
+        "https://www.linkedin.com/in/mattanthonyphoto/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.mattanthonyphoto.com/#website",
+      "name": "Matt Anthony Photography",
+      "url": "https://www.mattanthonyphoto.com",
+      "publisher": {
+        "@id": "https://www.mattanthonyphoto.com/#business"
+      }
+    }
+  ]
+}
+</script>

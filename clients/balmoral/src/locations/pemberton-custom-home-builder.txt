@@ -1,0 +1,617 @@
+<!-- HomeAndConstructionBusiness SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Balmoral Construction Inc.",
+  "url": "https://www.balmoralconstruction.com",
+  "telephone": "(604) 907-2237",
+  "email": "marc@balmoralconstruction.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1704 Sugarloaf Place",
+    "addressLocality": "Pemberton",
+    "addressRegion": "BC",
+    "postalCode": "V0N 2L3",
+    "addressCountry": "CA"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Pemberton, BC"
+  },
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Warranty Registration",
+      "name": "BC New Home Warranty"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Warranty Registration",
+      "name": "National Home Warranty"
+    }
+  ],
+  "memberOf": {
+    "@type": "Organization",
+    "name": "Canadian Home Builders Association — Sea to Sky"
+  }
+}
+</script>
+
+<!-- FAQPage SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does it cost to build a custom home in Pemberton?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Custom home construction in Pemberton typically ranges from $400 to $600+ per square foot, depending on site complexity, design specifications, finishing levels, and servicing requirements. Properties requiring septic systems, significant site preparation, or specialized construction methods like ICF may trend toward the higher end. Compared to Whistler, where custom build costs range from $500 to $800+ per square foot, Pemberton offers significantly more value per construction dollar. We provide detailed cost estimates after evaluating your specific lot and design vision."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to build a custom home in Pemberton?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A typical custom home in Pemberton takes 12 to 18 months from breaking ground to move-in, depending on the size and complexity of the project. The VOPB permitting phase usually adds 2 to 4 months prior to construction start. Pemberton's milder climate and lower elevation compared to Whistler provide a longer building season, which can shorten overall timelines by several weeks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there still buildable land available in Pemberton?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Pemberton still has buildable residential lots available in several neighbourhoods, including the Benchlands, Sugarloaf, and the Village core. New subdivision developments continue to release additional lots as the community grows. Rural acreages along the valley corridors also present opportunities, though these may involve ALR considerations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I build a custom home on ALR land in Pemberton?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but with important restrictions. The Agricultural Land Reserve allows one principal residence per parcel, and the Agricultural Land Commission has specific requirements regarding house size, siting, and the total area of non-farm use. Applications for larger homes or additional non-farm structures on ALR land require ALC approval, and the process can take several months. We have experience navigating ALR applications in the Pemberton Valley."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do all Pemberton lots have municipal water and sewer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Properties within the Village of Pemberton's serviced boundary have access to municipal water and sewer, but lots on the periphery and along the valley corridors often require private wells and septic systems. The distinction significantly affects both construction costs and ongoing maintenance requirements. We evaluate servicing as a standard part of our lot assessment process."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are Pemberton's weather advantages for building compared to Whistler?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pemberton's valley-bottom elevation of approximately 200 metres, compared to Whistler's 650 metres, creates a milder microclimate with less snowfall at residential elevations, warmer winters, and a longer frost-free season. For construction, the practical benefit is a building season that extends approximately two to three weeks longer on each end compared to Whistler, giving an additional four to six weeks of optimal exterior work conditions annually."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why would I choose to build in Pemberton instead of Whistler?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pemberton offers more home for your money, larger lot sizes, a milder climate with a longer outdoor living season, a genuine year-round community feel, and growing infrastructure. Construction costs run $100 to $200+ per square foot less than Whistler. Land prices are significantly lower for comparable or larger lots. Whistler's ski hills are still only 30 minutes away, but you also gain access to Pemberton's own exceptional recreation including world-class mountain biking, river sports, and backcountry skiing."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bc-accent:#D4722A;--bc-accent-hover:#BF6523;--bc-accent-light:rgba(212,114,42,.1)}
+.bc-progress{position:fixed;top:0;left:0;height:3px;background:var(--bc-accent);z-index:1100;width:0%;transition:none}
+.bc{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a1a;line-height:1.7;font-weight:300;background:#fff}
+.bc img{max-width:100%;display:block}
+.bc a{color:inherit;text-decoration:none}
+.bc-reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.bc-reveal.bc-visible{opacity:1;transform:translateY(0)}
+.bc-reveal-delay-1{transition-delay:.15s}
+.bc-reveal-delay-2{transition-delay:.3s}
+.bc-reveal-delay-3{transition-delay:.45s}
+
+/* NAV */
+.bc-hd{position:fixed;top:0;left:0;right:0;z-index:99999 !important;transition:background .4s cubic-bezier(.16,1,.3,1)}
+.bc-hd--top{background:transparent}
+.bc-hd--scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.bc-hd--mob-open{background:#fff !important;backdrop-filter:none}
+.bc-hd-inner{max-width:1600px;margin:0 auto;padding:0 clamp(24px,4vw,60px);display:flex;align-items:center;justify-content:space-between;height:80px}
+.bc-hd-logo img{height:52px;width:auto;transition:filter .4s}
+.bc-hd--top .bc-hd-logo img{filter:brightness(0) invert(1)}
+.bc-hd--mob-open .bc-hd-logo img{filter:none !important}
+.bc-hd-nav{display:flex;align-items:center;gap:clamp(24px,3.5vw,48px);list-style:none}
+.bc-hd-link{font-size:13px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#1a1a1a;transition:all .3s;position:relative}
+.bc-hd--top .bc-hd-link{color:rgba(255,255,255,.75)}
+.bc-hd--top .bc-hd-link:hover{color:#fff}
+.bc-hd-link:hover{color:#000}
+.bc-hd-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:currentColor;transition:width .3s}
+.bc-hd-link:hover::after{width:100%}
+.bc-hd-drop{position:relative}
+.bc-hd-drop-menu{position:absolute;top:calc(100% + 20px);left:-20px;background:#fff;padding:16px 0;min-width:220px;opacity:0;visibility:hidden;transition:all .3s;transform:translateY(8px);box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.bc-hd-drop:hover .bc-hd-drop-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.bc-hd-drop-menu a{display:block;padding:10px 28px;font-size:14px;font-weight:400;color:#666;letter-spacing:.04em;transition:all .2s}
+.bc-hd-drop-menu a:hover{color:var(--bc-accent);padding-left:32px}
+.bc-hd-mob{display:none;background:none;border:none;cursor:pointer;padding:10px;z-index:100001}
+.bc-hd-mob span{display:block;width:28px;height:2px;background:#1a1a1a;margin:7px 0;transition:all .4s}
+.bc-hd--top .bc-hd-mob span{background:#fff}
+.bc-hd--mob-open .bc-hd-mob span{background:#1a1a1a !important}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(2){opacity:0}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.bc-mob{position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:99998 !important;padding:100px clamp(24px,6vw,60px) 40px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.bc-mob.open{opacity:1;visibility:visible;display:flex;flex-direction:column}
+.bc-mob a{display:block;font-size:clamp(28px,6vw,40px);font-weight:200;color:#1a1a1a;padding:12px 0;letter-spacing:-.02em;border-bottom:1px solid #f0f0f0;transition:opacity .3s}
+.bc-mob a:hover{opacity:.5}
+.bc-mob-sub{padding-left:0}
+.bc-mob-sub a{font-size:clamp(14px,3vw,18px);font-weight:400;color:#999;letter-spacing:0;padding:8px 0}
+
+/* HERO */
+.bc-loc-hero{position:relative;height:65vh;min-height:500px;overflow:hidden}
+.bc-loc-hero img{width:100%;height:100%;object-fit:cover;transform:scale(1.03);transition:transform 8s cubic-bezier(.16,1,.3,1)}
+.bc-loc-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.05) 40%,rgba(0,0,0,.5) 100%);z-index:1}
+.bc-loc-hero-c{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:0 clamp(24px,4vw,60px) clamp(48px,6vw,80px);max-width:1600px;margin:0 auto}
+.bc-loc-hero-c .bc-section-label{font-size:11px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--bc-accent);margin-bottom:16px;display:block}
+.bc-loc-hero-c h1{font-size:clamp(32px,5vw,64px);font-weight:200;color:#fff;letter-spacing:-.04em;line-height:1.1;margin-bottom:16px}
+.bc-loc-hero-c h1 strong{font-weight:600}
+.bc-loc-hero-c p{font-size:clamp(14px,1.2vw,16px);color:rgba(255,255,255,.6);font-weight:300;max-width:520px;line-height:1.8}
+
+/* SECTION SHARED */
+.bc-section-pad{padding:clamp(80px,10vw,140px) clamp(24px,4vw,60px)}
+.bc-section-inner{max-width:1600px;margin:0 auto}
+.bc-section-label{font-size:11px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:#999;margin-bottom:24px;display:block}
+.bc-section-h2{font-size:clamp(28px,3.5vw,48px);font-weight:200;letter-spacing:-.03em;line-height:1.15;color:#000;margin-bottom:clamp(20px,3vw,40px)}
+.bc-section-h2 strong{font-weight:600}
+.bc-text-link{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s;padding-bottom:1px}
+.bc-text-link:hover{border-color:var(--bc-accent)}
+.bc-bg-light{background:#f8f8f6}
+.bc-bg-dark{background:#0f0f0f;color:#fff}
+.bc-bg-dark .bc-section-h2{color:#fff}
+.bc-bg-dark .bc-section-label{color:rgba(255,255,255,.35)}
+
+/* BODY CONTENT */
+.bc-loc-body{max-width:900px;margin:0 auto}
+.bc-loc-body h2{font-size:clamp(22px,2.5vw,32px);font-weight:500;line-height:1.3;margin:0 0 20px;letter-spacing:-.02em;color:#1a1a1a}
+.bc-loc-body h3{font-size:clamp(16px,1.3vw,20px);font-weight:500;margin:clamp(32px,4vw,48px) 0 12px;letter-spacing:-.01em;color:#1a1a1a}
+.bc-loc-body p{font-size:15px;color:#555;line-height:1.9;margin:0 0 16px;font-weight:300}
+.bc-loc-body ul{margin:0 0 20px;padding-left:20px}
+.bc-loc-body ul li{font-size:15px;color:#555;line-height:1.9;font-weight:300;margin-bottom:6px}
+
+/* SERVICES GRID */
+.bc-loc-svcs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}
+.bc-loc-svc{padding:clamp(24px,3vw,40px);background:#f8f8f6;border:1px solid #eee;transition:border-color .3s}
+.bc-loc-svc:hover{border-color:var(--bc-accent)}
+.bc-loc-svc h3{font-size:clamp(15px,1.2vw,18px);font-weight:500;color:#1a1a1a;margin:0 0 10px}
+.bc-loc-svc p{font-size:14px;color:#777;line-height:1.8;margin:0;font-weight:300}
+
+/* PROJECT CARDS */
+.bc-loc-projects{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1.2vw,16px)}
+.bc-loc-pcard{position:relative;overflow:hidden;display:block}
+.bc-loc-pcard img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .5s;filter:brightness(.92)}
+.bc-loc-pcard:hover img{transform:scale(1.03);filter:brightness(.8)}
+.bc-loc-pcard::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.55) 100%);opacity:0;transition:opacity .5s}
+.bc-loc-pcard:hover::after{opacity:1}
+.bc-loc-pcard-info{position:absolute;bottom:clamp(12px,1.5vw,24px);left:clamp(12px,1.5vw,24px);right:clamp(12px,1.5vw,24px);z-index:2;opacity:0;transform:translateY(8px);transition:all .5s}
+.bc-loc-pcard:hover .bc-loc-pcard-info{opacity:1;transform:translateY(0)}
+.bc-loc-pcard-info h3{font-size:clamp(16px,1.5vw,22px);font-weight:400;color:#fff;letter-spacing:-.02em}
+.bc-loc-pcard-info h3 strong{font-weight:600}
+.bc-loc-pcard-info span{font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px;display:block}
+
+/* KNOWLEDGE 2-COL */
+.bc-loc-know-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px)}
+.bc-loc-know-grid h3{font-size:clamp(15px,1.2vw,18px);font-weight:500;color:var(--bc-accent);margin:clamp(24px,3vw,36px) 0 8px}
+.bc-loc-know-grid p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.9;margin:0 0 12px;font-weight:300}
+
+/* FAQ */
+.bc-faq-list{max-width:900px}
+.bc-faq-item{border-bottom:1px solid #eee}
+.bc-faq-q{display:flex;justify-content:space-between;align-items:center;padding:clamp(18px,2vw,28px) 0;cursor:pointer;background:none;border:none;width:100%;text-align:left;font-family:'Inter',sans-serif;font-size:clamp(17px,1.4vw,20px);font-weight:400;color:#1a1a1a;line-height:1.5;gap:16px}
+.bc-faq-q:hover{color:#666}
+.bc-faq-icon{font-size:20px;color:#ccc;transition:transform .3s;flex-shrink:0}
+.bc-faq-item.open .bc-faq-icon{transform:rotate(45deg)}
+.bc-faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
+.bc-faq-item.open .bc-faq-a{max-height:500px}
+.bc-faq-a-inner{padding:0 0 clamp(18px,2vw,28px);font-size:16px;color:#666;line-height:1.9}
+.bc-faq-a-inner a{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s}
+.bc-faq-a-inner a:hover{border-color:var(--bc-accent)}
+
+/* CTA */
+.bc-cta{position:relative;height:55vh;min-height:400px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bc-cta img.bc-cta-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.bc-cta::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:1}
+.bc-cta-c{position:relative;z-index:2;text-align:center;max-width:600px;padding:0 24px}
+.bc-cta h2{font-size:clamp(28px,4vw,52px);font-weight:200;color:#fff;letter-spacing:-.03em;margin-bottom:16px;line-height:1.15}
+.bc-cta h2 strong{font-weight:600}
+.bc-cta p{font-size:17px;color:rgba(255,255,255,.55);margin-bottom:36px;line-height:1.8;font-weight:300}
+.bc-btn{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:18px 44px;border:2px solid var(--bc-accent);background:var(--bc-accent);color:#fff;transition:all .4s;cursor:pointer}
+.bc-btn:hover{background:var(--bc-accent-hover);border-color:var(--bc-accent-hover)}
+
+/* FOOTER */
+.bc-ft{background:#0a0a0a;color:#fff;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px) clamp(24px,3vw,40px);border-top:3px solid var(--bc-accent)}
+.bc-ft-inner{max-width:1600px;margin:0 auto}
+.bc-ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:clamp(24px,4vw,60px);padding-bottom:clamp(40px,5vw,60px);border-bottom:1px solid rgba(255,255,255,.08)}
+.bc-ft-brand p{font-size:13px;color:rgba(255,255,255,.35);line-height:1.8;margin-top:20px;max-width:300px;font-weight:300}
+.bc-ft-mark{height:60px;width:auto;opacity:.8;margin-bottom:8px}
+.bc-ft-col h4{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:20px}
+.bc-ft-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);line-height:2.2;transition:color .3s;font-weight:300}
+.bc-ft-col a:hover{color:var(--bc-accent)}
+.bc-ft-btm{display:flex;justify-content:space-between;align-items:center;padding-top:clamp(20px,3vw,32px)}
+.bc-ft-copy{font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.02em;font-weight:300}
+.bc-ft-social{display:flex;gap:24px}
+.bc-ft-social a{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);transition:color .3s}
+.bc-ft-social a:hover{color:var(--bc-accent)}
+
+@media(max-width:900px){.bc-hd-nav{display:none}.bc-hd-mob{display:block}}
+@media(max-width:768px){
+.bc-loc-hero{height:55vh;min-height:400px}
+.bc-loc-svcs{grid-template-columns:1fr}
+.bc-loc-projects{grid-template-columns:1fr}
+.bc-loc-know-grid{grid-template-columns:1fr}
+.bc-cta{height:50vh;min-height:350px}
+.bc-ft-top{grid-template-columns:1fr 1fr;gap:32px}
+.bc-ft-btm{flex-direction:column;gap:12px;text-align:center}
+.bc-mob a{font-size:clamp(20px,4vw,28px)}
+}
+@media(max-width:480px){
+.bc-ft-top{grid-template-columns:1fr}
+}
+</style>
+
+<div class="bc-progress" id="bcProgress"></div>
+
+<div class="bc">
+
+<!-- NAV -->
+<header class="bc-hd bc-hd--top" id="bcHd">
+  <div class="bc-hd-inner">
+    <a href="/" class="bc-hd-logo">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png" alt="Balmoral Construction — Custom Home Builder in Whistler, Pemberton and Squamish">
+    </a>
+    <ul class="bc-hd-nav">
+      <li><a href="/about" class="bc-hd-link">About</a></li>
+      <li class="bc-hd-drop">
+        <a href="/services" class="bc-hd-link">Services</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/custom-home-building">Custom Home Building</a>
+          <a href="/home-renovations">Home Renovations</a>
+          <a href="/general-contracting">General Contracting</a>
+          <a href="/project-management">Project Management</a>
+          <a href="/land-consultation">Land Consultation</a>
+          <a href="/permit-coordination">Permit Coordination</a>
+        </div>
+      </li>
+      <li><a href="/work" class="bc-hd-link">Work</a></li>
+      <li class="bc-hd-drop">
+        <a href="javascript:void(0)" class="bc-hd-link">Locations</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/whistler-home-builder">Whistler</a>
+          <a href="/pemberton-home-builder">Pemberton</a>
+          <a href="/squamish-home-builder">Squamish</a>
+        </div>
+      </li>
+      <li><a href="/blog" class="bc-hd-link">Blog</a></li>
+      <li><a href="/contact" class="bc-hd-link">Contact</a></li>
+    </ul>
+    <button class="bc-hd-mob" aria-label="Menu" onclick="document.getElementById('bcMob').classList.toggle('open');this.classList.toggle('open');document.getElementById('bcHd').classList.toggle('bc-hd--mob-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="bc-mob" id="bcMob">
+  <a href="/about">About</a>
+  <a href="/services">Services</a>
+  <div class="bc-mob-sub">
+    <a href="/custom-home-building">Custom Home Building</a>
+    <a href="/home-renovations">Home Renovations</a>
+    <a href="/general-contracting">General Contracting</a>
+    <a href="/project-management">Project Management</a>
+    <a href="/land-consultation">Land Consultation</a>
+    <a href="/permit-coordination">Permit Coordination</a>
+  </div>
+  <a href="/work">Work</a>
+  <a href="javascript:void(0)">Locations</a>
+  <div class="bc-mob-sub">
+    <a href="/whistler-home-builder">Whistler</a>
+    <a href="/pemberton-home-builder">Pemberton</a>
+    <a href="/squamish-home-builder">Squamish</a>
+  </div>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="bc-loc-hero">
+  <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/f5e179b4-accd-4319-8d56-ec7cade57368/7667Cerulean-Dusk-6.jpg" alt="Custom home building in Pemberton, BC — Balmoral Construction's home base in the Sea to Sky Corridor">
+  <div class="bc-loc-hero-c">
+    <span class="bc-section-label">Pemberton, BC &mdash; Our Home Base</span>
+    <h1><strong>Custom Home Builder</strong> in Pemberton, BC</h1>
+    <p>Pemberton is where Balmoral Construction lives, works, and builds. This is our home base in the Sea to Sky Corridor, and we know every street, every lot, and every neighbourhood in this valley.</p>
+  </div>
+</section>
+
+<!-- BODY CONTENT -->
+<section class="bc-section-pad" style="background:#fff">
+  <div class="bc-section-inner bc-loc-body bc-reveal">
+    <h2>Why Build a Custom Home in Pemberton?</h2>
+    <p>Pemberton is not just one of the communities we serve. It is our home. Balmoral Construction is headquartered at 1704 Sugarloaf Place in the heart of Pemberton, and our team lives, works, and raises families in this valley every single day. When we talk about building custom homes in Pemberton, we are talking about building in our own backyard, on streets we drive daily, in neighbourhoods where we know the soil conditions from firsthand experience. No other custom home builder in the Sea to Sky Corridor can make that claim with the same depth and honesty.</p>
+    <p>Pemberton is rapidly becoming one of the most compelling places to build a <a href="/custom-home-building" class="bc-text-link">custom home</a> in all of British Columbia. Tucked into a wide, sun-drenched valley just 30 minutes north of Whistler, this community offers something that is increasingly rare in mountain towns: generous lot sizes, a genuine small-town atmosphere with deep agricultural roots, stunning mountain views in every direction, and property values that still represent extraordinary value compared to neighbouring resort communities. For families, remote workers, retirees, and anyone seeking the mountain lifestyle without the resort price tag, Pemberton delivers a quality of life that is genuinely difficult to match.</p>
+    <p>The transformation of Pemberton over the past decade has been remarkable but organic. What was once considered a quiet farming community and a waypoint between Whistler and Lillooet has evolved into a vibrant, growing town that attracts people from across British Columbia and beyond. The population has been steadily increasing as more families discover what long-time residents have always known: Pemberton offers an extraordinary combination of mountain access, community warmth, and affordability that simply does not exist in <a href="/whistler-home-builder" class="bc-text-link">Whistler</a> or <a href="/squamish-home-builder" class="bc-text-link">Squamish</a>. New commercial development along Portage Road, expanded school facilities, investment in parks and recreation infrastructure, and a growing roster of restaurants, breweries, and small businesses all signal a community that is maturing thoughtfully without losing its character.</p>
+
+    <h3>More Affordable Than Whistler, Without Compromise</h3>
+    <p>The most frequently cited reason people choose to build in Pemberton over Whistler is value, and the numbers are compelling. Land prices in Pemberton are substantially lower than in Whistler, often by 40 to 60 percent for comparable or even larger lot sizes. Construction costs per square foot in Pemberton typically range from $400 to $600, compared to Whistler's $500 to $800+ per square foot. The combined effect is dramatic: the same budget that might build a 3,000 square foot home in Whistler can deliver a 4,500 to 5,000 square foot residence in Pemberton, often on a larger lot with better sun exposure and more dramatic views of Mount Currie and the surrounding peaks.</p>
+    <p>But the value proposition extends well beyond raw cost savings. Building in Pemberton means more land, more living space, a stronger sense of permanent community, and proximity to the same world-class recreation that draws people to the Sea to Sky Corridor in the first place. Whistler Blackcomb is a scenic 30-minute drive for ski days. Pemberton's own mountain biking trails, hiking routes, river paddling, and backcountry skiing terrain are right outside your door. The valley also enjoys a notably milder and sunnier microclimate than Whistler, with warmer summers, less extreme winter conditions, and a longer outdoor living season that makes a real difference in daily quality of life.</p>
+
+    <h3>Agricultural Heritage Meets Modern Mountain Living</h3>
+    <p>Pemberton's identity is rooted in agriculture, and that heritage gives the community a character and depth that purely resort-oriented towns cannot replicate. The wide valley floor, fed by the Lillooet River and its tributaries, has supported farming for generations. Today, that agricultural legacy coexists with a modern mountain lifestyle in a way that is uniquely Pemberton. Farm stands selling locally grown produce sit alongside craft breweries and coffee shops. Fields of seed potatoes stretch toward snow-capped peaks. The weekly farmers' market draws the community together around locally grown food and handmade goods.</p>
+    <p>This blend of old and new is precisely what attracts many of our clients. They want the mountain lifestyle, but they also want a real community with depth, history, and authenticity. Pemberton delivers that in abundance. The town has its own elementary and secondary schools, a medical clinic, grocery stores, restaurants, and a growing commercial core. It is not a bedroom community for Whistler. It is its own place, with its own identity, and the people who choose to build here do so because they want to be part of something genuine. You can build a contemporary <a href="/custom-home-building" class="bc-text-link">custom home</a> with floor-to-ceiling glass and look out at working farmland set against the dramatic silhouette of Mount Currie. That combination exists nowhere else in the corridor.</p>
+
+    <h3>Mount Currie Views and the Natural Beauty of the Valley</h3>
+    <p>The visual centrepiece of Pemberton is Mount Currie, a 2,591-metre peak that dominates the eastern skyline and provides one of the most dramatic mountain backdrops for residential properties anywhere in British Columbia. Building a custom home in Pemberton means designing around this view, and our projects in the Benchlands and Sugarloaf neighbourhoods take full advantage of the orientation. Our <a href="/sugarloaf" class="bc-text-link">Sugarloaf</a> project, a 4,800 square foot custom home designed by Stark Architecture, showcases this approach with floor-to-ceiling windows that frame Mount Currie from the primary living spaces, creating an ever-changing natural canvas that shifts with the seasons and the light.</p>
+    <p>Beyond Mount Currie, the Pemberton Valley offers panoramic views in every direction. The Lillooet Range to the west, the glaciated peaks visible to the north toward Lillooet Lake, and the forested benchlands that rise above the valley floor all contribute to a sense of openness and scale that Whistler's narrower valley simply cannot replicate. For clients who value unobstructed sightlines, a feeling of space, and the ability to see weather systems rolling through the mountains from their living room, Pemberton is unmatched in the Sea to Sky Corridor.</p>
+
+    <h3>The Benchlands and Sugarloaf: Pemberton's Premier Neighbourhoods</h3>
+    <p><strong>The Benchlands</strong> is Pemberton's premier neighbourhood for custom home construction, situated on the elevated bench above the valley floor on the eastern side of town. The lots here offer commanding views of Mount Currie and the surrounding mountains, excellent southern sun exposure that maximizes natural light and passive solar gain, and generous lot sizes that are typically a quarter acre or more. The Benchlands benefit from municipal water and sewer services, eliminating the need for septic systems that some other Pemberton properties require. Our <a href="/eagle" class="bc-text-link">Eagle</a> project in the Benchlands, a 5,000 square foot custom home built with insulated concrete form (ICF) construction, demonstrates what is possible in this neighbourhood: a high-performance building envelope that delivers superior insulation, moisture resistance, and structural integrity, wrapped in architectural design that responds to the specific character and views of the site.</p>
+    <p><strong>Sugarloaf</strong> is where Balmoral Construction itself is headquartered, and it is one of Pemberton's most desirable residential areas. The neighbourhood sits on slightly elevated terrain south of the town centre, offering a mix of established homes and new custom builds among mature trees with good privacy between properties. Sugarloaf has a quiet, family-oriented character, and the neighbourhood's established landscaping and canopy give it a sense of permanence that newer developments are still growing into. Our <a href="/sugarloaf" class="bc-text-link">Sugarloaf</a> project, designed by Stark Architecture, demonstrated the full potential of building custom in this neighbourhood, with open-plan living spaces, expansive glazing systems, and a design language that responds to the specific topography and orientation of the lot.</p>
+    <p>Properties along the valley corridors toward Mount Currie and along the Pemberton Portage Road offer larger acreages for those seeking more rural settings with agricultural character. These properties often fall within or adjacent to the Agricultural Land Reserve, which requires careful navigation of ALC regulations, but they provide the kind of privacy, space, and connection to the land that is simply unavailable within the village core. Building on ALR land is possible and something our team navigates regularly, but it requires understanding the specific restrictions and approval processes that apply.</p>
+
+    <h3>Mountain Biking Culture and Year-Round Recreation</h3>
+    <p>Pemberton has quietly become one of British Columbia's premier mountain biking destinations, and this growing reputation is attracting a new generation of residents who build their lives around riding. The trail network in the Pemberton Valley has expanded dramatically over the past decade, with world-class singletrack accessible directly from many residential neighbourhoods. The Pemberton Off Road Cycling Association (PORCA) has developed a trail system that rivals much larger and more established mountain biking destinations, with terrain ranging from flowy cross-country to technical enduro.</p>
+    <p>But the recreation opportunities extend well beyond biking. The Pemberton area offers exceptional hiking, including the spectacular Joffre Lakes Provincial Park and the trails around Nairn Falls. Trail running, backcountry skiing on Mount Currie and nearby peaks, river paddling on the Lillooet and Birkenhead rivers, fishing in some of the province's best steelhead and salmon waters, and golf at Big Sky Golf and Country Club, one of the most scenic courses in British Columbia, all contribute to a lifestyle that is genuinely four-season and endlessly varied. In winter, Whistler Blackcomb is a 30-minute drive, and many Pemberton residents hold season passes. Cross-country skiing at the Pemberton Nordic Centre and backcountry touring from the valley floor provide local winter options that avoid the resort crowds entirely.</p>
+
+    <h3>Growing Families Choosing Pemberton Over Whistler</h3>
+    <p>There is a pattern we have seen repeatedly over the past several years, and it continues to accelerate: families who moved to the Sea to Sky Corridor for the mountain lifestyle are choosing Pemberton over Whistler when it comes time to put down permanent roots and build a custom home. The reasons are consistent. They want a real yard for their children. They want a home with a proper garage, a workshop, and outdoor living space that does not end at a property line three metres from the neighbour. They want to know their neighbours and be part of a year-round community rather than a resort with a revolving door of short-term visitors. And they want to achieve all of this without taking on the mortgage that a comparable Whistler property would require.</p>
+    <p>Pemberton's schools are a significant draw for families. Signal Hill Elementary has a reputation for engaged teachers, involved parents, and a curriculum that integrates the outdoor education opportunities that the valley provides. Pemberton Secondary serves the community's older students. The schools are small enough that every family is known, which creates the kind of educational environment that larger communities struggle to maintain. For families building a custom home, the investment is not just in the house but in the community and the quality of life their children will experience growing up here.</p>
+    <p>The commute to Whistler is manageable and scenic, approximately 30 minutes along Highway 99 through some of British Columbia's most spectacular scenery. Many Pemberton residents work in Whistler or operate businesses that serve the broader Sea to Sky Corridor. The rise of remote work has further strengthened Pemberton's appeal, as professionals who once needed to live close to a city office can now build their dream home in the mountains and maintain their careers from a home office with a view of Mount Currie. Building in Pemberton does not mean leaving Whistler behind. It means having the best of both worlds with a home base that feels like a genuine hometown rather than a resort.</p>
+  </div>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="bc-section-pad bc-bg-light" style="border-top:1px solid #eee;border-bottom:1px solid #eee">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">What We Build</span>
+    <h2 class="bc-section-h2 bc-reveal">Custom home building services in <strong>Pemberton</strong></h2>
+    <p class="bc-reveal" style="font-size:15px;color:#777;max-width:600px;margin-bottom:clamp(32px,4vw,48px);font-weight:300;line-height:1.8">From our home base in Pemberton, we manage every phase of your <a href="/custom-home-building" class="bc-text-link">custom build</a> with hands-on, owner-level involvement.</p>
+    <div class="bc-loc-svcs bc-reveal bc-reveal-delay-1">
+      <div class="bc-loc-svc">
+        <h3>Site Evaluation &amp; Land Consulting</h3>
+        <p>We assess your Pemberton lot for soil conditions, water table depth, drainage patterns, sun exposure, view corridors, and servicing capacity. Our intimate knowledge of every Pemberton neighbourhood, built from years of living and building here, helps you choose the right lot and avoid costly surprises before you commit.</p>
+      </div>
+      <div class="bc-loc-svc">
+        <h3>Design Collaboration</h3>
+        <p>We work with your architect or connect you with proven design professionals like Stark Architecture. Our construction expertise enters the design phase early, ensuring your vision translates to a buildable, on-budget reality that takes full advantage of Pemberton's views and valley climate.</p>
+      </div>
+      <div class="bc-loc-svc">
+        <h3>VOPB Permit Coordination</h3>
+        <p>The Village of Pemberton has its own building requirements and permitting process. We navigate VOPB permits, development applications, ALR considerations, and building envelope compliance on your behalf, leveraging relationships we have built over a decade of working with municipal staff.</p>
+      </div>
+      <div class="bc-loc-svc">
+        <h3>Full Custom Construction</h3>
+        <p>From engineered foundations to final finishing, we build homes that perform in Pemberton's mountain valley climate. Insulated concrete forms, high-performance building envelopes, and structural systems designed for local conditions are standard in our builds. Our Eagle project used ICF construction for superior performance.</p>
+      </div>
+      <div class="bc-loc-svc">
+        <h3>Interior Finishing &amp; Millwork</h3>
+        <p>Working with our affiliated interior designer Britt Lothrop, we deliver interiors that balance mountain aesthetic with modern luxury. Custom millwork, heated floors, and material selections suited to Pemberton's climate are integrated from the design phase, not added as afterthoughts.</p>
+      </div>
+      <div class="bc-loc-svc">
+        <h3>Warranty &amp; Post-Completion</h3>
+        <p>Every Balmoral home carries <a href="/reviews" class="bc-text-link">BC New Home Warranty and National Home Warranty</a> coverage. Being headquartered in Pemberton means we are minutes away for any post-completion needs. We are not a phone call from another town. We are your neighbours, and we stand behind our work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section class="bc-section-pad" style="background:#fff">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Our Pemberton Work</span>
+    <h2 class="bc-section-h2 bc-reveal">Custom homes we've built in <strong>Pemberton</strong></h2>
+    <div class="bc-loc-projects bc-reveal bc-reveal-delay-1">
+      <a href="/cerulean" class="bc-loc-pcard">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/f5e179b4-accd-4319-8d56-ec7cade57368/7667Cerulean-Dusk-6.jpg" alt="Cerulean custom home in Pemberton by Balmoral Construction" loading="lazy">
+        <div class="bc-loc-pcard-info"><h3><strong>Cerulean</strong></h3><span>Pemberton, BC</span></div>
+      </a>
+      <a href="/sugarloaf" class="bc-loc-pcard">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/989bc309-dd71-40c1-83b9-0ba6f6523a1e/custom-home-builder-pemberton-balmoral-construction-1.jpg" alt="Sugarloaf 4800sqft custom home designed by Stark Architecture in Pemberton" loading="lazy">
+        <div class="bc-loc-pcard-info"><h3><strong>Sugarloaf</strong></h3><span>Pemberton, BC &mdash; 4,800 sq ft</span></div>
+      </a>
+      <a href="/eagle" class="bc-loc-pcard">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/b8105bdf-c2e5-4daf-a854-6052a8af4cfb/eagle-drive-jpeg-2500px-6.jpg" alt="Eagle 5000sqft insulated concrete form custom home in Pemberton Benchlands" loading="lazy">
+        <div class="bc-loc-pcard-info"><h3><strong>Eagle</strong></h3><span>Pemberton, BC &mdash; 5,000 sq ft</span></div>
+      </a>
+    </div>
+    <div class="bc-reveal bc-reveal-delay-2" style="text-align:center;padding-top:clamp(32px,4vw,48px)">
+      <a href="/work" style="font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#999;transition:color .3s;padding-bottom:4px;border-bottom:1px solid #ddd">View All Projects &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL KNOWLEDGE -->
+<section class="bc-section-pad bc-bg-dark">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Local Expertise</span>
+    <h2 class="bc-section-h2 bc-reveal">Building in Pemberton is what we do <strong>every day</strong></h2>
+    <div class="bc-loc-know-grid bc-reveal bc-reveal-delay-1">
+      <div>
+        <p>Balmoral Construction is not a Whistler builder that occasionally takes on Pemberton projects. We are a Pemberton company, headquartered at 1704 Sugarloaf Place, with a team that lives in this valley and builds here more than anywhere else. That daily presence in this community gives us an understanding of Pemberton construction conditions that no other builder can match. We know the drainage patterns on the Benchlands because we have built there repeatedly. We know the soil composition in Sugarloaf because our office sits on it. We know which subcontractors deliver consistently in this valley, and we have the long-standing trade relationships to prove it.</p>
+        <p>When you build with Balmoral in Pemberton, you get a team that understands the sun angles that determine where to place your main living spaces, the wind patterns that affect exterior material choices, and the seasonal rhythms that shape every construction timeline. Marc Harvey, our owner, is personally involved in every Pemberton project. Project managers Jeremy Lewis and Jonny Tweedie are on site daily, not commuting from another community. That proximity saves our clients time, money, and frustration at every stage of the build.</p>
+
+        <h3>VOPB Permits &amp; Municipal Process</h3>
+        <p>The Village of Pemberton (VOPB) building permit process is generally more straightforward than Whistler's RMOW process, but it has its own requirements and timelines that builders unfamiliar with the municipality often underestimate. Permit timelines typically run 2 to 4 months from application to approval. We coordinate all required consultant reports, from geotechnical assessments to environmental reviews, and maintain strong working relationships with VOPB planning and building inspection staff. Our track record of compliant, well-documented submissions means fewer revision requests and faster approvals for our clients. For properties in the surrounding Squamish-Lillooet Regional District (SLRD), a separate permitting process applies, and we are experienced with both jurisdictions.</p>
+
+        <h3>Agricultural Land Reserve Considerations</h3>
+        <p>A significant portion of the Pemberton Valley falls within the Agricultural Land Reserve (ALR), which restricts subdivision and certain types of development but does allow residential construction under specific conditions. Building on ALR land requires application to the Agricultural Land Commission (ALC) and careful compliance with siting, footprint, and use restrictions. The ALC has specific requirements regarding house size and the total area of non-farm use on each parcel. We have guided multiple clients through the ALR application process and understand how to design custom homes that meet commission requirements while still delivering the quality and scale our clients expect. If your preferred lot is on ALR land, we can advise on feasibility and restrictions before you commit to the purchase.</p>
+      </div>
+      <div>
+        <h3>Lot Sizes and Municipal vs Septic Servicing</h3>
+        <p>Pemberton lots vary significantly in size and servicing depending on location. Properties within the Village core typically have access to municipal water and sewer, while lots on the periphery or along the valley corridors may require private wells and septic systems. Lot sizes range from standard residential parcels of 6,000 to 10,000 square feet in the Village core to quarter-acre and half-acre lots in the Benchlands and Sugarloaf, and multi-acre rural properties along the valley floor. The availability of municipal services significantly affects both construction costs and ongoing maintenance. We evaluate servicing requirements and associated costs as part of our land consultation service, and we work with experienced well drillers and septic designers when private systems are required, ensuring there are no surprises after the lot purchase.</p>
+
+        <h3>Climate Advantages: Milder Winters, Longer Building Season</h3>
+        <p>Pemberton's valley-bottom location at approximately 200 metres elevation creates a microclimate that is notably milder than Whistler's village at 650 metres. Winters are less extreme, with lower snowfall accumulation at residential elevations and more frequent Chinook-type warming events that moderate temperatures. Summers are warmer and longer, with the valley acting as a natural heat sink that extends the comfortable outdoor living season well into October. For construction, the practical benefit is significant: we can typically begin exterior work two to three weeks earlier in spring and continue two to three weeks later in fall compared to Whistler projects. That additional four to six weeks of optimal building weather translates directly to more efficient schedules, fewer weather delays, and better conditions for concrete work, exterior finishing, and landscaping.</p>
+
+        <h3>Foundation and Structural Engineering</h3>
+        <p>The Pemberton Valley's alluvial soils present specific foundation engineering challenges that differ from the bedrock and glacial till common in Whistler. Soil bearing capacity, water table depth, and frost penetration all factor into foundation design decisions. Our Eagle project in the Benchlands used insulated concrete form (ICF) construction to address both the structural requirements and the energy performance targets our client set. ICF construction is particularly well-suited to Pemberton's conditions, providing superior insulation values, moisture resistance, and structural integrity that conventional wood-frame foundations cannot match. The result is a 5,000 square foot home with an exceptionally tight building envelope, lower energy costs, and a foundation system that will perform reliably for generations in the valley's specific soil and moisture conditions.</p>
+
+        <h3>Moisture Management and Building Envelope</h3>
+        <p>While Pemberton receives less precipitation than Whistler at the village level, the valley's river proximity and water table conditions create specific moisture management challenges. Temperature inversions during winter can trap cold, damp air at the valley floor, and spring snowmelt raises water table levels across many properties. Our building envelope details are designed specifically for these conditions: high-performance weather barriers, carefully engineered drainage planes, vapour management strategies that account for heating season dynamics, and foundation waterproofing systems that address the specific groundwater conditions on each lot. This attention to moisture management is what separates homes that perform beautifully for decades from those that develop problems within a few years.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bc-section-pad bc-bg-light" style="border-top:1px solid #eee;border-bottom:1px solid #eee">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Common Questions</span>
+    <h2 class="bc-section-h2 bc-reveal">Pemberton custom home building <strong>FAQ</strong></h2>
+    <div class="bc-faq-list bc-reveal bc-reveal-delay-1">
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">How much does it cost to build a custom home in Pemberton?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">Custom home construction in Pemberton typically ranges from $400 to $600+ per square foot, depending on site complexity, design specifications, finishing levels, and servicing requirements. Properties requiring septic systems, significant site preparation, or specialized construction methods like ICF may trend toward the higher end. Compared to Whistler, where custom build costs range from $500 to $800+ per square foot, Pemberton offers significantly more value per construction dollar. Combined with substantially lower land prices, you can build more home on more land for the same investment. We provide detailed cost estimates after evaluating your specific lot and design vision. <a href="/contact">Contact us</a> for a consultation.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">How long does it take to build a custom home in Pemberton?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">A typical custom home in Pemberton takes 12 to 18 months from breaking ground to move-in, depending on the size and complexity of the project. The VOPB permitting phase usually adds 2 to 4 months prior to construction start. Pemberton's milder climate and lower elevation compared to Whistler provide a longer building season, which can shorten overall timelines by several weeks. We establish a detailed construction schedule during the planning phase and provide regular updates throughout the build. Our proximity as a Pemberton-based builder means we are on site daily, which keeps projects moving efficiently.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">Is there still buildable land available in Pemberton?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">Yes. Pemberton still has buildable residential lots available in several neighbourhoods, including the Benchlands, Sugarloaf, and the Village core. New subdivision developments continue to release additional lots as the community grows. Rural acreages along the valley corridors toward Mount Currie and along Pemberton Portage Road also present opportunities, though these may involve ALR considerations. Land availability and pricing change frequently, so we recommend engaging early in the lot search process. We can advise on the suitability of specific lots for custom home construction, including servicing, zoning, and geotechnical factors, as part of our land consultation service.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">Can I build a custom home on ALR land in Pemberton?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">Yes, but with important restrictions. The Agricultural Land Reserve allows one principal residence per parcel, and the Agricultural Land Commission has specific requirements regarding house size, siting, and the total area of non-farm use. Applications for larger homes or additional non-farm structures on ALR land require ALC approval, and the process can take several months. We have experience navigating ALR applications in the Pemberton Valley and can advise on what is feasible for your specific parcel before you commit to a lot purchase. Understanding ALR restrictions early prevents costly misunderstandings later in the process.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">Do all Pemberton lots have municipal water and sewer?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">No. Properties within the Village of Pemberton's serviced boundary have access to municipal water and sewer, but lots on the periphery and along the valley corridors often require private wells and septic systems. The distinction significantly affects both construction costs and ongoing maintenance requirements. Septic system design depends heavily on soil conditions, which vary across the valley, and well drilling depth and water quality differ by location. We evaluate servicing as a standard part of our lot assessment process and work with experienced local well drillers and septic designers when private systems are required.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">What are Pemberton's weather advantages for building compared to Whistler?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">Pemberton's valley-bottom elevation of approximately 200 metres, compared to Whistler's 650 metres, creates a milder microclimate with less snowfall at residential elevations, warmer winters, and a longer frost-free season. For construction, the practical benefit is a building season that extends approximately two to three weeks longer on each end compared to Whistler, giving us an additional four to six weeks of optimal exterior work conditions annually. The drier summer conditions also benefit concrete curing, exterior finishing, and landscaping timelines. These advantages translate directly to more efficient scheduling and fewer weather-related delays on Pemberton projects.</div></div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">Why would I choose to build in Pemberton instead of Whistler?<span class="bc-faq-icon">+</span></button>
+        <div class="bc-faq-a"><div class="bc-faq-a-inner">Pemberton offers more home for your money, larger lot sizes, a milder climate with a longer outdoor living season, a genuine year-round community feel, and growing infrastructure. Construction costs run $100 to $200+ per square foot less than Whistler. Land prices are significantly lower for comparable or larger lots. You get more space, more privacy, and a real community rather than a resort town. Whistler's ski hills are still only 30 minutes away, but you also gain access to Pemberton's own exceptional recreation, including world-class mountain biking, river sports, and backcountry skiing. Many of our clients who initially considered Whistler ultimately chose Pemberton once they experienced the value, the space, and the community that this valley offers. <a href="/contact">Contact us to discuss</a>.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bc-cta">
+  <img class="bc-cta-bg" src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/8d1fe690-3b0d-4125-b1ca-be9981cb4f07/custom-home-builder-pemberton-balmoral-construction-18.jpg" alt="Custom home in Pemberton by Balmoral Construction with Mount Currie views" loading="lazy">
+  <div class="bc-cta-c bc-reveal">
+    <h2>Ready to build in <strong>Pemberton?</strong></h2>
+    <p>You will be building with a team that lives right here. Tell us about your vision for your Pemberton home, and let's start with a conversation about your lot, your lifestyle, and what this valley means to you.</p>
+    <a href="/contact" class="bc-btn bc-btn--accent">Start Your Pemberton Build</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bc-ft">
+  <div class="bc-ft-inner">
+    <div class="bc-ft-top">
+      <div class="bc-ft-brand">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/83ca6501-705e-43ee-b119-551d0c16ea14/unnamed.png" alt="Balmoral Construction — Custom Home Builder in the Sea to Sky Corridor" class="bc-ft-mark">
+        <p>Boutique custom home builder in the Sea to Sky Corridor. Based in Pemberton, building across Whistler, Pemberton &amp; Squamish since 2011.</p>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Services</h4>
+        <a href="/custom-home-building">Custom Home Building</a>
+        <a href="/home-renovations">Home Renovations</a>
+        <a href="/general-contracting">General Contracting</a>
+        <a href="/project-management">Project Management</a>
+        <a href="/land-consultation">Land Consultation</a>
+        <a href="/permit-coordination">Permit Coordination</a>
+        <a href="/services">All Services</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Locations</h4>
+        <a href="/whistler-home-builder">Whistler Home Builder</a>
+        <a href="/pemberton-home-builder">Pemberton Home Builder</a>
+        <a href="/squamish-home-builder">Squamish Home Builder</a>
+        <a href="/whistler-home-renovations">Whistler Renovations</a>
+        <a href="/pemberton-home-renovations">Pemberton Renovations</a>
+        <a href="/squamish-home-renovations">Squamish Renovations</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Projects</h4>
+        <a href="/warbler-way">Warbler Way</a>
+        <a href="/cerulean">Cerulean</a>
+        <a href="/sugarloaf">Sugarloaf</a>
+        <a href="/white-gold-2">White Gold 2</a>
+        <a href="/fitzsimmons">Fitzsimmons</a>
+        <a href="/work">All Projects</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Company</h4>
+        <a href="/about">About</a>
+        <a href="/work">Portfolio</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+        <a href="tel:6049072237">604.907.2237</a>
+        <a href="mailto:marc@balmoralconstruction.com">marc@balmoralconstruction.com</a>
+      </div>
+    </div>
+    <div class="bc-ft-btm">
+      <span class="bc-ft-copy">&copy; 2026 Balmoral Construction Inc. &mdash; Custom Home Builder in Whistler, Pemberton &amp; Squamish, BC</span>
+      <div class="bc-ft-social">
+        <a href="https://www.instagram.com/balmoralconstruction/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.houzz.com/professionals/general-contractors/balmoral-construction-pfvwus-pf~1513498919" target="_blank" rel="noopener">Houzz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var hd=document.getElementById('bcHd');
+  function checkScroll(){var s=window.scrollY>80;hd.classList.toggle('bc-hd--top',!s);hd.classList.toggle('bc-hd--scrolled',s)}
+  window.addEventListener('scroll',checkScroll);checkScroll();
+
+  var prog=document.getElementById('bcProgress');
+  window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;if(h>0)prog.style.width=(window.scrollY/h*100)+'%'});
+
+  var reveals=document.querySelectorAll('.bc-reveal');
+  var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('bc-visible');observer.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  reveals.forEach(function(el){observer.observe(el)});
+
+  document.querySelectorAll('.bc-faq-item').forEach(function(item){
+    var btn=item.querySelector('.bc-faq-q');
+    btn.addEventListener('click',function(){
+      var isOpen=item.classList.contains('open');
+      document.querySelectorAll('.bc-faq-item').forEach(function(i){i.classList.remove('open');i.querySelector('.bc-faq-q').setAttribute('aria-expanded','false')});
+      if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true')}
+    });
+  });
+})();
+</script>
+<style>
+/* Squarespace page wrapper reset */
+.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block{margin:0!important;padding:0!important;max-width:100%!important;width:100%!important}
+.page-section:last-of-type{padding-bottom:0!important;margin-bottom:0!important}
+#footer,.Footer,.footer,footer[data-footer-id],footer:not(.bc-ft){display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important}
+.sqs-block-spacer,.sqs-block-horizontalrule,.section-background{display:none!important}
+@media(max-width:768px){.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block,.Index-page-content,.blog-item-inner-wrapper,article.page,article.Page,.page-content,.Page-content{padding:0!important;margin:0!important}body{padding-bottom:0!important;margin-bottom:0!important}}
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){var f=document.querySelector('.bc-ft');if(f){var p=f.closest('.sqs-block')||f.closest('.page-section')||f.parentElement;while(p){var n=p.nextElementSibling;while(n){n.style.cssText='display:none!important;height:0!important;padding:0!important;margin:0!important;overflow:hidden!important';n=n.nextElementSibling}p=p.parentElement}}});
+</script>

@@ -1,0 +1,1907 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.sv-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a1a18;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+}
+
+.sv-loader.sv-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.sv-loader-brand {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: #f6f4f0;
+  opacity: 0;
+  animation: svLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.sv-loader-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(138,133,121,0.7);
+  margin-top: 8px;
+  opacity: 0;
+  animation: svLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.sv-loader-line {
+  width: 80px;
+  height: 1px;
+  background: rgba(201,169,110,0.12);
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+  opacity: 0;
+  animation: svLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.sv-loader-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  animation: svLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+}
+
+@keyframes svLoaderIn { to { opacity: 1; } }
+@keyframes svLoaderFill { to { left: 100%; } }
+
+/* ── Section nav dots ── */
+.sv-section-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.sv-section-nav.sv-nav-visible {
+  opacity: 1;
+}
+
+.sv-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #8a8579;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.sv-nav-dot:hover {
+  border-color: #c9a96e;
+  transform: scale(1.3);
+}
+
+.sv-nav-dot.sv-nav-active {
+  background: #c9a96e;
+  border-color: #c9a96e;
+  box-shadow: 0 0 8px rgba(201,169,110,0.4);
+}
+
+.sv-nav-dot::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, right 0.3s ease;
+}
+
+.sv-nav-dot:hover::before {
+  opacity: 1;
+  right: 24px;
+}
+
+@media (max-width: 768px) {
+  .sv-section-nav { display: none; }
+}
+
+/* ── Scroll progress bar ── */
+.sv-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.4));
+  z-index: 9999;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px rgba(201,169,110,0.4);
+}
+
+/* ── Headline gold underline on em ── */
+.sv-wrap h2 em {
+  position: relative;
+  display: inline;
+}
+
+.sv-wrap h2 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.2));
+  transition: width 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-wrap h2.sv-underlined em::after {
+  width: 100%;
+}
+
+/* ── Divider draw animation ── */
+.sv-divider {
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-divider.sv-drawn {
+  width: 80px;
+}
+
+/* ── Ken Burns on image breaks ── */
+.sv-img-break.sv-in-view img {
+  animation: svKenBurns 16s ease-in-out infinite alternate;
+}
+
+@keyframes svKenBurns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.06) translate(-4px, -6px); }
+}
+
+/* ── Film grain overlay ── */
+.sv-grain::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.sv-grain {
+  position: relative;
+}
+
+.sv-grain > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Eyebrow gold dash (animated) ── */
+.sv-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sv-eyebrow::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  background: #c9a96e;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-eyebrow.sv-visible::before {
+  width: 24px;
+}
+
+/* ── Photo break depth layers ── */
+.sv-img-break {
+  position: relative;
+  overflow: hidden;
+}
+
+.sv-img-break img {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+.sv-img-break::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(rgba(26,26,24,0.15), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sv-img-break::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: linear-gradient(transparent, rgba(26,26,24,0.55));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Custom cursor ── */
+.sv-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(201,169,110,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
+.sv-cursor.sv-active {
+  opacity: 1;
+}
+
+.sv-cursor.sv-hover {
+  width: 50px;
+  height: 50px;
+  border-color: #c9a96e;
+  background: rgba(201,169,110,0.08);
+}
+
+.sv-cursor.sv-click {
+  width: 14px;
+  height: 14px;
+  background: rgba(201,169,110,0.3);
+}
+
+.sv-cursor-dot {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #c9a96e;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sv-cursor-dot.sv-active {
+  opacity: 1;
+}
+
+/* ── Magnetic button ── */
+.sv-magnetic {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Deliverable card stagger ── */
+.sv-del-card {
+  transform: translateY(12px);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, opacity 0.6s ease;
+}
+
+.sv-del-card.sv-entered {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sv-del-card:hover {
+  box-shadow: 0 8px 30px rgba(201,169,110,0.06);
+  transform: translateY(-2px);
+}
+
+/* ── Stat counter number glow ── */
+.sv-stat-num {
+  transition: text-shadow 0.6s ease;
+}
+
+.sv-stat-num.sv-counted {
+  text-shadow: 0 0 20px rgba(201,169,110,0.3);
+}
+
+/* ── Meta bar border draw ── */
+.sv-meta {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  background-image: linear-gradient(#d9d5cd, #d9d5cd), linear-gradient(#d9d5cd, #d9d5cd);
+  background-size: 0% 1px, 0% 1px;
+  background-position: center top, center bottom;
+  background-repeat: no-repeat;
+  transition: background-size 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-meta.sv-drawn {
+  background-size: 100% 1px, 100% 1px;
+}
+
+/* ── CTA background slow zoom ── */
+.sv-cta-bg img {
+  transition: transform 8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-cta.sv-in-view .sv-cta-bg img {
+  transform: scale(1.08);
+}
+
+/* ── CTA button glow pulse ── */
+.sv-cta-btn {
+  animation: svBtnGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes svBtnGlow {
+  0% { box-shadow: none; }
+  100% { box-shadow: 0 0 40px rgba(201,169,110,0.15), 0 0 80px rgba(201,169,110,0.05); }
+}
+
+/* ── Accent line pulse ── */
+.sv-accent {
+  animation: svAccentPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes svAccentPulse {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* ── Hero scroll fade ── */
+.sv-hero-content {
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* ── Scroll indicator ── */
+.sv-scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 3;
+  transition: opacity 0.4s ease;
+}
+
+.sv-scroll-hint.sv-hidden { opacity: 0; pointer-events: none; }
+
+.sv-scroll-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.45rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.3);
+}
+
+.sv-scroll-line {
+  width: 1px;
+  height: 36px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(246,244,240,0.1);
+}
+
+.sv-scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #c9a96e;
+  animation: svScrollPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes svScrollPulse {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ── Inline gold highlights ── */
+.sv-gold { color: #c9a96e; font-weight: 400; }
+
+/* ── Manifesto ── */
+.sv-manifesto {
+  background: #1a1a18;
+  padding: 8rem 5vw;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.sv-manifesto::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(rgba(201,169,110,0.4), transparent);
+}
+
+.sv-manifesto-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(246,244,240,0.25);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sv-manifesto-text .sv-mw {
+  display: inline;
+  color: rgba(246,244,240,0.15);
+  transition: color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-manifesto-text .sv-mw.sv-lit {
+  color: #f6f4f0;
+}
+
+.sv-manifesto-text .sv-mw.sv-gold-word.sv-lit {
+  color: #c9a96e;
+}
+
+/* ── Ambient particles canvas ── */
+.sv-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ═══ BUILD & TEAM CONTENT SERVICE PAGE ═══ */
+.sv-wrap {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #1a1a18;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.sv-wrap img {
+  max-width: 100%;
+  display: block;
+}
+
+.sv-wrap a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── HERO ─── */
+.sv-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 6rem 5vw;
+  background: #1a1a18;
+  overflow: hidden;
+}
+
+.sv-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 20%, rgba(26,26,24,0.6) 60%, rgba(26,26,24,0.92) 100%);
+  z-index: 1;
+}
+
+.sv-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.sv-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  filter: saturate(0.6);
+}
+
+.sv-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.sv-hero-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.sv-hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: #f6f4f0;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.sv-hero h1 em {
+  font-style: italic;
+  color: #c9a96e;
+}
+
+.sv-hero-sub {
+  font-size: 1.05rem;
+  color: #d9d5cd;
+  font-weight: 300;
+  max-width: 560px;
+  line-height: 1.8;
+}
+
+/* ─── META BAR ─── */
+.sv-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0;
+  border-top: 1px solid #d9d5cd;
+  border-bottom: 1px solid #d9d5cd;
+}
+
+.sv-meta-item {
+  padding: 2rem 5vw;
+  border-right: 1px solid #d9d5cd;
+}
+
+.sv-meta-item:last-child {
+  border-right: none;
+}
+
+.sv-meta-dt {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8579;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.sv-meta-dd {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #1a1a18;
+}
+
+/* ─── SECTIONS ─── */
+.sv-section {
+  padding: 6rem 5vw;
+}
+
+.sv-narrow {
+  max-width: 720px;
+}
+
+.sv-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #b8975a;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.sv-divider {
+  width: 60px;
+  height: 1px;
+  background: #c9a96e;
+  margin: 0 0 2rem;
+}
+
+.sv-section h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.sv-section p {
+  font-size: 1rem;
+  color: #4a4a46;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.sv-section p:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── IMAGE BREAK ─── */
+.sv-img-break {
+  width: 100%;
+  height: 70vh;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.sv-img-break img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: clip-path 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.1s linear;
+}
+
+/* ─── CONTENT ROI STATS ─── */
+.sv-content-stats {
+  background: #1a1a18;
+  padding: 5rem 5vw;
+}
+
+.sv-content-stats .sv-label {
+  color: #c9a96e;
+  text-align: center;
+}
+
+.sv-content-stats .sv-divider {
+  background: rgba(201,169,110,0.4);
+  margin: 0 auto 2rem;
+}
+
+.sv-content-stats h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: #f6f4f0;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sv-content-stats h2 em {
+  font-style: italic;
+  color: #c9a96e;
+}
+
+.sv-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: rgba(201,169,110,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.sv-stat-card {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: #1a1a18;
+}
+
+.sv-stat-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: #c9a96e;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.sv-stat-lbl {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.65);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.sv-stat-sub {
+  font-size: 0.7rem;
+  color: rgba(246,244,240,0.35);
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
+/* ─── WHAT'S INCLUDED ─── */
+.sv-deliverables {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.sv-del-card {
+  padding: 2rem 0;
+  border-top: 1px solid #d9d5cd;
+}
+
+.sv-del-card h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+.sv-del-card p {
+  font-size: 0.9rem;
+  color: #8a8579;
+  line-height: 1.7;
+}
+
+/* ─── GALLERY ─── */
+.sv-gallery {
+  padding: 6rem 5vw 3rem;
+  background: #1a1a18;
+}
+
+.sv-gallery .sv-label {
+  color: #c9a96e;
+}
+
+.sv-gallery .sv-divider {
+  background: rgba(201,169,110,0.4);
+}
+
+.sv-gallery h2 {
+  color: #f6f4f0;
+}
+
+.sv-gallery h2 em {
+  font-style: italic;
+  color: #c9a96e;
+}
+
+.sv-gallery-grid {
+  column-count: 3;
+  column-gap: 12px;
+  margin-top: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sv-gallery-item {
+  break-inside: avoid;
+  margin-bottom: 12px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.sv-gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.8s ease;
+}
+
+.sv-gallery-item:hover img {
+  transform: scale(1.03);
+}
+
+/* ─── IDEAL FOR ─── */
+.sv-ideal {
+  background: #f6f4f0;
+  padding: 5rem 5vw;
+}
+
+.sv-ideal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 2.5rem auto 0;
+}
+
+.sv-ideal-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.sv-ideal-card:hover {
+  transform: translateY(-4px);
+}
+
+.sv-ideal-card h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+.sv-ideal-card p {
+  font-size: 0.85rem;
+  color: #8a8579;
+  line-height: 1.7;
+}
+
+/* ─── CTA ─── */
+.sv-cta {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sv-cta-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.sv-cta-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.4) brightness(0.2);
+}
+
+.sv-cta-c {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 5vw;
+}
+
+.sv-cta-eyebrow {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.sv-cta-eyebrow::before,
+.sv-cta-eyebrow::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: rgba(201,169,110,0.3);
+}
+
+.sv-cta h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 300;
+  color: #f6f4f0;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.sv-cta h2 em {
+  font-style: italic;
+  color: #c9a96e;
+}
+
+.sv-cta-sub {
+  color: rgba(246,244,240,0.65);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto 3rem;
+}
+
+.sv-cta-btn {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 1.2rem 3.5rem;
+  border: 1px solid #c9a96e;
+  background: #c9a96e;
+  color: #1a1a18;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.sv-cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.sv-cta-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.sv-cta-btn:hover {
+  background: transparent !important;
+  color: #c9a96e !important;
+  box-shadow: 0 0 30px rgba(201,169,110,0.2);
+}
+
+.sv-alt-cta {
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  color: rgba(246,244,240,0.65);
+  letter-spacing: 0.05em;
+  font-weight: 300;
+}
+
+.sv-alt-cta a {
+  color: #c9a96e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.3s ease;
+}
+
+.sv-alt-cta a:hover {
+  color: #f6f4f0;
+}
+
+/* ─── ACCENT ─── */
+.sv-accent {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.2) 20%, rgba(201,169,110,0.2) 80%, transparent 100%);
+}
+
+/* ─── OTHER SERVICES ─── */
+.sv-ot {
+  background: #f6f4f0;
+  padding: 5rem 5vw;
+}
+
+.sv-ot-l {
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #b8975a;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.sv-ot-g {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sv-ot-c {
+  text-align: center;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.sv-ot-c:hover {
+  transform: translateY(-4px);
+}
+
+.sv-ot-c h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+.sv-ot-c p {
+  font-size: 0.85rem;
+  color: #8a8579;
+  line-height: 1.7;
+}
+
+.sv-ot-c a {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  font-weight: 500;
+}
+
+/* ─── FOOTER ─── */
+.sv-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.sv-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.sv-ft-locs a:hover{color:#c9a96e}
+
+.sv-ft {
+  background: #1a1a18;
+  border-top: 1px solid rgba(201,169,110,0.15);
+}
+
+.sv-ft-r {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.25rem 5vw;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.sv-ft-i {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.sv-ft-l {
+  font-size: 7.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sv-ft-dt {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(201,169,110,0.4);
+  flex-shrink: 0;
+  position: relative;
+  top: -2px;
+}
+
+.sv-ft-i p,
+.sv-ft-i a {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(246,244,240,0.8);
+  font-weight: 300;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sv-ft-i a:hover {
+  color: #c9a96e;
+}
+
+.sv-ft-s {
+  display: flex;
+  gap: 18px;
+}
+
+.sv-ft-rl {
+  margin: 0 5vw;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.15) 20%, rgba(201,169,110,0.15) 80%, transparent 100%);
+}
+
+.sv-ft-b {
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 5vw;
+}
+
+.sv-ft-cp {
+  font-size: 10px;
+  color: rgba(246,244,240,0.35);
+  letter-spacing: 0.08em;
+}
+
+.sv-ft-n {
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.sv-ft-n a {
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sv-ft-n a:hover {
+  color: #c9a96e;
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .sv-hero {
+    min-height: 75vh;
+    padding: 4rem 6vw;
+  }
+
+  .sv-section {
+    padding: 4rem 6vw;
+  }
+
+  .sv-meta-item {
+    border-right: none;
+    border-bottom: 1px solid #d9d5cd;
+  }
+
+  .sv-meta-item:last-child {
+    border-bottom: none;
+  }
+
+  .sv-deliverables {
+    grid-template-columns: 1fr;
+  }
+
+  .sv-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sv-stat-card:last-child {
+    grid-column: span 2;
+  }
+
+  .sv-gallery-grid {
+    column-count: 1;
+  }
+
+  .sv-gallery-item {
+    margin-bottom: 8px;
+  }
+
+  .sv-ideal-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .sv-img-break {
+    height: 50vh;
+    min-height: 350px;
+  }
+
+  .sv-content-stats {
+    padding: 4rem 6vw;
+  }
+
+  .sv-gallery {
+    padding: 4rem 6vw;
+  }
+
+  .sv-manifesto {
+    padding: 5rem 6vw;
+  }
+
+  .sv-cta {
+    min-height: 80vh;
+  }
+
+  .sv-scroll-hint {
+    bottom: 24px;
+  }
+
+  .sv-ot-g {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .sv-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.sv-ft-locs a{font-size:.55rem}
+
+  .sv-ft-r {
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 2rem 6vw;
+  }
+
+  .sv-ft-rl {
+    margin: 0 6vw;
+  }
+
+  .sv-ft-b {
+    padding-bottom: 2rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    padding: 1.25rem 6vw;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sv-deliverables {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sv-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .sv-ideal-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
+
+<div class="sv-loader" id="svLoader">
+  <div class="sv-loader-brand">Matt Anthony Photography</div>
+  <div class="sv-loader-sub">Build & Team Content</div>
+  <div class="sv-loader-line"></div>
+</div>
+<nav class="sv-section-nav" id="svSectionNav"></nav>
+
+<div class="sv-cursor" id="svCursor"></div>
+<div class="sv-cursor-dot" id="svCursorDot"></div>
+<div class="sv-progress" id="svProgress"></div>
+<div class="sv-wrap">
+
+<!-- ═══ HERO ═══ -->
+<div class="sv-hero sv-grain">
+  <div class="sv-hero-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d88d0860-1975-4b2f-8443-ade1c0bb286a/steel-wood-structures-2500px-10.jpg?format=2500w" alt="Workers on mass timber beam structure with CLT panel suspended by crane, construction lifestyle photography by Matt Anthony">
+  </div>
+  <div class="sv-hero-content">
+    <p class="sv-hero-label">Service 03</p>
+    <h1>Build & Team Content: The stories <em>behind the builds</em></h1>
+    <p class="sv-hero-sub">The people, progress, and culture behind your projects — captured for social media, recruitment, and brand storytelling.</p>
+  </div>
+  <canvas class="sv-particles" id="svParticles"></canvas>
+  <div class="sv-scroll-hint" id="svScrollHint">
+    <span class="sv-scroll-text">Scroll</span>
+    <span class="sv-scroll-line"></span>
+  </div>
+</div>
+
+<!-- ═══ META BAR ═══ -->
+<dl class="sv-meta">
+  <div class="sv-meta-item">
+    <dt class="sv-meta-dt">Content</dt>
+    <dd class="sv-meta-dd">Photo, Video, Drone</dd>
+  </div>
+  <div class="sv-meta-item">
+    <dt class="sv-meta-dt">Output</dt>
+    <dd class="sv-meta-dd">Social, LinkedIn, Recruitment</dd>
+  </div>
+  <div class="sv-meta-item">
+    <dt class="sv-meta-dt">Format</dt>
+    <dd class="sv-meta-dd">Quarterly Shoot Days</dd>
+  </div>
+  <div class="sv-meta-item">
+    <dt class="sv-meta-dt">ROI</dt>
+    <dd class="sv-meta-dd">3&ndash;4 Months of Content</dd>
+  </div>
+</dl>
+
+<!-- ═══ THE ROI ═══ -->
+<section class="sv-section sv-narrow" data-nav="ROI">
+  <p class="sv-label sv-eyebrow">The ROI</p>
+  <div class="sv-divider"></div>
+  <h2>One shoot day. <em>Months</em> of content.</h2>
+  <p>Most builders know they need content. Few have the time to create it. That is where the quarterly embedded shoot day changes everything. We show up on an active job site, spend the day documenting the real work in progress, and deliver a library of assets that keeps your marketing running for months.</p>
+  <p>One shoot produces <span class="sv-gold">8 to 12 Instagram posts</span>, <span class="sv-gold">3 to 5 Reels</span>, <span class="sv-gold">4 to 6 LinkedIn posts</span>, recruitment content, and proposal imagery. No staging, no interruptions, no content calendars gathering dust. Just authentic documentation of the work your team does every day, turned into the most efficient content investment a builder can make.</p>
+  <p>While your competitors post phone photos and stock images, your feed shows the real work happening on real job sites. That is a competitive advantage that compounds.</p>
+</section>
+
+<!-- ═══ IMAGE BREAK ═══ -->
+<div class="sv-img-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ce75c95f-d959-4ce2-ad5b-4b976cc71317/_DSC7112-Edit.jpg?format=2500w" alt="Construction tools on sawhorse with ocean and mountain view through floor-to-ceiling glass by Matt Anthony" loading="lazy">
+</div>
+
+<!-- ═══ CONTENT ROI STATS ═══ -->
+<section class="sv-content-stats sv-grain" data-nav="Content">
+  <p class="sv-label">Per Quarterly Shoot</p>
+  <div class="sv-divider"></div>
+  <h2>What one shoot day <em>produces</em></h2>
+  <div class="sv-stats-grid">
+    <div class="sv-stat-card">
+      <p class="sv-stat-num">12</p>
+      <p class="sv-stat-lbl">Instagram Posts</p>
+      <p class="sv-stat-sub">8-12 per shoot</p>
+    </div>
+    <div class="sv-stat-card">
+      <p class="sv-stat-num">5</p>
+      <p class="sv-stat-lbl">Reels</p>
+      <p class="sv-stat-sub">3-5 per shoot</p>
+    </div>
+    <div class="sv-stat-card">
+      <p class="sv-stat-num">6</p>
+      <p class="sv-stat-lbl">LinkedIn Posts</p>
+      <p class="sv-stat-sub">4-6 per shoot</p>
+    </div>
+    <div class="sv-stat-card">
+      <p class="sv-stat-num">1</p>
+      <p class="sv-stat-lbl">Recruitment Library</p>
+      <p class="sv-stat-sub">Team &amp; culture</p>
+    </div>
+    <div class="sv-stat-card">
+      <p class="sv-stat-num">1</p>
+      <p class="sv-stat-lbl">Proposal Imagery</p>
+      <p class="sv-stat-sub">High-res assets</p>
+    </div>
+  </div>
+</section>
+
+<div class="sv-accent"></div>
+
+<!-- ═══ WHAT'S INCLUDED ═══ -->
+<section class="sv-section" data-nav="Included">
+  <div class="sv-narrow">
+    <p class="sv-label sv-eyebrow">What's Included</p>
+    <div class="sv-divider"></div>
+    <h2>Everything your brand needs from <em>one day on site</em></h2>
+  </div>
+  <div class="sv-deliverables" id="svDeliverables">
+    <div class="sv-del-card">
+      <h3>Construction Progression</h3>
+      <p>Framing, formwork, mechanical, envelope. The milestones that show the scale and complexity of your builds, documented at every critical stage.</p>
+    </div>
+    <div class="sv-del-card">
+      <h3>Crew Culture & Lifestyle</h3>
+      <p>The morning huddle. The precision of a crane lift. Your team in their element. The authentic moments that show what it is like to work with your company.</p>
+    </div>
+    <div class="sv-del-card">
+      <h3>Team Portraits & Headshots</h3>
+      <p>Professional headshots and environmental portraits for your website, LinkedIn profiles, proposals, and recruitment materials. Shot on site, in context.</p>
+    </div>
+    <div class="sv-del-card">
+      <h3>Short Form Video & Reels</h3>
+      <p>Vertical video content ready for Instagram Reels, LinkedIn, and TikTok. Site walk-throughs, time-lapses, and crew spotlights that stop the scroll.</p>
+    </div>
+    <div class="sv-del-card">
+      <h3>Drone & Aerial Documentation</h3>
+      <p>Transport Canada certified aerial photography and video. Site overviews, progress documentation, and dramatic angles that ground-level cameras cannot capture.</p>
+    </div>
+    <div class="sv-del-card">
+      <h3>Social-Ready Deliverables</h3>
+      <p>Every image and video delivered cropped, colour-graded, and formatted for the platforms you use. No resizing, no guesswork. Ready to post.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section class="sv-gallery sv-grain" data-nav="Gallery">
+  <p class="sv-label sv-eyebrow">Recent Work</p>
+  <div class="sv-divider"></div>
+  <h2>Construction and team content <em>in the field</em></h2>
+  <div class="sv-gallery-grid">
+    <div class="sv-gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/58dc14fe-7aa1-4945-913f-ed9dea0c467e/_DSC7216.jpg" alt="Builder in Carhartt overalls with tool belt, ocean behind, golden light" loading="lazy"></div>
+    <div class="sv-gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c19496e4-9295-4d7c-8b69-13bb310c51ec/steel-wood-structures-2500px-16.jpg" alt="Worker cutting mass timber with saw, sawdust flying, intense focus" loading="lazy"></div>
+    <div class="sv-gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/dfb6f32a-65a3-47bf-b569-5e144f4d9b22/_DSC7123.jpg" alt="Two workers collaborating on construction site, one on ladder measuring" loading="lazy"></div>
+    <div class="sv-gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/fb20117e-2070-46d4-9b30-65e7e2bd59fe/steel-wood-structures-2500px-5.jpg" alt="Crane lifting massive CLT panel with mountain and fog behind" loading="lazy"></div>
+    <div class="sv-gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9f7abd2c-528e-4173-ba4c-bbcc8415e99a/team-headshots-11.jpg" alt="Construction team member laughing on site, authentic crew culture portrait" loading="lazy"></div>
+    <div class="sv-gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/414b9bc3-769e-4fed-8dca-65604b0a4292/_DSC7224.jpg" alt="Builder using surveyor transit with ocean bokeh behind" loading="lazy"></div>
+    <div class="sv-gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/07f40e6c-d95a-461e-862a-185750f0e22b/steel-wood-structures-2500px-14.jpg" alt="Young worker portrait on site, hard hat and hi-vis vest, direct gaze" loading="lazy"></div>
+    <div class="sv-gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/0130a768-83da-4fc8-bfa6-dffd3630b1e2/steel-wood-structures-2500px-3.jpg" alt="Two workers on mass timber with misty mountains behind" loading="lazy"></div>
+    <div class="sv-gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/3045f130-da3a-4f65-be9d-527974c8c882/_DSC7302.jpg" alt="Concrete stairs being formed on rock outcrop, steel and timber framing" loading="lazy"></div>
+    <div class="sv-gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7315cd68-7d05-4dff-a04b-e63d9c39945c/team-headshots-20.jpg" alt="Construction worker on-site headshot with SIGA wrap and battens behind" loading="lazy"></div>
+  </div>
+</section>
+
+<div class="sv-accent"></div>
+
+<!-- ═══ IDEAL FOR ═══ -->
+<section class="sv-ideal" data-nav="Ideal For">
+  <p class="sv-label sv-eyebrow" style="text-align:center">Ideal For</p>
+  <div class="sv-divider" style="margin:0 auto 2rem"></div>
+  <h2 style="text-align:center;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;margin-bottom:0">Who this service is <em>built for</em></h2>
+  <div class="sv-ideal-grid" id="svIdealGrid">
+    <div class="sv-ideal-card">
+      <h3>Builders with Active Sites</h3>
+      <p>You have projects in progress and need content that shows the quality of your work before the drywall goes up.</p>
+    </div>
+    <div class="sv-ideal-card">
+      <h3>Recruitment-Focused Firms</h3>
+      <p>Attracting skilled trades means showing what it is actually like to work on your sites. Real culture, not stock photography.</p>
+    </div>
+    <div class="sv-ideal-card">
+      <h3>Milestone Documentation</h3>
+      <p>Major pours, beam sets, topping out. The moments that deserve more than a phone photo for your project records and client updates.</p>
+    </div>
+    <div class="sv-ideal-card">
+      <h3>Trades Showcasing Work</h3>
+      <p>Millwork, glazing, structural steel, concrete. Your craft deserves to be seen in context, not isolated on a white background.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MANIFESTO ═══ -->
+<section class="sv-manifesto sv-grain" id="svManifesto">
+  <p class="sv-manifesto-text">
+    <span class="sv-mw">Every</span> <span class="sv-mw">day</span> <span class="sv-mw">on</span> <span class="sv-mw">your</span> <span class="sv-mw">job</span> <span class="sv-mw">site</span> <span class="sv-mw">is</span> <span class="sv-mw sv-gold-word">content.</span> <span class="sv-mw">The</span> <span class="sv-mw sv-gold-word">crane</span> <span class="sv-mw sv-gold-word">lift</span> <span class="sv-mw">at</span> <span class="sv-mw">sunrise.</span> <span class="sv-mw">The</span> <span class="sv-mw">crew</span> <span class="sv-mw">in</span> <span class="sv-mw">the</span> <span class="sv-mw sv-gold-word">rain.</span> <span class="sv-mw">The</span> <span class="sv-mw sv-gold-word">framing</span> <span class="sv-mw">against</span> <span class="sv-mw">the</span> <span class="sv-mw sv-gold-word">mountain.</span> <span class="sv-mw">Your</span> <span class="sv-mw">competitors</span> <span class="sv-mw">aren't</span> <span class="sv-mw">capturing</span> <span class="sv-mw">it.</span> <span class="sv-mw">You</span> <span class="sv-mw sv-gold-word">should</span> <span class="sv-mw sv-gold-word">be.</span>
+  </p>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="sv-cta">
+  <div class="sv-cta-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/43ce9776-2d74-4728-ad29-a987976ef156/_DSC7185.jpg" alt="Dark stained wood siding with tree shadow, construction material detail" loading="lazy">
+  </div>
+  <div class="sv-cta-c">
+    <p class="sv-cta-eyebrow">Start Capturing</p>
+    <h2>Your team builds something <em>remarkable</em> every day.<br>Let's show the world.</h2>
+    <p class="sv-cta-sub">Ready to turn your job sites into a content engine? Let's start with a conversation.</p>
+    <a href="/discovery-call" class="sv-cta-btn sv-magnetic" target="_blank" rel="noopener">Book a Discovery Call</a>
+    <p class="sv-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+  </div>
+</section>
+
+<!-- ═══ OTHER SERVICES ═══ -->
+<div class="sv-ot"><p class="sv-ot-l">Other Services</p><div class="sv-ot-g"><div class="sv-ot-c"><h3>Project Photography</h3><p>Complete visual documentation of your finished build.</p><a href="/project-photography">Learn More</a></div><div class="sv-ot-c"><h3>Award & Publication Imagery</h3><p>Composed for jurors, editors, and industry recognition.</p><a href="/award-publication-imagery">Learn More</a></div><div class="sv-ot-c"><h3>Creative Partner</h3><p>Your embedded creative department, handled.</p><a href="/creative-partner">Learn More</a></div></div></div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="sv-ft">
+<div class="sv-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+  <div class="sv-ft-r">
+    <div class="sv-ft-i"><span class="sv-ft-l">Based In</span><span class="sv-ft-dt"></span><p>Squamish, British Columbia</p></div>
+    <div class="sv-ft-i"><span class="sv-ft-l">Email</span><span class="sv-ft-dt"></span><a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a></div>
+    <div class="sv-ft-i"><span class="sv-ft-l">Phone</span><span class="sv-ft-dt"></span><a href="tel:6047659270">604.765.9270</a></div>
+    <div class="sv-ft-i"><span class="sv-ft-l">Follow</span><span class="sv-ft-dt"></span><div class="sv-ft-s"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  </div>
+  <div class="sv-ft-rl"></div>
+  <div class="sv-ft-b">
+    <span class="sv-ft-cp">&copy; 2026 Matt Anthony Photography</span>
+    <nav class="sv-ft-n"><a href="/projects">Projects</a><a href="/journal">Journal</a><a href="/journal/georgie-awards-guide">Georgie Awards</a><a href="/bio">About</a><a href="/contact">Contact</a><a href="/pricing-guide-landing">Get Pricing</a></nav>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var isMobile = 'ontouchstart' in window;
+  var wrap = document.querySelector('.sv-wrap');
+  var progressBar = document.getElementById('svProgress');
+  var hero = document.querySelector('.sv-hero');
+  var heroContent = document.querySelector('.sv-hero-content');
+  var heroBg = document.querySelector('.sv-hero-bg');
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader = document.getElementById('svLoader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('sv-done'); }, 1100);
+  });
+
+  /* ═══ SECTION NAV DOTS ═══ */
+  var sectionNav = document.getElementById('svSectionNav');
+  var navSections = document.querySelectorAll('[data-nav]');
+  var navDots = [];
+  navSections.forEach(function(sec){
+    var dot = document.createElement('div');
+    dot.className = 'sv-nav-dot';
+    dot.setAttribute('data-label', sec.getAttribute('data-nav'));
+    dot.addEventListener('click', function(){
+      sec.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+    sectionNav.appendChild(dot);
+    navDots.push({ dot:dot, section:sec });
+  });
+
+  function updateNavDots(){
+    var scrollY = window.scrollY;
+    var winH = window.innerHeight;
+    if(scrollY > winH * 0.5) sectionNav.classList.add('sv-nav-visible');
+    else sectionNav.classList.remove('sv-nav-visible');
+    var active = null;
+    navDots.forEach(function(item){
+      var rect = item.section.getBoundingClientRect();
+      if(rect.top < winH * 0.5 && rect.bottom > winH * 0.3) active = item;
+      item.dot.classList.remove('sv-nav-active');
+    });
+    if(active) active.dot.classList.add('sv-nav-active');
+  }
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  function updateProgress(){
+    var s = window.scrollY;
+    var d = document.documentElement.scrollHeight - window.innerHeight;
+    if(d > 0) progressBar.style.width = (s / d * 100) + '%';
+  }
+
+  /* ═══ HERO PARALLAX + FADE ═══ */
+  function updateHero(){
+    var s = window.scrollY;
+    var h = window.innerHeight;
+    if(s > h) return;
+    var ratio = s / h;
+    if(heroBg) heroBg.style.transform = 'translateY(' + (s * 0.35) + 'px) scale(' + (1 + ratio * 0.05) + ')';
+    if(heroContent){
+      heroContent.style.transform = 'translateY(' + (s * 0.15) + 'px)';
+      heroContent.style.opacity = 1 - ratio * 1.2;
+    }
+  }
+
+  /* ═══ PHOTO BREAK PARALLAX ═══ */
+  var photoBreaks = document.querySelectorAll('.sv-img-break');
+  function updatePhotoParallax(){
+    photoBreaks.forEach(function(pb){
+      var rect = pb.getBoundingClientRect();
+      if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+      var center = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+      var img = pb.querySelector('img');
+      if(img) img.style.transform = 'translateY(' + (center * -30) + 'px) scale(1.08)';
+    });
+  }
+
+  /* ═══ HEADLINE GOLD UNDERLINE ═══ */
+  var headObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-underlined'); headObs.unobserve(e.target); }
+    });
+  }, {threshold:0.4});
+  document.querySelectorAll('.sv-wrap h2').forEach(function(h){ headObs.observe(h); });
+
+  /* ═══ EYEBROW DASH DRAW ═══ */
+  var eyeObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-visible'); eyeObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.sv-eyebrow').forEach(function(el){ eyeObs.observe(el); });
+
+  /* ═══ DIVIDER DRAW ═══ */
+  var divObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-drawn'); divObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.sv-divider').forEach(function(el){ el.style.width = '0'; divObs.observe(el); });
+
+  /* ═══ META BAR BORDER DRAW ═══ */
+  var metaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-drawn'); metaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.sv-meta').forEach(function(el){ metaObs.observe(el); });
+
+  /* ═══ KEN BURNS ═══ */
+  var kenObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) e.target.classList.add('sv-in-view');
+      else e.target.classList.remove('sv-in-view');
+    });
+  }, {threshold:0.1});
+  photoBreaks.forEach(function(el){ kenObs.observe(el); });
+
+  /* ═══ CTA ZOOM ═══ */
+  var ctaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-in-view'); ctaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.2});
+  document.querySelectorAll('.sv-cta').forEach(function(el){ ctaObs.observe(el); });
+
+  /* ═══ STAT COUNTERS ═══ */
+  function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+  var counterObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting || e.target.classList.contains('sv-counted')) return;
+      e.target.classList.add('sv-counted');
+      var text = e.target.textContent.trim();
+      var hasPlus = text.indexOf('+') !== -1;
+      var num = parseInt(text);
+      if(isNaN(num)) return;
+      var start = performance.now();
+      function tick(now){
+        var t = Math.min((now - start) / 1400, 1);
+        e.target.textContent = Math.round(ease(t) * num) + (hasPlus ? '+' : '');
+        if(t < 1) requestAnimationFrame(tick);
+      }
+      e.target.textContent = '0' + (hasPlus ? '+' : '');
+      requestAnimationFrame(tick);
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.sv-stat-num').forEach(function(el){ counterObs.observe(el); });
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor = document.getElementById('svCursor');
+  var cursorDot = document.getElementById('svCursorDot');
+  var cx = 0, cy = 0, dx = 0, dy = 0;
+  if(!isMobile && cursor){
+    document.addEventListener('mousemove', function(e){
+      dx = e.clientX; dy = e.clientY;
+      cursorDot.style.left = dx + 'px';
+      cursorDot.style.top = dy + 'px';
+      if(!cursor.classList.contains('sv-active')){
+        cursor.classList.add('sv-active');
+        cursorDot.classList.add('sv-active');
+      }
+    });
+    function tickCursor(){
+      cx += (dx - cx) * 0.12;
+      cy += (dy - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(tickCursor);
+    }
+    tickCursor();
+    var hoverEls = document.querySelectorAll('a, button, .sv-del-card, .sv-cta-btn, .sv-ideal-card, .sv-gallery-item');
+    hoverEls.forEach(function(el){
+      el.addEventListener('mouseenter', function(){ cursor.classList.add('sv-hover'); });
+      el.addEventListener('mouseleave', function(){ cursor.classList.remove('sv-hover'); });
+    });
+    document.addEventListener('mousedown', function(){ cursor.classList.add('sv-click'); });
+    document.addEventListener('mouseup', function(){ cursor.classList.remove('sv-click'); });
+  }
+
+  /* ═══ MAGNETIC BUTTON ═══ */
+  if(!isMobile){
+    document.querySelectorAll('.sv-magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.25) + 'px, ' + (y * 0.25) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  /* ═══ DELIVERABLE CARD STAGGER ═══ */
+  var delObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var cards = e.target.querySelectorAll('.sv-del-card');
+        cards.forEach(function(card, i){
+          setTimeout(function(){ card.classList.add('sv-entered'); }, i * 100);
+        });
+        delObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.2});
+  var delGrid = document.getElementById('svDeliverables');
+  if(delGrid) delObs.observe(delGrid);
+
+  /* ═══ IDEAL FOR CARD STAGGER ═══ */
+  var idealObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var cards = e.target.querySelectorAll('.sv-ideal-card');
+        cards.forEach(function(card, i){
+          setTimeout(function(){
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, i * 120);
+        });
+        idealObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.2});
+  var idealGrid = document.getElementById('svIdealGrid');
+  if(idealGrid){
+    var idealCards = idealGrid.querySelectorAll('.sv-ideal-card');
+    idealCards.forEach(function(card){
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(12px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1)';
+    });
+    idealObs.observe(idealGrid);
+  }
+
+  /* ═══ AMBIENT PARTICLES ═══ */
+  var canvas = document.getElementById('svParticles');
+  if(canvas){
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    function resizeCanvas(){
+      var parent = canvas.parentElement;
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    for(var p = 0; p < 30; p++){
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -Math.random() * 0.4 - 0.1,
+        r: Math.random() * 1.5 + 0.5,
+        a: Math.random() * 0.3 + 0.05
+      });
+    }
+    function drawParticles(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(function(pt){
+        pt.x += pt.vx;
+        pt.y += pt.vy;
+        if(pt.y < -10) { pt.y = canvas.height + 10; pt.x = Math.random() * canvas.width; }
+        if(pt.x < -10) pt.x = canvas.width + 10;
+        if(pt.x > canvas.width + 10) pt.x = -10;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(201,169,110,' + pt.a + ')';
+        ctx.fill();
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+  }
+
+  /* ═══ SCROLL INDICATOR HIDE ═══ */
+  var scrollHint = document.getElementById('svScrollHint');
+  function updateScrollHint(){
+    if(window.scrollY > 80) scrollHint.classList.add('sv-hidden');
+    else scrollHint.classList.remove('sv-hidden');
+  }
+
+  /* ═══ MANIFESTO WORD REVEAL ═══ */
+  var manifesto = document.getElementById('svManifesto');
+  var mWords = manifesto ? manifesto.querySelectorAll('.sv-mw') : [];
+  var manifestoRevealed = false;
+  function updateManifesto(){
+    if(!manifesto || manifestoRevealed) return;
+    var rect = manifesto.getBoundingClientRect();
+    var vh = window.innerHeight;
+    if(rect.top > vh || rect.bottom < 0) return;
+    var progress = 1 - (rect.top / (vh * 0.6));
+    progress = Math.max(0, Math.min(1, progress));
+    var wordsToLight = Math.floor(progress * mWords.length);
+    for(var i = 0; i < mWords.length; i++){
+      if(i < wordsToLight) mWords[i].classList.add('sv-lit');
+    }
+    if(wordsToLight >= mWords.length) manifestoRevealed = true;
+  }
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateHero();
+        updatePhotoParallax();
+        updateScrollHint();
+        updateManifesto();
+        updateNavDots();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress();
+  updateHero();
+  updateScrollHint();
+  updateNavDots();
+})();
+</script>
+
+<!-- SEO Meta -->
+<meta name="description" content="Construction and team photography for builders across BC. Job site progression, crew culture, team headshots, and social media content from quarterly embedded shoot days.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/construction-team-content">
+<meta property="og:title" content="Build & Team Content | Construction Photography | Matt Anthony Photography">
+<meta property="og:description" content="Construction and team photography for builders across BC. Job site progression, crew culture, team headshots, and social media content from quarterly embedded shoot days.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/construction-team-content">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/0a5c4ead-f6f9-413c-aaad-b12b03837e78/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg.jpg?format=2500w">
+
+<!-- JSON-LD Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Build & Team Content Photography",
+  "description": "Construction and team photography for builders across BC. Job site progression, crew culture, team headshots, and social media content from quarterly embedded shoot days.",
+  "url": "https://www.mattanthonyphoto.com/construction-team-content",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Matt Anthony Photography",
+    "url": "https://www.mattanthonyphoto.com",
+    "telephone": "+16047659270",
+    "email": "info@mattanthonyphoto.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Squamish",
+      "addressRegion": "BC",
+      "addressCountry": "CA"
+    },
+    "areaServed": [
+      { "@type": "Place", "name": "Squamish, BC" },
+      { "@type": "Place", "name": "Whistler, BC" },
+      { "@type": "Place", "name": "Pemberton, BC" },
+      { "@type": "Place", "name": "Vancouver, BC" },
+      { "@type": "Place", "name": "Sunshine Coast, BC" },
+      { "@type": "Place", "name": "Fraser Valley, BC" },
+      { "@type": "Place", "name": "Okanagan, BC" }
+    ]
+  },
+  "serviceType": "Construction Photography",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Build & Team Content Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Construction Progression Photography" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Crew Culture & Lifestyle Photography" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Team Portraits & Headshots" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Short Form Video & Reels" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drone & Aerial Site Documentation" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social-Ready Deliverables" } }
+    ]
+  }
+}
+</script>
+
+<!--
+  Build & Team Content — Service 03 Code Block
+  mattanthonyphoto.com/construction-team-content
+
+  Last updated: 2026-03-24
+  Rebuild: Complete rebuild using Creative Partner page as design template
+  Changes:
+    1. Matched Creative Partner interactive layer exactly (loader, nav dots, particles, parallax, custom cursor, magnetic button, counters, Ken Burns)
+    2. Matched footer class names to Creative Partner (sv-ft-r, sv-ft-i, sv-ft-l, sv-ft-dt, sv-ft-s, sv-ft-rl, sv-ft-b, sv-ft-cp, sv-ft-n)
+    3. Full footer nav links matching Creative Partner (Projects, Journal, Georgie Awards, About, Contact, Get Pricing)
+    4. Footer links use /projects not /projects-1
+    5. Dark section text: rgba(246,244,240,0.65) not #8a8579
+    6. Hero: Fitzsimmons snow exterior (correct image)
+    7. All CSS prefixed sv-, no :root, no global resets
+    8. Manifesto: pre-split spans with sv-mw classes
+    9. Added Ideal For card stagger animation (svIdealGrid)
+    10. Added deliverable card stagger animation (svDeliverables)
+    11. SEO: meta description, canonical, OG tags, JSON-LD Service schema
+    12. Sections: Hero, Meta bar, ROI, Image break, Content stats, What's Included, Gallery, Ideal For, Manifesto, CTA, Other Services, Footer
+-->

@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — Balmoral Construction</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1A1A18;
+  --paper: #F6F4F0;
+  --gold: #C9A96E;
+  --gold-dim: rgba(201,169,110,0.12);
+  --gold-border: rgba(201,169,110,0.25);
+  --gold-glow: rgba(201,169,110,0.06);
+  --stone: #8A8579;
+  --white: #FFFFFF;
+  --light: #FAFAF8;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; scroll-behavior:smooth; }
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.75;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* ═══ LOADER ═══ */
+.loader {
+  position: fixed; top:0; left:0; right:0; bottom:0;
+  background: var(--ink); z-index: 99999;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+}
+.loader.done { opacity:0; visibility:hidden; pointer-events:none; }
+.loader-brand {
+  font-family: 'Josefin Sans', sans-serif; font-weight:300; font-size:0.65rem;
+  letter-spacing:0.6em; text-transform:uppercase; color:var(--paper);
+  opacity:0; animation: fadeUp 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.loader-sub {
+  font-family: 'Cormorant Garamond', serif; font-style:italic; font-size:0.9rem;
+  color: var(--stone); margin-top:8px; opacity:0;
+  animation: fadeUp 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.loader-line {
+  width:80px; height:1px; background:var(--gold-dim); margin-top:24px;
+  position:relative; overflow:hidden; border-radius:1px; opacity:0;
+  animation: fadeUp 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.loader-line::after {
+  content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  animation: loaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+}
+@keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+@keyframes loaderFill { to { left:100%; } }
+
+/* ═══ PROGRESS BAR ═══ */
+.progress {
+  position:fixed; top:0; left:0; height:2px; width:0%;
+  background: linear-gradient(90deg, var(--gold), rgba(201,169,110,0.4));
+  z-index:9999; transition: width 0.4s ease;
+  box-shadow: 0 0 10px rgba(201,169,110,0.4);
+}
+
+/* ═══ SLIDE NAV ═══ */
+.slide-nav {
+  position:fixed; right:28px; top:50%; transform:translateY(-50%);
+  z-index:9998; display:flex; flex-direction:column; gap:10px;
+  opacity:0; transition: opacity 0.6s ease;
+}
+.slide-nav.visible { opacity:1; }
+.nav-dot {
+  width:8px; height:8px; border-radius:50%; background:transparent;
+  border:1px solid var(--stone); cursor:pointer; transition:all 0.3s ease;
+  position:relative;
+}
+.nav-dot:hover { border-color:var(--gold); transform:scale(1.3); }
+.nav-dot.active { background:var(--gold); border-color:var(--gold); box-shadow:0 0 8px rgba(201,169,110,0.4); }
+.nav-dot::before {
+  content:attr(data-label); position:absolute; right:20px; top:50%;
+  transform:translateY(-50%); font-family:'Josefin Sans',sans-serif;
+  font-size:0.5rem; letter-spacing:0.15em; text-transform:uppercase;
+  color:var(--gold); white-space:nowrap; opacity:0; pointer-events:none;
+  transition: opacity 0.3s ease;
+}
+.nav-dot:hover::before { opacity:1; }
+
+/* ═══ SLIDE COUNTER ═══ */
+.slide-counter {
+  position:fixed; bottom:32px; right:32px; z-index:9998;
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem;
+  letter-spacing:0.2em; color:rgba(246,244,240,0.3);
+}
+.slide-counter .current { color:var(--gold); font-weight:400; }
+
+/* ═══ ARROW CONTROLS ═══ */
+.arrows {
+  position:fixed; bottom:32px; left:50%; transform:translateX(-50%);
+  z-index:9998; display:flex; gap:24px; align-items:center;
+}
+.arrow {
+  width:40px; height:40px; border:1px solid rgba(201,169,110,0.25);
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  cursor:pointer; transition:all 0.3s ease; background:transparent;
+  color:var(--gold); font-size:14px;
+}
+.arrow:hover { border-color:var(--gold); background:rgba(201,169,110,0.08); transform:scale(1.1); }
+.arrow.disabled { opacity:0.2; pointer-events:none; }
+
+/* ═══ TRACK ═══ */
+.track {
+  display:flex; height:100vh; width:1000vw;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ═══ SLIDE BASE ═══ */
+.slide {
+  width:100vw; height:100vh; flex-shrink:0;
+  position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* ═══ FILM GRAIN ═══ */
+.grain::after {
+  content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:2;
+}
+
+/* ═══ SLIDE CONTENT ═══ */
+.slide-inner {
+  position:relative; z-index:3; max-width:900px; padding:0 60px;
+  opacity:0; transform:translateY(30px);
+  transition: opacity 0.8s 0.2s ease, transform 0.8s 0.2s cubic-bezier(0.16,1,0.3,1);
+}
+.slide.active .slide-inner { opacity:1; transform:translateY(0); }
+
+.eyebrow {
+  font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+  letter-spacing:0.4em; text-transform:uppercase; color:var(--gold);
+  margin-bottom:20px; display:flex; align-items:center; gap:14px;
+}
+.eyebrow::before { content:''; width:0; height:1px; background:var(--gold); transition: width 0.8s 0.4s cubic-bezier(0.16,1,0.3,1); }
+.slide.active .eyebrow::before { width:28px; }
+
+h2 {
+  font-family:'Cormorant Garamond',serif; font-weight:400;
+  font-size:clamp(2.2rem,4.5vw,3.6rem); line-height:1.1;
+  margin-bottom:24px; letter-spacing:-0.01em;
+}
+h2 em { font-style:italic; font-weight:500; color:var(--gold); }
+
+.body-text {
+  font-size:0.95rem; color:rgba(246,244,240,0.7); max-width:560px; line-height:1.8;
+}
+
+/* ═══ SLIDE 1: COVER ═══ */
+.cover-bg {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background-image: url("https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/98b6bb8c-ede3-4de9-978a-fc8ae91554a6/warbler-whistler-architectural-photography-matt-anthony-.jpg-35.jpg");
+  background-size:cover; background-position:center 30%;
+  transform:scale(1.08);
+  transition: transform 8s ease;
+}
+.slide.active .cover-bg { transform:scale(1); }
+.cover-bg::after {
+  content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+  background: linear-gradient(to bottom, rgba(26,26,24,0.4) 0%, rgba(26,26,24,0.15) 30%, rgba(26,26,24,0.5) 60%, rgba(26,26,24,0.95) 85%, rgba(26,26,24,1) 100%);
+}
+.cover-content {
+  position:absolute; bottom:0; left:0; right:0; z-index:3;
+  padding:0 60px 100px; max-width:760px;
+  opacity:0; transform:translateY(40px);
+  transition: opacity 1s 0.3s ease, transform 1s 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.slide.active .cover-content { opacity:1; transform:translateY(0); }
+.cover-logo {
+  font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.55rem;
+  letter-spacing:0.4em; text-transform:uppercase; color:rgba(246,244,240,0.5);
+  position:absolute; top:40px; left:60px; z-index:3;
+}
+.cover-date {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+  letter-spacing:0.2em; color:rgba(246,244,240,0.3);
+  position:absolute; top:40px; right:60px; z-index:3;
+}
+.cover h1 {
+  font-family:'Cormorant Garamond',serif; font-weight:400;
+  font-size:clamp(3rem,6vw,5rem); line-height:1.05; margin-bottom:16px;
+  letter-spacing:-0.01em;
+}
+.cover h1 em { font-style:italic; font-weight:500; color:var(--gold); }
+.cover-sub {
+  font-size:1rem; color:rgba(246,244,240,0.6); max-width:480px; line-height:1.7;
+}
+.scroll-hint {
+  position:absolute; bottom:32px; left:50%; transform:translateX(-50%);
+  z-index:3; display:flex; flex-direction:column; align-items:center; gap:8px;
+  opacity:0; animation: fadeUp 0.6s 1.8s forwards;
+}
+.scroll-hint span {
+  font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+  letter-spacing:0.3em; text-transform:uppercase; color:rgba(201,169,110,0.4);
+}
+.scroll-hint .chevron {
+  width:20px; height:20px; border-right:1px solid var(--gold);
+  border-bottom:1px solid var(--gold); transform:rotate(45deg) translateX(-4px);
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse { 0%,100%{opacity:0.3;transform:rotate(45deg) translate(-4px,-4px);} 50%{opacity:0.8;transform:rotate(45deg) translate(0,0);} }
+
+/* ═══ SLIDE 2: THE CLIENT ═══ */
+.split { display:grid; grid-template-columns:1fr 1fr; height:100%; width:100%; }
+.split-text { display:flex; align-items:center; padding:80px 60px; background:var(--ink); }
+.split-image {
+  position:relative; overflow:hidden;
+}
+.split-image img {
+  width:100%; height:100%; object-fit:cover;
+  transform:scale(1.05); transition: transform 6s ease;
+}
+.slide.active .split-image img { transform:scale(1); }
+.split-image::after {
+  content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+  background: linear-gradient(to right, rgba(26,26,24,0.15) 0%, transparent 40%);
+}
+
+/* ═══ SLIDE 5: WEBSITE MOCKUP ═══ */
+.website-section { background:var(--paper); color:var(--ink); }
+.website-section .eyebrow { color:var(--gold); }
+.website-section .body-text { color:var(--stone); }
+.website-section h2 { color:var(--ink); }
+
+.website-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:60px; align-items:center; width:100%; max-width:1100px; padding:0 60px; }
+.website-text { position:relative; z-index:3; }
+
+.browser-frame {
+  background:#222; border-radius:10px; overflow:hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
+  position:relative; z-index:3;
+  opacity:0; transform:translateX(60px);
+  transition: opacity 0.8s 0.3s ease, transform 0.8s 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.slide.active .browser-frame { opacity:1; transform:translateX(0); }
+
+.browser-bar {
+  background:#2a2a2a; padding:10px 16px; display:flex; align-items:center; gap:8px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.browser-dot { width:8px; height:8px; border-radius:50%; }
+.browser-dot:nth-child(1) { background:#ff5f57; }
+.browser-dot:nth-child(2) { background:#ffbd2e; }
+.browser-dot:nth-child(3) { background:#28c840; }
+.browser-url {
+  flex:1; margin-left:12px; background:rgba(255,255,255,0.06); border-radius:4px;
+  padding:4px 12px; font-size:0.65rem; color:rgba(255,255,255,0.35);
+  font-family:'DM Sans',sans-serif;
+}
+
+.browser-content {
+  height:340px; overflow:hidden; position:relative;
+}
+.browser-scroll {
+  position:absolute; top:0; left:0; width:100%;
+  animation: scrollSite 12s 1s ease-in-out infinite;
+}
+.browser-scroll img { width:100%; display:block; }
+
+@keyframes scrollSite {
+  0%, 8% { transform: translateY(0); }
+  25%, 33% { transform: translateY(-25%); }
+  50%, 58% { transform: translateY(-50%); }
+  75%, 83% { transform: translateY(-25%); }
+  100% { transform: translateY(0); }
+}
+
+/* ═══ STATS BAR ═══ */
+.stats-bar {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:rgba(201,169,110,0.1); width:100%; position:absolute; bottom:0; left:0;
+  z-index:3;
+}
+.stat {
+  padding:32px 24px; text-align:center; background:var(--ink);
+}
+.stat-num {
+  font-family:'Cormorant Garamond',serif; font-size:2.8rem; font-weight:400;
+  color:var(--gold); line-height:1; margin-bottom:4px;
+}
+.stat-label {
+  font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
+}
+
+/* ═══ PHOTO GRID SLIDE ═══ */
+.photo-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,1fr);
+  gap:4px; width:100%; height:100%;
+}
+.photo-grid .grid-img {
+  overflow:hidden; position:relative;
+}
+.photo-grid .grid-img img {
+  width:100%; height:100%; object-fit:cover;
+  opacity:0; transform:scale(1.08);
+  transition: opacity 0.8s ease, transform 6s ease;
+}
+.slide.active .photo-grid .grid-img:nth-child(1) img { opacity:1; transform:scale(1); transition-delay:0.1s; }
+.slide.active .photo-grid .grid-img:nth-child(2) img { opacity:1; transform:scale(1); transition-delay:0.2s; }
+.slide.active .photo-grid .grid-img:nth-child(3) img { opacity:1; transform:scale(1); transition-delay:0.3s; }
+.slide.active .photo-grid .grid-img:nth-child(4) img { opacity:1; transform:scale(1); transition-delay:0.4s; }
+.slide.active .photo-grid .grid-img:nth-child(5) img { opacity:1; transform:scale(1); transition-delay:0.5s; }
+.slide.active .photo-grid .grid-img:nth-child(6) img { opacity:1; transform:scale(1); transition-delay:0.6s; }
+.photo-grid-overlay {
+  position:absolute; bottom:0; left:0; right:0; z-index:4;
+  background:linear-gradient(to top, rgba(26,26,24,0.9) 0%, transparent 100%);
+  padding:40px 60px 60px;
+}
+
+/* ═══ SERVICES GRID ═══ */
+.services-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:32px; }
+.svc-card {
+  border:1px solid var(--gold-border); border-radius:6px; padding:28px;
+  background:rgba(201,169,110,0.03);
+  opacity:0; transform:translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.slide.active .svc-card:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0.3s; }
+.slide.active .svc-card:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:0.4s; }
+.slide.active .svc-card:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:0.5s; }
+.slide.active .svc-card:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:0.6s; }
+.svc-card h3 {
+  font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.75rem;
+  letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;
+}
+.svc-card p { font-size:0.8rem; color:rgba(246,244,240,0.6); line-height:1.6; }
+
+/* ═══ TIMELINE ═══ */
+.timeline { position:relative; margin-top:40px; padding-left:32px; }
+.timeline::before {
+  content:''; position:absolute; left:6px; top:0; width:1px; height:0;
+  background:var(--gold); transition: height 1.2s 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.slide.active .timeline::before { height:100%; }
+.tl-item {
+  margin-bottom:28px; opacity:0; transform:translateX(-16px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.slide.active .tl-item:nth-child(1) { opacity:1; transform:translateX(0); transition-delay:0.3s; }
+.slide.active .tl-item:nth-child(2) { opacity:1; transform:translateX(0); transition-delay:0.5s; }
+.slide.active .tl-item:nth-child(3) { opacity:1; transform:translateX(0); transition-delay:0.7s; }
+.slide.active .tl-item:nth-child(4) { opacity:1; transform:translateX(0); transition-delay:0.9s; }
+.tl-item::before {
+  content:''; position:absolute; left:2px; width:9px; height:9px;
+  border-radius:50%; border:1.5px solid var(--gold); background:var(--ink);
+}
+.tl-item h3 {
+  font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.7rem;
+  letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:2px;
+}
+.tl-item p { font-size:0.8rem; color:rgba(246,244,240,0.6); line-height:1.5; }
+
+/* ═══ RESULTS NUMBERS ═══ */
+.results-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-top:40px; }
+.result-item { text-align:center; }
+.result-num {
+  font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:400;
+  color:var(--gold); line-height:1;
+  opacity:0; transform:translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.slide.active .result-item:nth-child(1) .result-num { opacity:1; transform:translateY(0); transition-delay:0.2s; }
+.slide.active .result-item:nth-child(2) .result-num { opacity:1; transform:translateY(0); transition-delay:0.35s; }
+.slide.active .result-item:nth-child(3) .result-num { opacity:1; transform:translateY(0); transition-delay:0.5s; }
+.slide.active .result-item:nth-child(4) .result-num { opacity:1; transform:translateY(0); transition-delay:0.65s; }
+.slide.active .result-item:nth-child(5) .result-num { opacity:1; transform:translateY(0); transition-delay:0.8s; }
+.slide.active .result-item:nth-child(6) .result-num { opacity:1; transform:translateY(0); transition-delay:0.95s; }
+.result-label {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); margin-top:8px;
+}
+
+/* ═══ CTA SLIDE ═══ */
+.cta-slide { text-align:center; }
+.cta-slide .slide-inner { max-width:640px; }
+.cta-btn {
+  display:inline-block; margin-top:32px; padding:14px 40px;
+  border:1px solid var(--gold); color:var(--gold); text-decoration:none;
+  font-family:'Josefin Sans',sans-serif; font-size:0.7rem;
+  letter-spacing:0.2em; text-transform:uppercase;
+  transition:all 0.3s ease; border-radius:3px;
+}
+.cta-btn:hover { background:var(--gold); color:var(--ink); }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width:900px) {
+  .split { grid-template-columns:1fr; }
+  .split-image { height:40vh; }
+  .split-text { padding:40px 32px; }
+  .website-grid { grid-template-columns:1fr; gap:32px; }
+  .browser-frame { margin-top:20px; }
+  .services-grid { grid-template-columns:1fr; }
+  .results-grid { grid-template-columns:repeat(2,1fr); gap:24px; }
+  .stats-bar { grid-template-columns:repeat(2,1fr); }
+  .slide-inner { padding:0 32px; }
+  .cover-content { padding:0 32px 80px; }
+  .slide-nav { display:none; }
+  .photo-grid { grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(3,1fr); }
+  .photo-grid-overlay { padding:24px 32px 40px; }
+}
+@media (max-width:600px) {
+  .results-grid { grid-template-columns:1fr 1fr; }
+  .stats-bar { grid-template-columns:1fr 1fr; }
+  h2 { font-size:clamp(1.8rem,6vw,2.4rem); }
+}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div class="loader" id="loader">
+  <div class="loader-brand">Matt Anthony Photography</div>
+  <div class="loader-sub">Case Study</div>
+  <div class="loader-line"></div>
+</div>
+
+<!-- Progress -->
+<div class="progress" id="progress"></div>
+
+<!-- Nav Dots -->
+<div class="slide-nav" id="slideNav">
+  <div class="nav-dot active" data-label="Cover" data-slide="0"></div>
+  <div class="nav-dot" data-label="The Client" data-slide="1"></div>
+  <div class="nav-dot" data-label="Challenge" data-slide="2"></div>
+  <div class="nav-dot" data-label="Photography" data-slide="3"></div>
+  <div class="nav-dot" data-label="Website" data-slide="4"></div>
+  <div class="nav-dot" data-label="SEO & Content" data-slide="5"></div>
+  <div class="nav-dot" data-label="Social Media" data-slide="6"></div>
+  <div class="nav-dot" data-label="Partnership" data-slide="7"></div>
+  <div class="nav-dot" data-label="Results" data-slide="8"></div>
+  <div class="nav-dot" data-label="Connect" data-slide="9"></div>
+</div>
+
+<!-- Counter -->
+<div class="slide-counter" id="counter"><span class="current">01</span> / 10</div>
+
+<!-- Arrows -->
+<div class="arrows">
+  <div class="arrow disabled" id="prevBtn">&#8592;</div>
+  <div class="arrow" id="nextBtn">&#8594;</div>
+</div>
+
+<!-- SLIDES -->
+<div class="track" id="track">
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide active grain" data-section="cover">
+    <div class="cover-bg"></div>
+    <div class="cover-logo">Matt Anthony Photography</div>
+    <div class="cover-date">Case Study &mdash; 2025/26</div>
+    <div class="cover-content">
+      <div class="eyebrow">Client Case Study</div>
+      <h1>Building <em>Balmoral's</em> visual identity from the ground up</h1>
+      <p class="cover-sub">Photography. Website. SEO. Social. How one builder went from undocumented projects to a full creative system.</p>
+    </div>
+    <div class="scroll-hint">
+      <span>Navigate</span>
+      <div class="chevron"></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: THE CLIENT -->
+  <div class="slide" data-section="client">
+    <div class="split">
+      <div class="split-text">
+        <div class="slide-inner">
+          <div class="eyebrow">The Client</div>
+          <h2>Balmoral <em>Construction</em></h2>
+          <p class="body-text">Custom home builder based in Whistler and Pemberton, BC. Led by Marc Harvey, Balmoral builds high-end residences across the Sea-to-Sky corridor, with projects ranging from contemporary alpine homes to mountain modern estates.</p>
+          <p class="body-text" style="margin-top:16px; color:rgba(246,244,240,0.5); font-size:0.85rem;">4 documented projects. Multiple design teams. One consistent visual standard.</p>
+        </div>
+      </div>
+      <div class="split-image">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/2e8c2fb7-cf13-4456-a1f4-6aadb45a2940/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-18.jpg" alt="Sugarloaf Residence Pemberton exterior" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: THE CHALLENGE -->
+  <div class="slide grain" data-section="challenge">
+    <div class="cover-bg" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/312b0797-a43a-4a51-906e-f913c78c7b79/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-3.jpg'); background-position:center 40%;"></div>
+    <div class="slide-inner" style="position:absolute; bottom:80px; left:0; padding:0 60px; max-width:640px;">
+      <div class="eyebrow">The Challenge</div>
+      <h2>Beautiful homes. <em>No documentation.</em></h2>
+      <p class="body-text">Balmoral was building some of the most impressive custom homes in the corridor, but none of them were being documented professionally. No photography. No web presence beyond a basic Squarespace site. No SEO. No social media. Potential clients had no way to see the quality of their work.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: PHOTOGRAPHY -->
+  <div class="slide" data-section="photography">
+    <div class="photo-grid">
+      <div class="grid-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/98b6bb8c-ede3-4de9-978a-fc8ae91554a6/warbler-whistler-architectural-photography-matt-anthony-.jpg-35.jpg" alt="Warbler exterior" loading="lazy"></div>
+      <div class="grid-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c938566f-ee96-40da-aec4-d51ac9fa7e09/warbler-whistler-architectural-photography-matt-anthony-.jpg-13.jpg" alt="Warbler interior" loading="lazy"></div>
+      <div class="grid-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ff283fca-be9f-4741-955b-786735c0fd2b/eagle-pemberton-architectural-photography-matt-anthony-.jpg.jpg" alt="Eagle exterior" loading="lazy"></div>
+      <div class="grid-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ab8c0b1a-742e-4485-9d50-a19c698594bf/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-4.jpg" alt="Fitzsimmons interior" loading="lazy"></div>
+      <div class="grid-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/eeadcf9a-ba76-41b0-ad28-c581528faba4/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-17.jpg" alt="Sugarloaf interior" loading="lazy"></div>
+      <div class="grid-img"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef4086f4-81fa-468f-99bf-966ce7d83d89/warbler-whistler-architectural-photography-matt-anthony-.jpg-11.jpg" alt="Warbler twilight" loading="lazy"></div>
+    </div>
+    <div class="photo-grid-overlay">
+      <div class="eyebrow" style="color:var(--gold);">Project Photography</div>
+      <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);">Four projects. <em>95 images.</em> Every angle documented.</h2>
+      <p class="body-text" style="color:rgba(246,244,240,0.7);">Warbler, Fitzsimmons, Eagle, and Sugarloaf residences. Full-day shoots with drone coverage, interiors, exteriors, material details, and twilight photography across Whistler and Pemberton.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: WEBSITE -->
+  <div class="slide website-section" data-section="website">
+    <div class="website-grid">
+      <div class="website-text slide-inner" style="opacity:1; transform:none;">
+        <div class="eyebrow">Website Rebuild</div>
+        <h2>42 pages. <em>Custom coded.</em></h2>
+        <p class="body-text">Complete Squarespace rebuild from a basic template site to a full marketing platform. 14 project pages with galleries, 6 service pages, 6 location pages targeting Sea-to-Sky keywords, and 7 blog posts. Every page hand-coded with structured data for search.</p>
+      </div>
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-url">balmoralconstruction.com</div>
+        </div>
+        <div class="browser-content">
+          <div class="browser-scroll">
+            <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/65d67cb8-ea3f-46dd-9c95-85b95e8f6fc8/warbler-whistler-architectural-photography-matt-anthony-.jpg-34.jpg" alt="Website hero" loading="lazy">
+            <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c938566f-ee96-40da-aec4-d51ac9fa7e09/warbler-whistler-architectural-photography-matt-anthony-.jpg-13.jpg" alt="Interior section" loading="lazy">
+            <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/2e8c2fb7-cf13-4456-a1f4-6aadb45a2940/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-18.jpg" alt="Project section" loading="lazy">
+            <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/312b0797-a43a-4a51-906e-f913c78c7b79/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-3.jpg" alt="Portfolio section" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: SEO & CONTENT -->
+  <div class="slide grain" data-section="seo">
+    <div class="slide-inner">
+      <div class="eyebrow">SEO & Content Strategy</div>
+      <h2>Found where it <em>matters</em></h2>
+      <p class="body-text" style="margin-bottom:32px;">6 location pages targeting "custom home builder Whistler," "renovation contractor Pemberton," and every variation in between. 7 blog posts covering cost guides, permits, and energy code compliance. Full JSON-LD structured data on every page.</p>
+      <div class="services-grid">
+        <div class="svc-card">
+          <h3>Location Pages</h3>
+          <p>6 geo-targeted pages for Whistler, Pemberton, and Squamish. Homes and renovations in each market.</p>
+        </div>
+        <div class="svc-card">
+          <h3>Blog Content</h3>
+          <p>7 SEO-driven posts answering real buyer questions. Cost guides, permit walkthroughs, project spotlights.</p>
+        </div>
+        <div class="svc-card">
+          <h3>Structured Data</h3>
+          <p>JSON-LD schema on every page. Project galleries, service definitions, local business markup.</p>
+        </div>
+        <div class="svc-card">
+          <h3>Monthly Retainer</h3>
+          <p>Ongoing SEO management at $892.50/mo. Monthly blog post, keyword monitoring, technical optimization.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: SOCIAL MEDIA -->
+  <div class="slide" data-section="social">
+    <div class="split">
+      <div class="split-image">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8149d10c-1661-4e39-80d9-538f24b4123a/warbler-whistler-architectural-photography-matt-anthony-.jpg-33.jpg" alt="Warbler rear elevation" loading="lazy">
+      </div>
+      <div class="split-text">
+        <div class="slide-inner">
+          <div class="eyebrow">Social Media</div>
+          <h2>From zero to <em>multi-channel</em></h2>
+          <p class="body-text">Built a complete content system for Balmoral across Instagram, LinkedIn, and Pinterest. Carousels, Reels concepts, project stories, and a Remotion-generated animated reel showcasing the partnership.</p>
+          <div class="timeline" style="margin-top:32px;">
+            <div class="tl-item">
+              <h3>Instagram</h3>
+              <p>8-week content calendar. Carousels, singles, stories with every caption written.</p>
+            </div>
+            <div class="tl-item">
+              <h3>LinkedIn</h3>
+              <p>14 posts queued. Project stories, partnership case study, thought leadership.</p>
+            </div>
+            <div class="tl-item">
+              <h3>Pinterest</h3>
+              <p>25 pins across all 4 projects. Rolling deployment through May.</p>
+            </div>
+            <div class="tl-item">
+              <h3>Video</h3>
+              <p>Animated reel built with Remotion. Beat-synced, spring physics, 5 layout types.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: PARTNERSHIP MODEL -->
+  <div class="slide grain" data-section="partnership">
+    <div class="cover-bg" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ea5a91ce-f1ba-4ef1-a35e-c1b88b665823/warbler-whistler-architectural-photography-matt-anthony-.jpg-2.jpg'); background-position:center;"></div>
+    <div class="slide-inner" style="position:absolute; bottom:80px; left:0; padding:0 60px; max-width:680px;">
+      <div class="eyebrow">The Model</div>
+      <h2>Not a vendor. <em>A creative partner.</em></h2>
+      <p class="body-text">The Creative Partner retainer bundles photography, website management, SEO, and social media into a single monthly relationship. One point of contact. Every project documented. A visual system that grows with the business.</p>
+      <p class="body-text" style="margin-top:16px; font-style:italic; color:rgba(246,244,240,0.5);">This is what it looks like when documentation becomes part of the build process, not an afterthought.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: RESULTS -->
+  <div class="slide" data-section="results">
+    <div class="slide-inner" style="max-width:800px; text-align:center;">
+      <div class="eyebrow" style="justify-content:center;">By The Numbers</div>
+      <h2>The <em>results</em></h2>
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-num" data-target="4">0</div>
+          <div class="result-label">Projects Shot</div>
+        </div>
+        <div class="result-item">
+          <div class="result-num" data-target="95">0</div>
+          <div class="result-label">Images Delivered</div>
+        </div>
+        <div class="result-item">
+          <div class="result-num" data-target="42">0</div>
+          <div class="result-label">Website Pages</div>
+        </div>
+        <div class="result-item">
+          <div class="result-num" data-target="7">0</div>
+          <div class="result-label">Blog Posts</div>
+        </div>
+        <div class="result-item">
+          <div class="result-num" data-target="6">0</div>
+          <div class="result-label">SEO Location Pages</div>
+        </div>
+        <div class="result-item">
+          <div class="result-num" data-target="53">0</div>
+          <div class="result-label">Social Posts Created</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: CTA -->
+  <div class="slide cta-slide grain" data-section="connect">
+    <div class="cover-bg" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg'); background-position:center 60%; opacity:0.3;"></div>
+    <div class="slide-inner">
+      <div class="eyebrow" style="justify-content:center;">What's Next</div>
+      <h2>Your projects deserve <em>this level of documentation</em></h2>
+      <p class="body-text" style="margin:0 auto; text-align:center; max-width:480px;">Whether it's a single shoot or a full creative partnership, the first step is the same. Let's talk about what you're building.</p>
+      <a href="mailto:info@mattanthonyphoto.com" class="cta-btn">Start a conversation</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  // Loader
+  setTimeout(()=>{ document.getElementById('loader').classList.add('done'); }, 1600);
+  setTimeout(()=>{ document.getElementById('slideNav').classList.add('visible'); }, 2000);
+
+  const track = document.getElementById('track');
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.nav-dot');
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let current = 0;
+  const total = slides.length;
+  let transitioning = false;
+
+  function goTo(idx) {
+    if (idx < 0 || idx >= total || transitioning) return;
+    transitioning = true;
+    setTimeout(()=>{ transitioning = false; }, 900);
+
+    slides[current].classList.remove('active');
+    current = idx;
+    slides[current].classList.add('active');
+    track.style.transform = `translateX(-${current * 100}vw)`;
+
+    // Progress
+    progress.style.width = ((current / (total - 1)) * 100) + '%';
+
+    // Counter
+    counter.querySelector('.current').textContent = String(current + 1).padStart(2, '0');
+
+    // Dots
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+
+    // Arrows
+    prevBtn.classList.toggle('disabled', current === 0);
+    nextBtn.classList.toggle('disabled', current === total - 1);
+
+    // Animate numbers on results slide
+    if (current === 8) animateNumbers();
+  }
+
+  // Nav dots
+  dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.slide))));
+
+  // Arrows
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1);
+  });
+
+  // Scroll/swipe
+  let lastWheel = 0;
+  document.addEventListener('wheel', e => {
+    const now = Date.now();
+    if (now - lastWheel < 1200) return;
+    lastWheel = now;
+    if (e.deltaY > 30) goTo(current + 1);
+    else if (e.deltaY < -30) goTo(current - 1);
+  }, { passive: true });
+
+  // Touch
+  let touchStart = 0;
+  document.addEventListener('touchstart', e => { touchStart = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    const diff = touchStart - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 60) {
+      if (diff > 0) goTo(current + 1);
+      else goTo(current - 1);
+    }
+  }, { passive: true });
+
+  // Number animation
+  function animateNumbers() {
+    document.querySelectorAll('.result-num[data-target]').forEach(el => {
+      const target = parseInt(el.dataset.target);
+      const duration = 1200;
+      const start = performance.now();
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target);
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+})();
+</script>
+</body>
+</html>

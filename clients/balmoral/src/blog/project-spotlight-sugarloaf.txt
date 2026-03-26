@@ -1,0 +1,327 @@
+<!-- JSON-LD SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Project Spotlight: Sugarloaf — 4,800 Sq Ft of Precision Craft in Pemberton",
+  "description": "A deep dive into the Sugarloaf custom home build in Pemberton, BC. Explore how Stark Architecture, Britt Lothrop, Blueprint Millwork, and Balmoral Construction came together to create a 4,800 sq ft mountain home with Mount Currie views.",
+  "image": "https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/8d1fe690-3b0d-4125-b1ca-be9981cb4f07/custom-home-builder-pemberton-balmoral-construction-18.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Marc Harvey",
+    "jobTitle": "Owner & Founder",
+    "url": "https://www.balmoralconstruction.com/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Balmoral Construction Inc.",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png"
+    }
+  },
+  "datePublished": "2026-03-18",
+  "dateModified": "2026-03-18",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.balmoralconstruction.com/blog/project-spotlight-sugarloaf"
+  },
+  "keywords": ["Sugarloaf Pemberton", "custom home Pemberton", "Pemberton home builder", "4800 sq ft custom home", "Mount Currie views", "Balmoral Construction"]
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bc-accent:#D4722A;--bc-accent-hover:#BF6523;--bc-accent-light:rgba(212,114,42,.1)}
+.bc-progress{position:fixed;top:0;left:0;height:3px;background:var(--bc-accent);z-index:1100;width:0%;transition:none}
+.bc{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a1a;line-height:1.7;font-weight:300;background:#fff}
+.bc img{max-width:100%;display:block}.bc a{color:inherit;text-decoration:none}
+.bc-hd{position:fixed;top:0;left:0;right:0;z-index:99999 !important;transition:background .4s cubic-bezier(.16,1,.3,1)}.bc-hd--top{background:transparent}.bc-hd--scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.bc-hd--mob-open{background:#fff !important;backdrop-filter:none}
+.bc-hd-inner{max-width:1600px;margin:0 auto;padding:0 clamp(24px,4vw,60px);display:flex;align-items:center;justify-content:space-between;height:80px}
+.bc-hd-logo img{height:52px;width:auto;transition:filter .4s}.bc-hd--top .bc-hd-logo img{filter:brightness(0) invert(1)}
+.bc-hd--mob-open .bc-hd-logo img{filter:none !important}
+.bc-hd--mob-open.bc-hd--top .bc-hd-logo img{filter:none !important}
+.bc-hd-nav{display:flex;align-items:center;gap:clamp(24px,3.5vw,48px);list-style:none}
+.bc-hd-link{font-size:13px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#1a1a1a;transition:all .3s;position:relative}.bc-hd--top .bc-hd-link{color:rgba(255,255,255,.75)}.bc-hd--top .bc-hd-link:hover{color:#fff}.bc-hd-link:hover{color:#000}
+.bc-hd-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:currentColor;transition:width .3s}.bc-hd-link:hover::after{width:100%}
+.bc-hd-drop{position:relative}.bc-hd-drop-menu{position:absolute;top:calc(100% + 20px);left:-20px;background:#fff;padding:16px 0;min-width:220px;opacity:0;visibility:hidden;transition:all .3s;transform:translateY(8px);box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.bc-hd-drop:hover .bc-hd-drop-menu{opacity:1;visibility:visible;transform:translateY(0)}.bc-hd-drop-menu a{display:block;padding:10px 28px;font-size:14px;font-weight:400;color:#666;letter-spacing:.04em;transition:all .2s}.bc-hd-drop-menu a:hover{color:var(--bc-accent);padding-left:32px}
+.bc-hd-mob{display:none;background:none;border:none;cursor:pointer;padding:10px;z-index:100001}.bc-hd-mob span{display:block;width:28px;height:2px;background:#1a1a1a;margin:7px 0;transition:all .4s}.bc-hd--top .bc-hd-mob span{background:#fff}
+.bc-hd--mob-open .bc-hd-mob span{background:#1a1a1a !important}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(2){opacity:0}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.bc-mob{position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:99998 !important;padding:100px clamp(24px,6vw,60px) 40px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}.bc-mob.open{opacity:1;visibility:visible;display:flex;flex-direction:column}
+.bc-mob a{display:block;font-size:clamp(28px,6vw,40px);font-weight:200;color:#1a1a1a;padding:12px 0;letter-spacing:-.02em;border-bottom:1px solid #f0f0f0;transition:opacity .3s}.bc-mob a:hover{opacity:.5}
+.bc-mob-sub{padding-left:0}.bc-mob-sub a{font-size:clamp(14px,3vw,18px);font-weight:400;color:#999;letter-spacing:0;padding:8px 0}
+.bc-reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}.bc-reveal.bc-visible{opacity:1;transform:translateY(0)}.bc-reveal-delay-1{transition-delay:.15s}.bc-reveal-delay-2{transition-delay:.3s}
+.bc-blog-hero{position:relative;height:70vh;min-height:500px;overflow:hidden;display:flex;align-items:flex-end}
+.bc-blog-hero img.bc-blog-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bc-blog-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.6) 100%);z-index:1}
+.bc-blog-hero-content{position:relative;z-index:2;max-width:1600px;margin:0 auto;padding:0 clamp(24px,4vw,60px) clamp(48px,6vw,80px);width:100%}
+.bc-blog-hero-content h1{font-size:clamp(28px,4.5vw,56px);font-weight:200;color:#fff;letter-spacing:-.03em;line-height:1.15;margin-bottom:20px;max-width:900px}
+.bc-blog-hero-content h1 strong{font-weight:600}
+.bc-blog-meta{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.bc-blog-meta span{font-size:12px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.bc-blog-meta span strong{color:rgba(255,255,255,.85);font-weight:500}
+.bc-blog-body{max-width:800px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px)}
+.bc-blog-body h2{font-size:clamp(24px,2.5vw,36px);font-weight:300;letter-spacing:-.02em;color:#1a1a1a;margin:clamp(40px,5vw,64px) 0 20px;line-height:1.2}
+.bc-blog-body h2 strong{font-weight:600}
+.bc-blog-body h3{font-size:clamp(18px,1.5vw,24px);font-weight:500;color:#1a1a1a;margin:32px 0 12px;letter-spacing:-.01em}
+.bc-blog-body p{font-size:16px;color:#444;line-height:1.9;margin-bottom:20px;font-weight:300}
+.bc-blog-body ul,.bc-blog-body ol{margin:0 0 20px 24px;color:#444;font-size:16px;line-height:1.9;font-weight:300}
+.bc-blog-body li{margin-bottom:8px}
+.bc-blog-body a{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s;padding-bottom:1px}
+.bc-blog-body a:hover{border-color:var(--bc-accent)}
+.bc-blog-body blockquote{border-left:3px solid var(--bc-accent);padding:16px 24px;margin:32px 0;background:var(--bc-accent-light);font-style:italic;color:#555}
+.bc-blog-body .bc-blog-gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:32px 0}
+.bc-blog-body .bc-blog-gallery img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:brightness(.95)}
+.bc-blog-body .bc-highlight{background:#f8f8f6;border:1px solid #eee;padding:clamp(20px,3vw,32px);margin:32px 0}
+.bc-blog-body .bc-highlight h3{margin-top:0}
+.bc-related{padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px);background:#f8f8f6;border-top:1px solid #eee}
+.bc-related-inner{max-width:1600px;margin:0 auto}
+.bc-related h2{font-size:clamp(24px,2.5vw,36px);font-weight:200;letter-spacing:-.02em;color:#1a1a1a;margin-bottom:clamp(32px,4vw,48px)}.bc-related h2 strong{font-weight:600}
+.bc-related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(24px,3vw,40px)}
+.bc-related-card{background:#fff;overflow:hidden;transition:transform .3s}.bc-related-card:hover{transform:translateY(-4px)}
+.bc-related-card img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:brightness(.95);transition:filter .3s}.bc-related-card:hover img{filter:brightness(.88)}
+.bc-related-card-body{padding:20px 24px 24px}
+.bc-related-card-body h3{font-size:clamp(15px,1.2vw,18px);font-weight:500;color:#1a1a1a;margin-bottom:8px;line-height:1.4}
+.bc-related-card-body p{font-size:13px;color:#888;line-height:1.7;margin-bottom:8px}
+.bc-related-card-body .bc-blog-date{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:#bbb}
+.bc-cta{position:relative;height:60vh;min-height:400px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bc-cta img.bc-cta-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.bc-cta::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:1}
+.bc-cta-c{position:relative;z-index:2;text-align:center;max-width:600px;padding:0 24px}
+.bc-cta h2{font-size:clamp(28px,4vw,52px);font-weight:200;color:#fff;letter-spacing:-.03em;margin-bottom:16px;line-height:1.15}.bc-cta h2 strong{font-weight:600}
+.bc-cta p{font-size:17px;color:rgba(255,255,255,.55);margin-bottom:36px;line-height:1.8;font-weight:300}
+.bc-btn{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:18px 44px;border:2px solid rgba(255,255,255,.6);color:#fff;background:transparent;transition:all .4s;cursor:pointer}
+.bc-btn:hover{background:#fff;color:#1a1a1a;border-color:#fff}
+.bc-btn--accent{background:var(--bc-accent);color:#fff;border-color:var(--bc-accent);border-width:2px}
+.bc-btn--accent:hover{background:var(--bc-accent-hover);border-color:var(--bc-accent-hover);color:#fff}
+.bc-ft{background:#0a0a0a;color:#fff;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px) clamp(24px,3vw,40px);border-top:3px solid var(--bc-accent)}
+.bc-ft-inner{max-width:1600px;margin:0 auto}
+.bc-ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:clamp(24px,4vw,60px);padding-bottom:clamp(40px,5vw,60px);border-bottom:1px solid rgba(255,255,255,.08)}
+.bc-ft-brand p{font-size:13px;color:rgba(255,255,255,.35);line-height:1.8;margin-top:20px;max-width:300px;font-weight:300}
+.bc-ft-mark{height:60px;width:auto;opacity:.8;margin-bottom:8px}
+.bc-ft-col h4{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:20px}
+.bc-ft-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);line-height:2.2;transition:color .3s;font-weight:300}.bc-ft-col a:hover{color:var(--bc-accent)}
+.bc-ft-btm{display:flex;justify-content:space-between;align-items:center;padding-top:clamp(20px,3vw,32px)}
+.bc-ft-copy{font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.02em;font-weight:300}
+.bc-ft-social{display:flex;gap:24px}.bc-ft-social a{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);transition:color .3s}.bc-ft-social a:hover{color:var(--bc-accent)}
+@media(max-width:900px){.bc-hd-nav{display:none}.bc-hd-mob{display:block}}
+@media(max-width:768px){.bc-blog-hero{min-height:400px;height:60vh}.bc-blog-body .bc-blog-gallery{grid-template-columns:1fr}.bc-related-grid{grid-template-columns:1fr}.bc-cta{height:50vh;min-height:350px}.bc-ft-top{grid-template-columns:1fr 1fr;gap:32px}.bc-ft-btm{flex-direction:column;gap:12px;text-align:center}}
+@media(max-width:480px){.bc-ft-top{grid-template-columns:1fr}}
+</style>
+
+<div class="bc-progress" id="bcProgress"></div>
+<div class="bc">
+
+<header class="bc-hd bc-hd--top" id="bcHd">
+  <div class="bc-hd-inner">
+    <a href="/" class="bc-hd-logo"><img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png" alt="Balmoral Construction — Custom Home Builder in Whistler, Pemberton and Squamish"></a>
+    <ul class="bc-hd-nav">
+      <li><a href="/about" class="bc-hd-link">About</a></li>
+      <li class="bc-hd-drop"><a href="/services" class="bc-hd-link">Services</a><div class="bc-hd-drop-menu"><a href="/custom-home-building">Custom Home Building</a><a href="/home-renovations">Home Renovations</a><a href="/general-contracting">General Contracting</a><a href="/project-management">Project Management</a><a href="/land-consultation">Land Consultation</a><a href="/permit-coordination">Permit Coordination</a></div></li>
+      <li><a href="/work" class="bc-hd-link">Work</a></li>
+      <li class="bc-hd-drop"><a href="javascript:void(0)" class="bc-hd-link">Locations</a><div class="bc-hd-drop-menu"><a href="/whistler-home-builder">Whistler</a><a href="/pemberton-home-builder">Pemberton</a><a href="/squamish-home-builder">Squamish</a></div></li>
+      <li><a href="/blog" class="bc-hd-link">Blog</a></li>
+      <li><a href="/contact" class="bc-hd-link">Contact</a></li>
+    </ul>
+    <button class="bc-hd-mob" aria-label="Menu" onclick="document.getElementById('bcMob').classList.toggle('open');this.classList.toggle('open');document.getElementById('bcHd').classList.toggle('bc-hd--mob-open')"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="bc-mob" id="bcMob">
+  <a href="/about">About</a><a href="/services">Services</a>
+  <div class="bc-mob-sub"><a href="/custom-home-building">Custom Home Building</a><a href="/home-renovations">Home Renovations</a><a href="/general-contracting">General Contracting</a><a href="/project-management">Project Management</a><a href="/land-consultation">Land Consultation</a><a href="/permit-coordination">Permit Coordination</a></div>
+  <a href="/work">Work</a><a href="/whistler-home-builder">Whistler</a><a href="/pemberton-home-builder">Pemberton</a><a href="/squamish-home-builder">Squamish</a><a href="/blog">Blog</a><a href="/contact">Contact</a>
+</div>
+
+<section class="bc-blog-hero">
+  <img class="bc-blog-hero-img" src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/8d1fe690-3b0d-4125-b1ca-be9981cb4f07/custom-home-builder-pemberton-balmoral-construction-18.jpg" alt="Sugarloaf custom home in Pemberton with Mount Currie views — 4,800 sq ft precision craft by Balmoral Construction">
+  <div class="bc-blog-hero-content">
+    <h1>Project Spotlight: Sugarloaf — <strong>4,800 Sq Ft of Precision Craft in Pemberton</strong></h1>
+    <div class="bc-blog-meta">
+      <span><strong>Marc Harvey</strong></span>
+      <span>March 2026</span>
+      <span>10 min read</span>
+    </div>
+  </div>
+</section>
+
+<article class="bc-blog-body bc-reveal">
+
+  <p>Some projects are defined by a single signature element — a view, a material, a design move. Sugarloaf is defined by the team that built it. This 4,800-square-foot custom home on Sugarloaf Place in <a href="/pemberton-home-builder">Pemberton</a> brought together some of the Sea to Sky's most respected design and building professionals, and the result is a home where every detail reflects that collective expertise. It is one of the projects we are most proud of, and this is the story of how it came together.</p>
+
+  <p>If you are considering building a <a href="/custom-home-building">custom home in Pemberton</a>, this case study offers an inside look at what happens when the right architect, interior designer, millwork shop, window supplier, and builder align around a shared standard of quality.</p>
+
+  <h2>The <strong>Team</strong></h2>
+
+  <h3>Stark Architecture</h3>
+
+  <p>The architectural design for Sugarloaf was led by Stark Architecture, a firm known for creating homes that respond directly to their sites and the lifestyles of their owners. For this project, the brief was clear: design a home that makes the most of the property's extraordinary views of Mount Currie while creating interior spaces that feel warm, connected, and grounded in the Pemberton landscape.</p>
+
+  <p>Stark's design organized the home to maximize south and west exposure, positioning the primary living areas to capture the full panorama of Mount Currie and the Lillooet Range. The architecture balances contemporary lines with materials that feel rooted in place — a design philosophy that resonated with both the clients and our construction team.</p>
+
+  <h3>Tash Engineering</h3>
+
+  <p>The structural engineering was handled by Tash Engineering, who worked closely with both Stark Architecture and our team to ensure the structural systems supported the architectural vision without compromise. In a home with this much glazing and open floor plan, the structural design is critical — long spans, carefully placed columns, and engineered connections that allow the architecture to feel effortless while carrying substantial snow loads and seismic requirements.</p>
+
+  <h3>Britt Lothrop — Interior Design</h3>
+
+  <p>Interior designer <a href="/about">Britt Lothrop</a>, a long-time collaborator of ours, brought a material palette to Sugarloaf that balances warmth with restraint. Britt has partnered with Balmoral on numerous projects since 2014, and that history shows in the way her selections integrate with our construction methods. She understands what our team can execute to the highest standard, and she designs accordingly.</p>
+
+  <p>For Sugarloaf, Britt's selections included natural wood ceiling treatments, honed stone surfaces, matte hardware, and a colour palette drawn from the surrounding landscape. The result is an interior that feels sophisticated without being precious — a home you actually want to live in, not just look at.</p>
+
+  <h3>Blueprint Millwork</h3>
+
+  <p>The custom cabinetry and built-in elements throughout Sugarloaf were fabricated by Blueprint Millwork. In a home of this calibre, the millwork is one of the most telling indicators of quality. Blueprint executed tight reveals, seamless transitions between materials, and details that reward close inspection. The millwork runs throughout the home — kitchen, living areas, bedrooms, bathrooms, and built-in storage — tying the entire interior into a cohesive whole.</p>
+
+  <h3>Innotech Windows</h3>
+
+  <p>The window systems for Sugarloaf were supplied by Innotech, a manufacturer known for high-performance, thermally broken window and door systems. Given the home's emphasis on mountain views and indoor-outdoor connection, the glazing strategy was ambitious — floor-to-ceiling windows on the primary elevations that dissolve the boundary between interior and exterior. Innotech's systems delivered both the thermal performance required for <a href="/blog/bc-energy-step-code-for-homeowners">BC's Energy Step Code compliance</a> and the structural capacity to handle Pemberton's snow loads.</p>
+
+  <h2>The <strong>Site</strong></h2>
+
+  <h3>Mount Currie Views</h3>
+
+  <p>The property on Sugarloaf Place offered one of Pemberton's most compelling building sites. Looking directly at Mount Currie — the valley's defining peak — the lot provided the kind of mountain views that most homeowners only dream about. The challenge was ensuring the architecture captured these views from every principal room while maintaining the privacy and shelter that a year-round family home requires.</p>
+
+  <p>The orientation of the home was carefully considered to balance view corridors with sun exposure, wind protection, and the practical realities of Pemberton's climate. The result is a home where Mount Currie is not just a distant backdrop but an immersive, ever-changing presence that shifts with the seasons and the light.</p>
+
+  <h3>Pemberton Building Conditions</h3>
+
+  <p>Building in <a href="/pemberton-home-builder">Pemberton</a> comes with its own set of considerations that differ from <a href="/whistler-home-builder">Whistler</a> or <a href="/squamish-home-builder">Squamish</a>. Soil conditions in the valley floor, snow load requirements, and the practical realities of a mountain valley climate all factored into the construction approach. Our team's deep experience in Pemberton — our office is on Sugarloaf Place, literally steps from this project — meant we understood these conditions intimately.</p>
+
+  <h2>Design <strong>Intent</strong></h2>
+
+  <h3>Indoor-Outdoor Connection</h3>
+
+  <p>The design philosophy for Sugarloaf centred on dissolving the boundary between inside and outside. The floor-to-ceiling Innotech window systems on the south and west elevations create a visual connection to the landscape that is immediate and immersive. From the main living spaces, Mount Currie fills the frame entirely — not as a picture on the wall, but as a living, breathing presence that changes with every hour and every season.</p>
+
+  <p>The main living areas open onto covered outdoor spaces that extend the usable footprint of the home through Pemberton's long summer evenings. These transitional zones — neither fully inside nor fully outside — are where some of the best moments in a mountain home happen, and the design made sure they were generous, functional, and connected to the interior flow.</p>
+
+  <h3>Open Floor Plan</h3>
+
+  <p>The open floor plan channels sightlines through the home so that the landscape is never more than a glance away. Kitchen, dining, and living areas flow into one another without barriers, creating a sense of spaciousness that belies the home's 4,800-square-foot footprint. At the same time, the layout provides subtle zones of separation — changes in ceiling height, material transitions, furniture placement — that allow different activities to happen simultaneously without conflict.</p>
+
+  <h2>Construction <strong>Details</strong></h2>
+
+  <h3>Trade Coordination</h3>
+
+  <p>A project with this many specialized consultants and trades requires a builder who can hold the vision together while keeping the build on track. Managing the schedules and requirements of Stark Architecture, Tash Engineering, Britt Lothrop, Blueprint Millwork, Innotech, and dozens of other trades is one of the most complex aspects of <a href="/project-management">project management</a> on a custom home of this calibre.</p>
+
+  <p>Our team delivered Sugarloaf with the same hands-on approach that defines every Balmoral project. Marc was present on site throughout the build, our project managers maintained detailed construction schedules, and every trade was coordinated to ensure that the work of one never compromised the work of another. When you have Blueprint Millwork installing cabinetry that meets Britt Lothrop's specifications within walls engineered by Tash and framed by our crew — the tolerances are tight and there is no room for miscommunication.</p>
+
+  <h3>Material Selections</h3>
+
+  <p>Every material in Sugarloaf was chosen for both its aesthetic contribution and its long-term performance. Exterior cladding was selected to weather gracefully in Pemberton's climate — a valley that sees everything from heavy snow to intense summer heat. Interior finishes were specified to balance durability with the warmth and tactile quality that Britt Lothrop's design demanded.</p>
+
+  <p>The exposed wood ceilings are one of the home's signature elements, bringing natural warmth overhead and connecting the interior to the forested setting outside. Honed stone surfaces in kitchens and bathrooms provide a restrained counterpoint to the wood, and the millwork details throughout — from integrated handles to seamless panel transitions — demonstrate the level of craft that a home of this calibre demands.</p>
+
+  <h2>Interior <strong>Design</strong></h2>
+
+  <h3>Britt Lothrop's Material Palette</h3>
+
+  <p>Britt's material palette for Sugarloaf was driven by a single principle: complement the mountain landscape without competing with it. The colours are drawn from the surrounding environment — stone greys, warm wood tones, and muted earth colours that feel natural and unhurried. Accents are minimal and deliberate, allowing the architecture and the views to do the heavy lifting.</p>
+
+  <p>What makes Britt's work on Sugarloaf exceptional is the coherence. Moving from room to room, the material language remains consistent without becoming monotonous. Subtle shifts in texture, finish, and proportion keep each space distinct while maintaining the overall narrative. This kind of discipline requires a designer who understands not just aesthetics but also construction — how materials meet, how light interacts with surfaces, and how a home lives over time.</p>
+
+  <h3>Blueprint Millwork's Custom Cabinetry</h3>
+
+  <p>The millwork throughout Sugarloaf is where the home's commitment to craft is most visible. Blueprint Millwork executed the kitchen cabinetry, built-in storage, feature walls, and vanities with the kind of precision that only a dedicated millwork shop can deliver. The reveals are tight, the grain is matched, and the integration between millwork and adjacent surfaces is seamless.</p>
+
+  <p>In the kitchen, the cabinetry combines function and beauty in equal measure — deep drawers, integrated appliance panels, and a material palette that connects the kitchen to the rest of the home's interior language. The island serves as both a work surface and the social centre of the home, designed for the kind of casual entertaining that defines life in the mountains.</p>
+
+  <div class="bc-blog-gallery">
+    <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/989bc309-dd71-40c1-83b9-0ba6f6523a1e/custom-home-builder-pemberton-balmoral-construction-1.jpg" alt="Sugarloaf custom home exterior in Pemberton — 4,800 sq ft with Mount Currie views" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/8d1fe690-3b0d-4125-b1ca-be9981cb4f07/custom-home-builder-pemberton-balmoral-construction-18.jpg" alt="Sugarloaf in winter — custom home by Balmoral Construction with mountain backdrop" loading="lazy">
+  </div>
+
+  <h2>The <strong>Result</strong></h2>
+
+  <p>Sugarloaf stands as proof of what happens when the right team aligns around a shared standard of quality. Stark Architecture's design captured the site's extraordinary potential. Tash Engineering's structural work made the ambitious glazing and open floor plan possible. Britt Lothrop's interior selections brought warmth and sophistication to every room. Blueprint Millwork's craftsmanship tied it all together. And Balmoral's construction team held the vision together from first shovel to final walkthrough.</p>
+
+  <p>At 4,800 square feet, Sugarloaf is a substantial home. But it never feels oversized or excessive. Every room earns its place. Every material serves a purpose. And the views of Mount Currie — framed through Innotech's floor-to-ceiling glazing — are a constant, ever-changing reminder of why people choose to build in Pemberton.</p>
+
+  <p>For our team, Sugarloaf reinforced a core belief: the best custom homes are built by teams, not individuals. When architect, engineer, interior designer, millwork shop, and builder all bring their best work to the same project, the result is greater than anything any one of us could achieve alone. That is the standard we hold ourselves to on every project.</p>
+
+  <p>Visit the <a href="/sugarloaf">Sugarloaf project page</a> for the full gallery. And if you are considering a custom home build in Pemberton, Whistler, or Squamish, <a href="/contact">reach out</a> to start the conversation. Explore more of <a href="/work">our work</a> across the Sea to Sky Corridor.</p>
+
+</article>
+
+<section class="bc-related">
+  <div class="bc-related-inner">
+    <h2>Related <strong>Posts</strong></h2>
+    <div class="bc-related-grid">
+      <a href="/blog/project-spotlight-warbler-way" class="bc-related-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/cbef60b8-5b6a-4fe1-b8b1-51584675f265/whistler-home-builder-balmoral-construction-warbler-45.jpg" alt="Warbler Way custom home in Whistler" loading="lazy">
+        <div class="bc-related-card-body"><h3>Project Spotlight: Warbler Way — Contemporary Alpine Living in Whistler</h3><p>An inside look at our contemporary mountain home in Whistler's Wedgewood neighbourhood.</p><span class="bc-blog-date">March 2026</span></div>
+      </a>
+      <a href="/blog/how-much-does-it-cost-to-build-a-custom-home-in-pemberton" class="bc-related-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/989bc309-dd71-40c1-83b9-0ba6f6523a1e/custom-home-builder-pemberton-balmoral-construction-1.jpg" alt="Custom home construction costs in Pemberton" loading="lazy">
+        <div class="bc-related-card-body"><h3>How Much Does It Cost to Build a Custom Home in Pemberton?</h3><p>A detailed look at construction costs in Pemberton and what to budget for your custom build.</p><span class="bc-blog-date">March 2026</span></div>
+      </a>
+      <a href="/blog/bc-building-permit-process-explained" class="bc-related-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/ace17031-d6c3-4539-9275-ab17d604e713/Balmoral-Construction-Squamish-equestrian-commercial.jpg" alt="BC building permit process guide" loading="lazy">
+        <div class="bc-related-card-body"><h3>The BC Building Permit Process Explained</h3><p>Step-by-step guide to navigating building permits in the Sea to Sky Corridor.</p><span class="bc-blog-date">March 2026</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="bc-cta">
+  <img class="bc-cta-bg" src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/695af498-0bc2-49ca-838f-66a41bc683f4/custom-home-interior-whistler-fireplace-sea-to-sky.jpg" alt="Custom home interior — start your build with Balmoral Construction" loading="lazy">
+  <div class="bc-cta-c bc-reveal">
+    <h2>Ready to build your <strong>dream home?</strong></h2>
+    <p>Every project starts with a conversation about your vision, your land, and how you want to live. Reach out to start planning your custom home in the Sea to Sky.</p>
+    <a href="/contact" class="bc-btn bc-btn--accent">Start a Conversation</a>
+  </div>
+</section>
+
+<footer class="bc-ft">
+  <div class="bc-ft-inner">
+    <div class="bc-ft-top">
+      <div class="bc-ft-brand">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/83ca6501-705e-43ee-b119-551d0c16ea14/unnamed.png" alt="Balmoral Construction — Custom Home Builder in the Sea to Sky Corridor" class="bc-ft-mark">
+        <p>Boutique custom home builder in the Sea to Sky Corridor. Based in Pemberton, building across Whistler, Pemberton &amp; Squamish since 2011.</p>
+      </div>
+      <div class="bc-ft-col"><h4>Services</h4><a href="/custom-home-building">Custom Home Building</a><a href="/home-renovations">Home Renovations</a><a href="/general-contracting">General Contracting</a><a href="/project-management">Project Management</a><a href="/land-consultation">Land Consultation</a><a href="/permit-coordination">Permit Coordination</a><a href="/services">All Services</a></div>
+      <div class="bc-ft-col"><h4>Locations</h4><a href="/whistler-home-builder">Whistler Home Builder</a><a href="/pemberton-home-builder">Pemberton Home Builder</a><a href="/squamish-home-builder">Squamish Home Builder</a><a href="/whistler-home-renovations">Whistler Renovations</a><a href="/pemberton-home-renovations">Pemberton Renovations</a><a href="/squamish-home-renovations">Squamish Renovations</a></div>
+      <div class="bc-ft-col"><h4>Projects</h4><a href="/warbler-way">Warbler Way</a><a href="/cerulean">Cerulean</a><a href="/sugarloaf">Sugarloaf</a><a href="/white-gold-2">White Gold 2</a><a href="/fitzsimmons">Fitzsimmons</a><a href="/work">All Projects</a></div>
+      <div class="bc-ft-col"><h4>Company</h4><a href="/about">About</a><a href="/work">Portfolio</a><a href="/reviews">Reviews</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href="tel:6049072237">604.907.2237</a><a href="mailto:marc@balmoralconstruction.com">marc@balmoralconstruction.com</a></div>
+    </div>
+    <div class="bc-ft-btm">
+      <span class="bc-ft-copy">&copy; 2026 Balmoral Construction Inc. &mdash; Custom Home Builder in Whistler, Pemberton &amp; Squamish, BC</span>
+      <div class="bc-ft-social"><a href="https://www.instagram.com/balmoralconstruction/" target="_blank" rel="noopener">Instagram</a><a href="https://www.houzz.com/professionals/general-contractors/balmoral-construction-pfvwus-pf~1513498919" target="_blank" rel="noopener">Houzz</a></div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var hd=document.getElementById('bcHd');
+  function checkScroll(){var s=window.scrollY>80;hd.classList.toggle('bc-hd--top',!s);hd.classList.toggle('bc-hd--scrolled',s)}
+  window.addEventListener('scroll',checkScroll);checkScroll();
+  var prog=document.getElementById('bcProgress');
+  window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;if(h>0)prog.style.width=(window.scrollY/h*100)+'%'});
+  var reveals=document.querySelectorAll('.bc-reveal');
+  var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('bc-visible');observer.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  reveals.forEach(function(el){observer.observe(el)});
+})();
+</script>
+<style>
+/* Squarespace page wrapper reset */
+.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block{margin:0!important;padding:0!important;max-width:100%!important;width:100%!important}
+.page-section:last-of-type{padding-bottom:0!important;margin-bottom:0!important}
+#footer,.Footer,.footer,footer[data-footer-id],footer:not(.bc-ft){display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important}
+.sqs-block-spacer,.sqs-block-horizontalrule,.section-background{display:none!important}
+@media(max-width:768px){.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block,.Index-page-content,.blog-item-inner-wrapper,article.page,article.Page,.page-content,.Page-content{padding:0!important;margin:0!important}body{padding-bottom:0!important;margin-bottom:0!important}}
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){var f=document.querySelector('.bc-ft');if(f){var p=f.closest('.sqs-block')||f.closest('.page-section')||f.parentElement;while(p){var n=p.nextElementSibling;while(n){n.style.cssText='display:none!important;height:0!important;padding:0!important;margin:0!important;overflow:hidden!important';n=n.nextElementSibling}p=p.parentElement}}});
+</script>

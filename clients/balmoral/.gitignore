@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Environment & secrets
+.env
+
+# Temporary/intermediate files
+.tmp/
+
+# macOS
+.DS_Store
+
+# Build output
+dist/
+.next/
+.astro/
+out/
+
+# Editor
+.cursor/
+*.local.json

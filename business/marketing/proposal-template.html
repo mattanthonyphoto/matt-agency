@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposal — Matt Anthony Photography</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500&family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a18;
+    --paper: #f6f4f0;
+    --warm: #c9a96e;
+    --warm-muted: #b8975a;
+    --stone: #8a8579;
+    --light-stone: #d9d5cd;
+    --off-white: #eeece6;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+    --display: 'Josefin Sans', sans-serif;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── COVER ─── */
+  .pr-cover {
+    min-height: 100vh;
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 6rem 5vw;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pr-cover-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: saturate(0.7) brightness(0.35);
+    /* REPLACE: Set background-image to a hero image from the client's project or your portfolio */
+    background-image: url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/40f0f4b4-0146-4139-8682-d3505ba00ba2/warbler-whistler-architectural-photography-matt-anthony-.jpg-36.jpg');
+  }
+
+  .pr-cover-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+  }
+
+  .pr-cover-label {
+    font-family: var(--display);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 1.5rem;
+  }
+
+  .pr-cover-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: var(--paper);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .pr-cover-subtitle {
+    font-size: 1.1rem;
+    color: var(--light-stone);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+
+  .pr-cover-meta {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .pr-cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .pr-cover-meta-label {
+    font-family: var(--display);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-muted);
+  }
+
+  .pr-cover-meta-value {
+    font-size: 0.95rem;
+    color: var(--paper);
+  }
+
+  /* ─── SECTIONS ─── */
+  .pr-section {
+    padding: 5rem 5vw;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .pr-section-dark {
+    background: var(--ink);
+    max-width: 100%;
+    padding: 5rem 5vw;
+  }
+
+  .pr-section-dark .pr-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .pr-section-alt {
+    background: var(--off-white);
+    max-width: 100%;
+    padding: 5rem 5vw;
+  }
+
+  .pr-section-alt .pr-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .pr-section-label {
+    font-family: var(--display);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 1rem;
+  }
+
+  .pr-section-heading {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .pr-section-dark .pr-section-heading {
+    color: var(--paper);
+  }
+
+  .pr-section-text {
+    font-size: 1rem;
+    color: var(--stone);
+    max-width: 680px;
+    line-height: 1.8;
+  }
+
+  .pr-section-dark .pr-section-text {
+    color: var(--light-stone);
+  }
+
+  /* ─── INTRO / LETTER ─── */
+  .pr-letter {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .pr-letter-sidebar {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .pr-letter-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: saturate(0.85);
+    margin-bottom: 1rem;
+  }
+
+  .pr-letter-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+
+  .pr-letter-role {
+    font-size: 0.8rem;
+    color: var(--stone);
+  }
+
+  .pr-letter-body p {
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    color: var(--stone);
+    line-height: 1.8;
+  }
+
+  /* ─── SERVICES / PACKAGES ─── */
+  .pr-packages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .pr-package {
+    background: var(--paper);
+    border: 1px solid var(--light-stone);
+    border-radius: 4px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: border-color 0.3s ease;
+  }
+
+  .pr-package:hover {
+    border-color: var(--warm);
+  }
+
+  .pr-package-recommended {
+    border-color: var(--warm);
+  }
+
+  .pr-package-badge {
+    position: absolute;
+    top: -0.7rem;
+    left: 2rem;
+    background: var(--warm);
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+  }
+
+  .pr-package-name {
+    font-family: var(--display);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .pr-package-price {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 300;
+    margin-bottom: 0.25rem;
+  }
+
+  .pr-package-term {
+    font-size: 0.8rem;
+    color: var(--stone);
+    margin-bottom: 1.5rem;
+  }
+
+  .pr-package-divider {
+    width: 2rem;
+    height: 1px;
+    background: var(--light-stone);
+    margin-bottom: 1.5rem;
+  }
+
+  .pr-package-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .pr-package-features li {
+    font-size: 0.9rem;
+    color: var(--stone);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .pr-package-features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--warm);
+  }
+
+  /* ─── PORTFOLIO GRID ─── */
+  .pr-portfolio {
+    column-count: 2;
+    column-gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .pr-portfolio-item {
+    break-inside: avoid;
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  .pr-portfolio-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.8s ease;
+  }
+
+  .pr-portfolio-item:hover img {
+    transform: scale(1.03);
+  }
+
+  /* ─── TESTIMONIAL ─── */
+  .pr-testimonial {
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .pr-testimonial-quote {
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--paper);
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+  }
+
+  .pr-testimonial-author {
+    font-family: var(--display);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm);
+  }
+
+  /* ─── TIMELINE ─── */
+  .pr-timeline {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pr-timeline-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 2rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--light-stone);
+  }
+
+  .pr-timeline-phase {
+    font-family: var(--display);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm);
+    padding-top: 0.15rem;
+  }
+
+  .pr-timeline-title {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin-bottom: 0.35rem;
+  }
+
+  .pr-timeline-desc {
+    font-size: 0.9rem;
+    color: var(--stone);
+  }
+
+  /* ─── INVESTMENT SUMMARY ─── */
+  .pr-investment {
+    margin-top: 2rem;
+  }
+
+  .pr-investment-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .pr-investment-row:last-child {
+    border-bottom: none;
+  }
+
+  .pr-investment-item {
+    font-size: 1rem;
+    color: var(--light-stone);
+  }
+
+  .pr-investment-value {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--paper);
+  }
+
+  .pr-investment-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    margin-top: 0.5rem;
+    border-top: 2px solid var(--warm);
+  }
+
+  .pr-investment-total-label {
+    font-family: var(--display);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm);
+  }
+
+  .pr-investment-total-value {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--paper);
+  }
+
+  /* ─── CTA ─── */
+  .pr-cta {
+    text-align: center;
+    padding: 6rem 5vw;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pr-cta-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: saturate(0.5) brightness(0.25);
+    /* REPLACE: Set background-image to a relevant portfolio image */
+    background-image: url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c992d9ce-4647-4129-b03b-6ce9deb487c3/west-10th-vancouver-web--32.jpg');
+  }
+
+  .pr-cta-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .pr-cta-heading {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    color: var(--paper);
+    margin-bottom: 1rem;
+  }
+
+  .pr-cta-text {
+    font-size: 1rem;
+    color: var(--light-stone);
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pr-btn {
+    display: inline-block;
+    font-family: var(--display);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--warm);
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .pr-btn:hover {
+    background: var(--warm-muted);
+    transform: translateY(-1px);
+  }
+
+  /* ─── FOOTER ─── */
+  .pr-footer {
+    background: var(--ink);
+    padding: 3rem 5vw;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .pr-footer-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .pr-footer-brand {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--paper);
+  }
+
+  .pr-footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .pr-footer-links a {
+    font-size: 0.8rem;
+    color: var(--stone);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .pr-footer-links a:hover {
+    color: var(--warm);
+  }
+
+  .pr-footer-copy {
+    font-size: 0.75rem;
+    color: var(--stone);
+    width: 100%;
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .pr-letter { grid-template-columns: 1fr; }
+    .pr-letter-sidebar { display: flex; align-items: center; gap: 1rem; }
+    .pr-letter-photo { width: 80px; height: 80px; margin-bottom: 0; }
+    .pr-packages { grid-template-columns: 1fr; }
+    .pr-portfolio { column-count: 1; }
+    .pr-timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .pr-cover-meta { gap: 1.5rem; }
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    .pr-cover { min-height: auto; padding: 3rem 2rem; }
+    .pr-section, .pr-section-dark, .pr-section-alt { padding: 2rem; }
+    .pr-btn { background: var(--ink); color: var(--paper); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     COVER
+     ════════════════════════════════════════ -->
+<section class="pr-cover">
+  <div class="pr-cover-bg"></div>
+  <div class="pr-cover-content">
+    <div class="pr-cover-label">Proposal</div>
+    <h1 class="pr-cover-title">Visual Documentation<br>for [Client Company]</h1>
+    <p class="pr-cover-subtitle">A tailored photography partnership to elevate your portfolio, win awards, and attract the clients your work deserves.</p>
+    <div class="pr-cover-meta">
+      <div class="pr-cover-meta-item">
+        <span class="pr-cover-meta-label">Prepared For</span>
+        <span class="pr-cover-meta-value">[Client Name]</span>
+      </div>
+      <div class="pr-cover-meta-item">
+        <span class="pr-cover-meta-label">Date</span>
+        <span class="pr-cover-meta-value">[Month Day, Year]</span>
+      </div>
+      <div class="pr-cover-meta-item">
+        <span class="pr-cover-meta-label">Valid Until</span>
+        <span class="pr-cover-meta-value">[30 days from date]</span>
+      </div>
+      <div class="pr-cover-meta-item">
+        <span class="pr-cover-meta-label">Prepared By</span>
+        <span class="pr-cover-meta-value">Matt Anthony</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     PERSONAL LETTER
+     ════════════════════════════════════════ -->
+<section class="pr-section">
+  <div class="pr-letter">
+    <div class="pr-letter-sidebar">
+      <!-- REPLACE: Add your headshot -->
+      <img class="pr-letter-photo" src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8b5d40eb-2ba1-47ff-864f-7d85f45395ba/architectural-interiors-photographer-sunset-beach-vancouver6.jpg" alt="Matt Anthony">
+      <div>
+        <div class="pr-letter-name">Matt Anthony</div>
+        <div class="pr-letter-role">Architectural Photographer<br>Squamish, BC</div>
+      </div>
+    </div>
+    <div class="pr-letter-body">
+      <p>[Client First Name],</p>
+      <p>Thank you for taking the time to connect. After learning about [specific detail about their work — a recent project, their approach, their values], I'm confident we'd make a great creative partnership.</p>
+      <p>Your work speaks for itself — but the right imagery ensures it reaches the architects, homeowners, and publications that need to see it. This proposal outlines how I'd approach documenting your projects with the same intention and care you bring to building them.</p>
+      <p>I've put together a few options below based on our conversation. I'm flexible — these are starting points, not fixed packages.</p>
+      <p>Looking forward to working together.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     THE OPPORTUNITY
+     ════════════════════════════════════════ -->
+<div class="pr-section-alt">
+  <div class="pr-inner">
+    <div class="pr-section-label">The Opportunity</div>
+    <h2 class="pr-section-heading">Why This Matters for [Company]</h2>
+    <p class="pr-section-text">[Customize: 2-3 sentences about the specific opportunity for this client. What are they missing? What could great imagery unlock for them? Reference their specific situation — award submissions, website refresh, social media presence, winning bigger contracts, etc.]</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SELECTED WORK
+     ════════════════════════════════════════ -->
+<section class="pr-section">
+  <div class="pr-section-label">Selected Work</div>
+  <h2 class="pr-section-heading">Projects Like Yours</h2>
+  <p class="pr-section-text" style="margin-bottom: 2rem;">A selection of recent work with architects and builders across British Columbia.</p>
+  <div class="pr-portfolio">
+    <!-- REPLACE: Swap these images with projects most relevant to the client -->
+    <div class="pr-portfolio-item">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/40f0f4b4-0146-4139-8682-d3505ba00ba2/warbler-whistler-architectural-photography-matt-anthony-.jpg-36.jpg" alt="Warbler Residence, Whistler">
+    </div>
+    <div class="pr-portfolio-item">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c992d9ce-4647-4129-b03b-6ce9deb487c3/west-10th-vancouver-web--32.jpg" alt="West 10th Avenue, Vancouver">
+    </div>
+    <div class="pr-portfolio-item">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7ae7f632-ffd4-4990-abae-430431c42a83/sunridge-whistle-web--28.jpg" alt="Sunridge, Whistler">
+    </div>
+    <div class="pr-portfolio-item">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8b5d40eb-2ba1-47ff-864f-7d85f45395ba/architectural-interiors-photographer-sunset-beach-vancouver6.jpg" alt="Sunset Beach, Vancouver">
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     TESTIMONIAL
+     ════════════════════════════════════════ -->
+<div class="pr-section-dark">
+  <div class="pr-testimonial">
+    <p class="pr-testimonial-quote">"Matt truly understands what it takes to showcase a project. What first drew us to his work was his use of natural light. He captures spaces in a way that feels authentic and honest, allowing the materials to shine."</p>
+    <div class="pr-testimonial-author">Jordan Maddox — Sitelines Architecture</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PACKAGES
+     ════════════════════════════════════════ -->
+<section class="pr-section">
+  <div class="pr-section-label">Service Options</div>
+  <h2 class="pr-section-heading">Tailored to Your Needs</h2>
+  <p class="pr-section-text" style="margin-bottom: 0.5rem;">Three approaches based on scope. Each includes my full process — scouting, shooting, editing, and delivery.</p>
+
+  <div class="pr-packages">
+
+    <div class="pr-package">
+      <div class="pr-package-name">Essential</div>
+      <div class="pr-package-price">$X,XXX</div>
+      <div class="pr-package-term">Per project</div>
+      <div class="pr-package-divider"></div>
+      <ul class="pr-package-features">
+        <li>Half-day shoot (up to 4 hours)</li>
+        <li>XX edited images</li>
+        <li>Web + print resolution</li>
+        <li>XX-day turnaround</li>
+        <li>Online gallery delivery</li>
+      </ul>
+    </div>
+
+    <div class="pr-package pr-package-recommended">
+      <div class="pr-package-badge">Recommended</div>
+      <div class="pr-package-name">Complete</div>
+      <div class="pr-package-price">$X,XXX</div>
+      <div class="pr-package-term">Per project</div>
+      <div class="pr-package-divider"></div>
+      <ul class="pr-package-features">
+        <li>Full-day shoot (up to 8 hours)</li>
+        <li>XX edited images</li>
+        <li>Drone / aerial coverage</li>
+        <li>Twilight session</li>
+        <li>Web + print resolution</li>
+        <li>XX-day turnaround</li>
+        <li>Online gallery delivery</li>
+      </ul>
+    </div>
+
+    <div class="pr-package">
+      <div class="pr-package-name">Visual Partner</div>
+      <div class="pr-package-price">$X,XXX</div>
+      <div class="pr-package-term">Per month</div>
+      <div class="pr-package-divider"></div>
+      <ul class="pr-package-features">
+        <li>X shoot days per month</li>
+        <li>Priority scheduling</li>
+        <li>Drone + twilight included</li>
+        <li>Social media content</li>
+        <li>Website imagery</li>
+        <li>Award submission support</li>
+        <li>Dedicated creative partner</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     PROCESS / TIMELINE
+     ════════════════════════════════════════ -->
+<div class="pr-section-alt">
+  <div class="pr-inner">
+    <div class="pr-section-label">Process</div>
+    <h2 class="pr-section-heading">How We'll Work Together</h2>
+    <div class="pr-timeline">
+      <div class="pr-timeline-item">
+        <div class="pr-timeline-phase">Phase 01</div>
+        <div>
+          <div class="pr-timeline-title">Discovery & Planning</div>
+          <div class="pr-timeline-desc">We align on vision, identify key shots, and plan the shoot schedule around weather and light conditions.</div>
+        </div>
+      </div>
+      <div class="pr-timeline-item">
+        <div class="pr-timeline-phase">Phase 02</div>
+        <div>
+          <div class="pr-timeline-title">Scout & Prepare</div>
+          <div class="pr-timeline-desc">I visit the site to understand the architecture, plan compositions, and coordinate any staging needs.</div>
+        </div>
+      </div>
+      <div class="pr-timeline-item">
+        <div class="pr-timeline-phase">Phase 03</div>
+        <div>
+          <div class="pr-timeline-title">Shoot Day</div>
+          <div class="pr-timeline-desc">Full documentation — interiors, exteriors, details, drone aerials, and twilight. Calm, efficient, intentional.</div>
+        </div>
+      </div>
+      <div class="pr-timeline-item">
+        <div class="pr-timeline-phase">Phase 04</div>
+        <div>
+          <div class="pr-timeline-title">Edit & Deliver</div>
+          <div class="pr-timeline-desc">Careful culling, color grading, and retouching. Delivered via private online gallery in web + print resolution.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     INVESTMENT SUMMARY
+     ════════════════════════════════════════ -->
+<div class="pr-section-dark">
+  <div class="pr-inner">
+    <div class="pr-section-label">Investment</div>
+    <h2 class="pr-section-heading" style="margin-bottom: 0.5rem;">Summary</h2>
+    <div class="pr-investment">
+      <div class="pr-investment-row">
+        <span class="pr-investment-item">[Selected Package] — [Project Name]</span>
+        <span class="pr-investment-value">$X,XXX</span>
+      </div>
+      <div class="pr-investment-row">
+        <span class="pr-investment-item">Drone / aerial coverage</span>
+        <span class="pr-investment-value">Included</span>
+      </div>
+      <div class="pr-investment-row">
+        <span class="pr-investment-item">Twilight session</span>
+        <span class="pr-investment-value">$XXX</span>
+      </div>
+      <div class="pr-investment-row">
+        <span class="pr-investment-item">Travel (outside Sea-to-Sky)</span>
+        <span class="pr-investment-value">$XXX</span>
+      </div>
+      <div class="pr-investment-total">
+        <span class="pr-investment-total-label">Total Investment</span>
+        <span class="pr-investment-total-value">$X,XXX</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SECOND TESTIMONIAL
+     ════════════════════════════════════════ -->
+<div class="pr-section-alt">
+  <div class="pr-inner">
+    <div class="pr-testimonial" style="padding: 2rem 0;">
+      <p class="pr-testimonial-quote" style="color: var(--ink);">"Working with Matt was an absolute pleasure from start to finish. He took the time to understand my needs, and the trust we built made every step effortless."</p>
+      <div class="pr-testimonial-author">Balmoral Construction</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     CTA
+     ════════════════════════════════════════ -->
+<section class="pr-cta">
+  <div class="pr-cta-bg"></div>
+  <div class="pr-cta-content">
+    <h2 class="pr-cta-heading">Ready to Get Started?</h2>
+    <p class="pr-cta-text">Let's book a quick call to finalize the details and lock in your shoot date.</p>
+    <a href="https://api.leadconnectorhq.com/widget/booking/Frz0NW7cdjKsEuwNLhKA" class="pr-btn" target="_blank">Book a Discovery Call</a>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════ -->
+<footer class="pr-footer">
+  <div class="pr-footer-inner">
+    <div class="pr-footer-brand">Matt Anthony Photography</div>
+    <div class="pr-footer-links">
+      <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a>
+      <a href="tel:6047659270">604.765.9270</a>
+      <a href="https://www.instagram.com/mattanthonyphoto/" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="pr-footer-copy">&copy; 2026 Matt Anthony Photography — This proposal is confidential and intended for the named recipient only.</div>
+  </div>
+</footer>
+
+</body>
+</html>

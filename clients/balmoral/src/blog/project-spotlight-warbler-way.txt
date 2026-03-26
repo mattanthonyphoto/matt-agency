@@ -1,0 +1,502 @@
+<!-- JSON-LD SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Project Spotlight: Warbler Way — Contemporary Alpine Living in Whistler",
+  "description": "A deep dive into the Warbler Way custom home build in Whistler's Wedgewood neighbourhood. Explore the design collaboration, construction challenges, material choices, and final result of this contemporary alpine residence.",
+  "image": "https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/cbef60b8-5b6a-4fe1-b8b1-51584675f265/whistler-home-builder-balmoral-construction-warbler-45.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Marc Harvey",
+    "jobTitle": "Owner & Founder",
+    "url": "https://www.balmoralconstruction.com/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Balmoral Construction Inc.",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png"
+    }
+  },
+  "datePublished": "2026-03-18",
+  "dateModified": "2026-03-18",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.balmoralconstruction.com/blog/project-spotlight-warbler-way"
+  },
+  "keywords": ["Warbler Way Whistler", "custom home Whistler", "Whistler home builder", "contemporary mountain home", "Wedgewood Whistler"]
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{--bc-accent:#D4722A;--bc-accent-hover:#BF6523;--bc-accent-light:rgba(212,114,42,.1)}
+
+.bc-progress{position:fixed;top:0;left:0;height:3px;background:var(--bc-accent);z-index:1100;width:0%;transition:none}
+
+.bc{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a1a;line-height:1.7;font-weight:300;background:#fff}
+.bc img{max-width:100%;display:block}
+.bc a{color:inherit;text-decoration:none}
+
+/* NAV */
+.bc-hd{position:fixed;top:0;left:0;right:0;z-index:99999 !important;transition:background .4s cubic-bezier(.16,1,.3,1)}
+.bc-hd--top{background:transparent}
+.bc-hd--scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.bc-hd--mob-open{background:#fff !important;backdrop-filter:none}
+.bc-hd-inner{max-width:1600px;margin:0 auto;padding:0 clamp(24px,4vw,60px);display:flex;align-items:center;justify-content:space-between;height:80px}
+.bc-hd-logo img{height:52px;width:auto;transition:filter .4s}
+.bc-hd--top .bc-hd-logo img{filter:brightness(0) invert(1)}
+.bc-hd--mob-open .bc-hd-logo img{filter:none !important}
+.bc-hd-nav{display:flex;align-items:center;gap:clamp(24px,3.5vw,48px);list-style:none}
+.bc-hd-link{font-size:13px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#1a1a1a;transition:all .3s;position:relative}
+.bc-hd--top .bc-hd-link{color:rgba(255,255,255,.75)}
+.bc-hd--top .bc-hd-link:hover{color:#fff}
+.bc-hd-link:hover{color:#000}
+.bc-hd-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:currentColor;transition:width .3s}
+.bc-hd-link:hover::after{width:100%}
+.bc-hd-drop{position:relative}
+.bc-hd-drop-menu{position:absolute;top:calc(100% + 20px);left:-20px;background:#fff;padding:16px 0;min-width:220px;opacity:0;visibility:hidden;transition:all .3s;transform:translateY(8px);box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.bc-hd-drop:hover .bc-hd-drop-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.bc-hd-drop-menu a{display:block;padding:10px 28px;font-size:14px;font-weight:400;color:#666;letter-spacing:.04em;transition:all .2s}
+.bc-hd-drop-menu a:hover{color:var(--bc-accent);padding-left:32px}
+.bc-hd-mob{display:none;background:none;border:none;cursor:pointer;padding:10px;z-index:100001}
+.bc-hd-mob span{display:block;width:28px;height:2px;background:#1a1a1a;margin:7px 0;transition:all .4s}
+.bc-hd--top .bc-hd-mob span{background:#fff}
+.bc-hd--mob-open .bc-hd-mob span{background:#1a1a1a !important}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(2){opacity:0}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.bc-mob{position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:99998 !important;padding:100px clamp(24px,6vw,60px) 40px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.bc-mob.open{opacity:1;visibility:visible;display:flex;flex-direction:column}
+.bc-mob a{display:block;font-size:clamp(28px,6vw,40px);font-weight:200;color:#1a1a1a;padding:12px 0;letter-spacing:-.02em;border-bottom:1px solid #f0f0f0;transition:opacity .3s}
+.bc-mob a:hover{opacity:.5}
+.bc-mob-sub{padding-left:0}
+.bc-mob-sub a{font-size:clamp(14px,3vw,18px);font-weight:400;color:#999;letter-spacing:0;padding:8px 0}
+
+.bc-reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.bc-reveal.bc-visible{opacity:1;transform:translateY(0)}
+.bc-reveal-delay-1{transition-delay:.15s}
+.bc-reveal-delay-2{transition-delay:.3s}
+
+/* BLOG HERO */
+.bc-blog-hero{position:relative;height:70vh;min-height:500px;overflow:hidden;display:flex;align-items:flex-end}
+.bc-blog-hero img.bc-blog-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bc-blog-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.6) 100%);z-index:1}
+.bc-blog-hero-content{position:relative;z-index:2;max-width:1600px;margin:0 auto;padding:0 clamp(24px,4vw,60px) clamp(48px,6vw,80px);width:100%}
+.bc-blog-hero-content h1{font-size:clamp(28px,4.5vw,56px);font-weight:200;color:#fff;letter-spacing:-.03em;line-height:1.15;margin-bottom:20px;max-width:900px}
+.bc-blog-hero-content h1 strong{font-weight:600}
+.bc-blog-meta{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.bc-blog-meta span{font-size:12px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.bc-blog-meta span strong{color:rgba(255,255,255,.85);font-weight:500}
+
+/* BLOG BODY */
+.bc-blog-body{max-width:800px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px)}
+.bc-blog-body h2{font-size:clamp(24px,2.5vw,36px);font-weight:300;letter-spacing:-.02em;color:#1a1a1a;margin:clamp(40px,5vw,64px) 0 20px;line-height:1.2}
+.bc-blog-body h2 strong{font-weight:600}
+.bc-blog-body h3{font-size:clamp(18px,1.5vw,24px);font-weight:500;color:#1a1a1a;margin:32px 0 12px;letter-spacing:-.01em}
+.bc-blog-body p{font-size:16px;color:#444;line-height:1.9;margin-bottom:20px;font-weight:300}
+.bc-blog-body ul,.bc-blog-body ol{margin:0 0 20px 24px;color:#444;font-size:16px;line-height:1.9;font-weight:300}
+.bc-blog-body li{margin-bottom:8px}
+.bc-blog-body a{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s;padding-bottom:1px}
+.bc-blog-body a:hover{border-color:var(--bc-accent)}
+.bc-blog-body blockquote{border-left:3px solid var(--bc-accent);padding:16px 24px;margin:32px 0;background:var(--bc-accent-light);font-style:italic;color:#555}
+.bc-blog-body .bc-blog-gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:32px 0}
+.bc-blog-body .bc-blog-gallery img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:brightness(.95)}
+.bc-blog-body .bc-blog-gallery.bc-gallery-single{grid-template-columns:1fr}
+.bc-blog-body .bc-blog-gallery.bc-gallery-single img{aspect-ratio:16/9}
+.bc-blog-body .bc-highlight{background:#f8f8f6;border:1px solid #eee;padding:clamp(20px,3vw,32px);margin:32px 0}
+.bc-blog-body .bc-highlight h3{margin-top:0}
+
+/* RELATED POSTS */
+.bc-related{padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px);background:#f8f8f6;border-top:1px solid #eee}
+.bc-related-inner{max-width:1600px;margin:0 auto}
+.bc-related h2{font-size:clamp(24px,2.5vw,36px);font-weight:200;letter-spacing:-.02em;color:#1a1a1a;margin-bottom:clamp(32px,4vw,48px)}
+.bc-related h2 strong{font-weight:600}
+.bc-related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(24px,3vw,40px)}
+.bc-related-card{background:#fff;overflow:hidden;transition:transform .3s}
+.bc-related-card:hover{transform:translateY(-4px)}
+.bc-related-card img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:brightness(.95);transition:filter .3s}
+.bc-related-card:hover img{filter:brightness(.88)}
+.bc-related-card-body{padding:20px 24px 24px}
+.bc-related-card-body h3{font-size:clamp(15px,1.2vw,18px);font-weight:500;color:#1a1a1a;margin-bottom:8px;line-height:1.4}
+.bc-related-card-body p{font-size:13px;color:#888;line-height:1.7;margin-bottom:8px}
+.bc-related-card-body .bc-blog-date{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:#bbb}
+
+/* CTA */
+.bc-cta{position:relative;height:60vh;min-height:400px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bc-cta img.bc-cta-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.bc-cta::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:1}
+.bc-cta-c{position:relative;z-index:2;text-align:center;max-width:600px;padding:0 24px}
+.bc-cta h2{font-size:clamp(28px,4vw,52px);font-weight:200;color:#fff;letter-spacing:-.03em;margin-bottom:16px;line-height:1.15}
+.bc-cta h2 strong{font-weight:600}
+.bc-cta p{font-size:17px;color:rgba(255,255,255,.55);margin-bottom:36px;line-height:1.8;font-weight:300}
+.bc-btn{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:18px 44px;border:2px solid rgba(255,255,255,.6);color:#fff;background:transparent;transition:all .4s;cursor:pointer}
+.bc-btn:hover{background:#fff;color:#1a1a1a;border-color:#fff}
+.bc-btn--accent{background:var(--bc-accent);color:#fff;border-color:var(--bc-accent);border-width:2px}
+.bc-btn--accent:hover{background:var(--bc-accent-hover);border-color:var(--bc-accent-hover);color:#fff}
+
+/* FOOTER */
+.bc-ft{background:#0a0a0a;color:#fff;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px) clamp(24px,3vw,40px);border-top:3px solid var(--bc-accent)}
+.bc-ft-inner{max-width:1600px;margin:0 auto}
+.bc-ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:clamp(24px,4vw,60px);padding-bottom:clamp(40px,5vw,60px);border-bottom:1px solid rgba(255,255,255,.08)}
+.bc-ft-brand p{font-size:13px;color:rgba(255,255,255,.35);line-height:1.8;margin-top:20px;max-width:300px;font-weight:300}
+.bc-ft-mark{height:60px;width:auto;opacity:.8;margin-bottom:8px}
+.bc-ft-col h4{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:20px}
+.bc-ft-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);line-height:2.2;transition:color .3s;font-weight:300}
+.bc-ft-col a:hover{color:var(--bc-accent)}
+.bc-ft-btm{display:flex;justify-content:space-between;align-items:center;padding-top:clamp(20px,3vw,32px)}
+.bc-ft-copy{font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.02em;font-weight:300}
+.bc-ft-social{display:flex;gap:24px}
+.bc-ft-social a{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);transition:color .3s}
+.bc-ft-social a:hover{color:var(--bc-accent)}
+
+@media(max-width:900px){
+.bc-hd-nav{display:none}
+.bc-hd-mob{display:block}
+}
+@media(max-width:768px){
+.bc-blog-hero{min-height:400px;height:60vh}
+.bc-blog-body .bc-blog-gallery{grid-template-columns:1fr}
+.bc-related-grid{grid-template-columns:1fr}
+.bc-cta{height:50vh;min-height:350px}
+.bc-ft-top{grid-template-columns:1fr 1fr;gap:32px}
+.bc-ft-btm{flex-direction:column;gap:12px;text-align:center}
+}
+@media(max-width:480px){
+.bc-ft-top{grid-template-columns:1fr}
+}
+</style>
+
+<div class="bc-progress" id="bcProgress"></div>
+
+<div class="bc">
+
+<!-- NAV -->
+<header class="bc-hd bc-hd--top" id="bcHd">
+  <div class="bc-hd-inner">
+    <a href="/" class="bc-hd-logo">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png" alt="Balmoral Construction — Custom Home Builder in Whistler, Pemberton and Squamish">
+    </a>
+    <ul class="bc-hd-nav">
+      <li><a href="/about" class="bc-hd-link">About</a></li>
+      <li class="bc-hd-drop">
+        <a href="/services" class="bc-hd-link">Services</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/custom-home-building">Custom Home Building</a>
+          <a href="/home-renovations">Home Renovations</a>
+          <a href="/general-contracting">General Contracting</a>
+          <a href="/project-management">Project Management</a>
+          <a href="/land-consultation">Land Consultation</a>
+          <a href="/permit-coordination">Permit Coordination</a>
+        </div>
+      </li>
+      <li><a href="/work" class="bc-hd-link">Work</a></li>
+      <li class="bc-hd-drop">
+        <a href="javascript:void(0)" class="bc-hd-link">Locations</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/whistler-home-builder">Whistler</a>
+          <a href="/pemberton-home-builder">Pemberton</a>
+          <a href="/squamish-home-builder">Squamish</a>
+        </div>
+      </li>
+      <li><a href="/blog" class="bc-hd-link">Blog</a></li>
+      <li><a href="/contact" class="bc-hd-link">Contact</a></li>
+    </ul>
+    <button class="bc-hd-mob" aria-label="Menu" onclick="document.getElementById('bcMob').classList.toggle('open');this.classList.toggle('open');document.getElementById('bcHd').classList.toggle('bc-hd--mob-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="bc-mob" id="bcMob">
+  <a href="/about">About</a>
+  <a href="/services">Services</a>
+  <div class="bc-mob-sub">
+    <a href="/custom-home-building">Custom Home Building</a>
+    <a href="/home-renovations">Home Renovations</a>
+    <a href="/general-contracting">General Contracting</a>
+    <a href="/project-management">Project Management</a>
+    <a href="/land-consultation">Land Consultation</a>
+    <a href="/permit-coordination">Permit Coordination</a>
+  </div>
+  <a href="/work">Work</a>
+  <a href="javascript:void(0)">Locations</a>
+  <div class="bc-mob-sub">
+    <a href="/whistler-home-builder">Whistler</a>
+    <a href="/pemberton-home-builder">Pemberton</a>
+    <a href="/squamish-home-builder">Squamish</a>
+  </div>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="bc-blog-hero">
+  <img class="bc-blog-hero-img" src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/cbef60b8-5b6a-4fe1-b8b1-51584675f265/whistler-home-builder-balmoral-construction-warbler-45.jpg" alt="Warbler Way custom home at dusk in Whistler — contemporary alpine architecture by Balmoral Construction">
+  <div class="bc-blog-hero-content">
+    <h1>Project Spotlight: Warbler Way — <strong>Contemporary Alpine Living in Whistler</strong></h1>
+    <div class="bc-blog-meta">
+      <span><strong>Marc Harvey</strong></span>
+      <span>March 2026</span>
+      <span>9 min read</span>
+    </div>
+  </div>
+</section>
+
+<!-- BODY -->
+<article class="bc-blog-body bc-reveal">
+
+  <p>Every custom home we build has a story. Warbler Way is one of our favourites to tell. Situated in Whistler's Wedgewood neighbourhood, this contemporary alpine residence represents everything we believe a custom home should be: thoughtfully designed, meticulously built, and deeply connected to its setting. It is a home that feels both bold and restrained, where every material choice and construction detail serves the larger vision of mountain living at its finest.</p>
+
+  <p>This is the story of how Warbler Way came together — from the initial client conversation through design collaboration, site challenges, material selections, and the final result. If you are considering building a <a href="/custom-home-building">custom home in Whistler</a>, this case study gives you a window into what the process looks like when the right team comes together around a shared vision.</p>
+
+  <h2>The <strong>Vision</strong></h2>
+
+  <h3>Client Goals</h3>
+
+  <p>The clients came to us with a clear set of priorities. They wanted a home that felt contemporary and clean — not a traditional chalet, not a rustic log cabin, but a modern mountain residence with architectural presence. They wanted generous entertaining spaces for family and friends, a seamless connection between indoor and outdoor living, and a home that captured the mountain landscape from every vantage point. Comfort was paramount, but so was design integrity. They did not want to compromise one for the other.</p>
+
+  <p>They also valued quality over size. While the home needed enough room for their family and guests, they were not chasing square footage for its own sake. Every room needed a purpose, and every space needed to feel considered. This kind of discipline in a client makes for a much better final product, and it set the tone for the entire project.</p>
+
+  <h3>Neighbourhood Context</h3>
+
+  <p>Wedgewood is one of Whistler's most established and sought-after neighbourhoods. Set along a quiet residential street just minutes from the village, it offers the kind of mature treed setting and mountain proximity that make <a href="/whistler-home-builder">Whistler</a> special. The lot itself presented both opportunity and challenge: a sloped site with excellent sun exposure and mountain views, but one that required careful engineering to maximize the buildable area while respecting the natural terrain.</p>
+
+  <p>The neighbourhood context also meant that the home needed to be a respectful neighbour. Wedgewood has a mix of architectural styles, from older chalets to contemporary builds, and the design needed to feel confident without being aggressive. The clients understood this, and it became a guiding principle during the design phase.</p>
+
+  <h2>Design <strong>Collaboration</strong></h2>
+
+  <h3>Shelter Residential Design &amp; Mark Simone</h3>
+
+  <p>The architectural design for Warbler Way was led by Mark Simone of Shelter Residential Design, a firm with deep roots in Whistler and a portfolio of mountain homes that demonstrate a genuine understanding of alpine architecture. Mark's approach aligned perfectly with the clients' vision: clean lines, honest materials, and a design that engages with the landscape rather than competing with it.</p>
+
+  <p>From the earliest design meetings, our team was at the table. This is something we believe in strongly at <a href="/about">Balmoral</a> — bringing the builder into the design process from the start, not after the drawings are done. When the builder is involved early, practical considerations around site access, structural systems, material availability, and constructability are addressed while there is still flexibility in the design. This prevents costly redesigns later and results in a better building.</p>
+
+  <p>Mark's design for Warbler Way organized the home across multiple levels, stepping down the sloped site in a way that created distinct living zones while maintaining visual connection through open sightlines and generous glazing. The exterior expression — black metal cladding with cedar accents and expansive glass — established a contemporary vocabulary that felt rooted in its mountain setting.</p>
+
+  <h3>Britt Lothrop Interiors</h3>
+
+  <p>The interior design was led by Britt Lothrop, a long-time collaborator of ours who has partnered with Balmoral on numerous projects since 2014. Britt has an exceptional ability to develop material palettes that feel cohesive without being predictable. For Warbler Way, she worked closely with both the clients and our construction team to select finishes that complemented the architecture while adding warmth and texture to the interior spaces.</p>
+
+  <p>Britt's involvement extended beyond surface selections. She coordinated lighting design, furniture layouts, and fixture specifications, ensuring that the interior experience was integrated with the architectural vision from the start. When the interior designer, architect, and builder are all working from the same page, the result is a home that feels unified — not assembled from separate agendas.</p>
+
+  <h2>The <strong>Build</strong></h2>
+
+  <h3>Site Challenges on a Sloped Lot</h3>
+
+  <p>Building on a sloped lot in Whistler is never straightforward, and Warbler Way was no exception. The site required significant excavation and a carefully engineered foundation system to create stable building platforms at multiple levels. Retaining walls, drainage management, and soil stabilization were all critical elements of the site work — the kind of invisible infrastructure that most homeowners never see but that determines the long-term performance of the building.</p>
+
+  <p>Access was another consideration. Wedgewood's residential streets are not designed for heavy construction traffic, and managing material deliveries, equipment staging, and crew parking required coordination with both the municipality and the neighbours. We take this seriously on every project. Good relationships with the neighbourhood make for a smoother build, and they reflect the kind of builder you are working with.</p>
+
+  <h3>Winter Construction</h3>
+
+  <p>Any builder in Whistler will tell you that winter construction is a fact of life. Warbler Way was no different — portions of the build took place during Whistler's substantial winter months, with snow management, cold-weather concrete pours, and temperature-controlled curing all part of the program. Our team has decades of experience building through Sea to Sky winters, and we plan for it from the start. Heating enclosures for concrete work, adjusted timelines for weather delays, and winter-specific material handling procedures are all standard practice for us.</p>
+
+  <p>Winter construction adds complexity, but it does not have to compromise quality. With the right planning and experience, a home built through a Whistler winter is every bit as sound as one built in perfect summer conditions.</p>
+
+  <h3>Trade Coordination</h3>
+
+  <p>A custom home of this calibre involves dozens of specialized trades, and coordinating them is one of the most critical — and least visible — aspects of what we do. For Warbler Way, the trade list included structural steel fabricators, custom window installers, metal cladding specialists, millwork shops, stone masons, HVAC engineers, plumbers, electricians, low-voltage specialists, and more. Each trade needs to arrive at exactly the right time, with the right information, and with the preceding work completed to their requirements.</p>
+
+  <p>This is where <a href="/custom-home-building">Balmoral's project management approach</a> matters most. Our project managers maintain detailed construction schedules, coordinate directly with every trade, and conduct daily site reviews to ensure quality at every stage. When you are working with this many moving parts, even small communication failures can cascade into costly delays. Our job is to prevent that.</p>
+
+  <h2>Material <strong>Choices</strong></h2>
+
+  <h3>Black Metal Cladding</h3>
+
+  <p>The exterior of Warbler Way is defined by its black metal cladding — a bold choice that gives the home a strong architectural identity against the mountain backdrop. Metal cladding is increasingly popular in contemporary mountain architecture for good reason: it is durable, low-maintenance, and ages gracefully in alpine conditions. It also provides a clean, precise aesthetic that is difficult to achieve with other materials.</p>
+
+  <p>Installing metal cladding to the standard this project demanded required experienced installers who understood both the material and the architectural intent. Panel alignment, joint detailing, and flashing integration all needed to be executed with precision, because at this scale, even minor inconsistencies are visible.</p>
+
+  <h3>Cedar Accents</h3>
+
+  <p>To balance the metal cladding's industrial character, the design incorporates natural cedar accents at key moments — soffits, entry details, and select feature walls. Cedar brings warmth and organic texture that softens the overall expression without diluting its contemporary intent. The cedar was carefully selected for grain consistency and finished to withstand Whistler's climate while developing a natural patina over time.</p>
+
+  <h3>Floor-to-Ceiling Glazing</h3>
+
+  <p>The glazing strategy for Warbler Way was ambitious. Floor-to-ceiling windows on the primary living levels create an immersive connection to the surrounding landscape, framing mountain views and flooding the interior with natural light. The window systems needed to deliver both thermal performance (this is Whistler, after all) and structural integrity at the scale the design demanded.</p>
+
+  <p>High-performance, thermally broken window systems were specified to meet both the architectural vision and the energy performance requirements of the BC Energy Step Code. The result is a home that feels open and connected to the outdoors while maintaining excellent thermal comfort, even on the coldest winter days.</p>
+
+  <h3>Custom Millwork</h3>
+
+  <p>Throughout the interior, custom millwork details elevate the craftsmanship of the home. From kitchen cabinetry and built-in storage to staircase details and feature panelling, the millwork was designed and fabricated specifically for this project. Custom millwork is one of the elements that distinguishes a truly custom home from a well-finished production home — it allows every detail to be tailored to the space and the client's needs.</p>
+
+  <h2>Interior <strong>Details</strong></h2>
+
+  <h3>Kitchen</h3>
+
+  <p>The kitchen at Warbler Way is the heart of the home. Designed for both serious cooking and casual entertaining, it features a generous island, premium appliances, custom cabinetry with integrated storage solutions, and a material palette that connects seamlessly with the adjacent living and dining areas. Britt Lothrop's material selections — natural stone countertops, matte-finish hardware, and warm wood accents — create a kitchen that feels inviting without sacrificing the clean aesthetic of the overall design.</p>
+
+  <h3>Living Spaces</h3>
+
+  <p>The primary living area is a single open volume that encompasses the living room, dining area, and kitchen, with floor-to-ceiling glazing along the mountain-facing elevation. The space is large enough to entertain generously but arranged to feel intimate for everyday family life. A carefully considered furniture plan, coordinated by Britt, ensures that the scale of the space works for both scenarios.</p>
+
+  <p>The fireplace anchors the living room, providing both a visual focal point and a sense of warmth that grounds the contemporary interior. Flanked by custom millwork and set against a stone or tile feature wall, it exemplifies the integration of design and construction that defines this home.</p>
+
+  <h3>Lighting</h3>
+
+  <p>Lighting design is often underestimated in custom homes, and it was not at Warbler Way. A layered lighting plan combines architectural lighting (recessed and cove details), task lighting (kitchen, office, reading areas), and decorative fixtures selected by Britt to create flexible, mood-appropriate illumination throughout the home. Exterior lighting was equally considered, with landscape and architectural lights that transform the home at dusk — as the exterior photography beautifully captures.</p>
+
+  <div class="bc-blog-gallery">
+    <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/cbef60b8-5b6a-4fe1-b8b1-51584675f265/whistler-home-builder-balmoral-construction-warbler-45.jpg" alt="Warbler Way exterior at dusk — black metal cladding and cedar accents in Whistler" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/9b988432-2c4f-4cfa-997d-52aa93b4429d/whistler-home-builder-balmoral-construction-warbler-5.jpg" alt="Warbler Way interior — open-plan living with mountain views" loading="lazy">
+  </div>
+
+  <h2>The <strong>Result</strong></h2>
+
+  <p>Warbler Way stands as one of the most accomplished custom homes we have built. It is a home that looks striking from the street — the black metal cladding and cedar accents creating a bold but considered presence in the Wedgewood neighbourhood — and that reveals its full quality once you step inside. The spaces are generous but not excessive, the materials are honest and tactile, and the mountain views are ever-present without dominating the interior experience.</p>
+
+  <p>The photography captures what the home feels like: calm, confident, and deeply connected to its setting. At dusk, when the exterior lighting activates and the interior glows through the floor-to-ceiling glazing, Warbler Way achieves that rare quality where architecture and landscape feel inseparable.</p>
+
+  <p>For our team, Warbler Way reinforced everything we believe about how great homes are built. It starts with a clear vision and a collaborative design process. It requires a builder who is present and invested from the earliest conversations. And it demands meticulous execution from a team of skilled trades who care about getting the details right. When all of those elements align, the result speaks for itself.</p>
+
+  <p>If you are interested in exploring the full gallery of images from this project, visit the <a href="/warbler-way">Warbler Way project page</a>. And if you are considering a custom home build in Whistler, Pemberton, or Squamish, we would welcome the opportunity to discuss your vision. <a href="/contact">Get in touch</a> to start the conversation.</p>
+
+  <p>Explore more of <a href="/work">our work</a> to see the range of custom homes we have built across the Sea to Sky Corridor.</p>
+
+</article>
+
+<!-- RELATED POSTS -->
+<section class="bc-related">
+  <div class="bc-related-inner">
+    <h2>Related <strong>Posts</strong></h2>
+    <div class="bc-related-grid">
+      <a href="/blog/project-spotlight-sugarloaf" class="bc-related-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/8d1fe690-3b0d-4125-b1ca-be9981cb4f07/custom-home-builder-pemberton-balmoral-construction-18.jpg" alt="Sugarloaf custom home in Pemberton" loading="lazy">
+        <div class="bc-related-card-body">
+          <h3>Project Spotlight: Sugarloaf — 4,800 Sq Ft of Precision Craft in Pemberton</h3>
+          <p>A deep dive into our 4,800 sq ft custom home build on Sugarloaf Place in Pemberton.</p>
+          <span class="bc-blog-date">March 2026</span>
+        </div>
+      </a>
+      <a href="/blog/how-much-does-it-cost-to-build-a-custom-home-in-whistler" class="bc-related-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/a426db85-f990-4801-b038-978af5d9685c/whistler-custom-home-builder-pinewood-14.jpg" alt="Custom home in Whistler — construction cost guide" loading="lazy">
+        <div class="bc-related-card-body">
+          <h3>How Much Does It Cost to Build a Custom Home in Whistler?</h3>
+          <p>A transparent breakdown of what drives custom home construction costs in Whistler.</p>
+          <span class="bc-blog-date">February 2026</span>
+        </div>
+      </a>
+      <a href="/blog/bc-energy-step-code-for-homeowners" class="bc-related-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/0a60d65a-be47-4e06-be7b-d649e5347ed1/Newhomeconstruction.jpg" alt="BC Energy Step Code guide for homeowners" loading="lazy">
+        <div class="bc-related-card-body">
+          <h3>BC Energy Step Code: What Homeowners Need to Know</h3>
+          <p>A practical guide to the BC Energy Step Code and what it means for your custom home build.</p>
+          <span class="bc-blog-date">March 2026</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bc-cta">
+  <img class="bc-cta-bg" src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/695af498-0bc2-49ca-838f-66a41bc683f4/custom-home-interior-whistler-fireplace-sea-to-sky.jpg" alt="Custom home interior — start your build with Balmoral Construction" loading="lazy">
+  <div class="bc-cta-c bc-reveal">
+    <h2>Ready to build your <strong>dream home?</strong></h2>
+    <p>Every project starts with a conversation about your vision, your land, and how you want to live. Reach out to start planning your custom home in the Sea to Sky.</p>
+    <a href="/contact" class="bc-btn bc-btn--accent">Start a Conversation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bc-ft">
+  <div class="bc-ft-inner">
+    <div class="bc-ft-top">
+      <div class="bc-ft-brand">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/83ca6501-705e-43ee-b119-551d0c16ea14/unnamed.png" alt="Balmoral Construction — Custom Home Builder in the Sea to Sky Corridor" class="bc-ft-mark">
+        <p>Boutique custom home builder in the Sea to Sky Corridor. Based in Pemberton, building across Whistler, Pemberton &amp; Squamish since 2011.</p>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Services</h4>
+        <a href="/custom-home-building">Custom Home Building</a>
+        <a href="/home-renovations">Home Renovations</a>
+        <a href="/general-contracting">General Contracting</a>
+        <a href="/project-management">Project Management</a>
+        <a href="/land-consultation">Land Consultation</a>
+        <a href="/permit-coordination">Permit Coordination</a>
+        <a href="/services">All Services</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Locations</h4>
+        <a href="/whistler-home-builder">Whistler Home Builder</a>
+        <a href="/pemberton-home-builder">Pemberton Home Builder</a>
+        <a href="/squamish-home-builder">Squamish Home Builder</a>
+        <a href="/whistler-home-renovations">Whistler Renovations</a>
+        <a href="/pemberton-home-renovations">Pemberton Renovations</a>
+        <a href="/squamish-home-renovations">Squamish Renovations</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Projects</h4>
+        <a href="/warbler-way">Warbler Way</a>
+        <a href="/cerulean">Cerulean</a>
+        <a href="/sugarloaf">Sugarloaf</a>
+        <a href="/white-gold-2">White Gold 2</a>
+        <a href="/fitzsimmons">Fitzsimmons</a>
+        <a href="/work">All Projects</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Company</h4>
+        <a href="/about">About</a>
+        <a href="/work">Portfolio</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+        <a href="tel:6049072237">604.907.2237</a>
+        <a href="mailto:marc@balmoralconstruction.com">marc@balmoralconstruction.com</a>
+      </div>
+    </div>
+    <div class="bc-ft-btm">
+      <span class="bc-ft-copy">&copy; 2026 Balmoral Construction Inc. &mdash; Custom Home Builder in Whistler, Pemberton &amp; Squamish, BC</span>
+      <div class="bc-ft-social">
+        <a href="https://www.instagram.com/balmoralconstruction/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.houzz.com/professionals/general-contractors/balmoral-construction-pfvwus-pf~1513498919" target="_blank" rel="noopener">Houzz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var hd=document.getElementById('bcHd');
+  function checkScroll(){
+    var s=window.scrollY>80;
+    hd.classList.toggle('bc-hd--top',!s);
+    hd.classList.toggle('bc-hd--scrolled',s);
+  }
+  window.addEventListener('scroll',checkScroll);
+  checkScroll();
+
+  var prog=document.getElementById('bcProgress');
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(h>0) prog.style.width=(window.scrollY/h*100)+'%';
+  });
+
+  var reveals=document.querySelectorAll('.bc-reveal');
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('bc-visible');observer.unobserve(e.target)}
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  reveals.forEach(function(el){observer.observe(el)});
+})();
+</script>
+<style>
+/* Squarespace page wrapper reset */
+.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block{margin:0!important;padding:0!important;max-width:100%!important;width:100%!important}
+.page-section:last-of-type{padding-bottom:0!important;margin-bottom:0!important}
+#footer,.Footer,.footer,footer[data-footer-id],footer:not(.bc-ft){display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important}
+.sqs-block-spacer,.sqs-block-horizontalrule,.section-background{display:none!important}
+@media(max-width:768px){.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block,.Index-page-content,.blog-item-inner-wrapper,article.page,article.Page,.page-content,.Page-content{padding:0!important;margin:0!important}body{padding-bottom:0!important;margin-bottom:0!important}}
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){var f=document.querySelector('.bc-ft');if(f){var p=f.closest('.sqs-block')||f.closest('.page-section')||f.parentElement;while(p){var n=p.nextElementSibling;while(n){n.style.cssText='display:none!important;height:0!important;padding:0!important;margin:0!important;overflow:hidden!important';n=n.nextElementSibling}p=p.parentElement}}});
+</script>

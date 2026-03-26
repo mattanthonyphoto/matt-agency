@@ -1,0 +1,650 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.pga-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.pga-loader.pga-done{opacity:0;visibility:hidden;pointer-events:none}
+.pga-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:pgaLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.pga-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:pgaLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.pga-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:pgaLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.pga-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:pgaLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes pgaLoaderIn{to{opacity:1}}
+@keyframes pgaLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.pga-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.pga-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.pga-cursor.pga-active{opacity:1}
+.pga-cursor.pga-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.pga-cursor.pga-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.pga-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.pga-cursor-dot.pga-active{opacity:1}
+
+/* ── CTA button glow ── */
+.pga-btn{animation:pgaBtnGlow 3s ease-in-out infinite alternate}
+@keyframes pgaBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+
+/* ── Ken Burns on image breaks ── */
+.pga-img-break.pga-in-view img{animation:pgaKenBurns 16s ease-in-out infinite alternate}
+@keyframes pgaKenBurns{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.06) translate(-4px,-6px)}}
+
+/* ── Film grain overlay ── */
+.pga-grain::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:128px 128px;pointer-events:none;z-index:0;opacity:0.5}
+.pga-grain{position:relative}
+.pga-grain>*{position:relative;z-index:1}
+
+/* ── Eyebrow gold dash (animated) ── */
+.pga-eyebrow{display:flex;align-items:center;gap:14px}
+.pga-eyebrow::before{content:'';width:0;height:1px;background:#c9a96e;transition:width 0.6s cubic-bezier(0.16,1,0.3,1)}
+.pga-eyebrow.pga-visible::before{width:24px}
+
+/* ── Headline gold underline on em ── */
+.pga-wrap h2 em{position:relative;display:inline}
+.pga-wrap h2 em::after{content:'';position:absolute;bottom:2px;left:0;width:0;height:1.5px;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.2));transition:width 1.2s 0.2s cubic-bezier(0.16,1,0.3,1)}
+.pga-wrap h2.pga-underlined em::after{width:100%}
+
+/* ── Scroll indicator ── */
+.pga-scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;z-index:3;transition:opacity 0.4s ease}
+.pga-scroll-hint.pga-hidden{opacity:0;pointer-events:none}
+.pga-scroll-text{font-family:'Josefin Sans',sans-serif;font-size:0.45rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(246,244,240,0.3)}
+.pga-scroll-line{width:1px;height:36px;position:relative;overflow:hidden;background:rgba(246,244,240,0.1)}
+.pga-scroll-line::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:#c9a96e;animation:pgaScrollPulse 2s cubic-bezier(0.16,1,0.3,1) infinite}
+@keyframes pgaScrollPulse{0%{top:-100%}100%{top:100%}}
+
+/* ═══ PRICING GUIDE — ARCHITECTS ═══ */
+.pga-wrap{font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a18;line-height:1.7;font-weight:300;overflow-x:hidden!important}
+.pga-wrap img{max-width:100%;display:block}
+.pga-wrap a{color:inherit;text-decoration:none}
+
+/* ─── HERO ─── */
+.pga-hero{position:relative;min-height:90vh;display:flex;align-items:flex-end;padding:6rem 5vw;background:#1a1a18;overflow:hidden}
+.pga-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(26,26,24,0.6) 60%,rgba(26,26,24,0.92) 100%);z-index:1}
+.pga-hero-bg{position:absolute;inset:0}
+.pga-hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.55;filter:saturate(0.6)}
+.pga-hero-content{position:relative;z-index:2;max-width:900px}
+.pga-hero-label{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem;font-weight:500}
+.pga-hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:300;line-height:1.1;color:#f6f4f0;letter-spacing:-0.02em;margin-bottom:1.5rem}
+.pga-hero h1 em{font-style:italic;color:#c9a96e}
+.pga-hero-sub{font-size:1.05rem;color:#d9d5cd;font-weight:300;max-width:560px;line-height:1.8}
+
+/* ─── SECTION PRIMITIVES ─── */
+.pga-section{padding:6rem 5vw}
+.pga-narrow{max-width:720px}
+.pga-wide{max-width:1100px;margin:0 auto}
+.pga-label{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#b8975a;margin-bottom:1.5rem;font-weight:500}
+.pga-label-dark{color:#c9a96e}
+.pga-divider{width:60px;height:1px;background:#c9a96e;margin:0 0 2rem}
+.pga-section h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;margin-bottom:2rem;letter-spacing:-0.01em}
+.pga-section h2 em{font-style:italic}
+.pga-section p{font-size:1rem;color:#4a4a46;margin-bottom:1.5rem;line-height:1.8}
+.pga-section p:last-child{margin-bottom:0}
+.pga-gold{color:#c9a96e;font-weight:400}
+
+/* ─── ACCENT LINE ─── */
+.pga-accent{display:block;width:100%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.2) 20%,rgba(201,169,110,0.2) 80%,transparent 100%)}
+
+/* ─── IMAGE BREAK ─── */
+.pga-img-break{width:100%;height:70vh;min-height:500px;overflow:hidden;position:relative}
+.pga-img-break img{width:100%;height:100%;object-fit:cover}
+.pga-img-break::before{content:'';position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(rgba(26,26,24,0.15),transparent);z-index:1;pointer-events:none}
+.pga-img-break::after{content:'';position:absolute;bottom:0;left:0;right:0;height:140px;background:linear-gradient(transparent,rgba(26,26,24,0.55));z-index:1;pointer-events:none}
+
+/* ─── IMAGE PAIR ─── */
+.pga-img-pair{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.pga-img-half{position:relative;height:420px;overflow:hidden}
+.pga-img-half img{width:100%;height:100%;object-fit:cover}
+.pga-img-half::after{content:'';position:absolute;inset:0;background:rgba(26,26,24,0.15)}
+
+/* ─── WHY IT MATTERS (2-col) ─── */
+.pga-why{background:#f6f4f0;padding:6rem 5vw}
+.pga-why-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;max-width:1100px}
+.pga-why-text h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:300;line-height:1.2;margin-bottom:1.5rem;color:#1a1a18}
+.pga-why-text h2 em{font-style:italic;color:#b8975a}
+.pga-why-text p{font-size:1rem;line-height:1.8;color:#4a4a46;margin-bottom:1rem}
+.pga-consequences{border-left:1px solid rgba(26,26,26,0.08);padding-left:2rem}
+.pga-consequence{margin-bottom:2rem}
+.pga-consequence:last-child{margin-bottom:0}
+.pga-consequence h4{font-family:'DM Sans',-apple-system,sans-serif;font-size:.88rem;font-weight:500;color:#1a1a18;margin-bottom:.4rem}
+.pga-consequence p{font-size:.88rem;line-height:1.7;color:#8a8579;margin-bottom:0}
+
+/* ─── PHILOSOPHY (3-col) ─── */
+.pga-philosophy{background:#1a1a18;padding:6rem 5vw;position:relative;overflow:hidden}
+.pga-philosophy::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:80px;background:linear-gradient(rgba(201,169,110,0.4),transparent)}
+.pga-phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;max-width:1100px;margin:0 auto;text-align:center}
+.pga-phil-item h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;font-weight:400;margin-bottom:.6rem;color:#f6f4f0}
+.pga-phil-item p{font-size:.88rem;line-height:1.7;color:#8a8579}
+
+/* ─── ANCHOR BANNER ─── */
+.pga-anchor{padding:3rem 5vw;border-top:1px solid rgba(26,26,26,0.08);border-bottom:1px solid rgba(26,26,26,0.08);text-align:center;background:#eeece6}
+.pga-anchor p{font-size:.92rem;color:#4a4a46;line-height:1.7;max-width:640px;margin:0 auto}
+.pga-anchor strong{color:#b8975a;font-weight:500}
+
+/* ─── LICENSE BANNER ─── */
+.pga-license{background:#1a1a18;padding:4rem 5vw;text-align:center}
+.pga-license-inner{max-width:600px;margin:0 auto}
+.pga-license h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;margin-bottom:.8rem;color:#f6f4f0}
+.pga-license p{font-size:.92rem;line-height:1.75;color:#d9d5cd}
+.pga-license-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:1.5rem}
+.pga-license-tag{font-size:.72rem;letter-spacing:.08em;color:#c9a96e;border:1px solid rgba(201,169,110,0.15);padding:.4rem 1rem}
+
+/* ─── PRICING CARDS ─── */
+.pga-pricing{background:#1a1a18;padding:6rem 5vw}
+.pga-pricing-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto 3rem}
+.pga-card{background:#1e1d1a;border:1px solid rgba(255,255,255,0.05);padding:2.5rem 2rem;position:relative;transition:border-color .4s ease,box-shadow .4s ease}
+.pga-card:hover{border-color:rgba(201,169,110,0.1);box-shadow:0 8px 40px rgba(0,0,0,.3)}
+.pga-card.pga-featured{border-color:#c9a96e;background:#1c1b17}
+.pga-card.pga-featured::before{content:'Most Popular';position:absolute;top:-1px;left:2rem;background:#c9a96e;color:#1a1a18;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;padding:.35rem 1rem;font-weight:500}
+.pga-card-label{font-size:.56rem;letter-spacing:.25em;text-transform:uppercase;color:#5e5a52;margin-bottom:.8rem;font-weight:500}
+.pga-card-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:400;margin-bottom:.5rem;color:#f6f4f0}
+.pga-card-sub{font-size:.84rem;color:#8a8579;line-height:1.6;margin-bottom:1.8rem;min-height:52px}
+.pga-card-price{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:300;color:#c9a96e;margin-bottom:.2rem}
+.pga-card-note{font-size:.72rem;color:#5e5a52;margin-bottom:2rem;line-height:1.6}
+.pga-card-div{width:100%;height:1px;background:rgba(255,255,255,0.05);margin-bottom:1.5rem}
+.pga-card-outcome-l{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a96e;margin-bottom:.6rem;font-weight:400}
+.pga-card-outcome{font-size:.88rem;color:#d9d5cd;line-height:1.6;margin-bottom:1.5rem;font-style:italic}
+.pga-card-inc-l{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#5e5a52;margin-bottom:1rem;font-weight:400}
+.pga-card-inc{list-style:none;padding:0;margin:0}
+.pga-card-inc li{font-size:.84rem;color:#b5afa5;padding:.4rem 0 .4rem 1.3rem;position:relative;line-height:1.5;border-bottom:1px solid rgba(255,255,255,.02)}
+.pga-card-inc li:last-child{border-bottom:none}
+.pga-card-inc li::before{content:'';position:absolute;left:0;top:.78rem;width:5px;height:1px;background:#c9a96e}
+.pga-card-inc li.pga-hl{color:#c9a96e}
+.pga-pricing-note{text-align:center;max-width:1100px;margin:0 auto}
+.pga-pricing-note p{font-size:.82rem;color:#5e5a52;max-width:520px;margin:0 auto;line-height:1.7;font-style:italic}
+
+/* ─── COST-SHARE ─── */
+.pga-share{background:#f6f4f0;padding:6rem 5vw}
+.pga-share-intro{max-width:620px;margin:0 auto 3.5rem;text-align:center}
+.pga-share-intro h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:300;line-height:1.25;margin-bottom:1rem;color:#1a1a18}
+.pga-share-intro h2 em{font-style:italic;color:#b8975a}
+.pga-share-intro p{font-size:.95rem;line-height:1.8;color:#4a4a46}
+.pga-share-how{margin-bottom:3rem}
+.pga-share-how h3{font-family:'DM Sans',-apple-system,sans-serif;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:#b8975a;margin-bottom:1.5rem;text-align:center;font-weight:500}
+.pga-share-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto}
+.pga-share-card{background:#fff;border:1px solid rgba(26,26,26,0.08);padding:2rem;text-align:center}
+.pga-share-card.pga-share-hl{border-color:#b8975a}
+.pga-share-parties{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:400;color:#1a1a18;margin-bottom:.3rem}
+.pga-share-desc{font-size:.76rem;color:#8a8579;margin-bottom:1.2rem}
+.pga-share-math{font-size:.78rem;color:#4a4a46;line-height:1.7;margin-bottom:1rem}
+.pga-share-result{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;font-weight:300;color:#b8975a}
+.pga-share-result-note{font-size:.7rem;color:#8a8579;margin-top:.15rem}
+.pga-share-nudge{max-width:560px;margin:3rem auto 0;text-align:center;padding:2rem 2.5rem;border:1px solid rgba(26,26,26,0.08);background:#fff}
+.pga-share-nudge p{font-size:.92rem;line-height:1.75;color:#4a4a46;margin:0}
+.pga-share-nudge strong{color:#b8975a;font-weight:500}
+
+/* ─── ADD-ONS ─── */
+.pga-addons{background:#1a1a18;padding:6rem 5vw}
+.pga-addons-head{max-width:1100px;margin:0 auto 2.5rem}
+.pga-addons-head h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:400;margin-bottom:.5rem;color:#f6f4f0}
+.pga-addons-head p{font-size:.88rem;color:#8a8579}
+.pga-addons-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.05);max-width:1100px;margin:0 auto}
+.pga-addon{background:#181715;padding:1.5rem 1.8rem;display:flex;justify-content:space-between;align-items:center}
+.pga-addon-name{font-size:.88rem;color:#e0dbd3;font-weight:400}
+.pga-addon-desc{font-size:.76rem;color:#5e5a52;margin-top:.15rem}
+.pga-addon-price{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.05rem;color:#c9a96e;white-space:nowrap;margin-left:2rem;font-weight:400}
+
+/* ─── PROCESS ─── */
+.pga-process{background:#f6f4f0;padding:6rem 5vw}
+.pga-process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;max-width:1100px;margin:0 auto}
+.pga-step-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.8rem;font-weight:300;line-height:1;margin-bottom:.7rem;color:rgba(184,151,90,.2)}
+.pga-step h4{font-size:.88rem;font-weight:500;letter-spacing:.02em;margin-bottom:.4rem;color:#1a1a18}
+.pga-step p{font-size:.84rem;line-height:1.7;color:#8a8579;margin:0}
+
+/* ─── TESTIMONIAL ─── */
+.pga-quote{background:#eeece6;padding:6rem 5vw;text-align:center}
+.pga-quote-text{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;line-height:1.4;max-width:900px;margin:0 auto 1.5rem;color:#1a1a18}
+.pga-quote-text::before{content:'\201C';display:block;font-size:4rem;color:#c9a96e;line-height:1;margin-bottom:0.5rem;font-style:normal;animation:pgaQuoteFloat 6s ease-in-out infinite alternate}
+@keyframes pgaQuoteFloat{0%{transform:scale(1) translateY(0)}100%{transform:scale(1.05) translateY(-4px)}}
+.pga-quote-attr{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:#8a8579;font-weight:500}
+.pga-quote-attr a{color:#b8975a;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .3s ease}
+.pga-quote-attr a:hover{border-color:#b8975a}
+
+/* ─── FAQ ─── */
+.pga-faq{background:#f6f4f0;padding:6rem 5vw}
+.pga-faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;max-width:1100px;margin:0 auto}
+.pga-faq-item{padding-bottom:1.8rem;border-bottom:1px solid rgba(26,26,26,0.08)}
+.pga-faq-item h4{font-family:'DM Sans',-apple-system,sans-serif;font-size:.92rem;font-weight:400;margin-bottom:.5rem;color:#1a1a18}
+.pga-faq-item p{font-size:.86rem;line-height:1.7;color:#8a8579;margin:0}
+
+/* ─── CTA ─── */
+.pga-cta{position:relative;min-height:65vh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center}
+.pga-cta-bg{position:absolute;inset:0}
+.pga-cta-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.5) brightness(.3);transition:transform 8s cubic-bezier(0.16,1,0.3,1)}
+.pga-cta.pga-in-view .pga-cta-bg img{transform:scale(1.08)}
+.pga-cta-content{position:relative;z-index:2;padding:6rem 5vw;width:100%}
+.pga-cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:300;margin-bottom:1rem;line-height:1.2;color:#f6f4f0}
+.pga-cta h2 em{font-style:italic;color:#c9a96e}
+.pga-cta p{font-size:1rem;color:#8a8579;max-width:440px;margin:0 auto 2.5rem;line-height:1.7}
+.pga-btn{display:inline-block;font-family:'DM Sans',sans-serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;padding:1.1rem 3rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all .35s ease}
+.pga-btn:hover{background:transparent!important;color:#c9a96e!important}
+.pga-cta-details{margin-top:2.5rem;font-size:.72rem;color:#5e5a52;letter-spacing:.05em}
+.pga-cta-details a{color:#8a847a;text-decoration:none}
+
+/* ─── FOOTER ─── */
+.pga-ft{background:#1a1a18;border-top:1px solid rgba(201,169,110,.15)}
+.pga-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}
+.pga-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}
+.pga-ft-locs a:hover{color:#c9a96e}
+.pga-ft-r{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}
+.pga-ft-i{display:flex;align-items:baseline;gap:10px}
+.pga-ft-l{font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;white-space:nowrap}
+.pga-ft-dt{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,.4);flex-shrink:0;position:relative;top:-2px}
+.pga-ft-i p,.pga-ft-i a{margin:0;font-size:12px;color:rgba(246,244,240,.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color .3s ease}
+.pga-ft-i a:hover{color:#c9a96e}
+.pga-ft-s{display:flex;gap:18px}
+.pga-ft-rl{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,.15) 20%,rgba(201,169,110,.15) 80%,transparent 100%)}
+.pga-ft-b{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}
+.pga-ft-cp{font-size:10px;color:rgba(246,244,240,.35);letter-spacing:.08em}
+.pga-ft-n{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center}
+.pga-ft-n a{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);text-decoration:none;transition:color .3s ease}
+.pga-ft-n a:hover{color:#c9a96e}
+.pga-ft-email{cursor:pointer}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+.pga-pricing-cards{grid-template-columns:1fr;gap:2rem}
+.pga-phil-grid{grid-template-columns:1fr;gap:2rem}
+.pga-process-grid{grid-template-columns:1fr 1fr;gap:2rem}
+.pga-addons-grid{grid-template-columns:1fr}
+.pga-why-grid,.pga-faq-grid{grid-template-columns:1fr;gap:2.5rem}
+.pga-share-grid{grid-template-columns:1fr;gap:1rem}
+.pga-img-pair{grid-template-columns:1fr}
+.pga-img-half{height:280px}
+}
+@media(max-width:768px){
+.pga-hero{min-height:75vh;padding:4rem 5vw}
+.pga-section{padding:4rem 5vw}
+.pga-why{padding:4rem 5vw}
+.pga-philosophy{padding:4rem 5vw}
+.pga-addons{padding:4rem 5vw}
+.pga-process{padding:4rem 5vw}
+.pga-quote{padding:4rem 5vw}
+.pga-faq{padding:4rem 5vw}
+.pga-share{padding:4rem 5vw}
+.pga-img-break{height:50vh;min-height:300px}
+.pga-scroll-hint{display:none}
+.pga-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}
+.pga-ft-locs a{font-size:.55rem}
+.pga-ft-r{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}
+.pga-ft-rl{margin:0 6vw}
+.pga-ft-b{flex-direction:column;gap:.75rem;text-align:center;padding:1.25rem 6vw}
+}
+@media(max-width:600px){
+.pga-process-grid{grid-template-columns:1fr}
+.pga-addon{flex-direction:column;align-items:flex-start;gap:.4rem}
+.pga-addon-price{margin-left:0}
+}
+@media print{
+body{background:#fff;color:#1a1a1a}
+.pga-hero-bg,.pga-img-break,.pga-img-pair,.pga-cta-bg{display:none}
+.pga-card{break-inside:avoid;border:1px solid #ccc;background:#fff}
+.pga-loader,.pga-cursor,.pga-cursor-dot,.pga-progress,.pga-scroll-hint{display:none!important}
+h1,h2,h3,h4,.pga-card-title{color:#1a1a18!important}
+.pga-card-price{color:#6b5d4a!important}
+}
+</style>
+<div class="pga-loader" id="pgaLoader">
+  <div class="pga-loader-brand">Matt Anthony Photography</div>
+  <div class="pga-loader-sub">Photography for Architects</div>
+  <div class="pga-loader-line"></div>
+</div>
+<div class="pga-cursor" id="pgaCursor"></div>
+<div class="pga-cursor-dot" id="pgaCursorDot"></div>
+<div class="pga-progress" id="pgaProgress"></div>
+<div class="pga-wrap">
+
+<!-- ═══ HERO ═══ -->
+<section class="pga-hero pga-grain">
+  <div class="pga-hero-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/23aedb76-4c10-4a31-ba9c-9ebd434a25bc/5322-backhouse-web-2.jpg" alt="Warbler Residence Whistler modern architecture photographed by Matt Anthony"></div>
+  <div class="pga-hero-content">
+    <div class="pga-eyebrow pga-hero-label" data-observe>Photography for Architects</div>
+    <h1>Architecture must be <em>interpreted</em>, not just photographed</h1>
+    <p class="pga-hero-sub">The right photography lets your work speak for itself. To jurors, to peers, and to every future client who encounters your portfolio.</p>
+  </div>
+  <div class="pga-scroll-hint" id="pgaScrollHint">
+    <span class="pga-scroll-text">Scroll</span>
+    <div class="pga-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ WHY IT MATTERS ═══ -->
+<section class="pga-why">
+  <div class="pga-why-grid">
+    <div class="pga-why-text">
+      <div class="pga-eyebrow pga-label" data-observe>Why This Matters</div>
+      <div class="pga-divider"></div>
+      <h2>What happens when architecture is photographed without <em>understanding</em></h2>
+      <p>Most photographers document spaces. They capture what's there. But architecture isn't about what's there. It's about why it's there. The relationship between structure and site, the way light was designed to move through a room, the logic behind a material transition.</p>
+      <p>Photography that misses intent doesn't just underperform. It actively misrepresents the work. And misrepresentation compounds across every platform it touches.</p>
+    </div>
+    <div class="pga-consequences">
+      <div class="pga-consequence"><h4>Design Intent Gets Flattened</h4><p>Spatial logic, material sequences, and compositional decisions become invisible. The project reads as style rather than thinking. Peers can't see what made it worth building.</p></div>
+      <div class="pga-consequence"><h4>Award Submissions Underperform</h4><p>Georgie, CHBA, and AIBC jurors evaluate hundreds of entries. When the photography doesn't communicate the design decision clearly, the project gets overlooked before anyone reads the narrative.</p></div>
+      <div class="pga-consequence"><h4>You Have to Explain the Work</h4><p>If you find yourself narrating what the photography should have communicated, the photography failed. Strong imagery makes the explanation unnecessary.</p></div>
+      <div class="pga-consequence"><h4>Portfolio Becomes Inconsistent</h4><p>Different photographers with different eyes create a body of work that feels fragmented. No visual thread. No recognizable standard. The portfolio fills space instead of building authority.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ IMAGE BREAK ═══ -->
+<div class="pga-img-break" data-observe>
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/bd45b746-3623-41b7-8016-a94a135bd9b6/5322-backhouse-web-10.jpg" alt="Warbler Residence Whistler interior architecture with mountain views" loading="lazy">
+</div>
+
+<!-- ═══ PHILOSOPHY ═══ -->
+<section class="pga-philosophy pga-grain">
+  <div class="pga-phil-grid">
+    <div class="pga-phil-item"><h3>Interpretation Over Documentation</h3><p>Every shoot begins with understanding design intent. Compositions are shaped by the logic behind the architecture, not by trying to capture everything in the space.</p></div>
+    <div class="pga-phil-item"><h3>Restraint Over Spectacle</h3><p>No over-lighting, no dramatic manipulation, no renders or composites. Architecture is shown as it was designed to be experienced. Honest, clear, and precise.</p></div>
+    <div class="pga-phil-item"><h3>Fewer, Stronger Images</h3><p>We prioritize the frames that communicate design decisions over comprehensive coverage. A curated set of 25 images that read correctly is worth more than 60 that don't.</p></div>
+  </div>
+</section>
+
+<div class="pga-accent"></div>
+
+<!-- ═══ RETAINER BANNER ═══ -->
+<section class="pga-anchor">
+  <p>Managing an active project pipeline? Ask about <strong>Creative Partnerships starting at $2,500/month</strong>.</p>
+</section>
+
+<!-- ═══ LICENSE ═══ -->
+<section class="pga-license pga-grain">
+  <div class="pga-license-inner">
+    <h3>Every shoot includes a full, unlimited use license</h3>
+    <p>Your images. No restrictions. Use them anywhere.</p>
+    <div class="pga-license-tags">
+      <span class="pga-license-tag">Website</span>
+      <span class="pga-license-tag">Publications</span>
+      <span class="pga-license-tag">Awards</span>
+      <span class="pga-license-tag">Proposals</span>
+      <span class="pga-license-tag">Print</span>
+      <span class="pga-license-tag">Exhibitions</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING CARDS ═══ -->
+<section class="pga-pricing">
+  <div class="pga-wide" style="text-align:center;margin-bottom:3rem">
+    <div class="pga-eyebrow pga-label-dark" data-observe style="justify-content:center">Investment</div>
+    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;color:#f6f4f0;margin-bottom:1rem">Photography that <em style="font-style:italic;color:#c9a96e">interprets</em>, not just documents</h2>
+    <p style="max-width:500px;margin:0 auto;font-size:.95rem;line-height:1.75;color:#8a8579">Three ways to work together, each scoped to match the project and its role in your body of work. No hidden fees. Unlimited usage included.</p>
+  </div>
+  <div class="pga-pricing-cards">
+
+    <div class="pga-card">
+      <div class="pga-card-label">Awards &amp; Publication</div>
+      <div class="pga-card-title">Award-Ready</div>
+      <div class="pga-card-sub">Publication-grade imagery composed for Georgie, CHBA, AIBC, Dwell, and Western Living. Built for the people who judge your work.</div>
+      <div class="pga-card-price">$5,500</div>
+      <div class="pga-card-note">Full day &middot; 30 to 40 curated images + drone + twilight + documentary video + social reel &middot; delivered in 5 to 10 business days</div>
+      <div class="pga-card-div"></div>
+      <div class="pga-card-outcome-l">The Outcome</div>
+      <div class="pga-card-outcome">The definitive visual record of a significant project. Every frame composed to communicate design intent to jurors, editors, and peers who understand what they're looking at.</div>
+      <div class="pga-card-inc-l">Includes</div>
+      <ul class="pga-card-inc">
+        <li>Extended pre-production and intent alignment</li>
+        <li>Full-day on-site photography</li>
+        <li>30 to 40 curated, publication-grade images</li>
+        <li>Compositions optimized for jury and editorial evaluation</li>
+        <li class="pga-hl">Drone and aerial coverage included</li>
+        <li class="pga-hl">Twilight and dusk exterior coverage included</li>
+        <li class="pga-hl">Documentary-style project film included (2 to 3 minutes)</li>
+        <li class="pga-hl">Social media reel included (one 15 to 30 second vertical edit)</li>
+        <li>Guidance on award submission image selection</li>
+        <li>Post-delivery portfolio strategy session (30 min)</li>
+        <li>High-res and web-optimized delivery</li>
+        <li>Curated online gallery</li>
+        <li>Full unlimited use license</li>
+      </ul>
+    </div>
+
+    <div class="pga-card pga-featured">
+      <div class="pga-card-label">Project Documentation</div>
+      <div class="pga-card-title">Architectural Project</div>
+      <div class="pga-card-sub">Complete visual documentation of a finished project. Architecture, interiors, site context, and detail, composed to honour the design intent behind the work.</div>
+      <div class="pga-card-price">$3,500</div>
+      <div class="pga-card-note">Full day &middot; 20 to 30 edited images + drone + 60s video + social reel &middot; delivered in 5 to 10 business days</div>
+      <div class="pga-card-div"></div>
+      <div class="pga-card-outcome-l">The Outcome</div>
+      <div class="pga-card-outcome">A complete visual story of the finished project. Enough for your website, proposals, award entries, and the portfolio page that attracts better commissions.</div>
+      <div class="pga-card-inc-l">Includes</div>
+      <ul class="pga-card-inc">
+        <li>Pre-production consultation and intent discussion</li>
+        <li>Full-day on-site photography</li>
+        <li>20 to 30 professionally edited images</li>
+        <li>Exterior architecture and site context</li>
+        <li>Interior spatial flow and material intersections</li>
+        <li class="pga-hl">Drone and aerial coverage included</li>
+        <li class="pga-hl">Short-form project video included (60 seconds)</li>
+        <li class="pga-hl">Social media reel included (one 15 to 30 second vertical edit)</li>
+        <li>Natural, editorial-grade post-production</li>
+        <li>High-res and web-optimized delivery</li>
+        <li>Curated online gallery</li>
+        <li>Full unlimited use license</li>
+      </ul>
+    </div>
+
+    <div class="pga-card">
+      <div class="pga-card-label">Photography Only</div>
+      <div class="pga-card-title">Project Session</div>
+      <div class="pga-card-sub">Complete architectural photography without video. Same eye, same quality, same day. For projects where stills are the priority.</div>
+      <div class="pga-card-price">$2,000</div>
+      <div class="pga-card-note">Full day &middot; 20 to 25 edited images &middot; delivered in 5 to 10 business days</div>
+      <div class="pga-card-div"></div>
+      <div class="pga-card-outcome-l">The Outcome</div>
+      <div class="pga-card-outcome">A complete set of publication-quality images for your project. Everything you need for your website, proposals, and award entries, without the video and reel deliverables.</div>
+      <div class="pga-card-inc-l">Includes</div>
+      <ul class="pga-card-inc">
+        <li>Pre-production consultation and intent discussion</li>
+        <li>Full-day on-site photography</li>
+        <li>20 to 25 professionally edited images</li>
+        <li>Exterior architecture and site context</li>
+        <li>Interior spatial flow and detail coverage</li>
+        <li class="pga-hl">Drone and aerial coverage included</li>
+        <li>Natural, editorial-grade post-production</li>
+        <li>High-res and web-optimized delivery</li>
+        <li>Curated online gallery</li>
+        <li>Full unlimited use license</li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="pga-pricing-note">
+    <p>All pricing reflects scope, usage, and judgment. Not image count. Final proposals are prepared after a discovery conversation to confirm alignment.</p>
+  </div>
+</section>
+
+<!-- ═══ IMAGE PAIR ═══ -->
+<div class="pga-img-pair">
+  <div class="pga-img-half"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e07b8aac-c1ec-4293-b956-79b41aa39f33/5322-backhouse-web-1.jpg" alt="The Perch Sunshine Coast open plan living with ocean views" loading="lazy"></div>
+  <div class="pga-img-half"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/20c8872d-0ddd-4861-b66c-4cc150ab59d6/5322-backhouse-web-20.jpg" alt="Tranquil Retreat Sunshine Coast residential interior" loading="lazy"></div>
+</div>
+
+<!-- ═══ COST-SHARE ═══ -->
+<section class="pga-share">
+  <div class="pga-share-intro">
+    <div class="pga-eyebrow pga-label" data-observe style="justify-content:center">Split the Cost, Keep the Quality</div>
+    <h2>Working with a builder or designer on the project? <em>Share the shoot.</em></h2>
+    <p>When multiple professionals collaborate on the same project, one shoot can cover everyone. The more parties involved, the less each one pays. Each party gets their own curated set composed around their specific contribution, with full unlimited usage rights.</p>
+  </div>
+  <div class="pga-share-how">
+    <h3>How Cost-Sharing Works, Based on a $3,500 Architectural Project</h3>
+    <div class="pga-share-grid">
+      <div class="pga-share-card">
+        <div class="pga-share-parties">You Alone</div>
+        <div class="pga-share-desc">One party, full cost</div>
+        <div class="pga-share-math">$3,500 base<br>&divide; 1 party</div>
+        <div class="pga-share-result">$3,500</div>
+        <div class="pga-share-result-note">per party</div>
+      </div>
+      <div class="pga-share-card pga-share-hl">
+        <div class="pga-share-parties">You + Builder</div>
+        <div class="pga-share-desc">Two parties, +30%</div>
+        <div class="pga-share-math">$3,500 + 30% = $4,550<br>&divide; 2 parties</div>
+        <div class="pga-share-result">$2,275</div>
+        <div class="pga-share-result-note">per party (you save $1,225)</div>
+      </div>
+      <div class="pga-share-card pga-share-hl">
+        <div class="pga-share-parties">You + Builder + Designer</div>
+        <div class="pga-share-desc">Three parties, +60%</div>
+        <div class="pga-share-math">$3,500 + 60% = $5,600<br>&divide; 3 parties</div>
+        <div class="pga-share-result">$1,867</div>
+        <div class="pga-share-result-note">per party (you save $1,633)</div>
+      </div>
+    </div>
+  </div>
+  <div class="pga-share-nudge">
+    <p><strong>You often select the collaborators on a project.</strong> If the builder or interior designer hasn't arranged photography yet, suggest a shared engagement. Everyone gets the same publication-grade imagery, and the cost is split evenly.</p>
+  </div>
+</section>
+
+<!-- ═══ ADD-ONS ═══ -->
+<section class="pga-addons">
+  <div class="pga-addons-head">
+    <h3>Available Add-Ons</h3>
+    <p>Supplemental services that can be added to any engagement.</p>
+  </div>
+  <div class="pga-addons-grid">
+    <div class="pga-addon"><div><div class="pga-addon-name">Twilight &amp; Blue Hour</div><div class="pga-addon-desc">Separate visit for dusk exterior coverage</div></div><div class="pga-addon-price">$500 &ndash; $800</div></div>
+    <div class="pga-addon"><div><div class="pga-addon-name">Extended Project Film</div><div class="pga-addon-desc">For Project Session tier or standalone video projects</div></div><div class="pga-addon-price">$3,000 &ndash; $4,500</div></div>
+    <div class="pga-addon"><div><div class="pga-addon-name">Social Media Reels</div><div class="pga-addon-desc">Short vertical clips for Instagram, LinkedIn</div></div><div class="pga-addon-price">Quoted per scope</div></div>
+    <div class="pga-addon"><div><div class="pga-addon-name">Multi-Phase Documentation</div><div class="pga-addon-desc">3 to 5 visits across construction and completion</div></div><div class="pga-addon-price">Quoted per scope</div></div>
+    <div class="pga-addon"><div><div class="pga-addon-name">Lived-In Sessions</div><div class="pga-addon-desc">Lifestyle and in-context moments showing how the architecture is inhabited</div></div><div class="pga-addon-price">Quoted per scope</div></div>
+    <div class="pga-addon"><div><div class="pga-addon-name">Styling Consultation</div><div class="pga-addon-desc">Pre-shoot prep guide and space checklist</div></div><div class="pga-addon-price">Included</div></div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="pga-process">
+  <div class="pga-wide" style="text-align:center;margin-bottom:3rem">
+    <div class="pga-eyebrow pga-label" data-observe style="justify-content:center">How It Works</div>
+    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;color:#1a1a18;margin-bottom:1rem">A calm, structured <em style="font-style:italic;color:#b8975a">process</em></h2>
+    <p style="max-width:500px;margin:0 auto;font-size:.95rem;line-height:1.75;color:#8a8579">No surprises. No re-scoping. Every step is designed to honour your design intent and make the experience effortless.</p>
+  </div>
+  <div class="pga-process-grid">
+    <div class="pga-step"><div class="pga-step-num">01</div><h4>Discovery</h4><p>We talk about the project, the design thinking behind it, and how the images will be used. We also plan around natural light, weather, and seasonal conditions to ensure the best possible result.</p></div>
+    <div class="pga-step"><div class="pga-step-num">02</div><h4>Planning</h4><p>I review plans, study the orientation and site context, and build a shot strategy around your specific design decisions. Light timing, access, and compositions are all aligned before I arrive.</p></div>
+    <div class="pga-step"><div class="pga-step-num">03</div><h4>Photography</h4><p>On-site, I work quietly and independently. Every composition prioritizes spatial logic, material honesty, and the relationship between structure and site.</p></div>
+    <div class="pga-step"><div class="pga-step-num">04</div><h4>Delivery</h4><p>Edited images delivered within 5 to 10 business days through a curated online gallery. High-res, web-optimized, and ready for any use.</p></div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIAL ═══ -->
+<section class="pga-quote">
+  <div class="pga-quote-text">What first drew us to Matt's work was his use of natural light. He captures spaces in a way that feels authentic and honest, allowing the materials to shine. Matt truly understands what it takes to showcase a project.</div>
+  <div class="pga-quote-attr"><a href="/case-studies/sitelines-architecture">Jordan Maddox, Sitelines Architecture</a></div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="pga-faq">
+  <div class="pga-wide" style="text-align:center;margin-bottom:3rem">
+    <div class="pga-eyebrow pga-label" data-observe style="justify-content:center">Common Questions</div>
+    <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;color:#1a1a18;margin-bottom:0">Before you <em style="font-style:italic;color:#b8975a">reach out</em></h2>
+  </div>
+  <div class="pga-faq-grid">
+    <div class="pga-faq-item"><h4>When should the conversation start?</h4><p>Ideally before the project is complete. The best results come from planning the shoot around light, staging, and site conditions while you still have control over them. For award submissions, the earlier the better.</p></div>
+    <div class="pga-faq-item"><h4>Do you study the plans beforehand?</h4><p>Yes. I review drawings, renderings, or any reference material you can share. Understanding orientation, circulation, and material intent before arriving on-site means every composition is intentional, not reactive.</p></div>
+    <div class="pga-faq-item"><h4>How does cost-sharing work?</h4><p>I coordinate everything. Just let me know which builder or designer was involved. Each party gets their own curated set composed around their specific work. The total is split evenly, and everyone gets full unlimited usage.</p></div>
+    <div class="pga-faq-item"><h4>Do you offer video as well?</h4><p>Yes. All three project tiers include a social media reel. The Architectural Project includes a 60 second project video. The Award-Ready tier includes a longer documentary-style film. Everything is captured during the same shoot day.</p></div>
+    <div class="pga-faq-item"><h4>Can I use the images for everything?</h4><p>Yes. Every engagement includes a full unlimited use license. Website, publications, awards, proposals, exhibitions, print, advertising. No restrictions. They're your images.</p></div>
+    <div class="pga-faq-item"><h4>What if I want changes after delivery?</h4><p>The curated gallery is a finished deliverable. If specific adjustments are needed, like colour correction, crop modifications, or additional formats, those are accommodated. Reshoots or significant scope changes are quoted as a separate session.</p></div>
+    <div class="pga-faq-item"><h4>What about multi-phase documentation?</h4><p>For projects where you want to capture the build process alongside completion, multi-phase documentation is available as a custom scope. We plan the visits together around key milestones.</p></div>
+    <div class="pga-faq-item"><h4>What's the first step?</h4><p>Book a discovery call. We'll talk about the project, the design intent, and what you need the images to do. No pricing at that stage. Just a conversation about fit. If we're aligned, I'll follow up with a proposal.</p></div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="pga-cta" data-observe>
+  <div class="pga-cta-bg"><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d8d235f4-5d32-4c16-9ec8-aef9dc04257f/5322-backhouse-web-19.jpg" alt="Warbler Residence Whistler exterior at dusk" loading="lazy"></div>
+  <div class="pga-cta-content">
+    <h2>Your design tells the story.<br>Let the imagery <em>communicate it</em>.</h2>
+    <p>Every engagement begins with a conversation about the project and what success looks like. No pressure, no pitch. Just understanding fit.</p>
+    <a href="/discovery-call" class="pga-btn">Book a Discovery Call</a>
+    <div class="pga-cta-details"><a class="pga-ft-email" id="pga-cta-em"></a> &ensp;&middot;&ensp; 604.765.9270 &ensp;&middot;&ensp; Squamish, BC</div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="pga-ft">
+  <div class="pga-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+  <div class="pga-ft-r">
+    <div class="pga-ft-i"><span class="pga-ft-l">Based In</span><span class="pga-ft-dt"></span><p>Squamish, British Columbia</p></div>
+    <div class="pga-ft-i"><span class="pga-ft-l">Email</span><span class="pga-ft-dt"></span><a class="pga-ft-email" id="pga-ft-em"></a></div>
+    <div class="pga-ft-i"><span class="pga-ft-l">Phone</span><span class="pga-ft-dt"></span><a href="tel:6047659270">604.765.9270</a></div>
+    <div class="pga-ft-i"><span class="pga-ft-l">Follow</span><span class="pga-ft-dt"></span><div class="pga-ft-s"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  </div>
+  <div class="pga-ft-rl"></div>
+  <div class="pga-ft-b"><span class="pga-ft-cp">Matt Anthony Photography</span><div class="pga-ft-n"><a href="/bio">About</a><a href="/projects">Projects</a><a href="/pricing-guide-landing">Get Pricing</a><a href="/contact">Contact</a></div></div>
+</div>
+
+</div>
+<script>
+(function(){
+var isMobile='ontouchstart' in window;
+
+/* ═══ EMAIL OBFUSCATION ═══ */
+var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];
+function setEmail(id){var e=document.getElementById(id);if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}}
+setEmail('pga-ft-em');setEmail('pga-cta-em');
+
+/* ═══ LOADING SCREEN ═══ */
+var loader=document.getElementById('pgaLoader');
+window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('pga-done');},1100);});
+
+/* ═══ SCROLL PROGRESS ═══ */
+var progressBar=document.getElementById('pgaProgress');
+function updateProgress(){var sc=window.scrollY;var d=document.documentElement.scrollHeight-window.innerHeight;if(d>0)progressBar.style.width=(sc/d*100)+'%';}
+
+/* ═══ SCROLL HINT FADE ═══ */
+var scrollHint=document.getElementById('pgaScrollHint');
+function updateScrollHint(){if(scrollHint){if(window.scrollY>100)scrollHint.classList.add('pga-hidden');else scrollHint.classList.remove('pga-hidden');}}
+
+/* ═══ CUSTOM CURSOR ═══ */
+var cursor=document.getElementById('pgaCursor');var cursorDot=document.getElementById('pgaCursorDot');var cx=0,cy=0,dx=0,dy=0;
+if(!isMobile&&cursor){
+  document.addEventListener('mousemove',function(ev){dx=ev.clientX;dy=ev.clientY;cursorDot.style.left=dx+'px';cursorDot.style.top=dy+'px';if(!cursor.classList.contains('pga-active')){cursor.classList.add('pga-active');cursorDot.classList.add('pga-active');}});
+  function tickCursor(){cx+=(dx-cx)*0.12;cy+=(dy-cy)*0.12;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(tickCursor);}tickCursor();
+  var hoverEls=document.querySelectorAll('a, button, .pga-btn');
+  hoverEls.forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('pga-hover');});el.addEventListener('mouseleave',function(){cursor.classList.remove('pga-hover');});});
+  document.addEventListener('mousedown',function(){cursor.classList.add('pga-click');});
+  document.addEventListener('mouseup',function(){cursor.classList.remove('pga-click');});
+}
+
+/* ═══ INTERSECTION OBSERVER (eyebrows, underlines, img breaks, CTA) ═══ */
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){
+  var el=entry.target;
+  if(el.classList.contains('pga-eyebrow'))el.classList.add('pga-visible');
+  if(el.tagName==='H2')el.classList.add('pga-underlined');
+  if(el.classList.contains('pga-img-break'))el.classList.add('pga-in-view');
+  if(el.classList.contains('pga-cta'))el.classList.add('pga-in-view');
+}});},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+
+document.querySelectorAll('[data-observe]').forEach(function(el){observer.observe(el);});
+document.querySelectorAll('.pga-wrap h2').forEach(function(el){observer.observe(el);});
+document.querySelectorAll('.pga-img-break').forEach(function(el){observer.observe(el);});
+document.querySelectorAll('.pga-cta').forEach(function(el){observer.observe(el);});
+
+/* ═══ COMBINED SCROLL HANDLER ═══ */
+var ticking=false;
+window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){updateProgress();updateScrollHint();ticking=false;});ticking=true;}},{passive:true});
+updateProgress();updateScrollHint();
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Photography for Architects — Pricing Guide | Matt Anthony",
+  "description": "Investment guide for architectural photography services. Project documentation, award-ready imagery, and creative partnerships for architects in British Columbia.",
+  "url": "https://www.mattanthonyphoto.com/pricing-guide-architects",
+  "provider": {
+    "@id": "https://www.mattanthonyphoto.com/#business"
+  }
+}
+</script>
+<meta name="robots" content="noindex">
+<meta name="description" content="Investment guide for architectural photography. Project documentation from $2,000, award-ready imagery from $5,500. Serving architects across British Columbia.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/pricing-guide-architects">

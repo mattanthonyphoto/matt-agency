@@ -1,0 +1,1079 @@
+<!-- JSON-LD SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HomeAndConstructionBusiness",
+      "@id": "https://www.balmoralconstruction.com/#business",
+      "name": "Balmoral Construction Inc.",
+      "description": "Boutique custom home builder in the Sea to Sky Corridor serving Whistler, Pemberton, and Squamish, BC. Specializing in custom home building, large-scale renovations, and general contracting.",
+      "url": "https://www.balmoralconstruction.com",
+      "telephone": "+1-604-907-2237",
+      "email": "marc@balmoralconstruction.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1704 Sugarloaf Place",
+        "addressLocality": "Pemberton",
+        "addressRegion": "BC",
+        "postalCode": "V0N 2L3",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 50.3225,
+        "longitude": -122.8028
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Whistler", "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" } },
+        { "@type": "City", "name": "Pemberton", "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" } },
+        { "@type": "City", "name": "Squamish", "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" } }
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Marc Harvey",
+        "jobTitle": "Owner & Founder"
+      },
+      "foundingDate": "2011",
+      "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 15 },
+      "sameAs": [
+        "https://www.instagram.com/balmoralconstruction/",
+        "https://www.houzz.com/professionals/general-contractors/balmoral-construction-pfvwus-pf~1513498919"
+      ],
+      "hasCredential": [
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "license", "name": "BC New Home Warranty Registration" },
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "license", "name": "National Home Warranty Registration" }
+      ],
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Canadian Home Builders Association — Sea to Sky"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "12",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Rob Zwick" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "I've worked with Balmoral construction on four separate projects and have been extremely happy with all of them. Marc and his crew are diligent, responsive, cost conscious, and build a top-quality product."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Michelle" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "Our experience with Marc and the team at Balmoral Construction was nothing short of amazing. The lines of communication were always open keeping us informed regarding project timelines, budget and what to expect."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Nancy Saver" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "I hired Balmoral Construction to build my 9,000 sq ft contemporary home in Whistler BC. It was a complicated build on a challenging lot. The results were outstanding. The owner, Marc Harvey, is very experienced in high end building requirements which was reflected in everything from the framing to the finishes. Everything was perfect. And the project was completed on time and on budget."
+        }
+      ],
+      "knowsAbout": [
+        "Custom home building",
+        "Home renovations",
+        "General contracting",
+        "Project management",
+        "Land consultation",
+        "Building permit coordination",
+        "Mountain construction",
+        "BC Energy Step Code"
+      ],
+      "image": "https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png",
+      "priceRange": "$$$"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.balmoralconstruction.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does it cost to build a custom home in Whistler?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Custom home construction costs in Whistler typically range from $500 to $800+ per square foot, depending on site conditions, design complexity, finishes, and access. Mountain building involves specialized foundations, snow load engineering, and often challenging lot access — all of which factor into the final cost. We provide transparent budgeting from the earliest design stages so there are no surprises. Contact us for a detailed consultation about your specific lot and vision."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to build a custom home in the Sea to Sky?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A typical custom home build in the Sea to Sky Corridor takes 12 to 18 months from breaking ground, depending on the size and complexity of the project. The pre-construction phase — including design, engineering, and permits — usually adds another 4 to 8 months. We provide a detailed project timeline during the planning phase and keep you updated at every milestone throughout construction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is included in custom home construction?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our custom home building service covers everything from initial land consultation and design coordination through to permit management, full construction, and final walkthrough. This includes site preparation, foundation, framing, roofing, mechanical systems (HVAC, electrical, plumbing), insulation, interior finishing, landscaping coordination, and warranty coverage. We manage every trade and inspection so you have a single point of contact throughout your build."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you build custom homes in Squamish?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Squamish is one of our three primary service areas along with Whistler and Pemberton. Squamish is growing rapidly and we have experience navigating local building regulations, soil conditions, and the unique opportunities that come with building in this part of the Sea to Sky Corridor. Whether you are looking at a new custom home or a major renovation in Squamish, we would be happy to discuss your project."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What warranty do new homes come with in BC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In British Columbia, all new homes built by licensed residential builders come with mandatory warranty coverage. This includes 2 years on labour and materials, 5 years on the building envelope (protection against water penetration), and 10 years on the structure. Balmoral Construction is registered with both BC New Home Warranty and National Home Warranty, ensuring your investment is fully protected from day one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How involved is the builder during construction?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At Balmoral, our owner Marc Harvey is personally present on every job site. We intentionally limit the number of projects we take on each year so that each build gets hands-on attention from our leadership team — not just a site supervisor. You will always have direct access to the people making decisions on your project, and we provide regular progress updates and walkthroughs throughout the build."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── BRAND ACCENT (from logo orange dot) ── */
+:root{--bc-accent:#D4722A;--bc-accent-hover:#BF6523;--bc-accent-light:rgba(212,114,42,.1)}
+
+/* ── SCROLL PROGRESS ── */
+.bc-progress{position:fixed;top:0;left:0;height:3px;background:var(--bc-accent);z-index:1100;width:0%;transition:none}
+
+/* ── BASE ── */
+.bc{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a1a;line-height:1.7;font-weight:300;background:#fff}
+.bc img{max-width:100%;display:block}
+.bc a{color:inherit;text-decoration:none}
+
+/* ── REVEAL ANIMATION ── */
+.bc-reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.bc-reveal.bc-visible{opacity:1;transform:translateY(0)}
+.bc-reveal-delay-1{transition-delay:.15s}
+.bc-reveal-delay-2{transition-delay:.3s}
+.bc-reveal-delay-3{transition-delay:.45s}
+.bc-reveal-delay-4{transition-delay:.6s}
+
+/* ── NAV ── */
+.bc-hd{position:fixed;top:0;left:0;right:0;z-index:99999 !important;transition:background .4s cubic-bezier(.16,1,.3,1)}
+.bc-hd--top{background:transparent}
+.bc-hd--scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.bc-hd--mob-open{background:#fff !important;backdrop-filter:none}
+.bc-hd-inner{max-width:1600px;margin:0 auto;padding:0 clamp(24px,4vw,60px);display:flex;align-items:center;justify-content:space-between;height:80px}
+.bc-hd-logo img{height:52px;width:auto;transition:filter .4s}
+.bc-hd--top .bc-hd-logo img{filter:brightness(0) invert(1)}
+.bc-hd--mob-open .bc-hd-logo img{filter:none !important}
+.bc-hd-nav{display:flex;align-items:center;gap:clamp(24px,3.5vw,48px);list-style:none}
+.bc-hd-link{font-size:13px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#1a1a1a;transition:all .3s;position:relative}
+.bc-hd--top .bc-hd-link{color:rgba(255,255,255,.75)}
+.bc-hd--top .bc-hd-link:hover{color:#fff}
+.bc-hd-link:hover{color:#000}
+.bc-hd-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:currentColor;transition:width .3s}
+.bc-hd-link:hover::after{width:100%}
+.bc-hd-drop{position:relative}
+.bc-hd-drop-menu{position:absolute;top:calc(100% + 20px);left:-20px;background:#fff;padding:16px 0;min-width:220px;opacity:0;visibility:hidden;transition:all .3s;transform:translateY(8px);box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.bc-hd-drop:hover .bc-hd-drop-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.bc-hd-drop-menu a{display:block;padding:10px 28px;font-size:14px;font-weight:400;color:#666;letter-spacing:.04em;transition:all .2s}
+.bc-hd-drop-menu a:hover{color:var(--bc-accent);padding-left:32px}
+.bc-hd-mob{display:none;background:none;border:none;cursor:pointer;padding:10px;z-index:100001}
+.bc-hd-mob span{display:block;width:28px;height:2px;background:#1a1a1a;margin:7px 0;transition:all .4s}
+.bc-hd--top .bc-hd-mob span{background:#fff}
+.bc-hd--mob-open .bc-hd-mob span{background:#1a1a1a !important}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(2){opacity:0}
+.bc-hd--mob-open .bc-hd-mob span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.bc-mob{position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:99998 !important;padding:100px clamp(24px,6vw,60px) 40px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.bc-mob.open{opacity:1;visibility:visible;display:flex;flex-direction:column}
+.bc-mob a{display:block;font-size:clamp(28px,6vw,40px);font-weight:200;color:#1a1a1a;padding:12px 0;letter-spacing:-.02em;border-bottom:1px solid #f0f0f0;transition:opacity .3s}
+.bc-mob a:hover{opacity:.5}
+.bc-mob-sub{padding-left:0}
+.bc-mob-sub a{font-size:clamp(14px,3vw,18px);font-weight:400;color:#999;letter-spacing:0;padding:8px 0}
+
+/* ── HERO SLIDESHOW ── */
+.bc-hero{position:relative;height:100vh;height:100svh;min-height:700px;overflow:hidden}
+.bc-hero-slides{position:absolute;inset:0;width:100%;height:100%}
+.bc-hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease-in-out}
+.bc-hero-slide.bc-active{opacity:1}
+.bc-hero-slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 8s cubic-bezier(.16,1,.3,1)}
+.bc-hero-slide.bc-active img{transform:scale(1)}
+.bc-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.05) 40%,rgba(0,0,0,.45) 100%);z-index:1}
+.bc-hero-pips{position:absolute;bottom:clamp(24px,3vw,40px);left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:10px}
+.bc-hero-pip{width:32px;height:3px;background:rgba(255,255,255,.25);border:none;cursor:pointer;transition:all .4s;padding:0}
+.bc-hero-pip.bc-active{background:var(--bc-accent);width:48px}
+.bc-hero-c{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:0 clamp(24px,4vw,60px) clamp(60px,8vw,120px);max-width:1600px;margin:0 auto}
+.bc-hero-c h1{font-size:clamp(32px,5.5vw,72px);font-weight:200;color:#fff;letter-spacing:-.04em;line-height:1.1;margin-bottom:20px}
+.bc-hero-c h1 strong{font-weight:600}
+.bc-hero-sub{font-size:clamp(15px,1.4vw,18px);color:rgba(255,255,255,.65);font-weight:300;letter-spacing:.02em;max-width:520px;line-height:1.8;margin-bottom:32px}
+.bc-hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.bc-btn{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:18px 44px;border:2px solid rgba(255,255,255,.6);color:#fff;background:transparent;transition:all .4s;cursor:pointer}
+.bc-btn:hover{background:#fff;color:#1a1a1a;border-color:#fff}
+.bc-btn--accent{background:var(--bc-accent);color:#fff;border-color:var(--bc-accent);border-width:2px}
+.bc-btn--accent:hover{background:var(--bc-accent-hover);border-color:var(--bc-accent-hover);color:#fff}
+.bc-btn--hero-ghost{background:#fff;border-color:#fff;color:#1a1a1a}
+.bc-btn--hero-ghost:hover{background:rgba(255,255,255,.85);border-color:rgba(255,255,255,.85);color:#1a1a1a}
+.bc-btn--solid{background:#fff;color:#1a1a1a;border-color:#fff}
+.bc-btn--solid:hover{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}
+.bc-btn--dark{border-color:#1a1a1a;color:#1a1a1a;background:transparent}
+.bc-btn--dark:hover{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.bc-btn--dark-accent{background:var(--bc-accent);color:#fff;border-color:var(--bc-accent)}
+.bc-btn--dark-accent:hover{background:var(--bc-accent-hover);border-color:var(--bc-accent-hover);color:#fff}
+.bc-hero-scroll{position:absolute;bottom:clamp(56px,6vw,80px);left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px}
+.bc-hero-scroll span{font-size:9px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.bc-hero-scroll-line{width:1px;height:40px;background:rgba(255,255,255,.2);position:relative;overflow:hidden}
+.bc-hero-scroll-line::after{content:'';position:absolute;top:-100%;left:0;width:1px;height:100%;background:#fff;animation:scrollLine 2s ease-in-out infinite}
+@keyframes scrollLine{0%{top:-100%}50%{top:100%}100%{top:100%}}
+
+/* ── SECTION SHARED ── */
+.bc-section-pad{padding:clamp(80px,10vw,160px) clamp(24px,4vw,60px)}
+.bc-section-inner{max-width:1600px;margin:0 auto}
+.bc-section-label{font-size:11px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:#999;margin-bottom:24px;display:block}
+.bc-section-h2{font-size:clamp(28px,3.5vw,48px);font-weight:200;letter-spacing:-.03em;line-height:1.15;color:#000;margin-bottom:clamp(20px,3vw,40px)}
+.bc-section-h2 strong{font-weight:600}
+.bc-text-link{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s;padding-bottom:1px}
+.bc-text-link:hover{border-color:var(--bc-accent)}
+.bc-bg-light{background:#f8f8f6}
+.bc-bg-dark{background:#0f0f0f;color:#fff}
+.bc-bg-dark .bc-section-h2{color:#fff}
+.bc-bg-dark .bc-section-label{color:rgba(255,255,255,.35)}
+
+/* ── INTRO / ABOUT PREVIEW ── */
+.bc-intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,120px);align-items:center}
+.bc-intro-text{max-width:560px}
+.bc-intro-text p{font-size:17px;color:#666;line-height:1.9;margin-bottom:16px}
+.bc-intro-text p:last-of-type{margin-bottom:28px}
+.bc-intro-links{display:flex;gap:24px;flex-wrap:wrap}
+.bc-intro-img{overflow:hidden}
+.bc-intro-img img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:brightness(.95)}
+
+/* ── PROJECT GRID (3x3 even) ── */
+.bc-grid{padding:clamp(80px,10vw,160px) clamp(24px,4vw,60px) clamp(40px,5vw,80px);max-width:1600px;margin:0 auto}
+.bc-grid-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1.2vw,16px)}
+.bc-grid-item{position:relative;overflow:hidden;display:block}
+.bc-grid-item img{width:100%;aspect-ratio:3/2;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .5s;filter:brightness(.92)}
+.bc-grid-item:hover img{transform:scale(1.03);filter:brightness(.8)}
+.bc-grid-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.55) 100%);opacity:0;transition:opacity .5s}
+.bc-grid-item:hover::after{opacity:1}
+.bc-grid-item-info{position:absolute;bottom:clamp(12px,1.5vw,24px);left:clamp(12px,1.5vw,24px);right:clamp(12px,1.5vw,24px);z-index:2;opacity:0;transform:translateY(8px);transition:all .5s}
+.bc-grid-item:hover .bc-grid-item-info{opacity:1;transform:translateY(0)}
+.bc-grid-item-info h3{font-size:clamp(16px,1.5vw,24px);font-weight:300;color:#fff;letter-spacing:-.02em}
+.bc-grid-item-info h3 strong{font-weight:600}
+.bc-grid-item-info .bc-grid-loc{font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px;display:block}
+.bc-grid-all{text-align:center;padding-top:clamp(40px,5vw,80px)}
+.bc-grid-all a{font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#999;transition:color .3s;position:relative;padding-bottom:4px;border-bottom:1px solid #ddd}
+.bc-grid-all a:hover{color:var(--bc-accent);border-color:var(--bc-accent)}
+
+/* ── SERVICES OVERVIEW ── */
+.bc-svcs-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,60px)}
+.bc-svc-card{padding:clamp(24px,3vw,40px) 0;border-bottom:1px solid #ddd}
+.bc-svc-card h3{font-size:clamp(18px,1.5vw,22px);font-weight:500;color:#1a1a1a;letter-spacing:-.01em;margin-bottom:12px}
+.bc-svc-card p{font-size:16px;color:#666;line-height:1.8;margin-bottom:16px;font-size:16px}
+.bc-svc-card a.bc-svc-link{font-size:12px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--bc-accent);transition:color .3s}
+.bc-svc-card a.bc-svc-link:hover{color:var(--bc-accent-hover)}
+
+/* ── WHY BALMORAL / DIFFERENTIATORS ── */
+.bc-why{position:relative;overflow:hidden}
+.bc-why-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.bc-why::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.7);z-index:1}
+.bc-why-content{position:relative;z-index:2}
+.bc-why-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,60px);margin-top:clamp(40px,5vw,60px)}
+.bc-why-item h3{font-size:clamp(16px,1.3vw,20px);font-weight:500;color:#fff;margin-bottom:10px}
+.bc-why-item p{font-size:16px;color:rgba(255,255,255,.55);line-height:1.8}
+
+/* ── SERVICE AREAS (LOCAL SEO) ── */
+.bc-areas-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(24px,3vw,40px)}
+.bc-area-card{overflow:hidden}
+.bc-area-card img{width:100%;aspect-ratio:4/3;object-fit:cover;margin-bottom:20px;filter:brightness(.92)}
+.bc-area-card h3{font-size:clamp(18px,1.5vw,24px);font-weight:500;color:#1a1a1a;margin-bottom:10px}
+.bc-area-card p{font-size:16px;color:#666;line-height:1.8;margin-bottom:14px}
+.bc-area-links{display:flex;flex-direction:column;gap:6px}
+.bc-area-links a{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--bc-accent);transition:color .3s}
+.bc-area-links a:hover{color:var(--bc-accent-hover)}
+
+/* ── PROCESS ── */
+.bc-process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(20px,3vw,40px)}
+.bc-process-step{position:relative}
+.bc-process-num{font-size:clamp(48px,5vw,72px);font-weight:200;color:rgba(212,114,42,.15);line-height:1;margin-bottom:12px}
+.bc-process-step h3{font-size:clamp(15px,1.2vw,18px);font-weight:500;color:#1a1a1a;margin-bottom:8px}
+.bc-process-step p{font-size:15px;color:#888;line-height:1.7}
+
+/* ── CREDENTIALS ── */
+.bc-creds-row{display:flex;gap:clamp(40px,6vw,80px);align-items:flex-start;flex-wrap:wrap}
+.bc-cred{flex:1;min-width:200px}
+.bc-cred h3{font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#1a1a1a;margin-bottom:8px}
+.bc-cred p{font-size:15px;color:#888;line-height:1.7}
+
+/* ── TESTIMONIALS ── */
+.bc-testimonials-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(24px,3vw,40px)}
+.bc-testimonial{padding:clamp(24px,3vw,40px);background:#f8f8f6;border:1px solid #eee}
+.bc-testimonial blockquote{font-size:clamp(17px,1.4vw,20px);font-weight:300;line-height:1.7;color:#333;margin-bottom:20px;font-style:normal}
+.bc-testimonial-attr{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#999}
+.bc-test-all{margin-top:clamp(32px,4vw,48px);text-align:center}
+.bc-test-all a{font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#999;transition:color .3s;padding-bottom:4px;border-bottom:1px solid #ddd}
+.bc-test-all a:hover{color:var(--bc-accent);border-color:var(--bc-accent)}
+
+/* ── BLOG POSTS ── */
+.bc-blog-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(24px,3vw,40px)}
+.bc-blog-card img{width:100%;aspect-ratio:16/9;object-fit:cover;margin-bottom:16px;filter:brightness(.95);transition:filter .3s}
+.bc-blog-card:hover img{filter:brightness(.88)}
+.bc-blog-card h3{font-size:clamp(16px,1.3vw,20px);font-weight:500;color:#1a1a1a;margin-bottom:8px;line-height:1.4}
+.bc-blog-card p{font-size:15px;color:#888;line-height:1.7;margin-bottom:10px}
+.bc-blog-card .bc-blog-date{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:#bbb}
+.bc-blog-all{margin-top:clamp(32px,4vw,48px);text-align:center}
+.bc-blog-all a{font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#999;transition:color .3s;padding-bottom:4px;border-bottom:1px solid #ddd}
+.bc-blog-all a:hover{color:var(--bc-accent);border-color:var(--bc-accent)}
+
+/* ── FAQ ── */
+.bc-faq-list{max-width:900px}
+.bc-faq-item{border-bottom:1px solid #eee}
+.bc-faq-q{display:flex;justify-content:space-between;align-items:center;padding:clamp(18px,2vw,28px) 0;cursor:pointer;background:none;border:none;width:100%;text-align:left;font-family:'Inter',sans-serif;font-size:clamp(17px,1.4vw,20px);font-weight:400;color:#1a1a1a;line-height:1.5;gap:16px}
+.bc-faq-q:hover{color:#666}
+.bc-faq-icon{font-size:20px;color:#ccc;transition:transform .3s;flex-shrink:0}
+.bc-faq-item.open .bc-faq-icon{transform:rotate(45deg)}
+.bc-faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
+.bc-faq-item.open .bc-faq-a{max-height:500px}
+.bc-faq-a-inner{padding:0 0 clamp(18px,2vw,28px);font-size:16px;color:#666;line-height:1.9}
+.bc-faq-a-inner a{color:var(--bc-accent);font-weight:500;border-bottom:1px solid rgba(212,114,42,.3);transition:border-color .3s}
+.bc-faq-a-inner a:hover{border-color:var(--bc-accent)}
+
+/* ── CTA ── */
+.bc-cta{position:relative;height:60vh;min-height:400px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bc-cta img.bc-cta-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.bc-cta::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:1}
+.bc-cta-c{position:relative;z-index:2;text-align:center;max-width:600px;padding:0 24px}
+.bc-cta h2{font-size:clamp(28px,4vw,52px);font-weight:200;color:#fff;letter-spacing:-.03em;margin-bottom:16px;line-height:1.15}
+.bc-cta h2 strong{font-weight:600}
+.bc-cta p{font-size:17px;color:rgba(255,255,255,.55);margin-bottom:36px;line-height:1.8;font-weight:300}
+
+/* ── FOOTER ── */
+.bc-ft{background:#0a0a0a;color:#fff;padding:clamp(48px,6vw,80px) clamp(24px,4vw,60px) clamp(24px,3vw,40px);border-top:3px solid var(--bc-accent)}
+.bc-ft-inner{max-width:1600px;margin:0 auto}
+.bc-ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:clamp(24px,4vw,60px);padding-bottom:clamp(40px,5vw,60px);border-bottom:1px solid rgba(255,255,255,.08)}
+.bc-ft-brand p{font-size:13px;color:rgba(255,255,255,.35);line-height:1.8;margin-top:20px;max-width:300px;font-weight:300}
+.bc-ft-mark{height:60px;width:auto;opacity:.8;margin-bottom:8px}
+.bc-ft-col h4{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:20px}
+.bc-ft-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);line-height:2.2;transition:color .3s;font-weight:300}
+.bc-ft-col a:hover{color:var(--bc-accent)}
+.bc-ft-btm{display:flex;justify-content:space-between;align-items:center;padding-top:clamp(20px,3vw,32px)}
+.bc-ft-copy{font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.02em;font-weight:300}
+.bc-ft-social{display:flex;gap:24px}
+.bc-ft-social a{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);transition:color .3s}
+.bc-ft-social a:hover{color:var(--bc-accent)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+.bc-hd-nav{display:none}
+.bc-hd-mob{display:block}
+}
+@media(max-width:768px){
+.bc-hero{min-height:600px}
+.bc-hero-scroll{display:none}
+.bc-hero-pips{bottom:20px}
+.bc-hero-ctas{flex-direction:column;gap:12px}
+.bc-hero-ctas .bc-btn{text-align:center}
+.bc-grid-wrap{grid-template-columns:repeat(2,1fr)}
+.bc-intro{grid-template-columns:1fr;gap:40px}
+.bc-intro-img{order:-1}
+.bc-intro-img img{aspect-ratio:16/9}
+.bc-svcs-grid{grid-template-columns:1fr}
+.bc-why-grid{grid-template-columns:1fr}
+.bc-areas-grid{grid-template-columns:1fr}
+.bc-process-grid{grid-template-columns:repeat(2,1fr)}
+.bc-testimonials-grid{grid-template-columns:1fr}
+.bc-blog-grid{grid-template-columns:1fr}
+.bc-cta{height:50vh;min-height:350px}
+.bc-ft-top{grid-template-columns:1fr 1fr;gap:32px}
+.bc-ft-btm{flex-direction:column;gap:12px;text-align:center}
+}
+@media(max-width:480px){
+.bc-grid-wrap{grid-template-columns:1fr}
+.bc-ft-top{grid-template-columns:1fr}
+.bc-process-grid{grid-template-columns:1fr}
+.bc-creds-row{flex-direction:column;gap:24px}
+}
+</style>
+
+<div class="bc-progress" id="bcProgress"></div>
+
+<div class="bc">
+
+<!-- ════════════════════════════════════════════ -->
+<!-- NAV -->
+<!-- ════════════════════════════════════════════ -->
+<header class="bc-hd bc-hd--top" id="bcHd">
+  <div class="bc-hd-inner">
+    <a href="/" class="bc-hd-logo">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/3c9cc99e-ad84-44ab-8463-81a88afa5f9b/Balmoral-Header3.png" alt="Balmoral Construction — Custom Home Builder in Whistler, Pemberton and Squamish">
+    </a>
+    <ul class="bc-hd-nav">
+      <li><a href="/about" class="bc-hd-link">About</a></li>
+      <li class="bc-hd-drop">
+        <a href="/services" class="bc-hd-link">Services</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/custom-home-building">Custom Home Building</a>
+          <a href="/home-renovations">Home Renovations</a>
+          <a href="/general-contracting">General Contracting</a>
+          <a href="/project-management">Project Management</a>
+          <a href="/land-consultation">Land Consultation</a>
+          <a href="/permit-coordination">Permit Coordination</a>
+        </div>
+      </li>
+      <li><a href="/work" class="bc-hd-link">Work</a></li>
+      <li class="bc-hd-drop">
+        <a href="javascript:void(0)" class="bc-hd-link">Locations</a>
+        <div class="bc-hd-drop-menu">
+          <a href="/whistler-home-builder">Whistler</a>
+          <a href="/pemberton-home-builder">Pemberton</a>
+          <a href="/squamish-home-builder">Squamish</a>
+        </div>
+      </li>
+      <li><a href="/blog" class="bc-hd-link">Blog</a></li>
+      <li><a href="/contact" class="bc-hd-link">Contact</a></li>
+    </ul>
+    <button class="bc-hd-mob" aria-label="Menu" onclick="document.getElementById('bcMob').classList.toggle('open');this.classList.toggle('open');document.getElementById('bcHd').classList.toggle('bc-hd--mob-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="bc-mob" id="bcMob">
+  <a href="/about">About</a>
+  <a href="/services">Services</a>
+  <div class="bc-mob-sub">
+    <a href="/custom-home-building">Custom Home Building</a>
+    <a href="/home-renovations">Home Renovations</a>
+    <a href="/general-contracting">General Contracting</a>
+    <a href="/project-management">Project Management</a>
+    <a href="/land-consultation">Land Consultation</a>
+    <a href="/permit-coordination">Permit Coordination</a>
+  </div>
+  <a href="/work">Work</a>
+  <a href="javascript:void(0)">Locations</a>
+  <div class="bc-mob-sub">
+    <a href="/whistler-home-builder">Whistler</a>
+    <a href="/pemberton-home-builder">Pemberton</a>
+    <a href="/squamish-home-builder">Squamish</a>
+  </div>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 1. HERO — Full Viewport -->
+<!-- ════════════════════════════════════════════ -->
+<section class="bc-hero" id="bcHero">
+  <div class="bc-hero-slides" id="bcHeroSlides">
+    <div class="bc-hero-slide bc-active">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/cbef60b8-5b6a-4fe1-b8b1-51584675f265/whistler-home-builder-balmoral-construction-warbler-45.jpg?format=2500w" alt="Warbler Way custom home in Whistler at dusk — modern mountain architecture by Balmoral Construction">
+    </div>
+    <div class="bc-hero-slide">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/ec7acb28-c48b-492c-acc6-3cce78d31b5d/whistler-home-builder-balmoral-construction-fitzsimmons-20.jpg?format=2500w" alt="White Gold 2 luxury custom home in Whistler — premium residential construction by Balmoral Construction">
+    </div>
+    <div class="bc-hero-slide">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/f5e179b4-accd-4319-8d56-ec7cade57368/7667Cerulean-Dusk-6.jpg?format=2500w" alt="Cerulean custom home in Pemberton at dusk — mountain contemporary design by Balmoral Construction">
+    </div>
+    <div class="bc-hero-slide">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/e414fe2b-a112-496b-8acf-12ba0617332a/whistler-custom-home-builder-drifter1.jpg?format=2500w" alt="Drifter custom home in Whistler — boutique custom home builder in the Sea to Sky Corridor">
+    </div>
+    <div class="bc-hero-slide">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/5c61a29e-68de-4319-9de2-c8f345512926/custom-home-whistler-hillside-exterior-sea-to-sky.jpg?format=2500w" alt="Hillside custom home exterior in Whistler — Sea to Sky residential construction by Balmoral Construction">
+    </div>
+  </div>
+  <div class="bc-hero-pips" id="bcHeroPips">
+    <button class="bc-hero-pip bc-active" aria-label="Slide 1"></button>
+    <button class="bc-hero-pip" aria-label="Slide 2"></button>
+    <button class="bc-hero-pip" aria-label="Slide 3"></button>
+    <button class="bc-hero-pip" aria-label="Slide 4"></button>
+    <button class="bc-hero-pip" aria-label="Slide 5"></button>
+  </div>
+  <div class="bc-hero-c">
+    <h1>Custom Home Builder in <strong>Whistler, Pemberton &amp; Squamish</strong></h1>
+    <p class="bc-hero-sub">Boutique custom home construction in the Sea to Sky Corridor. Hands-on craftsmanship, transparent process, and an owner on every job site — from foundation to finish.</p>
+    <div class="bc-hero-ctas">
+      <a href="/work" class="bc-btn bc-btn--accent">View Our Work</a>
+      <a href="/contact" class="bc-btn bc-btn--hero-ghost">Start Your Project</a>
+    </div>
+  </div>
+  <div class="bc-hero-scroll">
+    <span>Scroll</span>
+    <div class="bc-hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 2. INTRODUCTION / ABOUT PREVIEW -->
+<!-- ════════════════════════════════════════════ -->
+<section class="bc-section-pad" style="background:#fff">
+  <div class="bc-section-inner bc-intro">
+    <div class="bc-intro-text bc-reveal">
+      <span class="bc-section-label">About Balmoral</span>
+      <h2 class="bc-section-h2">A boutique builder<br>in the <strong>Sea to Sky Corridor</strong></h2>
+      <p>Balmoral Construction is a custom home builder based in Pemberton, BC, serving homeowners across Whistler, Pemberton, and Squamish. Founded in 2011 by Marc Harvey — a journeyman carpenter with over 20 years of experience in both commercial and residential construction — Balmoral was built on a simple principle: take on fewer projects and build each one with greater care.</p>
+      <p>We intentionally limit the number of homes we build each year so that Marc and our project management team can be personally involved in every build. From <a href="/custom-home-building" class="bc-text-link">custom home construction</a> and <a href="/home-renovations" class="bc-text-link">large-scale renovations</a> to <a href="/services" class="bc-text-link">land consultation and permit coordination</a>, we manage the full scope of your project with a hands-on approach that larger firms simply cannot match.</p>
+      <div class="bc-intro-links">
+        <a href="/about" class="bc-btn bc-btn--dark-accent">Learn About Us</a>
+        <a href="/services" class="bc-btn bc-btn--dark">Our Services</a>
+      </div>
+    </div>
+    <div class="bc-intro-img bc-reveal bc-reveal-delay-1">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/9b988432-2c4f-4cfa-997d-52aa93b4429d/whistler-home-builder-balmoral-construction-warbler-5.jpg" alt="Warbler Way interior — custom home craftsmanship by Balmoral Construction in Whistler, BC" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 3. FEATURED PROJECTS — 9 Project Grid -->
+<!-- ════════════════════════════════════════════ -->
+<div class="bc-grid">
+  <span class="bc-section-label bc-reveal">Our Work</span>
+  <h2 class="bc-section-h2 bc-reveal">Custom homes built across the <strong>Sea to Sky</strong></h2>
+  <div class="bc-grid-wrap bc-reveal bc-reveal-delay-1">
+    <a href="/warbler-way" class="bc-grid-item">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/cbef60b8-5b6a-4fe1-b8b1-51584675f265/whistler-home-builder-balmoral-construction-warbler-45.jpg" alt="Warbler Way custom home in Whistler at dusk — modern mountain architecture by Balmoral Construction" loading="lazy">
+      <div class="bc-grid-item-info">
+        <h3><strong>Warbler Way</strong></h3>
+        <span class="bc-grid-loc">Whistler, BC</span>
+      </div>
+    </a>
+    <a href="/cerulean" class="bc-grid-item">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/f5e179b4-accd-4319-8d56-ec7cade57368/7667Cerulean-Dusk-6.jpg" alt="Cerulean custom home in Pemberton at dusk — mountain contemporary design by Balmoral Construction" loading="lazy">
+      <div class="bc-grid-item-info">
+        <h3><strong>Cerulean</strong></h3>
+        <span class="bc-grid-loc">Pemberton, BC</span>
+      </div>
+    </a>
+    <a href="/white-gold-2" class="bc-grid-item">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/ec7acb28-c48b-492c-acc6-3cce78d31b5d/whistler-home-builder-balmoral-construction-fitzsimmons-20.jpg" alt="White Gold 2 luxury custom home in Whistler — built by Balmoral Construction" loading="lazy">
+      <div class="bc-grid-item-info">
+        <h3><strong>White Gold 2</strong></h3>
+        <span class="bc-grid-loc">Whistler, BC</span>
+      </div>
+    </a>
+    <a href="/sugarloaf" class="bc-grid-item">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/989bc309-dd71-40c1-83b9-0ba6f6523a1e/custom-home-builder-pemberton-balmoral-construction-1.jpg" alt="Sugarloaf custom home in Pemberton, BC — residential construction by Balmoral Construction" loading="lazy">
+      <div class="bc-grid-item-info">
+        <h3><strong>Sugarloaf</strong></h3>
+        <span class="bc-grid-loc">Pemberton, BC</span>
+      </div>
+    </a>
+    <a href="/fitzsimmons" class="bc-grid-item">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/7954e373-fa46-448a-af4c-2981936bb465/A_021-1024x683.jpg" alt="Fitzsimmons custom home in Whistler — slope-side residential build by Balmoral Construction" loading="lazy">
+      <div class="bc-grid-item-info">
+        <h3><strong>Fitzsimmons</strong></h3>
+        <span class="bc-grid-loc">Whistler, BC</span>
+      </div>
+    </a>
+    <a href="/eagle" class="bc-grid-item">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/b8105bdf-c2e5-4daf-a854-6052a8af4cfb/eagle-drive-jpeg-2500px-6.jpg" alt="Eagle Drive custom home in Pemberton — built by Balmoral Construction in the Pemberton Meadows" loading="lazy">
+      <div class="bc-grid-item-info">
+        <h3><strong>Eagle</strong></h3>
+        <span class="bc-grid-loc">Pemberton, BC</span>
+      </div>
+    </a>
+    <a href="/white-gold" class="bc-grid-item">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/07778878-5a86-44cb-89d6-9999c9608955/A_002-1024x683.jpg" alt="White Gold custom home in Whistler — luxury alpine living by Balmoral Construction" loading="lazy">
+      <div class="bc-grid-item-info">
+        <h3><strong>White Gold</strong></h3>
+        <span class="bc-grid-loc">Whistler, BC</span>
+      </div>
+    </a>
+    <a href="/mountain-view" class="bc-grid-item">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/502dad0e-5b2d-49ef-a7ca-93b653e79bfe/A_059-1024x683.jpg" alt="Mountain View custom home in Whistler — panoramic views by Balmoral Construction" loading="lazy">
+      <div class="bc-grid-item-info">
+        <h3><strong>Mountain View</strong></h3>
+        <span class="bc-grid-loc">Whistler, BC</span>
+      </div>
+    </a>
+    <a href="/drifter" class="bc-grid-item">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/e414fe2b-a112-496b-8acf-12ba0617332a/whistler-custom-home-builder-drifter1.jpg" alt="Drifter custom home in Whistler at dusk — residential construction by Balmoral Construction" loading="lazy">
+      <div class="bc-grid-item-info">
+        <h3><strong>Drifter</strong></h3>
+        <span class="bc-grid-loc">Whistler, BC</span>
+      </div>
+    </a>
+  </div>
+  <div class="bc-grid-all bc-reveal bc-reveal-delay-2">
+    <a href="/work">View All Projects &rarr;</a>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 4. SERVICES OVERVIEW -->
+<!-- ════════════════════════════════════════════ -->
+<section class="bc-section-pad bc-bg-light" style="border-top:1px solid #eee;border-bottom:1px solid #eee">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">What We Do</span>
+    <h2 class="bc-section-h2 bc-reveal">Full-service custom home building<br>and <strong>construction services</strong></h2>
+    <div class="bc-svcs-grid bc-reveal bc-reveal-delay-1">
+      <div class="bc-svc-card">
+        <h3>Custom Home Building</h3>
+        <p>From concept to completion, we manage every stage of your custom home build. Our boutique approach means your project gets the focused attention of our owner and project management team — not a rotating crew of subcontractors you'll never meet.</p>
+        <a href="/custom-home-building" class="bc-svc-link">Learn More &rarr;</a>
+      </div>
+      <div class="bc-svc-card">
+        <h3>Home Renovations</h3>
+        <p>Large-scale interior and exterior renovations across Whistler, Pemberton, and Squamish. Whether it's a full kitchen remodel, bathroom renovation, or whole-home transformation, we bring the same precision to renovations as we do to new builds.</p>
+        <a href="/home-renovations" class="bc-svc-link">Learn More &rarr;</a>
+      </div>
+      <div class="bc-svc-card">
+        <h3>General Contracting</h3>
+        <p>General contracting services for standard and alternative building styles. We bring long-standing relationships with trusted trades across the Sea to Sky Corridor, ensuring quality workmanship on every project.</p>
+        <a href="/general-contracting" class="bc-svc-link">Learn More &rarr;</a>
+      </div>
+      <div class="bc-svc-card">
+        <h3>Project Management</h3>
+        <p>End-to-end project management from initial planning through to completion. We coordinate architects, engineers, trades, and inspections to keep your project on schedule and on budget.</p>
+        <a href="/project-management" class="bc-svc-link">Learn More &rarr;</a>
+      </div>
+      <div class="bc-svc-card">
+        <h3>Land Consultation</h3>
+        <p>Thinking about purchasing land in the Sea to Sky? We evaluate properties for buildability, access, servicing costs, and potential challenges — helping you make informed decisions before you buy.</p>
+        <a href="/land-consultation" class="bc-svc-link">Learn More &rarr;</a>
+      </div>
+      <div class="bc-svc-card">
+        <h3>Building Permit Coordination</h3>
+        <p>We act as your liaison with consultants, municipal authorities, and inspectors — managing the full permitting process from application through to occupancy. One less thing for you to worry about.</p>
+        <a href="/permit-coordination" class="bc-svc-link">Learn More &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 5. WHY BALMORAL / DIFFERENTIATORS -->
+<!-- ════════════════════════════════════════════ -->
+<section class="bc-why bc-section-pad">
+  <img class="bc-why-bg" src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/695af498-0bc2-49ca-838f-66a41bc683f4/custom-home-interior-whistler-fireplace-sea-to-sky.jpg" alt="Custom home interior with stone fireplace — craftsmanship by Balmoral Construction in the Sea to Sky Corridor" loading="lazy">
+  <div class="bc-why-content bc-section-inner">
+    <span class="bc-section-label bc-reveal" style="color:rgba(255,255,255,.35)">Why Balmoral</span>
+    <h2 class="bc-section-h2 bc-reveal" style="color:#fff">What sets us <strong>apart</strong></h2>
+    <div class="bc-why-grid bc-reveal bc-reveal-delay-1">
+      <div class="bc-why-item">
+        <h3>Owner on Every Job Site</h3>
+        <p>Marc Harvey, our founder, is personally involved in every project from first site walk to final walkthrough. You always have direct access to the person making decisions on your build — not a layer of project coordinators.</p>
+      </div>
+      <div class="bc-why-item">
+        <h3>20+ Years in the Sea to Sky</h3>
+        <p>Two decades of building in Whistler, Pemberton, and Squamish means we understand the terrain, the climate, the local regulations, and the trades needed to build homes that stand up to mountain conditions and stand the test of time.</p>
+      </div>
+      <div class="bc-why-item">
+        <h3>Intentionally Limited Projects</h3>
+        <p>We take on a limited number of builds per year by design — not by circumstance. This means your project receives the hands-on attention, consistent crew presence, and quality oversight that volume builders simply cannot provide.</p>
+      </div>
+      <div class="bc-why-item">
+        <h3>Licensed, Insured &amp; Warranty-Backed</h3>
+        <p>Registered with both <a href="/reviews" style="color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.3)">BC New Home Warranty and National Home Warranty</a>. Members of the Canadian Home Builders Association — Sea to Sky. Your investment is fully protected.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 6. SERVICE AREAS (LOCAL SEO) -->
+<!-- ════════════════════════════════════════════ -->
+<section class="bc-section-pad" style="background:#fff">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Where We Build</span>
+    <h2 class="bc-section-h2 bc-reveal">Custom home building across the <strong>Sea to Sky Corridor</strong></h2>
+    <div class="bc-areas-grid bc-reveal bc-reveal-delay-1">
+      <div class="bc-area-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/0a60d65a-be47-4e06-be7b-d649e5347ed1/Newhomeconstruction.jpg" alt="New custom home construction in Whistler, BC — boutique home builder Balmoral Construction" loading="lazy">
+        <h3>Whistler</h3>
+        <p>As a Whistler home builder with over two decades of experience, we understand the unique challenges of building in a world-class mountain resort — from heavy snow loads and steep terrain to navigating the Resort Municipality's building requirements. Our portfolio includes custom homes across Whistler's most sought-after neighbourhoods.</p>
+        <div class="bc-area-links">
+          <a href="/whistler-home-builder">Custom Homes in Whistler &rarr;</a>
+          <a href="/whistler-home-renovations">Whistler Renovations &rarr;</a>
+        </div>
+      </div>
+      <div class="bc-area-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/8d1fe690-3b0d-4125-b1ca-be9981cb4f07/custom-home-builder-pemberton-balmoral-construction-18.jpg" alt="Custom home in Pemberton with mountain backdrop — residential construction by Balmoral Construction" loading="lazy">
+        <h3>Pemberton</h3>
+        <p>Pemberton is home — our office is on Sugarloaf Place and we've built some of our most celebrated projects right here. As a Pemberton contractor, we know the local building landscape inside out: soil conditions, servicing requirements, and the Village and SLRD's permitting processes. Building in Pemberton means building with a team that lives where you do.</p>
+        <div class="bc-area-links">
+          <a href="/pemberton-home-builder">Custom Homes in Pemberton &rarr;</a>
+          <a href="/pemberton-home-renovations">Pemberton Renovations &rarr;</a>
+        </div>
+      </div>
+      <div class="bc-area-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/00d2881c-a63e-4112-89ac-85586e94ab97/image-1024x683.png" alt="Balsam custom home project in Squamish, BC — residential construction by Balmoral Construction" loading="lazy">
+        <h3>Squamish</h3>
+        <p>Squamish is one of BC's fastest-growing communities, and we're seeing increasing demand for quality custom home construction in the area. As a Squamish contractor, we bring the same meticulous standards we apply in Whistler and Pemberton — combined with knowledge of local regulations, site conditions, and the opportunities unique to this part of the corridor.</p>
+        <div class="bc-area-links">
+          <a href="/squamish-home-builder">Custom Homes in Squamish &rarr;</a>
+          <a href="/squamish-home-renovations">Squamish Renovations &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 7. PROCESS / HOW WE WORK -->
+<!-- ════════════════════════════════════════════ -->
+<section class="bc-section-pad bc-bg-light" style="border-top:1px solid #eee;border-bottom:1px solid #eee">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">How We Work</span>
+    <h2 class="bc-section-h2 bc-reveal">From first conversation to <strong>move-in day</strong></h2>
+    <div class="bc-process-grid bc-reveal bc-reveal-delay-1">
+      <div class="bc-process-step">
+        <div class="bc-process-num">01</div>
+        <h3>Consultation</h3>
+        <p>We start with a conversation about your vision, your land, and your budget. We'll visit the site, discuss feasibility, and outline a clear path forward — no commitment required.</p>
+      </div>
+      <div class="bc-process-step">
+        <div class="bc-process-num">02</div>
+        <h3>Design &amp; Planning</h3>
+        <p>Working with your architect and our design partners, we refine the plans, engineer the structure, and lock in a detailed budget. No surprises down the road.</p>
+      </div>
+      <div class="bc-process-step">
+        <div class="bc-process-num">03</div>
+        <h3>Permits</h3>
+        <p>We handle all <a href="/permit-coordination" class="bc-text-link">permit coordination</a> — from municipal applications and engineering to inspections. You sign off; we manage the process.</p>
+      </div>
+      <div class="bc-process-step">
+        <div class="bc-process-num">04</div>
+        <h3>Construction</h3>
+        <p>This is where it comes together. Our team manages every trade, every inspection, and every detail. Regular updates and site walkthroughs keep you informed throughout the <a href="/custom-home-building" class="bc-text-link">build</a>.</p>
+      </div>
+      <div class="bc-process-step">
+        <div class="bc-process-num">05</div>
+        <h3>Walkthrough &amp; Warranty</h3>
+        <p>We do a thorough final walkthrough together, address every detail, and hand over the keys. Your new home is backed by full <a href="/reviews" class="bc-text-link">BC warranty coverage</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 8. CREDENTIALS & ASSOCIATIONS -->
+<!-- ════════════════════════════════════════════ -->
+<section class="bc-section-pad" style="background:#fff">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Credentials</span>
+    <h2 class="bc-section-h2 bc-reveal">Licensed, registered &amp; <strong>industry recognized</strong></h2>
+    <div class="bc-creds-row bc-reveal bc-reveal-delay-1">
+      <div class="bc-cred">
+        <h3>BC New Home Warranty</h3>
+        <p>Registered residential builder under BC's mandatory new home warranty program. Every new home we build comes with 2-5-10 warranty coverage protecting your investment for up to a decade.</p>
+      </div>
+      <div class="bc-cred">
+        <h3>National Home Warranty</h3>
+        <p>Additionally registered with National Home Warranty for comprehensive coverage. Dual registration means an extra layer of protection and accountability on every project.</p>
+      </div>
+      <div class="bc-cred">
+        <h3>CHBA — Sea to Sky</h3>
+        <p>Proud member of the Canadian Home Builders Association — Sea to Sky chapter. Active participation in the local building community keeps us current on best practices, regulations, and industry standards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 9. TESTIMONIALS -->
+<!-- ════════════════════════════════════════════ -->
+<section class="bc-section-pad bc-bg-light" style="border-top:1px solid #eee;border-bottom:1px solid #eee">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Client Testimonials</span>
+    <h2 class="bc-section-h2 bc-reveal">What our clients <strong>say</strong></h2>
+    <div class="bc-testimonials-grid bc-reveal bc-reveal-delay-1">
+      <div class="bc-testimonial">
+        <blockquote>&ldquo;I've worked with Balmoral on four separate projects and have been extremely happy with all of them. Marc and his crew are diligent, responsive, cost conscious, and build a top-quality product.&rdquo;</blockquote>
+        <div class="bc-testimonial-attr">Rob Zwick &mdash; Whistler, BC</div>
+      </div>
+      <div class="bc-testimonial">
+        <blockquote>&ldquo;Our experience with Marc and the team at Balmoral Construction was nothing short of amazing. The lines of communication were always open keeping us informed regarding project timelines, budget and what to expect.&rdquo;</blockquote>
+        <div class="bc-testimonial-attr">Michelle &mdash; Pemberton, BC</div>
+      </div>
+      <div class="bc-testimonial">
+        <blockquote>&ldquo;I hired Balmoral Construction to build my 9,000 sq ft contemporary home in Whistler on a challenging lot. The results were outstanding. Marc Harvey is very experienced in high-end building requirements, reflected in everything from the framing to the finishes. Everything was perfect — and the project was completed on time and on budget. I highly recommend Marc for anyone looking for a builder.&rdquo;</blockquote>
+        <div class="bc-testimonial-attr">Nancy Saver &mdash; Whistler, BC</div>
+      </div>
+    </div>
+    <div class="bc-test-all bc-reveal bc-reveal-delay-2">
+      <a href="/reviews">Read All Reviews &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 10. RECENT BLOG POSTS -->
+<!-- ════════════════════════════════════════════ -->
+<section class="bc-section-pad" style="background:#fff">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">From the Blog</span>
+    <h2 class="bc-section-h2 bc-reveal">Insights on building in the <strong>Sea to Sky</strong></h2>
+    <div class="bc-blog-grid bc-reveal bc-reveal-delay-1">
+      <a href="/blog/how-much-does-it-cost-to-build-a-custom-home-in-whistler" class="bc-blog-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/a426db85-f990-4801-b038-978af5d9685c/whistler-custom-home-builder-pinewood-14.jpg" alt="Pinewood custom home in Whistler — understanding custom home construction costs in the Sea to Sky" loading="lazy">
+        <h3>How Much Does It Cost to Build a Custom Home in Whistler?</h3>
+        <p>A transparent breakdown of what drives custom home construction costs in Whistler — from site conditions and design complexity to finishes and mountain building requirements.</p>
+        <span class="bc-blog-date">February 2026</span>
+      </a>
+      <a href="/blog/bc-building-permit-process-explained" class="bc-blog-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/ace17031-d6c3-4539-9275-ab17d604e713/Balmoral-Construction-Squamish-equestrian-commercial.jpg" alt="Balmoral Construction commercial project in Squamish — guide to the BC building permit process" loading="lazy">
+        <h3>The BC Building Permit Process Explained</h3>
+        <p>What to expect when navigating the building permit process in Whistler, Pemberton, and Squamish — from application to occupancy.</p>
+        <span class="bc-blog-date">March 2026</span>
+      </a>
+      <a href="/blog/building-in-pemberton-vs-whistler" class="bc-blog-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/b4f7fef9-3851-4035-93fd-981fe221853a/9-balmoral-construction-wedge.jpg" alt="Wedgewoods neighbourhood home in Whistler — comparing building in Pemberton vs Whistler" loading="lazy">
+        <h3>Building in Pemberton vs. Whistler: What to Know</h3>
+        <p>Comparing lot costs, building regulations, lifestyle, and construction timelines between Pemberton and Whistler for prospective homeowners.</p>
+        <span class="bc-blog-date">March 2026</span>
+      </a>
+    </div>
+    <div class="bc-blog-all bc-reveal bc-reveal-delay-2">
+      <a href="/blog">View All Posts &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 11. FAQ SECTION -->
+<!-- ════════════════════════════════════════════ -->
+<section class="bc-section-pad bc-bg-light" style="border-top:1px solid #eee;border-bottom:1px solid #eee">
+  <div class="bc-section-inner">
+    <span class="bc-section-label bc-reveal">Frequently Asked Questions</span>
+    <h2 class="bc-section-h2 bc-reveal">Common questions about <strong>building in the Sea to Sky</strong></h2>
+    <div class="bc-faq-list bc-reveal bc-reveal-delay-1">
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">
+          How much does it cost to build a custom home in Whistler?
+          <span class="bc-faq-icon">+</span>
+        </button>
+        <div class="bc-faq-a">
+          <div class="bc-faq-a-inner">Custom home construction costs in Whistler typically range from $500 to $800+ per square foot, depending on site conditions, design complexity, finishes, and access. Mountain building involves specialized foundations, snow load engineering, and often challenging lot access — all of which factor into the final cost. We provide transparent budgeting from the earliest design stages so there are no surprises. <a href="/blog/how-much-does-it-cost-to-build-a-custom-home-in-whistler">Read our full cost guide</a> or <a href="/contact">contact us</a> for a detailed consultation about your specific lot and vision.</div>
+        </div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">
+          How long does it take to build a custom home in the Sea to Sky?
+          <span class="bc-faq-icon">+</span>
+        </button>
+        <div class="bc-faq-a">
+          <div class="bc-faq-a-inner">A typical <a href="/custom-home-building">custom home build</a> in the Sea to Sky Corridor takes 12 to 18 months from breaking ground, depending on the size and complexity of the project. The pre-construction phase — including design, engineering, and permits — usually adds another 4 to 8 months. We provide a detailed project timeline during the planning phase and keep you updated at every milestone throughout construction.</div>
+        </div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">
+          What is included in custom home construction?
+          <span class="bc-faq-icon">+</span>
+        </button>
+        <div class="bc-faq-a">
+          <div class="bc-faq-a-inner">Our <a href="/custom-home-building">custom home building</a> service covers everything from initial <a href="/services">land consultation</a> and design coordination through to <a href="/services">permit management</a>, full construction, and final walkthrough. This includes site preparation, foundation, framing, roofing, mechanical systems (HVAC, electrical, plumbing), insulation, interior finishing, landscaping coordination, and warranty coverage. We manage every trade and inspection so you have a single point of contact throughout your build.</div>
+        </div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">
+          Do you build custom homes in Squamish?
+          <span class="bc-faq-icon">+</span>
+        </button>
+        <div class="bc-faq-a">
+          <div class="bc-faq-a-inner">Yes, <a href="/squamish-home-builder">Squamish is one of our three primary service areas</a> along with <a href="/whistler-home-builder">Whistler</a> and <a href="/pemberton-home-builder">Pemberton</a>. Squamish is growing rapidly and we have experience navigating local building regulations, soil conditions, and the unique opportunities that come with building in this part of the Sea to Sky Corridor. Whether you're looking at a new custom home or a <a href="/home-renovations">major renovation</a> in Squamish, we'd be happy to discuss your project.</div>
+        </div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">
+          What warranty do new homes come with in BC?
+          <span class="bc-faq-icon">+</span>
+        </button>
+        <div class="bc-faq-a">
+          <div class="bc-faq-a-inner">In British Columbia, all new homes built by licensed residential builders come with mandatory warranty coverage. This includes 2 years on labour and materials, 5 years on the building envelope (protection against water penetration), and 10 years on the structure. Balmoral Construction is registered with both BC New Home Warranty and National Home Warranty, ensuring your investment is fully protected from day one. <a href="/reviews">See our credentials and reviews</a>.</div>
+        </div>
+      </div>
+
+      <div class="bc-faq-item">
+        <button class="bc-faq-q" aria-expanded="false">
+          How involved is the builder during construction?
+          <span class="bc-faq-icon">+</span>
+        </button>
+        <div class="bc-faq-a">
+          <div class="bc-faq-a-inner">At Balmoral, our owner Marc Harvey is personally present on every job site. We intentionally limit the number of projects we take on each year so that each build gets hands-on attention from our leadership team — not just a site supervisor. You'll always have direct access to the people making decisions on your project, and we provide regular progress updates and walkthroughs throughout the build. <a href="/about">Learn more about our team</a>.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 12. CTA SECTION -->
+<!-- ════════════════════════════════════════════ -->
+<section class="bc-cta">
+  <img class="bc-cta-bg" src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/6a0569c9-3137-4978-940e-5be53aa5b23a/ext-SE-entry-comp-1024x683+%281%29.jpeg" alt="Fitzsimmons North custom home render — start your custom home build with Balmoral Construction in the Sea to Sky" loading="lazy">
+  <div class="bc-cta-c bc-reveal">
+    <h2>Ready to discuss<br><strong>your project?</strong></h2>
+    <p>Every project starts with a conversation about your vision, your land, and how you want to live. Reach out to start planning your custom home in the Sea to Sky.</p>
+    <a href="/contact" class="bc-btn bc-btn--accent">Start a Conversation</a>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 13. FOOTER -->
+<!-- ════════════════════════════════════════════ -->
+<footer class="bc-ft">
+  <div class="bc-ft-inner">
+    <div class="bc-ft-top">
+      <div class="bc-ft-brand">
+        <img src="https://images.squarespace-cdn.com/content/v1/67f050169f46186391e6869f/83ca6501-705e-43ee-b119-551d0c16ea14/unnamed.png" alt="Balmoral Construction — Custom Home Builder in the Sea to Sky Corridor" class="bc-ft-mark">
+        <p>Boutique custom home builder in the Sea to Sky Corridor. Based in Pemberton, building across Whistler, Pemberton &amp; Squamish since 2011.</p>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Services</h4>
+        <a href="/custom-home-building">Custom Home Building</a>
+        <a href="/home-renovations">Home Renovations</a>
+        <a href="/general-contracting">General Contracting</a>
+        <a href="/project-management">Project Management</a>
+        <a href="/land-consultation">Land Consultation</a>
+        <a href="/permit-coordination">Permit Coordination</a>
+        <a href="/services">All Services</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Locations</h4>
+        <a href="/whistler-home-builder">Whistler Home Builder</a>
+        <a href="/pemberton-home-builder">Pemberton Home Builder</a>
+        <a href="/squamish-home-builder">Squamish Home Builder</a>
+        <a href="/whistler-home-renovations">Whistler Renovations</a>
+        <a href="/pemberton-home-renovations">Pemberton Renovations</a>
+        <a href="/squamish-home-renovations">Squamish Renovations</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Projects</h4>
+        <a href="/warbler-way">Warbler Way</a>
+        <a href="/cerulean">Cerulean</a>
+        <a href="/sugarloaf">Sugarloaf</a>
+        <a href="/white-gold-2">White Gold 2</a>
+        <a href="/fitzsimmons">Fitzsimmons</a>
+        <a href="/work">All Projects</a>
+      </div>
+      <div class="bc-ft-col">
+        <h4>Company</h4>
+        <a href="/about">About</a>
+        <a href="/work">Portfolio</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+        <a href="tel:6049072237">604.907.2237</a>
+        <a href="mailto:marc@balmoralconstruction.com">marc@balmoralconstruction.com</a>
+      </div>
+    </div>
+    <div class="bc-ft-btm">
+      <span class="bc-ft-copy">&copy; 2026 Balmoral Construction Inc. &mdash; Custom Home Builder in Whistler, Pemberton &amp; Squamish, BC</span>
+      <div class="bc-ft-social">
+        <a href="https://www.instagram.com/balmoralconstruction/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.houzz.com/professionals/general-contractors/balmoral-construction-pfvwus-pf~1513498919" target="_blank" rel="noopener">Houzz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  // Nav scroll behavior
+  var hd=document.getElementById('bcHd');
+  function checkScroll(){
+    var s=window.scrollY>80;
+    hd.classList.toggle('bc-hd--top',!s);
+    hd.classList.toggle('bc-hd--scrolled',s);
+  }
+  window.addEventListener('scroll',checkScroll);
+  checkScroll();
+
+  // Hero slideshow
+  var slides=document.querySelectorAll('.bc-hero-slide');
+  var pips=document.querySelectorAll('.bc-hero-pip');
+  var current=0;
+  var interval=6000;
+  var heroTimer;
+
+  function goToSlide(n){
+    slides[current].classList.remove('bc-active');
+    pips[current].classList.remove('bc-active');
+    current=n;
+    slides[current].classList.add('bc-active');
+    pips[current].classList.add('bc-active');
+  }
+
+  function nextSlide(){
+    goToSlide((current+1)%slides.length);
+  }
+
+  function startHero(){
+    heroTimer=setInterval(nextSlide,interval);
+  }
+
+  pips.forEach(function(pip,i){
+    pip.addEventListener('click',function(){
+      clearInterval(heroTimer);
+      goToSlide(i);
+      startHero();
+    });
+  });
+
+  startHero();
+
+  // Scroll progress bar
+  var prog=document.getElementById('bcProgress');
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(h>0) prog.style.width=(window.scrollY/h*100)+'%';
+  });
+
+  // Scroll reveal (IntersectionObserver)
+  var reveals=document.querySelectorAll('.bc-reveal');
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('bc-visible');observer.unobserve(e.target)}
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  reveals.forEach(function(el){observer.observe(el)});
+
+  // FAQ accordion
+  var faqItems=document.querySelectorAll('.bc-faq-item');
+  faqItems.forEach(function(item){
+    var btn=item.querySelector('.bc-faq-q');
+    btn.addEventListener('click',function(){
+      var isOpen=item.classList.contains('open');
+      // Close all
+      faqItems.forEach(function(i){i.classList.remove('open');i.querySelector('.bc-faq-q').setAttribute('aria-expanded','false')});
+      // Toggle clicked
+      if(!isOpen){
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+})();
+</script>
+<style>
+/* Squarespace page wrapper reset */
+.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block{margin:0!important;padding:0!important;max-width:100%!important;width:100%!important}
+.page-section:last-of-type{padding-bottom:0!important;margin-bottom:0!important}
+#footer,.Footer,.footer,footer[data-footer-id],footer:not(.bc-ft){display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important}
+.sqs-block-spacer,.sqs-block-horizontalrule,.section-background{display:none!important}
+@media(max-width:768px){.page-section,.content-wrapper,.sqs-layout,.sqs-row,.sqs-col,.sqs-block,.sqs-block-content,.fluid-engine,.fe-block,.Index-page-content,.blog-item-inner-wrapper,article.page,article.Page,.page-content,.Page-content{padding:0!important;margin:0!important}body{padding-bottom:0!important;margin-bottom:0!important}}
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){var f=document.querySelector('.bc-ft');if(f){var p=f.closest('.sqs-block')||f.closest('.page-section')||f.parentElement;while(p){var n=p.nextElementSibling;while(n){n.style.cssText='display:none!important;height:0!important;padding:0!important;margin:0!important;overflow:hidden!important';n=n.nextElementSibling}p=p.parentElement}}});
+</script>

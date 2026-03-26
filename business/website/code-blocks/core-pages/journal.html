@@ -1,0 +1,1694 @@
+<meta name="description" content="Practical guidance for architects, builders, and designers — award submissions, hiring a photographer, ROI of architectural photography, and visual brand strategy.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/journal">
+<meta property="og:title" content="Journal — Matt Anthony Photography">
+<meta property="og:description" content="Strategy and insight for architects, builders, and designers who build with purpose. Award guides, case studies, and visual brand strategy.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/journal">
+<meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8acad367-9f3e-4b80-8658-e96f7fc6c3a9/5322-backhouse-web-1.1.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Matt Anthony Photography">
+
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.jn-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a1a18 !important;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+}
+
+.jn-loader.jn-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.jn-loader-brand {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: #f6f4f0 !important;
+  opacity: 0;
+  animation: jnLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.jn-loader-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(138,133,121,0.7) !important;
+  margin-top: 8px;
+  opacity: 0;
+  animation: jnLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.jn-loader-line {
+  width: 80px;
+  height: 1px;
+  background: rgba(201,169,110,0.12) !important;
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+  opacity: 0;
+  animation: jnLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.jn-loader-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent) !important;
+  animation: jnLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+}
+
+@keyframes jnLoaderIn { to { opacity: 1; } }
+@keyframes jnLoaderFill { to { left: 100%; } }
+
+/* ── Scroll progress bar ── */
+.jn-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.4)) !important;
+  z-index: 9999;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px rgba(201,169,110,0.4);
+}
+
+/* ── Headline gold underline on em ── */
+.jn-wrap h2 em {
+  position: relative;
+  display: inline;
+}
+
+.jn-wrap h2 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.2)) !important;
+  transition: width 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.jn-wrap h2.jn-underlined em::after {
+  width: 100%;
+}
+
+/* ── Film grain overlay ── */
+.jn-grain::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.jn-grain {
+  position: relative;
+}
+
+.jn-grain > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Eyebrow gold dash (animated) ── */
+.jn-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.jn-eyebrow::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  background: #c9a96e !important;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.jn-eyebrow.jn-visible::before {
+  width: 24px;
+}
+
+/* ── Inline gold highlights ── */
+.jn-gold { color: #c9a96e !important; font-weight: 400; }
+
+/* ── Custom cursor ── */
+.jn-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(201,169,110,0.5) !important;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
+.jn-cursor.jn-active {
+  opacity: 1;
+}
+
+.jn-cursor.jn-hover {
+  width: 50px;
+  height: 50px;
+  border-color: #c9a96e !important;
+  background: rgba(201,169,110,0.08) !important;
+}
+
+.jn-cursor.jn-click {
+  width: 14px;
+  height: 14px;
+  background: rgba(201,169,110,0.3) !important;
+}
+
+.jn-cursor-dot {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #c9a96e !important;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.jn-cursor-dot.jn-active {
+  opacity: 1;
+}
+
+/* ── Magnetic button ── */
+.jn-magnetic {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Accent line ── */
+.jn-accent {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.2) 20%, rgba(201,169,110,0.2) 80%, transparent 100%) !important;
+}
+
+/* ── CTA button glow pulse ── */
+.jn-cta-btn {
+  animation: jnBtnGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes jnBtnGlow {
+  0% { box-shadow: none; }
+  100% { box-shadow: 0 0 40px rgba(201,169,110,0.15), 0 0 80px rgba(201,169,110,0.05); }
+}
+
+/* ── Hero scroll fade ── */
+.jn-hero-content {
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* ── Scroll indicator ── */
+.jn-scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 3;
+  transition: opacity 0.4s ease;
+}
+
+.jn-scroll-hint.jn-hidden { opacity: 0; pointer-events: none; }
+
+.jn-scroll-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.45rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.3) !important;
+}
+
+.jn-scroll-line {
+  width: 1px;
+  height: 36px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(246,244,240,0.1) !important;
+}
+
+.jn-scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #c9a96e !important;
+  animation: jnScrollPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes jnScrollPulse {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ── CTA background slow zoom ── */
+.jn-cta-bg img {
+  transition: transform 8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.jn-cta.jn-in-view .jn-cta-bg img {
+  transform: scale(1.08);
+}
+
+/* ═══ JOURNAL LANDING PAGE ═══ */
+.jn-wrap {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #1a1a18 !important;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.jn-wrap img {
+  max-width: 100%;
+  display: block;
+}
+
+.jn-wrap a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* email displayed via <a> tag text, no ::after needed */
+
+/* ─── HERO ─── */
+.jn-hero {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  min-height: 400px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 5vw 4rem;
+  background: #1a1a18 !important;
+}
+
+.jn-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 20%, rgba(26,26,24,0.6) 60%, rgba(26,26,24,0.92) 100%) !important;
+  z-index: 1;
+}
+
+.jn-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.jn-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  filter: saturate(0.6);
+}
+
+.jn-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+.jn-hero-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.jn-hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: #f6f4f0 !important;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.jn-hero h1 em {
+  font-style: italic;
+  color: #c9a96e !important;
+}
+
+.jn-hero-sub {
+  font-size: 1.05rem;
+  color: #d9d5cd !important;
+  font-weight: 300;
+  max-width: 560px;
+  line-height: 1.8;
+}
+
+/* ─── CATEGORY FILTER BAR ─── */
+.jn-cats {
+  padding: 2rem 5vw;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #eeece6 !important;
+}
+
+.jn-cat-btn {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.25rem;
+  border: 1px solid #d9d5cd !important;
+  color: #8a8579 !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: transparent !important;
+  border-radius: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.jn-cat-btn:hover,
+.jn-cat-btn.active {
+  border-color: #c9a96e !important;
+  color: #c9a96e !important;
+  background: rgba(201,169,110,0.06) !important;
+}
+
+/* ─── FEATURED ARTICLE ─── */
+.jn-featured {
+  padding: 4rem 5vw 3rem;
+}
+
+.jn-feat-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #f6f4f0 !important;
+  position: relative;
+}
+
+.jn-feat-img {
+  overflow: hidden;
+  min-height: 420px;
+  position: relative;
+}
+
+.jn-feat-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.jn-feat-card:hover .jn-feat-img img {
+  transform: scale(1.03);
+}
+
+.jn-feat-num {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 5rem;
+  font-weight: 300;
+  color: rgba(246,244,240,0.15) !important;
+  line-height: 1;
+  z-index: 2;
+}
+
+.jn-feat-badge {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f6f4f0 !important;
+  background: rgba(26,26,24,0.7) !important;
+  padding: 0.4rem 0.8rem;
+  font-weight: 500;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+
+.jn-feat-txt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3.5rem 4rem;
+}
+
+.jn-feat-cat {
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.jn-feat-txt h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+  color: #1a1a18 !important;
+}
+
+.jn-feat-txt p {
+  font-size: 0.95rem;
+  color: #8a8579 !important;
+  line-height: 1.8;
+  margin-bottom: 1.75rem;
+}
+
+.jn-feat-link {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #b8975a !important;
+  font-weight: 500;
+  border-bottom: 1px solid transparent !important;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.jn-feat-card:hover .jn-feat-link {
+  border-color: #b8975a !important;
+}
+
+/* ─── ARTICLE SECTIONS ─── */
+.jn-section {
+  padding: 6rem 5vw;
+}
+
+.jn-section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(201,169,110,0.2) !important;
+}
+
+.jn-section-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.jn-section-rule {
+  flex: 1;
+  height: 1px;
+  background: transparent !important;
+}
+
+.jn-section-head h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: #1a1a18 !important;
+  margin: 0;
+}
+
+/* ─── ARTICLE GRID ─── */
+.jn-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.25rem;
+}
+
+.jn-card {
+  display: block;
+  position: relative;
+}
+
+.jn-card-img {
+  overflow: hidden;
+  border-radius: 2px;
+  aspect-ratio: 16/10;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.jn-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease, filter 0.5s ease;
+}
+
+.jn-card:hover .jn-card-img img {
+  transform: scale(1.04);
+  filter: brightness(0.7);
+}
+
+.jn-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+}
+
+.jn-card:hover .jn-card-overlay {
+  opacity: 1;
+}
+
+.jn-card-read {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f6f4f0 !important;
+  background: rgba(26,26,24,0.6) !important;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+}
+
+.jn-card-num {
+  position: absolute;
+  top: -0.15rem;
+  left: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: rgba(201,169,110,0.1) !important;
+  line-height: 1;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.jn-card-meta {
+  position: relative;
+  z-index: 1;
+}
+
+.jn-card-cat {
+  font-size: 0.5rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.jn-card h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  color: #1a1a18 !important;
+  transition: color 0.3s ease;
+}
+
+.jn-card:hover h3 {
+  color: #b8975a !important;
+}
+
+.jn-card p {
+  font-size: 0.85rem;
+  color: #8a8579 !important;
+  line-height: 1.65;
+}
+
+/* ─── SUBSCRIBE CARD ─── */
+.jn-sub-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px dashed rgba(201,169,110,0.3) !important;
+  border-radius: 2px;
+  padding: 3rem 2rem;
+  min-height: 280px;
+}
+
+.jn-sub-icon {
+  font-size: 2rem;
+  color: rgba(201,169,110,0.3) !important;
+  margin-bottom: 1.25rem;
+  line-height: 1;
+}
+
+.jn-sub-card h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #1a1a18 !important;
+  margin-bottom: 0.75rem;
+}
+
+.jn-sub-card p {
+  font-size: 0.85rem;
+  color: #8a8579 !important;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  max-width: 240px;
+}
+
+.jn-sub-link {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  font-weight: 500;
+  border-bottom: 1px solid transparent !important;
+  transition: border-color 0.3s ease;
+  padding-bottom: 2px;
+}
+
+.jn-sub-card:hover .jn-sub-link {
+  border-color: #c9a96e !important;
+}
+
+/* ─── CTA ─── */
+.jn-cta {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.jn-cta-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.jn-cta-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.4) brightness(0.2);
+}
+
+.jn-cta-c {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 5vw;
+}
+
+.jn-cta-eyebrow {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.jn-cta-eyebrow::before,
+.jn-cta-eyebrow::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: rgba(201,169,110,0.3) !important;
+}
+
+.jn-cta h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 300;
+  color: #f6f4f0 !important;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.jn-cta h2 em {
+  font-style: italic;
+  color: #c9a96e !important;
+}
+
+.jn-cta-sub {
+  color: #8a8579 !important;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto 3rem;
+}
+
+.jn-cta-btn {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 1.2rem 3.5rem;
+  border: 1px solid #c9a96e !important;
+  background: #c9a96e !important;
+  color: #1a1a18 !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.jn-cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent) !important;
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.jn-cta-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.jn-cta-btn:hover {
+  background: transparent !important;
+  color: #c9a96e !important;
+  box-shadow: 0 0 30px rgba(201,169,110,0.2);
+}
+
+.jn-alt-cta {
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  color: #8a8579 !important;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+}
+
+.jn-alt-cta a {
+  color: #c9a96e !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.3s ease;
+}
+
+.jn-alt-cta a:hover {
+  color: #f6f4f0 !important;
+}
+
+/* ─── FOOTER ─── */
+.jn-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08)!important;flex-wrap:wrap}.jn-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35)!important;font-weight:500;transition:color .3s ease}.jn-ft-locs a:hover{color:#c9a96e!important}
+
+.jn-ft {
+  background: #1a1a18 !important;
+  border-top: 1px solid rgba(201,169,110,0.15) !important;
+}
+
+.jn-ft-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.25rem 5vw;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.jn-ft-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.jn-ft-label {
+  font-size: 7.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c9a96e !important;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.jn-ft-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(201,169,110,0.4) !important;
+  flex-shrink: 0;
+  position: relative;
+  top: -2px;
+}
+
+.jn-ft-item p,
+.jn-ft-item a {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(246,244,240,0.8) !important;
+  font-weight: 300;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.jn-ft-item a:hover {
+  color: #c9a96e !important;
+}
+
+.jn-ft-social {
+  display: flex;
+  gap: 18px;
+}
+
+.jn-ft-rule {
+  margin: 0 5vw;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.15) 20%, rgba(201,169,110,0.15) 80%, transparent 100%) !important;
+}
+
+.jn-ft-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 5vw;
+}
+
+.jn-ft-copy {
+  font-size: 10px;
+  color: rgba(246,244,240,0.35) !important;
+  letter-spacing: 0.08em;
+}
+
+.jn-ft-nav {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.jn-ft-nav a {
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.35) !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.jn-ft-nav a:hover {
+  color: #c9a96e !important;
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .jn-hero {
+    height: 40vh;
+    min-height: 300px;
+    padding: 0 6vw 3rem;
+  }
+
+  .jn-cats {
+    padding: 1.5rem 6vw;
+    gap: 0.5rem;
+  }
+
+  .jn-cat-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.55rem;
+  }
+
+  .jn-featured {
+    padding: 2.5rem 6vw 2rem;
+  }
+
+  .jn-feat-card {
+    grid-template-columns: 1fr;
+  }
+
+  .jn-feat-img {
+    min-height: 250px;
+  }
+
+  .jn-feat-txt {
+    padding: 2rem;
+  }
+
+  .jn-feat-num {
+    font-size: 3.5rem;
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .jn-section {
+    padding: 4rem 6vw;
+  }
+
+  .jn-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .jn-card-num {
+    font-size: 2.5rem;
+  }
+
+  .jn-sub-card {
+    min-height: 200px;
+    padding: 2rem 1.5rem;
+  }
+
+  .jn-cta {
+    min-height: 60vh;
+  }
+
+  .jn-scroll-hint {
+    bottom: 24px;
+  }
+
+  .jn-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.jn-ft-locs a{font-size:.55rem}
+
+  .jn-ft-row {
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 2rem 6vw;
+  }
+
+  .jn-ft-rule {
+    margin: 0 6vw;
+  }
+
+  .jn-ft-bottom {
+    padding-bottom: 2rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    padding: 1.25rem 6vw;
+  }
+}
+</style>
+
+<div class="jn-loader" id="jnLoader">
+  <div class="jn-loader-brand">Matt Anthony Photography</div>
+  <div class="jn-loader-sub">Journal</div>
+  <div class="jn-loader-line"></div>
+</div>
+
+<div class="jn-cursor" id="jnCursor"></div>
+<div class="jn-cursor-dot" id="jnCursorDot"></div>
+<div class="jn-progress" id="jnProgress"></div>
+<div class="jn-wrap">
+
+<!-- ═══ HERO ═══ -->
+<div class="jn-hero jn-grain">
+  <div class="jn-hero-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8acad367-9f3e-4b80-8658-e96f7fc6c3a9/5322-backhouse-web-1.1.jpg" alt="Architectural photography journal hero - modern interior by Matt Anthony">
+  </div>
+  <div class="jn-hero-content">
+    <p class="jn-hero-label">Journal</p>
+    <h1>Strategy and insight for those who <em>build with purpose</em></h1>
+    <p class="jn-hero-sub">Practical guidance for architects, builders, and designers who want their work seen, recognized, and understood.</p>
+  </div>
+  <div class="jn-scroll-hint" id="jnScrollHint">
+    <span class="jn-scroll-text">Scroll</span>
+    <span class="jn-scroll-line"></span>
+  </div>
+</div>
+
+<!-- ═══ CATEGORY FILTER ═══ -->
+<div class="jn-cats">
+  <button class="jn-cat-btn active" data-cat="all">All</button>
+  <button class="jn-cat-btn" data-cat="awards">Awards</button>
+  <button class="jn-cat-btn" data-cat="guides">Award Guides</button>
+  <button class="jn-cat-btn" data-cat="working">Working Together</button>
+  <button class="jn-cat-btn" data-cat="casestudies">Case Studies</button>
+  <button class="jn-cat-btn" data-cat="content">Content & Strategy</button>
+</div>
+
+<!-- ═══ FEATURED ARTICLE ═══ -->
+<div class="jn-featured" data-cat="awards working content">
+  <a href="/journal/roi-professional-architectural-photography-builders" class="jn-feat-card">
+    <div class="jn-feat-img">
+      <span class="jn-feat-num">05</span>
+      <span class="jn-feat-badge">Featured</span>
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83bbba67-7393-4e34-8b4b-bac1600c8110/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-12.jpg" alt="ROI of architectural photography for custom home builders">
+    </div>
+    <div class="jn-feat-txt">
+      <p class="jn-feat-cat">Business Case</p>
+      <h2>The ROI of Professional Architectural Photography for Custom Builders</h2>
+      <p>Why professional photography is the highest-ROI marketing investment a custom builder can make, and the simple math that proves it.</p>
+      <span class="jn-feat-link">Read Article</span>
+    </div>
+  </a>
+</div>
+
+<div class="jn-accent"></div>
+
+<!-- ═══ SECTION: AWARD & PUBLICATION GUIDES ═══ -->
+<div class="jn-section" id="guides" data-cat="awards guides">
+  <div class="jn-section-head">
+    <span class="jn-section-label">Award & Publication Guides</span>
+    <span class="jn-section-rule"></span>
+    <h2>Everything you need to know before you submit</h2>
+  </div>
+  <div class="jn-grid">
+
+    <a href="/journal/georgie-awards-guide" class="jn-card" data-cat="guides">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83a2955e-1bae-4f9f-a83d-a595dad1997f/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-11.jpg" alt="Complete guide to Georgie Awards photography requirements">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Guide</span></div>
+      </div>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Award Guide</p>
+        <h3>The Complete Georgie Awards Photography Guide</h3>
+        <p>Categories, eligibility, image specs, and how to build a winning submission set for BC's top award.</p>
+      </div>
+    </a>
+
+    <a href="/journal/havan-awards-guide" class="jn-card" data-cat="guides">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/bf463fcc-0f61-4c27-84d0-46be256bb34c/warbler-whistler-architectural-photography-matt-anthony-.jpg-6.jpg" alt="Complete guide to HAVAN Awards photography requirements">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Guide</span></div>
+      </div>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Award Guide</p>
+        <h3>The Complete HAVAN Awards Photography Guide</h3>
+        <p>Metro Vancouver's premier residential construction award. Naming conventions, deadlines, and photo strategy.</p>
+      </div>
+    </a>
+
+    <a href="/journal/chba-national-awards-guide" class="jn-card" data-cat="guides">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e07b8aac-c1ec-4293-b956-79b41aa39f33/5322-backhouse-web-1.jpg" alt="Complete guide to CHBA National Awards photography requirements">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Guide</span></div>
+      </div>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Award Guide</p>
+        <h3>The Complete CHBA National Awards Photography Guide</h3>
+        <p>Over 1,000 entries judged nationally. Categories, image requirements, and how to stand out at the federal level.</p>
+      </div>
+    </a>
+
+    <a href="/care-awards-guide" class="jn-card" data-cat="guides">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7ef87751-7049-4003-b0ae-2d83f90f21c4/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-13.jpg" alt="Complete guide to CARE Awards photography requirements">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Guide</span></div>
+      </div>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Award Guide</p>
+        <h3>The Complete CARE Awards Photography Guide</h3>
+        <p>Canadian renovation excellence. What CARE judges look for and how to photograph before-and-after transformations.</p>
+      </div>
+    </a>
+
+    <a href="/ovation-awards-guide" class="jn-card" data-cat="guides">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/6026f732-c55b-4410-9999-77435ce911f8/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-15.jpg" alt="Complete guide to Ovation Awards photography requirements">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Guide</span></div>
+      </div>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Award Guide</p>
+        <h3>The Complete Ovation Awards Photography Guide</h3>
+        <p>GVHBA's premier recognition program. Submission requirements, categories, and photography best practices.</p>
+      </div>
+    </a>
+
+    <a href="/journal/raic-awards-guide" class="jn-card" data-cat="guides">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/a3f3bbf1-98ff-4636-b992-8523fef2d08c/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-7.jpg" alt="Complete guide to RAIC Awards photography requirements">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Guide</span></div>
+      </div>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Award Guide</p>
+        <h3>The Complete RAIC Awards Photography Guide</h3>
+        <p>Canada's national architecture awards. How to photograph projects for the highest level of professional recognition.</p>
+      </div>
+    </a>
+
+    <a href="/journal/architectural-photography-for-publications" class="jn-card" data-cat="guides">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/23aedb76-4c10-4a31-ba9c-9ebd434a25bc/5322-backhouse-web-2.jpg" alt="Architectural photography for magazine and publication submissions">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Guide</span></div>
+      </div>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Publication Guide</p>
+        <h3>Architectural Photography for Publications</h3>
+        <p>What editors and publishers look for and how to prepare images that get your project featured.</p>
+      </div>
+    </a>
+
+    <a href="/gold-nugget-awards-guide" class="jn-card" data-cat="guides">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8e511d08-b65b-4866-860c-4ed802f035e7/pit-meadows-architectural-interiors-photography-12.jpg" alt="Complete guide to Gold Nugget Awards photography requirements">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Guide</span></div>
+      </div>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Award Guide</p>
+        <h3>The Complete Gold Nugget Awards Photography Guide</h3>
+        <p>North America's largest and most prestigious residential building award. Categories, specs, and submission strategy.</p>
+      </div>
+    </a>
+
+    <a href="/ida-awards-guide" class="jn-card" data-cat="guides">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/450a7fc3-25a9-4668-8662-90111e476240/architectural-interiors-photographer-morden-project-sunshine-coast--6.jpg" alt="Complete guide to IDA International Design Awards photography requirements">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Guide</span></div>
+      </div>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Award Guide</p>
+        <h3>The Complete IDA Awards Photography Guide</h3>
+        <p>International Design Awards submission requirements. How to prepare photography that competes on a global stage.</p>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="jn-accent"></div>
+
+<!-- ═══ SECTION: AWARDS & RECOGNITION ═══ -->
+<div class="jn-section" id="awards" data-cat="awards">
+  <div class="jn-section-head">
+    <span class="jn-section-label">Awards & Recognition</span>
+    <span class="jn-section-rule"></span>
+    <h2>Winning recognition for your work</h2>
+  </div>
+  <div class="jn-grid">
+
+    <a href="/journal/how-to-photograph-your-project-for-award-submissions" class="jn-card" data-cat="awards">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7ef87751-7049-4003-b0ae-2d83f90f21c4/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-13.jpg" alt="How to photograph your project for award submissions">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Article</span></div>
+      </div>
+      <span class="jn-card-num">01</span>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Awards</p>
+        <h3>How to Photograph Your Project for Award Submissions</h3>
+        <p>What Georgie, HAVAN, and CHBA National Award judges actually look for in submission photography.</p>
+      </div>
+    </a>
+
+    <a href="/journal/why-your-award-submission-photos-arent-working" class="jn-card" data-cat="awards">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8e511d08-b65b-4866-860c-4ed802f035e7/pit-meadows-architectural-interiors-photography-12.jpg" alt="Why your award submission photos are not working">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Article</span></div>
+      </div>
+      <span class="jn-card-num">06</span>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Awards</p>
+        <h3>Why Your Award Submission Photos Aren't Working</h3>
+        <p>Common mistakes that cost firms recognition, and the compositional shifts that change outcomes.</p>
+      </div>
+    </a>
+
+    <a href="/journal/what-georgie-award-judges-look-for-submission-photography" class="jn-card" data-cat="awards">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83a2955e-1bae-4f9f-a83d-a595dad1997f/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-11.jpg" alt="What Georgie Award judges look for in submission photography">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Article</span></div>
+      </div>
+      <span class="jn-card-num">14</span>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Awards</p>
+        <h3>What Georgie Award Judges Actually Look for in Submission Photography</h3>
+        <p>Inside the evaluation criteria and how to compose specifically for BC's most prestigious award.</p>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="jn-accent"></div>
+
+<!-- ═══ SECTION: WORKING TOGETHER ═══ -->
+<div class="jn-section" id="working" data-cat="working">
+  <div class="jn-section-head">
+    <span class="jn-section-label">Working Together</span>
+    <span class="jn-section-rule"></span>
+    <h2>Making the most of your investment</h2>
+  </div>
+  <div class="jn-grid">
+
+    <a href="/journal/how-to-prepare-project-architectural-photo-shoot" class="jn-card" data-cat="working">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/b00b123a-10cc-4f9c-981d-f682da605ef7/warbler-whistler-architectural-photography-matt-anthony-.jpg-8.jpg" alt="How to prepare your project for an architectural photo shoot">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Article</span></div>
+      </div>
+      <span class="jn-card-num">08</span>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Shoot Prep</p>
+        <h3>How to Prepare Your Project for an Architectural Photo Shoot</h3>
+        <p>A practical guide to staging, timing, and coordination that ensures the best results.</p>
+      </div>
+    </a>
+
+    <a href="/journal/project-photography-vs-real-estate-photography" class="jn-card" data-cat="working">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/4d198609-e2ea-4208-9592-b2fa028f3968/warbler-whistler-architectural-photography-matt-anthony-.jpg-24.jpg" alt="Project photography versus real estate photography comparison">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Article</span></div>
+      </div>
+      <span class="jn-card-num">09</span>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Education</p>
+        <h3>Project Photography vs Real Estate Photography: Why They're Not the Same Thing</h3>
+        <p>Drawing the line between documentation and listing photos.</p>
+      </div>
+    </a>
+
+    <a href="/journal/documenting-design-intent-photography-before-build-finished" class="jn-card" data-cat="working">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7feb0024-6829-459f-96e1-4eff91fb7894/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-9.jpg" alt="Documenting design intent in architectural photography">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Article</span></div>
+      </div>
+      <span class="jn-card-num">07</span>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Philosophy</p>
+        <h3>Documenting Design Intent: Why the Best Photography Starts Before the Build is Finished</h3>
+        <p>The case for bringing your photographer into the conversation early.</p>
+      </div>
+    </a>
+
+    <a href="/journal/seasonal-considerations-architectural-photography-bc" class="jn-card" data-cat="working">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9e10cdbc-5c6d-4746-934b-3884628143f1/warbler-whistler-architectural-photography-matt-anthony-.jpg-30.jpg" alt="Seasonal considerations for architectural photography in British Columbia">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Article</span></div>
+      </div>
+      <span class="jn-card-num">10</span>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Planning</p>
+        <h3>Seasonal Considerations for Architectural Photography in British Columbia</h3>
+        <p>When to shoot, rain strategies, and golden hour timing by season in the Sea-to-Sky.</p>
+      </div>
+    </a>
+
+    <a href="/journal/5-details-make-or-break-architectural-interior-photography" class="jn-card" data-cat="working">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ab8c0b1a-742e-4485-9d50-a19c698594bf/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-4.jpg" alt="Five details that make or break architectural interior photography">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Article</span></div>
+      </div>
+      <span class="jn-card-num">12</span>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Craft</p>
+        <h3>5 Details That Make or Break Architectural Interior Photography</h3>
+        <p>Verticals, colour temperature, window exposure, camera height, and frame discipline.</p>
+      </div>
+    </a>
+
+    <a href="/journal/what-architects-should-look-for-hiring-photographer" class="jn-card" data-cat="working">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/bd45b746-3623-41b7-8016-a94a135bd9b6/5322-backhouse-web-10.jpg" alt="What architects should look for when hiring a photographer">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Article</span></div>
+      </div>
+      <span class="jn-card-num">04</span>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Hiring Guide</p>
+        <h3>What Architects Should Look for When Hiring an Architectural Photographer</h3>
+        <p>The questions to ask, the portfolio signals to look for, and the red flags to avoid.</p>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="jn-accent"></div>
+
+<!-- ═══ SECTION: CASE STUDIES & PROCESS ═══ -->
+<div class="jn-section" id="casestudies" data-cat="casestudies">
+  <div class="jn-section-head">
+    <span class="jn-section-label">Case Studies & Process</span>
+    <span class="jn-section-rule"></span>
+    <h2>Stories from the field</h2>
+  </div>
+  <div class="jn-grid">
+
+    <a href="/journal/summerhill-fine-homes-visual-brand-ongoing-photography" class="jn-card" data-cat="casestudies">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8885e535-fd99-48e9-801f-020449535162/5322-backhouse-web-22.jpg" alt="Summerhill Fine Homes visual brand ongoing photography partnership">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Article</span></div>
+      </div>
+      <span class="jn-card-num">03</span>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Case Study</p>
+        <h3>How Summerhill Fine Homes Built a Visual Brand Through Ongoing Photography</h3>
+        <p>What a retainer partnership looks like in practice and the compounding value of consistency.</p>
+      </div>
+    </a>
+
+    <a href="/journal/behind-the-shoot-the-perch-sunshine-coast" class="jn-card" data-cat="casestudies">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/986386ba-6a96-4e7e-871c-19977ed61aa3/5322-backhouse-web-17.jpg" alt="Behind the shoot The Perch Sunshine Coast architectural photography">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Article</span></div>
+      </div>
+      <span class="jn-card-num">11</span>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Behind the Shoot</p>
+        <h3>Behind the Shoot: The Perch, Sunshine Coast</h3>
+        <p>Planning, site visit, light decisions, and the frames that tell the story of this coastal home.</p>
+      </div>
+    </a>
+
+    <a href="/journal/architectural-photography-whistler-mountain-projects" class="jn-card" data-cat="casestudies">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg" alt="Architectural photography for Whistler mountain projects">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Article</span></div>
+      </div>
+      <span class="jn-card-num">02</span>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Local SEO</p>
+        <h3>Architectural Photography in Whistler: What Makes Mountain Projects Different</h3>
+        <p>Alpine light, snow, elevation, and seasonal timing that only someone who shoots here would know.</p>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="jn-accent"></div>
+
+<!-- ═══ SECTION: CONTENT & STRATEGY ═══ -->
+<div class="jn-section" id="content" data-cat="content">
+  <div class="jn-section-head">
+    <span class="jn-section-label">Content & Strategy</span>
+    <span class="jn-section-rule"></span>
+    <h2>Building your brand through visuals</h2>
+  </div>
+  <div class="jn-grid">
+
+    <a href="/journal/construction-lifestyle-photography-best-social-media-investment-builders" class="jn-card" data-cat="content">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/99381b00-0337-4207-afdf-fef0d9870acf/construction-lifestyle-photography-sunshine-coast-summerhill18.jpg" alt="Construction lifestyle photography social media investment for builders">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Article</span></div>
+      </div>
+      <span class="jn-card-num">13</span>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Social Strategy</p>
+        <h3>Why Construction Lifestyle Photography is the Best Social Media Investment for Builders</h3>
+        <p>The content that fills the gaps, drives engagement, and builds the brand finished photos can't.</p>
+      </div>
+    </a>
+
+    <a href="/journal/how-to-build-visual-library-website-proposals-awards" class="jn-card" data-cat="content">
+      <div class="jn-card-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/62400a12-3f4b-4f40-bd83-82b3f40690f9/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-48.jpg" alt="How to build a visual library for websites proposals and awards">
+        <div class="jn-card-overlay"><span class="jn-card-read">Read Article</span></div>
+      </div>
+      <span class="jn-card-num">15</span>
+      <div class="jn-card-meta">
+        <p class="jn-card-cat">Strategy</p>
+        <h3>How to Build a Visual Library That Works Across Your Website, Proposals, and Awards</h3>
+        <p>One strategic relationship replaces a dozen one-off shoots — and compounds over time.</p>
+      </div>
+    </a>
+
+    <a href="/contact" class="jn-sub-card" data-cat="content">
+      <div class="jn-sub-icon">&#9993;</div>
+      <h3>Stay in the loop</h3>
+      <p>New articles on photography, awards, and visual strategy for the building industry.</p>
+      <span class="jn-sub-link">Get in Touch</span>
+    </a>
+
+  </div>
+</div>
+
+<!-- ═══ CTA ═══ -->
+<section class="jn-cta">
+  <div class="jn-cta-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83bbba67-7393-4e34-8b4b-bac1600c8110/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-12.jpg" alt="Sunshine Coast architectural photography by Matt Anthony" loading="lazy">
+  </div>
+  <div class="jn-cta-c">
+    <p class="jn-cta-eyebrow">Let's Talk</p>
+    <h2>Want to discuss <em>your project</em>?</h2>
+    <p class="jn-cta-sub">Whether you're planning a shoot, preparing an award submission, or thinking about your visual strategy, I'm happy to talk it through.</p>
+    <a href="/discovery-call" class="jn-cta-btn jn-magnetic" target="_blank" rel="noopener">Book a Discovery Call</a>
+    <p class="jn-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="jn-ft">
+<div class="jn-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+  <div class="jn-ft-row">
+    <div class="jn-ft-item"><span class="jn-ft-label">Based In</span><span class="jn-ft-dot"></span><p>Squamish, British Columbia</p></div>
+    <div class="jn-ft-item"><span class="jn-ft-label">Email</span><span class="jn-ft-dot"></span><a class="jn-ft-email" id="jn-em" href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a></div>
+    <div class="jn-ft-item"><span class="jn-ft-label">Phone</span><span class="jn-ft-dot"></span><a href="tel:6047659270">604.765.9270</a></div>
+    <div class="jn-ft-item"><span class="jn-ft-label">Follow</span><span class="jn-ft-dot"></span><div class="jn-ft-social"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  </div>
+  <div class="jn-ft-rule"></div>
+  <div class="jn-ft-bottom">
+    <p class="jn-ft-copy">&copy; 2026 Matt Anthony Photography</p>
+    <nav class="jn-ft-nav">
+      <a href="/projects">Projects</a>
+      <a href="/journal">Journal</a>
+      <a href="/journal/georgie-awards-guide">Georgie Awards</a>
+      <a href="/bio">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/pricing-guide-landing">Get Pricing</a>
+    </nav>
+  </div>
+</footer>
+
+</div>
+
+<!-- ═══ CATEGORY FILTER SCRIPT ═══ -->
+<script>
+(function() {
+  var btns = document.querySelectorAll('.jn-cat-btn');
+  var sections = document.querySelectorAll('.jn-section, .jn-featured');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var cat = btn.getAttribute('data-cat');
+      sections.forEach(function(s) {
+        if (cat === 'all') {
+          s.style.display = '';
+        } else {
+          var sCats = s.getAttribute('data-cat') || '';
+          s.style.display = sCats.indexOf(cat) !== -1 ? '' : 'none';
+        }
+      });
+    });
+  });
+})();
+</script>
+
+<!-- ═══ INTERACTIVE LAYER SCRIPT ═══ -->
+<script>
+(function(){
+  var isMobile = 'ontouchstart' in window;
+  var wrap = document.querySelector('.jn-wrap');
+  var progressBar = document.getElementById('jnProgress');
+  var hero = document.querySelector('.jn-hero');
+  var heroContent = document.querySelector('.jn-hero-content');
+  var heroBg = document.querySelector('.jn-hero-bg');
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader = document.getElementById('jnLoader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('jn-done'); }, 1100);
+  });
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  function updateProgress(){
+    var s = window.scrollY;
+    var d = document.documentElement.scrollHeight - window.innerHeight;
+    if(d > 0) progressBar.style.width = (s / d * 100) + '%';
+  }
+
+  /* ═══ HERO PARALLAX + FADE ═══ */
+  function updateHero(){
+    var s = window.scrollY;
+    var h = window.innerHeight;
+    if(s > h) return;
+    var ratio = s / h;
+    if(heroBg) heroBg.style.transform = 'translateY(' + (s * 0.35) + 'px) scale(' + (1 + ratio * 0.05) + ')';
+    if(heroContent){
+      heroContent.style.transform = 'translateY(' + (s * 0.15) + 'px)';
+      heroContent.style.opacity = 1 - ratio * 1.2;
+    }
+  }
+
+  /* ═══ HEADLINE GOLD UNDERLINE ═══ */
+  var headObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('jn-underlined'); headObs.unobserve(e.target); }
+    });
+  }, {threshold:0.4});
+  document.querySelectorAll('.jn-wrap h2').forEach(function(h){ headObs.observe(h); });
+
+  /* ═══ EYEBROW DASH DRAW ═══ */
+  var eyeObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('jn-visible'); eyeObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.jn-eyebrow').forEach(function(el){ eyeObs.observe(el); });
+
+  /* ═══ CTA ZOOM ═══ */
+  var ctaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('jn-in-view'); ctaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.2});
+  document.querySelectorAll('.jn-cta').forEach(function(el){ ctaObs.observe(el); });
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor = document.getElementById('jnCursor');
+  var cursorDot = document.getElementById('jnCursorDot');
+  var cx = 0, cy = 0, dx = 0, dy = 0;
+  if(!isMobile && cursor){
+    document.addEventListener('mousemove', function(e){
+      dx = e.clientX; dy = e.clientY;
+      cursorDot.style.left = dx + 'px';
+      cursorDot.style.top = dy + 'px';
+      if(!cursor.classList.contains('jn-active')){
+        cursor.classList.add('jn-active');
+        cursorDot.classList.add('jn-active');
+      }
+    });
+    function tickCursor(){
+      cx += (dx - cx) * 0.12;
+      cy += (dy - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(tickCursor);
+    }
+    tickCursor();
+    var hoverEls = document.querySelectorAll('a, button, .jn-card, .jn-feat-card, .jn-cta-btn, .jn-sub-card');
+    hoverEls.forEach(function(el){
+      el.addEventListener('mouseenter', function(){ cursor.classList.add('jn-hover'); });
+      el.addEventListener('mouseleave', function(){ cursor.classList.remove('jn-hover'); });
+    });
+    document.addEventListener('mousedown', function(){ cursor.classList.add('jn-click'); });
+    document.addEventListener('mouseup', function(){ cursor.classList.remove('jn-click'); });
+  }
+
+  /* ═══ MAGNETIC BUTTON ═══ */
+  if(!isMobile){
+    document.querySelectorAll('.jn-magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.25) + 'px, ' + (y * 0.25) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  /* ═══ SCROLL INDICATOR HIDE ═══ */
+  var scrollHint = document.getElementById('jnScrollHint');
+  function updateScrollHint(){
+    if(window.scrollY > 80) scrollHint.classList.add('jn-hidden');
+    else scrollHint.classList.remove('jn-hidden');
+  }
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateHero();
+        updateScrollHint();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress();
+  updateHero();
+  updateScrollHint();
+})();
+</script>
+
+<!-- ═══ COLLECTIONPAGE SCHEMA ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Architectural Photography Journal",
+  "description": "Practical guidance for architects, builders, and designers on architectural photography, award submissions, and visual brand strategy.",
+  "url": "https://www.mattanthonyphoto.com/journal",
+  "publisher": {
+    "@id": "https://www.mattanthonyphoto.com/#business"
+  }
+}
+</script>
+
+<!--
+  JOURNAL LANDING PAGE — Code Block
+  mattanthonyphoto.com/journal
+
+  Last updated: 2026-03-24
+  Changes:
+    1. Complete rebuild using Creative Partner design template
+    2. Added loader (jnLoader), custom cursor (jnCursor/jnCursorDot), scroll progress (jnProgress)
+    3. Hero redesigned: 50vh compact, grain overlay, parallax, scroll indicator
+    4. Category filter bar preserved with gold active state
+    5. Featured article card: large 2-col layout with hover effects
+    6. Article grid: 3-col with hover zoom + overlay, all 21 articles preserved
+    7. CTA: full-viewport with background image zoom, magnetic button
+    8. Footer updated to match Creative Partner template
+    9. Added OG tags, meta description, canonical
+    10. All classes use jn- prefix, JS IDs use jn prefix
+    11. No :root, no global resets, !important on colors
+    12. Responsive at 768px
+    13. CollectionPage JSON-LD schema preserved
+    14. No nav dots (listing page)
+    15. Section padding matched to Creative Partner (6rem 5vw)
+    16. Accent dividers between sections
+-->

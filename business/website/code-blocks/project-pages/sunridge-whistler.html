@@ -1,0 +1,356 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+.tp-wrap{overflow-x:hidden!important;font-family:'DM Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#1a1a18;line-height:1.7;font-weight:300}.tp-wrap img{max-width:100%;display:block}.tp-wrap a{color:inherit;text-decoration:none}.tp-hero{position:relative;width:100%;height:85vh;min-height:600px;overflow:hidden}.tp-hero>img{width:100%;height:100%;object-fit:cover;filter:saturate(0.8) brightness(0.45)}.tp-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,24,0.15) 0%,rgba(26,26,24,0.05) 40%,rgba(26,26,24,0.6) 75%,rgba(26,26,24,0.95) 100%)}.tp-hc{position:absolute;bottom:5rem;left:5vw;z-index:2;max-width:700px}.tp-hl{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem;font-weight:500}.tp-hc h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:300;line-height:1.05;color:#f6f4f0;letter-spacing:-0.02em;margin-bottom:0.5rem}.tp-hloc{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:#d9d5cd;font-weight:400}
+.tp-info{display:grid;grid-template-columns:280px 1fr;gap:5rem;padding:5rem 5vw;max-width:1200px;margin:0 auto}.tp-m{padding-top:0.5rem}.tp-mi{margin-bottom:2rem}.tp-ml{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:0.4rem}.tp-mv{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:400;color:#1a1a18;line-height:1.4}.tp-d h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300;line-height:1.3;margin-bottom:2rem;color:#1a1a18}.tp-d p{font-size:1rem;color:#4a4a46;line-height:1.85;margin-bottom:1.5rem;max-width:600px}
+.tp-bk{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#b8975a;font-weight:500;margin-bottom:2rem;transition:color 0.3s ease}.tp-bk:hover{color:#1a1a18}.tp-bk::before{content:'\2190';font-size:0.9rem}
+.tp-g{padding:2rem 5vw 4rem}.tp-gg{column-count:2;column-gap:1.25rem}.tp-gg div{break-inside:avoid;margin-bottom:1.25rem;overflow:hidden;border-radius:2px}.tp-gg img{width:100%;height:auto;display:block;transition:transform 0.8s ease}.tp-gg div:hover img{transform:scale(1.03)}
+.tp-cta{position:relative;padding:7rem 5vw;text-align:center;overflow:hidden;min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center}.tp-cta-bg{position:absolute;inset:0;z-index:0}.tp-cta-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(0.5) brightness(0.3)}.tp-cc{position:relative;z-index:2}.tp-cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#f6f4f0;margin-bottom:1rem;line-height:1.2}.tp-cta h2 em{font-style:italic;color:#c9a96e}.tp-cta p{font-size:1rem;color:#8a8579;max-width:480px;margin:0 auto 2.5rem;line-height:1.8;font-weight:300}.tp-cb{display:inline-block;font-family:'DM Sans',sans-serif;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;padding:1.1rem 3rem;border:1px solid #c9a96e!important;background:#c9a96e!important;color:#1a1a18!important;font-weight:500;transition:all 0.35s ease;text-decoration:none}.tp-cb:hover{background:transparent!important;color:#c9a96e!important}
+.tp-alt-cta{margin-top:1.25rem;font-size:.75rem;color:#8a8579;letter-spacing:.05em;font-weight:300}.tp-alt-cta a{color:#c9a96e;text-decoration:underline;text-underline-offset:3px;transition:color .3s ease}.tp-alt-cta a:hover{color:#f6f4f0}
+.tp-nx{position:relative;overflow:hidden;cursor:pointer;height:40vh;min-height:300px;display:flex;align-items:center;justify-content:center;background:#1a1a18;text-decoration:none}.tp-nx-bg{position:absolute;inset:0;z-index:0}.tp-nx-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.35);transition:transform 1s ease,filter 0.5s ease}.tp-nx:hover .tp-nx-bg img{transform:scale(1.04);filter:brightness(0.45)}.tp-nx-c{position:relative;z-index:2;text-align:center}.tp-nx-l{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;margin-bottom:1rem}.tp-nx-c h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:300;color:#f6f4f0;line-height:1.2}.tp-nx-c h3 span{display:block;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:#d9d5cd;font-weight:400;font-family:'DM Sans',sans-serif;margin-top:0.5rem}
+.tp-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.tp-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.tp-ft-locs a:hover{color:#c9a96e}.tp-ft{background:#1a1a18;border-top:1px solid rgba(201,169,110,0.15)}.tp-ft-r{display:flex;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}.tp-ft-i{display:flex;align-items:baseline;gap:10px}.tp-ft-l{font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:#c9a96e;font-weight:500;white-space:nowrap}.tp-ft-dt{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,0.4);flex-shrink:0;position:relative;top:-2px}.tp-ft-i p,.tp-ft-i a{margin:0;font-size:12px;color:rgba(246,244,240,0.8);font-weight:300;white-space:nowrap;text-decoration:none;transition:color 0.3s ease}.tp-ft-i a:hover{color:#c9a96e}.tp-ft-s{display:flex;gap:18px}.tp-ft-rl{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,0.15) 20%,rgba(201,169,110,0.15) 80%,transparent 100%)}.tp-ft-b{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 5vw}.tp-ft-cp{font-size:10px;color:rgba(246,244,240,0.35);letter-spacing:0.08em}.tp-ft-n{display:flex;gap:2.5rem}.tp-ft-n a{font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(246,244,240,0.35);text-decoration:none;transition:color 0.3s ease}.tp-ft-n a:hover{color:#c9a96e}
+.tp-ft-email{cursor:pointer}
+@media(max-width:768px){.tp-hero{height:60vh;min-height:400px}.tp-hc{bottom:3rem;left:6vw}.tp-hc h1{font-size:clamp(2rem,9vw,3rem)}.tp-info{grid-template-columns:1fr;gap:2rem;padding:3rem 6vw}.tp-m{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding-bottom:2rem;border-bottom:1px solid #d9d5cd}.tp-mi{margin-bottom:0}.tp-g{padding:1.5rem 4vw 3rem}.tp-gg{column-count:1}.tp-gg div{margin-bottom:0.75rem}.tp-cta{padding:4rem 6vw;min-height:40vh}.tp-cta h2{font-size:clamp(1.5rem,6vw,2rem)}.tp-cb{padding:0.9rem 2rem}.tp-nx{height:30vh;min-height:220px}.tp-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.tp-ft-locs a{font-size:.55rem}.tp-ft-r{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}.tp-ft-rl{margin:0 6vw}.tp-ft-b{flex-direction:column;gap:0.75rem;text-align:center;padding:1.25rem 6vw}}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.tp-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a18;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),visibility 0.8s}
+.tp-loader.tp-done{opacity:0;visibility:hidden;pointer-events:none}
+.tp-loader-brand{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.65rem;letter-spacing:0.6em;text-transform:uppercase;color:#f6f4f0;opacity:0;animation:tpLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards}
+.tp-loader-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(138,133,121,0.7);margin-top:8px;opacity:0;animation:tpLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.tp-loader-line{width:80px;height:1px;background:rgba(201,169,110,0.12);margin-top:24px;position:relative;overflow:hidden;border-radius:1px;opacity:0;animation:tpLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards}
+.tp-loader-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#c9a96e,transparent);animation:tpLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards}
+@keyframes tpLoaderIn{to{opacity:1}}
+@keyframes tpLoaderFill{to{left:100%}}
+
+/* ── Scroll progress bar ── */
+.tp-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#c9a96e,rgba(201,169,110,0.4));z-index:9999;transition:width 0.05s linear;box-shadow:0 0 10px rgba(201,169,110,0.4)}
+
+/* ── Custom cursor ── */
+.tp-cursor{position:fixed;width:20px;height:20px;border:1px solid rgba(201,169,110,0.5);border-radius:50%;pointer-events:none;z-index:99999;transition:width 0.3s cubic-bezier(0.16,1,0.3,1),height 0.3s cubic-bezier(0.16,1,0.3,1),border-color 0.3s ease,background 0.3s ease,opacity 0.3s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0}
+.tp-cursor.tp-active{opacity:1}
+.tp-cursor.tp-hover{width:50px;height:50px;border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.tp-cursor.tp-click{width:14px;height:14px;background:rgba(201,169,110,0.3)}
+.tp-cursor-dot{position:fixed;width:4px;height:4px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s ease}
+.tp-cursor-dot.tp-active{opacity:1}
+
+/* ── Section nav dots ── */
+.tp-section-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:99998;display:flex;flex-direction:column;gap:12px;opacity:0;transition:opacity 0.4s ease}
+.tp-section-nav.tp-nav-visible{opacity:1}
+.tp-nav-dot{width:8px;height:8px;border-radius:50%;background:transparent;border:1px solid #8a8579;cursor:pointer;transition:all 0.3s ease;position:relative}
+.tp-nav-dot:hover{border-color:#c9a96e;transform:scale(1.3)}
+.tp-nav-dot.tp-nav-active{background:#c9a96e;border-color:#c9a96e;box-shadow:0 0 8px rgba(201,169,110,0.4)}
+.tp-nav-dot::before{content:attr(data-label);position:absolute;right:20px;top:50%;transform:translateY(-50%);font-family:'Josefin Sans',sans-serif;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a96e;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.3s ease,right 0.3s ease}
+.tp-nav-dot:hover::before{opacity:1;right:24px}
+@media(max-width:768px){.tp-section-nav{display:none}}
+
+/* ── CTA button glow pulse ── */
+.tp-cb{animation:tpBtnGlow 3s ease-in-out infinite alternate}
+@keyframes tpBtnGlow{0%{box-shadow:none}100%{box-shadow:0 0 40px rgba(201,169,110,0.15),0 0 80px rgba(201,169,110,0.05)}}
+
+/* ── Footer nav wrap fix ── */
+.tp-ft-n{flex-wrap:wrap;justify-content:center}
+</style>
+
+<div class="tp-wrap">
+
+<!-- Loading Screen -->
+<div class="tp-loader" id="tpLoader">
+  <div class="tp-loader-brand">Matt Anthony Photography</div>
+  <div class="tp-loader-sub">Sunridge</div>
+  <div class="tp-loader-line"></div>
+</div>
+
+<!-- Custom Cursor -->
+<div class="tp-cursor" id="tpCursor"></div>
+<div class="tp-cursor-dot" id="tpCursorDot"></div>
+
+<!-- Scroll Progress -->
+<div class="tp-progress" id="tpProgress"></div>
+<nav class="tp-section-nav" id="tpSectionNav"></nav>
+
+<!-- Hero -->
+<div class="tp-hero">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7ae7f632-ffd4-4990-abae-430431c42a83/sunridge-whistle-web--28.jpg" alt="Sunridge Whistler log home renovation exterior architectural photography by Matt Anthony">
+<div class="tp-hc">
+<p class="tp-hl">Featured Project</p>
+<h1>Sunridge</h1>
+<p class="tp-hloc">Whistler, British Columbia</p>
+</div>
+</div>
+
+<!-- Back Link -->
+<div style="padding:2rem 5vw 0;max-width:1200px;margin:0 auto;">
+<a href="/projects" class="tp-bk">All Projects</a>
+</div>
+
+<!-- Project Info -->
+<div class="tp-info" data-nav="Details">
+<div class="tp-m">
+<div class="tp-mi">
+<div class="tp-ml">Location</div>
+<div class="tp-mv">Whistler</div>
+</div>
+<div class="tp-mi">
+<div class="tp-ml">Builder</div>
+<div class="tp-mv">Gavan Construction</div>
+</div>
+<div class="tp-mi">
+<div class="tp-ml">Service</div>
+<div class="tp-mv">Major Renovation + Interior Design</div>
+</div>
+<div class="tp-mi">
+<div class="tp-ml">Interior Designer</div>
+<div class="tp-mv">LRD Studio</div>
+</div>
+</div>
+<div class="tp-d">
+<h2>Honouring Whistler's heritage, keeping the soul of the log home alive with a modern level of refinement</h2>
+<p>This project was all about honouring Whistler's heritage, keeping the soul of the log home alive while bringing a modern level of refinement. The goal was not to hide the logs, but to celebrate them, to let the craftsmanship shine through proportion, lighting, and contrast. Raw timber was balanced with natural stone, oak, and soft fabrics, creating a timeless palette that feels connected to nature yet distinctly elevated. Each space was designed as its own experience, with unique shapes, textures, and moments of calm. It is a home that honours its roots while fully embracing modern living.</p>
+</div>
+</div>
+
+<!-- Gallery -->
+<div class="tp-g" data-nav="Gallery"><div class="tp-gg">
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7ae7f632-ffd4-4990-abae-430431c42a83/sunridge-whistle-web--28.jpg" alt="Sunridge Whistler front exterior log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/566a6d06-566c-4d76-88c6-7efa050b69e3/sunridge-whistle-web--26.jpg" alt="Sunridge Whistler log timber detail close-up renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/1ea88c54-d4fd-4907-a4a4-9a537eb8d178/sunridge-whistle-web--29.jpg" alt="Sunridge Whistler entry approach log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/744da69d-8fb4-46ff-8866-1888025ce083/sunridge-whistle-web--27.jpg" alt="Sunridge Whistler front approach driveway log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ebf170a5-6dd3-463f-998c-c04a87154d1a/sunridge-whistle-web--25.jpg" alt="Sunridge Whistler facade elevation log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/91be57df-ed2d-4118-80dc-e98c2eca79e5/sunridge-whistle-web--43.jpg" alt="Sunridge Whistler snow-covered exterior winter log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/3391be3e-55d9-4bdb-8a2c-d118e069b1a6/sunridge-whistle-web--24.jpg" alt="Sunridge Whistler living room timber beams log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/81e9bfd6-4187-40d6-9771-1c593f62b5cf/sunridge-whistle-web--12.jpg" alt="Sunridge Whistler timber ceiling structural beams log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/b91a19cd-eb9e-4ddd-a885-ebf8410b1838/sunridge-whistle-web--44.jpg" alt="Sunridge Whistler evening glow warm light exterior log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef3e75a2-122b-44cb-b324-b51c927533c7/sunridge-whistle-web--42.jpg" alt="Sunridge Whistler twilight exterior blue hour log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/21453bd9-6b62-41b6-8290-873095036084/sunridge-whistle-web--45.jpg" alt="Sunridge Whistler night exterior illuminated log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/46c7f7cb-34e9-4cf8-88c0-0a3546b9212d/sunridge-whistle-web--47.jpg" alt="Sunridge Whistler dusk exterior ambient light log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/072808e7-1212-4cef-a893-e92c7104f5e7/sunridge-whistle-web--49.jpg" alt="Sunridge Whistler panoramic wide view log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c1e45ff3-757f-4570-ba99-6d4ea568e1c1/sunridge-whistle-web--50.jpg" alt="Sunridge Whistler mountain view backdrop log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/bbcefa57-19b9-4d18-b441-88cd8def8b5e/sunridge-whistle-web--48.jpg" alt="Sunridge Whistler aerial drone overview log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/7dd60d84-09e2-47c6-bdaf-d2d72d755f53/sunridge-whistle-web--20.jpg" alt="Sunridge Whistler kitchen natural materials log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/28db0f0e-a680-487d-97fa-98e8e7a82179/sunridge-whistle-web--46.jpg" alt="Sunridge Whistler aerial site and landscape log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/149c3886-ab09-4577-b27e-a8792e493786/sunridge-whistle-web--8.jpg" alt="Sunridge Whistler stone fireplace hearth log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/fa8278da-7fce-41ed-9c1d-54091ff50a83/sunridge-whistle-web--3.jpg" alt="Sunridge Whistler oak flooring detail log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/a32f289e-c2ae-4a8f-90ef-c456b2ff7ac3/sunridge-whistle-web--6.jpg" alt="Sunridge Whistler dining room timber and stone log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/4e1e20cc-fe2f-4968-a7db-de827bf65d51/sunridge-whistle-web--4.jpg" alt="Sunridge Whistler interior living space modern refinement log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/cfae6366-ab97-4f5f-bd84-0dd2fe44587a/sunridge-whistle-web--13.jpg" alt="Sunridge Whistler bedroom natural light log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/2153c8ed-c987-4a4b-a2f5-8faec64e7965/sunridge-whistle-web--10.jpg" alt="Sunridge Whistler bathroom stone and timber log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/bb8d0b01-eee7-4b37-a280-85ab1b11ac60/sunridge-whistle-web--30.jpg" alt="Sunridge Whistler staircase timber railing log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9f3611d8-a842-42d6-b65b-cd25ba6920cd/sunridge-whistle-web--32.jpg" alt="Sunridge Whistler hallway corridor log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/0b4f9f4d-01c4-4da3-ae8e-1131391d280f/sunridge-whistle-web--39.jpg" alt="Sunridge Whistler lower level recreation space log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ff4e25c3-cb2b-4d28-b939-8cfa5f481c36/sunridge-whistle-web--36.jpg" alt="Sunridge Whistler rec room entertainment area log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/51ef2e64-f0a7-44bb-aa13-7e4d71ac4467/sunridge-whistle-web--33.jpg" alt="Sunridge Whistler guest suite bedroom log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/dbbb84b2-95cd-4f8c-b01b-82def47314b5/sunridge-whistle-web--31.jpg" alt="Sunridge Whistler material detail texture close-up log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ec90258e-e7fe-4a00-bd28-cbd30a0d2d73/sunridge-whistle-web--35.jpg" alt="Sunridge Whistler ensuite bathroom vanity log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/67296b46-1f25-4d31-8a75-9edf27183684/sunridge-whistle-web--34.jpg" alt="Sunridge Whistler spa bathroom soaker tub log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/0e26c73d-b9c9-427c-a33d-cf59ee4bbcfd/sunridge-whistle-web--37.jpg" alt="Sunridge Whistler outdoor deck mountain views log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/44b12b67-2554-4934-b298-46603782728b/sunridge-whistle-web--38.jpg" alt="Sunridge Whistler hot tub outdoor living log home renovation photography" loading="lazy"></div>
+<div><img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/03444515-f5c7-41b8-973d-7ad09bb1e4fb/sunridge-whistle-web--40.jpg" alt="Sunridge Whistler final exterior elevation log home renovation photography" loading="lazy"></div>
+</div></div>
+
+<!-- CTA -->
+<div class="tp-cta" data-nav="Contact">
+<div class="tp-cta-bg">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/81e9bfd6-4187-40d6-9771-1c593f62b5cf/sunridge-whistle-web--12.jpg" alt="Sunridge Whistler timber ceiling interior architectural photography">
+</div>
+<div class="tp-cc">
+<h2>Your work defines the space.<br>Let me show the world its <em>full potential</em>.</h2>
+<p>Ready to create visuals that match the quality of your builds? Let's start with a conversation.</p>
+<a href="/discovery-call" class="tp-cb" target="_blank" rel="noopener">Book a Discovery Call</a>
+<p class="tp-alt-cta">Not ready to talk? <a href="/pricing-guide-landing">Get Pricing</a></p>
+</div>
+</div>
+
+<!-- Next Project -->
+<a href="/west-10th-vancouver" class="tp-nx">
+<div class="tp-nx-bg">
+<img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c992d9ce-4647-4129-b03b-6ce9deb487c3/west-10th-vancouver-web--32.jpg" alt="West 10th Avenue Vancouver architectural photography" loading="lazy">
+</div>
+<div class="tp-nx-c">
+<div class="tp-nx-l">Next Project</div>
+<h3>West 10th Avenue<span>Vancouver</span></h3>
+</div>
+</a>
+
+<!-- Footer -->
+<footer class="tp-ft">
+<div class="tp-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+<div class="tp-ft-r">
+<div class="tp-ft-i">
+<span class="tp-ft-l">Based In</span>
+<span class="tp-ft-dt"></span>
+<p>Squamish, British Columbia</p>
+</div>
+<div class="tp-ft-i">
+<span class="tp-ft-l">Email</span>
+<span class="tp-ft-dt"></span>
+<a id="ft-em" class="tp-ft-email">info@mattanthonyphoto.com</a>
+</div>
+<div class="tp-ft-i">
+<span class="tp-ft-l">Phone</span>
+<span class="tp-ft-dt"></span>
+<a href="tel:6047659270">604.765.9270</a>
+</div>
+<div class="tp-ft-i">
+<span class="tp-ft-l">Follow</span>
+<span class="tp-ft-dt"></span>
+<div class="tp-ft-s">
+<a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a>
+<a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+</div>
+</div>
+<div class="tp-ft-rl"></div>
+<div class="tp-ft-b">
+<p class="tp-ft-cp">&copy; 2026 Matt Anthony Photography</p>
+<nav class="tp-ft-n">
+<a href="/projects">Projects</a>
+<a href="/journal">Journal</a>
+<a href="/bio">About</a>
+<a href="/contact">Contact</a>
+<a href="/pricing-guide-landing">Get Pricing</a>
+</nav>
+</div>
+</footer>
+
+</div>
+
+<script>
+(function(){var a=[105,110,102,111,64,109,97,116,116,97,110,116,104,111,110,121,112,104,111,116,111,46,99,111,109];var m=[109,97,105,108,116,111,58];var e=document.getElementById('ft-em');if(e){var s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);var h='';for(var j=0;j<m.length;j++)h+=String.fromCharCode(m[j]);e.href=h+s;e.textContent=s;}})();
+</script>
+
+<script>
+(function(){
+  var isMobile = 'ontouchstart' in window;
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader = document.getElementById('tpLoader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('tp-done'); }, 1100);
+  });
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  var progressBar = document.getElementById('tpProgress');
+  function updateProgress(){
+    var s = window.scrollY;
+    var d = document.documentElement.scrollHeight - window.innerHeight;
+    if(d > 0) progressBar.style.width = (s / d * 100) + '%';
+  }
+
+  /* ═══ HERO PARALLAX ═══ */
+  var hero = document.querySelector('.tp-hero');
+  var heroBg = hero ? hero.querySelector('img') : null;
+  var heroContent = hero ? hero.querySelector('.tp-hc') : null;
+  function updateHero(){
+    var s = window.scrollY;
+    var h = window.innerHeight;
+    if(s > h) return;
+    var ratio = s / h;
+    if(heroBg) heroBg.style.transform = 'translateY(' + (s * 0.35) + 'px) scale(' + (1 + ratio * 0.05) + ')';
+    if(heroContent){
+      heroContent.style.transform = 'translateY(' + (s * 0.15) + 'px)';
+      heroContent.style.opacity = 1 - ratio * 1.2;
+    }
+  }
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor = document.getElementById('tpCursor');
+  var cursorDot = document.getElementById('tpCursorDot');
+  var cx = 0, cy = 0, dx = 0, dy = 0;
+  if(!isMobile && cursor){
+    document.addEventListener('mousemove', function(e){
+      dx = e.clientX; dy = e.clientY;
+      cursorDot.style.left = dx + 'px';
+      cursorDot.style.top = dy + 'px';
+      if(!cursor.classList.contains('tp-active')){
+        cursor.classList.add('tp-active');
+        cursorDot.classList.add('tp-active');
+      }
+    });
+    function tickCursor(){
+      cx += (dx - cx) * 0.12;
+      cy += (dy - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(tickCursor);
+    }
+    tickCursor();
+    var hoverEls = document.querySelectorAll('a, button, .tp-cb, .tp-nx, .tp-gg div');
+    hoverEls.forEach(function(el){
+      el.addEventListener('mouseenter', function(){ cursor.classList.add('tp-hover'); });
+      el.addEventListener('mouseleave', function(){ cursor.classList.remove('tp-hover'); });
+    });
+    document.addEventListener('mousedown', function(){ cursor.classList.add('tp-click'); });
+    document.addEventListener('mouseup', function(){ cursor.classList.remove('tp-click'); });
+  }
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateHero();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress();
+  updateHero();
+})();
+</script>
+
+<!--
+  Sunridge — Project Page Code Block
+  mattanthonyphoto.com/sunridge-whistler
+
+  Last updated: 2026-03-24
+  Changes:
+    1. Added meta description, canonical, and OG tags
+    2. Added page-specific ImageGallery JSON-LD schema
+    3. Rewrote all alt text from generic "Sunridge [noun]" to descriptive SEO-optimized text
+    4. Added loading="lazy" to all gallery images (not hero)
+    5. Fixed "All Projects" link from /projects-1 to /projects
+    6. Fixed footer LinkedIn link rel attribute (added noopener)
+    7. Added Get Pricing CTA below Book a Discovery Call
+    8. Added Get Pricing to footer nav
+    9. Added interactive layer (loader, scroll progress, custom cursor, hero parallax, CTA glow)
+    10. Fixed email duplication (removed ::after, using textContent)
+    11. Added target="_blank" to discovery call CTA
+    12. Fixed footer nav wrapping
+-->
+
+<meta name="description" content="Sunridge — Whistler log home renovation blending original timber character with modern interior design by LRD Studio. Architectural photography by Matt Anthony.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/sunridge-whistler">
+<meta property="og:title" content="Sunridge Whistler | Log Home Renovation Photography | Matt Anthony">
+<meta property="og:description" content="Whistler log home renovation preserving original timber character while introducing modern design. Interior design by LRD Studio.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/sunridge-whistler">
+<meta property="og:type" content="website">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "Sunridge — Whistler Architectural Photography",
+  "description": "Whistler log home renovation blending original timber character with modern interior design by LRD Studio.",
+  "url": "https://www.mattanthonyphoto.com/sunridge-whistler",
+  "author": {
+    "@id": "https://www.mattanthonyphoto.com/#person"
+  },
+  "locationCreated": {
+    "@type": "Place",
+    "name": "Whistler, British Columbia"
+  },
+  "about": {
+    "@type": "Residence",
+    "name": "Sunridge",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Whistler",
+      "addressRegion": "BC",
+      "addressCountry": "CA"
+    }
+  }
+}
+</script>

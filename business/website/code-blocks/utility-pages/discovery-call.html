@@ -1,0 +1,1259 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.dc-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a1a18;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+}
+
+.dc-loader.dc-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.dc-loader-brand {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: #f6f4f0;
+  opacity: 0;
+  animation: dcLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.dc-loader-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(138,133,121,0.7);
+  margin-top: 8px;
+  opacity: 0;
+  animation: dcLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.dc-loader-line {
+  width: 80px;
+  height: 1px;
+  background: rgba(201,169,110,0.12);
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+  opacity: 0;
+  animation: dcLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.dc-loader-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  animation: dcLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+}
+
+@keyframes dcLoaderIn { to { opacity: 1; } }
+@keyframes dcLoaderFill { to { left: 100%; } }
+
+/* ── Scroll progress bar ── */
+.dc-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.4));
+  z-index: 9999;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px rgba(201,169,110,0.4);
+}
+
+/* ── Headline gold underline on em ── */
+.dc-wrap h2 em {
+  position: relative;
+  display: inline;
+}
+
+.dc-wrap h2 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.2));
+  transition: width 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dc-wrap h2.dc-underlined em::after {
+  width: 100%;
+}
+
+/* ── Divider draw animation ── */
+.dc-divider {
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dc-divider.dc-drawn {
+  width: 80px;
+}
+
+/* ── Eyebrow gold dash (animated) ── */
+.dc-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dc-eyebrow::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  background: #c9a96e;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dc-eyebrow.dc-visible::before {
+  width: 24px;
+}
+
+/* ── Centered eyebrow variant ── */
+.dc-eyebrow-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.dc-eyebrow-center::before,
+.dc-eyebrow-center::after {
+  content: '';
+  width: 0;
+  height: 1px;
+  background: #c9a96e;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dc-eyebrow-center.dc-visible::before,
+.dc-eyebrow-center.dc-visible::after {
+  width: 24px;
+}
+
+/* ── Custom cursor ── */
+.dc-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(201,169,110,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
+.dc-cursor.dc-active {
+  opacity: 1;
+}
+
+.dc-cursor.dc-hover {
+  width: 50px;
+  height: 50px;
+  border-color: #c9a96e;
+  background: rgba(201,169,110,0.08);
+}
+
+.dc-cursor.dc-click {
+  width: 14px;
+  height: 14px;
+  background: rgba(201,169,110,0.3);
+}
+
+.dc-cursor-dot {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #c9a96e;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dc-cursor-dot.dc-active {
+  opacity: 1;
+}
+
+/* ── Magnetic button ── */
+.dc-magnetic {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Stat counter glow ── */
+.dc-stat-num {
+  transition: text-shadow 0.6s ease;
+}
+
+.dc-stat-num.dc-counted {
+  text-shadow: 0 0 20px rgba(201,169,110,0.3);
+}
+
+/* ── Inline gold highlights ── */
+.dc-gold { color: #c9a96e; font-weight: 400; }
+
+/* ── Accent line ── */
+.dc-accent {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.2) 20%, rgba(201,169,110,0.2) 80%, transparent 100%);
+}
+
+/* ── Hero scroll fade ── */
+.dc-hero-content {
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* ── Process card stagger ── */
+.dc-step-card {
+  transform: translateY(12px);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+
+.dc-step-card.dc-entered {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ═══ DISCOVERY CALL PAGE ═══ */
+.dc-wrap {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #1a1a18;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.dc-wrap img {
+  max-width: 100%;
+  display: block;
+}
+
+.dc-wrap a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── HERO ─── */
+.dc-hero {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 5rem 5vw;
+  background: #1a1a18;
+  overflow: hidden;
+}
+
+.dc-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 20%, rgba(26,26,24,0.6) 60%, rgba(26,26,24,0.92) 100%);
+  z-index: 1;
+}
+
+.dc-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.dc-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  filter: saturate(0.6);
+}
+
+.dc-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.dc-hero-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.dc-hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: #f6f4f0;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.dc-hero h1 em {
+  font-style: italic;
+  color: #c9a96e;
+}
+
+.dc-hero-sub {
+  font-size: 1.05rem;
+  color: #d9d5cd;
+  font-weight: 300;
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+/* ─── BOOKING SECTION ─── */
+.dc-booking {
+  background: #f6f4f0;
+  padding: 5rem 5vw;
+  text-align: center;
+}
+
+.dc-booking-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #b8975a;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.dc-booking h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: #1a1a18;
+  letter-spacing: -0.01em;
+  margin-bottom: 2.5rem;
+}
+
+.dc-booking h2 em {
+  font-style: italic;
+  color: #b8975a;
+}
+
+.dc-booking-iframe {
+  max-width: 700px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.dc-booking-frame {
+  width: 100%;
+  height: 900px;
+  border: none;
+  border-radius: 8px;
+  display: block;
+}
+
+.dc-booking-fallback {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: #8a8579;
+  line-height: 1.7;
+}
+
+.dc-booking-fallback a {
+  color: #b8975a;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.3s ease;
+}
+
+.dc-booking-fallback a:hover {
+  color: #1a1a18;
+}
+
+/* ─── WHAT TO EXPECT ─── */
+.dc-expect {
+  background: #f6f4f0;
+  padding: 5rem 5vw;
+}
+
+.dc-expect-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.dc-expect-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #b8975a;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.dc-expect .dc-divider {
+  width: 60px;
+  height: 1px;
+  background: #c9a96e;
+  margin: 0 0 2rem;
+}
+
+.dc-expect h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 3rem;
+  letter-spacing: -0.01em;
+}
+
+.dc-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.dc-step-card {
+  padding: 2.5rem 0;
+  border-top: 2px solid #c9a96e;
+}
+
+.dc-step-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: rgba(201,169,110,0.3);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.dc-step-card h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  color: #1a1a18;
+}
+
+.dc-step-card p {
+  font-size: 0.9rem;
+  color: #8a8579;
+  line-height: 1.7;
+}
+
+/* ─── THIS CALL IS FOR ─── */
+.dc-for {
+  background: #fff;
+  padding: 5rem 5vw;
+  text-align: center;
+}
+
+.dc-for-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+}
+
+.dc-for-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.dc-for-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(201,169,110,0.12);
+  border-radius: 2px;
+  text-align: left;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.dc-for-item:hover {
+  border-color: rgba(201,169,110,0.3);
+  transform: translateY(-2px);
+}
+
+.dc-for-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 1px;
+  background: #c9a96e;
+  margin-top: 0.7rem;
+}
+
+.dc-for-item p {
+  font-size: 0.95rem;
+  color: #4a4a46;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── TESTIMONIAL ─── */
+.dc-quote {
+  background: #eeece6;
+  padding: 6rem 5vw;
+  text-align: center;
+}
+
+.dc-quote-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+  color: #1a1a18;
+}
+
+.dc-quote-text::before {
+  content: '\201C';
+  display: block;
+  font-size: 4rem;
+  color: #c9a96e;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  font-style: normal;
+}
+
+.dc-quote-attr {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8579;
+  font-weight: 500;
+}
+
+.dc-quote-attr a {
+  color: #c9a96e;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.dc-quote-attr a:hover {
+  border-color: #c9a96e;
+}
+
+/* ─── STATS STRIP ─── */
+.dc-stats {
+  background: #1a1a18;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(201,169,110,0.1);
+}
+
+.dc-stat {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border-right: 1px solid rgba(201,169,110,0.1);
+}
+
+.dc-stat:last-child {
+  border-right: none;
+}
+
+.dc-stat-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: #c9a96e;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.dc-stat-lbl {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.65);
+  font-weight: 400;
+}
+
+/* ─── ALT PATHS / CTA SECTION ─── */
+.dc-alt {
+  position: relative;
+  padding: 7rem 5vw;
+  text-align: center;
+  overflow: hidden;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dc-alt-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.dc-alt-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.4) brightness(0.2);
+}
+
+.dc-alt-c {
+  position: relative;
+  z-index: 2;
+}
+
+.dc-alt h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: #f6f4f0;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.dc-alt h2 em {
+  font-style: italic;
+  color: #c9a96e;
+}
+
+.dc-alt-sub {
+  color: rgba(246,244,240,0.6);
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.8;
+}
+
+.dc-alt-btns {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.dc-alt-btn {
+  display: inline-block !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase !important;
+  padding: 1.1rem 2.8rem !important;
+  border: 1px solid #c9a96e !important;
+  background: transparent !important;
+  color: #c9a96e !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.dc-alt-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(201,169,110,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.dc-alt-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.dc-alt-btn:hover {
+  background: #c9a96e !important;
+  border-color: #c9a96e !important;
+  color: #1a1a18 !important;
+}
+
+.dc-alt-btn-primary {
+  background: #c9a96e !important;
+  border-color: #c9a96e !important;
+  color: #1a1a18 !important;
+}
+
+.dc-alt-btn-primary:hover {
+  background: transparent !important;
+  color: #c9a96e !important;
+}
+
+/* ─── FOOTER ─── */
+.dc-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.dc-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.dc-ft-locs a:hover{color:#c9a96e}
+.dc-ft {
+  background: #1a1a18;
+  border-top: 1px solid rgba(201,169,110,0.15);
+}
+
+.dc-ft-r {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.25rem 5vw;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.dc-ft-i {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.dc-ft-l {
+  font-size: 7.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.dc-ft-dt {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(201,169,110,0.4);
+  flex-shrink: 0;
+  position: relative;
+  top: -2px;
+}
+
+.dc-ft-i p,
+.dc-ft-i a {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(246,244,240,0.8);
+  font-weight: 300;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.dc-ft-i a:hover {
+  color: #c9a96e;
+}
+
+.dc-ft-s {
+  display: flex;
+  gap: 18px;
+}
+
+.dc-ft-rl {
+  margin: 0 5vw;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.15) 20%, rgba(201,169,110,0.15) 80%, transparent 100%);
+}
+
+.dc-ft-b {
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 5vw;
+}
+
+.dc-ft-cp {
+  font-size: 10px;
+  color: rgba(246,244,240,0.35);
+  letter-spacing: 0.08em;
+}
+
+.dc-ft-n {
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.dc-ft-n a {
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.dc-ft-n a:hover {
+  color: #c9a96e;
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .dc-hero {
+    min-height: 45vh;
+    padding: 4rem 6vw;
+  }
+
+  .dc-booking {
+    padding: 3.5rem 6vw;
+  }
+
+  .dc-booking-frame {
+    height: 850px;
+  }
+
+  .dc-expect {
+    padding: 3.5rem 6vw;
+  }
+
+  .dc-steps {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .dc-for {
+    padding: 3.5rem 6vw;
+  }
+
+  .dc-for-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dc-quote {
+    padding: 4rem 6vw;
+  }
+
+  .dc-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dc-stat {
+    border-right: none;
+    border-bottom: 1px solid rgba(201,169,110,0.1);
+    padding: 2rem 1rem;
+  }
+
+  .dc-stat:nth-child(odd) {
+    border-right: 1px solid rgba(201,169,110,0.1);
+  }
+
+  .dc-stat:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+
+  .dc-alt {
+    padding: 4rem 6vw;
+    min-height: 40vh;
+  }
+
+  .dc-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.dc-ft-locs a{font-size:.55rem}
+
+  .dc-ft-r {
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 2rem 6vw;
+  }
+
+  .dc-ft-rl {
+    margin: 0 6vw;
+  }
+
+  .dc-ft-b {
+    padding-bottom: 2rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    padding: 1.25rem 6vw;
+  }
+}
+</style>
+
+<!-- SEO: Meta description, canonical, OG tags set in Squarespace page settings -->
+<!-- Meta Description: Book a free 20-minute discovery call with Matt Anthony Photography. Discuss your upcoming projects, visual strategy, and whether a creative partnership is the right fit. -->
+<!-- Canonical: https://www.mattanthonyphoto.com/discovery-call -->
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Book a Discovery Call — Matt Anthony Photography",
+  "description": "Book a free 20-minute discovery call with Matt Anthony Photography. Discuss your upcoming projects, visual strategy, and whether a creative partnership is the right fit.",
+  "url": "https://www.mattanthonyphoto.com/discovery-call",
+  "mainEntity": {
+    "@type": "Service",
+    "name": "Discovery Call",
+    "description": "A free 20-minute consultation to discuss upcoming projects, visual strategy, and creative partnership opportunities.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Matt Anthony Photography",
+      "telephone": "+16047659270",
+      "email": "info@mattanthonyphoto.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Squamish",
+        "addressRegion": "BC",
+        "addressCountry": "CA"
+      },
+      "url": "https://www.mattanthonyphoto.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CAD",
+      "availability": "https://schema.org/InStock"
+    }
+  },
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.mattanthonyphoto.com/discovery-call",
+      "actionPlatform": [
+        "https://schema.org/DesktopWebPlatform",
+        "https://schema.org/MobileWebPlatform"
+      ]
+    },
+    "result": {
+      "@type": "Reservation",
+      "name": "Discovery Call Booking"
+    }
+  }
+}
+</script>
+
+<!-- OG Tags (set in Squarespace SEO panel, included here as reference) -->
+<!-- og:title: Book a Discovery Call — Matt Anthony Photography -->
+<!-- og:description: Book a free 20-minute discovery call with Matt Anthony Photography. Discuss your upcoming projects, visual strategy, and whether a creative partnership is the right fit. -->
+<!-- og:type: website -->
+<!-- og:url: https://www.mattanthonyphoto.com/discovery-call -->
+<!-- og:image: Use Warbler Whistler exterior image -->
+
+<div class="dc-loader" id="dcLoader">
+  <div class="dc-loader-brand">Matt Anthony Photography</div>
+  <div class="dc-loader-sub">Discovery Call</div>
+  <div class="dc-loader-line"></div>
+</div>
+
+<div class="dc-cursor" id="dcCursor"></div>
+<div class="dc-cursor-dot" id="dcCursorDot"></div>
+<div class="dc-progress" id="dcProgress"></div>
+<div class="dc-wrap">
+
+<!-- ═══ HERO ═══ -->
+<div class="dc-hero">
+  <div class="dc-hero-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg?format=2500w" alt="Warbler Residence Whistler exterior architectural photography by Matt Anthony">
+  </div>
+  <div class="dc-hero-content">
+    <p class="dc-hero-label">Let's Talk</p>
+    <h1>Book a <em>Discovery Call</em></h1>
+    <p class="dc-hero-sub">20 minutes. No commitment. No pitch. Just a conversation about your projects and whether working together makes sense.</p>
+  </div>
+</div>
+
+<!-- ═══ BOOKING SECTION ═══ -->
+<section class="dc-booking">
+  <p class="dc-booking-label dc-eyebrow-center">Schedule Your Call</p>
+  <h2>Pick a time that <em>works for you</em></h2>
+  <div class="dc-booking-iframe">
+    <iframe src="https://api.leadconnectorhq.com/widget/booking/Frz0NW7cdjKsEuwNLhKA" class="dc-booking-frame" scrolling="yes" id="dcBooking"></iframe>
+  </div>
+  <p class="dc-booking-fallback">Prefer email? <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a> &middot; <a href="tel:6047659270">604.765.9270</a></p>
+</section>
+
+<div class="dc-accent"></div>
+
+<!-- ═══ WHAT TO EXPECT ═══ -->
+<section class="dc-expect">
+  <div class="dc-expect-inner">
+    <p class="dc-expect-label dc-eyebrow">What to Expect</p>
+    <div class="dc-divider"></div>
+    <h2>A simple process. <em>No surprises.</em></h2>
+    <div class="dc-steps" id="dcSteps">
+      <div class="dc-step-card">
+        <div class="dc-step-num">01</div>
+        <h3>Discovery</h3>
+        <p>We'll talk about your upcoming projects, what you need visually, and your goals for your brand.</p>
+      </div>
+      <div class="dc-step-card">
+        <div class="dc-step-num">02</div>
+        <h3>Proposal</h3>
+        <p>If there's a fit, I'll send a proposal within hours. Clear scope, clear pricing, no surprises.</p>
+      </div>
+      <div class="dc-step-card">
+        <div class="dc-step-num">03</div>
+        <h3>Create</h3>
+        <p>We schedule the work and I show up ready. No re-briefing, no hand-holding required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dc-accent"></div>
+
+<!-- ═══ THIS CALL IS FOR ═══ -->
+<section class="dc-for">
+  <p class="dc-for-label dc-eyebrow-center">Is This Right For You</p>
+  <div class="dc-for-grid">
+    <div class="dc-for-item">
+      <div class="dc-for-icon"></div>
+      <p>Builders with a project wrapping up in the next 3 months</p>
+    </div>
+    <div class="dc-for-item">
+      <div class="dc-for-icon"></div>
+      <p>Architects looking for consistent portfolio documentation</p>
+    </div>
+    <div class="dc-for-item">
+      <div class="dc-for-icon"></div>
+      <p>Interior designers preparing for award submissions or editorial features</p>
+    </div>
+    <div class="dc-for-item">
+      <div class="dc-for-icon"></div>
+      <p>Firms ready to explore an ongoing creative partnership</p>
+    </div>
+  </div>
+</section>
+
+<div class="dc-accent"></div>
+
+<!-- ═══ TESTIMONIAL ═══ -->
+<section class="dc-quote">
+  <p class="dc-quote-text">Working with Matt was an absolute pleasure from start to finish. The website looks fantastic, and the ongoing maintenance plan gives me peace of mind knowing everything is taken care of.</p>
+  <p class="dc-quote-attr">Marc Harvey, Balmoral Construction &middot; <a href="/balmoral-construction">Read the Case Study</a></p>
+</section>
+
+<!-- ═══ STATS STRIP ═══ -->
+<div class="dc-stats" id="dcStats">
+  <div class="dc-stat">
+    <div class="dc-stat-num">19+</div>
+    <div class="dc-stat-lbl">Projects</div>
+  </div>
+  <div class="dc-stat">
+    <div class="dc-stat-num">28</div>
+    <div class="dc-stat-lbl">Clients</div>
+  </div>
+  <div class="dc-stat">
+    <div class="dc-stat-num">7</div>
+    <div class="dc-stat-lbl">Service Areas</div>
+  </div>
+  <div class="dc-stat">
+    <div class="dc-stat-num">5</div>
+    <div class="dc-stat-lbl">Case Studies</div>
+  </div>
+</div>
+
+<!-- ═══ CTA ═══ -->
+<section class="dc-alt">
+  <div class="dc-alt-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83bbba67-7393-4e34-8b4b-bac1600c8110/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-12.jpg?format=2500w" alt="" loading="lazy">
+  </div>
+  <div class="dc-alt-c">
+    <h2>Not ready to book? <em>No problem.</em></h2>
+    <p class="dc-alt-sub">Download our pricing guide to see investment ranges, or browse case studies to see what we've done for firms like yours.</p>
+    <div class="dc-alt-btns">
+      <a href="/pricing-guide-landing" class="dc-alt-btn dc-alt-btn-primary dc-magnetic">Get Pricing Guide</a>
+      <a href="/balmoral-construction" class="dc-alt-btn dc-magnetic">Browse Case Studies</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="dc-ft">
+<div class="dc-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+  <div class="dc-ft-r">
+    <div class="dc-ft-i"><span class="dc-ft-l">Based In</span><span class="dc-ft-dt"></span><p>Squamish, British Columbia</p></div>
+    <div class="dc-ft-i"><span class="dc-ft-l">Email</span><span class="dc-ft-dt"></span><a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a></div>
+    <div class="dc-ft-i"><span class="dc-ft-l">Phone</span><span class="dc-ft-dt"></span><a href="tel:6047659270">604.765.9270</a></div>
+    <div class="dc-ft-i"><span class="dc-ft-l">Follow</span><span class="dc-ft-dt"></span><div class="dc-ft-s"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  </div>
+  <div class="dc-ft-rl"></div>
+  <div class="dc-ft-b">
+    <span class="dc-ft-cp">&copy; 2026 Matt Anthony Photography</span>
+    <nav class="dc-ft-n"><a href="/projects">Projects</a><a href="/journal">Journal</a><a href="/journal/georgie-awards-guide">Georgie Awards</a><a href="/bio">About</a><a href="/contact">Contact</a><a href="/pricing-guide-landing">Get Pricing</a></nav>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var isMobile = 'ontouchstart' in window;
+  var wrap = document.querySelector('.dc-wrap');
+  var progressBar = document.getElementById('dcProgress');
+  var hero = document.querySelector('.dc-hero');
+  var heroContent = document.querySelector('.dc-hero-content');
+  var heroBg = document.querySelector('.dc-hero-bg');
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader = document.getElementById('dcLoader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('dc-done'); }, 1100);
+  });
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  function updateProgress(){
+    var s = window.scrollY;
+    var d = document.documentElement.scrollHeight - window.innerHeight;
+    if(d > 0) progressBar.style.width = (s / d * 100) + '%';
+  }
+
+  /* ═══ HERO PARALLAX + FADE ═══ */
+  function updateHero(){
+    var s = window.scrollY;
+    var h = window.innerHeight;
+    if(s > h) return;
+    var ratio = s / h;
+    if(heroBg) heroBg.style.transform = 'translateY(' + (s * 0.35) + 'px) scale(' + (1 + ratio * 0.05) + ')';
+    if(heroContent){
+      heroContent.style.transform = 'translateY(' + (s * 0.15) + 'px)';
+      heroContent.style.opacity = 1 - ratio * 1.2;
+    }
+  }
+
+  /* ═══ HEADLINE GOLD UNDERLINE ═══ */
+  var headObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('dc-underlined'); headObs.unobserve(e.target); }
+    });
+  }, {threshold:0.4});
+  document.querySelectorAll('.dc-wrap h2').forEach(function(h){ headObs.observe(h); });
+
+  /* ═══ EYEBROW DASH DRAW ═══ */
+  var eyeObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('dc-visible'); eyeObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.dc-eyebrow, .dc-eyebrow-center').forEach(function(el){ eyeObs.observe(el); });
+
+  /* ═══ DIVIDER DRAW ═══ */
+  var divObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('dc-drawn'); divObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.dc-divider').forEach(function(el){ el.style.width = '0'; divObs.observe(el); });
+
+  /* ═══ PROCESS CARD STAGGER ═══ */
+  var stepObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('dc-entered'); stepObs.unobserve(e.target); }
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.dc-step-card').forEach(function(el, i){
+    el.style.transitionDelay = (i * 0.15) + 's';
+    stepObs.observe(el);
+  });
+
+  /* ═══ STAT COUNTERS ═══ */
+  function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+  var counterObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting || e.target.classList.contains('dc-counted')) return;
+      e.target.classList.add('dc-counted');
+      var text = e.target.textContent.trim();
+      var hasPlus = text.indexOf('+') !== -1;
+      var num = parseInt(text);
+      if(isNaN(num)) return;
+      var start = performance.now();
+      function tick(now){
+        var t = Math.min((now - start) / 1400, 1);
+        e.target.textContent = Math.round(ease(t) * num) + (hasPlus ? '+' : '');
+        if(t < 1) requestAnimationFrame(tick);
+      }
+      e.target.textContent = '0' + (hasPlus ? '+' : '');
+      requestAnimationFrame(tick);
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.dc-stat-num').forEach(function(el){ counterObs.observe(el); });
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cursor = document.getElementById('dcCursor');
+  var cursorDot = document.getElementById('dcCursorDot');
+  var cx = 0, cy = 0, dx = 0, dy = 0;
+  if(!isMobile && cursor){
+    document.addEventListener('mousemove', function(e){
+      dx = e.clientX; dy = e.clientY;
+      cursorDot.style.left = dx + 'px';
+      cursorDot.style.top = dy + 'px';
+      if(!cursor.classList.contains('dc-active')){
+        cursor.classList.add('dc-active');
+        cursorDot.classList.add('dc-active');
+      }
+    });
+    function tickCursor(){
+      cx += (dx - cx) * 0.12;
+      cy += (dy - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(tickCursor);
+    }
+    tickCursor();
+    var hoverEls = document.querySelectorAll('a, button, .dc-alt-btn, .dc-for-item');
+    hoverEls.forEach(function(el){
+      el.addEventListener('mouseenter', function(){ cursor.classList.add('dc-hover'); });
+      el.addEventListener('mouseleave', function(){ cursor.classList.remove('dc-hover'); });
+    });
+    document.addEventListener('mousedown', function(){ cursor.classList.add('dc-click'); });
+    document.addEventListener('mouseup', function(){ cursor.classList.remove('dc-click'); });
+  }
+
+  /* ═══ MAGNETIC BUTTON ═══ */
+  if(!isMobile){
+    document.querySelectorAll('.dc-magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.25) + 'px, ' + (y * 0.25) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  /* ═══ SCROLL HANDLER ═══ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateHero();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+})();
+</script>

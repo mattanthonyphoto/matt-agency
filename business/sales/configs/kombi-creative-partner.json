@@ -1,0 +1,576 @@
+{
+  "client": {
+    "company": "Kombi Homes",
+    "slug": "kombi",
+    "owner": "Brian Lawry",
+    "owner_title": "Owner",
+    "confidentiality_name": "Kombi Construction"
+  },
+  "proposal": {
+    "type": "creative-partner",
+    "title": "Creative Partner",
+    "date": "March 2026",
+    "valid_through": "April 30, 2026",
+    "filename": "kombi-creative-partner.html"
+  },
+  "cover": {
+    "eyebrow": "Kombi Homes",
+    "headline_html": "31 years of craft.<br>2 pages online.<br><em>Let's fix that.</em>",
+    "subtitle": "Professional photography. Project documentation. A dedicated content partner who builds your portfolio as you build homes.",
+    "cta_text": "View Options",
+    "cta_target": "#tiers",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c992d9ce-4647-4129-b03b-6ce9deb487c3/west-10th-vancouver-web--32.jpg",
+    "image_position": "center 35%"
+  },
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/76e4a936-3e97-4510-b280-07e9cda4c3f1/eagle-pemberton-architectural-photography-matt-anthony-.jpg-7.jpg",
+        "alt": "Eagle Residence Pemberton open plan living space",
+        "caption": "Eagle Residence &middot; Pemberton &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8baad882-d517-4bdd-98fd-09ad2530273d/LRD-2500px-7.jpg",
+        "alt": "Balsam Way Whistler kitchen renovation",
+        "caption": "Balsam Way Renovation &middot; Whistler &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e6abc23d-4fa1-461f-ba81-ce0448063016/west-10th-vancouver-web--10.jpg",
+        "alt": "West 10th Avenue Vancouver open plan living room",
+        "caption": "West 10th Avenue &middot; Vancouver &middot; Matt Anthony Photography"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/94f5976a-0c9d-430d-94d9-540c32405da0/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-16.jpg",
+        "alt": "Sugarloaf Residence Pemberton kitchen interior",
+        "caption": "Sugarloaf Residence &middot; Pemberton &middot; Matt Anthony Photography"
+      }
+    ]
+  },
+  "sections": [
+    "story",
+    "audit",
+    "services",
+    "pricing",
+    "roadmap",
+    "vision",
+    "numbers",
+    "awards",
+    "next_steps"
+  ],
+  "story": {
+    "eyebrow": "Where You Are",
+    "headline_html": "Three decades of builds.<br><em>Almost none of it documented.</em>",
+    "lead": "Brian, thanks for reaching out. I had a look at Kombi's site and your work clearly speaks for itself, your clients rave about you. But here's the disconnect: 31 years of custom homes, renovations, and complex builds on the North Shore, and your entire online presence is a homepage and a contact page.",
+    "paragraphs": [
+      "Your site has 2 pages total. No project portfolio. No case studies. No Google Business Profile. No schema markup telling Google you're a North Vancouver builder. The carousel on the homepage shows beautiful work, but there's no way for a potential client searching \"custom home builder North Vancouver\" to find it.",
+      "Meanwhile, Blackfish Homes has a full portfolio with detailed project pages. Bolder Homes showcases every build with professional photography. Goldcon has case studies, awards, and a content library. These firms aren't building better homes than Kombi. They're documenting them.",
+      "This proposal puts a content partner behind Kombi who documents every project, builds your portfolio month by month, and closes the gap between the quality of your work and how visible it is online."
+    ],
+    "stats": [
+      {
+        "value": "31",
+        "label": "Years in Business"
+      },
+      {
+        "value": "2",
+        "label": "Website Pages"
+      },
+      {
+        "value": "0",
+        "label": "Project Pages"
+      },
+      {
+        "value": "0",
+        "label": "Awards Submitted"
+      }
+    ]
+  },
+  "audit": {
+    "eyebrow": "The Audit",
+    "nav_label": "Audit",
+    "headline_html": "What the data says.<br><em>Verified, not estimated.</em>",
+    "lead": "I crawled kombihomes.com. Here's what I found across 2 pages.",
+    "paragraphs": [],
+    "grades": [
+      {
+        "area": "What's Strong",
+        "findings": [
+          "<strong>SEO fundamentals score 85/100.</strong> Valid SSL, good meta title, meta description present, canonical tags, Open Graph. The technical foundation is solid.",
+          "<strong>Visual assets score 92/100.</strong> 12 quality images on the homepage carousel. The photography shows real craftsmanship. Almost all images have proper alt text.",
+          "<strong>Houzz listing active.</strong> Directory presence established for design-build in North Vancouver.",
+          "<strong>Fast server response (541ms).</strong> Clean, lightweight site. No performance issues."
+        ]
+      },
+      {
+        "area": "The Specific Gaps",
+        "findings": [
+          "<strong>Only 2 pages on the entire site.</strong> A homepage and a contact page. 31 years of custom homes, renovations, and complex builds with zero project pages to show for it. Every project page is a new search entry point you're missing.",
+          "<strong>160 words of content total.</strong> Google ranks pages based on content depth. Your competitors have thousands of words across dozens of pages. Kombi has a paragraph.",
+          "<strong>No project portfolio at all.</strong> The homepage carousel shows the work but there's nowhere for a potential client to explore individual projects, read about scope, or see before-and-after transformations.",
+          "<strong>No Google Business Profile detected.</strong> Can't appear in Google Maps or the Local Pack for \"general contractor North Vancouver\" searches. This is the highest-impact gap.",
+          "<strong>No structured data.</strong> Zero schema markup. Google doesn't know Kombi is a builder, where you're based, what services you offer, or your 31-year track record.",
+          "<strong>No blog, no case studies, no testimonials on site.</strong> Your BBB reviews are excellent. Ryan Heathfield gets called out by name for quality. None of this social proof lives on your own site.",
+          "<strong>Zero award submissions.</strong> HAVAN and Georgie awards are available for North Shore builders. Kombi's work qualifies. The photography to submit doesn't exist yet."
+        ]
+      }
+    ],
+    "insight": {
+      "title": "The Bottom Line",
+      "content_html": "<p>Kombi has strong technical SEO fundamentals and genuine craftsmanship visible even in a homepage carousel. But the site is <strong>2 pages with 160 words</strong>. No portfolio, no project pages, no blog, no awards. The fix isn't a redesign, it's a content partner who photographs every project, builds the portfolio page by page, fixes the local SEO gaps in month one, and turns a 2-page site into a 15+ page portfolio that actually generates leads.</p>"
+    }
+  },
+  "services": {
+    "eyebrow": "What This Adds",
+    "headline_html": "Your content arm.<br><em>Every project documented.</em>",
+    "intro": "Photography, video, and build documentation for every project. Every shoot becomes a portfolio page with proper SEO. Your site grows with the business, and every page works for you around the clock.",
+    "cards": [
+      {
+        "title": "Project Photography",
+        "is_new": false,
+        "entries": [
+          "1 full-day shoot per month",
+          "20 to 25 edited images per session",
+          "Custom homes, renovations, and complex builds",
+          "Drone and aerial coverage included",
+          "Multi-format delivery: web, social, print, award-ready",
+          "Full licensing for all channels"
+        ]
+      },
+      {
+        "title": "Build Documentation + Video",
+        "is_new": true,
+        "entries": [
+          "Before, during, and after sequences for renovations",
+          "Crew action shots and craft documentation",
+          "Material close-ups: concrete, timber, structural details",
+          "Monthly social media reel from shoot footage",
+          "Before/after reveal videos for social",
+          "Year-end project film (Growth and Full tiers)"
+        ]
+      },
+      {
+        "title": "Website Content + SEO",
+        "is_new": true,
+        "entries": [
+          "New project page built and published for every shoot",
+          "Google Business Profile created, verified, and optimized",
+          "LocalBusiness schema markup added (month one)",
+          "Image alt text optimization across all site photos",
+          "Monthly blog post (Growth and Full tiers)",
+          "NAP consistency across all directory listings"
+        ]
+      },
+      {
+        "title": "Strategy + Awards",
+        "is_new": true,
+        "entries": [
+          "Full Creative Partner tier only",
+          "Monthly strategy call and content calendar",
+          "HAVAN and Georgie Award submissions",
+          "CHBA National award submissions",
+          "Publication pitches for completed projects",
+          "Full social media management (3x/week)"
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Choose Your Tier",
+    "headline_html": "Three tiers. Same partner.<br><em>Your call.</em>",
+    "intro": "Every tier delivers professional photography, build documentation, and a growing project portfolio. The question is how much video, social, and strategy you want behind it.",
+    "tiers": [
+      {
+        "name": "Foundation",
+        "slug": "foundation",
+        "price": "$2,500",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $7,500 total",
+        "recommended": false,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "20 to 25 edited images",
+            "included": true
+          },
+          {
+            "text": "Drone and aerial coverage",
+            "included": true
+          },
+          {
+            "text": "Before / during / after documentation",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, social, print, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Project page built per shoot",
+            "included": true
+          },
+          {
+            "text": "Google Business Profile setup + schema fixes",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": false
+          },
+          {
+            "text": "Monthly blog post + strategy call",
+            "included": false
+          },
+          {
+            "text": "Year-end project film",
+            "included": false
+          },
+          {
+            "text": "Awards + full social management",
+            "included": false
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$30,000"
+      },
+      {
+        "name": "Growth",
+        "slug": "growth",
+        "price": "$3,000",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $9,000 total",
+        "recommended": true,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "20 to 25 edited images",
+            "included": true
+          },
+          {
+            "text": "Drone and aerial coverage",
+            "included": true
+          },
+          {
+            "text": "Before / during / after documentation",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, social, print, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Project page built per shoot",
+            "included": true
+          },
+          {
+            "text": "Google Business Profile setup + schema fixes",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": true
+          },
+          {
+            "text": "Monthly blog post",
+            "included": true
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": true
+          },
+          {
+            "text": "Year-end project film (60 to 90 seconds)",
+            "included": true
+          },
+          {
+            "text": "Awards + full social management",
+            "included": false
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$36,000"
+      },
+      {
+        "name": "Full Creative Partner",
+        "slug": "full",
+        "price": "$3,500",
+        "unit": "/ mo",
+        "term": "3-month pilot &middot; $10,500 total",
+        "recommended": false,
+        "entries": [
+          {
+            "text": "1 full-day shoot / month",
+            "included": true
+          },
+          {
+            "text": "25 to 30 edited images",
+            "included": true
+          },
+          {
+            "text": "Drone and aerial coverage",
+            "included": true
+          },
+          {
+            "text": "Before / during / after documentation",
+            "included": true
+          },
+          {
+            "text": "Multi-format delivery (web, social, print, award)",
+            "included": true
+          },
+          {
+            "text": "Full image licensing",
+            "included": true
+          },
+          {
+            "text": "Project page built per shoot",
+            "included": true
+          },
+          {
+            "text": "Google Business Profile setup + schema fixes",
+            "included": true
+          },
+          {
+            "text": "Monthly social media reel",
+            "included": true
+          },
+          {
+            "text": "Monthly blog post",
+            "included": true
+          },
+          {
+            "text": "Monthly strategy call",
+            "included": true
+          },
+          {
+            "text": "Year-end documentary film (2 to 3 minutes)",
+            "included": true
+          },
+          {
+            "text": "HAVAN + Georgie Award submissions",
+            "included": true
+          },
+          {
+            "text": "Full social media management (3x/week)",
+            "included": true
+          }
+        ],
+        "bottom_label": "Annual investment",
+        "bottom_value": "$42,000"
+      }
+    ],
+    "insight": {
+      "title": "How to Think About This",
+      "content_html": "<p>A single project shoot typically runs <strong>$3,000 to $4,500</strong> as a one-off. Here's what a monthly partnership looks like instead:</p>",
+      "breakdowns": [
+        {
+          "label": "Foundation $2,500",
+          "desc": "Photography + build docs + a new project page per shoot + GBP setup and schema fixes. Your site grows every month."
+        },
+        {
+          "label": "Growth $3,000",
+          "desc": "Everything above plus social reels, monthly blog post, strategy calls, and a year-end film. Content engine running."
+        },
+        {
+          "label": "Creative Partner $3,500",
+          "desc": "Content + strategy. Documentary film, HAVAN/Georgie awards pipeline, and full social management. The complete package."
+        }
+      ],
+      "footer_html": "<p style=\"margin-top:24px;\">A one-off shoot gives you images. A content partner gives you a growing portfolio, search visibility, award credentials, and a consistent brand presence. After 31 years of building, the documentation should match the quality of the work.</p>"
+    }
+  },
+  "roadmap": {
+    "eyebrow": "3-Month Pilot Roadmap",
+    "headline_html": "What gets done.<br><em>Month by month.</em>",
+    "intro": "The pilot runs three months. Three projects documented. You'll know within 90 days whether this model works for Kombi.",
+    "months": [
+      {
+        "month": "Month 1",
+        "label_html": "Fix + Document:<br>First Project",
+        "entries": [
+          "Google Business Profile created, verified, and optimized with photos",
+          "LocalBusiness schema markup added to the site",
+          "NAP consistency audit across Houzz, BBB, and all directory listings",
+          "Full-day shoot at a recently completed custom home or renovation",
+          "20 to 25 edited images: exteriors, interiors, detail shots, drone aerials",
+          "Before/during/after documentation if renovation",
+          "First project page built and published on the site",
+          "Social media reel: project reveal or before/after transformation"
+        ]
+      },
+      {
+        "month": "Month 2",
+        "label_html": "Second Project:<br>Build the Library",
+        "entries": [
+          "Full-day session at a second project",
+          "20 to 25 edited images + build documentation",
+          "Crew action shots and craft detail photography",
+          "Second project page built and published",
+          "Social media reel from shoot content",
+          "Strategy call: review month one, adjust approach"
+        ]
+      },
+      {
+        "month": "Month 3",
+        "label_html": "Prove It:<br>Results and Decision",
+        "entries": [
+          "Full-day session, third project",
+          "20 to 25 edited images + build documentation",
+          "Third project page published",
+          "Social media reel + LinkedIn content",
+          "Pilot review: what worked, what the data says, what comes next",
+          "If results proven: 12-month continuation locked in"
+        ]
+      }
+    ],
+    "stats": [
+      {
+        "value": "3",
+        "label": "Full-Day Shoots"
+      },
+      {
+        "value": "75",
+        "label": "Professional Images"
+      },
+      {
+        "value": "3",
+        "label": "New Project Pages"
+      },
+      {
+        "value": "1",
+        "label": "GBP Launched"
+      }
+    ]
+  },
+  "vision": {
+    "eyebrow": "The 12-Month Vision",
+    "headline_html": "What a full year of<br><em>content looks like.</em>",
+    "intro": "The pilot proves the model. A full year gives Kombi the strongest visual portfolio of any general contractor on the North Shore.",
+    "quarters": [
+      {
+        "period": "Q2 2026",
+        "title": "Prove the Model",
+        "description": "3 shoots. 75 images. Google Business Profile live and optimized. 3 project pages where there were zero. Your site goes from a business card to a portfolio."
+      },
+      {
+        "period": "Q3 2026",
+        "title": "Build the Library",
+        "description": "150+ images. 6 project pages. Renovation transformation sequences, custom home documentation, drone aerials. Six months of content compounding."
+      },
+      {
+        "period": "Q4 2026",
+        "title": "Leverage",
+        "description": "HAVAN and Georgie Award submissions from the best projects. Year-in-review content for proposals. 225+ images. Kombi's online presence is unrecognizable from where it started."
+      },
+      {
+        "period": "Q1 2027",
+        "title": "Separate",
+        "description": "300+ images, a year-end documentary, and a complete project portfolio working for Kombi 24/7. The North Shore builders who invest in content now win the next cycle."
+      }
+    ]
+  },
+  "numbers": {
+    "stats": [
+      {
+        "value": "300",
+        "label": "Professional Images"
+      },
+      {
+        "value": "12",
+        "label": "Social Reels"
+      },
+      {
+        "value": "12",
+        "label": "Projects Documented"
+      }
+    ]
+  },
+  "awards": {
+    "eyebrow": "Awards &amp; Publications",
+    "headline_html": "Your competitors<br><em>already have them.</em>",
+    "lead": "Blackfish Homes, Bolder Homes, and Goldcon all showcase awards and professional portfolios. After 31 years, Kombi has built homes that are every bit as good. The credentials don't reflect it yet.",
+    "paragraphs": [
+      "In the custom home and renovation market, awards are trust signals that close contracts. HAVAN and Georgie submissions are straightforward once you have the photography. Every project we shoot is captured to award-submission spec from day one."
+    ],
+    "competitor_numbers": [
+      {
+        "value": "0",
+        "label": "Kombi Awards to Date"
+      },
+      {
+        "value": "5+",
+        "label": "Competitor Awards (North Shore)"
+      },
+      {
+        "value": "31",
+        "label": "Years of Builds to Draw From"
+      }
+    ],
+    "detail_html": "<h3>What I Handle</h3><p>Every shoot is photographed to award-submission spec from day one. 300 DPI JPEG, colour-calibrated, anonymous-ready. When HAVAN and Georgie submission season opens, your images are done. I prepare the entry materials, identify the right categories, and manage the process.</p>",
+    "services": [
+      {
+        "title": "Award Submissions",
+        "entries": [
+          "HAVAN Awards (Homebuilders Association Vancouver)",
+          "Georgie Awards (CHBA BC)",
+          "CHBA National Awards for Housing Excellence",
+          "Gold Nugget Awards",
+          "Renovation-specific categories"
+        ]
+      },
+      {
+        "title": "Publication Pitches",
+        "entries": [
+          "Western Living",
+          "Dwell",
+          "Mountain Life",
+          "ArchDaily",
+          "NUVO Magazine"
+        ]
+      }
+    ],
+    "insight": {
+      "title": "Renovation Categories Are Wide Open",
+      "content_html": "<p>HAVAN and Georgie awards have specific renovation categories: Whole House, Kitchen, Bathroom, Best Exterior, and more. Kombi's renovation and custom home work qualifies across multiple categories. <strong>One project, properly photographed, can generate 3 to 5 submissions.</strong> The firms who submit first establish the credibility gap.</p>"
+    }
+  },
+  "next_steps": {
+    "eyebrow": "Next Steps",
+    "headline_html": "No rush.<br><em>When you're ready, here's how it works.</em>",
+    "paragraphs": [
+      "Brian, you mentioned you'll need photography down the road. This proposal is here whenever that time comes. Whether it's a single project shoot or an ongoing partnership, the door's open.",
+      "The pilot is three months. If it works, we keep going. If it doesn't, you walk away with 75 professional images, three new project pages, a Google Business Profile, and content that's stronger than anything your competitors are putting out. There's no downside to trying it."
+    ],
+    "steps": [
+      {
+        "number": "1",
+        "title": "Pick Your Tier",
+        "description": "Foundation, Growth, or Full Creative Partner. Or start with a single project shoot to test the fit."
+      },
+      {
+        "number": "2",
+        "title": "Deposit",
+        "description": "50% of the pilot total to lock in scheduling and guarantee priority."
+      },
+      {
+        "number": "3",
+        "title": "Plan",
+        "description": "Quick 20-minute call to pick the first project and plan the shoot schedule."
+      }
+    ],
+    "valid_note": "This proposal is valid through <strong style=\"color:var(--ink);\">April 30, 2026</strong>. After that, spring/summer availability fills up fast."
+  }
+}
