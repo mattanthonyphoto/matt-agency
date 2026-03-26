@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sacred Ways — Hawai'i Spiritual Retreat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --primary: #1a1a1a;
+  --cream: #FAF8F5;
+  --warm-white: #F5F0EB;
+  --sage: #8B9A7E;
+  --sage-dark: #6B7D60;
+  --earth: #A69279;
+  --terracotta: #C4916E;
+  --sand: #D4C5B2;
+  --dark-green: #2C3A28;
+  --body-text: #5A5A5A;
+  --light-text: rgba(255,255,255,0.7);
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);font-weight:400;color:var(--primary);background:var(--cream);overflow-x:hidden;line-height:1.7}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* ── Loader ── */
+.loader{position:fixed;inset:0;background:var(--dark-green);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 1s cubic-bezier(0.16,1,0.3,1) 1.4s,visibility 0s 2.4s}
+.loader.done{opacity:0;visibility:hidden}
+.loader-brand{display:flex;flex-direction:column;align-items:center;gap:16px;opacity:0;animation:loaderFade 0.8s 0.3s forwards}
+.loader-name{font-family:var(--font-heading);font-size:clamp(24px,3vw,36px);letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.9);font-weight:300}
+.loader-sub{font-family:var(--font-body);font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--sage);font-weight:400}
+.loader-line{width:40px;height:1px;background:var(--sage);margin-top:24px;transform:scaleX(0);transform-origin:center;animation:loaderLine 1s 0.8s cubic-bezier(0.16,1,0.3,1) forwards}
+@keyframes loaderFade{to{opacity:1}}
+@keyframes loaderLine{to{transform:scaleX(1)}}
+
+/* ── Navigation ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px clamp(24px,5vw,60px);display:flex;align-items:center;justify-content:space-between;transition:all 0.5s cubic-bezier(0.16,1,0.3,1)}
+.nav.scrolled{background:rgba(250,248,245,0.95);backdrop-filter:blur(20px);padding:16px clamp(24px,5vw,60px);box-shadow:0 1px 40px rgba(0,0,0,0.04)}
+.nav-brand{font-family:var(--font-heading);font-size:clamp(16px,1.6vw,20px);letter-spacing:0.2em;text-transform:uppercase;color:white;font-weight:300;transition:color 0.5s}
+.nav.scrolled .nav-brand{color:var(--primary)}
+.nav-links{display:flex;gap:clamp(20px,3vw,40px);align-items:center}
+.nav-links a{font-family:var(--font-body);font-weight:400;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);transition:color 0.3s}
+.nav.scrolled .nav-links a{color:var(--body-text)}
+.nav-links a:hover{color:white}
+.nav.scrolled .nav-links a:hover{color:var(--primary)}
+.nav-cta-btn{background:transparent;border:1px solid rgba(255,255,255,0.3);padding:10px 28px;font-weight:500 !important;color:white !important;transition:all 0.4s !important;letter-spacing:0.12em !important}
+.nav-cta-btn:hover{background:white;color:var(--dark-green) !important;border-color:white}
+.nav.scrolled .nav-cta-btn{border-color:var(--dark-green);color:var(--dark-green) !important}
+.nav.scrolled .nav-cta-btn:hover{background:var(--dark-green);color:white !important}
+
+/* ── Mobile Nav ── */
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:101}
+.nav-toggle span{width:24px;height:1.5px;background:white;transition:all 0.3s}
+.nav.scrolled .nav-toggle span{background:var(--primary)}
+@media(max-width:768px){
+  .nav-toggle{display:flex}
+  .nav-links{position:fixed;inset:0;background:var(--dark-green);flex-direction:column;justify-content:center;gap:32px;opacity:0;visibility:hidden;transition:all 0.4s}
+  .nav-links.open{opacity:1;visibility:visible}
+  .nav-links a{color:rgba(255,255,255,0.7) !important;font-size:13px;letter-spacing:0.15em}
+  .nav-links a:hover{color:white !important}
+  .nav-cta-btn{border-color:rgba(255,255,255,0.3) !important;color:white !important}
+}
+
+/* ── Hero ── */
+.hero{position:relative;height:100vh;min-height:700px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#1a2e1a 0%,#2C3A28 30%,#3a4a36 60%,#2a3826 100%);overflow:hidden}
+.hero-bg::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="g1" cx="20%25" cy="30%25" r="50%25"><stop offset="0%25" stop-color="%238B9A7E" stop-opacity="0.08"/><stop offset="100%25" stop-color="transparent"/></radialGradient><radialGradient id="g2" cx="80%25" cy="70%25" r="40%25"><stop offset="0%25" stop-color="%23A69279" stop-opacity="0.06"/><stop offset="100%25" stop-color="transparent"/></radialGradient></defs><rect fill="url(%23g1)" width="1200" height="800"/><rect fill="url(%23g2)" width="1200" height="800"/></svg>') center/cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 120%,rgba(139,154,126,0.15) 0%,transparent 60%)}
+.hero-content{position:relative;z-index:2;padding:0 clamp(24px,5vw,80px);max-width:900px}
+.hero-eyebrow{font-family:var(--font-body);font-weight:400;font-size:11px;letter-spacing:0.4em;text-transform:uppercase;color:var(--sage);margin-bottom:32px;opacity:0;animation:fadeUp 1s 0.6s forwards}
+.hero-eyebrow span{display:inline-flex;align-items:center;gap:16px}
+.hero-eyebrow span::before,.hero-eyebrow span::after{content:'';width:24px;height:1px;background:var(--sage);opacity:0.5}
+.hero h1{font-family:var(--font-heading);font-weight:300;font-size:clamp(42px,7vw,90px);line-height:1.08;color:white;margin-bottom:28px;opacity:0;animation:fadeUp 1s 0.8s forwards;letter-spacing:0.02em}
+.hero h1 em{font-style:italic;font-weight:300;color:var(--sage)}
+.hero-sub{font-family:var(--font-body);font-weight:300;font-size:clamp(14px,1.2vw,16px);color:rgba(255,255,255,0.55);max-width:520px;margin:0 auto 44px;line-height:1.9;opacity:0;animation:fadeUp 1s 1s forwards}
+.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1s 1.2s forwards}
+.btn{font-family:var(--font-body);font-weight:500;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;padding:16px 40px;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);display:inline-block}
+.btn-primary{background:var(--sage);color:white}
+.btn-primary:hover{background:var(--sage-dark);transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,154,126,0.3)}
+.btn-ghost{border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7)}
+.btn-ghost:hover{border-color:var(--sage);color:var(--sage)}
+.scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fadeUp 1s 1.8s forwards}
+.scroll-hint span{font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+.scroll-hint-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--sage),transparent);animation:scrollPulse 2.5s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(0.5)}50%{opacity:1;transform:scaleY(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Section Base ── */
+.section{padding:clamp(80px,12vw,160px) clamp(24px,7vw,100px)}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-family:var(--font-body);font-weight:500;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:var(--sage);margin-bottom:20px}
+.section-heading{font-family:var(--font-heading);font-weight:300;font-size:clamp(32px,4.5vw,56px);line-height:1.15;margin-bottom:24px;letter-spacing:0.01em}
+.section-text{font-weight:300;font-size:clamp(14px,1.1vw,16px);color:var(--body-text);line-height:1.9;max-width:600px}
+
+/* ── Intro / About ── */
+.intro{background:var(--cream)}
+.intro .section-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px);align-items:center}
+.intro-visual{position:relative;aspect-ratio:3/4;background:var(--warm-white);border-radius:2px;overflow:hidden}
+.intro-visual-inner{position:absolute;inset:20px;background:linear-gradient(160deg,var(--sage) 0%,var(--dark-green) 100%);border-radius:2px;display:flex;align-items:center;justify-content:center}
+.intro-visual-text{font-family:var(--font-heading);font-size:clamp(14px,1.4vw,18px);color:rgba(255,255,255,0.3);letter-spacing:0.2em;text-transform:uppercase;transform:rotate(-90deg);white-space:nowrap}
+.intro-content .section-heading em{font-style:italic;color:var(--sage-dark)}
+.intro-quote{margin-top:40px;padding-top:32px;border-top:1px solid rgba(0,0,0,0.06)}
+.intro-quote blockquote{font-family:var(--font-heading);font-style:italic;font-size:clamp(18px,1.6vw,22px);color:var(--primary);line-height:1.6;font-weight:300}
+.intro-quote cite{display:block;margin-top:12px;font-family:var(--font-body);font-style:normal;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--body-text)}
+
+@media(max-width:768px){
+  .intro .section-inner{grid-template-columns:1fr;gap:48px}
+  .intro-visual{max-height:400px}
+}
+
+/* ── Divider ── */
+.divider{display:flex;justify-content:center;padding:0}
+.divider-inner{display:flex;align-items:center;gap:16px}
+.divider-line{width:40px;height:1px;background:var(--sand)}
+.divider-dot{width:4px;height:4px;border-radius:50%;background:var(--sage);opacity:0.4}
+
+/* ── Journey Section ── */
+.journey{background:var(--dark-green);color:white}
+.journey .section-label{color:var(--sage)}
+.journey .section-heading{color:white}
+.journey .section-text{color:rgba(255,255,255,0.55);max-width:700px;margin-bottom:60px}
+.journey-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.journey-card{padding:36px 28px;border:1px solid rgba(255,255,255,0.06);border-radius:2px;transition:all 0.4s;position:relative;overflow:hidden}
+.journey-card::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(139,154,126,0.08) 0%,transparent 100%);opacity:0;transition:opacity 0.4s}
+.journey-card:hover::before{opacity:1}
+.journey-card:hover{border-color:rgba(139,154,126,0.2);transform:translateY(-4px)}
+.journey-number{font-family:var(--font-heading);font-size:48px;font-weight:300;color:var(--sage);opacity:0.3;margin-bottom:20px;line-height:1}
+.journey-card h3{font-family:var(--font-heading);font-size:clamp(20px,1.6vw,24px);font-weight:400;margin-bottom:14px;letter-spacing:0.02em}
+.journey-card p{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.8;font-weight:300}
+
+@media(max-width:900px){
+  .journey-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:500px){
+  .journey-grid{grid-template-columns:1fr}
+}
+
+/* ── Experience Section ── */
+.experience{background:var(--cream)}
+.experience .section-inner{text-align:center}
+.experience .section-heading{margin-left:auto;margin-right:auto}
+.experience .section-text{margin:0 auto 64px;max-width:650px}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.exp-card{background:white;padding:48px 32px 40px;border-radius:2px;border:1px solid rgba(0,0,0,0.04);transition:all 0.4s;text-align:center}
+.exp-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.06)}
+.exp-icon{width:48px;height:48px;margin:0 auto 24px;border-radius:50%;background:var(--warm-white);display:flex;align-items:center;justify-content:center}
+.exp-icon svg{width:22px;height:22px;stroke:var(--sage-dark);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.exp-card h3{font-family:var(--font-heading);font-size:clamp(20px,1.5vw,24px);font-weight:400;margin-bottom:12px}
+.exp-card p{font-size:13px;color:var(--body-text);line-height:1.8;font-weight:300}
+
+@media(max-width:768px){
+  .exp-grid{grid-template-columns:1fr}
+  .exp-card{max-width:400px;margin:0 auto}
+}
+
+/* ── Sanctuary Section ── */
+.sanctuary{background:var(--warm-white)}
+.sanctuary .section-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
+.sanctuary-visual{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sanctuary-img{aspect-ratio:1;background:linear-gradient(160deg,var(--sage) 0%,var(--dark-green) 100%);border-radius:2px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.sanctuary-img:nth-child(2){margin-top:40px}
+.sanctuary-img:nth-child(3){margin-top:-40px}
+.sanctuary-img span{font-family:var(--font-heading);font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:0.15em;text-transform:uppercase}
+.sanctuary-amenities{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px;margin-top:40px}
+.amenity{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--body-text);font-weight:300}
+.amenity::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--sage);opacity:0.4;flex-shrink:0}
+
+@media(max-width:768px){
+  .sanctuary .section-inner{grid-template-columns:1fr;gap:48px}
+  .sanctuary-visual{max-width:400px}
+}
+
+/* ── Guide Section ── */
+.guide{background:var(--cream)}
+.guide .section-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(40px,6vw,100px);align-items:center}
+.guide-portrait{aspect-ratio:4/5;background:linear-gradient(160deg,var(--earth) 0%,var(--terracotta) 100%);border-radius:2px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.guide-portrait span{font-family:var(--font-heading);font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:0.15em;text-transform:uppercase}
+.guide-content .section-heading em{font-style:italic;color:var(--sage-dark)}
+.guide-modalities{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.modality-tag{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:8px 18px;border:1px solid rgba(0,0,0,0.08);border-radius:20px;color:var(--body-text);font-weight:400}
+
+@media(max-width:768px){
+  .guide .section-inner{grid-template-columns:1fr;gap:48px}
+  .guide-portrait{max-height:400px}
+}
+
+/* ── Testimonial ── */
+.testimonial{background:var(--dark-green);text-align:center;padding:clamp(80px,10vw,140px) clamp(24px,7vw,100px)}
+.testimonial-inner{max-width:750px;margin:0 auto}
+.testimonial-mark{font-family:var(--font-heading);font-size:64px;color:var(--sage);opacity:0.3;line-height:1;margin-bottom:16px}
+.testimonial blockquote{font-family:var(--font-heading);font-style:italic;font-size:clamp(22px,2.4vw,32px);font-weight:300;color:white;line-height:1.5;margin-bottom:28px}
+.testimonial cite{font-family:var(--font-body);font-style:normal;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--sage)}
+
+/* ── Details / Logistics ── */
+.details{background:var(--cream)}
+.details .section-inner{text-align:center}
+.details .section-heading{margin:0 auto 16px}
+.details .section-text{margin:0 auto 64px;text-align:center}
+.details-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px;margin:0 auto}
+.detail-card{padding:40px 28px;background:white;border:1px solid rgba(0,0,0,0.04);border-radius:2px}
+.detail-label{font-family:var(--font-body);font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--sage);margin-bottom:16px;font-weight:500}
+.detail-value{font-family:var(--font-heading);font-size:clamp(22px,2vw,28px);font-weight:400;margin-bottom:8px}
+.detail-note{font-size:13px;color:var(--body-text);font-weight:300;line-height:1.7}
+
+@media(max-width:600px){
+  .details-grid{grid-template-columns:1fr}
+  .detail-card{max-width:360px;margin:0 auto}
+}
+
+/* ── CTA Section ── */
+.cta-section{background:linear-gradient(160deg,var(--dark-green) 0%,#1a2a18 100%);text-align:center;padding:clamp(100px,14vw,200px) clamp(24px,7vw,100px);position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(139,154,126,0.1) 0%,transparent 60%)}
+.cta-inner{position:relative;max-width:700px;margin:0 auto}
+.cta-section .section-label{color:var(--sage);text-align:center;margin-bottom:24px}
+.cta-section .section-heading{color:white;text-align:center;margin-bottom:20px}
+.cta-section .section-heading em{font-style:italic;color:var(--sage)}
+.cta-sub{font-size:clamp(14px,1.1vw,16px);color:rgba(255,255,255,0.5);font-weight:300;line-height:1.9;max-width:500px;margin:0 auto 48px}
+.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.cta-note{font-size:12px;color:rgba(255,255,255,0.3);font-weight:300}
+
+/* ── Footer ── */
+.footer{background:#141e13;padding:64px clamp(24px,5vw,60px) 40px}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.footer-brand-name{font-family:var(--font-heading);font-size:22px;font-weight:300;color:white;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:16px}
+.footer-brand-desc{font-size:13px;color:rgba(255,255,255,0.35);line-height:1.8;font-weight:300;max-width:280px}
+.footer-col h4{font-family:var(--font-body);font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--sage);margin-bottom:20px;font-weight:500}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:12px;font-weight:300;transition:color 0.3s}
+.footer-col a:hover{color:white}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:32px;flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.2);font-weight:300}
+.footer-socials{display:flex;gap:20px}
+.footer-socials a{font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:0.08em;text-transform:uppercase;transition:color 0.3s;font-weight:400}
+.footer-socials a:hover{color:var(--sage)}
+
+@media(max-width:768px){
+  .footer-top{grid-template-columns:1fr;gap:36px}
+}
+
+/* ── Reveal Animation ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+
+/* ── Scroll Progress ── */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--sage);width:0;z-index:1001;opacity:0.6}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div class="loader" id="loader">
+  <div class="loader-brand">
+    <div class="loader-name">Sacred Ways</div>
+    <div class="loader-sub">Hawai'i</div>
+  </div>
+  <div class="loader-line"></div>
+</div>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">Sacred Ways</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#journey">The Journey</a>
+    <a href="#experience">Experience</a>
+    <a href="#sanctuary">Sanctuary</a>
+    <a href="#guide">Your Guide</a>
+    <a href="#details">Details</a>
+    <a href="#reserve" class="nav-cta-btn">Reserve Your Spot</a>
+  </div>
+  <div class="nav-toggle" id="navToggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span>Hawai'i · March 2026</span></div>
+    <h1>Return to the <em>Sacred</em></h1>
+    <p class="hero-sub">Seven days of deep ceremony, island adventure, and soul-level transformation on the Big Island of Hawai'i.</p>
+    <div class="hero-ctas">
+      <a href="#reserve" class="btn btn-primary">Reserve Your Spot</a>
+      <a href="#journey" class="btn btn-ghost">Explore the Journey</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-hint-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- Intro -->
+<section class="section intro" id="about">
+  <div class="section-inner">
+    <div class="intro-visual reveal">
+      <div class="intro-visual-inner">
+        <span class="intro-visual-text">Sacred Ceremony</span>
+      </div>
+    </div>
+    <div class="intro-content">
+      <div class="section-label reveal">About the Retreat</div>
+      <h2 class="section-heading reveal reveal-delay-1">Where the natural and <em>spiritual</em> worlds intertwine</h2>
+      <p class="section-text reveal reveal-delay-2">In Hawaiian culture, the islands are recognized as sacred places where mana — the spiritual life force — flows through all living things. This retreat is your invitation to step into that current.</p>
+      <p class="section-text reveal reveal-delay-2" style="margin-top:16px">Rooted in Peruvian shamanism and held in the feminine, nurturing embrace of Hawai'i, Sacred Ways weaves deep ceremonial work with adventure, integration, and connection to the land.</p>
+      <div class="intro-quote reveal reveal-delay-3">
+        <blockquote>"The islands hold the frequency of transformation. All you have to do is show up."</blockquote>
+        <cite>— Sol, Retreat Guide</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-inner"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div></div>
+
+<!-- Journey -->
+<section class="section journey" id="journey">
+  <div class="section-inner">
+    <div class="section-label reveal">The Sacred Journey</div>
+    <h2 class="section-heading reveal reveal-delay-1">Four ceremonies.<br>Seven transformative days.</h2>
+    <p class="section-text reveal reveal-delay-2">A sacred journey that moves through four ceremonies, weaving deep ceremonial work with adventure, integration, and connection to the land.</p>
+    <div class="journey-grid">
+      <div class="journey-card reveal">
+        <div class="journey-number">01</div>
+        <h3>Arrival & Opening</h3>
+        <p>Ground into the sanctuary. Meet your circle. Set intentions as the island welcomes you into ceremony.</p>
+      </div>
+      <div class="journey-card reveal reveal-delay-1">
+        <div class="journey-number">02</div>
+        <h3>Deep Ceremony</h3>
+        <p>Move through sacred plant medicine and embodiment rituals guided by experienced practitioners in a held container.</p>
+      </div>
+      <div class="journey-card reveal reveal-delay-2">
+        <div class="journey-number">03</div>
+        <h3>Integration & Adventure</h3>
+        <p>Explore the island's most potent places — spaces of natural power and raw beauty that most visitors never experience.</p>
+      </div>
+      <div class="journey-card reveal reveal-delay-3">
+        <div class="journey-number">04</div>
+        <h3>Closing & Rebirth</h3>
+        <p>Seal the work. Honor the journey. Return home with clarity, embodied wisdom, and a community that holds you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section class="section experience" id="experience">
+  <div class="section-inner">
+    <div class="section-label reveal">The Experience</div>
+    <h2 class="section-heading reveal reveal-delay-1">Ceremony, adventure, and<br>deep restoration</h2>
+    <p class="section-text reveal reveal-delay-2">Between ceremonies, you'll have time for rest, reflection, and adventures to the island's most powerful places.</p>
+    <div class="exp-grid">
+      <div class="exp-card reveal">
+        <div class="exp-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20M2 12h20"/></svg>
+        </div>
+        <h3>Cacao Ceremony</h3>
+        <p>Heart-opening cacao rituals that connect you to the sacred feminine and the ancient traditions of ceremonial medicine.</p>
+      </div>
+      <div class="exp-card reveal reveal-delay-1">
+        <div class="exp-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Embodiment Rituals</h3>
+        <p>Move beyond the mind and into the body. Somatic practices designed to release, integrate, and reclaim your power.</p>
+      </div>
+      <div class="exp-card reveal reveal-delay-2">
+        <div class="exp-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Island Explorations</h3>
+        <p>Guided journeys to volcanic landscapes, hidden waterfalls, and sacred sites that amplify your transformation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sanctuary -->
+<section class="section sanctuary" id="sanctuary">
+  <div class="section-inner">
+    <div class="sanctuary-visual reveal">
+      <div class="sanctuary-img"><span>Gardens</span></div>
+      <div class="sanctuary-img"><span>Ocean</span></div>
+      <div class="sanctuary-img"><span>Shala</span></div>
+      <div class="sanctuary-img"><span>Pool</span></div>
+    </div>
+    <div>
+      <div class="section-label reveal">The Sanctuary</div>
+      <h2 class="section-heading reveal reveal-delay-1">A private sanctuary on Hawai'i's East coast</h2>
+      <p class="section-text reveal reveal-delay-2">Perched above the ocean in Kalapana, surrounded by lush tropical gardens, walking trails, and natural spaces designed for rest and deep integration.</p>
+      <p class="section-text reveal reveal-delay-2" style="margin-top:16px">The ceremonial space is an open-air shala that allows the elements to be fully present throughout the work — wind, rain, sun — while still providing shelter and intimacy.</p>
+      <div class="sanctuary-amenities reveal reveal-delay-3">
+        <div class="amenity">Open-air ceremony shala</div>
+        <div class="amenity">Tropical gardens</div>
+        <div class="amenity">Ocean views</div>
+        <div class="amenity">Walking trails</div>
+        <div class="amenity">Swimming pool</div>
+        <div class="amenity">Hot tub & sauna</div>
+        <div class="amenity">Cold plunge</div>
+        <div class="amenity">Integration spaces</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Guide -->
+<section class="section guide" id="guide">
+  <div class="section-inner">
+    <div class="guide-portrait reveal">
+      <span>Sol — Your Guide</span>
+    </div>
+    <div class="guide-content">
+      <div class="section-label reveal">Your Guide</div>
+      <h2 class="section-heading reveal reveal-delay-1">Meet <em>Sol</em></h2>
+      <p class="section-text reveal reveal-delay-2">Sol guides people through liberation and empowerment work rooted in goddess frequencies and sacred feminine practices. She weaves together cacao ceremony, embodiment rituals, and sacred community on the island of Hawai'i.</p>
+      <p class="section-text reveal reveal-delay-2" style="margin-top:16px">Her approach is grounded in Peruvian shamanism, drawing on ancient lineage while creating a deeply personal, modern container for transformation.</p>
+      <div class="guide-modalities reveal reveal-delay-3">
+        <span class="modality-tag">Peruvian Shamanism</span>
+        <span class="modality-tag">Sacred Feminine</span>
+        <span class="modality-tag">Cacao Ceremony</span>
+        <span class="modality-tag">Embodiment</span>
+        <span class="modality-tag">Plant Medicine</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial -->
+<section class="testimonial">
+  <div class="testimonial-inner reveal">
+    <div class="testimonial-mark">"</div>
+    <blockquote>This retreat cracked me open in the most beautiful way. Sol holds space with such grace — I left feeling like I'd come home to myself for the first time.</blockquote>
+    <cite>Past Retreat Participant</cite>
+  </div>
+</section>
+
+<!-- Details -->
+<section class="section details" id="details">
+  <div class="section-inner">
+    <div class="section-label reveal">Retreat Details</div>
+    <h2 class="section-heading reveal reveal-delay-1">Everything you need to know</h2>
+    <p class="section-text reveal reveal-delay-2">Limited spots to ensure an intimate, well-held experience for every participant.</p>
+    <div class="details-grid">
+      <div class="detail-card reveal">
+        <div class="detail-label">When</div>
+        <div class="detail-value">March 2026</div>
+        <div class="detail-note">7 days & 6 nights on the Big Island of Hawai'i</div>
+      </div>
+      <div class="detail-card reveal reveal-delay-1">
+        <div class="detail-label">Where</div>
+        <div class="detail-value">Kalapana, HI</div>
+        <div class="detail-note">Private sanctuary on the Big Island's East coast, above the ocean</div>
+      </div>
+      <div class="detail-card reveal reveal-delay-2">
+        <div class="detail-label">Includes</div>
+        <div class="detail-value">All-Inclusive</div>
+        <div class="detail-note">Ceremonies, accommodation, meals, excursions, and wellness amenities</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="reserve">
+  <div class="cta-inner">
+    <div class="section-label reveal">Limited Availability</div>
+    <h2 class="section-heading reveal reveal-delay-1">Are you ready to answer<br>the <em>call</em>?</h2>
+    <p class="cta-sub reveal reveal-delay-2">This retreat is designed for those ready to step into deep transformation through sacred ceremony and island adventure. Space is intentionally limited.</p>
+    <div class="cta-buttons reveal reveal-delay-3">
+      <a href="#" class="btn btn-primary">Apply Now</a>
+      <a href="#" class="btn btn-ghost">Ask a Question</a>
+    </div>
+    <p class="cta-note reveal reveal-delay-4">Applications reviewed within 48 hours</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Sacred Ways</div>
+        <p class="footer-brand-desc">Sacred ceremony, deep transformation, and island adventure on the Big Island of Hawai'i.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="#journey">The Journey</a>
+        <a href="#experience">Experience</a>
+        <a href="#sanctuary">Sanctuary</a>
+        <a href="#guide">Your Guide</a>
+        <a href="#details">Details</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#">Apply for the Retreat</a>
+        <a href="#">Contact Sol</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Sacred Ways. All rights reserved.</div>
+      <div class="footer-socials">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Loader
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('done'),800)
+});
+
+// Scroll progress
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('scrollProgress').style.width=(window.scrollY/h*100)+'%';
+});
+
+// Nav scroll state
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>80);
+});
+
+// Reveal on scroll
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})
+},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
