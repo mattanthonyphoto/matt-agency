@@ -16,7 +16,7 @@ Maintain a consistent, high-quality social media presence that drives B2B client
 - Project metadata: client name, project name, location, architect, builder, designer, notable trades
 - Client testimonials (when available)
 - BTS footage from shoot days (phone camera folder)
-- Access to scheduling tool (Postiz MCP, Buffer, or manual)
+- Access to scheduling tool (Postiz MCP or manual)
 - Access to Pinterest business account
 
 ## Tools

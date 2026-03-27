@@ -1,0 +1,224 @@
+{
+  "builder": {
+    "company": "Blackfish Homes",
+    "slug": "blackfish",
+    "location": "North Vancouver, BC",
+    "email": "info@blackfishhomes.ca",
+    "phone": "604.980.0814",
+    "address": "105-1305 Welch Street, North Vancouver, BC V7P 1B3",
+    "website": "https://www.blackfishhomes.ca",
+    "logo_url": "",
+    "logo_white_url": "",
+    "colors": {
+      "primary": "#2C2C2C",
+      "accent": "#0a0a0a",
+      "accent_bg": "#F6F4F0",
+      "light": "#FFFFFF",
+      "dark": "#2C2C2C",
+      "body_text": "#575757"
+    },
+    "fonts": {
+      "heading": "Playfair Display",
+      "body": "Source Sans 3",
+      "import": "Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;500;600"
+    }
+  },
+  "nav_items": [
+    "Projects",
+    "About",
+    "Services",
+    "Contact"
+  ],
+  "mockup": {
+    "type": "homepage-mockup",
+    "date": "March 2026",
+    "filename": "blackfish-homepage-mockup.html"
+  },
+  "hero": {
+    "eyebrow": "High Performance Custom Home Builder & Renovator",
+    "headline_html": "Building Homes That<br>Perform Beautifully",
+    "subtitle": "Since 2005, Blackfish Homes has delivered top-quality custom homes and renovations across the North Shore, Vancouver, and Vancouver Island.",
+    "cta_text": "View Our Work",
+    "cta_secondary": "Let's Talk",
+    "image_url": "https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/W12th_Cover.jpg",
+    "image_position": "center 30%"
+  },
+  "projects_eyebrow": "Recent Work",
+  "projects_headline_html": "Crafted With Intention",
+  "projects_lead": "A selection of custom homes and renovations built to the highest standard of performance and design.",
+  "projects": [
+    {
+      "name": "The W 12th Residence",
+      "location": "Vancouver, BC",
+      "description": "Custom new build",
+      "image_url": "https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/W12th_Cover.jpg"
+    },
+    {
+      "name": "The Vale Residence",
+      "location": "North Vancouver, BC",
+      "description": "Custom home",
+      "image_url": "https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/Vale.jpg"
+    },
+    {
+      "name": "The William Residence",
+      "location": "North Vancouver, BC",
+      "description": "Custom new build",
+      "image_url": "https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/William.jpg"
+    },
+    {
+      "name": "The Marine Residence",
+      "location": "North Vancouver, BC",
+      "description": "Waterfront custom home",
+      "image_url": "https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/Marine.jpg"
+    },
+    {
+      "name": "The NewMarket Classic",
+      "location": "North Vancouver, BC",
+      "description": "Heritage-inspired renovation",
+      "image_url": "https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/NewMarket_Classic.jpg"
+    },
+    {
+      "name": "The Mathers Residence",
+      "location": "West Vancouver, BC",
+      "description": "Custom home",
+      "image_url": "https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/Mathers.jpg"
+    }
+  ],
+  "services": [
+    {
+      "name": "Custom Homes",
+      "description": "Ground-up new builds designed and constructed to the highest performance standards, tailored to your site, lifestyle, and vision."
+    },
+    {
+      "name": "Major Renovations",
+      "description": "Thoughtful transformations of existing homes, from full gut renovations to strategic additions that elevate how you live."
+    },
+    {
+      "name": "High-Performance Building",
+      "description": "Energy-efficient construction with superior building envelope design, ensuring comfort, durability, and reduced operating costs."
+    },
+    {
+      "name": "Project Management",
+      "description": "End-to-end coordination of your build team, trades, timeline, and budget so you can focus on the excitement of building."
+    }
+  ],
+  "process": [
+    {
+      "step": "01",
+      "title": "Discovery",
+      "description": "We listen to your vision, review your site, and understand your goals before anything else."
+    },
+    {
+      "step": "02",
+      "title": "Planning & Design",
+      "description": "Working alongside your architect and design team, we refine the plan to balance ambition with buildability."
+    },
+    {
+      "step": "03",
+      "title": "Construction",
+      "description": "Our experienced crew brings the design to life with meticulous attention to detail and open communication throughout."
+    },
+    {
+      "step": "04",
+      "title": "Handover",
+      "description": "A thorough walkthrough and everything you need to enjoy your new home from day one."
+    }
+  ],
+  "images": {
+    "breaks": [
+      {
+        "url": "https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/Marine.jpg",
+        "alt": "Marine Drive custom home by Blackfish Homes",
+        "caption": ""
+      },
+      {
+        "url": "https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/NewMarket_Classic.jpg",
+        "alt": "NewMarket Classic renovation by Blackfish Homes",
+        "caption": ""
+      },
+      {
+        "url": "https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/Mathers.jpg",
+        "alt": "Mathers Avenue custom home by Blackfish Homes",
+        "caption": ""
+      },
+      {
+        "url": "https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/Vale.jpg",
+        "alt": "Vale Street custom home by Blackfish Homes",
+        "caption": ""
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "Our Story",
+    "headline_html": "Rooted in Family,<br>Built on Trust",
+    "paragraphs": [
+      "Established in 2005, Blackfish Homes has consistently delivered top-quality, high-performance new homes and renovations. By focusing exclusively on residential projects, we help our clients make clear and informed choices while ensuring we pay attention to every detail.",
+      "Named from the indigenous word for the Orca — a creature that prioritizes family and communication — our company exemplifies the idea of home. Fueled by creativity yet rooted in open communication and a common-sense approach, we work alongside you and the rest of the build team to plan and deliver your perfect home."
+    ],
+    "image_url": "https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/William.jpg"
+  },
+  "stats": [
+    {
+      "value": "20+",
+      "label": "Years Building"
+    },
+    {
+      "value": "2005",
+      "label": "Established"
+    },
+    {
+      "value": "100%",
+      "label": "Residential Focus"
+    }
+  ],
+  "trust": [
+    "High-performance building envelope specialists",
+    "Exclusively residential — custom homes and renovations only",
+    "Serving the North Shore and Vancouver Island since 2005",
+    "BuiltGreen Canada certified builder"
+  ],
+  "testimonial": {
+    "quote": "",
+    "author": "",
+    "project": ""
+  },
+  "photographer": {
+    "name": "Matt Anthony Photography",
+    "cta_url": "https://mattanthonyphoto.com/discovery-call",
+    "cta_text": "Book a Discovery Call"
+  },
+  "contact": {
+    "eyebrow": "Start a Conversation",
+    "headline_html": "Let's Build<br>Something Remarkable",
+    "subtitle": "Whether you're envisioning a new custom home or transforming your current one, we'd love to hear about your project.",
+    "cta_text": "Let's Talk"
+  },
+  "year": "2026",
+  "footer": {
+    "description": "High-performance custom home builder and renovator serving the North Shore, Greater Vancouver, and Vancouver Island since 2005.",
+    "hours": "Mon\u2013Fri 9am\u20135pm",
+    "service_areas": [
+      "North Vancouver",
+      "West Vancouver",
+      "Vancouver",
+      "Burnaby",
+      "Gabriola Island",
+      "Mid-Vancouver Island"
+    ],
+    "social": {
+      "facebook": "https://www.facebook.com/blackfishhomes",
+      "instagram": "https://www.instagram.com/blackfishhomes/",
+      "twitter": "https://twitter.com/blackfishhomes",
+      "linkedin": "https://www.linkedin.com/company/blackfish-homes",
+      "pinterest": "https://www.pinterest.com/blackfishhomes/",
+      "youtube": ""
+    },
+    "badges": [
+      "HAVAN Member",
+      "BuiltGreen Canada",
+      "BC Housing Licensed",
+      "Better Business Bureau",
+      "North Vancouver Chamber of Commerce"
+    ]
+  }
+}

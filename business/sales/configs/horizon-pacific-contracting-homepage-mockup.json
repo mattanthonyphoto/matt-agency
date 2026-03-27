@@ -1,0 +1,217 @@
+{
+  "builder": {
+    "company": "Horizon Pacific Contracting",
+    "slug": "horizon-pacific-contracting",
+    "location": "Victoria BC",
+    "email": "estimates@horizoncontracting.ca",
+    "phone": "(250) 380-4605",
+    "address": "4226 Commerce Circle #104, Victoria, BC V8Z 6N6",
+    "website": "https://www.horizoncontracting.ca",
+    "logo_url": "https://www.horizoncontracting.ca/wp-content/uploads/2021/09/vica-logo.svg",
+    "logo_white_url": "",
+    "colors": {
+      "primary": "#fff",
+      "accent": "#32373c",
+      "accent_bg": "#F6F4F0",
+      "light": "#FFFFFF",
+      "dark": "#1a1a1a",
+      "body_text": "#575757"
+    },
+    "fonts": {
+      "heading": "Archivo Black",
+      "body": "Figtree",
+      "import": "Archivo+Black:wght@400;700&family=Figtree:wght@300;400;500;600"
+    }
+  },
+  "nav_items": [
+    "Projects",
+    "About",
+    "Services",
+    "Contact"
+  ],
+  "mockup": {
+    "type": "homepage-mockup",
+    "date": "March 2026",
+    "filename": "horizon-pacific-contracting-homepage-mockup.html"
+  },
+  "hero": {
+    "eyebrow": "Victoria's Award-Winning Builder",
+    "headline_html": "Finely Crafted Custom<br>Homes & Renovations",
+    "subtitle": "For more than three decades, Horizon Pacific Contracting has been building and renovating extraordinary residences across Greater Victoria.",
+    "cta_text": "View Our Work",
+    "cta_secondary": "Let's Talk",
+    "image_url": "https://www.horizoncontracting.ca/wp-content/uploads/2023/08/homepage-customhome-featured.jpg",
+    "image_position": "center 30%"
+  },
+  "projects_eyebrow": "Portfolio",
+  "projects_headline_html": "Our Work",
+  "projects_lead": "Custom homes, heritage restorations, and transformative renovations across Greater Victoria.",
+  "projects": [
+    {
+      "name": "Monreal Kitchen Renovation",
+      "location": "Victoria, BC",
+      "description": "A complete kitchen transformation with modern finishes and timeless detailing.",
+      "image_url": "https://www.horizoncontracting.ca/wp-content/uploads/2023/08/20052-640-Monreal01165.jpg"
+    },
+    {
+      "name": "Home Addition & Extension",
+      "location": "Victoria, BC",
+      "description": "Seamless garage extension and living space addition blending with the original architecture.",
+      "image_url": "https://www.horizoncontracting.ca/wp-content/uploads/2025/10/home-addition-extension-home.jpg"
+    },
+    {
+      "name": "Heritage Entry Restoration",
+      "location": "Victoria, BC",
+      "description": "Period-appropriate front entry with custom light fixtures and restored character details.",
+      "image_url": "https://www.horizoncontracting.ca/wp-content/uploads/2020/09/125-13-0131.jpg"
+    },
+    {
+      "name": "Quale Residence",
+      "location": "Victoria, BC",
+      "description": "Custom home with open-concept living and expansive natural light.",
+      "image_url": "https://www.horizoncontracting.ca/wp-content/uploads/2021/09/17082-466-Quale03412.jpg"
+    },
+    {
+      "name": "Bruce-Fowler Custom Home",
+      "location": "Victoria, BC",
+      "description": "Award-winning custom build featured in the Victoria Times Colonist.",
+      "image_url": "https://www.horizoncontracting.ca/wp-content/uploads/2021/07/Allison-Bruce-Fowler-Horizon-Testimonial-Victoria-Times-Colonist-Credit.jpg"
+    },
+    {
+      "name": "Oceanside Oasis",
+      "location": "Cadboro Bay, Victoria",
+      "description": "Waterfront custom home designed to frame ocean views from every room.",
+      "image_url": "https://www.horizoncontracting.ca/wp-content/uploads/2024/11/Oceanside-Oasis.jpg"
+    }
+  ],
+  "images": {
+    "breaks": [
+      {
+        "url": "https://www.horizoncontracting.ca/wp-content/uploads/2020/09/125-13-0131.jpg",
+        "alt": "Heritage entry with custom light fixtures",
+        "caption": ""
+      },
+      {
+        "url": "https://www.horizoncontracting.ca/wp-content/uploads/2021/09/17082-466-Quale03412.jpg",
+        "alt": "Custom home living room with natural light",
+        "caption": ""
+      },
+      {
+        "url": "https://www.horizoncontracting.ca/wp-content/uploads/2021/07/Allison-Bruce-Fowler-Horizon-Testimonial-Victoria-Times-Colonist-Credit.jpg",
+        "alt": "Bruce-Fowler custom home exterior",
+        "caption": ""
+      },
+      {
+        "url": "https://www.horizoncontracting.ca/wp-content/uploads/2024/11/Oceanside-Oasis.jpg",
+        "alt": "Oceanside Oasis waterfront custom home in Cadboro Bay",
+        "caption": ""
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "About",
+    "headline_html": "Building Healthy, Beautiful Homes<br>Through the Passionate Pursuit of Craft",
+    "paragraphs": [
+      "For more than three decades, Horizon Pacific Contracting has been building and renovating extraordinary residences across Victoria, BC. We employ dedicated full-time construction crews to ensure every project has one site supervisor and crew from start to finish.",
+      "We build to the highest sustainability standards, including Built Green, LEED Platinum, Net Zero, and Passive House certifications, with a focus on minimizing waste through upcycling and unbuilding.",
+      "Great communication and meticulous attention to detail define how we work. Every home we build is delivered on time, on budget, and crafted to stand the test of time."
+    ],
+    "image_url": "https://www.horizoncontracting.ca/wp-content/uploads/2025/10/home-addition-extension-home.jpg"
+  },
+  "services": [
+    "Custom Home Building",
+    "Home Renovations & Additions",
+    "Heritage Home Restoration",
+    "House Lifting & Raising",
+    "Design + Build",
+    "Commercial Renovations"
+  ],
+  "process": [
+    {
+      "step": "01",
+      "title": "Consultation",
+      "description": "We meet to understand your vision, budget, and timeline for the project."
+    },
+    {
+      "step": "02",
+      "title": "Design & Planning",
+      "description": "Detailed plans and specifications developed with your design team and our build expertise."
+    },
+    {
+      "step": "03",
+      "title": "Construction",
+      "description": "One dedicated site supervisor and crew from start to finish, with transparent communication throughout."
+    },
+    {
+      "step": "04",
+      "title": "Completion",
+      "description": "Final walkthrough, quality assurance, and handover of your finished home."
+    }
+  ],
+  "stats": [
+    {
+      "value": "30+",
+      "label": "Years Experience"
+    },
+    {
+      "value": "10+",
+      "label": "CHBA & VIBE Awards"
+    },
+    {
+      "value": "LEED Platinum",
+      "label": "Certified Builds"
+    }
+  ],
+  "testimonial": {
+    "quote": "We're overjoyed with the beautiful custom home. The awe our guests express is a tribute to Horizon's execution.",
+    "author": "Allison Bruce-Fowler",
+    "title": "Homeowner"
+  },
+  "photographer": {
+    "name": "Matt Anthony Photography",
+    "cta_url": "https://mattanthonyphoto.com/discovery-call",
+    "cta_text": "Book a Discovery Call"
+  },
+  "contact": {
+    "eyebrow": "Start a Conversation",
+    "headline_html": "Let's Build<br>Something Extraordinary",
+    "subtitle": "Whether you're envisioning a new custom home, a heritage restoration, or a transformative renovation, we'd love to hear about your project.",
+    "cta_text": "Let's Talk"
+  },
+  "year": "2026",
+  "footer": {
+    "description": "Horizon Pacific Contracting is an award-winning custom home builder and renovation firm serving Greater Victoria for over 30 years. Built Green, LEED Platinum, and Passive House certified.",
+    "hours": "Mon\u2013Fri 9am\u20135pm",
+    "service_areas": [
+      "Victoria",
+      "Saanich",
+      "Oak Bay",
+      "Langford",
+      "Esquimalt",
+      "Colwood",
+      "Central Saanich",
+      "Sidney",
+      "North Saanich",
+      "View Royal",
+      "Sooke",
+      "Metchosin",
+      "Highlands",
+      "Shawnigan Lake"
+    ],
+    "social": {
+      "instagram": "https://www.instagram.com/horizonpacificcontracting/",
+      "facebook": "https://www.facebook.com/HorizonContracting/",
+      "linkedin": "https://www.linkedin.com/company/horizon-pacific-contracting/",
+      "youtube": "https://www.youtube.com/channel/UCk5hKKae6Vn_HbmPaKJzp2g",
+      "houzz": "https://www.houzz.com/professionals/general-contractors/horizon-pacific-contracting",
+      "pinterest": "https://www.pinterest.com/horizonpacificcontracting/"
+    },
+    "badges": [
+      "Built Green Canada",
+      "CHBA Member",
+      "VICA Member",
+      "LEED Platinum Certified",
+      "Passive House Builder"
+    ]
+  }
+}

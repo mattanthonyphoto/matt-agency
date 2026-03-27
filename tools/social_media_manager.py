@@ -272,7 +272,7 @@ def cmd_ingest(args):
     print(f"  1. Review carousel-plan.json — edit captions to your voice")
     print(f"  2. Review content-plan.json — adjust dates if needed")
     print(f"  3. Check image crops in social/ folders — verify nothing critical is clipped")
-    print(f"  4. Approve and schedule (manually or via Buffer/Postiz)")
+    print(f"  4. Approve and schedule (manually or via Postiz)")
 
     return 0
 

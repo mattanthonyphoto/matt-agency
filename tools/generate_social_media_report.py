@@ -226,7 +226,7 @@ def build_pdf(output_path):
         "<b>Hooks are designed to stop scrolling</b> — curiosity gaps and story entries replace announcement-style openers",
         "<b>Every shoot produces 15-25 content pieces</b> across 4 platforms instead of 3-4 posts",
         "<b>Video/Reels have a real strategy</b> — 8 specific formats with timing and shot structure",
-        "<b>Automation removes manual work</b> — Claude generates captions, Buffer schedules posts, n8n orchestrates",
+        "<b>Automation removes manual work</b> — Claude generates captions, Postiz schedules posts, n8n orchestrates",
     ]
     for s in shifts:
         story.append(Paragraph(s, s_bullet, bulletText="•"))
@@ -252,8 +252,8 @@ def build_pdf(output_path):
         "<b>2. Image pipeline</b> → resize_images.py creates crops for all 6 platforms",
         "<b>3. Caption generation</b> → generate_captions.py produces platform-specific captions via Claude API",
         "<b>4. Review &amp; edit</b> → You refine the AI-generated captions (the 80/20 handoff)",
-        "<b>5. Schedule</b> → Posts loaded into Buffer (or content calendar sheet) with dates",
-        "<b>6. Publish</b> → Buffer API pushes to Instagram, LinkedIn, Pinterest on schedule",
+        "<b>5. Schedule</b> → Posts loaded into Postiz (or content calendar sheet) with dates",
+        "<b>6. Publish</b> → Postiz pushes to Instagram, LinkedIn, Pinterest on schedule",
         "<b>7. Engage</b> → Daily 10-minute routine: respond, comment, connect",
         "<b>8. Measure</b> → Monthly analytics review using the dashboard template",
         "<b>9. Adjust</b> → Update content mix based on what's working",
@@ -383,7 +383,7 @@ def build_pdf(output_path):
             ["1. Prepare assets", "30 min", "Select images, run resize_images.py for all platform crops"],
             ["2. Generate captions", "5 min", "Run generate_captions.py — AI produces 7 platform-specific captions"],
             ["3. Edit captions", "60 min", "Review AI output, add your voice, write BTS and personal pieces"],
-            ["4. Schedule", "30 min", "Load into Buffer or calendar, map to weekly schedule"],
+            ["4. Schedule", "30 min", "Load into Postiz or calendar, map to weekly schedule"],
             ["5. Quality check", "10 min", "Run through the checklist (tags, hashtags, links, variety)"],
         ],
         col_widths=[1.3 * inch, 0.7 * inch, usable_width - 2 * inch],
@@ -489,7 +489,7 @@ def build_pdf(output_path):
         ["Workflow", "Trigger", "What It Does"],
         [
             ["1. Caption Generation", "New row in Content Calendar sheet", "Claude API generates captions → writes back to sheet for review"],
-            ["2. Post Publishing", "Row marked 'Approved' + scheduled date", "Buffer API schedules posts to IG, LinkedIn, Pinterest"],
+            ["2. Post Publishing", "Row marked 'Approved' + scheduled date", "Postiz schedules posts to IG, LinkedIn, Pinterest"],
             ["3. Analytics Pull", "Weekly cron (Monday 9am)", "Instagram Insights API → writes engagement data to sheet"],
         ],
         col_widths=[1.5 * inch, 1.8 * inch, usable_width - 3.3 * inch],
@@ -522,8 +522,8 @@ def build_pdf(output_path):
          "Follow content-batching.md step by step on your most recent project delivery."],
         ["6", "Daily engagement routine", "10 min/day", "None",
          "Start tomorrow. Respond to comments, engage on LinkedIn, send connection requests."],
-        ["7", "Set up Buffer", "30 min", "Account needed",
-         "Sign up at buffer.com. Connect IG, LinkedIn, Pinterest. Get API token. Add to .env. $18/mo."],
+        ["7", "Set up Postiz", "30 min", "Docker hosting",
+         "Deploy Postiz via Docker. Connect IG, LinkedIn, Pinterest. Add MCP to Claude Code. Free."],
         ["8", "Content calendar sheet", "20 min", "Google Sheet",
          "Create sheet with the 19-column structure from social-media-automation.md. Test batch caption generation."],
         ["9", "Build n8n workflows", "2-3 hrs", "All above stable",
@@ -599,12 +599,12 @@ def build_pdf(output_path):
     story.append(make_table(
         ["Service", "Cost", "Notes"],
         [
-            ["Buffer Essentials (3 channels)", "$18/mo", "Instagram + LinkedIn + Pinterest scheduling"],
+            ["Postiz (self-hosted)", "$0", "Instagram + LinkedIn + Pinterest scheduling"],
             ["Claude API (Sonnet)", "$5-10/mo", "~50 caption batches/month"],
             ["n8n", "$0", "Existing instance"],
             ["Google Sheets", "$0", "Content calendar"],
             ["Pinterest", "$0", "Business account is free"],
-            ["<b>Total</b>", "<b>$23-28/mo</b>", ""],
+            ["<b>Total</b>", "<b>$5-10/mo</b>", ""],
         ],
         col_widths=[2.5 * inch, 1 * inch, usable_width - 3.5 * inch],
     ))

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LRD Studio — Interior Design | Whistler &amp; Squamish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --primary: #1A1A18;
+  --cream: #F6F4F0;
+  --warm-white: #EEECE6;
+  --accent: #8A8579;
+  --accent-light: #B8B0A4;
+  --dark: #1A1A18;
+  --body-text: #6B6B6B;
+  --border: rgba(0,0,0,0.06);
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:var(--font-body);font-weight:400;color:var(--primary);background:var(--cream);overflow-x:hidden;line-height:1.7}
+img{max-width:100%;display:block;object-fit:cover}
+a{text-decoration:none;color:inherit}
+
+/* ── Loader ── */
+.loader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1) 1.2s,visibility 0s 2s}
+.loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.loader-brand{display:flex;align-items:center;gap:14px;opacity:0;animation:loaderFade 0.6s 0.2s forwards}
+.loader-logo{height:36px;opacity:0.9}
+.loader-line{width:50px;height:1px;background:var(--accent);margin-top:20px;transform:scaleX(0);transform-origin:left;animation:loaderLine 0.8s 0.6s cubic-bezier(0.16,1,0.3,1) forwards}
+@keyframes loaderFade{to{opacity:1}}
+@keyframes loaderLine{to{transform:scaleX(1)}}
+
+/* ── Scroll Progress ── */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0;z-index:1001;opacity:0.5}
+
+/* ── Navigation ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px clamp(24px,5vw,60px);display:flex;align-items:center;justify-content:space-between;transition:all 0.5s cubic-bezier(0.16,1,0.3,1)}
+.nav.scrolled{background:rgba(246,244,240,0.95);backdrop-filter:blur(20px) saturate(1.2);padding:16px clamp(24px,5vw,60px);box-shadow:0 1px 30px rgba(0,0,0,0.04)}
+.nav-brand{display:flex;align-items:center;gap:12px}
+.nav-logo{height:clamp(28px,3vw,36px)}
+.nav-logo-white{display:block}
+.nav-logo-dark{display:none}
+.nav.scrolled .nav-logo-white{display:none}
+.nav.scrolled .nav-logo-dark{display:block}
+.nav-links{display:flex;gap:clamp(18px,2.5vw,36px);align-items:center}
+.nav-links a{font-family:var(--font-body);font-weight:500;font-size:clamp(10px,0.8vw,11px);letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);transition:color 0.3s}
+.nav.scrolled .nav-links a{color:var(--body-text)}
+.nav-links a:hover{color:white}
+.nav.scrolled .nav-links a:hover{color:var(--primary)}
+.nav-cta{padding:10px 28px;border:1px solid rgba(255,255,255,0.2);font-weight:500 !important;transition:all 0.4s !important;color:rgba(255,255,255,0.7) !important}
+.nav-cta:hover{background:white;color:var(--dark) !important;border-color:white}
+.nav.scrolled .nav-cta{border-color:var(--primary);color:var(--primary) !important}
+.nav.scrolled .nav-cta:hover{background:var(--primary);color:white !important}
+
+/* ── Mobile Nav ── */
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:101}
+.nav-toggle span{width:24px;height:1.5px;background:white;transition:all 0.3s}
+.nav.scrolled .nav-toggle span{background:var(--primary)}
+@media(max-width:768px){
+  .nav-toggle{display:flex}
+  .nav-links{position:fixed;inset:0;background:var(--dark);flex-direction:column;justify-content:center;gap:28px;opacity:0;visibility:hidden;transition:all 0.4s}
+  .nav-links.open{opacity:1;visibility:visible}
+  .nav-links a{color:rgba(255,255,255,0.6) !important;font-size:13px}
+  .nav-links a:hover{color:white !important}
+}
+
+/* ── Hero ── */
+.hero{position:relative;height:100vh;min-height:700px;overflow:hidden;display:flex;align-items:flex-end}
+.hero-slides{position:absolute;inset:0}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.08);transition:opacity 1.4s cubic-bezier(0.16,1,0.3,1),transform 6s cubic-bezier(0.16,1,0.3,1)}
+.hero-slide.active{opacity:1;transform:scale(1)}
+.hero-slide:nth-child(1){background-image:url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/52627ea1-aef1-4832-9760-b47fd05e9da2/Copyright-Darby-Magill-7090.jpg')}
+.hero-slide:nth-child(2){background-image:url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1698002111785-1IZX2SKF48R7COG1CVZO/Copyright-Darby-Magill-0441.jpg')}
+.hero-slide:nth-child(3){background-image:url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/d7bf8e86-9d46-4cbe-b477-009fe66d6589/Copyright-Darby-Magill-5750.jpg')}
+.hero-slide:nth-child(4){background-image:url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/8c9f6bbe-cdb1-4a61-af9e-33dbef493474/LRDMS_Panorama_0002.JPG')}
+.hero-slide:nth-child(5){background-image:url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/8d29fcd3-6c3d-456b-9732-2e1f6a529057/Copyright-Darby-Magill-7251-+Falcon+-+Whistler+Interior+Design.jpg')}
+.hero-dots{position:absolute;bottom:clamp(80px,14vh,120px);right:clamp(28px,5vw,60px);z-index:3;display:flex;gap:10px}
+.hero-dot{width:8px;height:8px;border-radius:50%;border:1px solid rgba(255,255,255,0.3);background:transparent;cursor:pointer;transition:all 0.4s}
+.hero-dot.active{background:white;border-color:white;box-shadow:0 0 12px rgba(255,255,255,0.3)}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.05) 30%,rgba(0,0,0,0.3) 55%,rgba(0,0,0,0.85) 100%)}
+.hero-content{position:relative;z-index:2;padding:0 clamp(28px,7vw,100px) clamp(70px,12vh,140px);max-width:900px}
+.hero-eyebrow{font-family:var(--font-body);font-weight:500;font-size:clamp(9px,0.8vw,11px);letter-spacing:0.35em;text-transform:uppercase;color:var(--accent-light);display:flex;align-items:center;gap:14px;opacity:0;animation:heroUp 1s 0.4s forwards}
+.hero-eyebrow::before{content:'';width:0;height:1px;background:var(--accent-light);animation:lineGrow 0.8s 0.8s forwards}
+@keyframes lineGrow{to{width:40px}}
+.hero h1{font-family:var(--font-heading);font-weight:400;font-size:clamp(38px,5.5vw,72px);line-height:1.08;color:white;margin:20px 0 24px;opacity:0;animation:heroUp 1s 0.6s forwards;letter-spacing:0.01em}
+.hero h1 em{font-style:italic;font-weight:300}
+.hero-sub{font-family:var(--font-body);font-weight:300;font-size:clamp(14px,1.2vw,16px);color:rgba(255,255,255,0.6);max-width:500px;line-height:1.9;opacity:0;animation:heroUp 1s 0.8s forwards}
+.hero-cta-row{display:flex;gap:14px;margin-top:36px;opacity:0;animation:heroUp 1s 1s forwards;flex-wrap:wrap}
+.btn{font-family:var(--font-body);font-weight:500;font-size:clamp(10px,0.8vw,11px);letter-spacing:0.12em;text-transform:uppercase;padding:15px 36px;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);display:inline-block}
+.btn-primary{background:white;color:var(--dark)}
+.btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.15)}
+.btn-ghost{border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7)}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.5);color:white}
+.btn-dark{background:var(--primary);color:var(--cream)}
+.btn-dark:hover{background:#333;transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.1)}
+.btn-outline{border:1px solid var(--border);color:var(--primary)}
+.btn-outline:hover{border-color:var(--primary);background:var(--primary);color:white}
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:heroUp 1s 1.6s forwards}
+.scroll-hint span{font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+.scroll-hint-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--accent-light),transparent);animation:scrollPulse 2.5s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:0.2;transform:scaleY(0.5)}50%{opacity:1;transform:scaleY(1)}}
+@keyframes heroUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Section Base ── */
+.section{padding:clamp(80px,12vw,160px) clamp(28px,7vw,100px)}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{font-family:var(--font-body);font-weight:500;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.section-heading{font-family:var(--font-heading);font-weight:300;font-size:clamp(32px,4.5vw,56px);line-height:1.15;margin-bottom:24px}
+.section-heading em{font-style:italic}
+.section-text{font-weight:300;font-size:clamp(14px,1.1vw,16px);color:var(--body-text);line-height:1.9;max-width:560px}
+
+/* ── Divider ── */
+.divider{display:flex;justify-content:center;padding:0}
+.divider-inner{display:flex;align-items:center;gap:16px}
+.divider-line{width:40px;height:1px;background:var(--accent-light)}
+.divider-dot{width:4px;height:4px;border-radius:50%;background:var(--accent);opacity:0.3}
+
+/* ── Intro ── */
+.intro{background:var(--cream)}
+.intro .section-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px);align-items:center}
+.intro-image{aspect-ratio:3/4;overflow:hidden;border-radius:2px}
+.intro-image img{width:100%;height:100%;object-fit:cover}
+.intro-quote{margin-top:40px;padding-top:32px;border-top:1px solid var(--border)}
+.intro-quote blockquote{font-family:var(--font-heading);font-style:italic;font-size:clamp(18px,1.6vw,22px);line-height:1.6;font-weight:300}
+.intro-quote cite{display:block;margin-top:12px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--body-text);font-style:normal}
+@media(max-width:768px){.intro .section-inner{grid-template-columns:1fr;gap:48px}}
+
+/* ── Projects ── */
+.projects{background:var(--warm-white)}
+.projects .section-inner{text-align:center}
+.projects .section-text{margin:0 auto 64px}
+.project-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.project-card{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:2px;cursor:pointer}
+.project-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.project-card:hover img{transform:scale(1.05)}
+.project-card::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0) 50%);transition:opacity 0.4s}
+.project-info{position:absolute;bottom:0;left:0;right:0;padding:28px;z-index:2;text-align:left}
+.project-name{font-family:var(--font-heading);font-size:clamp(22px,2vw,28px);font-weight:400;color:white;margin-bottom:4px}
+.project-location{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);font-weight:400}
+@media(max-width:900px){.project-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.project-grid{grid-template-columns:1fr}}
+
+/* ── Services ── */
+.services{background:var(--cream)}
+.services .section-inner{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(40px,6vw,100px);align-items:start}
+.services-list{display:flex;flex-direction:column;gap:0}
+.service-item{padding:32px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start}
+.service-item:first-child{padding-top:0}
+.service-number{font-family:var(--font-heading);font-size:36px;font-weight:300;color:var(--accent-light);line-height:1}
+.service-item h3{font-family:var(--font-heading);font-size:clamp(20px,1.6vw,26px);font-weight:400;margin-bottom:8px}
+.service-item p{font-size:13px;color:var(--body-text);line-height:1.8;font-weight:300;max-width:400px}
+@media(max-width:768px){.services .section-inner{grid-template-columns:1fr}}
+
+/* ── Team ── */
+.team{background:var(--dark);color:white}
+.team .section-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(40px,6vw,100px);align-items:center}
+.team-portrait{aspect-ratio:4/5;overflow:hidden;border-radius:2px}
+.team-portrait img{width:100%;height:100%;object-fit:cover}
+.team .section-label{color:var(--accent-light)}
+.team .section-heading{color:white}
+.team .section-text{color:rgba(255,255,255,0.5)}
+.team-credentials{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.credential{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border:1px solid rgba(255,255,255,0.1);border-radius:20px;color:rgba(255,255,255,0.5);font-weight:400}
+@media(max-width:768px){.team .section-inner{grid-template-columns:1fr;gap:48px}}
+
+/* ── Testimonial ── */
+.testimonial{background:var(--warm-white);text-align:center;padding:clamp(80px,10vw,140px) clamp(28px,7vw,100px)}
+.testimonial-inner{max-width:700px;margin:0 auto}
+.testimonial-mark{font-family:var(--font-heading);font-size:56px;color:var(--accent);opacity:0.3;line-height:1;margin-bottom:12px}
+.testimonial blockquote{font-family:var(--font-heading);font-style:italic;font-size:clamp(22px,2.4vw,30px);font-weight:300;color:var(--primary);line-height:1.5;margin-bottom:24px}
+.testimonial cite{font-style:normal;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent)}
+
+/* ── Process ── */
+.process{background:var(--cream)}
+.process .section-inner{text-align:center}
+.process .section-text{margin:0 auto 64px}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.process-step{padding:40px 24px}
+.process-number{font-family:var(--font-heading);font-size:42px;font-weight:300;color:var(--accent-light);margin-bottom:16px;line-height:1}
+.process-step h3{font-family:var(--font-heading);font-size:clamp(18px,1.4vw,22px);font-weight:400;margin-bottom:10px}
+.process-step p{font-size:13px;color:var(--body-text);line-height:1.8;font-weight:300}
+@media(max-width:900px){.process-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.process-grid{grid-template-columns:1fr}}
+
+/* ── CTA ── */
+.cta-section{position:relative;overflow:hidden;text-align:center;padding:clamp(100px,14vw,200px) clamp(28px,7vw,100px)}
+.cta-bg{position:absolute;inset:0;background:url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/8c9f6bbe-cdb1-4a61-af9e-33dbef493474/LRDMS_Panorama_0002.JPG') center/cover no-repeat}
+.cta-bg::after{content:'';position:absolute;inset:0;background:rgba(26,26,24,0.82)}
+.cta-inner{position:relative;z-index:2;max-width:650px;margin:0 auto}
+.cta-section .section-label{color:var(--accent-light);text-align:center}
+.cta-section .section-heading{color:white;text-align:center}
+.cta-sub{font-size:clamp(14px,1.1vw,16px);color:rgba(255,255,255,0.5);font-weight:300;line-height:1.9;max-width:480px;margin:0 auto 44px}
+.cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.cta-details{display:flex;gap:40px;justify-content:center;margin-top:48px;flex-wrap:wrap}
+.cta-detail{text-align:center}
+.cta-detail-label{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent-light);margin-bottom:6px;font-weight:500}
+.cta-detail-value{font-family:var(--font-heading);font-size:16px;color:white;font-weight:400}
+
+/* ── Footer ── */
+.footer{background:var(--dark);padding:64px clamp(24px,5vw,60px) 40px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.footer-brand{display:flex;flex-direction:column;gap:24px}
+.footer-logo{width:clamp(120px,14vw,180px);height:auto;opacity:0.85}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.3);line-height:1.8;font-weight:300;max-width:260px}
+.footer-col h4{font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;font-weight:500}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:12px;font-weight:300;transition:color 0.3s}
+.footer-col a:hover{color:white}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:32px;flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.15);font-weight:300}
+.footer-land{font-size:11px;color:rgba(255,255,255,0.15);font-weight:300;max-width:500px;line-height:1.7;text-align:right}
+@media(max-width:768px){
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-land{text-align:left}
+}
+@media(max-width:500px){.footer-top{grid-template-columns:1fr}}
+
+/* ── Reveal ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div class="loader" id="loader">
+  <div class="loader-brand">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/d3571741-4823-46bd-aff3-64f24925ac00/LRD-STUDIO-LOGO-WHITE.png" alt="LRD Studio" class="loader-logo">
+  </div>
+  <div class="loader-line"></div>
+</div>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-brand">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/d3571741-4823-46bd-aff3-64f24925ac00/LRD-STUDIO-LOGO-WHITE.png" alt="LRD Studio" class="nav-logo nav-logo-white">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/d3571741-4823-46bd-aff3-64f24925ac00/LRD-STUDIO-LOGO-WHITE.png" alt="LRD Studio" class="nav-logo nav-logo-dark" style="filter:invert(1)">
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#projects">Projects</a>
+    <a href="#services">Services</a>
+    <a href="#team">About</a>
+    <a href="#process">Process</a>
+    <a href="#contact" class="nav-cta">Let's Connect</a>
+  </div>
+  <div class="nav-toggle" id="navToggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide active"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+  </div>
+  <div class="hero-dots" id="heroDots">
+    <div class="hero-dot active" data-index="0"></div>
+    <div class="hero-dot" data-index="1"></div>
+    <div class="hero-dot" data-index="2"></div>
+    <div class="hero-dot" data-index="3"></div>
+    <div class="hero-dot" data-index="4"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Whistler &middot; Squamish &middot; Vancouver</div>
+    <h1>Good design tells the story of <em>who we are</em></h1>
+    <p class="hero-sub">West Coast modern interior design for residential and commercial spaces across the Sea to Sky corridor.</p>
+    <div class="hero-cta-row">
+      <a href="#projects" class="btn btn-primary">View Our Portfolio</a>
+      <a href="#contact" class="btn btn-ghost">Let's Connect</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-hint-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- Intro -->
+<section class="section intro" id="about">
+  <div class="section-inner">
+    <div class="intro-image reveal">
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1698002111785-1IZX2SKF48R7COG1CVZO/Copyright-Darby-Magill-0441.jpg" alt="LRD Studio — Balsam Project Interior">
+    </div>
+    <div>
+      <div class="section-label reveal">Design for Life</div>
+      <h2 class="section-heading reveal reveal-delay-1">A diverse and dynamic <em>interior design studio</em></h2>
+      <p class="section-text reveal reveal-delay-2">Design is equal parts creative talent, expertise, and execution. We recognize who you are and how you enjoy space, then use that as a foundation to create an interior environment that is uniquely yours.</p>
+      <p class="section-text reveal reveal-delay-2" style="margin-top:16px">West Coast modern influences every aspect of what we do. Our connection to the land allows us to source locally and understand how climate and environment are essential to functional design.</p>
+      <div class="intro-quote reveal reveal-delay-3">
+        <blockquote>"When you truly listen to people, you embark on an inquiry into who they are and how they function."</blockquote>
+        <cite>— Lauren Ritz, Principal Designer</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-inner"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div></div>
+
+<!-- Projects -->
+<section class="section projects" id="projects">
+  <div class="section-inner">
+    <div class="section-label reveal">Selected Work</div>
+    <h2 class="section-heading reveal reveal-delay-1">Interior design projects across<br>British Columbia</h2>
+    <p class="section-text reveal reveal-delay-2">From mountain residences to commercial spaces, each project reflects a deep understanding of place, people, and purpose.</p>
+    <div class="project-grid">
+      <div class="project-card reveal">
+        <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1698068222192-Y6H0MEYMSRZ1RJLLF3BE/Balsam-LRD-Studio.png" alt="Balsam — Whistler">
+        <div class="project-info">
+          <div class="project-name">Balsam</div>
+          <div class="project-location">Whistler, BC</div>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/d7bf8e86-9d46-4cbe-b477-009fe66d6589/Copyright-Darby-Magill-5750.jpg" alt="Fitzsimmons — Whistler">
+        <div class="project-info">
+          <div class="project-name">Fitzsimmons</div>
+          <div class="project-location">Whistler, BC</div>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-1">
+        <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/235740dc-a556-4f01-a692-24d59e4d1dfb/SRAM_0126.jpg" alt="SRAM — North Vancouver">
+        <div class="project-info">
+          <div class="project-name">SRAM</div>
+          <div class="project-location">North Vancouver, BC</div>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/8c9f6bbe-cdb1-4a61-af9e-33dbef493474/LRDMS_Panorama_0002.JPG" alt="Panorama — Whistler">
+        <div class="project-info">
+          <div class="project-name">Panorama</div>
+          <div class="project-location">Whistler, BC</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section services" id="services">
+  <div class="section-inner">
+    <div>
+      <div class="section-label reveal">What We Do</div>
+      <h2 class="section-heading reveal reveal-delay-1">Full-service <em>interior design</em></h2>
+      <p class="section-text reveal reveal-delay-2">From concept to completion, we guide every detail to create spaces that feel authentically yours.</p>
+    </div>
+    <div class="services-list">
+      <div class="service-item reveal">
+        <div class="service-number">01</div>
+        <div>
+          <h3>Residential Design</h3>
+          <p>Custom homes, renovations, and legacy properties. We design spaces that reflect how you live — from mountain retreats to urban sanctuaries across the Sea to Sky.</p>
+        </div>
+      </div>
+      <div class="service-item reveal reveal-delay-1">
+        <div class="service-number">02</div>
+        <div>
+          <h3>Commercial Design</h3>
+          <p>Offices, retail, wellness studios, and hospitality. Environments that elevate brands and support the people who work within them.</p>
+        </div>
+      </div>
+      <div class="service-item reveal reveal-delay-2">
+        <div class="service-number">03</div>
+        <div>
+          <h3>Furniture & Finishes</h3>
+          <p>Material sourcing, custom millwork, and furniture specification. Every surface and object selected with intention and a deep understanding of West Coast context.</p>
+        </div>
+      </div>
+      <div class="service-item reveal reveal-delay-3">
+        <div class="service-number">04</div>
+        <div>
+          <h3>Project Management</h3>
+          <p>Procurement, contractor coordination, and installation oversight. We manage the details so you can focus on the excitement of your space coming to life.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="section team" id="team">
+  <div class="section-inner">
+    <div class="team-portrait reveal">
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/38bbb967-0808-40e3-839a-6e50fa3308f1/Copyright-Darby-Magill-2630+cropped.jpg" alt="Lauren Ritz — Principal Designer">
+    </div>
+    <div>
+      <div class="section-label reveal">Meet the Founder</div>
+      <h2 class="section-heading reveal reveal-delay-1">Lauren <em>Ritz</em></h2>
+      <p class="section-text reveal reveal-delay-2" style="color:rgba(255,255,255,0.5)">Lauren spent her youth learning fine woodwork, carpentry, and contracting from her father. Her mother was a fine artist. She initially studied Theatre & Film Set Design, but transitioned to Interior Design to work with permanent spaces.</p>
+      <p class="section-text reveal reveal-delay-2" style="color:rgba(255,255,255,0.5);margin-top:16px">She values collaborative leadership and mutual respect among all parties. The studio's Squamish location reflects her commitment to designing locally and engaging with the natural landscape.</p>
+      <div class="team-credentials reveal reveal-delay-3">
+        <span class="credential">Registered Interior Designer</span>
+        <span class="credential">IDIBC</span>
+        <span class="credential">IDC</span>
+        <span class="credential">NCIDQ</span>
+        <span class="credential">Est. 2017</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial -->
+<section class="testimonial">
+  <div class="testimonial-inner reveal">
+    <div class="testimonial-mark">"</div>
+    <blockquote>The LRD Studio team led the design for our dream home. An absolute pleasure to work with. From day one, the process was positive and collaborative.</blockquote>
+    <cite>Lindsey & Andy M. — Whistler, BC</cite>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="section process" id="process">
+  <div class="section-inner">
+    <div class="section-label reveal">Our Process</div>
+    <h2 class="section-heading reveal reveal-delay-1">From first conversation<br>to final install</h2>
+    <p class="section-text reveal reveal-delay-2">Open communication and client empowerment at every stage for transformative design outcomes.</p>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="process-number">01</div>
+        <h3>Discovery</h3>
+        <p>We listen deeply — understanding your lifestyle, preferences, and how you inhabit space.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="process-number">02</div>
+        <h3>Concept</h3>
+        <p>Visual direction, material palettes, and spatial planning that capture your story.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="process-number">03</div>
+        <h3>Development</h3>
+        <p>Detailed drawings, specifications, and procurement — every decision made with purpose.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="process-number">04</div>
+        <h3>Realization</h3>
+        <p>Installation oversight and styling to ensure every detail arrives exactly as envisioned.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <div class="section-label reveal">Start a Project</div>
+    <h2 class="section-heading reveal reveal-delay-1">Ready to design<br>your <em>story</em>?</h2>
+    <p class="cta-sub reveal reveal-delay-2">Whether you're building new, renovating, or reimagining a commercial space — let's start the conversation.</p>
+    <div class="cta-buttons reveal reveal-delay-3">
+      <a href="#" class="btn btn-primary">Let's Connect</a>
+      <a href="#" class="btn btn-ghost">View Portfolio</a>
+    </div>
+    <div class="cta-details reveal reveal-delay-4">
+      <div class="cta-detail">
+        <div class="cta-detail-label">Studio</div>
+        <div class="cta-detail-value">Squamish, BC</div>
+      </div>
+      <div class="cta-detail">
+        <div class="cta-detail-label">Hours</div>
+        <div class="cta-detail-value">M–F, 8:30–5pm</div>
+      </div>
+      <div class="cta-detail">
+        <div class="cta-detail-label">Instagram</div>
+        <div class="cta-detail-value">@lrdstudio_interiors</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/d3571741-4823-46bd-aff3-64f24925ac00/LRD-STUDIO-LOGO-WHITE.png" alt="LRD Studio" class="footer-logo">
+        <p>Full-service interior design studio in the Sea to Sky corridor. Residential and commercial projects across British Columbia.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="#projects">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#team">About</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">Residential Design</a>
+        <a href="#">Commercial Design</a>
+        <a href="#">Furniture & Finishes</a>
+        <a href="#">Project Management</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">Client Portal</a>
+        <a href="#">Careers</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 LRD Studio Ltd. Established 2017.</div>
+      <div class="footer-land">LRD Studio acknowledges working on unceded Indigenous land of the Coast Salish peoples, Lil'wat Nation, and Squamish Nation.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('done'),800)});
+
+// Hero slideshow
+(function(){
+  const slides=document.querySelectorAll('.hero-slide');
+  const dots=document.querySelectorAll('.hero-dot');
+  let current=0;
+  let interval;
+  function goTo(i){
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current=i;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+  function next(){goTo((current+1)%slides.length)}
+  function startAuto(){interval=setInterval(next,5000)}
+  dots.forEach(d=>{
+    d.addEventListener('click',()=>{
+      clearInterval(interval);
+      goTo(parseInt(d.dataset.index));
+      startAuto();
+    });
+  });
+  startAuto();
+})();
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('scrollProgress').style.width=(window.scrollY/h*100)+'%';
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>80);
+});
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})
+},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Social Media Automation Workflow
 
-n8n workflow specification for automating the social media content pipeline. Connects the Content Calendar (Google Sheets) to Claude API for caption generation, scheduling via Buffer/Postiz, analytics feedback, and daily briefings.
+n8n workflow specification for automating the social media content pipeline. Connects the Content Calendar (Google Sheets) to Claude API for caption generation, scheduling via Postiz, analytics feedback, and daily briefings.
 
 ---
 
@@ -18,7 +18,6 @@ Automate the full content lifecycle:
 | Option | Cost | Pros | Cons |
 |--------|------|------|------|
 | **Postiz (self-hosted)** | $0 | Free, MCP support, 30+ platforms, self-hosted | Requires hosting setup |
-| **Buffer** | $18/mo | Simple API, reliable | Limited platforms, no MCP |
 | **Metricool MCP** | ~$18/mo | Analytics + scheduling in Claude Code | Requires plan upgrade |
 | **Manual** | $0 | Full control | Time-consuming |
 
@@ -48,7 +47,7 @@ Google Sheet (Content Calendar)
   │
   ├── [Node 4] Approved row detected (poll every 2 hours)
   │
-  ├── [Node 5] Buffer API — schedule posts
+  ├── [Node 5] Postiz API — schedule posts
   │     ├── Instagram post (image + caption)
   │     ├── LinkedIn post (image + caption)
   │     └── Pinterest pin (image + title + description + URL)
@@ -68,17 +67,14 @@ Google Sheet (Content Calendar)
 
 ```
 ANTHROPIC_API_KEY=sk-ant-...      # Claude API for caption generation
-BUFFER_ACCESS_TOKEN=...            # Buffer API for scheduling
 META_ACCESS_TOKEN=...              # Instagram Graph API for analytics
 PINTEREST_ACCESS_TOKEN=...         # Pinterest API for analytics (optional)
 ```
 
 ### Accounts to Set Up
 
-1. **Buffer** — Sign up at buffer.com. Connect Instagram, LinkedIn, Pinterest.
-   - Free plan: 3 channels, 10 posts/channel queue
-   - Essentials plan: $6/mo per channel (recommended — $18/mo for 3 channels)
-   - Get API access token from buffer.com/developers
+1. **Postiz** — Self-hosted, free. Deploy via Docker and connect Instagram, LinkedIn, Pinterest.
+   - Add MCP to Claude Code: `claude mcp add postiz http://your-server:5000/api/mcp/YOUR_API_KEY`
 
 2. **Meta Business Suite** — Required for Instagram Graph API analytics.
    - Connect @mattanthonyphoto Instagram to a Facebook Business page
@@ -192,57 +188,20 @@ return [{
 - Type: Google Sheets
 - Filter: Column I = "APPROVED", Column P <= today's date
 
-**Node 2: Post to Instagram via Buffer**
-- Type: HTTP Request
-- Method: POST
-- URL: `https://api.bufferapp.com/1/updates/create.json`
-- Body:
-```json
-{
-  "access_token": "{{$env.BUFFER_ACCESS_TOKEN}}",
-  "profile_ids": ["{{$env.BUFFER_INSTAGRAM_PROFILE_ID}}"],
-  "text": "{{$json.ig_carousel_caption}}",
-  "media": {
-    "photo": "{{$json.image_url}}"
-  },
-  "scheduled_at": "{{$json.scheduled_date}}T09:00:00-07:00"
-}
-```
+**Node 2: Post to Instagram via Postiz**
+- Type: HTTP Request (or use Postiz MCP from Claude Code)
+- Use the Postiz API to schedule an Instagram post with image and caption
+- Schedule for `{{$json.scheduled_date}}T09:00:00-07:00`
 
-**Node 3: Post to LinkedIn via Buffer**
-- Type: HTTP Request
-- Method: POST
-- URL: `https://api.bufferapp.com/1/updates/create.json`
-- Body:
-```json
-{
-  "access_token": "{{$env.BUFFER_ACCESS_TOKEN}}",
-  "profile_ids": ["{{$env.BUFFER_LINKEDIN_PROFILE_ID}}"],
-  "text": "{{$json.linkedin_caption}}",
-  "media": {
-    "photo": "{{$json.image_url}}"
-  },
-  "scheduled_at": "{{$json.scheduled_date}}T08:30:00-07:00"
-}
-```
+**Node 3: Post to LinkedIn via Postiz**
+- Type: HTTP Request (or use Postiz MCP from Claude Code)
+- Use the Postiz API to schedule a LinkedIn post with image and caption
+- Schedule for `{{$json.scheduled_date}}T08:30:00-07:00`
 
-**Node 4: Post to Pinterest via Buffer**
-- Type: HTTP Request
-- Method: POST
-- URL: `https://api.bufferapp.com/1/updates/create.json`
-- Body:
-```json
-{
-  "access_token": "{{$env.BUFFER_ACCESS_TOKEN}}",
-  "profile_ids": ["{{$env.BUFFER_PINTEREST_PROFILE_ID}}"],
-  "text": "{{$json.pinterest_description}}",
-  "media": {
-    "photo": "{{$json.image_url}}",
-    "title": "{{$json.pinterest_title}}",
-    "link": "https://mattanthonyphoto.com/projects/{{$json.project_slug}}"
-  }
-}
-```
+**Node 4: Post to Pinterest via Postiz**
+- Type: HTTP Request (or use Postiz MCP from Claude Code)
+- Use the Postiz API to schedule a Pinterest pin with image, title, description, and destination URL
+- Link: `https://mattanthonyphoto.com/projects/{{$json.project_slug}}`
 
 **Node 5: Update Sheet Status**
 - Type: Google Sheets
@@ -337,10 +296,6 @@ python tools/resize_images.py resize \
 Add to `.env`:
 ```
 ANTHROPIC_API_KEY=sk-ant-...
-BUFFER_ACCESS_TOKEN=...
-BUFFER_INSTAGRAM_PROFILE_ID=...
-BUFFER_LINKEDIN_PROFILE_ID=...
-BUFFER_PINTEREST_PROFILE_ID=...
 META_ACCESS_TOKEN=...
 ```
 
@@ -363,11 +318,10 @@ python tools/resize_images.py resize \
   --output-dir .tmp/social-test/
 ```
 
-### Step 5: Buffer Setup
-1. Create Buffer account, connect IG/LinkedIn/Pinterest profiles
-2. Get access token from Buffer Developer Portal
-3. Get profile IDs via: `curl https://api.bufferapp.com/1/profiles.json?access_token=YOUR_TOKEN`
-4. Add all IDs to `.env`
+### Step 5: Postiz Setup
+1. Deploy Postiz via Docker (`docker run -d -p 5000:5000 ghcr.io/gitroomhq/postiz-app`)
+2. Connect IG/LinkedIn/Pinterest profiles in the Postiz dashboard
+3. Add MCP to Claude Code: `claude mcp add postiz http://your-server:5000/api/mcp/YOUR_API_KEY`
 
 ### Step 6: Build n8n Workflow
 Deploy Workflow 1 (Caption Generation) first. Test with one project. Then deploy Workflow 2 (Publishing) and Workflow 3 (Analytics).
@@ -381,10 +335,8 @@ Use the n8n instance at `n8n.srv1277163.hstgr.cloud`.
 - **Do NOT set temperature via n8n API** — causes 400 errors
 - **Do NOT use continueRegularOutput on critical nodes** — can corrupt data flow
 - **Vector Store connections are fragile via API** — not relevant here but noted
-- **Buffer free plan** limits to 10 posts per channel queue — upgrade to Essentials ($18/mo total) for unlimited queue
-- **Instagram carousel posting via Buffer** requires image URLs, not file uploads — host images on Google Drive with public links or use a CDN
-- **LinkedIn document carousels (PDFs)** cannot be posted via Buffer API — these still need manual upload. Buffer handles single images and text.
-- **Pinterest pin scheduling** via Buffer works but doesn't support all pin types — standard image pins only
+- **LinkedIn document carousels (PDFs)** may not be supported by all scheduling APIs — these may still need manual upload
+- **Pinterest pin scheduling** via Postiz supports standard image pins — check for advanced pin type support
 - **Meta access tokens expire** — set up a long-lived token (60 days) and add a refresh reminder to your monthly review
 
 ---
@@ -446,8 +398,6 @@ Use the n8n instance at `n8n.srv1277163.hstgr.cloud`.
 
 ## Postiz MCP Setup (Free, Self-Hosted)
 
-If using Postiz instead of Buffer:
-
 1. Deploy Postiz on existing hosting (Docker container):
    ```bash
    docker run -d -p 5000:5000 ghcr.io/gitroomhq/postiz-app
@@ -486,10 +436,10 @@ If using Postiz instead of Buffer:
 | Google Sheets | $0 |
 | **Total (with Postiz)** | **~$5-10/mo** |
 
-**Or with Buffer:**
+**Or with Metricool (for analytics + scheduling):**
 
 | Service | Cost |
 |---------|------|
-| Buffer Essentials (3 channels) | $18/mo |
+| Metricool Advanced | ~$18/mo |
 | Claude API | $5-10/mo |
-| **Total (with Buffer)** | **~$25-30/mo** |
+| **Total (with Metricool)** | **~$25-30/mo** |

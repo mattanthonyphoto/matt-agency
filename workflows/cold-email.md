@@ -1,53 +1,107 @@
-# Cold Email Pipeline
+# Cold Email Pipeline — Standard Operating Procedure
 
-Process prospect leads through qualification, decision maker research, and 3-email sequence generation.
+Process prospect leads through verification, qualification, decision maker research, and 3-email sequence generation.
 
-## Trigger
+This SOP is the single source of truth for processing cold email leads. Reference it every time you process a prospect. The prompts in `tools/prompts/` handle the specific email generation rules — this document handles everything else.
 
-User says: "process cold email leads from the [Tab] tab"
-
-Supported tabs: **Builders**, **Architects**, **Designers**, **Trades**
+---
 
 ## Prerequisites
 
 - `.env` has `ICYPEAS_API_KEY`
 - Google OAuth token valid (`credentials.json` / `token.json`)
-- Input sheet: `1d5z2ph5FDztS4CQBTQwvnV8lBhkWe0Cll2q-nRYpp3s`
-- Output sheet: `1xyug1GkKKLX3htiI8bHJ9oM4O-ymTfHteCIospcDKrs`
+- Input sheet: `1qaeT6nURloVQx48dPtJODUz55IrqQEyRJ5xmnJJjoVs`
+- Output sheet: `1brgQYbtCZwH1fFS3vYjMaW9IGf8iK37qeDBY2l06r8A`
 
-## Pipeline Flow
+---
 
-### Step 1 — Fetch Unprocessed Leads
+## Part 1 — Lead Verification (Before Qualification)
+
+Every lead MUST be individually verified before qualification. Never batch-skip or batch-mark leads.
+
+### 1a. Fetch Unprocessed Leads
 
 ```bash
 python tools/cold_email.py fetch-leads --tab [Tab]
 ```
 
-Returns JSON array of `{company, website}` not yet in output sheet. If empty, stop.
+Returns JSON array of `{company, website}` not yet processed. If empty, stop.
 
-### Step 2 — Process Each Lead
+### 1b. Verify Website Is Reachable
 
-For each lead in the array:
+For each lead, attempt to load the website via **WebFetch**.
 
-#### 2a. Scrape Website
+**If WebFetch fails (ECONNREFUSED, SSL, timeout):**
+1. Retry with `http://www.` prefix (many small firms lack SSL)
+2. Retry without `www.` prefix
+3. If all URL variations fail, use **WebSearch** to find the company via directories (Houzz, BBB, LinkedIn, Yellow Pages)
+4. Only mark as "SCRAPE FAILED" after exhausting all three fallbacks
+
+**If the company appears to be permanently closed or the domain is parked/for sale:**
+- Mark as `NOT QUALIFIED` with note "Business closed" or "Domain inactive"
+- Skip to next lead
+
+### 1c. Verify Business Is Active
+
+Quick signals that a business is still operating:
+- Website has recent projects (within 2 years)
+- Active social media (posted within 6 months)
+- Phone number answers or has a voicemail
+- Listed in current directories
+
+If uncertain, proceed with qualification — the scrape will reveal more.
+
+---
+
+## Part 2 — Prospect Research (Per Lead)
+
+This is the most important step. The quality of research directly determines the quality of every email.
+
+### 2a. Scrape Website (3 pages minimum attempt)
 
 Use **WebFetch** to grab up to 3 pages:
-1. Homepage (the website URL)
-2. About page — try: `/about`, `/about-us`, `/team`, `/our-team`, `/people`, `/leadership`
-3. Projects page — try: `/projects`, `/portfolio`, `/our-work`, `/work`, `/gallery`
+1. **Homepage** — the website URL
+2. **About page** — try in order: `/about`, `/about-us`, `/team`, `/our-team`, `/people`, `/leadership`, `/our-story`
+3. **Projects/Portfolio page** — try: `/projects`, `/portfolio`, `/our-work`, `/work`, `/gallery`
 
-Save results to `.tmp/scraped.json` as:
-```json
-[
-  {"url": "https://example.com", "html": "<html>..."},
-  {"url": "https://example.com/about", "html": "<html>..."},
-  {"url": "https://example.com/projects", "html": "<html>..."}
-]
-```
+If a page returns 404, try the next pattern. Minimum 1 page required.
 
-If a page returns 404, skip it and try the next pattern. Minimum 1 page required.
+**From each page, extract and note:**
+- Company description and positioning
+- Specific project names, locations, and details
+- Team member names and roles
+- Contact info (email, phone, address)
+- Social media handles (especially Instagram)
+- Founding year or years in business
+- Awards, publications, press mentions
+- Design philosophy or process language
+- Client types and project scale
 
-#### 2b. Clean HTML
+### 2b. Award Research (Mandatory)
+
+**WebSearch** the prospect's award history before writing anything. Never assume zero awards.
+
+Search queries:
+- `"{company name}" award`
+- `"{owner name}" award`
+- Check relevant award databases for their ICP:
+  - Builders: Georgie Awards, CHBA, HAVAN
+  - Architects: AIBC, RAIC, Governor General's Medal, Architizer, Wood Design Awards
+  - Designers: IDIBC, Western Living DOTY, NKBA
+  - Trades: AWMAC, specific trade association awards
+
+If awards are found, note them — they're strong outreach signals.
+
+### 2c. Instagram Research
+
+During scraping, capture the company's Instagram handle from:
+- Website footer/header social links
+- Input sheet Instagram column
+- **WebSearch**: `"{company name}" {city} BC instagram`
+
+Note: If the prospect has no Instagram presence, flag them as a Creative Partner retainer upsell opportunity (they need content help).
+
+### 2d. Clean HTML
 
 ```bash
 python tools/cold_email.py clean-html --input .tmp/scraped.json
@@ -55,7 +109,11 @@ python tools/cold_email.py clean-html --input .tmp/scraped.json
 
 Returns cleaned text (1500 chars per page, max 5 pages). Save output to `.tmp/cleaned.json`.
 
-#### 2c. Qualify Lead
+---
+
+## Part 3 — Qualification
+
+### 3a. Run Qualification
 
 Read the prompt from `tools/prompts/qualify_lead.md`. Replace placeholders:
 - `{website_url}` — the lead's website
@@ -69,48 +127,96 @@ Process the qualification inline. Parse the structured output to extract:
 - `outreach_type` (Cold or Warm Re-engagement)
 - `additional_notes`
 
-#### 2d. Check Qualification
+### 3b. Qualification Decision
 
-If qualification score is **Disqualified** or **Weak Fit**:
+**If Disqualified or Weak Fit:**
 - Do NOT write to output sheet — only qualified leads go to output
 - Mark in input sheet immediately:
 ```bash
 python tools/cold_email.py mark-processed \
-  --tab Builders --website "https://example.com" \
+  --tab [Tab] --website "https://example.com" \
   --status "Yes" --qualified "NOT QUALIFIED"
 ```
 - Skip to next lead
 
-If **Moderate Fit** or **Strong Fit**: continue.
+**If Moderate Fit or Strong Fit:** Continue to Part 4.
 
-**IMPORTANT:** After writing each qualified lead to the output sheet, immediately mark it in the input sheet:
-```bash
-python tools/cold_email.py mark-processed \
-  --tab Builders --website "https://example.com" \
-  --status "Yes" --qualified "QUALIFIED — Strong Fit"
-```
+### 3c. ICP-Specific Qualification Notes
 
-Input sheet format (must match exactly):
-- **Processed column:** `Yes`
-- **Qualified column:** `QUALIFIED — Strong Fit`, `QUALIFIED — Moderate Fit`, or `NOT QUALIFIED`
+Each ICP has different qualification signals. Use these as guides:
 
-#### 2e. Decision Maker Research (if needed)
+**Builders:** Custom one-off projects, complex builds, architect involvement, long timelines. Disqualify: spec homes, production builders, renovation-only with no portfolio.
 
-If decision maker first name AND last name are both "Not found":
-- Use **WebSearch**: `"{company name}" {city if known} owner founder principal`
-- Parse results for name, role, email
-- Update decision maker fields
+**Architects:** Completed built work (not just renders), design-led practice, awards/publications, credits collaborators. Disqualify: drafting services only, no built portfolio.
 
-#### 2f. Classify Email
+**Interior Designers:** Spatial design (not just decorating), high-end residential or commercial, craft and material focus. Disqualify: home staging, retail decor, no portfolio.
 
-Check the email tier from qualification:
-- **Tier 1 or Tier 2**: Personal email found — use it directly
-- **Tier 3**: Generic email (info@, hello@, etc.) — proceed to Icypeas lookup, but **always keep the generic email as fallback**
-- **Tier 4**: No email found on site — check the website contact page directly, then try Icypeas if name is known. Every qualified lead MUST have at least a business email in the output.
+**Millwork & Cabinetry:** Custom/bespoke fabrication, architect-specified work, visible craftsmanship. Disqualify: big-box cabinet dealers, franchise operations.
 
-#### 2g. Icypeas Lookup (if needed)
+**Windows & Doors:** Custom or high-performance fenestration, architect-designed integrations. Disqualify: basic replacement window companies, vinyl-only installers.
 
-Only if: we have a first name + last name but no personal email.
+**Structural Fabrication:** Expressive, visible structural work (exposed steel, ornamental metal). Disqualify: hidden structural steel, pure industrial fabrication.
+
+**Landscape Architecture:** Site-responsive design, photographable outdoor environments. Disqualify: lawn care only, maintenance-only companies.
+
+**Lighting Design:** Spatial lighting systems, architectural experience. Disqualify: bulb retailers, basic electricians.
+
+**Building Envelope:** Facades, cladding, exterior systems that define the building visually. Disqualify: basic insulation contractors, hidden waterproofing only.
+
+**Flooring & Stone:** Premium materials, custom installations in high-end projects. Disqualify: discount flooring outlets, big-box retailers.
+
+**Hardware & Fixtures:** Custom or artisan hardware, luxury fixtures visible in finished spaces. Disqualify: wholesale-only distributors, commodity hardware.
+
+---
+
+## Part 4 — Decision Maker Research
+
+### 4a. Extract Decision Maker from Scrape
+
+The qualification prompt extracts the decision maker. Check its output:
+- If first AND last name found → proceed
+- If partial name → flag for manual research but proceed
+- If both "Not found" → go to 4b
+
+### 4b. External Decision Maker Search
+
+If the website didn't reveal a name:
+1. **WebSearch**: `"{company name}" {city} owner founder principal`
+2. **WebSearch**: `"{company name}" team leadership`
+3. Check LinkedIn company page
+4. Check Houzz profile (often lists the owner)
+
+### 4c. Decision Maker Hierarchy
+
+When the primary decision maker's email can't be found, go down the hierarchy:
+1. Owner / Founder / Principal — always try first
+2. General Manager / Operations Manager — next best
+3. Project Manager / Construction Manager — still reaches leadership
+4. Any named person with a direct email — better than generic inbox
+
+### 4d. Email Discovery
+
+**Email Priority (use highest tier found):**
+
+| Tier | Type | Example | Action |
+|------|------|---------|--------|
+| 1 | Personal named email | jamie@firm.com | Use directly |
+| 2 | Likely personal (initials match) | jm@firm.com | Use, flag as "likely personal" |
+| 3 | Generic business email | info@, hello@ | Use as fallback, try Icypeas for personal |
+| 4 | No email found | — | Check contact page, try Icypeas, WebSearch |
+
+**Where to find emails — check ALL of these:**
+- Contact page
+- Footer
+- Team/about page bios
+- mailto: links in HTML
+- Job listings (hiring contact emails)
+- Press/media sections
+- Social media profiles
+
+### 4e. Icypeas Lookup (If Needed)
+
+Only if: we have a first + last name but no personal email, AND we have a Tier 3 generic email as fallback.
 
 ```bash
 python tools/cold_email.py icypeas-lookup \
@@ -121,17 +227,32 @@ python tools/cold_email.py icypeas-lookup \
 
 If Icypeas returns a deliverable email, use it. Otherwise keep the generic email.
 
-**Important:** Icypeas costs credits. Only call when we have a name but no personal email.
+**Important:** Icypeas costs credits. Only call when we have a name but no personal email. Never guess email patterns — pattern guesses have ~50% failure rate.
 
-#### 2h. Generate Intro Email
+### 4f. Email Verification
 
-Read `tools/prompts/write_intro_email.md`. Replace all `{placeholders}` with lead data from qualification. Generate the email inline.
+Before deploying any email to Instantly, verify via Icypeas email-verification API:
+- `DEBITED` = valid
+- `DEBITED_NOT_FOUND` = email doesn't exist
 
-Extract the email body text (the full email including greeting and signature).
+For failed emails, try Icypeas email-search with name + domain as fallback. If both fail, revert to generic email.
 
-#### 2i. Select Case Study + Generate Follow-Up Email
+---
 
-**Case Study Selection Logic:**
+## Part 5 — Email Generation
+
+### 5a. ICP-Specific Angles
+
+The offer is always the same: architectural photography of completed projects plus documentary-style video. What changes is the angle:
+
+| ICP | What They Care About | Matt's Angle |
+|-----|---------------------|--------------|
+| Architect | Design intent gets misread, costing peer credibility and commissions | Photography that makes design thinking legible to juries, editors, and peers |
+| Builder | Best work should win the next project without explaining it | Photography at milestones plus video that makes execution undeniable |
+| Designer | Work gets misread as styling when it's spatial design | Photography that communicates thinking behind the space |
+| Secondary ICP | Craft disappears into finished buildings without documentation | Photography showing their work in context, at the detail level it deserves |
+
+### 5b. Case Study Selection
 
 | ICP Category | Case Study | Link |
 |---|---|---|
@@ -142,24 +263,18 @@ Extract the email body text (the full email including greeting and signature).
 | Secondary ICP | The Window Merchant | mattanthonyphoto.com/the-window-merchant |
 | Generic | Main Portfolio | mattanthonyphoto.com |
 
-**Competitor Guard:** If the prospect IS one of the case study clients (check company name and URL), switch to the fallback. For Builder: Summerhill ↔ Balmoral. For others: use generic portfolio.
+**Competitor Guard:** If the prospect IS one of the case study clients, switch to the fallback. For Builder: Summerhill <> Balmoral. For others: use generic portfolio.
 
-**Case Study Descriptions (named):**
+**Named descriptions:**
 - Summerhill: "I photographed five luxury residences for Summerhill Fine Homes on the Sunshine Coast"
 - Balmoral: "I photographed four custom homes for Balmoral Construction across Whistler and the Sea to Sky"
 - Sitelines: "I documented two projects for Sitelines Architecture across residential and institutional scales"
 - LRD: "I documented two major renovation projects for LRD Studio in Whistler"
-- Window Merchant: "I run a monthly content retainer for The Window Merchant — project documentation, social media, and website imagery"
+- Window Merchant: "I run a monthly content retainer for The Window Merchant, covering project documentation, social media, and website imagery"
 
-**Anonymous versions** (when competitor guard fires): replace client name with generic description ("a builder", "a firm", "a design studio", "a premium glazing supplier").
+**Anonymous versions** (when competitor guard fires): replace client name with generic description.
 
-**Client Named:** Set to `true` unless competitor guard fired, then `false`.
-
-Read `tools/prompts/write_followup.md`. Replace placeholders including case study fields. Generate inline.
-
-#### 2j. Select Journal Article + Generate Breakup Email
-
-**Journal Article Selection:**
+### 5c. Journal Article Selection
 
 | ICP Category | Article | Link |
 |---|---|---|
@@ -174,70 +289,192 @@ Read `tools/prompts/write_followup.md`. Replace placeholders including case stud
 - Designer: "I wrote a piece on documenting design intent and why timing matters"
 - Secondary/Generic: "I wrote a piece on building a visual library that works across your website, proposals, and awards"
 
-Read `tools/prompts/write_breakup.md`. Replace placeholders including journal article fields. Generate inline.
+### 5d. Generate Intro Email
 
-#### 2k. Generate Instagram DM
+Read `tools/prompts/write_intro_email.md`. Replace all `{placeholders}` with lead data. Generate inline.
 
-During scraping, also capture the company's Instagram handle from:
-- Website footer/header social links
-- Input sheet Instagram column
-- WebSearch: `"{company name}" Victoria BC instagram`
+**Critical rules (from prompt + feedback):**
+- 5 sentences total, 3 paragraphs + signature
+- Opener must reference a specific project or detail from their site
+- Detail must be architectural/visual (site, material, light, space) — never program stats
+- No em dashes, semicolons, or superlatives anywhere
+- Signature block: Matt / Architectural Photography + Documentary Video / mattanthonyphoto.com
 
-Write a short Instagram DM (2-3 sentences max). Rules:
+### 5e. Generate Follow-Up Email
+
+Read `tools/prompts/write_followup.md`. Replace placeholders including case study fields. Generate inline.
+
+**Critical rules:**
+- 4 sentences total, 3 paragraphs + signature
+- Do NOT repeat the project name from the intro
+- Portfolio link (mattanthonyphoto.com) in paragraph 2, sentence 1
+- Case study link in paragraph 2, sentence 2
+- Never use "case study" or "visual identity" in the email
+
+### 5f. Generate Breakup Email
+
+Read `tools/prompts/write_breakup.md`. Replace placeholders including journal article. Generate inline.
+
+**Critical rules:**
+- 2-3 sentences max + signature
+- Do NOT reference previous emails
+- Journal article link replaces portfolio link
+- Frame as giving, not pitching
+
+### 5g. Generate Instagram DM
+
+Write a short DM (2-3 sentences max):
 - Lead with value — reference a specific recent post or project
-- Casual, peer-to-peer tone (Instagram is informal)
+- Casual, peer-to-peer tone
 - No pitch, no CTA beyond "check out my work"
 - Link to mattanthonyphoto.com
 - Written as Matt, not a business
 
-#### 2l. Generate Subject Lines
+### 5h. Generate Subject Lines
 
-Every email needs a subject line:
 - **Intro**: 3-5 words, reference the project name or location. E.g. "Your Whistler project" or "Lands End"
 - **Follow-up**: 2-4 words, casual. E.g. "quick follow up" or "one more thing"
 - **Breakup**: 2-4 words, zero clickbait. E.g. "something useful" or "one last thing"
 
-#### 2m. Write Result
+---
 
-Save result to `.tmp/result.json` with all fields matching the output sheet columns (A:W):
+## Part 6 — Variety & Anti-Template Rules
+
+This is critical. Matt flagged identical value prop sentences repeated 136x across a batch. That kills credibility.
+
+### 6a. Variation Pools
+
+Build pools of 10-13 variations for each structural sentence:
+- Value prop sentence 1 (what Matt does)
+- Value prop sentence 2 (what it gets them)
+- Follow-up recap sentence
+- Follow-up CTA
+- Breakup opener
+- Breakup closer
+
+### 6b. Rotation Rules
+
+- Use offset index rotation so adjacent leads in the same city get different combos
+- Max acceptable repeat of any single sentence across a campaign: ~1 in 13 leads
+- The opener (project reference) is already unique per lead
+- After generating a batch, run a uniqueness check before writing to the sheet
+
+### 6c. Per-ICP Language
+
+Each ICP uses different vocabulary:
+
+**Architects:** "Documenting" not "shooting." Reference materiality, spatial quality, site response. Never say "marketing" or "content." Prebooking angle for spring/summer.
+
+**Builders:** Frame around build process, milestones. Finished result implied by sentence 2. Don't try to cover both timeframes in sentence 1.
+
+**Designers:** Frame around spatial thinking, design intent. Distinguish from decorating/styling.
+
+**Secondary ICP:** Frame around craft visibility, work in context, documentation before the next project covers it up.
+
+---
+
+## Part 7 — Quality Checks
+
+Run these checks on EVERY email before writing to the sheet:
+
+### 7a. Content Checks
+- [ ] No banned words (superlatives, cliches, urgency language, vendor language)
+- [ ] No em dashes (—), en dashes (–), or spaced hyphens
+- [ ] No semicolons
+- [ ] Correct sentence count (5 intro, 4 follow-up, 2-3 breakup)
+- [ ] Signature block present and complete (all 3 lines)
+- [ ] All links include full URLs with `https://`
+- [ ] All proper nouns correctly capitalized
+- [ ] No word appears more than twice in the whole email
+- [ ] No sentence longer than 30 words
+- [ ] No more than one "and" per sentence
+
+### 7b. Structural Checks
+- [ ] Opener starts with "I came across" and includes "on your site"
+- [ ] Opener references specific project/detail from research (not generic)
+- [ ] Detail is visual/architectural (would be visible in a photograph)
+- [ ] Closing phrase follows one of three approved patterns
+- [ ] CTA offers samples, not a call/meeting
+- [ ] Follow-up does NOT repeat the project name from intro
+- [ ] Follow-up includes both portfolio link AND case study link
+- [ ] Breakup does NOT reference previous emails
+- [ ] Breakup includes journal article link
+
+### 7c. Compliance Checks (CASL)
+- [ ] Recipient email was conspicuously published on their website
+- [ ] Message is relevant to their business role
+- [ ] Email will include sender identification + physical address + unsubscribe (handled by Instantly)
+
+### 7d. Data Completeness
+- [ ] Every field in the output sheet is filled (real data or "Not found" with reason)
+- [ ] Decision maker name present (or flagged for manual research)
+- [ ] Email present (personal, or generic as fallback)
+- [ ] Instagram handle present (or flagged as missing)
+- [ ] City confirmed
+- [ ] Travel estimate included
+
+If an email fails quality checks, regenerate once with explicit fix instructions.
+
+---
+
+## Part 8 — Write Result & Mark Processed
+
+### 8a. Save Result
+
+Save to `.tmp/result.json` with all fields matching output sheet columns (A:W):
+
 ```json
 {
-  "company_name": "Example Homes",
-  "website_url": "https://examplehomes.ca",
-  "decision_maker_name": "Jamie Morrison",
-  "role": "Owner",
-  "city": "Whistler",
-  "email": "jamie@examplehomes.ca",
-  "phone": "250-555-1234",
-  "instagram": "@examplehomes",
-  "icp_category": "Builder",
-  "outreach_type": "Cold",
-  "qualified": "Strong Fit",
-  "intro_subject": "The Whistler project",
-  "intro_email": "Hi Jamie,...",
-  "followup_subject": "quick follow up",
-  "followup_email": "Hi Jamie,...",
-  "breakup_subject": "something useful",
-  "breakup_email": "Hi Jamie,...",
-  "instagram_dm": "Hey Jamie, been following...",
-  "timeline": "Day 1: Intro email + IG DM | Day 4: Follow-up | Day 8: Breakup"
+  "company_name": "",
+  "website_url": "",
+  "decision_maker_name": "",
+  "role": "",
+  "city": "",
+  "email": "",
+  "phone": "",
+  "instagram": "",
+  "icp_category": "",
+  "outreach_type": "",
+  "qualified": "",
+  "intro_subject": "",
+  "intro_email": "",
+  "followup_subject": "",
+  "followup_email": "",
+  "breakup_subject": "",
+  "breakup_email": "",
+  "instagram_dm": "",
+  "timeline": "Day 1: Intro email + IG DM | Day 4: Follow-up | Day 8: Breakup",
+  "travel_est": "",
+  "marketing_angle": "",
+  "notes": ""
 }
 ```
 
 **Output sheet columns (A:W):** Company, Decision Maker, Role, City, Score, ICP, Email, Phone, Instagram, Website, Outreach, Status, Timeline, Intro Subject, Intro Email, Follow-Up Subject, Follow-Up Email, Breakup Subject, Breakup Email, Instagram DM, Travel Est., Marketing Angle, Notes
 
+### 8b. Write to Output Sheet
+
 ```bash
-python tools/cold_email.py write-result --json .tmp/result.json
+python tools/cold_email.py write-result --json .tmp/result.json --tab [Tab]
 ```
 
-**Then immediately mark the input sheet:**
+### 8c. Mark Input Sheet
+
+Immediately after writing to output:
+
 ```bash
 python tools/cold_email.py mark-processed \
-  --tab Builders --website "https://examplehomes.ca" \
+  --tab [Tab] --website "https://example.com" \
   --status "Yes" --qualified "QUALIFIED — Strong Fit"
 ```
 
-### Step 3 — Contact Timeline
+Input sheet format (must match exactly):
+- **Processed column:** `Yes`
+- **Qualified column:** `QUALIFIED — Strong Fit`, `QUALIFIED — Moderate Fit`, or `NOT QUALIFIED`
+
+---
+
+## Part 9 — Contact Timeline
 
 Standard cadence per lead:
 
@@ -245,66 +482,64 @@ Standard cadence per lead:
 |-----|--------|---------|
 | Day 1 | Send intro email | Email |
 | Day 1 | Send Instagram DM | Instagram |
-| Day 4 | Send follow-up email | Email |
-| Day 8 | Send breakup email | Email |
-| Day 10+ | Phone call (if no response to any touchpoint) | Phone |
+| Day 4 | Send follow-up email | Email (reply-in-thread) |
+| Day 8 | Send breakup email | Email (reply-in-thread) |
+| Day 10+ | Phone call (if no response) | Phone |
 
 Notes:
-- Send intro email and IG DM on the same day — different channels reinforce each other
-- Follow-up at Day 4 (not Day 3) gives them a full business week cycle
-- Breakup at Day 8 gives breathing room after the follow-up
-- Phone is the last resort — only after all written touchpoints have gone unanswered
+- Intro email and IG DM on the same day — different channels reinforce each other
+- Follow-up at Day 4 gives a full business week cycle
+- Breakup at Day 8 gives breathing room after follow-up
+- Phone is last resort — only after all written touchpoints unanswered
+- If prospect replies on ANY channel, pause all other channels immediately
 
-### Step 4 — Summary
+---
 
-After all leads are processed, print a summary:
+## Part 10 — Batch Processing Summary
+
+After processing a batch, print a summary:
 - Total leads processed
-- Qualified vs disqualified
-- Email addresses found (personal vs generic vs Icypeas vs none)
+- Qualified (Strong Fit / Moderate Fit) vs disqualified count
+- Email addresses found: personal vs generic vs Icypeas vs none
 - Instagram handles found vs missing
-- Any errors or leads needing manual review
+- Leads needing manual review (partial names, no email, scrape failed)
+- Any errors encountered
+- Sentence variation uniqueness report
 
-## Error Recovery
+---
 
-- **WebFetch fails for all pages:** Log the error, write result with `qualified: "SCRAPE FAILED"`, continue to next lead
-- **Icypeas fails:** Keep the generic email, note in result, continue
-- **Sheets write fails:** Save result JSON to `.tmp/failed/` for retry
-
-## Quality Checks
-
-After each email is generated, verify:
-- No banned words from the prompt files
-- Correct sentence count (5 for intro, 4 for follow-up, 2-3 for breakup)
-- Signature block present
-- All links include full URLs with `https://`
-- No em dashes or semicolons
-
-If an email fails quality checks, regenerate once with explicit fix instructions.
-
-## Step 5 — Export to Instantly
+## Part 11 — Export to Instantly
 
 ```bash
 python tools/cold_email.py export-instantly
 ```
 
-Exports all qualified leads to `.tmp/instantly_import.csv` for direct import into Instantly.ai.
+Exports qualified leads to `.tmp/instantly_import.csv`.
 
 **Instantly sequence setup:**
 - Step 1 (Day 1): Subject = `{{intro_subject}}`, Body = `{{intro_body}}`
-- Step 2 (+3 day delay): **Leave subject blank** (reply-in-thread), Body = `{{followup_body}}`
-- Step 3 (+4 day delay): **Leave subject blank** (reply-in-thread), Body = `{{breakup_body}}`
-
-**Reply-in-thread** sends follow-ups as replies to the intro email — significantly higher open rates.
+- Step 2 (+3 day delay): Leave subject blank (reply-in-thread), Body = `{{followup_body}}`
+- Step 3 (+4 day delay): Leave subject blank (reply-in-thread), Body = `{{breakup_body}}`
 
 **Critical Instantly rules:**
 - Send from secondary domains (e.g. `mattanthony.co`), never `mattanthonyphoto.com`
-- Warm up accounts 2-3 weeks before launching
-- 30 campaign emails + 10 warmup per account per day
+- Warm up accounts 3-4 weeks before launching (mandatory)
+- Max 50 cold emails per inbox per day (30 campaign + 10-20 warmup)
+- Keep warmup running alongside campaigns (never stop)
 - Use fallbacks: `{{First Name|there}}` for missing data
-- Keep warmup running alongside campaigns
-- Monday-Friday sending only, 8am-12pm prospect time zone
+- Monday-Friday sending only, 9:30am-11:30am prospect timezone
+- Monitor: bounce <3%, spam complaints <0.1% — pause immediately if exceeded
 
-## Travel Cost Reference (from Squamish)
+**Email format rules (deliverability):**
+- Plain text only — no HTML, no images, no logos
+- Zero or one link maximum per email
+- No spam trigger words (free, guaranteed, act now, limited time)
+- Keep body under 100 words (50-80 ideal)
+- Include unsubscribe link (handled by Instantly)
+
+---
+
+## Part 12 — Travel Cost Reference (from Squamish)
 
 | Destination | Transport | Ferry RT | Overnight? | Total |
 |---|---|---|---|---|
@@ -318,12 +553,42 @@ Exports all qualified leads to `.tmp/instantly_import.csv` for direct import int
 | Victoria | $93 | $160 | Yes (+$150-250) | **$400-500** |
 | Tofino | $111 | $160 | Yes (+$150-250) | **$420-510** |
 
-**Strategy:** Batch 2-3 shoots per ferry trip to spread the $160 RT ferry cost. Your COGS budgets $125-150 for travel — Victoria trips run 2-3x over that baseline.
+**Strategy:** Batch 2-3 shoots per ferry trip to spread the $160 RT ferry cost. COGS budgets $125-150 for travel.
 
-## Notes
+---
 
-- Process leads one at a time, not in parallel — maintains conversation context for quality
-- Each lead takes ~30-60 seconds for scraping + qualification + 3 emails
-- Icypeas lookup adds ~12 seconds when needed
-- The prompts in `tools/prompts/` are the source of truth for email generation rules
-- Leads without Instagram are flagged as Creative Partner retainer upsell opportunities
+## Part 13 — Error Recovery
+
+- **WebFetch fails for all pages:** Try HTTP fallback, then WebSearch. Only log as "SCRAPE FAILED" after exhausting all options.
+- **Icypeas fails:** Keep the generic email, note in result, continue.
+- **Sheets write fails:** Save result JSON to `.tmp/failed/` for retry.
+- **Rate limit hit:** Pause 60 seconds, retry once. If still failing, save progress and stop.
+
+---
+
+## Part 14 — Key Performance Benchmarks
+
+Target metrics for Matt's cold email campaigns:
+
+| Metric | Target | Industry Avg |
+|--------|--------|-------------|
+| Open Rate | 50%+ | 27.7% |
+| Reply Rate | 8-12% | 3.4% |
+| Positive Reply Rate | 5%+ | 1-2% |
+| Bounce Rate | <2% | 7-8% |
+| Qualification Rate | 40-60% of leads | — |
+
+---
+
+## Processing Rules (Non-Negotiable)
+
+1. **Process leads one at a time.** Never parallel process — maintains context for quality.
+2. **Never batch-skip.** Every lead gets individually scraped and assessed. No exceptions.
+3. **Never guess emails.** Pattern guesses have ~50% failure rate. Use Icypeas or keep generic.
+4. **Always research awards.** WebSearch before writing. Never assume zero.
+5. **Every field filled.** Real data or "Not found" with reason. No blank cells.
+6. **Only qualified leads in output.** Disqualified leads marked in input only.
+7. **Variety is mandatory.** 10-13 variation pools for structural sentences. No repeated value props.
+8. **CTAs link to /discovery-call.** Never raw GHL widget URLs.
+9. **No dashes in emails.** Use commas instead of em dashes, en dashes, or spaced hyphens.
+10. **Complete all fields or stop.** If you can't finish a lead properly, leave it unprocessed for the next session rather than partially completing it.

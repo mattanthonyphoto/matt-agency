@@ -5,10 +5,11 @@ Subcommands:
   add-prospect   Add a prospect to the tracker (manual or from cold email list)
   update-status  Update a prospect's DM status
   get-queue      Get today's DM queue (prospects ready for outreach)
+  prep-dm        Store a pre-written personalized DM for a prospect (Claude writes, Matt sends)
   log-dm         Log a sent DM with template used
   get-follow-ups Get prospects due for follow-up
   stats          Show outreach stats summary
-  import-from-sheet  Import prospects from cold email input sheet (pulls IG handles)
+  batch-prep     Get all "Ready to DM" prospects with their details for Claude to research and write DMs
 """
 import argparse
 import json
@@ -515,6 +516,152 @@ def stats(args):
     return 0
 
 
+# ── prep-dm ─────────────────────────────────────────────────
+
+def prep_dm(args):
+    """Store a pre-written personalized DM for a prospect. Claude writes it, Matt copy-pastes it."""
+    sheets = get_sheets()
+
+    result = sheets.spreadsheets().values().get(
+        spreadsheetId=TRACKER_SHEET_ID, range="Prospects!A:V"
+    ).execute()
+    rows = result.get("values", [])
+
+    target = args.identifier.lower()
+    match_row = None
+    for i, row in enumerate(rows[1:], start=2):
+        company = row[0].lower() if len(row) > 0 else ""
+        handle = row[2].lower().lstrip("@") if len(row) > 2 else ""
+        if target in company or target == handle:
+            match_row = i
+            break
+
+    if not match_row:
+        print(f"ERROR: No prospect found matching '{args.identifier}'")
+        return 1
+
+    today = datetime.now().strftime("%Y-%m-%d")
+    updates = [
+        {"range": f"Prospects!L{match_row}", "values": [[args.message]]},
+        {"range": f"Prospects!Q{match_row}", "values": [["Send pre-written DM"]]},
+        {"range": f"Prospects!R{match_row}", "values": [[today]]},
+    ]
+
+    # Set status to Warming if it's New (Claude prepped it, Matt still needs to warm up)
+    # Set Next Action Date to today if warm enough, or +2 days if new
+    current_row = rows[match_row - 1]
+    current_status = current_row[7] if len(current_row) > 7 else ""
+    warm_start = current_row[8] if len(current_row) > 8 else ""
+
+    if current_status == "New":
+        # New prospect — set to warming, DM ready in 2 days
+        send_date = (datetime.now() + timedelta(days=2)).strftime("%Y-%m-%d")
+        updates.append({"range": f"Prospects!H{match_row}", "values": [["Warming"]]})
+        updates.append({"range": f"Prospects!I{match_row}", "values": [[today]]})
+        updates.append({"range": f"Prospects!R{match_row}", "values": [[send_date]]})
+    elif current_status == "Warming" and warm_start:
+        try:
+            start = datetime.strptime(warm_start, "%Y-%m-%d")
+            if (datetime.now() - start).days >= 2:
+                updates.append({"range": f"Prospects!R{match_row}", "values": [[today]]})
+        except ValueError:
+            updates.append({"range": f"Prospects!R{match_row}", "values": [[today]]})
+
+    if args.angle:
+        updates.append({"range": f"Prospects!K{match_row}", "values": [[args.angle]]})
+
+    if args.notes:
+        updates.append({"range": f"Prospects!V{match_row}", "values": [[args.notes]]})
+
+    for update in updates:
+        sheets.spreadsheets().values().update(
+            spreadsheetId=TRACKER_SHEET_ID,
+            range=update["range"],
+            valueInputOption="USER_ENTERED",
+            body={"values": update["values"]},
+        ).execute()
+
+    print(f"Prepped DM for {args.identifier}: {args.message[:80]}...")
+    return 0
+
+
+# ── batch-prep ──────────────────────────────────────────────
+
+def batch_prep(args):
+    """Get all prospects that need DMs written. Returns full details for Claude to research."""
+    sheets = get_sheets()
+
+    result = sheets.spreadsheets().values().get(
+        spreadsheetId=TRACKER_SHEET_ID, range="Prospects!A:V"
+    ).execute()
+    rows = result.get("values", [])
+
+    today = datetime.now().strftime("%Y-%m-%d")
+    needs_prep = []
+    needs_follow_up = []
+    ready_to_send = []
+
+    for row in rows[1:]:
+        if len(row) < 8:
+            continue
+
+        company = row[0] if len(row) > 0 else ""
+        contact = row[1] if len(row) > 1 else ""
+        handle = row[2] if len(row) > 2 else ""
+        icp = row[3] if len(row) > 3 else ""
+        region = row[4] if len(row) > 4 else ""
+        website = row[5] if len(row) > 5 else ""
+        email = row[6] if len(row) > 6 else ""
+        status = row[7] if len(row) > 7 else ""
+        warm_start = row[8] if len(row) > 8 else ""
+        dm_message = row[11] if len(row) > 11 else ""
+        next_action = row[16] if len(row) > 16 else ""
+        next_date = row[17] if len(row) > 17 else ""
+        notes = row[21] if len(row) > 21 else ""
+
+        prospect = {
+            "company": company, "contact": contact, "handle": handle,
+            "icp": icp, "region": region, "website": website, "email": email,
+            "status": status, "notes": notes,
+        }
+
+        # Needs a DM written (new or warming with no message prepped)
+        if status in ("New", "Warming") and not dm_message:
+            if status == "Warming" and warm_start:
+                try:
+                    start = datetime.strptime(warm_start, "%Y-%m-%d")
+                    prospect["days_warming"] = (datetime.now() - start).days
+                except ValueError:
+                    prospect["days_warming"] = 0
+            needs_prep.append(prospect)
+
+        # Has a prepped message, ready to send
+        elif status == "Warming" and dm_message and next_action == "Send pre-written DM":
+            if not next_date or next_date <= today:
+                ready_to_send.append({**prospect, "message": dm_message})
+
+        # Needs a follow-up written
+        elif status in ("DM Sent", "Plan Sent") and next_date and next_date <= today:
+            prospect["action"] = next_action
+            prospect["original_dm"] = dm_message
+            needs_follow_up.append(prospect)
+
+    output = {
+        "date": today,
+        "needs_dm_written": needs_prep[:args.limit],
+        "ready_to_send": ready_to_send,
+        "needs_follow_up": needs_follow_up,
+        "totals": {
+            "needs_prep": len(needs_prep),
+            "ready_to_send": len(ready_to_send),
+            "needs_follow_up": len(needs_follow_up),
+        },
+    }
+
+    print(json.dumps(output, indent=2))
+    return 0
+
+
 # ── CLI ─────────────────────────────────────────────────────
 
 def main():
@@ -548,6 +695,17 @@ def main():
     ld.add_argument("--template", default="")
     ld.add_argument("--message", default="")
 
+    # prep-dm
+    pd = sub.add_parser("prep-dm", help="Store a pre-written DM for a prospect")
+    pd.add_argument("identifier", help="Company name or IG handle")
+    pd.add_argument("--message", required=True, help="The full DM message to store")
+    pd.add_argument("--angle", default="", help="DM angle (e.g., craft-recognition, awards, design-intent)")
+    pd.add_argument("--notes", default="", help="Research notes about the prospect")
+
+    # batch-prep
+    bp = sub.add_parser("batch-prep", help="Get prospects needing DMs written")
+    bp.add_argument("--limit", type=int, default=15)
+
     # get-queue
     gq = sub.add_parser("get-queue", help="Get today's DM queue")
     gq.add_argument("--limit", type=int, default=25)
@@ -564,6 +722,8 @@ def main():
         "create-sheet": create_sheet,
         "add-prospect": add_prospect,
         "update-status": update_status,
+        "prep-dm": prep_dm,
+        "batch-prep": batch_prep,
         "log-dm": log_dm,
         "get-queue": get_queue,
         "get-follow-ups": get_follow_ups,

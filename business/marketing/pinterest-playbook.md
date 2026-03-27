@@ -167,7 +167,7 @@ Pinterest uses alt text for accessibility AND search ranking. Write it for every
 - **5-10 pins per day** to build initial content volume
 - Work through your back catalog — every project you've ever shot is fair game
 - Spread pins across different boards
-- Schedule using Tailwind or Buffer to maintain consistency
+- Schedule using Tailwind or Postiz to maintain consistency
 
 ### Steady State (Month 3+)
 - **3-5 pins per day**
@@ -177,7 +177,7 @@ Pinterest uses alt text for accessibility AND search ranking. Write it for every
 
 ### Scheduling
 - **Best times:** Evenings (7-11pm) and weekends — when people browse for inspiration
-- **Use a scheduler** — Tailwind SmartSchedule or Buffer. Never pin manually throughout the day.
+- **Use a scheduler** — Tailwind SmartSchedule or Postiz. Never pin manually throughout the day.
 - **Spread pins** across the day — don't dump 5 pins at once
 
 ---

@@ -71,7 +71,7 @@ Let people know who's behind the camera.
 - Pin descriptions: 100-200 words with natural keyword inclusion
 - Pin titles: keyword-first, descriptive
 - Alt text on every pin — describe the image with keywords
-- **Pin 3-5x/day** using scheduling tool (Tailwind or Buffer)
+- **Pin 3-5x/day** using scheduling tool (Tailwind or Postiz)
 - Create multiple pins from one project — different images to different boards
 - Architecture/design is a top-performing niche
 - Rich Pins enabled via business account

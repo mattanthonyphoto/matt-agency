@@ -41,7 +41,7 @@
 
 ### Monday Mar 24 — "I'm Back" Single Post
 **Type:** Single image
-**Image:** Your portrait/brand shot (already in Buffer Ideas as "I'm back — Spring Reactivation Post")
+**Image:** Your portrait/brand shot (already in Postiz as "I'm back — Spring Reactivation Post")
 
 **Caption:**
 ```
@@ -58,7 +58,7 @@ Link in bio.
 #architecturephotography #seatosky #bcarchitecture #customhomebuilder #squamish
 ```
 
-**Action:** Post from Buffer Ideas (tap "Create Post" > select "Post")
+**Action:** Post from Postiz (tap "Create Post" > select "Post")
 - [ ] Posted
 
 ---
@@ -102,7 +102,7 @@ Which detail catches your eye first, the suspended fireplace or the dramatic can
 
 ### Friday Mar 28 — Warbler Residence Single
 **Type:** Single image
-**Image:** Warbler exterior — mountain modern among old-growth trees (already in Buffer Ideas)
+**Image:** Warbler exterior — mountain modern among old-growth trees (already in Postiz)
 **Collab with:** @balmoralconstruction
 
 **Caption:**
@@ -119,7 +119,7 @@ Windows: @the_windowmerchant.co
 #whistler #architecturephotography #mountainmodern #westcoastmodern #kadenwood
 ```
 
-**Action:** Post from Buffer Ideas or Instagram app. Invite @balmoralconstruction as collaborator.
+**Action:** Post from Postiz or Instagram app. Invite @balmoralconstruction as collaborator.
 - [ ] Posted
 
 ---
@@ -176,7 +176,7 @@ Which material pairing creates the strongest impact in your projects, contrast o
 
 ### Wednesday Apr 2 — Fitzsimmons Residence Single
 **Type:** Single image
-**Image:** Fitzsimmons exterior — cantilever with mountain views (in Buffer Ideas)
+**Image:** Fitzsimmons exterior — cantilever with mountain views (in Postiz)
 **Collab with:** @balmoralconstruction
 
 **Caption:**
@@ -240,7 +240,7 @@ Which strategy would you apply to your most challenging site?
 
 ### Saturday Apr 5 — Tranquil Retreat Single
 **Type:** Single image
-**Image:** Tranquil Retreat exterior — forest, wood siding (in Buffer Ideas)
+**Image:** Tranquil Retreat exterior — forest, wood siding (in Postiz)
 
 **Caption:**
 ```
@@ -298,7 +298,7 @@ Windows: @the_windowmerchant.co
 
 ### Wednesday Apr 9 — Warbler Twilight Single
 **Type:** Single image
-**Image:** Warbler at twilight — warm glow against mountain backdrop (in Buffer Ideas)
+**Image:** Warbler at twilight — warm glow against mountain backdrop (in Postiz)
 **Collab with:** @balmoralconstruction
 
 **Caption:**
@@ -321,7 +321,7 @@ Architect: @shelter_residential_design
 
 ### Friday Apr 11 — Fraser Valley Vista Single
 **Type:** Single image
-**Image:** Sitelines institutional building (in Buffer Ideas)
+**Image:** Sitelines institutional building (in Postiz)
 
 **Caption:**
 ```

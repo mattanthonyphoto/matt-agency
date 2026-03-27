@@ -27,7 +27,7 @@ Everything is built. This document walks you through what exists, what's ready t
 |------|-------------|
 | `social-media-management.md` | Master SOP — one-command project ingest, weekly schedule, daily routines |
 | `content-batching.md` | Step-by-step: one shoot → 15-25 content pieces |
-| `social-media-automation.md` | n8n workflow spec — scheduling, analytics, daily briefings, Postiz/Buffer/Metricool options |
+| `social-media-automation.md` | n8n workflow spec — scheduling, analytics, daily briefings, Postiz/Metricool options |
 | `social-media-activation.md` | This file — setup guide and activation checklist |
 
 **Tools Layer (6 files in `tools/`)**
@@ -294,37 +294,27 @@ Starting tomorrow. From `social-media-management.md`:
 
 ---
 
-### Step 7: Set Up Buffer (30 minutes) — When Ready to Automate Scheduling
+### Step 7: Set Up Postiz (30 minutes) — When Ready to Automate Scheduling
 
-This is optional — you can run the system manually forever. Buffer just removes the scheduling friction.
+This is optional — you can run the system manually forever. Postiz just removes the scheduling friction.
 
-**7a. Sign up at buffer.com**
-- Start with the free plan (3 channels, 10 posts/channel)
-- Connect: Instagram (@mattanthonyphoto), LinkedIn (personal profile), Pinterest
-
-**7b. Upgrade to Essentials if needed:**
-- $6/mo per channel = $18/mo for all three
-- Unlocks unlimited queue depth
-
-**7c. Get your API access:**
-1. Go to buffer.com/developers
-2. Create an app → get your access token
-3. Get profile IDs:
+**7a. Deploy Postiz (self-hosted, free):**
 ```bash
-curl "https://api.bufferapp.com/1/profiles.json?access_token=YOUR_TOKEN"
+docker run -d -p 5000:5000 ghcr.io/gitroomhq/postiz-app
 ```
-4. Add to `.env`:
-```
-BUFFER_ACCESS_TOKEN=your-token
-BUFFER_INSTAGRAM_PROFILE_ID=id-from-above
-BUFFER_LINKEDIN_PROFILE_ID=id-from-above
-BUFFER_PINTEREST_PROFILE_ID=id-from-above
+
+**7b. Connect your social accounts:**
+- Connect: Instagram (@mattanthonyphoto), LinkedIn (personal profile), Pinterest in the Postiz dashboard
+
+**7c. Add Postiz MCP to Claude Code:**
+```bash
+claude mcp add postiz http://your-server:5000/api/mcp/YOUR_API_KEY
 ```
 
 **7d. Test with a real post:**
-Schedule one Instagram post via Buffer's web UI first. Confirm it publishes correctly. Then try via the API if you want to move toward n8n automation.
+Schedule one Instagram post via the Postiz dashboard first. Confirm it publishes correctly. Then try via the MCP to schedule directly from Claude Code.
 
-**✅ Once Buffer is connected and tested, scheduling automation is operational.**
+**✅ Once Postiz is connected and tested, scheduling automation is operational.**
 
 ---
 
@@ -379,7 +369,7 @@ This is the last step. Only do this after everything above is tested and running
 Follow the spec in `social-media-automation.md`:
 1. Build Workflow 1 (Caption Generation) on your n8n instance at `n8n.srv1277163.hstgr.cloud`
 2. Test with one project row
-3. Build Workflow 2 (Buffer Publishing)
+3. Build Workflow 2 (Postiz Publishing)
 4. Test with one scheduled post
 5. Build Workflow 3 (Weekly Analytics Pull)
 6. Test on a Monday
@@ -392,12 +382,12 @@ Follow the spec in `social-media-automation.md`:
 
 | Item | Cost |
 |------|------|
-| Buffer Essentials (3 channels) | $18/mo |
+| Postiz (self-hosted) | $0 |
 | Claude API (Sonnet, ~50 batches/mo) | $5-10/mo |
 | n8n (existing instance) | $0 |
 | Google Sheets | $0 |
 | Pinterest | $0 |
-| **Total** | **$23-28/mo** |
+| **Total** | **$5-10/mo** |
 
 ---
 
@@ -411,7 +401,7 @@ Follow the spec in `social-media-automation.md`:
 | 4. Optimize LinkedIn profile | 15 min | Today or tomorrow |
 | 5. First full content batch | 2.5 hours | Next project delivery |
 | 6. Daily engagement routine | 10 min/day | Starting tomorrow |
-| 7. Set up Buffer | 30 min | When ready |
+| 7. Set up Postiz | 30 min | When ready |
 | 8. Content calendar sheet | 20 min | When ready |
 | 9. n8n workflows | 2-3 hours | When everything else is stable |
 
@@ -432,11 +422,11 @@ Follow the spec in `social-media-automation.md`:
 **Week 2:**
 - [ ] Run first full content batch on your most recent project
 - [ ] Start daily 10-minute engagement routine
-- [ ] Schedule first week of posts (manually or via Buffer)
+- [ ] Schedule first week of posts (manually or via Postiz)
 - [ ] Request 3 LinkedIn recommendations from past clients
 
 **Week 3:**
-- [ ] Set up Buffer and connect all 3 channels
+- [ ] Set up Postiz and connect all 3 channels
 - [ ] Create content calendar Google Sheet
 - [ ] Test batch caption generation from the sheet
 - [ ] Pin 5 more images/day to Pinterest (building volume)

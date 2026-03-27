@@ -156,7 +156,7 @@ Work through each content piece systematically. Have these open side by side:
 
 ### Step 3: Load Into Scheduling Tool (30 min)
 
-1. Open your scheduling tool (Buffer, Later, or content calendar spreadsheet)
+1. Open your scheduling tool (Postiz, or content calendar spreadsheet)
 2. Upload all images paired with their captions
 3. Schedule according to the weekly posting calendar:
 
