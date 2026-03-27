@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacred Ways - Meet Your Facilitators</title>
+  <meta name="description" content="Meet the dedicated facilitators of Sacred Ways. Decades of experience in transformational coaching, ceremonial support, and plant medicine integration.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1a1a1a;
+      --cream: #FAF8F5;
+      --warm-white: #F5F0EB;
+      --sage: #8B9A7E;
+      --sage-dark: #6B7D60;
+      --earth: #A69279;
+      --terracotta: #C4916E;
+      --sand: #D4C5B2;
+      --dark-green: #2C3A28;
+      --body-text: #5A5A5A;
+      --light-text: rgba(255, 255, 255, 0.7);
+      --font-heading: 'Cormorant Garamond', serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--primary);
+      background: var(--cream);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Scroll Progress Bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--sage);
+      width: 0%;
+      z-index: 10000;
+      transition: width 0.1s linear;
+    }
+
+    /* Loader */
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--dark-green);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-text {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: white;
+      letter-spacing: 0.15em;
+      opacity: 0;
+      animation: loaderFadeIn 1s ease forwards 0.3s;
+    }
+
+    .loader-line {
+      width: 0;
+      height: 1px;
+      background: var(--sage);
+      margin-top: 1.5rem;
+      animation: loaderLineExpand 1.2s ease forwards 0.6s;
+    }
+
+    @keyframes loaderFadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes loaderLineExpand {
+      to { width: 120px; }
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s ease, padding 0.3s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(250, 248, 245, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 1rem 2.5rem;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: white;
+      letter-spacing: 0.08em;
+      transition: color 0.4s ease;
+    }
+
+    .nav.scrolled .nav-logo {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.85);
+      transition: color 0.3s ease, opacity 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.6;
+    }
+
+    .nav.scrolled .nav-links a {
+      color: var(--body-text);
+    }
+
+    .nav-cta {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.6rem;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: white;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-cta:hover {
+      background: white;
+      color: var(--primary);
+      border-color: white;
+    }
+
+    .nav.scrolled .nav-cta {
+      border-color: var(--dark-green);
+      color: var(--dark-green);
+    }
+
+    .nav.scrolled .nav-cta:hover {
+      background: var(--dark-green);
+      color: white;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 1.5px;
+      background: white;
+      transition: all 0.3s ease;
+    }
+
+    .nav.scrolled .hamburger span {
+      background: var(--primary);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(4px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(4px, -5px);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--dark-green);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .mobile-menu.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 300;
+      color: white;
+      letter-spacing: 0.05em;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu a:hover {
+      opacity: 0.6;
+    }
+
+    .mobile-menu .mobile-cta {
+      margin-top: 1rem;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--dark-green) 0%, #1e2b1b 40%, #243020 70%, var(--dark-green) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-heading {
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      font-weight: 300;
+      color: white;
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+    }
+
+    /* Separator */
+    .section-separator {
+      width: 60px;
+      height: 1px;
+      background: var(--sand);
+      margin: 0 auto 2rem;
+    }
+
+    /* Intro Section */
+    .intro-section {
+      background: var(--cream);
+      padding: 6rem 2rem;
+    }
+
+    .intro-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .intro-text {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--body-text);
+      line-height: 1.9;
+    }
+
+    /* Facilitators Section */
+    .facilitators-section {
+      background: var(--warm-white);
+      padding: 6rem 2rem;
+    }
+
+    .facilitators-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .facilitator-card {
+      background: white;
+      border-radius: 2px;
+      padding: 3.5rem;
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .facilitator-avatar {
+      flex-shrink: 0;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--dark-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .facilitator-initials {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 300;
+      color: white;
+      letter-spacing: 0.05em;
+    }
+
+    .facilitator-info {
+      flex: 1;
+    }
+
+    .facilitator-name {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .facilitator-title {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .facilitator-bio {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--body-text);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .facilitator-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .facilitator-tag {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      background: var(--warm-white);
+      color: var(--sage-dark);
+      border: 1px solid rgba(139, 154, 126, 0.2);
+    }
+
+    /* Quote Section */
+    .quote-section {
+      background: var(--dark-green);
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    .quote-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .quote-mark {
+      font-family: var(--font-heading);
+      font-size: 5rem;
+      color: var(--sage);
+      line-height: 1;
+      margin-bottom: -1rem;
+      opacity: 0.6;
+    }
+
+    .quote-text {
+      font-family: var(--font-heading);
+      font-size: 1.55rem;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .quote-attribution {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: var(--cream);
+      padding: 7rem 2rem;
+      text-align: center;
+    }
+
+    .cta-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .cta-section .section-heading {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--primary);
+      line-height: 1.2;
+      margin-bottom: 2rem;
+    }
+
+    .cta-section .section-body {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--body-text);
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem 2.5rem;
+      background: var(--dark-green);
+      color: white;
+      border: 1px solid var(--dark-green);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--dark-green);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--primary);
+      color: rgba(255, 255, 255, 0.6);
+      padding: 5rem 2rem 3rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: white;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-newsletter-label {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .footer-newsletter-form {
+      display: flex;
+      gap: 0;
+    }
+
+    .footer-newsletter-form input {
+      flex: 1;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-right: none;
+      color: white;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .footer-newsletter-form input::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .footer-newsletter-form input:focus {
+      border-color: var(--sage);
+    }
+
+    .footer-newsletter-form button {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.4rem;
+      background: var(--sage-dark);
+      color: white;
+      border: 1px solid var(--sage-dark);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .footer-newsletter-form button:hover {
+      background: var(--sage);
+      border-color: var(--sage);
+    }
+
+    .footer-nav-title {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .footer-nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.6);
+      transition: color 0.3s ease;
+    }
+
+    .footer-nav-links a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav.scrolled {
+        padding: 0.85rem 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-cta.desktop-only {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero-heading {
+        font-size: 2.8rem;
+      }
+
+      .hero-eyebrow {
+        font-size: 0.65rem;
+      }
+
+      .facilitator-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2.5rem 2rem;
+        gap: 1.5rem;
+      }
+
+      .facilitator-tags {
+        justify-content: center;
+      }
+
+      .intro-section {
+        padding: 4rem 1.5rem;
+      }
+
+      .facilitators-section {
+        padding: 4rem 1.5rem;
+      }
+
+      .quote-section {
+        padding: 4rem 1.5rem;
+      }
+
+      .quote-text {
+        font-size: 1.25rem;
+      }
+
+      .cta-section {
+        padding: 5rem 1.5rem;
+      }
+
+      .cta-section .section-heading {
+        font-size: 2rem;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer {
+        padding: 3.5rem 1.5rem 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-heading {
+        font-size: 2.2rem;
+      }
+
+      .facilitator-card {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-text">Sacred Ways</div>
+    <div class="loader-line"></div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="peru.html">Peru Pilgrimage</a>
+    <a href="hawaii.html">Hawaii Retreat</a>
+    <a href="facilitators.html">Facilitators</a>
+    <a href="guests.html">Our Guests</a>
+    <a href="#" class="mobile-cta">Request a Call</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo">Sacred Ways</a>
+    <ul class="nav-links">
+      <li><a href="peru.html">Peru Pilgrimage</a></li>
+      <li><a href="hawaii.html">Hawaii Retreat</a></li>
+      <li><a href="facilitators.html">Facilitators</a></li>
+      <li><a href="guests.html">Our Guests</a></li>
+    </ul>
+    <a href="#" class="nav-cta desktop-only">Request a Call</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal">Sacred Ways</p>
+      <h1 class="hero-heading reveal reveal-delay-1">Meet Your Facilitators</h1>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="intro-section">
+    <div class="intro-inner">
+      <div class="section-separator reveal"></div>
+      <p class="intro-text reveal reveal-delay-1">This pilgrimage is co-hosted by a small team of dedicated facilitators who have each walked this path with Don Mart&iacute;n and sat in ceremony with his teacher, Don Howard. Together, we bring decades of experience in transformational coaching, ceremonial support, and plant medicine integration. While Don Mart&iacute;n holds the ceremonial space, we are here to support you logistically, emotionally, and energetically so you can fully receive the depth of this journey and carry it home with clarity and grace.</p>
+    </div>
+  </section>
+
+  <!-- Facilitator Cards -->
+  <section class="facilitators-section">
+    <div class="facilitators-grid">
+
+      <!-- Jared Lim -->
+      <div class="facilitator-card reveal">
+        <div class="facilitator-avatar">
+          <span class="facilitator-initials">JL</span>
+        </div>
+        <div class="facilitator-info">
+          <h3 class="facilitator-name">Jared Lim</h3>
+          <p class="facilitator-title">Facilitator</p>
+          <p class="facilitator-bio">After building a successful business in his early 20s, Jared hit a quarter-life crisis and left everything behind to travel the world in search of deeper meaning. That journey brought him to the Amazon jungle in 2015, where he first worked with plant medicine at SpiritQuest, and shortly after joined Don Howard's final Huachuma pilgrimage, where he met Don Mart&iacute;n. Today, as a transformational coach, Jared draws on a powerful modality called Accelerated Evolution, which is highly synergistic with plant medicine for emotional clearing, spiritual integration, and reconnecting to one's true nature.</p>
+          <div class="facilitator-tags">
+            <span class="facilitator-tag">Transformational Coaching</span>
+            <span class="facilitator-tag">Accelerated Evolution</span>
+            <span class="facilitator-tag">Integration</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brad Samuels -->
+      <div class="facilitator-card reveal">
+        <div class="facilitator-avatar">
+          <span class="facilitator-initials">BS</span>
+        </div>
+        <div class="facilitator-info">
+          <h3 class="facilitator-name">Brad Samuels</h3>
+          <p class="facilitator-title">Facilitator</p>
+          <p class="facilitator-bio">Brad discovered a passion for business, finance and investing in his early 20's, and started his first business after completing his degree in finance. Business led him to the pursuit of freedom and in its various forms and ultimately him to the yogic path and the ceremonial way and working with various plant medicines. His first connection with Huachuma took place in 2017 in the amazon jungle of Peru. These life changing experiences altered his understanding of life, reality and the purpose behind why we are here.</p>
+          <div class="facilitator-tags">
+            <span class="facilitator-tag">Business</span>
+            <span class="facilitator-tag">Yogic Path</span>
+            <span class="facilitator-tag">Plant Medicine</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zachary Adama -->
+      <div class="facilitator-card reveal">
+        <div class="facilitator-avatar">
+          <span class="facilitator-initials">ZA</span>
+        </div>
+        <div class="facilitator-info">
+          <h3 class="facilitator-name">Zachary Adama</h3>
+          <p class="facilitator-title">Facilitator</p>
+          <p class="facilitator-bio">Zachary's passion for justice and truth led him to a career as a lawyer in his early 20s. Then after passing the bar and beginning his legal career he had a powerful spiritual awakening that ignited his passion for learning and living in harmony with the laws of the universe. His spiritual seeking led him down the yogic path and to working with ancestral medicines. He has been facilitating Huachuma pilgrimages in Peru with Don Martin since 2022.</p>
+          <div class="facilitator-tags">
+            <span class="facilitator-tag">Law</span>
+            <span class="facilitator-tag">Spiritual Awakening</span>
+            <span class="facilitator-tag">Ancestral Medicines</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Quote Section -->
+  <section class="quote-section">
+    <div class="quote-content reveal">
+      <div class="quote-mark">"</div>
+      <p class="quote-text">Work with sacred plant teacher-healers is the freest form of human spiritual consciousness, and also one of the most advanced. It's unconfining. You accept what you experience. And there's no end to it. It's an open-ended process for as long as you want to pursue it. That's the beauty of it; there's really no end to it.</p>
+      <p class="quote-attribution">-- Don Howard</p>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="section-separator reveal"></div>
+      <h2 class="section-heading reveal">Do You Feel Called to Walk This Sacred Path?</h2>
+      <div class="section-body reveal reveal-delay-1">
+        <p>This is an exclusive, invitation-only pilgrimage, designed for those ready to embrace a transformative journey. If you feel called to join us, reach out and we'll schedule a call to discuss whether this experience aligns with your intentions and goals. We look forward to connecting with you and sharing more about the journey ahead.</p>
+        <br>
+        <p>An intensive spirit walk designed to help you awaken to your true nature</p>
+      </div>
+      <a href="#" class="btn-primary reveal reveal-delay-2">Set Up An Information Call</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">Sacred Ways</div>
+        <p class="footer-newsletter-label">Join our mailing list for retreat news and updates</p>
+        <form class="footer-newsletter-form" onsubmit="event.preventDefault()">
+          <input type="email" placeholder="Your email address" aria-label="Email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="footer-nav">
+        <p class="footer-nav-title">Explore</p>
+        <ul class="footer-nav-links">
+          <li><a href="peru.html">Peru Pilgrimage</a></li>
+          <li><a href="hawaii.html">Hawaii Retreat</a></li>
+          <li><a href="facilitators.html">Facilitators</a></li>
+          <li><a href="guests.html">Our Guests</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <p class="footer-nav-title">Connect</p>
+        <ul class="footer-nav-links">
+          <li><a href="mailto:brad@foundationz.com">brad@foundationz.com</a></li>
+          <li><a href="#">Request a Call</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Sacred Ways. All rights reserved.</p>
+      <p>Foundationz Sacred Journeys LTD</p>
+    </div>
+  </footer>
+
+  <script>
+    // Loader
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        document.getElementById('loader').classList.add('hidden');
+      }, 2000);
+    });
+
+    // Scroll Progress Bar
+    window.addEventListener('scroll', function () {
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = (scrollTop / docHeight) * 100;
+      document.getElementById('scrollProgress').style.width = progress + '%';
+    });
+
+    // Navbar scroll behavior
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 60) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Hamburger menu
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close mobile menu on link click
+    var mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Scroll-triggered reveal animations
+    var revealElements = document.querySelectorAll('.reveal');
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(function (el) {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

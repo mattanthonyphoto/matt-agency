@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hawaii Retreat | Sacred Ways</title>
+    <meta name="description" content="A 7-day sacred retreat of ceremony, transformation, and adventure on Hawai'i's Big Island. March 15-22, 2027.">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --cream: #FAF8F5;
+            --warm-white: #F5F0EB;
+            --sage: #8B9A7E;
+            --sage-dark: #6B7D60;
+            --earth: #A69279;
+            --terracotta: #C4916E;
+            --sand: #D4C5B2;
+            --dark-green: #2C3A28;
+            --body-text: #5A5A5A;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--primary);
+            background: var(--cream);
+            overflow-x: hidden;
+        }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-text {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--cream);
+            letter-spacing: 0.3em;
+            animation: loaderPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes loaderPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--sage);
+            z-index: 9999;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.25rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.4s ease, padding 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav.scrolled {
+            background: var(--cream);
+            padding: 0.75rem 3rem;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-logo a {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            transition: color 0.3s ease;
+        }
+
+        .nav.scrolled .nav-logo a {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .nav.scrolled .nav-links a {
+            color: var(--body-text);
+        }
+
+        .nav.scrolled .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-cta {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #fff !important;
+            background: var(--sage);
+            padding: 0.6rem 1.5rem;
+            border-radius: 2px;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--sage-dark) !important;
+        }
+
+        .nav.scrolled .nav-cta {
+            color: #fff !important;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled .hamburger span {
+            background: var(--primary);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile Nav */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--dark-green);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transition: right 0.4s ease;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav a {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--cream);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+        }
+
+        .mobile-nav .nav-cta {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-date {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 0.12em;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-sub {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #fff;
+            background: var(--sage);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--sage-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #fff;
+            background: transparent;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+
+        /* Section Utilities */
+        .section {
+            padding: 7rem 2rem;
+        }
+
+        .section-label {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-heading {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        .section-text {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--body-text);
+            max-width: 640px;
+        }
+
+        .section-text p + p {
+            margin-top: 1.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Sacred Ways Section */
+        .sacred-ways {
+            background: var(--cream);
+        }
+
+        .sacred-ways .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .sacred-ways-img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        /* Medicine of the Land */
+        .medicine {
+            background: var(--dark-green);
+            color: #fff;
+        }
+
+        .medicine .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .medicine .section-label {
+            color: var(--sage);
+        }
+
+        .medicine .section-heading {
+            color: #fff;
+        }
+
+        .medicine .section-text {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .medicine-img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        /* Retreat Space */
+        .retreat-space {
+            background: var(--warm-white);
+        }
+
+        .retreat-space .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .amenities {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .amenity {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--body-text);
+            padding: 0.6rem 0;
+        }
+
+        .amenity-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--sage);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Meet the Team */
+        .team {
+            position: relative;
+            padding: 7rem 2rem;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .team-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .team-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 58, 40, 0.88);
+            z-index: 1;
+        }
+
+        .team .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .team .section-label {
+            color: var(--sage);
+        }
+
+        .team .section-heading {
+            color: #fff;
+            text-align: center;
+        }
+
+        .team-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3.5rem;
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .team .section-label {
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .team-card {
+            text-align: center;
+            padding: 2rem 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            transition: background 0.3s ease;
+        }
+
+        .team-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--sage-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: #fff;
+            letter-spacing: 0.05em;
+        }
+
+        .team-name {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+            color: #fff;
+        }
+
+        .team-bio {
+            font-size: 0.82rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Included / Not Included */
+        .included {
+            background: var(--cream);
+        }
+
+        .included .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .included .section-label {
+            text-align: center;
+            grid-column: 1 / -1;
+        }
+
+        .included .section-heading {
+            text-align: center;
+            grid-column: 1 / -1;
+            margin-bottom: 1rem;
+        }
+
+        .included-col h3 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .included-list {
+            list-style: none;
+        }
+
+        .included-list li {
+            position: relative;
+            padding: 0.65rem 0 0.65rem 1.75rem;
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--body-text);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .included-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .included-yes li::before {
+            background: var(--sage);
+        }
+
+        .included-no li::before {
+            background: var(--sand);
+        }
+
+        /* Quote */
+        .quote-section {
+            background: var(--dark-green);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 300;
+            font-style: italic;
+            color: #fff;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.4;
+        }
+
+        .quote-author {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            color: var(--sage);
+        }
+
+        /* Bottom CTA */
+        .bottom-cta {
+            position: relative;
+            padding: 8rem 2rem;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .bottom-cta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .bottom-cta-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .bottom-cta .container {
+            position: relative;
+            z-index: 2;
+            max-width: 680px;
+        }
+
+        .bottom-cta .section-heading {
+            color: #fff;
+            text-align: center;
+        }
+
+        .bottom-cta .section-text {
+            color: rgba(255, 255, 255, 0.85);
+            text-align: center;
+            margin: 0 auto 2.5rem;
+            max-width: 600px;
+        }
+
+        /* Bottom Banner */
+        .bottom-banner {
+            background: var(--dark-green);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .bottom-banner p {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer .container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-newsletter {
+            display: flex;
+            gap: 0;
+        }
+
+        .footer-newsletter input {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .footer-newsletter input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .footer-newsletter button {
+            padding: 0.7rem 1.2rem;
+            background: var(--sage);
+            color: #fff;
+            border: none;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .footer-newsletter button:hover {
+            background: var(--sage-dark);
+        }
+
+        .footer h4 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Adventures */
+        .adventures {
+            background: var(--cream);
+        }
+
+        .adventures-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .adventures-gallery img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 2px;
+            transition: transform 0.4s ease;
+        }
+
+        .adventures-gallery img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav.scrolled {
+                padding: 0.75rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-sub {
+                font-size: 0.95rem;
+            }
+
+            .section {
+                padding: 4.5rem 1.5rem;
+            }
+
+            .section-heading {
+                font-size: 2.2rem;
+            }
+
+            .sacred-ways .container,
+            .medicine .container,
+            .retreat-space .container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .sacred-ways-img,
+            .medicine-img {
+                height: 350px;
+            }
+
+            .adventures-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .adventures-gallery img {
+                height: 250px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .included .container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer .container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 0.75rem;
+                text-align: center;
+            }
+
+            .quote-text {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loader -->
+    <div class="loader">
+        <span class="loader-text">Sacred Ways</span>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-logo">
+            <a href="index.html">Sacred Ways</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="peru.html">Peru Pilgrimage</a></li>
+            <li><a href="hawaii.html">Hawaii Retreat</a></li>
+            <li><a href="facilitators.html">Facilitators</a></li>
+            <li><a href="guests.html">Our Guests</a></li>
+            <li><a href="#cta" class="nav-cta">Request a Call</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="peru.html">Peru Pilgrimage</a>
+        <a href="hawaii.html">Hawaii Retreat</a>
+        <a href="facilitators.html">Facilitators</a>
+        <a href="guests.html">Our Guests</a>
+        <a href="#cta" class="nav-cta">Request a Call</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <img src="photos/black-sand-beach-wide.jpg" alt="Black sand beach with palms on Hawaii's Big Island" class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-date">March 15th - 22nd, 2027</p>
+            <h1>AWAKEN TO THE SPIRIT OF ALOHA</h1>
+            <p class="hero-sub">A 7-day sacred retreat of ceremony, transformation, and adventure on Hawai'i's Big Island</p>
+            <a href="#cta" class="btn-primary">Request an Information Call</a>
+        </div>
+    </section>
+
+    <!-- Sacred Ways -->
+    <section class="section sacred-ways">
+        <div class="container">
+            <div class="reveal">
+                <p class="section-label">Sacred Ways</p>
+                <div class="section-text">
+                    <p>The Big Island of Hawai&#699;i is one of Earth's most powerful and beautiful healing landscapes, a place where ancient wisdom meets the raw, creative force of a living island still being born from fire and sea.</p>
+                    <p>This sacred journey weaves deep ceremonial work with adventure, integration, and connection to the land itself. Over seven days, you'll move through four sacred ceremonies, each held with reverence and intention. You'll journey through the Shamanic worlds from healing and release in the lower world, through integration and grounding in the middle world, to expansion and awakening in the upper world.</p>
+                    <p>Rooted in Peruvian shamanism and held in the feminine, nurturing embrace of Hawai&#699;i, this retreat offers deep personal transformation. Between ceremonies, you'll have time for rest and reflection, plus adventures to potent places across the island: spaces of natural power and raw beauty that most visitors never experience. This is your opportunity to step away from the noise of the modern world and reconnect with your true nature. You'll be supported by the ceremonies, the land, and a small, intentional group of fellow seekers. This journey is not for everyone. It's for those who feel the calling. To heal, to awaken, to remember.</p>
+                </div>
+            </div>
+            <div class="reveal">
+                <img src="photos/ocean-view-green.jpg" alt="Lush ocean view on Hawaii's Big Island" class="sacred-ways-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Medicine of the Land -->
+    <section class="section medicine">
+        <div class="container">
+            <div class="reveal">
+                <p class="section-label">The Medicine of the Land</p>
+                <div class="section-text">
+                    <p>Hawai&#699;i is not just a location. It is a living, breathing teacher.</p>
+                    <p>The Big Island is the youngest of the Hawaiian islands, still being shaped by volcanic activity. Lava flows into the ocean, creating new earth. The elements here are raw, alive, and immediate: fire from the depths, water cascading from cliffs, air carrying the salt of the Pacific, earth still molten and forming. This is a land of transformation by nature, where death and rebirth happen simultaneously.</p>
+                    <p>For centuries, indigenous Hawaiian culture has recognized these islands as sacred places where the natural and spiritual worlds are inseparably woven. The concept of mana, the spiritual life force flowing through all things, is particularly strong here. The land itself is alive, conscious, and holds those who approach with reverence.</p>
+                    <p>When the ceremonial work is held within this landscape, something powerful unfolds. The ceremonies become amplified by the island's energy. Between the ceremonial work, the raw beauty and power of Hawaii grounds what you've received, allowing integration to happen organically. This is medicine beyond what happens in ceremony.</p>
+                </div>
+            </div>
+            <div class="reveal">
+                <img src="photos/lava-fields-landscape.jpg" alt="Volcanic lava fields on Hawaii's Big Island" class="medicine-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Retreat Space -->
+    <section class="section retreat-space">
+        <div class="container">
+            <div class="reveal">
+                <div class="photo-grid">
+                    <img src="photos/retreat-building-exterior.jpg" alt="Retreat center exterior">
+                    <img src="photos/retreat-grounds-morning.jpg" alt="Retreat grounds in the morning">
+                    <img src="photos/ganesha-statue.jpg" alt="Ganesha statue at retreat">
+                    <img src="photos/interior-session-space.jpg" alt="Interior ceremony space">
+                </div>
+            </div>
+            <div class="reveal">
+                <p class="section-label">The Retreat Space</p>
+                <div class="section-text">
+                    <p>This retreat is based at a private sanctuary on the Big Island's East coast in Kalapana. The property sits above the ocean with lush tropical gardens, a walking trail, and natural spaces designed for rest and integration.</p>
+                    <p>You'll stay in comfortable accommodations designed to support deep rest and integration. The ceremonial space is an open-air shala that allows the elements to be present throughout the work, while still providing shelter and intimacy.</p>
+                    <p>Between ceremonies, you'll have access to wellness amenities including a pool, hot tub, sauna, and cold plunge. Optional massage services are available for those seeking additional bodywork and support.</p>
+                    <p>All meals are included and prepared fresh on-site. The food is vegetarian, mostly organic and whole, designed to support your body and the ceremonial work throughout the week.</p>
+                    <p>This is a true sanctuary: a place to unplug, slow down, and be held by the land as you move through your transformation.</p>
+                </div>
+                <div class="amenities">
+                    <div class="amenity"><span class="amenity-dot"></span> Pool</div>
+                    <div class="amenity"><span class="amenity-dot"></span> Hot Tub</div>
+                    <div class="amenity"><span class="amenity-dot"></span> Sauna</div>
+                    <div class="amenity"><span class="amenity-dot"></span> Cold Plunge</div>
+                    <div class="amenity"><span class="amenity-dot"></span> Tropical Gardens</div>
+                    <div class="amenity"><span class="amenity-dot"></span> Walking Trail</div>
+                    <div class="amenity"><span class="amenity-dot"></span> Open-Air Shala</div>
+                    <div class="amenity"><span class="amenity-dot"></span> Fresh Vegetarian Meals</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Adventures -->
+    <section class="section adventures">
+        <div class="container">
+            <div class="reveal" style="text-align: center; margin-bottom: 1rem;">
+                <p class="section-label">Adventures</p>
+                <h2 class="section-heading">Explore the Island's Hidden Power</h2>
+            </div>
+            <div class="adventures-gallery reveal">
+                <img src="photos/sea-cave-silhouettes.jpg" alt="Silhouettes exploring a sea cave">
+                <img src="photos/lava-tube-group.jpg" alt="Group exploring a lava tube">
+                <img src="photos/volcanic-cliff-climbing.jpg" alt="Climbing volcanic cliffs">
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet The Team -->
+    <section class="team">
+        <img src="photos/ceremony-circle-twilight.jpg" alt="Ceremony circle at twilight" class="team-bg">
+        <div class="team-overlay"></div>
+        <div class="container">
+            <div class="reveal">
+                <p class="section-label">Our Facilitators</p>
+                <h2 class="section-heading">Meet The Team</h2>
+                <p class="team-intro">This retreat is held by a dedicated team bringing complementary skills to support your journey. Our team includes ceremonial facilitators, ceremonial support, integration support, and logistical coordination.</p>
+            </div>
+            <div class="team-grid reveal">
+                <div class="team-card">
+                    <div class="team-avatar">JY</div>
+                    <h3 class="team-name">James Yamada</h3>
+                    <p class="team-bio">James has studied plant medicine with Amazonian teachers for over 20 years and has been facilitating ceremonies for the past nine years. He brings experience in Vajrayana Buddhist practices and has worked as an artist for many years.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">ZA</div>
+                    <h3 class="team-name">Zachary Adama</h3>
+                    <p class="team-bio">Zachary's passion for justice and truth led him to a career as a lawyer in his early 20s. After passing the bar, he had a powerful spiritual awakening that ignited his passion for living in harmony with the laws of the universe.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">SA</div>
+                    <h3 class="team-name">Sol Asteria</h3>
+                    <p class="team-bio">Sol lives on the island of Hawai'i, where she guides people through liberation and empowerment work rooted in goddess frequencies and sacred feminine practices.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">KR</div>
+                    <h3 class="team-name">Kevin Rodriguez</h3>
+                    <p class="team-bio">Born and raised in Hawai'i, Kevin's journey has been guided by a deep reverence for sound, song, and the healing power of nature.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">JL</div>
+                    <h3 class="team-name">Jared Lim</h3>
+                    <p class="team-bio">After building a successful business in his early 20s, Jared left everything behind to travel the world in search of deeper meaning.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">EW</div>
+                    <h3 class="team-name">Emily Weldon</h3>
+                    <p class="team-bio">Emily has had a lifelong passion for the mysteries of life, personal growth, and healing.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">BS</div>
+                    <h3 class="team-name">Brad Samuels</h3>
+                    <p class="team-bio">Brad discovered a passion for business, finance and investing in his early 20s and started his first business after completing his degree.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">RD</div>
+                    <h3 class="team-name">Rhianna Debrayanna</h3>
+                    <p class="team-bio">Rhianna has been a lifelong lover of Earth, traversing the world as a traveler and journeying into her inner landscape as a seeker of truth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="section included">
+        <div class="container">
+            <p class="section-label reveal">Details</p>
+            <h2 class="section-heading reveal">What's Included</h2>
+            <div class="included-col reveal">
+                <h3>Included</h3>
+                <ul class="included-list included-yes">
+                    <li>7 nights accommodations at retreat center on the Big Island</li>
+                    <li>All meals included (vegetarian, dieta-friendly)</li>
+                    <li>4 sacred ceremonies guided by experienced facilitators</li>
+                    <li>Transportation to all off-site excursions</li>
+                    <li>Entrance fees for site excursions</li>
+                    <li>Access to wellness amenities (pool, hot tub, sauna, cold plunge)</li>
+                    <li>On-the-ground support throughout the retreat</li>
+                    <li>Pre-retreat group calls for preparation support</li>
+                    <li>Post-retreat group calls for integration support</li>
+                    <li>Group sharing circles and integration sessions</li>
+                    <li>1:1 time with facilitators throughout the journey</li>
+                </ul>
+            </div>
+            <div class="included-col reveal">
+                <h3>Not Included</h3>
+                <ul class="included-list included-no">
+                    <li>Flights to and from the Big Island</li>
+                    <li>Accommodations before or after retreat dates</li>
+                    <li>Optional spa services (eg. massages)</li>
+                    <li>Personal purchases</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote-section">
+        <div class="reveal">
+            <p class="quote-text">"Once you really see the beauty of this world, you'll never let it leave you."</p>
+            <p class="quote-author">-- Don Howard</p>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="bottom-cta" id="cta">
+        <img src="photos/sunset-lava-shore.jpg" alt="Sunset over lava shore" class="bottom-cta-bg">
+        <div class="bottom-cta-overlay"></div>
+        <div class="container reveal">
+            <h2 class="section-heading">Do You Feel The Calling?</h2>
+            <div class="section-text">
+                <p>This retreat is designed for those ready to step into deep transformation through sacred ceremony and island adventure. Space is limited to ensure an intimate, well-held experience. If you feel called to join us, reach out and we'll schedule a call to discuss whether this experience aligns with where you are on your journey.</p>
+                <p style="margin-top: 1.5rem;">We look forward to connecting with you and sharing more about what awaits.</p>
+            </div>
+            <a href="#" class="btn-primary" style="margin-top: 2.5rem;">Set Up An Information Call</a>
+        </div>
+    </section>
+
+    <!-- Bottom Banner -->
+    <div class="bottom-banner">
+        <p>March 15 - 22nd, 2027 &middot; Awaken to the Spirit of Aloha</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand">
+                <h3>Sacred Ways</h3>
+                <p>Sacred journeys of ceremony, transformation, and adventure. Rooted in ancient wisdom, held with reverence.</p>
+                <div class="footer-newsletter">
+                    <input type="email" placeholder="Your email address">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+            <div>
+                <h4>Navigate</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="peru.html">Peru Pilgrimage</a></li>
+                    <li><a href="hawaii.html">Hawaii Retreat</a></li>
+                    <li><a href="facilitators.html">Facilitators</a></li>
+                    <li><a href="guests.html">Our Guests</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:brad@foundationz.com">brad@foundationz.com</a></li>
+                    <li><a href="#">Terms &amp; Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2026 Sacred Ways / Foundationz Sacred Journeys LTD</p>
+            <a href="#">Back to top</a>
+        </div>
+    </footer>
+
+    <script>
+        // Loader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loader').classList.add('hidden');
+            }, 800);
+        });
+
+        // Scroll Progress
+        window.addEventListener('scroll', function() {
+            var scrollTop = window.scrollY;
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            var progress = (scrollTop / docHeight) * 100;
+            document.getElementById('scrollProgress').style.width = progress + '%';
+        });
+
+        // Nav scroll
+        var nav = document.getElementById('nav');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 80) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Hamburger
+        var hamburger = document.getElementById('hamburger');
+        var mobileNav = document.getElementById('mobileNav');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile nav on link click
+        var mobileLinks = mobileNav.querySelectorAll('a');
+        mobileLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Scroll Reveal
+        var reveals = document.querySelectorAll('.reveal');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        reveals.forEach(function(el) {
+            observer.observe(el);
+        });
+
+        // Back to top
+        document.querySelector('.footer-bottom a').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>
