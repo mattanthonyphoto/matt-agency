@@ -492,6 +492,77 @@
       color: rgba(255, 255, 255, 0.95);
     }
 
+    /* Photo Break - Full Width */
+    .photo-break {
+      position: relative;
+      height: 60vh;
+      min-height: 400px;
+      overflow: hidden;
+    }
+
+    .photo-break img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Photo Grid - Two Column */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .photo-grid-item {
+      position: relative;
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+    }
+
+    .photo-grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Photo Strip - Three Column */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+    }
+
+    .photo-strip-item {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+    }
+
+    .photo-strip-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .photo-break {
+        height: 40vh;
+        min-height: 280px;
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-strip {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .photo-strip-item:last-child {
+        display: none;
+      }
+    }
+
     /* Don Martin Section */
     .don-martin-section {
       background: var(--cream);
@@ -517,13 +588,10 @@
       overflow: hidden;
     }
 
-    .don-martin-portrait::after {
-      content: 'Portrait';
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      font-weight: 300;
-      color: var(--sand);
-      letter-spacing: 0.1em;
+    .don-martin-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .don-martin-text .section-eyebrow {
@@ -661,16 +729,13 @@
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.08);
       margin: 0 auto 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      overflow: hidden;
     }
 
-    .facilitator-portrait-initials {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.25);
+    .facilitator-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .facilitator-name {
@@ -1301,7 +1366,7 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-bg">
-      <img src="photos/lava-fields-landscape.jpg" alt="Dramatic landscape of ancient terrain" loading="eager">
+      <img src="photos/glacial-lake-peaks.jpg" alt="Epic Andean glacial lake surrounded by snow-capped peaks" loading="eager">
     </div>
     <div class="hero-content">
       <p class="hero-eyebrow reveal">September 16th - 27th, 2026</p>
@@ -1330,6 +1395,16 @@
     </div>
   </section>
 
+  <!-- Photo Break: Ceremony -->
+  <div class="photo-grid">
+    <div class="photo-grid-item">
+      <img src="photos/shaman-blessing-women.jpg" alt="Shaman performing ceremony with two women" loading="lazy">
+    </div>
+    <div class="photo-grid-item">
+      <img src="photos/cave-ceremony-group.jpg" alt="Sacred cave ceremony with full group" loading="lazy">
+    </div>
+  </div>
+
   <!-- What is Huachuma? -->
   <section class="text-section warm-white">
     <div class="text-inner">
@@ -1346,6 +1421,16 @@
     </div>
   </section>
 
+  <!-- Photo Grid: Medicine Heritage -->
+  <div class="photo-grid">
+    <div class="photo-grid-item">
+      <img src="photos/don-martin-drinking-cup.jpg" alt="Don Martin drinking from ceremonial cup" loading="lazy">
+    </div>
+    <div class="photo-grid-item">
+      <img src="photos/ancient-deity-carving.jpg" alt="Colorful ancient deity carving" loading="lazy">
+    </div>
+  </div>
+
   <!-- Why This Medicine Matters Now -->
   <section class="text-section dark-green">
     <div class="text-inner">
@@ -1358,10 +1443,17 @@
     </div>
   </section>
 
+  <!-- Photo Break: Landscape -->
+  <div class="photo-break">
+    <img src="photos/rock-formations-andes.jpg" alt="Epic rock formations in the Andes with hikers" loading="lazy">
+  </div>
+
   <!-- Meet Don Martin -->
   <section class="don-martin-section">
     <div class="don-martin-inner">
-      <div class="don-martin-portrait reveal"></div>
+      <div class="don-martin-portrait reveal">
+        <img src="photos/don-martin-poncho-profile.jpg" alt="Don Martin in traditional poncho, profile portrait" loading="lazy">
+      </div>
       <div class="don-martin-text">
         <p class="section-eyebrow reveal">Your Shamanic Guide</p>
         <h2 class="section-heading reveal">Meet Don Martin</h2>
@@ -1376,6 +1468,19 @@
     </div>
   </section>
 
+  <!-- Photo Strip: Ceremony & Sacred Sites -->
+  <div class="photo-strip">
+    <div class="photo-strip-item">
+      <img src="photos/outdoor-ceremony-three.jpg" alt="Outdoor ceremony with shaman and two kneeling men" loading="lazy">
+    </div>
+    <div class="photo-strip-item">
+      <img src="photos/candlelit-ceremony.jpg" alt="Candlelit ceremony altar in darkness" loading="lazy">
+    </div>
+    <div class="photo-strip-item">
+      <img src="photos/don-martin-ceremony.jpg" alt="Don Martin in traditional hat during ceremony" loading="lazy">
+    </div>
+  </div>
+
   <!-- Pilgrimage Journey Overview -->
   <section class="text-section warm-white">
     <div class="text-inner">
@@ -1387,6 +1492,16 @@
       </div>
     </div>
   </section>
+
+  <!-- Photo Grid: Journey -->
+  <div class="photo-grid">
+    <div class="photo-grid-item">
+      <img src="photos/group-hiking-ruins.jpg" alt="Group hiking to archaeological ruins" loading="lazy">
+    </div>
+    <div class="photo-grid-item">
+      <img src="photos/desert-landscape-walking.jpg" alt="Desert landscape with hikers" loading="lazy">
+    </div>
+  </div>
 
   <!-- 5 Ceremony Sites -->
   <section class="ceremonies-section">
@@ -1481,6 +1596,16 @@
     </div>
   </section>
 
+  <!-- Photo Grid: Sacred Landscapes & Archaeology -->
+  <div class="photo-grid">
+    <div class="photo-grid-item">
+      <img src="photos/chavin-temple-valley.jpg" alt="Chavin temple ruins in mountain valley" loading="lazy">
+    </div>
+    <div class="photo-grid-item">
+      <img src="photos/andean-lake-golden.jpg" alt="Golden hour Andean lake" loading="lazy">
+    </div>
+  </div>
+
   <!-- Facilitators -->
   <section class="facilitators-section">
     <div class="facilitators-inner">
@@ -1492,21 +1617,21 @@
       <div class="facilitators-grid">
         <div class="facilitator-card reveal">
           <div class="facilitator-portrait">
-            <span class="facilitator-portrait-initials">JL</span>
+            <img src="photos/team-jared.jpg" alt="Jared Lim" loading="lazy">
           </div>
           <h3 class="facilitator-name">Jared Lim</h3>
           <p class="facilitator-bio">A transformational coach whose journey with sacred plant medicine began in the Amazon in 2015. Jared was part of Don Howard's final pilgrimage and carries that experience as a guiding light in his facilitation work. He brings warmth, clarity, and deep presence to every ceremony.</p>
         </div>
         <div class="facilitator-card reveal reveal-delay-1">
           <div class="facilitator-portrait">
-            <span class="facilitator-portrait-initials">BS</span>
+            <img src="photos/team-brad.jpg" alt="Brad Samuels" loading="lazy">
           </div>
           <h3 class="facilitator-name">Brad Samuels</h3>
           <p class="facilitator-bio">With a background in business and finance, Brad first walked the sacred path in Peru in 2017. His journey led him deeper into yogic philosophy and contemplative practice. He brings a grounded, integrative approach to the pilgrimage, bridging the practical and the sacred.</p>
         </div>
         <div class="facilitator-card reveal reveal-delay-2">
           <div class="facilitator-portrait">
-            <span class="facilitator-portrait-initials">ZA</span>
+            <img src="photos/team-zachary.jpg" alt="Zachary Adama" loading="lazy">
           </div>
           <h3 class="facilitator-name">Zachary Adama</h3>
           <p class="facilitator-bio">A lawyer by training, Zachary's spiritual awakening led him to walk away from convention and toward a life of deeper meaning. He has been journeying with Don Martin in Peru since 2022, and brings a sharp mind, an open heart, and a quiet strength to the group.</p>
@@ -1548,6 +1673,19 @@
       </div>
     </div>
   </section>
+
+  <!-- Photo Strip: Cultural & Archaeological -->
+  <div class="photo-strip">
+    <div class="photo-strip-item">
+      <img src="photos/ancient-wall-relief.jpg" alt="Ancient wall with marching figures relief" loading="lazy">
+    </div>
+    <div class="photo-strip-item">
+      <img src="photos/misty-summit-group.jpg" alt="Group on misty mountain summit" loading="lazy">
+    </div>
+    <div class="photo-strip-item">
+      <img src="photos/ceremonial-drinking.jpg" alt="Two women drinking from ceremonial cups" loading="lazy">
+    </div>
+  </div>
 
   <!-- FAQ Section -->
   <section class="faq-section">
@@ -1692,10 +1830,20 @@
     </div>
   </section>
 
+  <!-- Photo Grid: Final -->
+  <div class="photo-grid">
+    <div class="photo-grid-item">
+      <img src="photos/shaman-hand-raised-altar.jpg" alt="Shaman with hand raised at altar" loading="lazy">
+    </div>
+    <div class="photo-grid-item">
+      <img src="photos/cliff-edge-solitary.jpg" alt="Person standing at cliff edge overlooking mountains" loading="lazy">
+    </div>
+  </div>
+
   <!-- Bottom CTA -->
   <section class="bottom-cta">
     <div class="bg-image">
-      <img src="photos/sunset-lava-shore.jpg" alt="Sunset over volcanic shore" loading="lazy">
+      <img src="photos/turquoise-glacial-lake.jpg" alt="Turquoise glacial lake with snow-capped Andean peaks" loading="lazy">
     </div>
     <div class="bottom-cta-content reveal">
       <h2 class="section-heading">Do You Feel Called to Walk This Sacred Path?</h2>

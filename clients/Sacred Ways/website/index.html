@@ -1,1243 +1,580 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sacred Ways - Embark On A Journey of Transformation</title>
-  <meta name="description" content="Sacred Ways offers transformative spiritual retreats and pilgrimages. Huachuma ceremonies, sacred plant medicine journeys in Peru and Hawaii.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #1a1a1a;
-      --cream: #FAF8F5;
-      --warm-white: #F5F0EB;
-      --sage: #8B9A7E;
-      --sage-dark: #6B7D60;
-      --earth: #A69279;
-      --terracotta: #C4916E;
-      --sand: #D4C5B2;
-      --dark-green: #2C3A28;
-      --body-text: #5A5A5A;
-      --light-text: rgba(255, 255, 255, 0.7);
-      --font-heading: 'Cormorant Garamond', serif;
-      --font-body: 'Inter', sans-serif;
-    }
-
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
-
-    body {
-      font-family: var(--font-body);
-      color: var(--primary);
-      background: var(--cream);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* Scroll Progress Bar */
-    .scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      background: var(--sage);
-      width: 0%;
-      z-index: 10000;
-      transition: width 0.1s linear;
-    }
-
-    /* Loader */
-    .loader {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: var(--dark-green);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
-    }
-
-    .loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loader-text {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
-      font-weight: 300;
-      color: white;
-      letter-spacing: 0.15em;
-      opacity: 0;
-      animation: loaderFadeIn 1s ease forwards 0.3s;
-    }
-
-    .loader-line {
-      width: 0;
-      height: 1px;
-      background: var(--sage);
-      margin-top: 1.5rem;
-      animation: loaderLineExpand 1.2s ease forwards 0.6s;
-    }
-
-    @keyframes loaderFadeIn {
-      to { opacity: 1; }
-    }
-
-    @keyframes loaderLineExpand {
-      to { width: 120px; }
-    }
-
-    /* Navigation */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      padding: 1.25rem 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: background 0.4s ease, padding 0.3s ease;
-    }
-
-    .nav.scrolled {
-      background: rgba(250, 248, 245, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: 1rem 2.5rem;
-      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
-    }
-
-    .nav-logo {
-      font-family: var(--font-heading);
-      font-size: 1.6rem;
-      font-weight: 400;
-      color: white;
-      letter-spacing: 0.08em;
-      transition: color 0.4s ease;
-    }
-
-    .nav.scrolled .nav-logo {
-      color: var(--primary);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.85);
-      transition: color 0.3s ease, opacity 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      opacity: 0.6;
-    }
-
-    .nav.scrolled .nav-links a {
-      color: var(--body-text);
-    }
-
-    .nav-cta {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.7rem 1.6rem;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      color: white;
-      background: transparent;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .nav-cta:hover {
-      background: white;
-      color: var(--primary);
-      border-color: white;
-    }
-
-    .nav.scrolled .nav-cta {
-      border-color: var(--dark-green);
-      color: var(--dark-green);
-    }
-
-    .nav.scrolled .nav-cta:hover {
-      background: var(--dark-green);
-      color: white;
-    }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      z-index: 1001;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-
-    .hamburger span {
-      width: 24px;
-      height: 1.5px;
-      background: white;
-      transition: all 0.3s ease;
-    }
-
-    .nav.scrolled .hamburger span {
-      background: var(--primary);
-    }
-
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(4px, 5px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(4px, -5px);
-    }
-
-    /* Mobile Menu */
-    .mobile-menu {
-      position: fixed;
-      inset: 0;
-      background: var(--dark-green);
-      z-index: 999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.4s ease;
-    }
-
-    .mobile-menu.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .mobile-menu a {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 300;
-      color: white;
-      letter-spacing: 0.05em;
-      transition: opacity 0.3s ease;
-    }
-
-    .mobile-menu a:hover {
-      opacity: 0.6;
-    }
-
-    .mobile-menu .mobile-cta {
-      margin-top: 1rem;
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.9rem 2rem;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    /* Reveal Animation */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-delay-1 { transition-delay: 0.15s; }
-    .reveal-delay-2 { transition-delay: 0.3s; }
-    .reveal-delay-3 { transition-delay: 0.45s; }
-
-    /* Hero */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .hero-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.35) 0%,
-        rgba(0, 0, 0, 0.45) 50%,
-        rgba(0, 0, 0, 0.55) 100%
-      );
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-    }
-
-    .hero-eyebrow {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--light-text);
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-heading {
-      font-family: var(--font-heading);
-      font-size: 4.5rem;
-      font-weight: 300;
-      color: white;
-      line-height: 1.1;
-      margin-bottom: 2.5rem;
-      letter-spacing: 0.01em;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn-hero {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 1rem 2.2rem;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      color: white;
-      background: transparent;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: inline-block;
-    }
-
-    .btn-hero:hover {
-      background: white;
-      color: var(--primary);
-      border-color: white;
-    }
-
-    .btn-hero.filled {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.25);
-    }
-
-    .btn-hero.filled:hover {
-      background: white;
-      color: var(--primary);
-    }
-
-    /* Quote Section */
-    .quote-section {
-      position: relative;
-      padding: 8rem 2rem;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 60vh;
-    }
-
-    .quote-section .bg-image {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .quote-section .bg-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .quote-section .bg-image::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(44, 58, 40, 0.82);
-    }
-
-    .quote-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      text-align: center;
-    }
-
-    .quote-mark {
-      font-family: var(--font-heading);
-      font-size: 5rem;
-      color: var(--sage);
-      line-height: 1;
-      margin-bottom: -1rem;
-      opacity: 0.6;
-    }
-
-    .quote-text {
-      font-family: var(--font-heading);
-      font-size: 1.55rem;
-      font-weight: 300;
-      font-style: italic;
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    .quote-attribution {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--sage);
-    }
-
-    /* CTA Section */
-    .cta-section {
-      background: var(--cream);
-      padding: 7rem 2rem;
-      text-align: center;
-    }
-
-    .cta-inner {
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .cta-section .section-heading {
-      font-family: var(--font-heading);
-      font-size: 2.8rem;
-      font-weight: 300;
-      color: var(--primary);
-      line-height: 1.2;
-      margin-bottom: 2rem;
-    }
-
-    .cta-section .section-body {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: var(--body-text);
-      line-height: 1.85;
-      margin-bottom: 2.5rem;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 1rem 2.5rem;
-      background: var(--dark-green);
-      color: white;
-      border: 1px solid var(--dark-green);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary:hover {
-      background: transparent;
-      color: var(--dark-green);
-    }
-
-    /* Retreat Cards */
-    .retreats-section {
-      padding: 0 2rem 7rem;
-      background: var(--cream);
-    }
-
-    .retreats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .retreat-card {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 3 / 4;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 2.5rem;
-    }
-
-    .retreat-card .card-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .retreat-card .card-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-
-    .retreat-card:hover .card-bg img {
-      transform: scale(1.03);
-    }
-
-    .retreat-card .card-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.7) 0%,
-        rgba(0, 0, 0, 0.2) 50%,
-        rgba(0, 0, 0, 0.05) 100%
-      );
-    }
-
-    .retreat-card-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .retreat-date {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 0.75rem;
-    }
-
-    .retreat-title {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 300;
-      color: white;
-      margin-bottom: 0.5rem;
-    }
-
-    .retreat-desc {
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: var(--light-text);
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-
-    .btn-card {
-      display: inline-block;
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.8rem 1.8rem;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: white;
-      transition: all 0.3s ease;
-    }
-
-    .btn-card:hover {
-      background: white;
-      color: var(--primary);
-      border-color: white;
-    }
-
-    /* Don Howard Tribute */
-    .tribute-section {
-      background: var(--warm-white);
-      padding: 7rem 2rem;
-    }
-
-    .tribute-inner {
-      max-width: 740px;
-      margin: 0 auto;
-    }
-
-    .tribute-section .section-heading {
-      font-family: var(--font-heading);
-      font-size: 2.8rem;
-      font-weight: 300;
-      color: var(--primary);
-      text-align: center;
-      margin-bottom: 3rem;
-      line-height: 1.2;
-    }
-
-    .tribute-section .section-body {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: var(--body-text);
-      line-height: 1.9;
-    }
-
-    .tribute-section .section-body p {
-      margin-bottom: 1.5rem;
-    }
-
-    .tribute-section .section-body p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Closing Quote */
-    .closing-quote {
-      background: var(--dark-green);
-      padding: 6rem 2rem;
-      text-align: center;
-    }
-
-    .closing-quote .quote-text {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 300;
-      font-style: italic;
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.6;
-      max-width: 700px;
-      margin: 0 auto 1.5rem;
-    }
-
-    .closing-quote .quote-attribution {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--sage);
-    }
-
-    /* Bottom CTA */
-    .bottom-cta {
-      position: relative;
-      padding: 8rem 2rem;
-      text-align: center;
-      overflow: hidden;
-      min-height: 50vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .bottom-cta .bg-image {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .bottom-cta .bg-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .bottom-cta .bg-image::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    .bottom-cta-content {
-      position: relative;
-      z-index: 1;
-      max-width: 600px;
-    }
-
-    .bottom-cta .section-heading {
-      font-family: var(--font-heading);
-      font-size: 2.8rem;
-      font-weight: 300;
-      color: white;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-    }
-
-    .bottom-cta .section-body {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: var(--light-text);
-      line-height: 1.8;
-      margin-bottom: 2.5rem;
-    }
-
-    .btn-white {
-      display: inline-block;
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 1rem 2.5rem;
-      background: white;
-      color: var(--primary);
-      border: 1px solid white;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .btn-white:hover {
-      background: transparent;
-      color: white;
-    }
-
-    /* Footer */
-    .footer {
-      background: var(--primary);
-      color: rgba(255, 255, 255, 0.6);
-      padding: 5rem 2rem 3rem;
-    }
-
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 3rem;
-    }
-
-    .footer-brand .footer-logo {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: white;
-      letter-spacing: 0.08em;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-newsletter-label {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.5);
-      margin-bottom: 1rem;
-      line-height: 1.6;
-    }
-
-    .footer-newsletter-form {
-      display: flex;
-      gap: 0;
-    }
-
-    .footer-newsletter-form input {
-      flex: 1;
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      padding: 0.75rem 1rem;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-right: none;
-      color: white;
-      outline: none;
-      transition: border-color 0.3s ease;
-    }
-
-    .footer-newsletter-form input::placeholder {
-      color: rgba(255, 255, 255, 0.35);
-    }
-
-    .footer-newsletter-form input:focus {
-      border-color: var(--sage);
-    }
-
-    .footer-newsletter-form button {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.75rem 1.4rem;
-      background: var(--sage-dark);
-      color: white;
-      border: 1px solid var(--sage-dark);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-    }
-
-    .footer-newsletter-form button:hover {
-      background: var(--sage);
-      border-color: var(--sage);
-    }
-
-    .footer-nav-title {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.35);
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-nav-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-
-    .footer-nav-links a {
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.6);
-      transition: color 0.3s ease;
-    }
-
-    .footer-nav-links a:hover {
-      color: white;
-    }
-
-    .footer-bottom {
-      max-width: 1100px;
-      margin: 3rem auto 0;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-bottom p {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.35);
-    }
-
-    /* Separator */
-    .section-separator {
-      width: 60px;
-      height: 1px;
-      background: var(--sand);
-      margin: 0 auto 2rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav {
-        padding: 1rem 1.5rem;
-      }
-
-      .nav.scrolled {
-        padding: 0.85rem 1.5rem;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .nav-cta.desktop-only {
-        display: none;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .hero-heading {
-        font-size: 2.8rem;
-      }
-
-      .hero-eyebrow {
-        font-size: 0.65rem;
-      }
-
-      .btn-hero {
-        padding: 0.85rem 1.8rem;
-        font-size: 0.7rem;
-      }
-
-      .quote-text {
-        font-size: 1.25rem;
-      }
-
-      .cta-section {
-        padding: 5rem 1.5rem;
-      }
-
-      .cta-section .section-heading,
-      .tribute-section .section-heading,
-      .bottom-cta .section-heading,
-      .closing-quote .quote-text {
-        font-size: 2rem;
-      }
-
-      .retreats-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      .retreat-card {
-        aspect-ratio: 4 / 5;
-      }
-
-      .tribute-section {
-        padding: 5rem 1.5rem;
-      }
-
-      .closing-quote {
-        padding: 4rem 1.5rem;
-      }
-
-      .bottom-cta {
-        padding: 5rem 1.5rem;
-      }
-
-      .footer-inner {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .footer {
-        padding: 3.5rem 1.5rem 2rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-heading {
-        font-size: 2.2rem;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .btn-hero {
-        width: 100%;
-        max-width: 280px;
-        text-align: center;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sacred Ways — Embark On A Journey of Transformation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#1a1a1a;
+  --cream:#FAF8F5;
+  --warm-white:#F5F0EB;
+  --sage:#8B9A7E;
+  --sage-dark:#6B7D60;
+  --earth:#A69279;
+  --terracotta:#C4916E;
+  --sand:#D4C5B2;
+  --dark-green:#2C3A28;
+  --body-text:#5A5A5A;
+  --light-text:rgba(255,255,255,0.7);
+  --font-heading:'Cormorant Garamond',serif;
+  --font-body:'Inter',sans-serif;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);color:var(--primary);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+/* ── Scroll Progress ── */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--sage);width:0%;z-index:10000;transition:width 0.1s linear}
+
+/* ── Loader ── */
+.loader{position:fixed;inset:0;z-index:9999;background:var(--dark-green);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.6s ease,visibility 0.6s ease}
+.loader.hidden{opacity:0;visibility:hidden}
+.loader-text{font-family:var(--font-heading);font-size:2.5rem;font-weight:300;color:white;letter-spacing:0.15em;opacity:0;animation:loaderFadeIn 1s ease forwards 0.3s}
+.loader-sub{font-family:var(--font-body);font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--sage);margin-top:0.5rem;opacity:0;animation:loaderFadeIn 1s ease forwards 0.6s}
+.loader-line{width:0;height:1px;background:var(--sage);margin-top:1.5rem;animation:loaderLineExpand 1.2s ease forwards 0.6s}
+@keyframes loaderFadeIn{to{opacity:1}}
+@keyframes loaderLineExpand{to{width:120px}}
+
+/* ── Navigation ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;transition:background 0.4s ease,padding 0.3s ease}
+.nav.scrolled{background:rgba(250,248,245,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:1rem 2.5rem;box-shadow:0 1px 0 rgba(0,0,0,0.06)}
+.nav-logo{font-family:var(--font-heading);font-size:1.6rem;font-weight:400;color:white;letter-spacing:0.08em;transition:color 0.4s ease}
+.nav.scrolled .nav-logo{color:var(--primary)}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+.nav-links a{font-family:var(--font-body);font-size:0.8rem;font-weight:400;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.85);transition:color 0.3s ease,opacity 0.3s ease}
+.nav-links a:hover{opacity:0.6}
+.nav.scrolled .nav-links a{color:var(--body-text)}
+.nav-cta{font-family:var(--font-body);font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:0.7rem 1.6rem;border:1px solid rgba(255,255,255,0.4);color:white;background:transparent;cursor:pointer;transition:all 0.3s ease}
+.nav-cta:hover{background:white;color:var(--primary);border-color:white}
+.nav.scrolled .nav-cta{border-color:var(--dark-green);color:var(--dark-green)}
+.nav.scrolled .nav-cta:hover{background:var(--dark-green);color:white}
+
+/* ── Hamburger ── */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001;background:none;border:none;padding:4px}
+.hamburger span{width:24px;height:1.5px;background:white;transition:all 0.3s ease}
+.nav.scrolled .hamburger span{background:var(--primary)}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(4px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(4px,-5px)}
+
+/* ── Mobile Menu ── */
+.mobile-menu{position:fixed;inset:0;background:var(--dark-green);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;visibility:hidden;transition:all 0.4s ease}
+.mobile-menu.active{opacity:1;visibility:visible}
+.mobile-menu a{font-family:var(--font-heading);font-size:2rem;font-weight:300;color:white;letter-spacing:0.05em;transition:opacity 0.3s ease}
+.mobile-menu a:hover{opacity:0.6}
+.mobile-menu .mobile-cta{margin-top:1rem;font-family:var(--font-body);font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.9rem 2rem;border:1px solid rgba(255,255,255,0.3);color:white;background:transparent;cursor:pointer}
+
+/* ── Reveal Animation ── */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.15s}
+.reveal-delay-2{transition-delay:0.3s}
+.reveal-delay-3{transition-delay:0.45s}
+.reveal-delay-4{transition-delay:0.6s}
+
+/* ── Hero ── */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.45) 50%,rgba(0,0,0,0.55) 100%)}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero-eyebrow{font-family:var(--font-body);font-size:0.7rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--light-text);margin-bottom:1.5rem}
+.hero-heading{font-family:var(--font-heading);font-size:4.5rem;font-weight:300;color:white;line-height:1.1;margin-bottom:2.5rem;letter-spacing:0.01em}
+.hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-hero{font-family:var(--font-body);font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:1rem 2.2rem;border:1px solid rgba(255,255,255,0.35);color:white;background:transparent;cursor:pointer;transition:all 0.3s ease;display:inline-block}
+.btn-hero:hover{background:white;color:var(--primary);border-color:white}
+.btn-hero.filled{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.25)}
+.btn-hero.filled:hover{background:white;color:var(--primary)}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-hint-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--sage),transparent);animation:scrollPulse 2.5s ease-in-out infinite}
+.scroll-hint span{font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+@keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(0.5)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ── Quote Section ── */
+.quote-section{position:relative;padding:8rem 2rem;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:60vh}
+.quote-section .bg-image{position:absolute;inset:0;z-index:0}
+.quote-section .bg-image img{width:100%;height:100%;object-fit:cover}
+.quote-section .bg-image::after{content:'';position:absolute;inset:0;background:rgba(44,58,40,0.82)}
+.quote-content{position:relative;z-index:1;max-width:800px;text-align:center}
+.quote-mark{font-family:var(--font-heading);font-size:5rem;color:var(--sage);line-height:1;margin-bottom:-1rem;opacity:0.6}
+.quote-text{font-family:var(--font-heading);font-size:1.55rem;font-weight:300;font-style:italic;color:rgba(255,255,255,0.9);line-height:1.7;margin-bottom:2rem}
+.quote-attribution{font-family:var(--font-body);font-size:0.75rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--sage)}
+
+/* ── Section Utilities ── */
+.section-separator{width:60px;height:1px;background:var(--sand);margin:0 auto 2rem}
+.section-label{font-family:var(--font-body);font-weight:500;font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--sage);margin-bottom:1.25rem}
+
+/* ── CTA Section ── */
+.cta-section{background:var(--cream);padding:7rem 2rem;text-align:center}
+.cta-inner{max-width:680px;margin:0 auto}
+.cta-section .section-heading{font-family:var(--font-heading);font-size:2.8rem;font-weight:300;color:var(--primary);line-height:1.2;margin-bottom:2rem}
+.cta-section .section-body{font-family:var(--font-body);font-size:0.95rem;font-weight:300;color:var(--body-text);line-height:1.85;margin-bottom:2.5rem}
+.btn-primary{display:inline-block;font-family:var(--font-body);font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:1rem 2.5rem;background:var(--dark-green);color:white;border:1px solid var(--dark-green);cursor:pointer;transition:all 0.3s ease}
+.btn-primary:hover{background:transparent;color:var(--dark-green)}
+
+/* ── Retreat Cards ── */
+.retreats-section{padding:0 2rem 7rem;background:var(--cream)}
+.retreats-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1100px;margin:0 auto}
+.retreat-card{position:relative;overflow:hidden;aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem;border-radius:2px}
+.retreat-card .card-bg{position:absolute;inset:0;z-index:0}
+.retreat-card .card-bg img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
+.retreat-card:hover .card-bg img{transform:scale(1.03)}
+.retreat-card .card-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.2) 50%,rgba(0,0,0,0.05) 100%)}
+.retreat-card-content{position:relative;z-index:1}
+.retreat-date{font-family:var(--font-body);font-size:0.7rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--sage);margin-bottom:0.75rem}
+.retreat-title{font-family:var(--font-heading);font-size:2rem;font-weight:300;color:white;margin-bottom:0.5rem}
+.retreat-desc{font-family:var(--font-body);font-size:0.85rem;font-weight:300;color:var(--light-text);margin-bottom:1.5rem;line-height:1.6}
+.btn-card{display:inline-block;font-family:var(--font-body);font-size:0.7rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.8rem 1.8rem;border:1px solid rgba(255,255,255,0.3);color:white;transition:all 0.3s ease}
+.btn-card:hover{background:white;color:var(--primary);border-color:white}
+
+/* ── Photo Strip ── */
+.photo-strip{padding:0;overflow:hidden;background:var(--primary)}
+.photo-strip-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.photo-strip-grid .strip-img{aspect-ratio:1;overflow:hidden}
+.photo-strip-grid .strip-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease}
+.photo-strip-grid .strip-img:hover img{transform:scale(1.05)}
+
+/* ── Tribute Section ── */
+.tribute-section{background:var(--warm-white);padding:7rem 2rem}
+.tribute-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:4rem;align-items:start}
+.tribute-portrait{position:relative}
+.tribute-portrait-img{aspect-ratio:4/5;overflow:hidden;border-radius:2px}
+.tribute-portrait-img img{width:100%;height:100%;object-fit:cover}
+.tribute-portrait-caption{font-family:var(--font-body);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--body-text);margin-top:1rem;text-align:center}
+.tribute-content .section-heading{font-family:var(--font-heading);font-size:2.8rem;font-weight:300;color:var(--primary);line-height:1.2;margin-bottom:2rem}
+.tribute-content .section-body{font-family:var(--font-body);font-size:0.95rem;font-weight:300;color:var(--body-text);line-height:1.9}
+.tribute-content .section-body p{margin-bottom:1.5rem}
+.tribute-content .section-body p:last-child{margin-bottom:0}
+
+/* ── Facilitators Preview ── */
+.facilitators-section{background:var(--cream);padding:7rem 2rem;text-align:center}
+.facilitators-section .section-heading{font-family:var(--font-heading);font-size:2.8rem;font-weight:300;color:var(--primary);line-height:1.2;margin-bottom:1rem}
+.facilitators-section .section-body{font-family:var(--font-body);font-size:0.95rem;font-weight:300;color:var(--body-text);line-height:1.85;max-width:600px;margin:0 auto 4rem}
+.facilitators-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;max-width:800px;margin:0 auto}
+.facilitator-card{text-align:center}
+.facilitator-portrait{width:100%;aspect-ratio:1;border-radius:50%;overflow:hidden;margin-bottom:1.25rem;background:var(--warm-white)}
+.facilitator-portrait img{width:100%;height:100%;object-fit:cover}
+.facilitator-card h3{font-family:var(--font-heading);font-size:1.5rem;font-weight:400;margin-bottom:0.35rem}
+.facilitator-card p{font-family:var(--font-body);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--body-text);font-weight:400}
+
+/* ── Full-bleed Image Break ── */
+.image-break{position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.image-break .bg-image{position:absolute;inset:0;z-index:0}
+.image-break .bg-image img{width:100%;height:100%;object-fit:cover}
+.image-break .bg-image::after{content:'';position:absolute;inset:0;background:rgba(44,58,40,0.55)}
+.image-break-content{position:relative;z-index:1;text-align:center;max-width:700px;padding:2rem}
+.image-break-content .quote-text{font-family:var(--font-heading);font-size:2rem;font-weight:300;font-style:italic;color:rgba(255,255,255,0.9);line-height:1.6;margin-bottom:1.5rem}
+.image-break-content .quote-attribution{font-family:var(--font-body);font-size:0.75rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--sage)}
+
+/* ── Gallery Mosaic ── */
+.gallery-section{background:var(--primary);padding:4px}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;gap:4px}
+.gallery-item{overflow:hidden;position:relative}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;display:block}
+.gallery-item:hover img{transform:scale(1.04)}
+.gallery-item.tall{grid-row:span 2}
+.gallery-item.wide{grid-column:span 2}
+
+/* ── Closing Quote ── */
+.closing-quote{background:var(--dark-green);padding:6rem 2rem;text-align:center}
+.closing-quote .quote-text{font-family:var(--font-heading);font-size:2rem;font-weight:300;font-style:italic;color:rgba(255,255,255,0.9);line-height:1.6;max-width:700px;margin:0 auto 1.5rem}
+.closing-quote .quote-attribution{font-family:var(--font-body);font-size:0.75rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--sage)}
+
+/* ── Bottom CTA ── */
+.bottom-cta{position:relative;padding:8rem 2rem;text-align:center;overflow:hidden;min-height:50vh;display:flex;align-items:center;justify-content:center}
+.bottom-cta .bg-image{position:absolute;inset:0;z-index:0}
+.bottom-cta .bg-image img{width:100%;height:100%;object-fit:cover}
+.bottom-cta .bg-image::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.5)}
+.bottom-cta-content{position:relative;z-index:1;max-width:600px}
+.bottom-cta .section-heading{font-family:var(--font-heading);font-size:2.8rem;font-weight:300;color:white;margin-bottom:1.5rem;line-height:1.2}
+.bottom-cta .section-body{font-family:var(--font-body);font-size:0.95rem;font-weight:300;color:var(--light-text);line-height:1.8;margin-bottom:2.5rem}
+.btn-white{display:inline-block;font-family:var(--font-body);font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:1rem 2.5rem;background:white;color:var(--primary);border:1px solid white;cursor:pointer;transition:all 0.3s ease}
+.btn-white:hover{background:transparent;color:white}
+
+/* ── Footer ── */
+.footer{background:var(--primary);color:rgba(255,255,255,0.6);padding:5rem 2rem 3rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem}
+.footer-brand .footer-logo{font-family:var(--font-heading);font-size:1.5rem;font-weight:400;color:white;letter-spacing:0.08em;margin-bottom:1.5rem}
+.footer-newsletter-label{font-family:var(--font-body);font-size:0.8rem;font-weight:300;color:rgba(255,255,255,0.5);margin-bottom:1rem;line-height:1.6}
+.footer-newsletter-form{display:flex;gap:0}
+.footer-newsletter-form input{flex:1;font-family:var(--font-body);font-size:0.8rem;padding:0.75rem 1rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:white;outline:none;transition:border-color 0.3s ease}
+.footer-newsletter-form input::placeholder{color:rgba(255,255,255,0.35)}
+.footer-newsletter-form input:focus{border-color:var(--sage)}
+.footer-newsletter-form button{font-family:var(--font-body);font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.75rem 1.4rem;background:var(--sage-dark);color:white;border:1px solid var(--sage-dark);cursor:pointer;transition:all 0.3s ease;white-space:nowrap}
+.footer-newsletter-form button:hover{background:var(--sage);border-color:var(--sage)}
+.footer-nav-title{font-family:var(--font-body);font-size:0.7rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:1.5rem}
+.footer-nav-links{list-style:none;display:flex;flex-direction:column;gap:0.85rem}
+.footer-nav-links a{font-family:var(--font-body);font-size:0.85rem;font-weight:300;color:rgba(255,255,255,0.6);transition:color 0.3s ease}
+.footer-nav-links a:hover{color:white}
+.footer-bottom{max-width:1100px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-family:var(--font-body);font-size:0.75rem;font-weight:300;color:rgba(255,255,255,0.35)}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .nav{padding:1rem 1.5rem}
+  .nav.scrolled{padding:0.85rem 1.5rem}
+  .nav-links{display:none}
+  .nav-cta.desktop-only{display:none}
+  .hamburger{display:flex}
+  .hero-heading{font-size:2.8rem}
+  .hero-eyebrow{font-size:0.65rem}
+  .btn-hero{padding:0.85rem 1.8rem;font-size:0.7rem}
+  .quote-text{font-size:1.25rem}
+  .cta-section{padding:5rem 1.5rem}
+  .cta-section .section-heading,.tribute-content .section-heading,.bottom-cta .section-heading,.closing-quote .quote-text,.facilitators-section .section-heading{font-size:2rem}
+  .retreats-grid{grid-template-columns:1fr;gap:1.5rem}
+  .retreat-card{aspect-ratio:4/5}
+  .photo-strip-grid{grid-template-columns:repeat(3,1fr)}
+  .photo-strip-grid .strip-img:nth-child(4),.photo-strip-grid .strip-img:nth-child(5){display:none}
+  .tribute-section{padding:5rem 1.5rem}
+  .tribute-inner{grid-template-columns:1fr;gap:2.5rem;max-width:600px}
+  .tribute-portrait{max-width:260px;margin:0 auto}
+  .facilitators-grid{grid-template-columns:repeat(2,1fr);gap:2rem;max-width:400px}
+  .facilitators-grid .facilitator-card:last-child{grid-column:1/-1;max-width:180px;margin:0 auto}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-item.wide{grid-column:span 1}
+  .gallery-item.tall{grid-row:span 1}
+  .image-break{min-height:50vh}
+  .image-break-content .quote-text{font-size:1.5rem}
+  .closing-quote{padding:4rem 1.5rem}
+  .bottom-cta{padding:5rem 1.5rem}
+  .footer-inner{grid-template-columns:1fr;gap:2.5rem}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .footer{padding:3.5rem 1.5rem 2rem}
+}
+@media(max-width:480px){
+  .hero-heading{font-size:2.2rem}
+  .hero-buttons{flex-direction:column;align-items:center}
+  .btn-hero{width:100%;max-width:280px;text-align:center}
+  .facilitators-grid{grid-template-columns:1fr;max-width:200px}
+  .facilitators-grid .facilitator-card:last-child{grid-column:auto;max-width:none}
+}
+</style>
 </head>
 <body>
 
-  <!-- Scroll Progress -->
-  <div class="scroll-progress" id="scrollProgress"></div>
+<!-- Loader -->
+<div id="loader" class="loader">
+  <div class="loader-text">Sacred Ways</div>
+  <div class="loader-sub">For the good of all</div>
+  <div class="loader-line"></div>
+</div>
 
-  <!-- Loader -->
-  <div class="loader" id="loader">
-    <div class="loader-text">Sacred Ways</div>
-    <div class="loader-line"></div>
+<!-- Scroll Progress -->
+<div id="scrollProgress" class="scroll-progress"></div>
+
+<!-- Navigation -->
+<nav id="nav" class="nav">
+  <a href="index.html" class="nav-logo">Sacred Ways</a>
+  <ul class="nav-links">
+    <li><a href="peru.html">Peru Pilgrimage</a></li>
+    <li><a href="hawaii.html">Hawaii Retreat</a></li>
+    <li><a href="facilitators.html">Facilitators</a></li>
+    <li><a href="guests.html">Our Guests</a></li>
+  </ul>
+  <button class="nav-cta desktop-only">Request a Call</button>
+  <button id="hamburger" class="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="mobile-menu">
+  <a href="peru.html">Peru Pilgrimage</a>
+  <a href="hawaii.html">Hawaii Retreat</a>
+  <a href="facilitators.html">Facilitators</a>
+  <a href="guests.html">Our Guests</a>
+  <button class="mobile-cta">Request a Call</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- HERO -->
+<!-- ════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="photos/glacial-lake-peaks.jpg" alt="Glacial lake beneath snow-capped Andean peaks">
   </div>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="peru.html">Peru Pilgrimage</a>
-    <a href="hawaii.html">Hawaii Retreat</a>
-    <a href="facilitators.html">Facilitators</a>
-    <a href="guests.html">Our Guests</a>
-    <a href="#" class="mobile-cta">Request a Call</a>
+  <div class="hero-content">
+    <p class="hero-eyebrow reveal">For Those Interested in Healing and Higher Consciousness</p>
+    <h1 class="hero-heading reveal reveal-delay-1">Embark On A Journey of Transformation</h1>
+    <div class="hero-buttons reveal reveal-delay-2">
+      <a href="peru.html" class="btn-hero">Huachuma Pilgrimage</a>
+      <a href="hawaii.html" class="btn-hero filled">Hawaii Retreat</a>
+    </div>
   </div>
+  <div class="scroll-hint">
+    <div class="scroll-hint-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
 
-  <!-- Navigation -->
-  <nav class="nav" id="nav">
-    <a href="index.html" class="nav-logo">Sacred Ways</a>
-    <ul class="nav-links">
-      <li><a href="peru.html">Peru Pilgrimage</a></li>
-      <li><a href="hawaii.html">Hawaii Retreat</a></li>
-      <li><a href="facilitators.html">Facilitators</a></li>
-      <li><a href="guests.html">Our Guests</a></li>
-    </ul>
-    <a href="#" class="nav-cta desktop-only">Request a Call</a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </nav>
+<!-- ════════════════════════════════════════════ -->
+<!-- QUOTE — DON HOWARD -->
+<!-- ════════════════════════════════════════════ -->
+<section class="quote-section">
+  <div class="bg-image">
+    <img src="photos/candlelit-ceremony.jpg" alt="Candlelit ceremony altar in darkness">
+  </div>
+  <div class="quote-content">
+    <div class="quote-mark reveal">"</div>
+    <p class="quote-text reveal reveal-delay-1">Work with sacred plant teacher-healers is the freest form of human spiritual consciousness, and also one of the most advanced. It's unconfining. You accept what you experience. And there's no end to it. It's an open-ended process for as long as you want to pursue it.</p>
+    <p class="quote-attribution reveal reveal-delay-2">— Don Howard</p>
+  </div>
+</section>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-bg">
-      <img src="photos/sea-cave-silhouettes.jpg" alt="Group silhouetted in sea cave looking out at the ocean" loading="lazy">
-    </div>
-    <div class="hero-content">
-      <p class="hero-eyebrow reveal">For Those Interested in Healing and Higher Consciousness</p>
-      <h1 class="hero-heading reveal reveal-delay-1">Embark On A Journey of Transformation</h1>
-      <div class="hero-buttons reveal reveal-delay-2">
-        <a href="peru.html" class="btn-hero filled">Huachuma Pilgrimage</a>
-        <a href="hawaii.html" class="btn-hero">Hawaii Retreat</a>
+<!-- ════════════════════════════════════════════ -->
+<!-- CTA — FEEL CALLED -->
+<!-- ════════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-separator"></div>
+    <h2 class="section-heading reveal">Do You Feel Called to Walk This Sacred Path?</h2>
+    <p class="section-body reveal reveal-delay-1">This is an exclusive, invitation-only pilgrimage, designed for those ready to embrace a transformative journey. If you feel called to join us, reach out and we'll schedule a call to discuss whether this experience aligns with your intentions and goals.</p>
+    <p class="section-body reveal reveal-delay-2">We look forward to connecting with you and sharing more about the journey ahead.</p>
+    <button class="btn-primary reveal reveal-delay-3">Set Up An Information Call</button>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- RETREAT CARDS -->
+<!-- ════════════════════════════════════════════ -->
+<section class="retreats-section">
+  <div class="retreats-grid">
+    <div class="retreat-card reveal">
+      <div class="card-bg">
+        <img src="photos/shaman-blessing-women.jpg" alt="Shaman performing blessing ceremony with two women in the Andes mountains">
+      </div>
+      <div class="retreat-card-content">
+        <p class="retreat-date">September 16–27, 2026</p>
+        <h3 class="retreat-title">Walk the Ancient Path</h3>
+        <p class="retreat-desc">12-day Huachuma pilgrimage through the sacred Andes</p>
+        <a href="peru.html" class="btn-card">Learn More</a>
       </div>
     </div>
-  </section>
-
-  <!-- Quote Section -->
-  <section class="quote-section">
-    <div class="bg-image">
-      <img src="photos/sunset-lava-shore.jpg" alt="Dramatic sunset over lava rocks and ocean" loading="lazy">
-    </div>
-    <div class="quote-content reveal">
-      <div class="quote-mark">"</div>
-      <p class="quote-text">Work with sacred plant teacher-healers is the freest form of human spiritual consciousness, and also one of the most advanced. It's unconfining. You accept what you experience. And there's no end to it. It's an open-ended process for as long as you want to pursue it. That's the beauty of it; there's really no end to it.</p>
-      <p class="quote-attribution">-- Don Howard</p>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="cta-section">
-    <div class="cta-inner">
-      <div class="section-separator reveal"></div>
-      <h2 class="section-heading reveal">Do You Feel Called to Walk This Sacred Path?</h2>
-      <div class="section-body reveal reveal-delay-1">
-        <p>This is an exclusive, invitation-only pilgrimage, designed for those ready to embrace a transformative journey. If you feel called to join us, reach out and we'll schedule a call to discuss whether this experience aligns with your intentions and goals.</p>
-        <br>
-        <p>We look forward to connecting with you and sharing more about the journey ahead.</p>
-        <br>
-        <p>An intensive spirit walk designed to help you awaken to your true nature</p>
+    <div class="retreat-card reveal reveal-delay-1">
+      <div class="card-bg">
+        <img src="photos/mountain-lake-green.jpg" alt="Serene mountain lake surrounded by lush green peaks">
       </div>
-      <a href="#" class="btn-primary reveal reveal-delay-2">Set Up An Information Call</a>
-    </div>
-  </section>
-
-  <!-- Retreat Cards -->
-  <section class="retreats-section">
-    <div class="retreats-grid">
-      <div class="retreat-card reveal">
-        <div class="card-bg">
-          <img src="photos/ceremony-circle-twilight.jpg" alt="Candlelit ceremony circle at twilight" loading="lazy">
-        </div>
-        <div class="retreat-card-content">
-          <p class="retreat-date">March 15-22, 2027</p>
-          <h3 class="retreat-title">Awaken to the Spirit of Aloha</h3>
-          <p class="retreat-desc">7-day retreat on Big Island</p>
-          <a href="hawaii.html" class="btn-card">Learn More</a>
-        </div>
-      </div>
-      <div class="retreat-card reveal reveal-delay-1">
-        <div class="card-bg">
-          <img src="photos/lava-fields-landscape.jpg" alt="Volcanic lava fields landscape" loading="lazy">
-        </div>
-        <div class="retreat-card-content">
-          <p class="retreat-date">September 16-27, 2026</p>
-          <h3 class="retreat-title">Walk the Ancient Path</h3>
-          <p class="retreat-desc">12-day sacred journey</p>
-          <a href="peru.html" class="btn-card">Learn More</a>
-        </div>
+      <div class="retreat-card-content">
+        <p class="retreat-date">March 15–22, 2027</p>
+        <h3 class="retreat-title">Awaken to the Spirit of Aloha</h3>
+        <p class="retreat-desc">7-day retreat on Big Island</p>
+        <a href="hawaii.html" class="btn-card">Learn More</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Don Howard Tribute -->
-  <section class="tribute-section">
-    <div class="tribute-inner">
-      <div class="section-separator reveal"></div>
+<!-- ════════════════════════════════════════════ -->
+<!-- PHOTO STRIP -->
+<!-- ════════════════════════════════════════════ -->
+<section class="photo-strip">
+  <div class="photo-strip-grid">
+    <div class="strip-img"><img src="photos/ceremonial-drinking.jpg" alt="Ceremonial drinking"></div>
+    <div class="strip-img"><img src="photos/rock-formations-andes.jpg" alt="Rock formations in the Andes"></div>
+    <div class="strip-img"><img src="photos/woman-receiving-blessing-lake.jpg" alt="Woman receiving ceremonial blessing by the lake"></div>
+    <div class="strip-img"><img src="photos/chavin-temple-valley.jpg" alt="Ancient Chavin temple in the Andes valley"></div>
+    <div class="strip-img"><img src="photos/brad-golden-light-meditation.jpg" alt="Brad in golden light, eyes closed in meditation"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- TRIBUTE — DON HOWARD LAWLER -->
+<!-- ════════════════════════════════════════════ -->
+<section class="tribute-section">
+  <div class="tribute-inner">
+    <div class="tribute-portrait reveal">
+      <div class="tribute-portrait-img">
+        <img src="photos/team-don-howard.jpg" alt="Don Howard Lawler — close-up portrait">
+      </div>
+      <p class="tribute-portrait-caption">Don Howard Lawler</p>
+    </div>
+    <div class="tribute-content">
       <h2 class="section-heading reveal">Honouring Don Howard Lawler</h2>
       <div class="section-body reveal reveal-delay-1">
         <p>This pilgrimage is deeply inspired by the life and work of Don Howard Lawler, a master Huachumero and teacher of the Chavin Huachuma mesa tradition. With over 50 years of shamanic practice, Don Howard initiated thousands into the sacred ways of plant medicine and catalyzed a global Chavin Renaissance, reviving respect for one of the oldest and most sophisticated ceremonial lineages in the world.</p>
-        <p>His work was rooted in the ancient art of the Chavin Huachuma mesada, a practice dating back over 3,000 years to the great ceremonial temple of Chavin de Huantar, the spiritual cradle of Andean civilization. Don Howard dedicated his life to the remembrance of this lineage, and to guiding others into deeper connection with the Earth, the Cosmos, and their own true nature.</p>
-        <p>He was also the direct teacher of Don Martin, who will guide this pilgrimage and now carries the lineage forward. Don Howard was widely considered one of the most respected Huachumeros of our time, and was often affectionately called 'the White Wizard.'</p>
-        <p>Though this pilgrimage is not affiliated with SpiritQuest, it walks in the footsteps he helped illuminate. We carry this work forward with deep respect, humility, and gratitude for all he shared. As Don Howard would say, para el bien de todos. For the good of all.</p>
+        <p>His work was rooted in the ancient art of the Chavin Huachuma mesada, a practice dating back over 3,000 years to the great ceremonial temple of Chavin de Huantar, the spiritual cradle of Andean civilization.</p>
+        <p>He was the direct teacher of Don Martin, who will guide this pilgrimage and now carries the lineage forward. Don Howard was widely considered one of the most respected Huachumeros of our time, and was often affectionately called "the White Wizard."</p>
+        <p>We carry this work forward with deep respect, humility, and gratitude for all he shared. As Don Howard would say, <em>para el bien de todos</em>. For the good of all.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Closing Quote -->
-  <section class="closing-quote">
-    <div class="reveal">
-      <p class="quote-text">"Once you really see the beauty of this world, you'll never let it leave you."</p>
-      <p class="quote-attribution">-- Don Howard</p>
+<!-- ════════════════════════════════════════════ -->
+<!-- FULL-BLEED IMAGE BREAK -->
+<!-- ════════════════════════════════════════════ -->
+<section class="image-break">
+  <div class="bg-image">
+    <img src="photos/turquoise-glacial-lake.jpg" alt="Turquoise glacial lake beneath snow-capped peaks">
+  </div>
+  <div class="image-break-content">
+    <p class="quote-text reveal">Once you really see the beauty of this world, you'll never let it leave you.</p>
+    <p class="quote-attribution reveal reveal-delay-1">— Don Howard</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- FACILITATORS -->
+<!-- ════════════════════════════════════════════ -->
+<section class="facilitators-section">
+  <div class="section-label reveal">The Circle</div>
+  <h2 class="section-heading reveal reveal-delay-1">Your Facilitators</h2>
+  <p class="section-body reveal reveal-delay-2">Experienced guides and practitioners who hold space for your transformation.</p>
+  <div class="facilitators-grid">
+    <div class="facilitator-card reveal">
+      <div class="facilitator-portrait"><img src="photos/team-brad.jpg" alt="Brad Samuels"></div>
+      <h3>Brad</h3>
+      <p>Lead Facilitator</p>
     </div>
-  </section>
-
-  <!-- Bottom CTA -->
-  <section class="bottom-cta">
-    <div class="bg-image">
-      <img src="photos/couple-facing-hut-ocean.jpg" alt="Two people facing ocean beside a driftwood hut" loading="lazy">
+    <div class="facilitator-card reveal reveal-delay-1">
+      <div class="facilitator-portrait"><img src="photos/team-jared.jpg" alt="Jared"></div>
+      <h3>Jared</h3>
+      <p>Facilitator</p>
     </div>
-    <div class="bottom-cta-content reveal">
-      <h2 class="section-heading">Begin Your Journey</h2>
-      <p class="section-body">If you feel called, we would love to hear from you. Schedule a conversation with our team to learn more about the path ahead.</p>
-      <a href="#" class="btn-white">Request a Call</a>
+    <div class="facilitator-card reveal reveal-delay-2">
+      <div class="facilitator-portrait"><img src="photos/team-kevin.jpg" alt="Kevin"></div>
+      <h3>Kevin</h3>
+      <p>Facilitator</p>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="footer-logo">Sacred Ways</div>
-        <p class="footer-newsletter-label">Join our mailing list for retreat news and updates</p>
-        <form class="footer-newsletter-form" onsubmit="event.preventDefault()">
-          <input type="email" placeholder="Your email address" aria-label="Email address" required>
-          <button type="submit">Subscribe</button>
-        </form>
-      </div>
-      <div class="footer-nav">
-        <p class="footer-nav-title">Explore</p>
-        <ul class="footer-nav-links">
-          <li><a href="peru.html">Peru Pilgrimage</a></li>
-          <li><a href="hawaii.html">Hawaii Retreat</a></li>
-          <li><a href="facilitators.html">Facilitators</a></li>
-          <li><a href="guests.html">Our Guests</a></li>
-        </ul>
-      </div>
-      <div class="footer-nav">
-        <p class="footer-nav-title">Connect</p>
-        <ul class="footer-nav-links">
-          <li><a href="mailto:brad@foundationz.com">brad@foundationz.com</a></li>
-          <li><a href="#">Request a Call</a></li>
-          <li><a href="terms.html">Terms &amp; Conditions</a></li>
-        </ul>
-      </div>
+    <div class="facilitator-card reveal reveal-delay-1">
+      <div class="facilitator-portrait"><img src="photos/team-james.jpg" alt="James"></div>
+      <h3>James</h3>
+      <p>Facilitator</p>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Sacred Ways. All rights reserved.</p>
-      <p>Foundationz Sacred Journeys LTD</p>
+    <div class="facilitator-card reveal reveal-delay-2">
+      <div class="facilitator-portrait"><img src="photos/team-zachary.jpg" alt="Zachary"></div>
+      <h3>Zachary</h3>
+      <p>Facilitator</p>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    // Loader
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        document.getElementById('loader').classList.add('hidden');
-      }, 2000);
-    });
+<!-- ════════════════════════════════════════════ -->
+<!-- GALLERY MOSAIC -->
+<!-- ════════════════════════════════════════════ -->
+<section class="gallery-section">
+  <div class="gallery-grid">
+    <div class="gallery-item tall"><img src="photos/outdoor-ceremony-three.jpg" alt="Outdoor ceremony — shaman with two participants kneeling"></div>
+    <div class="gallery-item wide"><img src="photos/andean-lake-golden.jpg" alt="Turquoise Andean lake at golden hour"></div>
+    <div class="gallery-item"><img src="photos/ancient-deity-carving.jpg" alt="Ancient Moche deity carving"></div>
+    <div class="gallery-item"><img src="photos/shaman-blessing-group.jpg" alt="Shaman blessing participants during ceremony"></div>
+    <div class="gallery-item"><img src="photos/don-martin-drinking-cup.jpg" alt="Don Martin drinking from ceremonial cup"></div>
+    <div class="gallery-item wide"><img src="photos/cave-ceremony-group.jpg" alt="Sacred cave ceremony with shamanic guides and group"></div>
+    <div class="gallery-item"><img src="photos/woman-meditation-eyes-closed.jpg" alt="Woman in deep meditation, eyes closed"></div>
+    <div class="gallery-item"><img src="photos/cliff-edge-solitary.jpg" alt="Solitary figure beneath towering cliff face"></div>
+  </div>
+</section>
 
-    // Scroll Progress Bar
-    window.addEventListener('scroll', function () {
-      var scrollTop = window.scrollY;
-      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      var progress = (scrollTop / docHeight) * 100;
-      document.getElementById('scrollProgress').style.width = progress + '%';
-    });
+<!-- ════════════════════════════════════════════ -->
+<!-- CLOSING QUOTE -->
+<!-- ════════════════════════════════════════════ -->
+<section class="closing-quote">
+  <p class="quote-text reveal">"The beauty of it; there's really no end to it."</p>
+  <p class="quote-attribution reveal reveal-delay-1">— Don Howard</p>
+</section>
 
-    // Navbar scroll behavior
-    var nav = document.getElementById('nav');
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 60) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
+<!-- ════════════════════════════════════════════ -->
+<!-- BOTTOM CTA -->
+<!-- ════════════════════════════════════════════ -->
+<section class="bottom-cta">
+  <div class="bg-image">
+    <img src="photos/circle-ceremony-outdoor.jpg" alt="Group seated in ceremonial circle outdoors">
+  </div>
+  <div class="bottom-cta-content">
+    <h2 class="section-heading reveal">Begin Your Journey</h2>
+    <p class="section-body reveal reveal-delay-1">If you feel called, we would love to hear from you. Schedule a conversation with our team to learn more about the path ahead.</p>
+    <button class="btn-white reveal reveal-delay-2">Request a Call</button>
+  </div>
+</section>
 
-    // Hamburger menu
-    var hamburger = document.getElementById('hamburger');
-    var mobileMenu = document.getElementById('mobileMenu');
+<!-- ════════════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Sacred Ways</div>
+      <p class="footer-newsletter-label">Join our mailing list for retreat news and updates</p>
+      <form class="footer-newsletter-form">
+        <input type="email" placeholder="Email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer-nav">
+      <h4 class="footer-nav-title">Explore</h4>
+      <ul class="footer-nav-links">
+        <li><a href="peru.html">Peru Pilgrimage</a></li>
+        <li><a href="hawaii.html">Hawaii Retreat</a></li>
+        <li><a href="facilitators.html">Facilitators</a></li>
+        <li><a href="guests.html">Our Guests</a></li>
+      </ul>
+    </div>
+    <div class="footer-nav">
+      <h4 class="footer-nav-title">Connect</h4>
+      <ul class="footer-nav-links">
+        <li><a href="mailto:brad@foundationz.com">brad@foundationz.com</a></li>
+        <li><a href="#">Request a Call</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Sacred Ways. All rights reserved.</p>
+    <p>Foundationz Sacred Journeys LTD</p>
+  </div>
+</footer>
 
-    hamburger.addEventListener('click', function () {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-    });
+<script>
+// Loader
+window.addEventListener('load',function(){
+  setTimeout(function(){document.getElementById('loader').classList.add('hidden')},2000);
+});
 
-    // Close mobile menu on link click
-    var mobileLinks = mobileMenu.querySelectorAll('a');
-    mobileLinks.forEach(function (link) {
-      link.addEventListener('click', function () {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    });
+// Scroll Progress
+window.addEventListener('scroll',function(){
+  var scrollTop=window.scrollY;
+  var docHeight=document.documentElement.scrollHeight-window.innerHeight;
+  var progress=(scrollTop/docHeight)*100;
+  document.getElementById('scrollProgress').style.width=progress+'%';
+});
 
-    // Scroll-triggered reveal animations
-    var revealElements = document.querySelectorAll('.reveal');
+// Nav scroll
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>60){nav.classList.add('scrolled')}else{nav.classList.remove('scrolled')}
+});
 
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -40px 0px'
-    });
+// Hamburger
+var hamburger=document.getElementById('hamburger');
+var mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',function(){
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+  document.body.style.overflow=mobileMenu.classList.contains('active')?'hidden':'';
+});
+mobileMenu.querySelectorAll('a').forEach(function(link){
+  link.addEventListener('click',function(){
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow='';
+  });
+});
 
-    revealElements.forEach(function (el) {
-      observer.observe(el);
-    });
-  </script>
-
+// Reveal on scroll
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}
+  });
+},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el)});
+</script>
 </body>
 </html>
