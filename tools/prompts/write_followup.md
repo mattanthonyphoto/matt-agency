@@ -22,6 +22,14 @@ This prospect received a cold email 3 days ago and has not responded. This follo
 
 The tone matches the cold email — peer to peer, no pressure, no urgency. This email should feel like a thoughtful addition to the first touchpoint, not a second pitch.
 
+--- ICP-SPECIFIC ANGLES FOR FOLLOW-UP ---
+
+BUILDER: If the original email did not mention cost-sharing or construction progress, the follow-up is a good place to introduce one of these angles naturally:
+- Cost-share: "On most projects, the architect and designer split the cost, so everyone gets the documentation at a fraction of the price."
+- Construction progress: "If you have a project in progress, I also document builds at key milestones, monthly visits, images within 48 hours."
+- Georgie timing (Q2-Q3 only): "Projects shot this summer are eligible for the 2027 Georgie Awards. Entry window opens in August."
+Do NOT force these in. Only use if the flow allows it naturally. One angle maximum per follow-up.
+
 --- STEP 1 — IDENTIFY THE FIRST NAME ---
 
 Use the DECISION MAKER FIRST NAME field directly. If empty, use "there".

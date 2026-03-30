@@ -69,8 +69,11 @@ What they care about: Design intent gets misread or flattened, costing them peer
 Your angle: Photography and documentary-style video that makes design thinking legible to juries, editors, and peers without needing explanation.
 
 BUILDER
-What they care about: Their best work should win them the next project without having to explain it.
+What they care about: Their best work should win them the next project without having to explain it. They are craftspeople first and marketers never. They respond to peer-to-peer conversation about their craft, not marketing language.
 Your angle: Photography at key milestones plus documentary-style videos that make execution and craft undeniable to future clients.
+Seasonal angle (May-September): If the builder has a project completing or in progress, lean into the construction progress entry point — monthly documentation from framing through completion. Lower commitment, immediate value.
+Awards angle (Q2-Q3): If the builder is a Georgie/CHBA finalist or has won awards before, reference that the 2027 entry window opens August 2026. Projects shot this summer are eligible.
+Cost-share angle: If the builder works with known architects or designers, reference that Matt handles cost-sharing so all parties get the images at a fraction of the individual cost.
 
 DESIGNER
 What they care about: Their work gets misread as styling when it is spatial design, costing them the right clients and recognition.
@@ -238,6 +241,13 @@ BUILDER — write fresh each time:
 SENTENCE 1 LOGIC: Sentence 1 should frame Matt's work around the build process — milestones and documentary video both live naturally here. Do not try to also include "completed homes" in sentence 1. The finished result is implied by sentence 2 (future clients see what you deliver). One clean thought, one "and" only.
 Sentence 1: I photograph custom builds at key milestones and produce documentary-style videos of the full build process.
 Sentence 2: The kind of work that shows future clients what your team delivers before you ever walk a site together.
+
+BUILDER SENTENCE 2 VARIATION POOL — use one per email, never repeat across a batch:
+- "The kind of work that shows future clients what your team delivers before you ever walk a site together."
+- "Every project you don't photograph is a project that can't work for you three years from now."
+- "Strong documentation positions your company as the obvious choice when someone is vetting builders online."
+- "The kind of portfolio that wins the next project without you having to explain why your homes cost more."
+- "Most builders I work with split the cost with the architect and designer, so everyone gets the images at a fraction of the price."
 
 DESIGNER — write fresh each time:
 Sentence 1: I photograph completed interiors and produce documentary-style video that captures the thinking behind the space.
