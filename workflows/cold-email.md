@@ -101,7 +101,21 @@ During scraping, capture the company's Instagram handle from:
 
 Note: If the prospect has no Instagram presence, flag them as a Creative Partner retainer upsell opportunity (they need content help).
 
-### 2d. Clean HTML
+### 2d. Marketing Contact Research (Builders $1M-$5M)
+
+For builder prospects, check who actually handles marketing. In the $1M-$5M range, the owner is usually on-site all day and the **spouse or office manager** handles website, social media, and award submissions. They are often the real decision-maker for photography.
+
+**Where to look:**
+- Company website "Team" or "About" page — titles like Office Manager, Marketing Coordinator, Co-Owner
+- LinkedIn — search company, filter employees, look for non-construction titles
+- Instagram — check who runs the account (posting style, bio mentions)
+- Facebook — builder's profile often shows spouse who lists company in work history
+
+**If found:** Note the marketing contact name, title, and channel (IG handle, email) in the Additional Notes field. This enables parallel outreach to the right person.
+
+See `business/sales/spouse-office-manager-channel.md` for full targeting strategy.
+
+### 2e. Clean HTML
 
 ```bash
 python tools/cold_email.py clean-html --input .tmp/scraped.json

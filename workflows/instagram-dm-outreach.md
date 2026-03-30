@@ -11,10 +11,43 @@ Four-layer system. Claude handles research and writing. Matt handles sending.
 
 | Layer | Who | What | Time |
 |-------|-----|------|------|
-| **1. Daily Prep** | Claude | Research prospects, write personalized DMs, queue in sheet | 2-5 min (Claude) |
-| **2. Matt Sends** | Matt | Open phone, copy-paste pre-written DMs, send | 10-15 min |
+| **1. Daily Prep** | Claude | Research prospects, build briefs, queue in sheet | 2-5 min (Claude) |
+| **2. Matt Engages + DMs** | Matt | Warm-up engagement + write DMs from briefs in his own voice | 15 min |
 | **3. Comment Funnel** | ManyChat | Auto-respond to comment triggers, collect info, notify Matt | Automated |
 | **4. Plan Closer** | Claude | Generate full marketing plan for warm, qualified prospects | On demand |
+
+### ICP Channel Strategy
+
+Instagram DMs are NOT the right channel for every ICP. But the research shows some exceptions:
+
+| ICP | Primary Channel | Instagram DM? | Why |
+|-----|----------------|---------------|-----|
+| **Interior Designers** | Instagram DM | YES — primary target | They live on IG, check DMs, respond to collaboration messages |
+| **Residential Builders** | Email (Instantly) | Secondary — supplement only | Use IG DMs for email openers who didn't reply (3+ opens, no response) |
+| **Builder Spouse/OM** | Instagram DM + Email | YES — high priority | The marketing decision-maker in $1M-$5M builder businesses. They run the company IG, check DMs, and are already frustrated by bad photos. See `business/sales/spouse-office-manager-channel.md` |
+| **Sea-to-Sky Architects** | Instagram DM + Email | YES — for local firms with active IG | STARK (25K followers), McLintock, AKA are all local and active on IG. Use DMs for relationship-building, not pitching. See `business/sales/architect-referral-flywheel.md` |
+| **Vancouver Architects** | Email + LinkedIn | NO | Professional outreach = LinkedIn/email. Ema Peter dominates this space. |
+| **Trades** | Email | NO | B2B manufacturing, phone/email operations |
+
+**Volume:** 5 prospects per week (2 designers, 1-2 builders/spouse-OMs, 1 local architect). Not 20.
+**Warm-up:** 7-10 days of genuine engagement before the first DM. Not 2 days.
+**Voice notes:** Use 15-30 second voice notes for follow-ups (30-40% higher reply rate than text).
+
+### Georgie Awards Warm-Up Track (April-May 2026)
+
+During April-May, add a parallel track for Georgie finalist builders:
+- Follow finalist accounts NOW, engage with specific project comments for 2-3 weeks
+- At the gala (May 23), your name will already be familiar
+- Post-gala (May 24-25), DM follow-ups feel like continuing a conversation, not cold outreach
+- See full playbook: `business/sales/georgie-playbook-2026.md`
+
+### Builder Entry Point: Construction Progress
+
+When DMing builders, the entry point should NOT be a $3,500 completed project shoot. Lead with construction progress photography ($1K-$1.5K/visit):
+- Lower commitment, immediate value (client updates, social content)
+- Monthly visits create dependency over 8-18 months
+- Locks in the completed shoot when the project finishes
+- See `business/sales/retainer-pitch-builders.md` for the trust ladder
 
 ---
 
@@ -59,119 +92,127 @@ For every prospect in `needs_dm_written`, do ALL of the following:
    - A material or design choice visible in their work
    - A recent completion or milestone
 
-### Step 3: Write personalized DMs
+### Step 3: Write the DM
 
-For each researched prospect, write a completely unique DM. **Do not use templates.** Each message must:
+Claude writes a ready-to-send DM for each prospect. Matt copy-pastes it.
 
-- Open with something specific to THEM (project name, material, design choice)
-- Be under 120 words
-- End with a question (not a pitch)
-- Contain zero links
-- Sound like a human who genuinely noticed their work, not a salesperson
-- Use ICP-appropriate language:
-  - **Builders:** "craft", "document", "portfolio", "legacy", "Georgie"
-  - **Architects:** "design intent", "material", "light", "spatial", "publication"
-  - **Designers:** "materiality", "palette", "curation", "credit", "cost-share"
+**The DM must sound like genuine curiosity, not a photographer looking for work.**
 
-**DM angle selection by ICP:**
+Rules:
+- Under 80 words. Shorter is better. Two sentences is ideal.
+- Ask a specific question about THEIR work that they'd enjoy answering
+- Do NOT mention photography, your services, portfolio, or what you do
+- Do NOT say "I'd love to collaborate" or "let's connect" or any variation
+- Reference a verified, specific detail (project name, material, technique)
+- Every detail in the DM must be confirmed from their website or a public source — never guess
+- End with a question mark
+- Sound like a peer who noticed something interesting, not a vendor prospecting
 
-| ICP | Best Angles | Trigger Moments |
-|-----|------------|-----------------|
-| Builder | Craft recognition, awards prep, legacy | Post-completion, pre-Georgie (May), post-Georgie gala |
-| Architect | Design intent, publication, collaboration | Award deadlines, project completions, new website |
-| Designer | Credit attribution, cost-share, content pipeline | Pre-WL DOTY, pre-IDIBC, post-project install |
-| Trades | Invisible craft, in-situ vs warehouse | After seeing their work in a completed project |
+**What a good DM looks like:**
 
-### Step 4: Store prepped DMs in the tracker
+> That Skeena kitchen — did you run the walnut on your own CNC or was that outsourced? The grain matching across those panels is next level.
 
-For each DM written:
+> The Conifers hitting Step 5 in Sechelt is impressive. How are you handling the embodied carbon tracking — is there a tool you like or is it still manual?
+
+> The Japandia project is stunning. What inspired the Japandi direction in a North Shore context? I keep seeing it in Whistler but not down here.
+
+**What a bad DM looks like:**
+
+> Hey, I'm an architectural photographer in Squamish. I love your work and would love to chat about photographing your next project.
+
+> Your projects are incredible. Have you thought about professional photography for your portfolio?
+
+The photography conversation happens naturally later — after they reply, after rapport exists. Not in the opener.
+
+### Step 4: Store in the tracker
 
 ```bash
 python3 tools/ig_dm_tracker.py prep-dm "@handle" \
-  --message "The full personalized DM text" \
-  --angle "craft-recognition" \
-  --notes "Key research: Built the Cypress Point residence in Whistler, won Georgie 2024 for Best Custom Home. Current website photos are iPhone quality. High-value target."
+  --message "The ready-to-send DM" \
+  --angle "craft-curiosity" \
+  --notes "Research: [key details about the prospect, why this hook was chosen]"
 ```
 
-### Step 5: Write follow-up messages
-
-For each prospect in `needs_follow_up`:
-
-- **First follow-up (day 4):** Different angle from the original DM. Never say "just following up." Share something relevant — a case study link, a journal article, a project that's similar to theirs. End with a softer question.
-- **Second follow-up (day 9):** Pure value, zero ask. Share something useful with no CTA. "Saw this and thought of your [project]."
-- **Final follow-up (day 14+):** Mark as "No Response" if still silent.
-
-Store follow-ups the same way:
-```bash
-python3 tools/ig_dm_tracker.py prep-dm "@handle" \
-  --message "The follow-up message" \
-  --angle "follow-up-1"
-```
-
-### Step 6: Present the queue to Matt
-
-After all research and writing is done, present a clean summary:
+### Step 5: Present the queue to Matt
 
 ```
-## Today's IG Outreach Queue
+## Today's IG Outreach — [Date]
 
 ### Ready to Send (copy-paste these)
-1. @handle — Company Name (Builder, Sea-to-Sky)
-   > The full DM message here
 
-2. @handle — Company Name (Architect, Vancouver)
-   > The full DM message here
+1. @daintreedesignstudio — Joel Trigg (Designer, Squamish)
+   Day 8 of warm-up. Ready to DM.
 
-### Warm-Up Today (engage with their content, DM in 2 days)
-1. @handle — Company Name — like 2-3 posts, react to Story
+   > That Skeena kitchen — did you guys run the walnut on your own
+   > CNC or outsource it? The grain matching is next level.
+
+2. @gnar.inc — Eddie Dearden (Designer, Whistler)
+   Day 7 of warm-up. Ready to DM.
+
+   > The Conifers hitting Step 5 in Sechelt is impressive. How are
+   > you handling embodied carbon tracking — is there a tool you
+   > like or is it still mostly manual?
+
+### Still Warming (keep engaging)
+- @bryn.maryanna.interiors — Day 4 of 7. Like a post today.
+- @haslerhomesltd — Day 3 of 7. React to their Story.
 
 ### Follow-Ups Due
-1. @handle — Company Name — send follow-up message:
-   > The follow-up message here
+- @handle — Day 4, no reply. Voice note:
+  "Hey [name], saw your [recent post] — [genuine 15-sec reaction]"
 
 ### Stats
-- X prospects in pipeline
-- X DMs sent this week
-- X replies received
+- X in pipeline / X warming / X DMs sent this week / X replies
 ```
 
-Matt opens his phone and sends. No research, no writing, no thinking about what to say.
+Matt opens phone, copies messages, sends. 5 minutes.
+
+### Step 6: After Matt sends
+
+Matt tells Claude: "sent the DMs" or "sent to @handle1 and @handle2"
+
+Claude logs them:
+```bash
+python3 tools/ig_dm_tracker.py log-dm "@handle" --message "the DM that was sent"
+```
+
+### Step 7: Follow-ups
+
+For prospects needing follow-up, Claude writes:
+- **Day 4 voice note script** — 15-30 second voice note referencing something new they posted. Matt records and sends.
+- **Day 10 text** — Share something valuable (article, case study, a project that reminded you of theirs). Zero ask.
+- **Day 17+ no reply** — Mark as No Response.
+
+Follow-ups must also never mention photography. Stay curious about their work.
 
 ---
 
-## Layer 2: Matt Sends (Manual, 10-15 min)
+## Layer 2: Matt's 5 Minutes (Manual)
 
-### Sending DMs
-1. Open Instagram on phone
-2. For each "Ready to Send" prospect:
-   - Go to their profile
-   - Copy-paste the pre-written DM from the queue
-   - Send
-3. Tell Claude: "sent all DMs" or "sent DMs to @handle1, @handle2"
-4. Claude logs them:
-```bash
-python3 tools/ig_dm_tracker.py log-dm "@handle" --message "the message"
-```
+### Daily warm-up (while scrolling IG naturally)
+For each prospect in the warm-up phase — do this as part of your normal IG use, not as a task:
+1. Watch their Stories (they see who views)
+2. Like 1-2 posts when they show up in your feed
+3. Once during the week, leave one genuine comment on a project post
 
-### Warm-up engagement
-For each "Warm-Up Today" prospect:
-1. Like 2-3 of their recent posts (not all at once)
-2. React to their most recent Story
-3. If they posted a project, leave a genuine comment about a specific detail
-4. Don't DM them yet — they'll be in "Ready to Send" in 2 days
+### Sending DMs (when Claude says "Ready to Send")
+1. Open the queue Claude presented
+2. Copy-paste each DM
+3. Send from the Instagram app
+4. Tell Claude: "sent"
 
-### Handling replies
-When someone replies:
-1. Tell Claude the reply context
-2. Claude updates the tracker and advises on next move
-3. If qualified → Claude generates a marketing plan (Layer 4)
-4. If they want a call → Send discovery link (mattanthonyphoto.com/discovery-call)
+### When they reply
+1. Continue the conversation naturally. Stay curious about their work.
+2. If they ask what you do, be honest and brief.
+3. After 2-3 exchanges, if there's mutual interest: "Would love to grab a coffee" or "I'd love to see that project in person"
+4. If qualified → Claude generates a marketing plan (Layer 4) as a gift
+5. If they want a call → mattanthonyphoto.com/discovery-call
 
-**Rules:**
-- Send from the Instagram app (not desktop)
-- Best times: Tuesday-Thursday, 9-11am or 1-3pm Pacific
-- Max 20 DMs per day (stay under Instagram's radar)
-- Never warm up and DM on the same day
+### Voice note follow-ups
+When Claude provides a voice note script for a follow-up:
+1. Record a 15-30 second voice note in the Instagram DM thread
+2. Keep it casual — like you're talking to someone you've met before
+3. Reference something they posted recently
 
 ---
 
@@ -278,9 +319,11 @@ python3 tools/ig_dm_tracker.py add-prospect \
 
 | Scenario | Action |
 |----------|--------|
-| Cold email sent in last 7 days | SKIP Instagram DM — don't double-tap |
-| Cold email opened 3+ times, no reply | HIGH PRIORITY for IG DM — different channel breaks through |
-| Email reply went cold | Warm up on IG, then re-engage via DM |
+| Designer in cold email list | IG DM is the better channel. Prioritize IG over email. |
+| Builder cold email sent in last 7 days | SKIP Instagram DM — don't double-tap |
+| Builder email opened 3+ times, no reply | HIGH PRIORITY for IG DM — different channel breaks through |
+| Architect | Do NOT DM on Instagram. Keep on email + LinkedIn only. |
+| Email reply went cold | Warm up on IG for 7 days, then DM with fresh angle |
 | IG DM reply, wants more info | Send marketing plan via email or DM |
 | Prospect in both channels | Track in IG DM Tracker with Source = "Cold email list" |
 
@@ -307,13 +350,19 @@ python3 tools/ig_dm_tracker.py add-prospect \
 
 | Metric | Weekly | Monthly |
 |--------|--------|---------|
-| Prospects researched (Claude) | 15-20 | 60-80 |
-| DMs prepped (Claude) | 15-20 | 60-80 |
-| DMs sent (Matt) | 15-20 | 60-80 |
-| Reply rate | 15%+ | 15%+ |
-| Conversations started | 3-4 | 12-15 |
-| Plans generated | 1-2 | 3-5 |
-| Calls booked | 1 | 3-4 |
+| New prospects researched (Claude) | 5 | 20 |
+| Research briefs delivered | 5 | 20 |
+| DMs sent (Matt) | 3-5 | 12-20 |
+| Voice note follow-ups | 2-3 | 8-12 |
+| Reply rate | 15-20%+ | 15-20%+ |
+| Conversations started | 1-2 | 4-8 |
+| Plans generated | 1 | 2-4 |
+| Calls booked | 1 | 2-4 |
+
+**Expected conversion funnel (monthly):**
+20 prospects researched → 12-20 DMs sent → 3-4 replies → 2 real conversations → 1 plan sent → 1 call booked
+
+**Why lower volume works:** Quality over quantity. 5 deeply researched prospects with genuine 7-day warm-up and a DM written in Matt's voice will outperform 50 spray-and-pray messages. The research shows personalized warm outreach gets 15-20% reply rates vs 1-5% for cold DMs.
 
 Weekly stats:
 ```bash

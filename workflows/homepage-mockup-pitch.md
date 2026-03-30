@@ -12,6 +12,15 @@ Create a personalized, live webpage that looks like a premium redesign of the bu
 - Follow-up to warm leads who haven't converted
 - In-person/DM pitches where "show, don't tell" works better than a proposal
 - Batch generation for targeted campaigns
+- **Spouse/Office Manager channel** — send mockups to the person who manages the website, not just the builder. They immediately see where the images would go and can sell it internally. See `business/sales/spouse-office-manager-channel.md`
+
+## Priority Targets (from March 2026 audit)
+
+These builders have the biggest gap between build quality and website photography:
+1. **CMC Homes** — Luxury Kadenwood builds, placeholder SVGs on website
+2. **Vista Coastal Builders** — Squamish, luxury template with no content
+3. **Alair Homes Squamish** — Georgie finalist, franchise needs local content
+See full audit: `business/sales/builder-website-audit.md`
 
 ## Required Inputs
 
@@ -74,12 +83,19 @@ Use the agent to loop through rows, calling `generate_homepage_mockup.py create`
 
 ## Pitch Templates
 
-### Cold Email / DM
-> Hey {owner}, I put together a quick homepage concept for {company} — no strings attached, just thought you'd appreciate seeing what's possible with the right imagery.
+### Cold Email / DM (to builder)
+> Hey {owner}, I put together a quick homepage concept for {company}, no strings attached, just thought you'd appreciate seeing what's possible with the right imagery.
 >
 > Take a look: {mockup_url}
 >
 > If it resonates, I'd love to chat about bringing this kind of visual quality to your actual site. Happy to jump on a quick call.
+
+### To Spouse / Office Manager (preferred for $1M-$5M builders)
+> Hey {name}, I've been following {company} and your projects are seriously impressive. I put together a quick homepage concept showing what {company}'s site could look like with professional photography.
+>
+> Take a look: {mockup_url}
+>
+> I know you're the one keeping the website and social updated, imagine having a full library of images like this ready to go. Happy to chat if it's interesting.
 
 ### Follow-Up (if they viewed it)
 > Hey {owner}, noticed you checked out the homepage concept I put together for {company}. What did you think?
@@ -87,7 +103,7 @@ Use the agent to loop through rows, calling `generate_homepage_mockup.py create`
 > That design paired with a proper shoot of your actual projects would be a serious upgrade. Worth a 15-minute call?
 
 ### In-Person / Networking
-> "I actually mocked up what your homepage could look like — here, take a look." [show on phone]
+> "I actually mocked up what your homepage could look like, here, take a look." [show on phone]
 
 ## Config Structure
 
@@ -138,6 +154,86 @@ Use the agent to loop through rows, calling `generate_homepage_mockup.py create`
 - Single self-contained HTML file — no external dependencies beyond Google Fonts
 - Mobile responsive, print-friendly
 
+## Digital Presence Upsell Path
+
+The mockup is the top of a four-rung revenue ladder. Every interaction should move the prospect one rung up.
+
+### The Ladder
+
+| Rung | Offer | Price | Trigger |
+|------|-------|-------|---------|
+| 1 | **Homepage Mockup** | Free | Cold outreach, networking |
+| 2 | **Website Build** | $4,500–$6,500 one-time | They like the mockup, want the real thing |
+| 3 | **Digital Presence Retainer** | $1,250/mo (6-month min) | Site is live, needs ongoing SEO + management |
+| 4 | **Creative Partner** | $2,500–$3,500/mo (12-month) | They want photography + content + site as one package |
+
+### Rung 2: Website Build — What's Included
+
+- Full site redesign + build on Squarespace
+- SEO foundations (meta titles/descriptions, schema markup, page speed)
+- Matt's portfolio images as placeholders until they book a shoot (or their existing images cleaned up)
+- Mobile responsive, modern layout based on the mockup they already approved
+- 30-day post-launch support (bug fixes, copy tweaks, image swaps)
+- Hosting: client pays Squarespace directly ($17–$33/mo)
+
+**Scope boundary:** Design + content only. No custom apps, e-commerce, booking systems, or integrations beyond standard Squarespace features. If they need forms or booking, use built-in Squarespace tools or embed GHL.
+
+### Rung 3: Digital Presence Retainer — What's Included
+
+- Ongoing site management (updates, image swaps, new pages as needed)
+- 1–2 SEO blog posts/month (targeting local search terms)
+- Google Business Profile setup and management
+- Monthly performance snapshot (traffic, rankings, lead form submissions)
+- Technical SEO maintenance (broken links, speed, schema)
+- Priority response within 24 hours
+
+**Not included:** Photography, social media management, paid ads. Those are Creative Partner territory.
+
+**Proof case:** Balmoral Construction — $1,260/mo for web + SEO management, 1+ year running.
+
+### Rung 4: Creative Partner — The Full Package
+
+Everything in Digital Presence, plus:
+- Project photography (shoots, editing, delivery)
+- Social media content + management
+- Award submission packages
+- Brand strategy and visual identity
+- Content calendar and quarterly planning
+
+See existing retainer models in `business/sales/` for ICP-specific tiers (builder, architect, designer).
+
+### When to Pitch Each Rung
+
+| Signal | Pitch |
+|--------|-------|
+| They reply to the mockup positively | Website Build |
+| They ask "what would it cost to actually do this?" | Website Build |
+| Site build is wrapping up, they ask about maintenance | Digital Presence Retainer |
+| They mention needing new photos for the site | Photography project → Creative Partner |
+| They're already on Digital Presence and keep asking for more | Creative Partner |
+| They say "can you just handle all of this?" | Creative Partner |
+
+### Pitch Templates — Website Build
+
+#### After Mockup Interest
+> Glad you liked the concept! The good news is that mockup is basically a blueprint — I can build the real thing on Squarespace so you own it, update it yourself, and it actually starts ranking on Google.
+>
+> For a full site redesign like what you saw, it's $4,500–$6,500 depending on page count. That includes SEO setup, mobile optimization, and 30 days of post-launch support.
+>
+> Want me to put together a proper scope for {company}?
+
+#### After Website Build Delivery
+> Now that the site is live, the next step is making sure people actually find it. SEO takes consistent work — blog posts targeting "{location} custom home builder," keeping your Google Business Profile active, making sure the technical side stays clean.
+>
+> I offer a Digital Presence retainer at $1,250/mo that covers all of that, plus ongoing site updates whenever you finish a new project. It's basically what I do for Balmoral Construction — their site traffic has grown steadily since we started.
+>
+> Want me to walk you through what that looks like?
+
+#### Digital Presence → Creative Partner Upsell
+> You've got the site and SEO dialed in. The missing piece is the content itself — right now you're working with {iPhone shots / old photos / stock images}. Imagine every project you finish getting shot professionally, those images going straight onto the site, social media, and into award submissions.
+>
+> That's what my Creative Partner clients get — photography, site, SEO, social, awards, all handled. It's $2,500–$3,500/mo and replaces 3-4 separate vendors. Worth a conversation?
+
 ## What Makes This Work
 
 The mockup shows their brand elevated by modern design. Then the showcase section shows what professional photography would add on top. Two gaps exposed in one page:
@@ -146,3 +242,5 @@ The mockup shows their brand elevated by modern design. Then the showcase sectio
 2. **Photography gap** — their current iPhone shots vs Matt's portfolio (the showcase section)
 
 The builder sees both problems and the solution in one scroll.
+
+The Digital Presence ladder means you're never leaving money on the table. Every mockup is a potential $15K–$42K/year client if you walk them up the rungs.
