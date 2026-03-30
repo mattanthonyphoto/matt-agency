@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ronse Massey — Custom Homes, Heritage, Marine-Access | Vancouver BC</title>
+<meta name="description" content="Third-generation Vancouver custom home builders. Heritage retention, marine-access builds, and ground-up custom homes built with craftsmanship, capability, and honesty.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #1A1A18;
+  --paper: #F6F4F0;
+  --warmgray: #E8E4DF;
+  --gold: #B09A76;
+  --gold-dim: rgba(176,154,118,0.12);
+  --gold-border: rgba(176,154,118,0.25);
+  --stone: #8A8579;
+  --light-stone: #D9D5CD;
+  --white: #FFFFFF;
+  --dark-accent: #2E2821;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.7;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Scroll Progress ── */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold), #D4BC8A);
+  width: 0%; z-index: 9999; transition: width 0.1s linear;
+}
+
+/* ── Typography ── */
+.eyebrow {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold);
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px;
+}
+.eyebrow::before {
+  content: ''; display: block;
+  width: 0; height: 1px; background: var(--gold);
+  transition: width 0.6s ease;
+}
+.eyebrow.visible::before { width: 28px; }
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; line-height: 1.15;
+}
+h2 { font-size: clamp(32px, 4vw, 48px); margin-bottom: 24px; }
+h2 em { font-style: italic; position: relative; }
+
+p { max-width: 640px; }
+p + p { margin-top: 16px; }
+.stone { color: var(--stone); }
+
+/* ── Navigation ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 48px;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(26,26,24,0.95);
+  backdrop-filter: blur(12px);
+  padding: 16px 48px;
+}
+.nav-logo img {
+  height: 24px; filter: brightness(0) invert(1);
+  transition: height 0.3s ease;
+}
+nav.scrolled .nav-logo img { height: 20px; }
+.nav-links {
+  display: flex; align-items: center; gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 12px; font-weight: 400;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--white); text-decoration: none;
+  opacity: 0.8; transition: opacity 0.3s;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-cta {
+  border: 1px solid var(--gold) !important;
+  padding: 10px 24px !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease !important;
+}
+.nav-cta:hover {
+  background: var(--gold) !important;
+  color: var(--ink) !important;
+}
+
+/* Mobile nav */
+.hamburger { display: none; cursor: pointer; }
+.hamburger span {
+  display: block; width: 24px; height: 1px;
+  background: var(--white); margin: 6px 0;
+  transition: all 0.3s ease;
+}
+
+/* ── Hero ── */
+.hero {
+  position: relative; height: 100vh; min-height: 700px;
+  display: flex; align-items: flex-end;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.squarespace-cdn.com/content/v1/63b7227a01ac5b7586fc5ceb/119eb168-8581-407a-8dd6-0f7932c0c999/West19_1466.jpg');
+  background-size: cover; background-position: center;
+  animation: kenBurns 12s ease-in-out infinite alternate;
+}
+@keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.04); } }
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26,26,24,0.7) 0%,
+    rgba(26,26,24,0.3) 40%,
+    rgba(26,26,24,0.1) 70%,
+    transparent 100%
+  );
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 48px 80px;
+  max-width: 800px;
+}
+.hero-eyebrow {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  opacity: 0; transform: translateY(16px);
+  animation: fadeUp 0.8s 0.4s ease forwards;
+}
+.hero h1 {
+  font-size: clamp(42px, 6vw, 72px);
+  color: var(--white);
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 0.8s 0.6s ease forwards;
+}
+.hero-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px; color: var(--light-stone);
+  margin-top: 16px;
+  opacity: 0; transform: translateY(16px);
+  animation: fadeUp 0.8s 0.8s ease forwards;
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-indicator {
+  position: absolute; bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; animation: fadeUp 0.8s 1.2s ease forwards;
+}
+.scroll-indicator span {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold);
+}
+.scroll-line {
+  width: 1px; height: 40px; background: var(--gold);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ── Sections ── */
+.section {
+  padding: 120px 48px;
+}
+.section-inner {
+  max-width: 1200px; margin: 0 auto;
+}
+
+/* ── Intro ── */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.intro-text p {
+  font-size: 18px; line-height: 1.8;
+  color: var(--stone);
+}
+.intro-text .lead {
+  font-size: 21px; color: var(--ink);
+  line-height: 1.7; margin-bottom: 24px;
+  max-width: 520px;
+}
+.intro-image {
+  position: relative; overflow: hidden;
+}
+.intro-image img {
+  width: 100%; height: 600px;
+  object-fit: cover;
+  filter: saturate(0.9);
+}
+.intro-image::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 40%;
+  background: linear-gradient(to top, rgba(246,244,240,0.2), transparent);
+}
+
+/* ── Projects ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  margin-top: 48px;
+}
+.project-card {
+  position: relative; overflow: hidden;
+  cursor: pointer;
+}
+.project-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.project-card:hover img { transform: scale(1.03); }
+.project-card.large { grid-row: 1 / -1; }
+.project-card.large img { min-height: 560px; }
+.project-info {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 40px 28px 28px;
+  background: linear-gradient(to top, rgba(26,26,24,0.75), transparent);
+  opacity: 0; transform: translateY(8px);
+  transition: all 0.4s ease;
+}
+.project-card:hover .project-info {
+  opacity: 1; transform: translateY(0);
+}
+.project-info h3 {
+  font-size: 22px; color: var(--white);
+  margin-bottom: 4px;
+}
+.project-info span {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold);
+}
+
+.view-all {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 40px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 12px; font-weight: 400;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+  transition: gap 0.3s ease;
+}
+.view-all:hover { gap: 14px; }
+.view-all svg { width: 20px; transition: transform 0.3s; }
+.view-all:hover svg { transform: translateX(4px); }
+
+/* ── Photo Break ── */
+.photo-break {
+  position: relative; height: 45vh; min-height: 320px;
+  overflow: hidden;
+}
+.photo-break img {
+  width: 100%; height: 100%; object-fit: cover;
+  transform: scale(1.05);
+  transition: transform 8s linear;
+}
+.photo-break.in-view img { transform: scale(1); }
+
+/* ── Process ── */
+.dark-section {
+  background: var(--ink);
+  color: var(--paper);
+}
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px; margin-top: 64px;
+  position: relative;
+}
+.process-grid::before {
+  content: ''; position: absolute;
+  top: 32px; left: 12.5%; right: 12.5%;
+  height: 1px; background: var(--gold-border);
+}
+.process-step { text-align: center; }
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px; color: var(--gold);
+  line-height: 1; margin-bottom: 20px;
+  position: relative; z-index: 1;
+}
+.step-num::after {
+  content: ''; position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--ink); border: 1px solid var(--gold-border);
+  z-index: -1;
+}
+.step-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--paper); margin-bottom: 12px;
+}
+.step-desc {
+  font-size: 15px; color: var(--stone);
+  line-height: 1.6; max-width: 220px; margin: 0 auto;
+}
+
+/* ── Stats ── */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0; padding: 64px 48px;
+  background: var(--dark-accent);
+}
+.stat { text-align: center; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5vw, 56px);
+  font-weight: 500; color: var(--gold);
+  line-height: 1;
+}
+.stat-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 11px; font-weight: 400;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--light-stone); margin-top: 8px;
+}
+
+/* ── Heritage / About ── */
+.heritage-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px; align-items: center;
+}
+.heritage-text h2 { margin-bottom: 32px; }
+.heritage-text p {
+  color: var(--stone); font-size: 17px;
+}
+.pull-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-style: italic;
+  color: var(--gold); line-height: 1.4;
+  margin: 32px 0;
+  padding-left: 24px;
+  border-left: 2px solid var(--gold-border);
+  max-width: 480px;
+}
+.heritage-image img {
+  width: 100%; height: 620px;
+  object-fit: cover;
+}
+
+/* ── Testimonial ── */
+.testimonial-section {
+  padding: 100px 48px;
+  text-align: center;
+}
+.testimonial-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 120px; color: var(--gold);
+  opacity: 0.15; line-height: 0.5;
+  margin-bottom: 8px;
+}
+.testimonial-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3vw, 30px);
+  font-style: italic; font-weight: 400;
+  color: var(--paper);
+  max-width: 780px; margin: 0 auto;
+  line-height: 1.5;
+}
+.testimonial-attr {
+  margin-top: 32px;
+}
+.testimonial-name {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold);
+}
+.testimonial-detail {
+  font-size: 14px; color: var(--stone);
+  margin-top: 4px;
+}
+
+/* ── Services ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-top: 48px;
+}
+.service-card {
+  position: relative; overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--warmgray);
+  transition: border-color 0.3s ease;
+}
+.service-card:hover { border-color: var(--gold); }
+.service-card img {
+  width: 100%; height: 240px;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.service-card:hover img { transform: scale(1.03); }
+.service-card-body {
+  padding: 28px;
+}
+.service-card h3 {
+  font-size: 24px; margin-bottom: 8px;
+}
+.service-card p {
+  font-size: 15px; color: var(--stone);
+  line-height: 1.6;
+}
+
+/* ── CTA ── */
+.cta-section {
+  padding: 100px 48px;
+  text-align: center;
+  background: var(--warmgray);
+}
+.cta-section h2 { margin-bottom: 16px; }
+.cta-section p {
+  color: var(--stone); font-size: 18px;
+  max-width: 480px; margin: 0 auto 32px;
+}
+.cta-btn {
+  display: inline-block;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--paper);
+  background: var(--ink);
+  padding: 16px 40px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.cta-btn:hover {
+  background: var(--gold);
+  color: var(--ink);
+}
+.cta-contact {
+  margin-top: 20px;
+  font-size: 14px; color: var(--stone);
+}
+.cta-contact a {
+  color: var(--stone); text-decoration: none;
+}
+
+/* ── Footer ── */
+footer {
+  background: var(--ink);
+  padding: 80px 48px 40px;
+  color: var(--stone);
+}
+.footer-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+}
+.footer-brand img {
+  height: 20px; filter: brightness(0) invert(1);
+  margin-bottom: 16px;
+}
+.footer-brand p {
+  font-size: 14px; line-height: 1.6;
+  color: var(--stone); max-width: 260px;
+}
+.footer-col h4 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+}
+.footer-col a {
+  display: block; color: var(--stone);
+  text-decoration: none; font-size: 14px;
+  margin-bottom: 8px;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--paper); }
+.footer-bottom {
+  max-width: 1200px; margin: 48px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex; justify-content: space-between;
+  align-items: center;
+  font-size: 13px; color: var(--stone);
+}
+.footer-badges {
+  display: flex; gap: 16px; align-items: center;
+}
+.footer-badges span {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 10px; letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+}
+
+/* ── Concept Banner ── */
+.concept-banner {
+  background: var(--gold);
+  padding: 32px 48px;
+  text-align: center;
+}
+.concept-banner p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  max-width: none;
+}
+.concept-banner a {
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+/* ── Reveal Animation ── */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1; transform: translateY(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .intro-grid, .heritage-grid { grid-template-columns: 1fr; gap: 48px; }
+  .heritage-image { order: -1; }
+  .heritage-image img { height: 400px; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .process-grid::before { display: none; }
+  .projects-grid { grid-template-columns: 1fr 1fr; }
+  .project-card.large { grid-row: auto; }
+  .project-card.large img { min-height: 340px; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 20px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+  .section { padding: 80px 24px; }
+  .hero-content { padding: 0 24px 60px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-card.large img { min-height: 280px; }
+  .project-info { opacity: 1; transform: none; }
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px; padding: 48px 24px;
+  }
+  .process-grid { grid-template-columns: 1fr; gap: 40px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .photo-break { height: 240px; min-height: 200px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  .intro-image img { height: 360px; }
+  .pull-quote { font-size: 22px; }
+  .testimonial-section { padding: 80px 24px; }
+}
+
+@media (max-width: 480px) {
+  .stats-bar { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Navigation -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <img src="https://images.squarespace-cdn.com/content/v1/63b7227a01ac5b7586fc5ceb/8c00bc40-444b-45b4-b6f7-bc25816246b5/Asset+1.png" alt="Ronse Massey">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#heritage">About</a></li>
+    <li><a href="#contact" class="nav-cta">Start a Conversation</a></li>
+  </ul>
+  <div class="hamburger" onclick="this.classList.toggle('active')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Custom Homes &nbsp;/&nbsp; Heritage &nbsp;/&nbsp; Marine-Access</div>
+    <h1>Built with <em>intention.</em></h1>
+    <p class="hero-sub">Vancouver custom homes since 2007</p>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- Intro -->
+<section class="section">
+  <div class="section-inner">
+    <div class="intro-grid">
+      <div class="intro-text reveal">
+        <div class="eyebrow">Who We Are</div>
+        <h2>A family-built approach to <em>custom homes.</em></h2>
+        <p class="lead">Joel and Xavier Massey are third-generation British Columbia homebuilders. What started as a shared passion for honest construction became Ronse Massey in 2007.</p>
+        <p class="stone">Every project starts with the same question: how should this home feel? From heritage restorations in Vancouver's established neighborhoods to marine-access builds on Keats Island, we bring the same commitment — craftsmanship you can see, capability you can trust, and honesty at every stage.</p>
+      </div>
+      <div class="intro-image reveal">
+        <img src="https://images.squarespace-cdn.com/content/v1/63b7227a01ac5b7586fc5ceb/4305fc02-aa87-499f-ba0d-75e7cc702f96/52971991219_127bbc8395_o.jpg" alt="Ronse Massey project interior">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Projects -->
+<section class="section" id="projects" style="padding-top: 60px;">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="eyebrow">Selected Projects</div>
+      <h2>Every home tells a <em>story.</em></h2>
+    </div>
+    <div class="projects-grid reveal">
+      <div class="project-card large">
+        <img src="https://images.squarespace-cdn.com/content/v1/63b7227a01ac5b7586fc5ceb/f576b5c4-0c10-4b7f-af96-60bfcc2e1a3e/PTGrey_5760.jpg" alt="Point Grey Residence">
+        <div class="project-info">
+          <h3>Point Grey Residence</h3>
+          <span>Vancouver</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/63b7227a01ac5b7586fc5ceb/48d5222b-7941-49a7-8f3e-67b3e15a911e/keats-0455-copy_43528945930_o.jpg" alt="Keat's Retreat">
+        <div class="project-info">
+          <h3>Keat's Retreat</h3>
+          <span>Keats Island &nbsp;&middot;&nbsp; Georgie Finalist</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/63b7227a01ac5b7586fc5ceb/66070c15-8fe9-4160-90c9-2fa8be336486/_q1a9895-panorama-_23544921489_o.jpg" alt="Heritage Retention Vancouver">
+        <div class="project-info">
+          <h3>Heritage Retention</h3>
+          <span>East Vancouver &nbsp;&middot;&nbsp; Georgie Finalist</span>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="view-all reveal">
+      View All Projects
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- Photo Break 1 — Material Detail -->
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/63b7227a01ac5b7586fc5ceb/48117330-1a06-494f-989a-ef7a4e5271c0/PtGrey_5821.jpg" alt="Point Grey Residence kitchen detail">
+</div>
+
+<!-- Process / Approach -->
+<section class="section dark-section" id="approach">
+  <div class="section-inner">
+    <div style="text-align: center;" class="reveal">
+      <div class="eyebrow" style="justify-content: center;">Our Approach</div>
+      <h2>Honest workmanship from <em>start to finish.</em></h2>
+    </div>
+    <div class="process-grid reveal">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-title">Collaborate</div>
+        <p class="step-desc">We start with your vision, your site, your life. Every detail matters before a single nail is driven.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-title">Design</div>
+        <p class="step-desc">Working with your architect and design team to refine every material and detail.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-title">Build</div>
+        <p class="step-desc">Hands-on construction with our own Red Seal certified crews. No shortcuts.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-title">Deliver</div>
+        <p class="step-desc">A home built to last generations, finished with the care of craftsmen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num"><span class="counter" data-target="19">0</span></div>
+    <div class="stat-label">Years Building</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num"><span class="counter" data-target="50">0</span>+</div>
+    <div class="stat-label">Custom Homes</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num"><span class="counter" data-target="6">0</span></div>
+    <div class="stat-label">Red Seal Certified Crew</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num"><span class="counter" data-target="3">0</span></div>
+    <div class="stat-label">Generations of Builders</div>
+  </div>
+</div>
+
+<!-- Photo Break 2 — Exterior -->
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/63b7227a01ac5b7586fc5ceb/769c0256-c063-4369-b68e-457fc0c60a13/West19_1466.jpg" alt="West 19th Avenue exterior">
+</div>
+
+<!-- Heritage & Craft -->
+<section class="section" id="heritage">
+  <div class="section-inner">
+    <div class="heritage-grid">
+      <div class="heritage-text reveal">
+        <div class="eyebrow">Heritage & Craft</div>
+        <h2>Admirers of the <em>Craftsman tradition.</em></h2>
+        <p>Ronse Massey has a long-vested interest in the preservation of heritage homes and a deep appreciation for their cultural and aesthetic value. Restoring and renovating these historic projects is an art that demands passion, creativity, and distinctive problem-solving.</p>
+        <div class="pull-quote">"Simple, pure design. Natural materials. Honest workmanship."</div>
+        <p>Joel Massey serves on the Vancouver Heritage Commission, advising City Council on heritage preservation and chairing the Heritage Awards jury. It's not just what we build — it's what we believe building should be.</p>
+      </div>
+      <div class="heritage-image reveal">
+        <img src="https://images.squarespace-cdn.com/content/v1/63b7227a01ac5b7586fc5ceb/1b36ec41-b53c-4172-9eb3-0c23196458d8/_q1a1678-_23544561099_o.jpg" alt="Heritage home detail">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial -->
+<section class="testimonial-section dark-section">
+  <div class="reveal">
+    <div class="testimonial-mark">"</div>
+    <blockquote class="testimonial-quote">
+      Sometimes you find skilled workmanship. Sometimes good people. But seldom both quality construction and quality people under one roof.
+    </blockquote>
+    <div class="testimonial-attr">
+      <div class="testimonial-name">The Lee Family</div>
+      <div class="testimonial-detail">Custom Home, Vancouver</div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section" style="background: var(--warmgray);">
+  <div class="section-inner">
+    <div class="reveal" style="text-align: center;">
+      <div class="eyebrow" style="justify-content: center;">What We Build</div>
+      <h2>Three disciplines, one <em>standard.</em></h2>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/63b7227a01ac5b7586fc5ceb/183aa767-91b6-4fa8-9362-568ffed09ccd/West19_1347.jpg" alt="Custom home by Ronse Massey">
+        <div class="service-card-body">
+          <h3>Custom Homes</h3>
+          <p>Ground-up builds tailored to your site, your architect's vision, and the way you live.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/63b7227a01ac5b7586fc5ceb/6787468b-c4ca-490e-8a46-5c6cea3e3d7f/_q1a9878-_23886781356_o.jpg" alt="Heritage renovation by Ronse Massey">
+        <div class="service-card-body">
+          <h3>Heritage Retention</h3>
+          <p>Revitalizing Vancouver's character homes with the care they deserve and the modern function they need.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/63b7227a01ac5b7586fc5ceb/a5654c4e-f2b1-4942-8882-14fe59d969ba/keats-0368-copy_43528947210_o.jpg" alt="Marine-access build by Ronse Massey">
+        <div class="service-card-body">
+          <h3>Marine-Access</h3>
+          <p>Waterfront and island homes built with coastal expertise and the logistics to reach any site.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Photo Break 3 -->
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/63b7227a01ac5b7586fc5ceb/484a29d3-8ce9-4919-b374-95ce87b6e2bf/PTGrey_5692.jpg" alt="Point Grey outdoor space">
+</div>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="reveal">
+    <div class="eyebrow" style="justify-content: center; color: var(--stone);">Get in Touch</div>
+    <h2>Let's build something <em>honest.</em></h2>
+    <p>Every Ronse Massey project starts with a conversation about your vision, your site, and the home you want to come back to every day.</p>
+    <a href="tel:7783713287" class="cta-btn">Start a Conversation</a>
+    <div class="cta-contact">
+      <a href="tel:7783713287">(778) 371-3287</a> &nbsp;&middot;&nbsp; Vancouver, BC
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://images.squarespace-cdn.com/content/v1/63b7227a01ac5b7586fc5ceb/8c00bc40-444b-45b4-b6f7-bc25816246b5/Asset+1.png" alt="Ronse Massey">
+      <p>Third-generation Vancouver custom home builders. Craftsmanship, capability, and honesty since 2007.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a href="#projects">Projects</a>
+      <a href="#approach">Approach</a>
+      <a href="#heritage">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#">Custom Homes</a>
+      <a href="#">Heritage Retention</a>
+      <a href="#">Marine-Access</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:7783713287">(778) 371-3287</a>
+      <a href="#">301 - 28 W 7th Ave</a>
+      <a href="#">Vancouver, BC V5Y 1L6</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Ronse Massey Developments Inc.</span>
+    <div class="footer-badges">
+      <span>HAVAN Member</span>
+      <span>CHBA Member</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Concept Banner -->
+<div class="concept-banner">
+  <p>This is a homepage concept designed by <a href="https://mattanthonyphoto.com/discovery-call" target="_blank">Matt Anthony Photography</a> &nbsp;&middot;&nbsp; Want to bring this to life? <a href="https://mattanthonyphoto.com/discovery-call" target="_blank">Let's talk.</a></p>
+</div>
+
+<script>
+// Scroll progress
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  document.getElementById('scrollProgress').style.width = pct + '%';
+});
+
+// Nav scroll state
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal, .eyebrow').forEach(el => observer.observe(el));
+
+// Photo break Ken Burns
+const breakObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    e.target.classList.toggle('in-view', e.isIntersecting);
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.photo-break').forEach(el => breakObserver.observe(el));
+
+// Counter animation
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.counted) {
+      e.target.dataset.counted = 'true';
+      const target = parseInt(e.target.dataset.target);
+      const duration = 1500;
+      const start = performance.now();
+      const animate = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        e.target.textContent = Math.round(eased * target);
+        if (progress < 1) requestAnimationFrame(animate);
+      };
+      requestAnimationFrame(animate);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+// Hide scroll indicator on scroll
+const scrollInd = document.querySelector('.scroll-indicator');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100 && scrollInd) {
+    scrollInd.style.opacity = '0';
+    scrollInd.style.transition = 'opacity 0.5s';
+  }
+}, { passive: true });
+</script>
+
+</body>
+</html>

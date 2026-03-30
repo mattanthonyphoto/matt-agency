@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Management — Colour Craft Painting</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A18;
+    --paper: #F6F4F0;
+    --gold: #C9A96E;
+    --gold-dim: rgba(201,169,110,0.12);
+    --gold-border: rgba(201,169,110,0.25);
+    --gold-glow: rgba(201,169,110,0.06);
+    --stone: #8A8579;
+    --white: #FFFFFF;
+    --light: #FAFAF8;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; -webkit-print-color-adjust:exact; print-color-adjust:exact; scroll-behavior:smooth; }
+  body { background:var(--white); color:var(--ink); font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.75; overflow-x:hidden; }
+
+  /* ═══════════════════════════════════════
+     COVER
+     ═══════════════════════════════════════ */
+  .cover {
+    min-height:100vh; background:var(--ink); color:var(--paper);
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding:0; position:relative; page-break-after:always; overflow:hidden;
+  }
+  .cover-image {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    background-image:url("https://colourcraftpainting.com/wp-content/uploads/2025/06/IMG_3263-1024x768.jpeg");
+    background-size:cover; background-position:center 30%;
+    will-change:transform; transition:transform 0.1s linear;
+  }
+  .cover-image::after {
+    content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+    background:linear-gradient(to bottom, rgba(26,26,24,0.4) 0%, rgba(26,26,24,0.3) 30%, rgba(26,26,24,0.6) 55%, rgba(26,26,24,0.94) 80%, rgba(26,26,24,0.99) 100%);
+  }
+  .cover-top {
+    position:absolute; top:0; left:0; right:0; z-index:3;
+    padding:40px 60px; display:flex; justify-content:space-between; align-items:center;
+  }
+  .cover-logo {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:rgba(246,244,240,0.6);
+  }
+  .cover-date {
+    font-family:'Josefin Sans',sans-serif; font-size:0.65rem;
+    letter-spacing:0.2em; color:rgba(246,244,240,0.4);
+  }
+  .cover-content {
+    position:relative; z-index:2; padding:0 60px 80px; max-width:720px;
+  }
+  .cover-eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.4em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:20px; display:flex; align-items:center; gap:16px;
+  }
+  .cover-eyebrow::before { content:''; width:32px; height:1px; background:var(--gold); }
+  .cover h1 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:clamp(3rem,6vw,5rem); line-height:1.05; margin-bottom:20px;
+    letter-spacing:-0.01em;
+    text-shadow:0 2px 40px rgba(0,0,0,0.5), 0 4px 80px rgba(0,0,0,0.3);
+  }
+  .cover h1 em { font-style:italic; font-weight:500; color:var(--gold); }
+  .cover-sub {
+    font-size:1rem; color:rgba(246,244,240,0.75); max-width:480px;
+    line-height:1.8; margin-bottom:56px;
+    text-shadow:0 1px 20px rgba(0,0,0,0.4), 0 2px 40px rgba(0,0,0,0.2);
+  }
+  .cover-meta-bar {
+    display:flex; gap:48px; padding-top:32px;
+    border-top:1px solid rgba(201,169,110,0.15);
+  }
+  .cover-meta-item {
+    font-size:0.75rem; color:rgba(246,244,240,0.35); line-height:1.8;
+  }
+  .cover-meta-item strong {
+    display:block; color:rgba(246,244,240,0.7); font-weight:400;
+    font-family:'Josefin Sans',sans-serif; font-size:0.6rem;
+    letter-spacing:0.15em; text-transform:uppercase; margin-bottom:2px;
+  }
+  .cover .cover-eyebrow, .cover h1, .cover .cover-sub, .cover .cover-meta-bar {
+    opacity:0; transform:translateY(24px);
+    animation:coverFade 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover .cover-eyebrow { animation-delay:0.3s; }
+  .cover h1 { animation-delay:0.6s; }
+  .cover .cover-sub { animation-delay:0.9s; }
+  .cover .cover-meta-bar { animation-delay:1.2s; }
+  @keyframes coverFade { to { opacity:1; transform:translateY(0); } }
+
+  .cover-cta {
+    display:inline-flex; align-items:center; gap:10px;
+    margin-top:32px; padding:12px 28px;
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--paper); border:1px solid rgba(246,244,240,0.25);
+    text-decoration:none; cursor:pointer;
+    transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+    opacity:0; animation:coverFade 0.9s 1.5s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover-cta:hover { border-color:var(--gold); color:var(--gold); padding-right:36px; }
+  .cover-cta-arrow { display:inline-block; transition:transform 0.3s ease; font-size:0.8rem; }
+  .cover-cta:hover .cover-cta-arrow { transform:translateY(3px); }
+
+  .scroll-indicator {
+    position:absolute; bottom:40px; left:50%;
+    transform:translateX(-50%); display:flex; flex-direction:column;
+    align-items:center; gap:8px;
+    opacity:0; animation:coverFade 0.9s 1.8s cubic-bezier(0.16,1,0.3,1) forwards;
+    transition:opacity 0.4s ease;
+  }
+  .scroll-indicator.hidden { opacity:0 !important; }
+  .scroll-indicator-text {
+    font-family:'Josefin Sans',sans-serif; font-size:0.45rem;
+    letter-spacing:0.3em; text-transform:uppercase; color:rgba(246,244,240,0.3);
+  }
+  .scroll-indicator-line {
+    width:1px; height:32px; position:relative; overflow:hidden; background:rgba(246,244,240,0.1);
+  }
+  .scroll-indicator-line::after {
+    content:''; position:absolute; top:-100%; left:0;
+    width:100%; height:100%; background:var(--gold);
+    animation:scrollPulse 2s cubic-bezier(0.16,1,0.3,1) infinite;
+  }
+  @keyframes scrollPulse { 0% { top:-100%; } 50% { top:100%; } 100% { top:100%; } }
+
+  /* ═══════════════════════════════════════
+     LAYOUT
+     ═══════════════════════════════════════ */
+  .section { padding:120px 60px; max-width:1000px; margin:0 auto; }
+  .section.wide { max-width:1200px; }
+  .section.dark { background:var(--ink); color:var(--paper); }
+  .section.cream { background:var(--paper); }
+  .section.light { background:var(--light); }
+
+  .eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; display:flex; align-items:center; gap:14px;
+  }
+  .eyebrow::before { content:''; width:0; height:1px; background:var(--gold); transition:width 0.6s 0.2s cubic-bezier(0.16,1,0.3,1); }
+  .eyebrow.visible::before { width:24px; }
+
+  h2 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:2.6rem; line-height:1.12; margin-bottom:32px;
+    letter-spacing:-0.01em; text-wrap:balance;
+  }
+  h2 em { font-style:italic; font-weight:500; position:relative; display:inline; }
+  h2 em::after {
+    content:''; position:absolute; bottom:2px; left:0;
+    width:0; height:1.5px;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.3));
+    transition:width 1s 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  h2.underlined em::after { width:100%; }
+  h3 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.75rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
+    margin:56px 0 20px;
+  }
+  p { margin-bottom:20px; font-size:0.95rem; }
+  .lead { font-size:1.05rem; line-height:1.9; color:var(--stone); text-wrap:pretty; }
+
+  /* ═══════════════════════════════════════
+     STATS
+     ═══════════════════════════════════════ */
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .stat { background:var(--white); text-align:center; padding:36px 16px; }
+  .section.cream .stat { background:var(--paper); }
+  .stat-val {
+    font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:500;
+    color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+    text-shadow:0 0 40px rgba(201,169,110,0.15);
+  }
+  .stat-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--stone);
+  }
+
+  /* ═══════════════════════════════════════
+     SERVICES GRID
+     ═══════════════════════════════════════ */
+  .services { display:grid; grid-template-columns:1fr 1fr; gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .svc {
+    background:var(--white); padding:40px 36px; position:relative;
+    transition:all 0.3s cubic-bezier(0.16,1,0.3,1); border-left:3px solid transparent;
+  }
+  .svc:hover { border-left-color:var(--gold); background:var(--light); }
+  .svc.new { background:var(--light); }
+  .svc.new:hover { background:var(--white); }
+  .svc-badge {
+    position:absolute; top:20px; right:20px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--gold-border); padding:4px 12px;
+    background:linear-gradient(135deg, rgba(201,169,110,0.08), transparent);
+  }
+  .svc h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.7rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;
+  }
+  .svc ul { list-style:none; }
+  .svc li {
+    font-size:0.85rem; padding:8px 0 8px 24px; position:relative;
+    color:var(--stone); border-bottom:1px solid rgba(26,26,24,0.04);
+  }
+  .svc li:last-child { border:none; }
+  .svc li::before {
+    content:''; position:absolute; left:0; top:16px; width:8px; height:1px; background:var(--gold);
+  }
+
+  /* ═══════════════════════════════════════
+     PRICING TIERS
+     ═══════════════════════════════════════ */
+  .tiers {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+    margin:56px 0; position:relative;
+  }
+  .tier {
+    padding:48px 32px 40px; border:1px solid rgba(26,26,24,0.06);
+    background:var(--white); position:relative; cursor:pointer;
+    transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+    transform-style:preserve-3d; perspective:800px;
+  }
+  .tier:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,0.08), 0 0 0 1px var(--gold-border); z-index:1; }
+  .tier + .tier { border-left:none; }
+  .tier.rec {
+    background:var(--ink); color:var(--paper); border-color:rgba(201,169,110,0.3);
+    transform:scaleY(1.02); z-index:2;
+    box-shadow:0 12px 48px rgba(0,0,0,0.15);
+  }
+  .tier.rec::before {
+    content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+    background:linear-gradient(180deg, rgba(201,169,110,0.03) 0%, transparent 40%);
+    pointer-events:none;
+  }
+  .tier.rec:hover { transform:scaleY(1.02) translateY(-6px); box-shadow:0 24px 64px rgba(0,0,0,0.22), 0 0 40px rgba(201,169,110,0.08); }
+  .tier-badge {
+    position:absolute; top:-1px; left:0; right:0;
+    height:3px; background:linear-gradient(135deg, var(--gold), rgba(201,169,110,0.8));
+  }
+  .tier-badge span {
+    position:absolute; top:8px; left:50%; transform:translateX(-50%);
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--gold); white-space:nowrap;
+  }
+  .tier-name {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--gold);
+    margin:24px 0 12px;
+  }
+  .tier-price {
+    font-family:'Cormorant Garamond',serif; font-size:3.2rem;
+    font-weight:400; line-height:1; margin-bottom:6px;
+  }
+  .tier:not(.rec) .tier-price { color:var(--ink); }
+  .tier.rec .tier-price { color:var(--paper); }
+  .tier-price span { font-size:1rem; color:var(--stone); font-family:'DM Sans',sans-serif; font-weight:300; }
+  .tier-term {
+    font-size:0.75rem; color:var(--stone); margin-bottom:32px;
+    padding-bottom:24px; border-bottom:1px solid var(--gold-dim);
+  }
+  .tier.rec .tier-term { border-color:rgba(201,169,110,0.2); }
+  .tier ul { list-style:none; }
+  .tier li {
+    font-size:0.8rem; padding:7px 0 7px 22px; position:relative;
+    border-bottom:1px solid rgba(26,26,24,0.03);
+  }
+  .tier.rec li { color:rgba(246,244,240,0.75); border-color:rgba(246,244,240,0.05); }
+  .tier li:last-child { border:none; }
+  .tier li::before {
+    content:''; position:absolute; left:0; top:14px; width:8px; height:1px; background:var(--gold);
+  }
+  .tier li.off { opacity:0.25; }
+  .tier li.off::before { background:var(--stone); }
+  .tier-bottom {
+    margin-top:28px; padding-top:20px; border-top:1px solid var(--gold-dim);
+    font-size:0.7rem; color:var(--stone);
+  }
+  .tier.rec .tier-bottom { border-color:rgba(201,169,110,0.2); }
+  .tier-bottom strong { color:var(--gold); font-weight:500; font-size:0.85rem; }
+  .tier-selected-badge {
+    position:absolute; top:12px; right:12px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.45rem;
+    letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--gold);
+    padding:3px 10px; border-radius:2px;
+    opacity:0; transform:translateY(-4px);
+    transition:opacity 0.3s ease, transform 0.3s ease;
+  }
+  .tier.selected .tier-selected-badge { opacity:1; transform:translateY(0); }
+  .tier.selected:not(.rec) { box-shadow:0 0 0 2px var(--gold), 0 20px 60px rgba(0,0,0,0.1); }
+  .tier.rec.selected { box-shadow:0 0 0 2px var(--gold), 0 24px 64px rgba(0,0,0,0.22), 0 0 40px rgba(201,169,110,0.12); }
+
+  /* ═══════════════════════════════════════
+     INSIGHT
+     ═══════════════════════════════════════ */
+  .insight {
+    background:var(--light); padding:48px 56px; margin:56px 0;
+    position:relative; border:1px solid rgba(201,169,110,0.08);
+    box-shadow:0 8px 32px rgba(0,0,0,0.03);
+  }
+  .insight::before {
+    content:''; position:absolute; top:0; left:0; bottom:0;
+    width:3px; background:var(--gold);
+    box-shadow:4px 0 16px rgba(201,169,110,0.08);
+  }
+  .insight h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;
+  }
+  .insight p { font-size:0.9rem; margin-bottom:10px; }
+  .insight p:last-child { margin-bottom:0; }
+  .insight .tier-breakdown { margin-top:20px; display:flex; flex-direction:column; gap:8px; }
+  .insight .tb { display:flex; align-items:baseline; gap:12px; font-size:0.88rem; }
+  .insight .tb-label {
+    font-weight:500; color:var(--gold); min-width:160px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.7rem;
+    letter-spacing:0.1em; text-transform:uppercase;
+  }
+  .insight .tb-desc { color:var(--stone); }
+
+  /* ═══════════════════════════════════════
+     ROADMAP
+     ═══════════════════════════════════════ */
+  .roadmap { margin:56px 0; position:relative; }
+  .roadmap-line {
+    position:absolute; left:200px; top:48px; width:2px;
+    height:0; background:var(--gold);
+    transition:height 0.05s linear; z-index:1;
+    box-shadow:0 0 6px rgba(201,169,110,0.3);
+  }
+  .roadmap-line::after {
+    content:''; position:absolute; bottom:-4px; left:-3px;
+    width:8px; height:8px; border-radius:50%;
+    background:var(--gold); box-shadow:0 0 12px rgba(201,169,110,0.5);
+  }
+  .rm {
+    display:grid; grid-template-columns:200px 1fr; gap:0;
+    border-bottom:1px solid rgba(26,26,24,0.06); min-height:0;
+  }
+  .rm:last-child { border:none; }
+  .rm-left {
+    padding:40px 32px 40px 0; border-right:2px solid var(--gold-dim); position:relative;
+  }
+  .rm-left::after {
+    content:''; position:absolute; right:-5px; top:48px;
+    width:8px; height:8px; border-radius:50%; background:var(--gold);
+  }
+  .rm-month {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:4px;
+  }
+  .rm-label {
+    font-family:'Cormorant Garamond',serif; font-size:1.3rem;
+    font-weight:400; font-style:italic; color:var(--ink); line-height:1.3;
+  }
+  .rm-right { padding:40px 0 40px 40px; }
+  .rm-right ul { list-style:none; }
+  .rm-right li {
+    font-size:0.85rem; padding:6px 0 6px 24px; position:relative; color:var(--stone);
+  }
+  .rm-right li::before {
+    content:''; position:absolute; left:0; top:14px; width:8px; height:1px; background:var(--gold);
+  }
+
+  /* ═══════════════════════════════════════
+     NUMBERS BAR
+     ═══════════════════════════════════════ */
+  .numbers {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    margin:56px 0; background:var(--gold-dim);
+  }
+  .num { background:var(--ink); text-align:center; padding:48px 24px; }
+  .num-val {
+    font-family:'Cormorant Garamond',serif; font-size:3.5rem;
+    font-weight:500; color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+    text-shadow:0 0 60px rgba(201,169,110,0.25), 0 0 120px rgba(201,169,110,0.1);
+  }
+  .num-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:rgba(246,244,240,0.4);
+  }
+
+  /* ═══════════════════════════════════════
+     NEXT STEPS
+     ═══════════════════════════════════════ */
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .step {
+    background:var(--white); padding:40px 32px;
+    transition:background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .step:hover { background:var(--light); box-shadow:0 4px 24px rgba(0,0,0,0.04); }
+  .step-num {
+    font-family:'Cormorant Garamond',serif; font-size:3rem;
+    font-weight:400; color:var(--gold); line-height:1; margin-bottom:16px;
+    display:block; text-shadow:0 0 40px rgba(201,169,110,0.15);
+  }
+  .step h4 { font-family:'DM Sans',sans-serif; font-weight:500; font-size:0.95rem; margin-bottom:10px; }
+  .step p { font-size:0.82rem; color:var(--stone); margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     PHOTO BREAK
+     ═══════════════════════════════════════ */
+  .photo-break {
+    width:100%; height:45vh; min-height:320px; max-height:480px;
+    position:relative; overflow:hidden;
+    clip-path:inset(0 0 0 0); transition:clip-path 1.2s cubic-bezier(0.16,1,0.3,1);
+  }
+  .photo-break.revealed { clip-path:inset(0 0 0 0); }
+  .photo-break img {
+    width:100%; height:120%; object-fit:cover; display:block;
+    position:absolute; top:-10%; left:0;
+    filter:brightness(0.85); transition:filter 0.8s cubic-bezier(0.16,1,0.3,1);
+    will-change:transform;
+  }
+  .photo-break:hover img { filter:brightness(0.95); }
+  .photo-break::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:80px;
+    background:linear-gradient(rgba(26,26,24,0.15), transparent);
+    z-index:1; pointer-events:none;
+  }
+  .photo-break::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:120px;
+    background:linear-gradient(transparent, rgba(26,26,24,0.6));
+    z-index:1; pointer-events:none;
+  }
+  .photo-break.in-view img {
+    animation:kenBurns 12s ease-in-out infinite alternate;
+  }
+  @keyframes kenBurns { 0% { transform:scale(1) translateY(0); } 100% { transform:scale(1.06) translateY(-8px); } }
+  .photo-break-caption {
+    position:absolute; bottom:0; left:0; right:0; z-index:2;
+    padding:24px 60px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.3em; text-transform:uppercase; color:rgba(246,244,240,0.5);
+  }
+
+  /* ═══════════════════════════════════════
+     SCROLL PROGRESS + NAV
+     ═══════════════════════════════════════ */
+  .scroll-progress {
+    position:fixed; top:0; left:0; height:2px; width:0%;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.4));
+    z-index:9999; transition:width 0.05s linear;
+    box-shadow:0 0 8px rgba(201,169,110,0.3);
+  }
+  .section-nav {
+    position:fixed; right:24px; top:50%; transform:translateY(-50%);
+    z-index:9998; display:flex; flex-direction:column; gap:12px;
+    opacity:0; transition:opacity 0.4s ease;
+  }
+  .section-nav.visible { opacity:1; }
+  .section-nav-dot {
+    width:8px; height:8px; border-radius:50%;
+    background:transparent; border:1px solid var(--stone);
+    cursor:pointer; transition:all 0.3s ease; position:relative;
+  }
+  .section-nav-dot:hover { border-color:var(--gold); transform:scale(1.3); }
+  .section-nav-dot.active {
+    background:var(--gold); border-color:var(--gold);
+    box-shadow:0 0 8px rgba(201,169,110,0.4);
+  }
+  .section-nav-dot::before {
+    content:attr(data-label);
+    position:absolute; right:20px; top:50%; transform:translateY(-50%);
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--gold);
+    white-space:nowrap; opacity:0; pointer-events:none;
+    transition:opacity 0.3s ease, right 0.3s ease;
+  }
+  .section-nav-dot:hover::before { opacity:1; right:24px; }
+
+  /* ═══════════════════════════════════════
+     SCROLL REVEAL
+     ═══════════════════════════════════════ */
+  .reveal {
+    opacity:0; transform:translateY(32px);
+    transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal-delay-1 { transition-delay:0.1s; }
+  .reveal-delay-2 { transition-delay:0.2s; }
+  .reveal-delay-3 { transition-delay:0.3s; }
+  .reveal-delay-4 { transition-delay:0.4s; }
+  .reveal-delay-5 { transition-delay:0.5s; }
+
+  /* ═══════════════════════════════════════
+     FILM GRAIN
+     ═══════════════════════════════════════ */
+  .grain-section::after {
+    content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size:128px 128px; pointer-events:none; z-index:0; opacity:0.5;
+  }
+  .grain-section { position:relative; }
+  .grain-section > * { position:relative; z-index:1; }
+
+  /* ═══════════════════════════════════════
+     LOADING SCREEN
+     ═══════════════════════════════════════ */
+  .loader {
+    position:fixed; top:0; left:0; right:0; bottom:0;
+    background:var(--ink); z-index:99999;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+  }
+  .loader.done { opacity:0; visibility:hidden; pointer-events:none; }
+  .loader-brand {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.6em; text-transform:uppercase; color:var(--paper);
+    opacity:0; animation:loaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-sub {
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.9rem;
+    color:var(--stone); margin-top:8px;
+    opacity:0; animation:loaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line {
+    width:80px; height:1px; background:var(--gold-dim); margin-top:24px;
+    position:relative; overflow:hidden; border-radius:1px;
+    opacity:0; animation:loaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line::after {
+    content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation:loaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+  }
+  @keyframes loaderIn { to { opacity:1; } }
+  @keyframes loaderFill { to { left:100%; } }
+
+  /* ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ */
+  .footer {
+    background:var(--ink); padding:80px 60px; text-align:center;
+    border-top:1px solid rgba(201,169,110,0.1);
+  }
+  .footer-mark {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.7rem;
+    letter-spacing:0.4em; text-transform:uppercase; color:var(--paper); margin-bottom:20px;
+  }
+  .footer-info { font-size:0.8rem; color:var(--stone); line-height:2.2; }
+  .footer-info a { color:var(--gold); text-decoration:none; }
+  .footer-note {
+    margin-top:40px; font-size:0.6rem; letter-spacing:0.15em;
+    text-transform:uppercase; font-family:'Josefin Sans',sans-serif;
+    color:rgba(246,244,240,0.15);
+  }
+
+  /* ═══════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════ */
+  @media print {
+    .cover { min-height:100vh; }
+    .section { padding:60px; }
+    .tier.rec { transform:none; box-shadow:none; }
+    .tier:hover { transform:none; box-shadow:none; }
+    .scroll-progress, .section-nav, .loader, .cover-cta, .scroll-indicator { display:none; }
+    .photo-break { height:200px; page-break-inside:avoid; clip-path:none !important; }
+    h2 em::after { width:100% !important; }
+    .reveal { opacity:1 !important; transform:none !important; }
+    .eyebrow::before { width:24px !important; }
+    .grain-section::after { display:none; }
+  }
+  @media (max-width:768px) {
+    .cover-content,.cover-top { padding-left:32px; padding-right:32px; }
+    .section { padding:80px 32px; }
+    .stats,.services,.tiers,.steps,.numbers { grid-template-columns:1fr; }
+    .tier + .tier { border-left:1px solid rgba(26,26,24,0.06); border-top:none; }
+    .tier.rec { transform:none; }
+    .rm { grid-template-columns:1fr; }
+    .rm-left { border-right:none; border-bottom:2px solid var(--gold-dim); padding:24px 0; }
+    .rm-left::after { display:none; }
+    .rm-right { padding:24px 0; }
+    .roadmap-line { display:none; }
+    .cover-meta-bar { flex-direction:column; gap:16px; }
+    .footer { padding:60px 32px; }
+    .section-nav { display:none; }
+    .svc { border-left:none !important; }
+    .svc:hover { border-left:none !important; }
+    .photo-break { height:200px; min-height:200px; }
+    .photo-break-caption { padding:12px 32px; }
+    .scroll-indicator { display:none; }
+    .insight { padding:32px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div class="loader" id="loader">
+  <div class="loader-brand">Matt Anthony Photography</div>
+  <div class="loader-sub">Social Media Management</div>
+  <div class="loader-line"></div>
+</div>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav class="section-nav" id="sectionNav"></nav>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-image" id="coverImg"></div>
+  <div class="cover-top">
+    <div class="cover-logo">Matt Anthony Photography</div>
+    <div class="cover-date">March 2026</div>
+  </div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">Colour Craft Painting</div>
+    <h1>Your social media.<br><em>Handled.</em></h1>
+    <p class="cover-sub">Consistent, professional content across Instagram and Facebook. Built from your real projects. Zero effort on your end.</p>
+    <div class="cover-meta-bar">
+      <div class="cover-meta-item"><strong>Prepared for</strong>Brad, Colour Craft Painting</div>
+      <div class="cover-meta-item"><strong>Prepared by</strong>Matt Anthony</div>
+      <div class="cover-meta-item"><strong>Valid through</strong>April 30, 2026</div>
+    </div>
+    <a class="cover-cta" href="#tiers"><span>View Options</span><span class="cover-cta-arrow">&darr;</span></a>
+  </div>
+  <div class="scroll-indicator" id="scrollIndicator">
+    <div class="scroll-indicator-text">Scroll</div>
+    <div class="scroll-indicator-line"></div>
+  </div>
+</div>
+
+<!-- STORY -->
+<div class="section cream" data-nav="Story">
+  <div class="eyebrow">The Opportunity</div>
+  <h2>Great work deserves<br><em>to be seen.</em></h2>
+  <p class="lead">Brad, Colour Craft does excellent work. Your projects speak for themselves in person, but right now they're not speaking for you online. That's the gap.</p>
+  <p>Most painting companies in BC either post inconsistently, use low-quality phone photos, or don't post at all. The ones that do show up consistently on social media are the ones getting the calls. Homeowners check Instagram and Facebook before they call for a quote. If your feed looks empty or outdated, they move on.</p>
+  <p>This proposal puts your social media on autopilot. I pull content from your existing projects, create professional posts and short-form video, and publish on a consistent schedule. You keep painting. I keep posting.</p>
+  <div class="stats">
+    <div class="stat"><span class="stat-val" data-count="500">500</span><span class="stat-lbl">Projects Completed</span></div>
+    <div class="stat"><span class="stat-val">3x</span><span class="stat-lbl">More Enquiries from Active Feeds</span></div>
+    <div class="stat"><span class="stat-val">0</span><span class="stat-lbl">Hours Required from You</span></div>
+    <div class="stat"><span class="stat-val">100%</span><span class="stat-lbl">Your Real Work Showcased</span></div>
+  </div>
+</div>
+
+<!-- PHOTO BREAK 1 -->
+<div class="photo-break">
+  <img src="https://colourcraftpainting.com/wp-content/uploads/2025/06/IMG_3266-1024x768.jpeg" alt="Colour Craft Painting exterior project">
+  <div class="photo-break-caption">Colour Craft Painting &middot; Exterior Transformation &middot; British Columbia</div>
+</div>
+
+<!-- SERVICES -->
+<div class="section" data-nav="Services">
+  <div class="eyebrow">What's Included</div>
+  <h2>Everything you need.<br><em>Nothing you don't.</em></h2>
+  <p>Every piece of content is built from your actual projects. No stock photos, no generic templates. Real transformations, real craftsmanship, your brand.</p>
+  <div class="services">
+    <div class="svc">
+      <h4>Content Creation</h4>
+      <ul>
+        <li>Professional posts from your project photos</li>
+        <li>Before-and-after transformations</li>
+        <li>Project spotlight captions with location tags</li>
+        <li>Branded templates matching Colour Craft's look</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Short-Form Video</h4>
+      <ul>
+        <li>Instagram Reels and Facebook Reels</li>
+        <li>Time-lapse style transformation videos</li>
+        <li>Project walkthrough clips</li>
+        <li>Optimized for reach and engagement</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Scheduling &amp; Publishing</h4>
+      <ul>
+        <li>Consistent posting schedule (never miss a week)</li>
+        <li>Optimal timing for BC audiences</li>
+        <li>Hashtag strategy for local discovery</li>
+        <li>Cross-posting to Instagram and Facebook</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Strategy &amp; Reporting</h4>
+      <ul>
+        <li>Content calendar planned monthly</li>
+        <li>Monthly performance summary</li>
+        <li>Audience growth tracking</li>
+        <li>Recommendations based on what's working</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO BREAK 2 -->
+<div class="photo-break">
+  <img src="https://colourcraftpainting.com/wp-content/uploads/2025/06/IMG_3253-1024x768.jpeg" alt="Colour Craft Painting interior detail">
+  <div class="photo-break-caption">Colour Craft Painting &middot; Interior Finish &middot; British Columbia</div>
+</div>
+
+<!-- PRICING -->
+<div class="section wide" id="tiers" data-nav="Pricing">
+  <div class="eyebrow">Choose Your Plan</div>
+  <h2>Three plans. One partner.<br><em>Your call.</em></h2>
+  <p>Start where it makes sense. Every plan includes real content from your projects, professional captions, and consistent publishing. You can always move up.</p>
+  <div class="tiers">
+    <!-- STARTER -->
+    <div class="tier" data-tier="starter">
+      <div class="tier-selected-badge">Selected</div>
+      <div class="tier-name">Starter</div>
+      <div class="tier-price">$750 <span>/ mo</span></div>
+      <div class="tier-term">3-month minimum &middot; $2,250 total</div>
+      <ul>
+        <li>12 posts per month (3/week)</li>
+        <li>Content from your project photos</li>
+        <li>Professional captions and hashtags</li>
+        <li>1 platform (Instagram or Facebook)</li>
+        <li>Monthly content calendar</li>
+        <li>Basic performance summary</li>
+        <li class="off">Short-form video / Reels</li>
+        <li class="off">Second platform</li>
+        <li class="off">Story content</li>
+        <li class="off">Monthly strategy call</li>
+        <li class="off">Community management</li>
+      </ul>
+      <div class="tier-bottom">Annual investment<br><strong>$9,000</strong></div>
+    </div>
+    <!-- GROWTH -->
+    <div class="tier rec" data-tier="growth">
+      <div class="tier-selected-badge">Selected</div>
+      <div class="tier-badge"><span>Recommended</span></div>
+      <div class="tier-name">Growth</div>
+      <div class="tier-price">$1,250 <span>/ mo</span></div>
+      <div class="tier-term">3-month minimum &middot; $3,750 total</div>
+      <ul>
+        <li>16 to 20 posts per month (4-5/week)</li>
+        <li>Content from your project photos</li>
+        <li>Professional captions and hashtags</li>
+        <li>2 platforms (Instagram + Facebook)</li>
+        <li>2 to 4 Reels per month</li>
+        <li>Before-and-after transformation posts</li>
+        <li>Monthly content calendar</li>
+        <li>Monthly performance report</li>
+        <li>Monthly strategy call (20 min)</li>
+        <li class="off">Story content</li>
+        <li class="off">Community management</li>
+      </ul>
+      <div class="tier-bottom">Annual investment<br><strong>$15,000</strong></div>
+    </div>
+    <!-- FULL SERVICE -->
+    <div class="tier" data-tier="full">
+      <div class="tier-selected-badge">Selected</div>
+      <div class="tier-name">Full Service</div>
+      <div class="tier-price">$2,000 <span>/ mo</span></div>
+      <div class="tier-term">3-month minimum &middot; $6,000 total</div>
+      <ul>
+        <li>20+ posts per month (5+/week)</li>
+        <li>Content from your project photos</li>
+        <li>Professional captions and hashtags</li>
+        <li>3 platforms (Instagram + Facebook + Pinterest)</li>
+        <li>4 to 8 Reels per month</li>
+        <li>Before-and-after transformation posts</li>
+        <li>Weekly story content</li>
+        <li>Monthly content calendar</li>
+        <li>Monthly performance report</li>
+        <li>Monthly strategy call (30 min)</li>
+        <li>Community management (comment replies)</li>
+      </ul>
+      <div class="tier-bottom">Annual investment<br><strong>$24,000</strong></div>
+    </div>
+  </div>
+  <div class="insight">
+    <h4>How to Think About This</h4>
+    <p>Most social media agencies charge $1,500 to $5,000 per month. These plans deliver the same professional output at a fraction of the cost because I've built systems specifically for trades and construction businesses. Your content gets created from real project photos, not generic stock imagery.</p>
+    <div class="tier-breakdown">
+      <div class="tb"><span class="tb-label">Starter $750</span><span class="tb-desc">Consistent presence on one platform. Your projects finally show up online, every week.</span></div>
+      <div class="tb"><span class="tb-label">Growth $1,250</span><span class="tb-desc">Two platforms, video content, and a monthly call. The sweet spot for businesses ready to grow.</span></div>
+      <div class="tb"><span class="tb-label">Full Service $2,000</span><span class="tb-desc">Three platforms, stories, community management. You never think about social media again.</span></div>
+    </div>
+    <p style="margin-top:24px;">For context: hiring a part-time social media person runs $2,500 to $4,000 per month before you factor in tools, training, and management overhead. Any of these plans delivers better consistency at a lower cost.</p>
+  </div>
+</div>
+
+<!-- NUMBERS BAR -->
+<div class="numbers grain-section">
+  <div class="num"><span class="num-val" data-count="200">200</span><span class="num-lbl">Posts Per Year (Growth)</span></div>
+  <div class="num"><span class="num-val" data-count="36">36</span><span class="num-lbl">Reels Per Year</span></div>
+  <div class="num"><span class="num-val" data-count="2">2</span><span class="num-lbl">Platforms Covered</span></div>
+</div>
+
+<!-- ROADMAP -->
+<div class="section light" data-nav="Roadmap">
+  <div class="eyebrow">3-Month Pilot</div>
+  <h2>What gets done.<br><em>Month by month.</em></h2>
+  <p>The first three months are a pilot. Enough time to build momentum, see results, and decide if this is worth continuing. Here's the plan:</p>
+  <div class="roadmap">
+    <div class="roadmap-line" id="roadmapLine"></div>
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">Month 1</div>
+        <div class="rm-label">Build the<br>Foundation</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          <li>Audit existing social profiles and optimize bios, links, and branding</li>
+          <li>Collect project photos and organize content library</li>
+          <li>Create branded post templates matching Colour Craft's aesthetic</li>
+          <li>Build first month's content calendar</li>
+          <li>Publish first batch of posts, establish consistent schedule</li>
+          <li>Set up hashtag strategy targeting BC homeowners and property managers</li>
+          <li>Baseline metrics recorded for growth tracking</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">Month 2</div>
+        <div class="rm-label">Build<br>Momentum</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          <li>Continue consistent posting schedule across platforms</li>
+          <li>Introduce Reels: before-and-after transformations, project walkthroughs</li>
+          <li>Test content types to identify what resonates with your audience</li>
+          <li>First performance report with engagement and reach data</li>
+          <li>Strategy call: review what's working, adjust approach</li>
+          <li>Begin building local engagement through targeted hashtags and location tags</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">Month 3</div>
+        <div class="rm-label">Prove It:<br>Results</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          <li>Full posting cadence running smoothly</li>
+          <li>Refined content strategy based on two months of data</li>
+          <li>Complete performance report: followers, reach, engagement, enquiry impact</li>
+          <li>Pilot review call: what worked, what the numbers say, what comes next</li>
+          <li>If results proven: continue on a rolling monthly basis</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><span class="stat-val" data-count="48">48</span><span class="stat-lbl">Posts in 90 Days</span></div>
+    <div class="stat"><span class="stat-val" data-count="8">8</span><span class="stat-lbl">Reels Created</span></div>
+    <div class="stat"><span class="stat-val" data-count="3">3</span><span class="stat-lbl">Performance Reports</span></div>
+    <div class="stat"><span class="stat-val" data-count="90">90</span><span class="stat-lbl">Days to Prove It</span></div>
+  </div>
+</div>
+
+<!-- PHOTO BREAK 3 -->
+<div class="photo-break">
+  <img src="https://colourcraftpainting.com/wp-content/uploads/2025/06/IMG_3263-1024x768.jpeg" alt="Colour Craft Painting project detail">
+  <div class="photo-break-caption">Colour Craft Painting &middot; Professional Finish &middot; British Columbia</div>
+</div>
+
+<!-- NEXT STEPS -->
+<div class="section" data-nav="Next Steps">
+  <div class="eyebrow">Next Steps</div>
+  <h2>Let's get Colour Craft<br><em>showing up.</em></h2>
+  <p>Brad, your team does great work. The only thing missing is making sure people see it before they call your competitors. Pick the plan that feels right and let's get started.</p>
+  <p>The pilot is three months. If it works, we keep going. If it doesn't, you walk away with a fully optimized social media presence, a library of professional content, and three months of data showing what resonates with your audience. There's no downside.</p>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <h4>Pick Your Plan</h4>
+      <p>Starter, Growth, or Full Service. Reply to this email and let me know which feels right.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <h4>Quick Kickoff Call</h4>
+      <p>20 minutes to gather your project photos, nail down your brand voice, and plan the first month.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <h4>Go Live</h4>
+      <p>First posts go up within a week of kickoff. You don't have to do anything.</p>
+    </div>
+  </div>
+  <p style="margin-top:24px; font-size:0.85rem; color:var(--stone);">This proposal is valid through <strong style="color:var(--ink);">April 30, 2026</strong>. After that, availability for an April start cannot be guaranteed.</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer grain-section">
+  <div class="footer-mark">Matt Anthony Photography</div>
+  <div class="footer-info">
+    <a href="https://mattanthonyphoto.com">mattanthonyphoto.com</a><br>
+    <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a> &middot; 604.765.9270<br>
+    Squamish, BC
+  </div>
+  <div class="footer-note">This proposal is confidential and prepared exclusively for Colour Craft Painting.</div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ═══════ LOADING SCREEN ═══════ */
+  var loader = document.getElementById('loader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('done'); }, 1100);
+  });
+
+  /* ═══════ SCROLL PROGRESS BAR ═══════ */
+  var progressBar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var s = window.scrollY;
+    progressBar.style.width = (h > 0 ? (s / h) * 100 : 0) + '%';
+  }
+
+  /* ═══════ COVER PARALLAX ═══════ */
+  var coverImg = document.querySelector('.cover-image');
+  function updateParallax(){
+    if(window.scrollY < window.innerHeight){
+      coverImg.style.transform = 'scale(1.08) translateY(' + (window.scrollY * 0.3) + 'px)';
+    }
+  }
+
+  /* ═══════ PHOTO BREAK PARALLAX + KEN BURNS ═══════ */
+  var photoBreakEls = document.querySelectorAll('.photo-break');
+  function updatePhotoParallax(){
+    photoBreakEls.forEach(function(pb){
+      var rect = pb.getBoundingClientRect();
+      var inView = rect.bottom > 0 && rect.top < window.innerHeight;
+      if(inView){ pb.classList.add('in-view'); } else { pb.classList.remove('in-view'); }
+    });
+  }
+
+  /* ═══════ SECTION NAV DOTS ═══════ */
+  var sectionNav = document.getElementById('sectionNav');
+  var navSections = document.querySelectorAll('[data-nav]');
+  var navDots = [];
+  navSections.forEach(function(sec){
+    var dot = document.createElement('div');
+    dot.className = 'section-nav-dot';
+    dot.setAttribute('data-label', sec.getAttribute('data-nav'));
+    dot.addEventListener('click', function(){ sec.scrollIntoView({ behavior:'smooth', block:'start' }); });
+    sectionNav.appendChild(dot);
+    navDots.push({ dot:dot, section:sec });
+  });
+  function updateNavDots(){
+    var scrollY = window.scrollY;
+    var winH = window.innerHeight;
+    if(scrollY > winH * 0.5){ sectionNav.classList.add('visible'); } else { sectionNav.classList.remove('visible'); }
+    var active = null;
+    navDots.forEach(function(item){
+      var rect = item.section.getBoundingClientRect();
+      if(rect.top < winH * 0.5 && rect.bottom > winH * 0.3){ active = item; }
+      item.dot.classList.remove('active');
+    });
+    if(active) active.dot.classList.add('active');
+  }
+
+  /* ═══════ SCROLL REVEAL ═══════ */
+  var revealTargets = [];
+  document.querySelectorAll('.section, .numbers').forEach(function(section){
+    section.querySelectorAll('.eyebrow, h2, .lead, .stats, .services, .tiers, .insight, .roadmap, .steps').forEach(function(el, i){
+      el.classList.add('reveal');
+      if(i > 0 && i < 6) el.classList.add('reveal-delay-' + i);
+      revealTargets.push(el);
+    });
+    section.querySelectorAll('.stat, .svc, .tier, .step, .num, .rm').forEach(function(el, i){
+      el.classList.add('reveal');
+      el.classList.add('reveal-delay-' + Math.min(i + 1, 5));
+      revealTargets.push(el);
+    });
+    Array.prototype.forEach.call(section.children, function(child){
+      if(child.tagName === 'P' && !child.classList.contains('lead') && !child.classList.contains('cover-sub')){
+        child.classList.add('reveal');
+        revealTargets.push(child);
+      }
+    });
+  });
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+        animateCounter(entry.target);
+      }
+    });
+  }, { threshold:0.15, rootMargin:'0px 0px -40px 0px' });
+  revealTargets.forEach(function(el){ revealObserver.observe(el); });
+
+  /* ═══════ EYEBROW LINE ANIMATION ═══════ */
+  var eyebrows = document.querySelectorAll('.eyebrow');
+  var eyebrowObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); eyebrowObserver.unobserve(entry.target); }
+    });
+  }, { threshold:0.5 });
+  eyebrows.forEach(function(eb){ eyebrowObserver.observe(eb); });
+
+  /* ═══════ NUMBER COUNTER ANIMATION ═══════ */
+  function animateCounter(el){
+    var valEl = el.querySelector('.stat-val, .num-val');
+    if(!valEl || valEl.dataset.counted) return;
+    valEl.dataset.counted = 'true';
+    var text = valEl.textContent.trim();
+    var hasPlus = text.indexOf('+') > -1;
+    var num = parseInt(text.replace(/[^0-9]/g,''), 10);
+    if(isNaN(num) || num === 0) return;
+    var duration = 1200;
+    var start = performance.now();
+    function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+    function tick(now){
+      var t = Math.min((now - start) / duration, 1);
+      var val = Math.round(ease(t) * num);
+      valEl.textContent = val + (hasPlus ? '+' : '');
+      if(t < 1) requestAnimationFrame(tick);
+    }
+    valEl.textContent = '0' + (hasPlus ? '+' : '');
+    requestAnimationFrame(tick);
+  }
+
+  /* ═══════ PHOTO BREAK CURTAIN REVEAL ═══════ */
+  var photoRevealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('revealed'); photoRevealObserver.unobserve(entry.target); }
+    });
+  }, { threshold:0.1 });
+  photoBreakEls.forEach(function(pb){ photoRevealObserver.observe(pb); });
+
+  /* ═══════ HEADLINE GOLD UNDERLINE ═══════ */
+  var headlines = document.querySelectorAll('h2');
+  var headlineObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('underlined'); headlineObserver.unobserve(entry.target); }
+    });
+  }, { threshold:0.5 });
+  headlines.forEach(function(h){ headlineObserver.observe(h); });
+
+  /* ═══════ SCROLL INDICATOR HIDE ═══════ */
+  var scrollIndicator = document.getElementById('scrollIndicator');
+  function updateScrollIndicator(){
+    if(window.scrollY > 100){ scrollIndicator.classList.add('hidden'); } else { scrollIndicator.classList.remove('hidden'); }
+  }
+
+  /* ═══════ TIER SELECTION + 3D TILT ═══════ */
+  var isTouchDevice = 'ontouchstart' in window;
+  var tiers = document.querySelectorAll('.tier[data-tier]');
+  tiers.forEach(function(tier){
+    tier.addEventListener('click', function(){
+      tiers.forEach(function(t){ t.classList.remove('selected'); });
+      tier.classList.add('selected');
+    });
+    if(!isTouchDevice){
+      tier.addEventListener('mousemove', function(e){
+        var rect = tier.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        tier.style.transform = tier.classList.contains('rec')
+          ? 'scaleY(1.02) perspective(800px) rotateY(' + (x * 4) + 'deg) rotateX(' + (-y * 4) + 'deg)'
+          : 'perspective(800px) rotateY(' + (x * 4) + 'deg) rotateX(' + (-y * 4) + 'deg)';
+      });
+      tier.addEventListener('mouseleave', function(){
+        tier.style.transform = tier.classList.contains('rec') ? 'scaleY(1.02)' : '';
+      });
+    }
+  });
+
+  /* ═══════ ROADMAP LINE DRAW ═══════ */
+  var roadmapLine = document.getElementById('roadmapLine');
+  var roadmap = document.querySelector('.roadmap');
+  function updateRoadmapLine(){
+    if(!roadmap || !roadmapLine) return;
+    var rect = roadmap.getBoundingClientRect();
+    var roadmapTop = rect.top + window.scrollY;
+    var roadmapHeight = rect.height - 96;
+    var scrollPos = window.scrollY + window.innerHeight * 0.6;
+    var progress = (scrollPos - roadmapTop - 48) / roadmapHeight;
+    progress = Math.max(0, Math.min(1, progress));
+    roadmapLine.style.height = (progress * roadmapHeight) + 'px';
+  }
+
+  /* ═══════ SMOOTH SCROLL FOR CTA ═══════ */
+  var cta = document.querySelector('.cover-cta');
+  if(cta){
+    cta.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  }
+
+  /* ═══════ COMBINED SCROLL HANDLER ═══════ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateParallax();
+        updatePhotoParallax();
+        updateScrollIndicator();
+        updateRoadmapLine();
+        updateNavDots();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress();
+  updateParallax();
+  updatePhotoParallax();
+  updateRoadmapLine();
+  updateNavDots();
+})();
+</script>
+
+</body>
+</html>

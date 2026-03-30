@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Partner Proposal — Black Point Architectural Woodwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A18;
+    --paper: #F6F4F0;
+    --gold: #C9A96E;
+    --gold-dim: rgba(201,169,110,0.12);
+    --gold-border: rgba(201,169,110,0.25);
+    --gold-glow: rgba(201,169,110,0.06);
+    --stone: #8A8579;
+    --white: #FFFFFF;
+    --light: #FAFAF8;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; -webkit-print-color-adjust:exact; print-color-adjust:exact; scroll-behavior:smooth; }
+  body { background:var(--white); color:var(--ink); font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.75; overflow-x:hidden; }
+
+  /* ═══════════════════════════════════════
+     COVER
+     ═══════════════════════════════════════ */
+  .cover {
+    min-height:100vh; background:var(--ink); color:var(--paper);
+    display:flex; flex-direction:column; justify-content:flex-end;
+    position:relative; page-break-after:always; overflow:hidden;
+  }
+  .cover-image {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    background-image:url("https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c938566f-ee96-40da-aec4-d51ac9fa7e09/warbler-whistler-architectural-photography-matt-anthony-.jpg-13.jpg");
+    background-size:cover; background-position:center 40%;
+    will-change:transform; transition:transform 0.1s linear;
+  }
+  .cover-image::after {
+    content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+    background:linear-gradient(to bottom, rgba(26,26,24,0.3) 0%, rgba(26,26,24,0.1) 30%, rgba(26,26,24,0.4) 60%, rgba(26,26,24,0.92) 85%, rgba(26,26,24,0.98) 100%);
+  }
+  .cover-top {
+    position:absolute; top:0; left:0; right:0; z-index:3;
+    padding:40px 60px; display:flex; justify-content:space-between; align-items:center;
+  }
+  .cover-logo {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:rgba(246,244,240,0.6);
+  }
+  .cover-date {
+    font-family:'Josefin Sans',sans-serif; font-size:0.65rem;
+    letter-spacing:0.2em; color:rgba(246,244,240,0.4);
+  }
+  .cover-content {
+    position:relative; z-index:2; padding:0 60px 80px; max-width:760px;
+  }
+  .cover-eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.4em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:20px; display:flex; align-items:center; gap:16px;
+  }
+  .cover-eyebrow::before { content:''; width:32px; height:1px; background:var(--gold); }
+  .cover h1 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:clamp(2.6rem,5.5vw,4.4rem); line-height:1.08; margin-bottom:20px;
+    letter-spacing:-0.01em; text-shadow:0 2px 40px rgba(0,0,0,0.3);
+  }
+  .cover h1 em { font-style:italic; font-weight:500; color:var(--gold); }
+  .cover-sub {
+    font-size:0.95rem; color:rgba(246,244,240,0.55); max-width:540px;
+    line-height:1.8; margin-bottom:56px; text-shadow:0 1px 20px rgba(0,0,0,0.2);
+  }
+  .cover-meta-bar {
+    display:flex; gap:48px; padding-top:32px;
+    border-top:1px solid rgba(201,169,110,0.15);
+  }
+  .cover-meta-item {
+    font-size:0.75rem; color:rgba(246,244,240,0.35); line-height:1.8;
+  }
+  .cover-meta-item strong {
+    display:block; color:rgba(246,244,240,0.7); font-weight:400;
+    font-family:'Josefin Sans',sans-serif; font-size:0.6rem;
+    letter-spacing:0.15em; text-transform:uppercase; margin-bottom:2px;
+  }
+
+  .cover .cover-eyebrow, .cover h1, .cover .cover-sub, .cover .cover-meta-bar {
+    opacity:0; transform:translateY(24px);
+    animation:coverFade 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover .cover-eyebrow { animation-delay:0.3s; }
+  .cover h1 { animation-delay:0.6s; }
+  .cover .cover-sub { animation-delay:0.9s; }
+  .cover .cover-meta-bar { animation-delay:1.2s; }
+  @keyframes coverFade { to { opacity:1; transform:translateY(0); } }
+
+  .cover-cta {
+    display:inline-flex; align-items:center; gap:10px;
+    margin-top:32px; padding:12px 28px;
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--paper); border:1px solid rgba(246,244,240,0.25);
+    text-decoration:none; cursor:pointer;
+    transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+    opacity:0; animation:coverFade 0.9s 1.5s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover-cta:hover { border-color:var(--gold); color:var(--gold); padding-right:36px; }
+  .cover-cta-arrow { display:inline-block; transition:transform 0.3s ease; font-size:0.8rem; }
+  .cover-cta:hover .cover-cta-arrow { transform:translateY(3px); }
+
+  .scroll-indicator {
+    position:absolute; bottom:40px; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    opacity:0; animation:coverFade 0.9s 1.8s cubic-bezier(0.16,1,0.3,1) forwards;
+    transition:opacity 0.4s ease;
+  }
+  .scroll-indicator.hidden { opacity:0 !important; }
+  .scroll-indicator-text {
+    font-family:'Josefin Sans',sans-serif; font-size:0.45rem;
+    letter-spacing:0.3em; text-transform:uppercase; color:rgba(246,244,240,0.3);
+  }
+  .scroll-indicator-line {
+    width:1px; height:32px; position:relative; overflow:hidden; background:rgba(246,244,240,0.1);
+  }
+  .scroll-indicator-line::after {
+    content:''; position:absolute; top:-100%; left:0; width:100%; height:100%;
+    background:var(--gold); animation:scrollPulse 2s cubic-bezier(0.16,1,0.3,1) infinite;
+  }
+  @keyframes scrollPulse { 0%{top:-100%;} 50%{top:100%;} 100%{top:100%;} }
+
+  /* ═══════════════════════════════════════
+     LAYOUT
+     ═══════════════════════════════════════ */
+  .section { padding:120px 60px; max-width:1000px; margin:0 auto; }
+  .section.wide { max-width:1200px; }
+  .section.full { max-width:100%; }
+  .section.dark { background:var(--ink); color:var(--paper); }
+  .section.cream { background:var(--paper); }
+  .section.light { background:var(--light); }
+
+  .eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; display:flex; align-items:center; gap:14px;
+  }
+  .eyebrow::before { content:''; width:0; height:1px; background:var(--gold); transition:width 0.6s 0.2s cubic-bezier(0.16,1,0.3,1); }
+  .eyebrow.visible::before { width:24px; }
+
+  h2 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:2.6rem; line-height:1.12; margin-bottom:32px;
+    letter-spacing:-0.01em; text-wrap:balance;
+  }
+  h2 em { font-style:italic; font-weight:500; position:relative; display:inline; }
+  h2 em::after {
+    content:''; position:absolute; bottom:2px; left:0; width:0; height:1.5px;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.3));
+    transition:width 1s 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  h2.underlined em::after { width:100%; }
+  h3 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.75rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
+    margin:56px 0 20px;
+  }
+  p { margin-bottom:20px; font-size:0.95rem; }
+  .lead { font-size:1.05rem; line-height:1.9; color:var(--stone); text-wrap:pretty; }
+
+  .divider { width:1px; height:80px; background:var(--gold-dim); margin:0 auto; border:none; display:block; }
+  .spacer { height:80px; }
+
+  /* ═══════════════════════════════════════
+     STATS
+     ═══════════════════════════════════════ */
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .stat { background:var(--white); text-align:center; padding:36px 16px; }
+  .section.cream .stat { background:var(--paper); }
+  .stat-val {
+    font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:500;
+    color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+    text-shadow:0 0 40px rgba(201,169,110,0.15); transition:opacity 0.4s ease;
+  }
+  .stat-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--stone);
+  }
+
+  /* ═══════════════════════════════════════
+     SERVICES GRID
+     ═══════════════════════════════════════ */
+  .services { display:grid; grid-template-columns:1fr 1fr; gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .services.three-col { grid-template-columns:1fr 1fr 1fr; }
+  .svc {
+    background:var(--white); padding:40px 36px; position:relative;
+    transition:all 0.3s cubic-bezier(0.16,1,0.3,1); border-left:3px solid transparent;
+  }
+  .svc:hover { border-left-color:var(--gold); background:var(--light); }
+  .svc.new { background:var(--light); }
+  .svc-badge {
+    position:absolute; top:20px; right:20px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--gold-border); padding:4px 12px;
+    background:linear-gradient(135deg, rgba(201,169,110,0.08), transparent);
+  }
+  .svc h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.7rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;
+  }
+  .svc ul { list-style:none; }
+  .svc li {
+    font-size:0.85rem; padding:8px 0 8px 24px; position:relative;
+    color:var(--stone); border-bottom:1px solid rgba(26,26,24,0.04);
+  }
+  .svc li:last-child { border:none; }
+  .svc li::before {
+    content:''; position:absolute; left:0; top:16px; width:8px; height:1px; background:var(--gold);
+  }
+
+  /* ═══════════════════════════════════════
+     PRICING TIERS
+     ═══════════════════════════════════════ */
+  .tiers { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin:56px 0; position:relative; }
+  .tier {
+    padding:48px 32px 40px; border:1px solid rgba(26,26,24,0.06);
+    background:var(--white); position:relative; cursor:pointer;
+    transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+    transform-style:preserve-3d; perspective:800px;
+  }
+  .tier:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,0.08), 0 0 0 1px var(--gold-border); z-index:1; }
+  .tier + .tier { border-left:none; }
+  .tier.rec {
+    background:var(--ink); color:var(--paper); border-color:rgba(201,169,110,0.3);
+    transform:scaleY(1.02); z-index:2; box-shadow:0 12px 48px rgba(0,0,0,0.15);
+  }
+  .tier.rec::before {
+    content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+    background:linear-gradient(180deg, rgba(201,169,110,0.03) 0%, transparent 40%); pointer-events:none;
+  }
+  .tier.rec:hover { transform:scaleY(1.02) translateY(-6px); box-shadow:0 24px 64px rgba(0,0,0,0.22), 0 0 40px rgba(201,169,110,0.08); }
+  .tier-badge {
+    position:absolute; top:-1px; left:0; right:0; height:3px;
+    background:linear-gradient(135deg, var(--gold), rgba(201,169,110,0.8));
+  }
+  .tier-badge span {
+    position:absolute; top:8px; left:50%; transform:translateX(-50%);
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); white-space:nowrap;
+  }
+  .tier-name {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin:24px 0 12px;
+  }
+  .tier-price {
+    font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:400; line-height:1; margin-bottom:6px;
+  }
+  .tier:not(.rec) .tier-price { color:var(--ink); }
+  .tier.rec .tier-price { color:var(--paper); }
+  .tier-price span { font-size:1rem; color:var(--stone); font-family:'DM Sans',sans-serif; font-weight:300; }
+  .tier-term {
+    font-size:0.75rem; color:var(--stone); margin-bottom:32px;
+    padding-bottom:24px; border-bottom:1px solid var(--gold-dim);
+  }
+  .tier.rec .tier-term { border-color:rgba(201,169,110,0.2); }
+  .tier ul { list-style:none; }
+  .tier li {
+    font-size:0.8rem; padding:7px 0 7px 22px; position:relative;
+    border-bottom:1px solid rgba(26,26,24,0.03);
+  }
+  .tier.rec li { color:rgba(246,244,240,0.75); border-color:rgba(246,244,240,0.05); }
+  .tier li:last-child { border:none; }
+  .tier li::before {
+    content:''; position:absolute; left:0; top:14px; width:8px; height:1px; background:var(--gold);
+  }
+  .tier li.off { opacity:0.25; }
+  .tier li.off::before { background:var(--stone); }
+  .tier-bottom {
+    margin-top:28px; padding-top:20px; border-top:1px solid var(--gold-dim); font-size:0.7rem; color:var(--stone);
+  }
+  .tier.rec .tier-bottom { border-color:rgba(201,169,110,0.2); }
+  .tier-bottom strong { color:var(--gold); font-weight:500; font-size:0.85rem; }
+
+  .tier.selected:not(.rec) { box-shadow:0 0 0 2px var(--gold), 0 20px 60px rgba(0,0,0,0.1); }
+  .tier.rec.selected { box-shadow:0 0 0 2px var(--gold), 0 24px 64px rgba(0,0,0,0.22), 0 0 40px rgba(201,169,110,0.12); }
+  .tier-selected-badge {
+    position:absolute; top:12px; right:12px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.45rem;
+    letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--gold); padding:3px 10px; border-radius:2px;
+    opacity:0; transform:translateY(-4px);
+    transition:opacity 0.3s ease, transform 0.3s ease;
+  }
+  .tier.selected .tier-selected-badge { opacity:1; transform:translateY(0); }
+
+  /* ═══════════════════════════════════════
+     INSIGHT BOX
+     ═══════════════════════════════════════ */
+  .insight {
+    background:var(--light); padding:48px 56px; margin:56px 0; position:relative;
+    border:1px solid rgba(201,169,110,0.08); box-shadow:0 8px 32px rgba(0,0,0,0.03);
+  }
+  .insight::before {
+    content:''; position:absolute; top:0; left:0; bottom:0; width:3px; background:var(--gold);
+    box-shadow:4px 0 16px rgba(201,169,110,0.08);
+  }
+  .insight h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;
+  }
+  .insight p { font-size:0.9rem; margin-bottom:10px; }
+  .insight p:last-child { margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     ROADMAP
+     ═══════════════════════════════════════ */
+  .roadmap { margin:56px 0; position:relative; }
+  .rm {
+    display:grid; grid-template-columns:200px 1fr; gap:0;
+    border-bottom:1px solid rgba(26,26,24,0.06); min-height:0;
+  }
+  .rm:last-child { border:none; }
+  .rm-left {
+    padding:40px 32px 40px 0; border-right:2px solid var(--gold-dim); position:relative;
+  }
+  .rm-left::after {
+    content:''; position:absolute; right:-5px; top:48px;
+    width:8px; height:8px; border-radius:50%; background:var(--gold);
+  }
+  .rm-month {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:4px;
+  }
+  .rm-label {
+    font-family:'Cormorant Garamond',serif; font-size:1.3rem;
+    font-weight:400; font-style:italic; color:var(--ink); line-height:1.3;
+  }
+  .rm-right { padding:40px 0 40px 40px; }
+  .rm-right ul { list-style:none; }
+  .rm-right li {
+    font-size:0.85rem; padding:6px 0 6px 24px; position:relative; color:var(--stone);
+  }
+  .rm-right li::before {
+    content:''; position:absolute; left:0; top:14px; width:8px; height:1px; background:var(--gold);
+  }
+  .roadmap-line {
+    position:absolute; left:200px; top:48px; width:2px; height:0;
+    background:var(--gold); transition:height 0.05s linear; z-index:1;
+    box-shadow:0 0 6px rgba(201,169,110,0.3);
+  }
+  .roadmap-line::after {
+    content:''; position:absolute; bottom:-4px; left:-3px;
+    width:8px; height:8px; border-radius:50%;
+    background:var(--gold); box-shadow:0 0 12px rgba(201,169,110,0.5);
+  }
+
+  /* ═══════════════════════════════════════
+     NUMBERS
+     ═══════════════════════════════════════ */
+  .numbers {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin:56px 0; background:var(--gold-dim);
+  }
+  .num { background:var(--ink); text-align:center; padding:48px 24px; }
+  .num-val {
+    font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:500;
+    color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+    text-shadow:0 0 60px rgba(201,169,110,0.25), 0 0 120px rgba(201,169,110,0.1);
+    transition:opacity 0.4s ease;
+  }
+  .num-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:rgba(246,244,240,0.4);
+  }
+
+  /* ═══════════════════════════════════════
+     STEPS
+     ═══════════════════════════════════════ */
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .step { background:var(--white); padding:40px 32px; transition:background 0.3s ease, box-shadow 0.3s ease; }
+  .step:hover { background:var(--light); box-shadow:0 4px 24px rgba(0,0,0,0.04); }
+  .step-num {
+    font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:400;
+    color:var(--gold); line-height:1; margin-bottom:16px; display:block;
+    text-shadow:0 0 40px rgba(201,169,110,0.15);
+  }
+  .step h4 { font-family:'DM Sans',sans-serif; font-weight:500; font-size:0.95rem; margin-bottom:10px; }
+  .step p { font-size:0.82rem; color:var(--stone); margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     SCORECARD
+     ═══════════════════════════════════════ */
+  .scorecard { margin:40px 0 56px; }
+  .score-row {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 0; border-bottom:1px solid rgba(26,26,24,0.06);
+  }
+  .score-row:last-child { border:none; }
+  .score-category { font-family:'DM Sans',sans-serif; font-weight:400; font-size:0.9rem; color:var(--ink); }
+  .score-rating {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.15em; text-transform:uppercase; padding:5px 14px; border-radius:2px;
+  }
+  .score-pass { color:#2D5A3D; background:rgba(45,90,61,0.08); border:1px solid rgba(45,90,61,0.15); }
+  .score-warn { color:#9A7B2C; background:rgba(196,162,101,0.08); border:1px solid rgba(196,162,101,0.2); }
+  .score-fail { color:#8B3A3A; background:rgba(180,60,60,0.06); border:1px solid rgba(180,60,60,0.15); }
+
+  /* ═══════════════════════════════════════
+     AUTHORITY GAP
+     ═══════════════════════════════════════ */
+  .authority-gap {
+    background:var(--light); padding:56px; margin:56px 0;
+    border:1px solid rgba(201,169,110,0.12); position:relative;
+  }
+  .authority-gap::before {
+    content:''; position:absolute; top:0; left:0; right:0;
+    height:3px; background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.3));
+  }
+
+  /* ═══════════════════════════════════════
+     PHOTO BREAK
+     ═══════════════════════════════════════ */
+  .photo-break {
+    width:100%; height:45vh; min-height:320px; max-height:480px;
+    position:relative; overflow:hidden;
+    clip-path:inset(0 0 0 0);
+    transition:clip-path 1.2s cubic-bezier(0.16,1,0.3,1);
+  }
+  .photo-break.revealed { clip-path:inset(0 0 0 0); }
+  .photo-break img {
+    width:100%; height:120%; object-fit:cover; display:block;
+    position:absolute; top:-10%; left:0; filter:brightness(0.85);
+    transition:filter 0.8s cubic-bezier(0.16,1,0.3,1); will-change:transform;
+  }
+  .photo-break:hover img { filter:brightness(0.95); }
+  .photo-break::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:80px;
+    background:linear-gradient(rgba(26,26,24,0.15), transparent); z-index:1; pointer-events:none;
+  }
+  .photo-break::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:120px;
+    background:linear-gradient(transparent, rgba(26,26,24,0.6)); z-index:1; pointer-events:none;
+  }
+  .photo-break-caption {
+    position:absolute; bottom:0; left:0; right:0; z-index:2; padding:24px 60px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.3em; text-transform:uppercase; color:rgba(246,244,240,0.5);
+  }
+  .photo-break.in-view img { animation:kenBurns 12s ease-in-out infinite alternate; }
+  @keyframes kenBurns { 0%{transform:scale(1) translateY(0);} 100%{transform:scale(1.06) translateY(-8px);} }
+
+  /* ═══════════════════════════════════════
+     TESTIMONIAL
+     ═══════════════════════════════════════ */
+  .testimonial {
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.15rem;
+    line-height:1.8; color:var(--stone); margin-bottom:16px;
+  }
+  .testimonial-author {
+    font-family:'Josefin Sans',sans-serif; font-size:0.6rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+  }
+
+  /* ═══════════════════════════════════════
+     BROWSER MOCKUP
+     ═══════════════════════════════════════ */
+  .browser-mockup {
+    margin:48px 0 0; border-radius:8px; overflow:hidden;
+    box-shadow:0 24px 80px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06);
+    border:1px solid rgba(26,26,24,0.08);
+  }
+  .browser-bar {
+    background:#F0EFED; padding:12px 16px; display:flex; align-items:center; gap:16px;
+    border-bottom:1px solid rgba(0,0,0,0.06);
+  }
+  .browser-dots { display:flex; gap:6px; flex-shrink:0; }
+  .browser-dot { width:10px; height:10px; border-radius:50%; }
+  .browser-url {
+    flex:1; background:#fff; border-radius:4px; padding:6px 12px;
+    font-family:'DM Sans',sans-serif; font-size:0.75rem; color:var(--stone);
+    display:flex; align-items:center; gap:6px;
+  }
+  .browser-lock { font-size:0.6rem; opacity:0.5; }
+  .browser-viewport { position:relative; width:100%; background:var(--ink); overflow:hidden; }
+
+  /* ═══════════════════════════════════════
+     COMPETITOR TABLE
+     ═══════════════════════════════════════ */
+  .comp-table { width:100%; border-collapse:collapse; margin:40px 0; }
+  .comp-table th {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.55rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    padding:12px 16px; text-align:left; border-bottom:2px solid var(--gold-dim);
+  }
+  .comp-table td {
+    font-size:0.82rem; padding:14px 16px; border-bottom:1px solid rgba(26,26,24,0.06);
+    color:var(--stone);
+  }
+  .comp-table tr.highlight td { color:var(--ink); font-weight:400; background:var(--gold-glow); }
+  .comp-table .dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }
+  .dot-green { background:#2D5A3D; }
+  .dot-amber { background:#C4A265; }
+  .dot-red { background:#8B3A3A; }
+
+  /* ═══════════════════════════════════════
+     CONTENT CALENDAR
+     ═══════════════════════════════════════ */
+  .cal-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin:40px 0; background:var(--gold-dim); }
+  .cal-month { background:var(--white); padding:28px 20px; }
+  .cal-month-name {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:16px;
+  }
+  .cal-month ul { list-style:none; }
+  .cal-month li {
+    font-size:0.78rem; padding:5px 0 5px 18px; position:relative; color:var(--stone);
+  }
+  .cal-month li::before {
+    content:''; position:absolute; left:0; top:12px; width:6px; height:1px; background:var(--gold);
+  }
+
+  /* ═══════════════════════════════════════
+     FILM GRAIN
+     ═══════════════════════════════════════ */
+  .grain-section::after {
+    content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size:128px 128px; pointer-events:none; z-index:0; opacity:0.5;
+  }
+  .grain-section { position:relative; }
+  .grain-section > * { position:relative; z-index:1; }
+
+  /* ═══════════════════════════════════════
+     SCROLL PROGRESS / NAV
+     ═══════════════════════════════════════ */
+  .scroll-progress {
+    position:fixed; top:0; left:0; height:2px; width:0%;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.4));
+    z-index:9999; transition:width 0.05s linear;
+    box-shadow:0 0 8px rgba(201,169,110,0.3);
+  }
+  .section-nav {
+    position:fixed; right:24px; top:50%; transform:translateY(-50%);
+    z-index:9998; display:flex; flex-direction:column; gap:12px;
+    opacity:0; transition:opacity 0.4s ease;
+  }
+  .section-nav.visible { opacity:1; }
+  .section-nav-dot {
+    width:8px; height:8px; border-radius:50%;
+    background:transparent; border:1px solid var(--stone);
+    cursor:pointer; transition:all 0.3s ease; position:relative;
+  }
+  .section-nav-dot:hover { border-color:var(--gold); transform:scale(1.3); }
+  .section-nav-dot.active {
+    background:var(--gold); border-color:var(--gold); box-shadow:0 0 8px rgba(201,169,110,0.4);
+  }
+  .section-nav-dot::before {
+    content:attr(data-label);
+    position:absolute; right:20px; top:50%; transform:translateY(-50%);
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--gold);
+    white-space:nowrap; opacity:0; pointer-events:none; transition:opacity 0.3s ease, right 0.3s ease;
+  }
+  .section-nav-dot:hover::before { opacity:1; right:24px; }
+
+  /* ═══════════════════════════════════════
+     LOADING SCREEN
+     ═══════════════════════════════════════ */
+  .loader {
+    position:fixed; top:0; left:0; right:0; bottom:0;
+    background:var(--ink); z-index:99999;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+  }
+  .loader.done { opacity:0; visibility:hidden; pointer-events:none; }
+  .loader-brand {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.6em; text-transform:uppercase; color:var(--paper);
+    opacity:0; animation:loaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-sub {
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.9rem;
+    color:var(--stone); margin-top:8px;
+    opacity:0; animation:loaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line {
+    width:80px; height:1px; background:var(--gold-dim); margin-top:24px;
+    position:relative; overflow:hidden; border-radius:1px;
+    opacity:0; animation:loaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line::after {
+    content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation:loaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+  }
+  @keyframes loaderIn { to { opacity:1; } }
+  @keyframes loaderFill { to { left:100%; } }
+
+  /* ═══════════════════════════════════════
+     REVEAL
+     ═══════════════════════════════════════ */
+  .reveal {
+    opacity:0; transform:translateY(32px);
+    transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal-delay-1 { transition-delay:0.1s; }
+  .reveal-delay-2 { transition-delay:0.2s; }
+  .reveal-delay-3 { transition-delay:0.3s; }
+  .reveal-delay-4 { transition-delay:0.4s; }
+  .reveal-delay-5 { transition-delay:0.5s; }
+
+  /* ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ */
+  .footer {
+    background:var(--ink); padding:80px 60px; text-align:center;
+    border-top:1px solid rgba(201,169,110,0.1);
+  }
+  .footer-mark {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.7rem;
+    letter-spacing:0.4em; text-transform:uppercase; color:var(--paper); margin-bottom:20px;
+  }
+  .footer-info { font-size:0.8rem; color:var(--stone); line-height:2.2; }
+  .footer-info a { color:var(--gold); text-decoration:none; }
+  .footer-note {
+    margin-top:40px; font-size:0.6rem; letter-spacing:0.15em;
+    text-transform:uppercase; font-family:'Josefin Sans',sans-serif;
+    color:rgba(246,244,240,0.15);
+  }
+
+  /* ═══════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════ */
+  @media (max-width:768px) {
+    .cover-content,.cover-top { padding-left:32px; padding-right:32px; }
+    .section { padding:80px 32px; }
+    .stats,.services,.services.three-col,.tiers,.steps,.numbers,.cal-grid { grid-template-columns:1fr; }
+    .tier + .tier { border-left:1px solid rgba(26,26,24,0.06); border-top:none; }
+    .tier.rec { transform:none; }
+    .rm { grid-template-columns:1fr; }
+    .rm-left { border-right:none; border-bottom:2px solid var(--gold-dim); padding:24px 0; }
+    .rm-left::after { display:none; }
+    .rm-right { padding:24px 0; }
+    .roadmap-line { display:none; }
+    .cover-meta-bar { flex-direction:column; gap:16px; }
+    .footer { padding:60px 32px; }
+    .section-nav { display:none; }
+    .svc { border-left:none !important; }
+    .svc:hover { border-left:none !important; }
+    .photo-break { height:200px; min-height:200px; }
+    .photo-break-caption { padding:12px 32px; }
+    .scroll-indicator { display:none; }
+    .insight { padding:32px 28px; }
+    .comp-table { font-size:0.75rem; }
+    .comp-table th, .comp-table td { padding:10px 8px; }
+    .browser-mockup { margin:32px -16px 0; border-radius:4px; }
+  }
+
+  @media print {
+    .cover { min-height:100vh; }
+    .section { padding:60px; }
+    .tier.rec { transform:none; box-shadow:none; }
+    .tier:hover { transform:none; box-shadow:none; }
+    .scroll-progress, .section-nav, .loader, .cover-cta, .scroll-indicator { display:none; }
+    .photo-break { height:200px; page-break-inside:avoid; clip-path:none !important; }
+    h2 em::after { width:100% !important; }
+    .reveal { opacity:1 !important; transform:none !important; }
+    .eyebrow::before { width:24px !important; }
+    .grain-section::after { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader">
+  <div class="loader-brand">Matt Anthony Photography</div>
+  <div class="loader-sub">Creative Partner Proposal</div>
+  <div class="loader-line"></div>
+</div>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav class="section-nav" id="sectionNav"></nav>
+
+
+<!-- ═══════ COVER ═══════ -->
+<div class="cover">
+  <div class="cover-image"></div>
+  <div class="cover-top">
+    <div class="cover-logo">Matt Anthony Photography</div>
+    <div class="cover-date">March 2026</div>
+  </div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">Black Point Architectural Woodwork</div>
+    <h1>Your craft speaks for itself.<br><em>Your digital presence doesn't.</em></h1>
+    <p class="cover-sub">Chris, Zane — you build bespoke millwork for the most discerning homes in the Sea to Sky corridor. You've been featured in Western Living and earned a Home of the Year nomination. But your website, SEO, and social channels don't reflect the calibre of your work. This proposal changes that.</p>
+    <div class="cover-meta-bar">
+      <div class="cover-meta-item"><strong>Prepared for</strong>Chris McKenzie &amp; Zane Brian</div>
+      <div class="cover-meta-item"><strong>Prepared by</strong>Matt Anthony</div>
+      <div class="cover-meta-item"><strong>Valid through</strong>April 30, 2026</div>
+    </div>
+    <a class="cover-cta" href="#audit"><span>View the Audit</span><span class="cover-cta-arrow">&darr;</span></a>
+  </div>
+  <div class="scroll-indicator" id="scrollIndicator">
+    <div class="scroll-indicator-text">Scroll</div>
+    <div class="scroll-indicator-line"></div>
+  </div>
+</div>
+
+
+<!-- ═══════ 01 — THE AUDIT ═══════ -->
+<div class="section cream" id="audit" data-nav="Audit">
+  <div class="eyebrow">Digital Audit</div>
+  <h2>A Western Living feature and a Home of the Year.<br><em>Nobody can find either one.</em></h2>
+  <p class="lead">I spent two weeks auditing Black Point's entire digital presence — website, SEO, social media, reviews, and competitive position. The craft is outstanding. The visibility is nearly zero. Below is a detailed breakdown, scored by category, with specific findings and what to do about each one.</p>
+
+  <div class="stats">
+    <div class="stat"><span class="stat-val">17</span><span class="stat-lbl">Pages on Entire Site</span></div>
+    <div class="stat"><span class="stat-val">0</span><span class="stat-lbl">Meta Descriptions</span></div>
+    <div class="stat"><span class="stat-val">0</span><span class="stat-lbl">Google Reviews</span></div>
+    <div class="stat"><span class="stat-val">557</span><span class="stat-lbl">Instagram Followers</span></div>
+  </div>
+
+  <h3>Audit Scorecard</h3>
+  <div class="scorecard">
+    <div class="score-row"><span class="score-category">Craft &amp; Portfolio Quality</span><span class="score-rating score-pass">Excellent</span></div>
+    <div class="score-row"><span class="score-category">Website Design &amp; UX</span><span class="score-rating score-warn">Functional, Not Premium</span></div>
+    <div class="score-row"><span class="score-category">Photography Consistency</span><span class="score-rating score-warn">7 Photographers, No Cohesion</span></div>
+    <div class="score-row"><span class="score-category">On-Page SEO</span><span class="score-rating score-fail">Critical Gap</span></div>
+    <div class="score-row"><span class="score-category">Technical SEO</span><span class="score-rating score-fail">Critical Gap</span></div>
+    <div class="score-row"><span class="score-category">Local SEO / Google Business</span><span class="score-rating score-fail">Non-existent</span></div>
+    <div class="score-row"><span class="score-category">Social Media</span><span class="score-rating score-fail">Dormant</span></div>
+    <div class="score-row"><span class="score-category">Reviews &amp; Reputation</span><span class="score-rating score-fail">Zero Reviews Anywhere</span></div>
+    <div class="score-row"><span class="score-category">Awards &amp; Press</span><span class="score-rating score-warn">Strong but Hidden</span></div>
+    <div class="score-row"><span class="score-category">Brand Story &amp; Positioning</span><span class="score-rating score-pass">Authentic &amp; Compelling</span></div>
+  </div>
+
+  <h3>Website Assessment</h3>
+  <p>Your site is built on Squarespace 7.1 with minimal customization. It's clean and functional, but it looks like a default template — it could be any trades business. For a boutique architectural millwork shop doing high-end custom work in Whistler, the website should feel as intentional as your joinery.</p>
+  <p>The homepage hero is a single static image with a short tagline. No video, no motion, no visual impact. Project pages contain 1-2 sentences each with no story about materials, process, challenges, or scope. Your Contact page has only an email address — no form, no phone number, no map. There are no calls to action anywhere on the site.</p>
+  <p>Your Western Living feature and Home of the Year finalist status are mentioned once, buried on a single project page. There is one client testimonial on the entire site.</p>
+
+  <div class="insight">
+    <h4>The Photography Gap</h4>
+    <p>You clearly value professional photography — you credit photographers on every project. But you're using <strong style="color:var(--ink);">7 different photographers across 8 portfolio projects.</strong> Ema Peter, Upper Left, Janis Nicolay, Darby Magill, Kyle Graham, Kristen McGaughey, Conrad Brown. Every project has a different visual language. There's no cohesive brand identity across the portfolio.</p>
+    <p style="margin-bottom:0;">One photographer who understands your brand, your materials, and your process creates consistency that compounds over time — across your website, social media, awards submissions, and press pitches.</p>
+  </div>
+
+  <h3>SEO &amp; Technical Gaps</h3>
+  <div class="services">
+    <div class="svc">
+      <div class="svc-badge">Critical</div>
+      <h4>On-Page SEO</h4>
+      <ul>
+        <li>Zero meta descriptions on all 17 pages</li>
+        <li>Zero alt tags on 100+ images</li>
+        <li>No H1 tags — headings coded as H4</li>
+        <li>Title tags missing geographic keywords</li>
+        <li>"Gallery 3" still the title on Featured Work page</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-badge">Critical</div>
+      <h4>Technical SEO</h4>
+      <ul>
+        <li>No LocalBusiness schema markup</li>
+        <li>No structured data of any kind</li>
+        <li>Duplicate pages (/lakeshore-drive vs /portfolio/lakeshoredrive)</li>
+        <li>/contact-1 URL with "-1" suffix</li>
+        <li>Under 2,000 words of indexable content site-wide</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-badge">Critical</div>
+      <h4>Local SEO</h4>
+      <ul>
+        <li>No Google Business Profile</li>
+        <li>Zero Google reviews</li>
+        <li>Not in Google Maps for any search query</li>
+        <li>No Houzz profile (295 cabinetmakers listed in Whistler — you're not one of them)</li>
+        <li>No directory citations anywhere</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-badge">Dormant</div>
+      <h4>Social Media</h4>
+      <ul>
+        <li>557 Instagram followers after 7+ years</li>
+        <li>~74 posts total (~1 per month)</li>
+        <li>Facebook page appears dormant</li>
+        <li>No Pinterest (massive gap for visual millwork)</li>
+        <li>No LinkedIn company page</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Competitive Landscape</h3>
+  <p>The entire Sea-to-Sky millwork sector is weak at digital marketing. Nobody is producing editorial-quality content. <strong>The first shop that invests wins the market.</strong></p>
+
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Instagram</th>
+        <th>Houzz</th>
+        <th>Google Reviews</th>
+        <th>Press</th>
+        <th>Awards</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td><strong>Black Point</strong></td>
+        <td>557</td>
+        <td><span class="dot dot-red"></span>None</td>
+        <td><span class="dot dot-red"></span>0</td>
+        <td><span class="dot dot-amber"></span>Western Living (hidden)</td>
+        <td><span class="dot dot-red"></span>None entered</td>
+      </tr>
+      <tr>
+        <td>William's Joinery</td>
+        <td>Active</td>
+        <td><span class="dot dot-green"></span>Yes</td>
+        <td><span class="dot dot-green"></span>Active</td>
+        <td>&mdash;</td>
+        <td><span class="dot dot-green"></span>"Award-winning"</td>
+      </tr>
+      <tr>
+        <td>Bowerman's</td>
+        <td>675</td>
+        <td><span class="dot dot-green"></span>Yes</td>
+        <td><span class="dot dot-green"></span>Active</td>
+        <td><span class="dot dot-green"></span>Pique feature</td>
+        <td>&mdash;</td>
+      </tr>
+      <tr>
+        <td>Mountain Design</td>
+        <td>631</td>
+        <td><span class="dot dot-green"></span>Yes</td>
+        <td><span class="dot dot-green"></span>Active</td>
+        <td>&mdash;</td>
+        <td>&mdash;</td>
+      </tr>
+      <tr>
+        <td>Avalanche Custom</td>
+        <td>Active</td>
+        <td>&mdash;</td>
+        <td>&mdash;</td>
+        <td>&mdash;</td>
+        <td><span class="dot dot-amber"></span>HomeStars 2017</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="insight">
+    <h4>The Opportunity</h4>
+    <p>William's Joinery has been in Whistler for 30 years. Bowerman's for 20+. Mountain Design for 35+. They all have Houzz profiles and Google reviews that you don't — but <strong style="color:var(--ink);">none of them have a Western Living feature.</strong> None of them have publication-quality press credentials. None of them are producing editorial content.</p>
+    <p style="margin-bottom:0;">You have the strongest portfolio and the most compelling story in the corridor. You just have the weakest digital footprint. That's the easiest problem to fix.</p>
+  </div>
+</div>
+
+
+<!-- PHOTO BREAK 1 -->
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef4086f4-81fa-468f-99bf-966ce7d83d89/warbler-whistler-architectural-photography-matt-anthony-.jpg-11.jpg" alt="Warbler Residence at twilight — Whistler, BC">
+  <div class="photo-break-caption">Warbler Residence &middot; Whistler, BC &middot; Matt Anthony Photography</div>
+</div>
+
+
+<!-- ═══════ 02 — THE SOLUTION ═══════ -->
+<div class="section" data-nav="Solution">
+  <div class="eyebrow">The Fix</div>
+  <h2>One creative partner. Photography, website,<br>content, and SEO — <em>handled.</em></h2>
+  <p class="lead">You don't need five vendors. You need one person who understands your craft and can translate it across every channel. I already shoot for the architects and builders you work with. I know the Sea to Sky market. Here's what Black Point needs:</p>
+
+  <div class="services three-col">
+    <div class="svc">
+      <h4>Website Redesign</h4>
+      <ul>
+        <li>Custom Squarespace build (25+ pages)</li>
+        <li>Cinematic hero with video/motion</li>
+        <li>Project case studies with storytelling</li>
+        <li>Team page with founder portraits</li>
+        <li>Awards &amp; press showcase</li>
+        <li>Process page showing your 5-step journey</li>
+        <li>Contact form, phone, map</li>
+        <li>Mobile-first, SEO-ready architecture</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>SEO Strategy</h4>
+      <ul>
+        <li>Meta titles + descriptions for every page</li>
+        <li>Alt tags on all 100+ images</li>
+        <li>LocalBusiness + Service schema markup</li>
+        <li>Google Business Profile setup + optimization</li>
+        <li>Houzz profile creation</li>
+        <li>Service area keyword targeting</li>
+        <li>Proper H1/H2 heading hierarchy</li>
+        <li>Sitemap + canonical URL cleanup</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Architectural Photography</h4>
+      <ul>
+        <li>Full-day project shoots for every completed build</li>
+        <li>Interiors, details, exteriors, twilight</li>
+        <li>Process/behind-the-scenes documentation</li>
+        <li>Award-submission specification from day one</li>
+        <li>Transport Canada certified drone pilot</li>
+        <li>One consistent visual language across all projects</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Content Creation</h4>
+      <ul>
+        <li>Written case studies for each project</li>
+        <li>Material stories (the wood, the joinery, the finish)</li>
+        <li>Social media content from every shoot</li>
+        <li>Awards submission materials</li>
+        <li>Blog content for SEO (quarterly)</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Social Media</h4>
+      <ul>
+        <li>Instagram content strategy + calendar</li>
+        <li>Pinterest board creation + optimization</li>
+        <li>Behind-the-scenes Reels from the shop</li>
+        <li>Consistent posting cadence (3-4x/week)</li>
+        <li>Cross-tagging with architects, builders, designers</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Awards &amp; Press</h4>
+      <ul>
+        <li>AWMAC BC Awards of Excellence entries</li>
+        <li>Georgie Award submissions (via builder partners)</li>
+        <li>Western Living re-pitching for new projects</li>
+        <li>Pique Newsmagazine feature pitch</li>
+        <li>Publication-ready photo delivery</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- PHOTO BREAK 2 -->
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8149d10c-ae1b-4a37-9e5e-d2bdd21b97e2/warbler-whistler-architectural-photography-matt-anthony-.jpg-33.jpg" alt="Warbler Residence rear elevation — Whistler, BC">
+  <div class="photo-break-caption">Warbler Residence &middot; Rear Elevation &middot; Matt Anthony Photography</div>
+</div>
+
+
+<!-- ═══════ 03 — WEBSITE REDESIGN ═══════ -->
+<div class="section cream" data-nav="Website">
+  <div class="eyebrow">See What's Possible</div>
+  <h2>I redesigned your homepage.<br><em>Take a look.</em></h2>
+  <p class="lead">Before we discuss pricing, I want to show you what Black Point could look like online. This is a custom design concept — not a template — built around your actual projects, your brand story, and your positioning as Whistler's premier architectural millwork shop.</p>
+
+  <p style="margin-bottom:16px;"><a href="https://mattanthonyphoto.github.io/matt-proposals/black-point/black-point-homepage-mockup.html" target="_blank" style="display:inline-flex; align-items:center; gap:10px; padding:14px 32px; font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold-border); text-decoration:none; transition:all 0.4s cubic-bezier(0.16,1,0.3,1);">View the Full Interactive Mockup <span>&rarr;</span></a></p>
+
+  <div class="browser-mockup reveal">
+    <div class="browser-bar">
+      <div class="browser-dots">
+        <span class="browser-dot" style="background:#FF5F57;"></span>
+        <span class="browser-dot" style="background:#FFBD2E;"></span>
+        <span class="browser-dot" style="background:#28CA41;"></span>
+      </div>
+      <div class="browser-url">
+        <span class="browser-lock">&#x1F512;</span>
+        blackpointwoodwork.com
+      </div>
+    </div>
+    <div class="browser-viewport">
+      <!-- Hero Section Mockup -->
+      <div style="background:#0C0C0B; color:#fff; min-height:520px; display:flex; align-items:flex-end; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(135deg, #1a1a18 0%, #2a2520 50%, #1a1715 100%); opacity:0.95;"></div>
+        <!-- Simulated nav -->
+        <div style="position:absolute; top:0; left:0; right:0; padding:28px 48px; display:flex; justify-content:space-between; align-items:center; z-index:3;">
+          <div style="font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.9);">Black Point</div>
+          <div style="display:flex; gap:28px; font-family:'DM Sans',sans-serif; font-size:11px; color:rgba(255,255,255,0.45); letter-spacing:0.5px;">
+            <span>Portfolio</span>
+            <span>Our Process</span>
+            <span>The Shop</span>
+            <span>About</span>
+            <span style="color:#C9A96E;">Contact</span>
+          </div>
+        </div>
+        <!-- Hero content -->
+        <div style="position:relative; z-index:2; padding:0 48px 56px; max-width:640px;">
+          <div style="font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#C9A96E; margin-bottom:20px; display:flex; align-items:center; gap:12px;">
+            <span style="display:block; width:24px; height:1px; background:#C9A96E;"></span>
+            Whistler, BC &middot; Est. 2017
+          </div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4.5vw,48px); font-weight:400; line-height:1.1; margin-bottom:16px;">Bespoke Millwork.<br><span style="font-style:italic; color:#C9A96E;">Collaborative Service.</span></div>
+          <div style="font-family:'DM Sans',sans-serif; font-weight:300; font-size:13px; line-height:1.85; color:rgba(255,255,255,0.45); max-width:480px; margin-bottom:32px;">Architectural woodwork crafted with intention. From custom cabinetry to full millwork packages, we partner with architects, designers, and builders across the Sea to Sky corridor.</div>
+          <div style="display:flex; gap:12px; align-items:center;">
+            <span style="display:inline-block; padding:13px 28px; font-family:'Josefin Sans',sans-serif; font-size:10px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:#fff; border:1px solid rgba(201,169,110,0.4);">View Our Work</span>
+            <span style="display:inline-block; padding:13px 28px; font-family:'Josefin Sans',sans-serif; font-size:10px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.35);">Start a Project &rarr;</span>
+          </div>
+        </div>
+        <!-- Stats bar -->
+        <div style="position:absolute; bottom:0; right:0; display:flex; gap:1px; z-index:2;">
+          <div style="background:rgba(201,169,110,0.06); padding:20px 28px; text-align:center; border-top:1px solid rgba(201,169,110,0.15);">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:#C9A96E;">40+</div>
+            <div style="font-family:'Josefin Sans',sans-serif; font-size:8px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.3);">Years Combined</div>
+          </div>
+          <div style="background:rgba(201,169,110,0.06); padding:20px 28px; text-align:center; border-top:1px solid rgba(201,169,110,0.15);">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:#C9A96E;">8</div>
+            <div style="font-family:'Josefin Sans',sans-serif; font-size:8px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.3);">Featured Projects</div>
+          </div>
+          <div style="background:rgba(201,169,110,0.06); padding:20px 28px; text-align:center; border-top:1px solid rgba(201,169,110,0.15);">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:#C9A96E;">1</div>
+            <div style="font-family:'Josefin Sans',sans-serif; font-size:8px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.3);">Western Living Feature</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects Grid Mockup -->
+      <div style="background:#F6F4F0; padding:56px 48px;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#C9A96E; margin-bottom:12px; display:flex; align-items:center; gap:10px;">
+          <span style="display:block; width:20px; height:1px; background:#C9A96E;"></span>
+          Featured Work
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:400; color:#1A1A18; margin-bottom:8px; line-height:1.15;">Every detail, <span style="font-style:italic; color:#C9A96E;">intentional.</span></div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:12px; color:#8A8579; margin-bottom:32px; max-width:480px; line-height:1.8;">Custom millwork for architects, designers, and homeowners who care about craft. Each project is a collaboration from first concept to final install.</div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
+          <div style="position:relative; aspect-ratio:4/5; overflow:hidden; background:#e5e3de;">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:20px; background:linear-gradient(transparent, rgba(26,26,24,0.85));">
+              <div style="font-family:'Josefin Sans',sans-serif; font-size:8px; letter-spacing:2px; text-transform:uppercase; color:#C9A96E;">Whistler</div>
+              <div style="font-family:'Cormorant Garamond',serif; font-size:16px; color:#fff;">Quarry Lane</div>
+              <div style="font-family:'DM Sans',sans-serif; font-size:9px; color:rgba(255,255,255,0.4);">Full Millwork Package &middot; STARK Architecture</div>
+            </div>
+          </div>
+          <div style="position:relative; aspect-ratio:4/5; overflow:hidden; background:#ddd8d0;">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:20px; background:linear-gradient(transparent, rgba(26,26,24,0.85));">
+              <div style="font-family:'Josefin Sans',sans-serif; font-size:8px; letter-spacing:2px; text-transform:uppercase; color:#C9A96E;">Whistler</div>
+              <div style="font-family:'Cormorant Garamond',serif; font-size:16px; color:#fff;">Panorama Ridge</div>
+              <div style="font-family:'DM Sans',sans-serif; font-size:9px; color:rgba(255,255,255,0.4);">Western Living &middot; Home of the Year Finalist</div>
+            </div>
+          </div>
+          <div style="position:relative; aspect-ratio:4/5; overflow:hidden; background:#d5d0c8;">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:20px; background:linear-gradient(transparent, rgba(26,26,24,0.85));">
+              <div style="font-family:'Josefin Sans',sans-serif; font-size:8px; letter-spacing:2px; text-transform:uppercase; color:#C9A96E;">Whistler Village</div>
+              <div style="font-family:'Cormorant Garamond',serif; font-size:16px; color:#fff;">Ecologyst</div>
+              <div style="font-family:'DM Sans',sans-serif; font-size:9px; color:rgba(255,255,255,0.4);">Commercial Retail Fit-Out</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- About / Process Mockup -->
+      <div style="background:#1A1A18; padding:56px 48px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+          <div>
+            <div style="font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#C9A96E; margin-bottom:16px; display:flex; align-items:center; gap:10px;">
+              <span style="display:block; width:20px; height:1px; background:#C9A96E;"></span>
+              The Shop
+            </div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; color:#F6F4F0; margin-bottom:16px; line-height:1.2;">Two trade-certified cabinetmakers.<br><span style="font-style:italic; color:#C9A96E;">40 years combined.</span></div>
+            <div style="font-family:'DM Sans',sans-serif; font-size:12px; color:rgba(246,244,240,0.45); line-height:1.85; margin-bottom:24px;">Chris and Zane trained in Western Australia and the UK before landing in Whistler. Both hold trade certifications with over two decades of experience each. Black Point was founded in 2017 from Function Junction — a boutique shop built on precision, communication, and the belief that millwork should be as considered as the architecture it serves.</div>
+            <div style="display:flex; gap:1px;">
+              <div style="background:rgba(201,169,110,0.06); padding:16px 20px; text-align:center;">
+                <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:#C9A96E;">20+</div>
+                <div style="font-family:'Josefin Sans',sans-serif; font-size:7px; letter-spacing:2px; text-transform:uppercase; color:rgba(246,244,240,0.3);">Years Each</div>
+              </div>
+              <div style="background:rgba(201,169,110,0.06); padding:16px 20px; text-align:center;">
+                <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:#C9A96E;">5</div>
+                <div style="font-family:'Josefin Sans',sans-serif; font-size:7px; letter-spacing:2px; text-transform:uppercase; color:rgba(246,244,240,0.3);">Step Process</div>
+              </div>
+              <div style="background:rgba(201,169,110,0.06); padding:16px 20px; text-align:center;">
+                <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:#C9A96E;">3</div>
+                <div style="font-family:'Josefin Sans',sans-serif; font-size:7px; letter-spacing:2px; text-transform:uppercase; color:rgba(246,244,240,0.3);">Countries Trained</div>
+              </div>
+            </div>
+          </div>
+          <div style="aspect-ratio:4/5; background:#2a2520; display:flex; align-items:center; justify-content:center;">
+            <div style="font-family:'Josefin Sans',sans-serif; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:rgba(246,244,240,0.15);">Team Portrait Placeholder</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Footer Mockup -->
+      <div style="background:#C9A96E; padding:48px; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; color:#1A1A18; margin-bottom:12px;">Ready to start a project?</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:12px; color:rgba(26,26,24,0.6); margin-bottom:24px;">Tell us about your vision. We'll handle the rest.</div>
+        <span style="display:inline-block; padding:13px 32px; font-family:'Josefin Sans',sans-serif; font-size:10px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:#fff; background:#1A1A18;">Get in Touch</span>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top:24px; font-size:0.85rem; color:var(--stone); text-align:center;">This is a concept preview. The full build would include all project pages, SEO architecture, schema markup, and responsive design across all devices.</p>
+
+  <h3>What Changes in the Redesign</h3>
+  <div class="services">
+    <div class="svc">
+      <h4>Current Site</h4>
+      <ul>
+        <li>Static hero image, no CTA</li>
+        <li>1-2 sentence project descriptions</li>
+        <li>One testimonial on entire site</li>
+        <li>Contact page: email only</li>
+        <li>Awards buried on one project page</li>
+        <li>Default Squarespace template feel</li>
+        <li>No video or motion anywhere</li>
+        <li>Zero structured data</li>
+      </ul>
+    </div>
+    <div class="svc new">
+      <div class="svc-badge">New</div>
+      <h4>Redesigned Site</h4>
+      <ul>
+        <li>Cinematic hero with video + scroll animation</li>
+        <li>Full case studies with material + process stories</li>
+        <li>Dedicated testimonials section</li>
+        <li>Contact form, phone, map, booking link</li>
+        <li>Awards + press showcase page</li>
+        <li>Custom design reflecting your craft</li>
+        <li>Process/behind-the-scenes video</li>
+        <li>Full schema + SEO architecture</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- PHOTO BREAK 3 -->
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/76e4a936-e1db-4f7e-a14e-9aac9c7f1ffc/eagle-residence-pemberton-architectural-photography-matt-anthony-.jpg-7.jpg" alt="Eagle Residence — Pemberton, BC">
+  <div class="photo-break-caption">Eagle Residence &middot; Pemberton, BC &middot; Matt Anthony Photography</div>
+</div>
+
+
+<!-- ═══════ 04 — CONTENT PLAN ═══════ -->
+<div class="section" data-nav="Content">
+  <div class="eyebrow">Content Strategy</div>
+  <h2>A 12-month content engine<br>built around <em>your projects.</em></h2>
+  <p class="lead">Every project you complete generates content for months. One shoot creates hero images for the website, social posts for weeks, an awards submission, a press pitch, and a case study that ranks on Google. Here's the year mapped out:</p>
+
+  <div class="cal-grid">
+    <div class="cal-month">
+      <div class="cal-month-name">Q2 — Foundation</div>
+      <ul>
+        <li>Website redesign + launch</li>
+        <li>Google Business Profile setup</li>
+        <li>Houzz profile creation</li>
+        <li>Pinterest boards (8 categories)</li>
+        <li>First project shoot</li>
+        <li>Team portraits at the shop</li>
+        <li>Behind-the-scenes Reels (4x)</li>
+        <li>Review request campaign</li>
+      </ul>
+    </div>
+    <div class="cal-month">
+      <div class="cal-month-name">Q3 — Momentum</div>
+      <ul>
+        <li>Second project shoot</li>
+        <li>Case study + blog post #1</li>
+        <li>Instagram grid build (3-4x/week)</li>
+        <li>Pinterest content seeding</li>
+        <li>Pique Newsmagazine pitch</li>
+        <li>AWMAC membership application</li>
+        <li>Process video (planning to install)</li>
+        <li>Material story posts (the wood)</li>
+      </ul>
+    </div>
+    <div class="cal-month">
+      <div class="cal-month-name">Q4 — Awards Season</div>
+      <ul>
+        <li>Third project shoot</li>
+        <li>AWMAC Awards submission</li>
+        <li>Georgie entries (via builder partners)</li>
+        <li>Case study + blog post #2</li>
+        <li>Western Living re-pitch (new project)</li>
+        <li>Year-in-review content</li>
+        <li>Holiday gift guide feature pitch</li>
+        <li>Review follow-up campaign</li>
+      </ul>
+    </div>
+    <div class="cal-month">
+      <div class="cal-month-name">Q1 2027 — Authority</div>
+      <ul>
+        <li>Fourth project shoot</li>
+        <li>AWMAC ceremony (October results)</li>
+        <li>Georgie gala (May 2027)</li>
+        <li>Case study + blog post #3</li>
+        <li>Azure Magazine pitch</li>
+        <li>SEO performance review</li>
+        <li>Year two strategy planning</li>
+        <li>Portfolio refresh with new work</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="numbers grain-section">
+    <div class="num"><span class="num-val">4</span><span class="num-lbl">Project Shoots Per Year</span></div>
+    <div class="num"><span class="num-val">150</span><span class="num-lbl">Social Posts Year One</span></div>
+    <div class="num"><span class="num-val">3</span><span class="num-lbl">Award Submissions</span></div>
+  </div>
+
+  <h3>Awards Calendar</h3>
+  <p>You should be entering awards. Your work already qualifies — you just need the photography and submission materials to do it justice.</p>
+
+  <div class="services">
+    <div class="svc">
+      <h4>AWMAC BC Awards of Excellence</h4>
+      <ul>
+        <li>Annual, ceremony in October</li>
+        <li>Categories: residential + commercial millwork</li>
+        <li>Requires AWMAC membership</li>
+        <li>No competitors in the corridor are entering</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>CHBA Georgie Awards</h4>
+      <ul>
+        <li>Entries open August, gala May 2027</li>
+        <li>Your builders (TM, Gavan) can enter with your millwork</li>
+        <li>50+ categories including interior/custom home</li>
+        <li>Photography is the submission — I handle that</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Publication Targets</h3>
+  <div class="services">
+    <div class="svc">
+      <h4>Tier 1 — National Reach</h4>
+      <ul>
+        <li>Western Living (you've done it before)</li>
+        <li>Azure Magazine (features Whistler custom homes)</li>
+        <li>Dwell (features BC millwork projects)</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Tier 2 — Trade + Local</h4>
+      <ul>
+        <li>Pique Newsmagazine (featured your competitor)</li>
+        <li>Woodworking Canada (6x/year trade pub)</li>
+        <li>Canadian Woodworking &amp; Home Improvement</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- PHOTO BREAK 4 -->
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/65d67cb8-fb78-4e34-8e9f-e906306b7eb1/warbler-whistler-architectural-photography-matt-anthony-.jpg-34.jpg" alt="Warbler Residence exterior at dusk">
+  <div class="photo-break-caption">Warbler Residence &middot; Exterior at Dusk &middot; Matt Anthony Photography</div>
+</div>
+
+
+<!-- ═══════ 05 — ROADMAP ═══════ -->
+<div class="section cream" data-nav="Roadmap">
+  <div class="eyebrow">Implementation Roadmap</div>
+  <h2>From invisible to unmissable<br>in <em>six months.</em></h2>
+  <p class="lead">Here's exactly what happens, when it happens, and what you can expect at each stage. I handle everything — you keep building.</p>
+
+  <div class="roadmap">
+    <div class="roadmap-line" id="roadmapLine"></div>
+
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">Month 1</div>
+        <div class="rm-label">Foundation</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          <li>Brand discovery session (1 hour)</li>
+          <li>Website architecture + wireframing</li>
+          <li>Google Business Profile created + verified</li>
+          <li>Houzz profile created with existing photos</li>
+          <li>Review request email sent to past clients</li>
+          <li>SEO keyword research + content mapping</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">Month 2</div>
+        <div class="rm-label">Build + Shoot</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          <li>Website design + development (Squarespace custom build)</li>
+          <li>First project photoshoot (full day)</li>
+          <li>Team portrait session at Function Junction shop</li>
+          <li>Behind-the-scenes video content captured</li>
+          <li>Pinterest boards created (8 categories)</li>
+          <li>LinkedIn company page set up</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">Month 3</div>
+        <div class="rm-label">Launch</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          <li>Website goes live with full SEO architecture</li>
+          <li>All project case studies written + published</li>
+          <li>Schema markup deployed across all pages</li>
+          <li>Instagram content cadence begins (3-4x/week)</li>
+          <li>First blog post published</li>
+          <li>Press pitch sent to Pique Newsmagazine</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">Month 4-6</div>
+        <div class="rm-label">Growth</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          <li>Second + third project photoshoots</li>
+          <li>New case studies added as projects complete</li>
+          <li>AWMAC membership + award entry preparation</li>
+          <li>Georgie submission coordination with builder partners</li>
+          <li>Monthly SEO monitoring + optimization</li>
+          <li>Social content refinement based on engagement data</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <h4>What You'll Have After 6 Months</h4>
+    <ul style="list-style:none; margin-top:12px;">
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#2D5A3D;">&#10003;</span> A custom website that matches the quality of your work</li>
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#2D5A3D;">&#10003;</span> Full SEO architecture ranking for "custom millwork Whistler"</li>
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#2D5A3D;">&#10003;</span> Google Business Profile with reviews</li>
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#2D5A3D;">&#10003;</span> Houzz profile in the Whistler cabinetry directory</li>
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#2D5A3D;">&#10003;</span> 2-3 projects shot with one consistent visual language</li>
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#2D5A3D;">&#10003;</span> Active Instagram with 75+ posts and growing</li>
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#2D5A3D;">&#10003;</span> Pinterest boards driving organic discovery</li>
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#2D5A3D;">&#10003;</span> Awards entered for the first time</li>
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#2D5A3D;">&#10003;</span> Press pitch sent to at least 2 publications</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ═══════ 06 — PRICING ═══════ -->
+<div class="section" data-nav="Pricing">
+  <div class="eyebrow">Investment</div>
+  <h2>Three paths forward.<br><em>Pick what fits.</em></h2>
+  <p class="lead">Every tier includes the website redesign. The difference is how deep we go with photography, content, and ongoing partnership. I'd recommend the Creative Partner — it's the model that compounds.</p>
+
+  <div class="tiers">
+    <!-- TIER 1 -->
+    <div class="tier" data-tier="foundation">
+      <div class="tier-selected-badge">Selected</div>
+      <div class="tier-name">Foundation</div>
+      <div class="tier-price">$6,500</div>
+      <div class="tier-term">One-time project fee</div>
+      <ul>
+        <li>Custom Squarespace website (25+ pages)</li>
+        <li>Full SEO architecture + schema markup</li>
+        <li>Meta descriptions + alt tags for all images</li>
+        <li>Google Business Profile setup</li>
+        <li>Houzz profile creation</li>
+        <li>Project case studies (existing photos)</li>
+        <li class="off">No new photography</li>
+        <li class="off">No ongoing content</li>
+        <li class="off">No social media management</li>
+        <li class="off">No awards submissions</li>
+      </ul>
+      <div class="tier-bottom">
+        Website + SEO only.<br>
+        <strong>Best if:</strong> you just need the digital foundation fixed.
+      </div>
+    </div>
+
+    <!-- TIER 2 — RECOMMENDED -->
+    <div class="tier rec" data-tier="creative-partner">
+      <div class="tier-badge"><span>Recommended</span></div>
+      <div class="tier-selected-badge">Selected</div>
+      <div class="tier-name">Creative Partner</div>
+      <div class="tier-price">$2,500 <span>/mo</span></div>
+      <div class="tier-term">12-month engagement &middot; includes website build</div>
+      <ul>
+        <li>Everything in Foundation</li>
+        <li>4 project photoshoots per year (full day each)</li>
+        <li>Team portrait session</li>
+        <li>Behind-the-scenes + process content</li>
+        <li>Social media management (3-4 posts/week)</li>
+        <li>Pinterest content strategy</li>
+        <li>Monthly case studies + blog posts</li>
+        <li>Awards submissions (AWMAC, Georgie)</li>
+        <li>Press pitches (Western Living, Pique, Azure)</li>
+        <li>Monthly reporting + strategy calls</li>
+      </ul>
+      <div class="tier-bottom">
+        Full creative arm for your business.<br>
+        <strong>$30,000/year</strong> &middot; Website included in first 3 months.
+      </div>
+    </div>
+
+    <!-- TIER 3 -->
+    <div class="tier" data-tier="launch">
+      <div class="tier-selected-badge">Selected</div>
+      <div class="tier-name">Launch Package</div>
+      <div class="tier-price">$12,000</div>
+      <div class="tier-term">One-time &middot; website + first shoot</div>
+      <ul>
+        <li>Everything in Foundation</li>
+        <li>1 full-day project photoshoot</li>
+        <li>Team portrait session</li>
+        <li>Behind-the-scenes content</li>
+        <li>Social media setup + first month of content</li>
+        <li>Pinterest board creation</li>
+        <li>2 case studies written + published</li>
+        <li>Review request campaign</li>
+        <li class="off">No ongoing management</li>
+        <li class="off">No awards submissions</li>
+      </ul>
+      <div class="tier-bottom">
+        Strong start, then self-managed.<br>
+        <strong>Best if:</strong> you want the foundation + one shoot to launch with.
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <h4>Why Creative Partner Makes Sense</h4>
+    <p>A one-time website build fixes today's problems. A Creative Partner compounds month over month. Every project you complete becomes a case study, social content, an awards entry, and a press pitch. After 12 months, you'll have a portfolio, a digital presence, and an awards record that no competitor in the corridor can match.</p>
+    <p style="margin-bottom:0;">I already photograph for LRD Studio and work with architects across the Sea to Sky corridor. Every project I shoot for you that credits the architect, designer, or builder creates cross-referral opportunities for everyone involved. <strong style="color:var(--ink);">Your content becomes their content. Their network becomes your reach.</strong></p>
+  </div>
+</div>
+
+
+<!-- ═══════ 07 — NEXT STEPS ═══════ -->
+<div class="section cream" data-nav="Next Steps">
+  <div class="eyebrow">Next Steps</div>
+  <h2>Chris, Zane — let's make the work<br><em>as visible as it deserves.</em></h2>
+  <p>You've spent nine years building a reputation that the Sea to Sky corridor knows by word of mouth. The only missing piece is a digital presence that does the same work. Let's fix that.</p>
+
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <h4>Pick Your Path</h4>
+      <p>Foundation, Launch Package, or Creative Partner. Whichever fits where Black Point is right now.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <h4>Deposit</h4>
+      <p>50% to lock in your timeline and guarantee priority scheduling for the build season.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <h4>Kick Off</h4>
+      <p>30-minute brand discovery call. Then I start building while you keep making sawdust.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:24px; font-size:0.85rem; color:var(--stone);">This proposal is valid through <strong style="color:var(--ink);">April 30, 2026</strong>.</p>
+</div>
+
+
+<!-- ═══════ FOOTER ═══════ -->
+<div class="footer grain-section">
+  <div class="footer-mark">Matt Anthony Photography</div>
+  <div class="footer-info">
+    <a href="https://mattanthonyphoto.com">mattanthonyphoto.com</a><br>
+    <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a> &middot; 604.765.9270<br>
+    Squamish, BC
+  </div>
+  <div class="footer-note">This proposal is confidential and prepared exclusively for Black Point Architectural Woodwork</div>
+</div>
+
+
+<script>
+(function(){
+  'use strict';
+
+  /* ═══════ LOADING SCREEN ═══════ */
+  var loader = document.getElementById('loader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('done'); }, 1100);
+  });
+
+  /* ═══════ SCROLL PROGRESS BAR ═══════ */
+  var progressBar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var s = window.scrollY;
+    progressBar.style.width = (h > 0 ? (s / h) * 100 : 0) + '%';
+  }
+
+  /* ═══════ COVER PARALLAX ═══════ */
+  var coverImg = document.querySelector('.cover-image');
+  function updateParallax(){
+    if(window.scrollY < window.innerHeight){
+      coverImg.style.transform = 'scale(1.08) translateY(' + (window.scrollY * 0.3) + 'px)';
+    }
+  }
+
+  /* ═══════ PHOTO BREAK PARALLAX + KEN BURNS ═══════ */
+  var photoBreakEls = document.querySelectorAll('.photo-break');
+  function updatePhotoParallax(){
+    photoBreakEls.forEach(function(pb){
+      var rect = pb.getBoundingClientRect();
+      var inView = rect.bottom > 0 && rect.top < window.innerHeight;
+      if(inView) pb.classList.add('in-view');
+      else pb.classList.remove('in-view');
+    });
+  }
+
+  /* ═══════ SECTION NAV DOTS ═══════ */
+  var sectionNav = document.getElementById('sectionNav');
+  var navSections = document.querySelectorAll('[data-nav]');
+  var navDots = [];
+  navSections.forEach(function(sec){
+    var dot = document.createElement('div');
+    dot.className = 'section-nav-dot';
+    dot.setAttribute('data-label', sec.getAttribute('data-nav'));
+    dot.addEventListener('click', function(){ sec.scrollIntoView({ behavior:'smooth', block:'start' }); });
+    sectionNav.appendChild(dot);
+    navDots.push({ dot:dot, section:sec });
+  });
+
+  function updateNavDots(){
+    var scrollY = window.scrollY; var winH = window.innerHeight;
+    if(scrollY > winH * 0.5) sectionNav.classList.add('visible');
+    else sectionNav.classList.remove('visible');
+    var active = null;
+    navDots.forEach(function(item){
+      var rect = item.section.getBoundingClientRect();
+      if(rect.top < winH * 0.5 && rect.bottom > winH * 0.3) active = item;
+      item.dot.classList.remove('active');
+    });
+    if(active) active.dot.classList.add('active');
+  }
+
+  /* ═══════ SCROLL REVEAL ═══════ */
+  var revealTargets = [];
+  document.querySelectorAll('.section, .numbers').forEach(function(section){
+    section.querySelectorAll('.eyebrow, h2, .lead, .stats, .services, .tiers, .insight, .roadmap, .numbers, .steps, .cal-grid, .comp-table, .scorecard, .authority-gap, .browser-mockup').forEach(function(el, i){
+      el.classList.add('reveal');
+      if(i > 0 && i < 6) el.classList.add('reveal-delay-' + i);
+      revealTargets.push(el);
+    });
+    section.querySelectorAll('.stat, .svc, .tier, .step, .num, .rm, .cal-month').forEach(function(el, i){
+      el.classList.add('reveal');
+      el.classList.add('reveal-delay-' + Math.min(i + 1, 5));
+      revealTargets.push(el);
+    });
+    Array.prototype.forEach.call(section.children, function(child){
+      if(child.tagName === 'P' && !child.classList.contains('lead') && !child.classList.contains('cover-sub')){
+        child.classList.add('reveal'); revealTargets.push(child);
+      }
+    });
+  });
+
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+        animateCounter(entry.target);
+      }
+    });
+  }, { threshold:0.15, rootMargin:'0px 0px -40px 0px' });
+  revealTargets.forEach(function(el){ revealObserver.observe(el); });
+
+  /* ═══════ EYEBROW LINE ANIMATION ═══════ */
+  var eyebrows = document.querySelectorAll('.eyebrow');
+  var eyebrowObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); eyebrowObserver.unobserve(entry.target); }
+    });
+  }, { threshold:0.5 });
+  eyebrows.forEach(function(eb){ eyebrowObserver.observe(eb); });
+
+  /* ═══════ NUMBER COUNTER ANIMATION ═══════ */
+  function animateCounter(el){
+    var valEl = el.querySelector('.stat-val, .num-val');
+    if(!valEl || valEl.dataset.counted) return;
+    var text = valEl.textContent.trim();
+    if(valEl.dataset.text) return;
+    valEl.dataset.counted = 'true';
+    var hasPlus = text.indexOf('+') > -1;
+    var num = parseFloat(text.replace(/[^0-9.]/g,''));
+    if(isNaN(num) || num === 0) return;
+    var duration = 1200; var start = performance.now();
+    var suffix = hasPlus ? '+' : '';
+    function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+    function tick(now){
+      var t = Math.min((now - start) / duration, 1);
+      valEl.textContent = Math.round(ease(t) * num) + suffix;
+      if(t < 1) requestAnimationFrame(tick);
+    }
+    valEl.textContent = '0' + suffix;
+    requestAnimationFrame(tick);
+  }
+
+  /* ═══════ PHOTO BREAK CURTAIN REVEAL ═══════ */
+  var photoRevealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('revealed'); photoRevealObserver.unobserve(entry.target); }
+    });
+  }, { threshold:0.1 });
+  photoBreakEls.forEach(function(pb){ photoRevealObserver.observe(pb); });
+
+  /* ═══════ HEADLINE GOLD UNDERLINE ═══════ */
+  var headlines = document.querySelectorAll('h2');
+  var headlineObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('underlined'); headlineObserver.unobserve(entry.target); }
+    });
+  }, { threshold:0.5 });
+  headlines.forEach(function(h){ headlineObserver.observe(h); });
+
+  /* ═══════ SCROLL INDICATOR HIDE ═══════ */
+  var scrollIndicator = document.getElementById('scrollIndicator');
+  function updateScrollIndicator(){
+    if(window.scrollY > 100) scrollIndicator.classList.add('hidden');
+    else scrollIndicator.classList.remove('hidden');
+  }
+
+  /* ═══════ TIER SELECTION + 3D TILT ═══════ */
+  var isTouchDevice = 'ontouchstart' in window;
+  var tiers = document.querySelectorAll('.tier[data-tier]');
+  tiers.forEach(function(tier){
+    tier.addEventListener('click', function(){
+      tiers.forEach(function(t){ t.classList.remove('selected'); });
+      tier.classList.add('selected');
+    });
+    if(!isTouchDevice){
+      tier.addEventListener('mousemove', function(e){
+        var rect = tier.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        tier.style.transform = tier.classList.contains('rec')
+          ? 'scaleY(1.02) perspective(800px) rotateY(' + (x * 4) + 'deg) rotateX(' + (-y * 4) + 'deg)'
+          : 'perspective(800px) rotateY(' + (x * 4) + 'deg) rotateX(' + (-y * 4) + 'deg)';
+      });
+      tier.addEventListener('mouseleave', function(){
+        tier.style.transform = tier.classList.contains('rec') ? 'scaleY(1.02)' : '';
+      });
+    }
+  });
+
+  /* ═══════ ROADMAP LINE DRAW ═══════ */
+  var roadmapLine = document.getElementById('roadmapLine');
+  var roadmap = document.querySelector('.roadmap');
+  function updateRoadmapLine(){
+    if(!roadmap || !roadmapLine) return;
+    var rect = roadmap.getBoundingClientRect();
+    var roadmapTop = rect.top + window.scrollY;
+    var roadmapHeight = rect.height - 96;
+    var scrollPos = window.scrollY + window.innerHeight * 0.6;
+    var progress = (scrollPos - roadmapTop - 48) / roadmapHeight;
+    progress = Math.max(0, Math.min(1, progress));
+    roadmapLine.style.height = (progress * roadmapHeight) + 'px';
+  }
+
+  /* ═══════ SMOOTH SCROLL FOR CTA ═══════ */
+  var ctaBtn = document.querySelector('.cover-cta');
+  if(ctaBtn){
+    ctaBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  }
+
+  /* ═══════ COMBINED SCROLL HANDLER (rAF) ═══════ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress(); updateParallax(); updatePhotoParallax();
+        updateScrollIndicator(); updateRoadmapLine(); updateNavDots();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress(); updateParallax(); updatePhotoParallax(); updateRoadmapLine(); updateNavDots();
+})();
+</script>
+
+</body>
+</html>

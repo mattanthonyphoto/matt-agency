@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Guide to Awards & Publications — Matt Anthony Photography</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A18;
+    --paper: #F6F4F0;
+    --gold: #C9A96E;
+    --gold-dim: rgba(201,169,110,0.12);
+    --gold-border: rgba(201,169,110,0.25);
+    --gold-glow: rgba(201,169,110,0.06);
+    --stone: #8A8579;
+    --white: #FFFFFF;
+    --light: #FAFAF8;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; -webkit-print-color-adjust:exact; print-color-adjust:exact; scroll-behavior:smooth; }
+  body { background:var(--white); color:var(--ink); font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.75; overflow-x:hidden; }
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  .scroll-progress {
+    position:fixed; top:0; left:0; height:2px; width:0%;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.4));
+    z-index:9999; transition:width 0.05s linear;
+    box-shadow:0 0 8px rgba(201,169,110,0.3);
+  }
+
+  /* ═══ LOADER ═══ */
+  .loader {
+    position:fixed; top:0; left:0; right:0; bottom:0;
+    background:var(--ink); z-index:99999;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1), visibility 0.6s;
+  }
+  .loader.done { opacity:0; visibility:hidden; pointer-events:none; }
+  .loader-brand {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.7rem;
+    letter-spacing:0.5em; text-transform:uppercase; color:var(--paper);
+    opacity:0; animation:loaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line {
+    width:80px; height:1px; background:var(--gold-dim); margin-top:24px;
+    position:relative; overflow:hidden; border-radius:1px;
+    opacity:0; animation:loaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line::after {
+    content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation:loaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+  }
+  @keyframes loaderIn { to { opacity:1; } }
+  @keyframes loaderFill { to { left:100%; } }
+
+  /* ═══ REVEAL ═══ */
+  .reveal {
+    opacity:0; transform:translateY(32px);
+    transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal-delay-1 { transition-delay:0.08s; }
+  .reveal-delay-2 { transition-delay:0.16s; }
+  .reveal-delay-3 { transition-delay:0.24s; }
+
+  /* ═══ HEADER ═══ */
+  .header {
+    background:var(--ink); color:var(--paper); padding:0;
+    position:relative; overflow:hidden; min-height:75vh;
+    display:flex; flex-direction:column; justify-content:flex-end;
+  }
+  .header-bg {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    background-image:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/bd45b746-3623-41b7-8016-a94a135bd9b6/5322-backhouse-web-10.jpg');
+    background-size:cover; background-position:center 40%;
+    filter:brightness(0.3); will-change:transform;
+  }
+  .header-inner { position:relative; z-index:1; padding:120px 64px 100px; }
+  .header::after {
+    content:''; position:absolute; bottom:0; left:64px; right:64px;
+    height:1px; background:linear-gradient(90deg, var(--gold), transparent 70%); z-index:1;
+  }
+  .header-eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; display:flex; align-items:center; gap:14px;
+    opacity:0; transform:translateY(24px);
+    animation:headerFade 0.9s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .header-eyebrow::before { content:''; width:24px; height:1px; background:var(--gold); }
+  .header h1 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:3.2rem; line-height:1.12; letter-spacing:-0.01em; margin-bottom:24px;
+    opacity:0; transform:translateY(24px);
+    animation:headerFade 0.9s 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .header h1 em { font-style:italic; font-weight:500; }
+  .header-sub {
+    font-family:'DM Sans',sans-serif; font-weight:300; font-size:0.85rem;
+    color:rgba(246,244,240,0.5); letter-spacing:0.05em; max-width:520px;
+    opacity:0; transform:translateY(24px);
+    animation:headerFade 0.9s 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  @keyframes headerFade { to { opacity:1; transform:translateY(0); } }
+
+  .scroll-indicator {
+    position:absolute; bottom:40px; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    opacity:0; animation:headerFade 0.9s 1.2s cubic-bezier(0.16,1,0.3,1) forwards;
+    transition:opacity 0.4s ease; z-index:2;
+  }
+  .scroll-indicator.hidden { opacity:0 !important; }
+  .scroll-indicator-text {
+    font-family:'Josefin Sans',sans-serif; font-size:0.45rem;
+    letter-spacing:0.3em; text-transform:uppercase; color:rgba(246,244,240,0.3);
+  }
+  .scroll-indicator-line {
+    width:1px; height:32px; position:relative; overflow:hidden; background:rgba(246,244,240,0.1);
+  }
+  .scroll-indicator-line::after {
+    content:''; position:absolute; top:-100%; left:0; width:100%; height:100%;
+    background:var(--gold); animation:scrollPulse 2s cubic-bezier(0.16,1,0.3,1) infinite;
+  }
+  @keyframes scrollPulse { 0% { top:-100%; } 50% { top:100%; } 100% { top:100%; } }
+
+  /* ═══ SECTIONS ═══ */
+  .section { max-width:800px; margin:0 auto; padding:80px 64px; }
+  .section.full { max-width:100%; }
+  .section.dark { background:var(--ink); color:var(--paper); }
+  .section.cream { background:var(--paper); }
+  .section.light { background:var(--light); }
+  .section.wide { max-width:960px; }
+
+  .eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; display:flex; align-items:center; gap:14px;
+  }
+  .eyebrow::before {
+    content:''; width:0; height:1px; background:var(--gold);
+    transition:width 0.6s cubic-bezier(0.16,1,0.3,1);
+  }
+  .eyebrow.visible::before { width:24px; }
+
+  h2 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:2.6rem; line-height:1.12; margin-bottom:32px; letter-spacing:-0.01em;
+  }
+  h2 em { font-style:italic; font-weight:500; }
+  h3 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.75rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); margin:48px 0 20px;
+  }
+  p { margin-bottom:20px; font-size:0.95rem; }
+  .lead { font-size:1.05rem; line-height:1.9; color:var(--stone); }
+
+  blockquote {
+    border-left:2px solid var(--gold); padding:8px 0 8px 24px; margin:32px 0;
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.2rem;
+    line-height:1.6; color:var(--stone);
+  }
+
+  .divider { width:1px; height:80px; background:var(--gold-dim); margin:0 auto; border:none; display:block; }
+
+  /* ═══ PHOTO BREAK ═══ */
+  .photo-break {
+    width:100%; height:40vh; min-height:280px; max-height:420px;
+    position:relative; overflow:hidden;
+    clip-path:inset(0 0 0 0);
+  }
+  .photo-break img {
+    width:100%; height:120%; object-fit:cover; display:block;
+    position:absolute; top:-10%; left:0; filter:brightness(0.85);
+    transition:filter 0.8s cubic-bezier(0.16,1,0.3,1); will-change:transform;
+  }
+  .photo-break:hover img { filter:brightness(0.95); }
+  .photo-break::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:100px;
+    background:linear-gradient(transparent, rgba(26,26,24,0.6)); z-index:1; pointer-events:none;
+  }
+  .photo-break.in-view img { animation:kenBurns 12s ease-in-out infinite alternate; }
+  @keyframes kenBurns { 0% { transform:scale(1) translateY(0); } 100% { transform:scale(1.06) translateY(-8px); } }
+  .photo-break-caption {
+    position:absolute; bottom:0; left:0; right:0; z-index:2; padding:20px 64px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.3em; text-transform:uppercase; color:rgba(246,244,240,0.5);
+  }
+
+  /* ═══ NUMBERS BAR ═══ */
+  .numbers-bar {
+    background:var(--ink); color:var(--paper); padding:64px;
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:1px;
+  }
+  .numbers-bar .num { text-align:center; padding:32px 24px; }
+  .num-val {
+    font-family:'Cormorant Garamond',serif; font-size:3.4rem; font-weight:500;
+    color:var(--gold); display:block; line-height:1; margin-bottom:12px;
+  }
+  .num-label {
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--stone);
+  }
+
+  /* ═══ INSIGHT BOX ═══ */
+  .insight {
+    border-left:2px solid var(--gold); padding:24px 32px;
+    margin:40px 0; background:var(--gold-glow);
+  }
+  .insight p { margin:0; font-size:0.9rem; }
+  .insight strong { color:var(--gold); font-weight:500; }
+
+  /* ═══ AWARDS TABLE ═══ */
+  .awards-table {
+    width:100%; border-collapse:collapse; margin:32px 0;
+    font-size:0.85rem;
+  }
+  .awards-table th {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
+    text-align:left; padding:12px 16px; border-bottom:1px solid var(--gold-border);
+  }
+  .awards-table td {
+    padding:14px 16px; border-bottom:1px solid rgba(0,0,0,0.06);
+    vertical-align:top;
+  }
+  .awards-table tbody tr { transition:background 0.3s ease; }
+  .awards-table tbody tr:hover { background:var(--light); }
+  .badge {
+    display:inline-block; font-family:'Josefin Sans',sans-serif;
+    font-size:0.5rem; letter-spacing:0.15em; text-transform:uppercase;
+    padding:3px 10px; border-radius:2px; font-weight:400;
+  }
+  .badge-gold { background:var(--gold); color:var(--ink); }
+  .badge-silver { background:var(--stone); color:var(--white); }
+  .badge-free { background:rgba(201,169,110,0.12); color:var(--gold); }
+
+  /* ═══ FLOW STEPS ═══ */
+  .flow { margin:40px 0; }
+  .flow-step {
+    display:grid; grid-template-columns:48px 1fr; gap:24px;
+    padding:28px 0; border-bottom:1px solid rgba(0,0,0,0.06);
+    transition:padding-left 0.3s ease;
+  }
+  .flow-step:hover { padding-left:8px; }
+  .flow-num {
+    font-family:'Cormorant Garamond',serif; font-size:2rem;
+    font-weight:500; color:var(--gold); line-height:1;
+  }
+  .flow-title {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.7rem;
+    letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px;
+  }
+  .flow-desc { font-size:0.88rem; color:var(--stone); margin:0; }
+
+  /* ═══ TIMELINE ═══ */
+  .timeline { margin:40px 0; }
+  .tl-item {
+    display:grid; grid-template-columns:120px 1fr; gap:32px;
+    padding:24px 0; border-bottom:1px solid rgba(0,0,0,0.06);
+  }
+  .tl-date {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.65rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--gold);
+    padding-top:4px;
+  }
+  .tl-content p { margin:0; font-size:0.88rem; }
+  .tl-content strong { font-weight:500; }
+
+  /* ═══ TWO-COL COMPARISON ═══ */
+  .compare {
+    display:grid; grid-template-columns:1fr 1fr; gap:48px; margin:40px 0;
+  }
+  .compare-col h3 { margin-top:0; }
+  .compare-col ul { list-style:none; padding:0; }
+  .compare-col ul li {
+    font-size:0.88rem; padding:8px 0; border-bottom:1px solid rgba(0,0,0,0.06);
+    color:var(--stone);
+  }
+  .compare-col ul li::before { margin-right:8px; }
+  .compare-col.yes li::before { content:'\2713'; color:var(--gold); }
+  .compare-col.no li::before { content:'\2717'; color:var(--stone); opacity:0.4; }
+
+  /* ═══ CTA SECTION ═══ */
+  .cta-section {
+    background:var(--ink); color:var(--paper); padding:80px 64px;
+    text-align:center; position:relative;
+  }
+  .cta-section .eyebrow { justify-content:center; }
+  .cta-section .eyebrow::before { display:none; }
+  .cta-section h2 { margin-bottom:20px; }
+  .cta-section p { color:var(--stone); max-width:520px; margin:0 auto 32px; }
+  .cta-btn {
+    display:inline-block; font-family:'Josefin Sans',sans-serif;
+    font-weight:400; font-size:0.65rem; letter-spacing:0.3em;
+    text-transform:uppercase; color:var(--ink); background:var(--gold);
+    padding:16px 48px; text-decoration:none; border:none;
+    transition:all 0.3s ease; cursor:pointer;
+  }
+  .cta-btn:hover { background:var(--paper); color:var(--ink); }
+
+  /* ═══ FOOTER ═══ */
+  .footer {
+    padding:48px 64px; text-align:center;
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--stone);
+  }
+  .footer a { color:var(--gold); text-decoration:none; }
+
+  /* ═══ GRAIN ═══ */
+  .grain-section { position:relative; }
+  .grain-section > * { position:relative; z-index:1; }
+  .grain-section::before {
+    content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    background-size:128px 128px; pointer-events:none; z-index:0; opacity:0.5;
+  }
+
+  /* ═══ SECTION NAV ═══ */
+  .section-nav {
+    position:fixed; right:24px; top:50%; transform:translateY(-50%);
+    z-index:9998; display:flex; flex-direction:column; gap:12px;
+    opacity:0; transition:opacity 0.4s ease;
+  }
+  .section-nav.visible { opacity:1; }
+  .section-nav-dot {
+    width:8px; height:8px; border-radius:50%;
+    background:transparent; border:1px solid var(--stone);
+    cursor:pointer; transition:all 0.3s ease; position:relative;
+  }
+  .section-nav-dot:hover { border-color:var(--gold); transform:scale(1.3); }
+  .section-nav-dot.active {
+    background:var(--gold); border-color:var(--gold);
+    box-shadow:0 0 8px rgba(201,169,110,0.4);
+  }
+  .section-nav-dot::before {
+    content:attr(data-label);
+    position:absolute; right:20px; top:50%; transform:translateY(-50%);
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--gold);
+    white-space:nowrap; opacity:0; pointer-events:none;
+    transition:opacity 0.3s ease, right 0.3s ease;
+  }
+  .section-nav-dot:hover::before { opacity:1; right:24px; }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width:768px) {
+    .header-inner { padding:80px 32px 64px; }
+    .header h1 { font-size:2.2rem; }
+    .section { padding:56px 32px; }
+    h2 { font-size:2rem; }
+    .numbers-bar { grid-template-columns:1fr 1fr; padding:40px 32px; }
+    .compare { grid-template-columns:1fr; gap:24px; }
+    .photo-break { height:200px; min-height:160px; }
+    .photo-break-caption { padding:12px 32px; }
+    .section-nav { display:none; }
+    .awards-table { font-size:0.75rem; display:block; overflow-x:auto; }
+    .flow-step { grid-template-columns:36px 1fr; gap:16px; }
+    .tl-item { grid-template-columns:1fr; gap:8px; }
+    .cta-section { padding:56px 32px; }
+    .footer { padding:32px; }
+  }
+  @media (max-width:480px) {
+    .header h1 { font-size:1.8rem; }
+    .section { padding:40px 24px; }
+    h2 { font-size:1.7rem; }
+    .numbers-bar { padding:32px 24px; }
+    .num-val { font-size:2.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="loader" id="loader">
+  <div class="loader-brand">Matt Anthony Photography</div>
+  <div class="loader-line"></div>
+</div>
+
+<nav class="section-nav" id="sectionNav">
+  <div class="section-nav-dot" data-label="The Gap" data-target="gap"></div>
+  <div class="section-nav-dot" data-label="Why It Matters" data-target="why"></div>
+  <div class="section-nav-dot" data-label="Awards" data-target="awards"></div>
+  <div class="section-nav-dot" data-label="Publications" data-target="publications"></div>
+  <div class="section-nav-dot" data-label="What You Need" data-target="need"></div>
+  <div class="section-nav-dot" data-label="The Process" data-target="process"></div>
+  <div class="section-nav-dot" data-label="Calendar" data-target="calendar"></div>
+  <div class="section-nav-dot" data-label="Get Started" data-target="start"></div>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════ -->
+<header class="header">
+  <div class="header-bg"></div>
+  <div class="header-inner">
+    <div class="header-eyebrow">Client Guide</div>
+    <h1>Your Work <em>Deserves</em><br>to Be Seen</h1>
+    <div class="header-sub">A practical guide to getting your projects into awards programs and design publications. From submission to feature.</div>
+  </div>
+  <div class="scroll-indicator" id="scrollIndicator">
+    <span class="scroll-indicator-text">Scroll</span>
+    <div class="scroll-indicator-line"></div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════
+     THE GAP
+     ═══════════════════════════════════════ -->
+<section class="section" data-nav="gap" id="gap">
+  <div class="eyebrow reveal">The Reality</div>
+  <h2 class="reveal">Most Great Work <em>Never Gets Submitted</em></h2>
+  <p class="lead reveal">You build exceptional homes. You design spaces people love. But if those projects aren't documented, submitted, and published, the only people who know about them are the ones who walk through the front door.</p>
+  <p class="reveal">Here's a pattern we see across British Columbia: a builder or architect with 10, 15, even 20 years of outstanding work, zero awards on the wall, and zero publications to their name. Not because the work isn't good enough, but because nobody ever submitted it.</p>
+  <p class="reveal">Meanwhile, their competitors with similar quality work have a shelf full of Georgie Awards and features in Western Living. The difference isn't talent. It's process.</p>
+</section>
+
+<div class="numbers-bar grain-section reveal">
+  <div class="num">
+    <span class="num-val" data-count="14">0</span>
+    <span class="num-label">Years Building</span>
+  </div>
+  <div class="num">
+    <span class="num-val" data-count="14">0</span>
+    <span class="num-label">Completed Projects</span>
+  </div>
+  <div class="num">
+    <span class="num-val" data-count="0">0</span>
+    <span class="num-label">Awards Submitted</span>
+  </div>
+  <div class="num">
+    <span class="num-val" data-count="17">0</span>
+    <span class="num-label">Competitor's Awards</span>
+  </div>
+</div>
+
+<div class="section" style="max-width:800px; margin:0 auto; padding:40px 64px;">
+  <div class="insight reveal">
+    <p><strong>Real example:</strong> A luxury custom home builder in the Sea-to-Sky corridor has been delivering award-caliber work for over a decade. In that same period, their closest competitor has collected 17 industry awards. The quality gap between them is negligible. The credibility gap is enormous.</p>
+  </div>
+</div>
+
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e07b8aac-c1ec-4293-b956-79b41aa39f33/5322-backhouse-web-1.jpg" alt="The Perch modern coastal residence Sunshine Coast architectural photography">
+  <div class="photo-break-caption">The Perch &mdash; Sunshine Coast, BC</div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     WHY IT MATTERS
+     ═══════════════════════════════════════ -->
+<section class="section" data-nav="why" id="why">
+  <div class="eyebrow reveal">Why Awards & Publications Matter</div>
+  <h2 class="reveal">It's Not About <em>Vanity</em></h2>
+  <p class="lead reveal">In the luxury market, awards and press are trust signals. They're the difference between a prospect calling three firms and calling one.</p>
+
+  <h3 class="reveal">What awards actually do</h3>
+  <p class="reveal">A Georgie Award or RAIC Medal tells a prospective client that your peers, the people who understand the craft, have judged your work and found it exceptional. That's not marketing. That's third-party validation.</p>
+
+  <h3 class="reveal">What publications actually do</h3>
+  <p class="reveal">A private home gets 50 visitors over its lifetime. That same home on ArchDaily gets 10,000+. A feature in Western Living or Dezeen reaches hundreds of thousands of design-conscious readers. Your project's photography becomes its public life.</p>
+
+  <blockquote class="reveal">Almost two-thirds of new commissions come from reputation. Publications and awards are how reputation scales beyond word of mouth.</blockquote>
+
+  <div class="compare reveal">
+    <div class="compare-col yes">
+      <h3>With Awards & Press</h3>
+      <ul>
+        <li>Third-party credibility with every prospect</li>
+        <li>"Award-winning" on every piece of marketing</li>
+        <li>Published projects visible to thousands</li>
+        <li>Press coverage attracts premium clients</li>
+        <li>Architect and designer referrals increase</li>
+        <li>Higher perceived value, stronger pricing</li>
+      </ul>
+    </div>
+    <div class="compare-col no">
+      <h3>Without Them</h3>
+      <ul>
+        <li>Credibility limited to personal referrals</li>
+        <li>No external validation of quality</li>
+        <li>Projects visible only to visitors</li>
+        <li>Competing on price, not reputation</li>
+        <li>Invisible to the design community</li>
+        <li>Work quality alone must carry the brand</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/0e7a6365-526e-4c0e-8b06-4939d5008849/5322-backhouse-web-4.jpg" alt="The Perch suspended fireplace interior Sunshine Coast">
+  <div class="photo-break-caption">Interior &mdash; The Perch, Sunshine Coast</div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     AWARDS
+     ═══════════════════════════════════════ -->
+<section class="section wide" data-nav="awards" id="awards">
+  <div class="eyebrow reveal">The Awards Landscape</div>
+  <h2 class="reveal">Awards That <em>Matter</em> in BC</h2>
+  <p class="lead reveal">These are the awards programs that architects, builders, and designers in British Columbia should know about. Each one carries weight with clients, peers, and the press.</p>
+
+  <table class="awards-table reveal">
+    <thead>
+      <tr>
+        <th>Award</th>
+        <th>Who Can Enter</th>
+        <th>Deadline</th>
+        <th>Fee</th>
+        <th>Why It Matters</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Georgie Awards</strong><br><span class="badge badge-gold">Essential</span></td>
+        <td>Builders, designers, architects</td>
+        <td>Varies (Gala: May 23)</td>
+        <td>Varies</td>
+        <td>The standard for BC residential construction. If you build in BC, you should be entering.</td>
+      </tr>
+      <tr>
+        <td><strong>Western Living DOTY</strong><br><span class="badge badge-gold">Prestige</span></td>
+        <td>Architects, designers, builders</td>
+        <td>April 1 (early bird)</td>
+        <td>~$150</td>
+        <td>Most prestigious design award in Western Canada. Feature in Western Living magazine.</td>
+      </tr>
+      <tr>
+        <td><strong>AFBC Awards of Excellence</strong><br><span class="badge badge-silver">Architecture</span></td>
+        <td>Architects (BC/Yukon projects)</td>
+        <td>~July 25</td>
+        <td>Varies</td>
+        <td>Highest provincial architecture award. Includes Lieutenant Governor Awards.</td>
+      </tr>
+      <tr>
+        <td><strong>RAIC Governor General's Medals</strong><br><span class="badge badge-silver">Architecture</span></td>
+        <td>Canadian architects</td>
+        <td>December 11, 2026</td>
+        <td>~$415</td>
+        <td>Canada's most prestigious architecture award. National recognition.</td>
+      </tr>
+      <tr>
+        <td><strong>Wood Design & Building Awards</strong><br><span class="badge badge-free">Free for BC</span></td>
+        <td>Architects, builders</td>
+        <td>June 27</td>
+        <td>Free (BC projects)</td>
+        <td>National award celebrating wood architecture. BC projects enter free via WoodWorks BC.</td>
+      </tr>
+      <tr>
+        <td><strong>CHBA National Awards</strong><br><span class="badge badge-silver">Builders</span></td>
+        <td>CHBA member builders</td>
+        <td>Varies</td>
+        <td>Varies</td>
+        <td>National recognition for housing excellence across Canada.</td>
+      </tr>
+      <tr>
+        <td><strong>IDIBC SHINE Awards</strong><br><span class="badge badge-silver">Design</span></td>
+        <td>Interior designers (BC)</td>
+        <td>Varies</td>
+        <td>Varies</td>
+        <td>BC's top interior design recognition since 1981.</td>
+      </tr>
+      <tr>
+        <td><strong>Architizer A+ Awards</strong><br><span class="badge badge-gold">Global</span></td>
+        <td>Architects (international)</td>
+        <td>~February</td>
+        <td>Varies</td>
+        <td>Major international award with global audience. Jury + Popular Choice.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9d699cdf-a6ac-442f-b234-97b0aba24035/5322-backhouse-web-5.jpg" alt="The Perch kitchen natural materials Sunshine Coast">
+  <div class="photo-break-caption">Kitchen &mdash; The Perch, Sunshine Coast</div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PUBLICATIONS
+     ═══════════════════════════════════════ -->
+<section class="section" data-nav="publications" id="publications">
+  <div class="eyebrow reveal">The Publications Landscape</div>
+  <h2 class="reveal">Where Your Work <em>Gets Seen</em></h2>
+  <p class="lead reveal">Design publications reach the people who commission homes, design spaces, and shape the industry. A single feature can generate more visibility than years of social media.</p>
+
+  <h3 class="reveal">Global Reach</h3>
+  <p class="reveal"><strong>Dezeen</strong> is the most-read architecture publication in the world. A feature here changes trajectories. <strong>ArchDaily</strong> reaches 15 million monthly visitors and has the highest acceptance rate of any major platform. <strong>Dwell</strong> bridges architecture and lifestyle, reaching design-conscious homeowners.</p>
+
+  <h3 class="reveal">Canadian & BC</h3>
+  <p class="reveal"><strong>Western Living</strong> is the dominant publication for BC's design community, with 25,000 print distribution. Every architect, designer, and builder in Western Canada reads it. <strong>Canadian Architect</strong> is the professional standard, read by every architect in Canada. <strong>Azure</strong> covers design-forward Canadian work.</p>
+
+  <div class="insight reveal">
+    <p><strong>The BC advantage:</strong> Publications love dramatic landscapes. Mountain homes, ocean-facing residences, projects embedded in challenging terrain. If you build in the Sea-to-Sky, Sunshine Coast, or anywhere with dramatic natural context, editors want to see your work.</p>
+  </div>
+
+  <h3 class="reveal">What editors look for</h3>
+  <p class="reveal">A clear design concept, not just expensive finishes. How does the building respond to its site? What materials were chosen and why? What's the spatial experience? Editors want a story, not a spec sheet. And they need professional photography that communicates design intent, not real estate shots.</p>
+</section>
+
+<!-- ═══════════════════════════════════════
+     WHAT YOU NEED
+     ═══════════════════════════════════════ -->
+<section class="section cream" data-nav="need" id="need">
+  <div class="eyebrow reveal">The Submission Package</div>
+  <h2 class="reveal">What's Actually <em>Required</em></h2>
+  <p class="lead reveal">The reason most projects never get submitted isn't quality. It's paperwork. Here's what a complete submission package looks like, and what I handle for you.</p>
+
+  <div class="flow reveal">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div>
+        <div class="flow-title">Professional Photography</div>
+        <p class="flow-desc">15-25 publication-ready images. Exteriors, interiors, details, twilight, aerial. Shot to editorial standards at 2880px+ resolution. Not real estate photography. Design-intent photography.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div>
+        <div class="flow-title">Project Description</div>
+        <p class="flow-desc">200-400 words of editorial-quality writing in third person. Design narrative, material choices, site response, spatial experience. Not marketing copy.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div>
+        <div class="flow-title">Floor Plans & Drawings</div>
+        <p class="flow-desc">Site plan, main floor plan, and ideally a section drawing. These dramatically increase acceptance odds. Your architect likely already has them.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">4</div>
+      <div>
+        <div class="flow-title">Full Credits</div>
+        <p class="flow-desc">Every firm involved: architecture, interior design, builder, landscape, structural engineering, specialty consultants. Editors cross-reference credits.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">5</div>
+      <div>
+        <div class="flow-title">Submission Management</div>
+        <p class="flow-desc">Tailored pitches to each publication. Exclusivity tracking. Follow-up timing. Status updates. Post-publication announcements across all channels.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight reveal">
+    <p><strong>What you provide:</strong> Approval to submit, floor plans from your architect, and a credits list. <strong>What I handle:</strong> Everything else. Photography, descriptions, pitches, submissions, tracking, follow-ups, and announcements.</p>
+  </div>
+</section>
+
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/83bbba67-7393-4e34-8b4b-bac1600c8110/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-12.jpg" alt="Sunshine Coast interior architectural photography">
+  <div class="photo-break-caption">Interior light &mdash; Sunshine Coast, BC</div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     THE PROCESS
+     ═══════════════════════════════════════ -->
+<section class="section" data-nav="process" id="process">
+  <div class="eyebrow reveal">How It Works</div>
+  <h2 class="reveal">From Project to <em>Publication</em></h2>
+  <p class="lead reveal">This is what the process looks like when we work together. Your involvement is minimal. The results compound.</p>
+
+  <div class="flow reveal">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div>
+        <div class="flow-title">We Photograph the Project</div>
+        <p class="flow-desc">A full documentation shoot at completion. Every image is shot to editorial and award-submission standards from day one, so nothing needs to be re-shot later.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div>
+        <div class="flow-title">I Build the Submission Package</div>
+        <p class="flow-desc">I curate the image set, write the editorial project description, compile credits, and request floor plans from the architect. You review and approve.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div>
+        <div class="flow-title">I Pitch the Right Publications</div>
+        <p class="flow-desc">Each publication gets a tailored pitch. I manage exclusivity, track responses, and handle follow-ups. You don't need to send a single email.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">4</div>
+      <div>
+        <div class="flow-title">I Submit to Awards</div>
+        <p class="flow-desc">Using the same photography package, I identify the right award categories, prepare entries, and manage submissions. One shoot, multiple credentials.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">5</div>
+      <div>
+        <div class="flow-title">Results Compound</div>
+        <p class="flow-desc">Each publication and award feeds the next. Published work strengthens award entries. Award wins generate press coverage. Your reputation scales.</p>
+      </div>
+    </div>
+  </div>
+
+  <blockquote class="reveal">One project photographed to the right standard generates 3-5 credentials: an award entry, a magazine pitch, an ArchDaily feature, social content, and website material. The photography is done once. The leverage is ongoing.</blockquote>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CALENDAR
+     ═══════════════════════════════════════ -->
+<section class="section wide cream" data-nav="calendar" id="calendar">
+  <div class="eyebrow reveal">Annual Timeline</div>
+  <h2 class="reveal">When to <em>Act</em></h2>
+  <p class="lead reveal">Awards and publications run on deadlines. Here's when the key windows open and close throughout the year.</p>
+
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-date">Jan &ndash; Mar</div>
+      <div class="tl-content"><p><strong>Plan & photograph.</strong> Best window to shoot completed projects for summer/fall deadlines. Architects are selecting award entries.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">April</div>
+      <div class="tl-content"><p><strong>Western Living DOTY early bird (Apr 1).</strong> Submit your strongest project for BC's most prestigious design award.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">May</div>
+      <div class="tl-content"><p><strong>Georgie Awards Gala (May 23). RAIC Conference (May 5-8, Vancouver).</strong> Peak networking season. Results announced.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">June</div>
+      <div class="tl-content"><p><strong>Wood Design & Building deadline (Jun 27).</strong> Free entry for BC projects. Submit to ArchDaily and pitch Dezeen.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">July</div>
+      <div class="tl-content"><p><strong>AFBC Awards deadline (~Jul 25).</strong> BC's highest architecture award. Biennial.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Aug &ndash; Sep</div>
+      <div class="tl-content"><p><strong>Canadian Architect Photo Awards (~Sep 12). WL DOTY Event (Sep 10).</strong> Award season peaks.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Oct &ndash; Nov</div>
+      <div class="tl-content"><p><strong>Pitch Dwell and Azure.</strong> Architizer A+ Awards open. Plan entries for the new year.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">December</div>
+      <div class="tl-content"><p><strong>RAIC Governor General's Medals deadline (Dec 11).</strong> Canada's most prestigious. Year-end review.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/edfcc332-dd10-4900-8bfc-c65e80731f97/5322-backhouse-web-23.jpg" alt="The Perch aerial drone architectural photography Sunshine Coast">
+  <div class="photo-break-caption">Aerial &mdash; The Perch, Sunshine Coast</div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     CTA
+     ═══════════════════════════════════════ -->
+<section class="cta-section grain-section" data-nav="start" id="start">
+  <div class="eyebrow reveal">Get Started</div>
+  <h2 class="reveal">Your Best Project <em>Is Waiting</em></h2>
+  <p class="reveal">I handle the entire submission process, from photography to publication. You focus on building. Let me make sure the world sees your work.</p>
+  <a href="https://mattanthonyphoto.com/discovery-call" class="cta-btn reveal">Book a Discovery Call</a>
+</section>
+
+<footer class="footer">
+  <p>Matt Anthony Photography &nbsp;&bull;&nbsp; <a href="https://mattanthonyphoto.com">mattanthonyphoto.com</a> &nbsp;&bull;&nbsp; 604.765.9270</p>
+</footer>
+
+<script>
+(function(){
+  // Loader
+  setTimeout(function(){ document.getElementById('loader').classList.add('done'); }, 1100);
+
+  // Scroll progress
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('scrollProgress').style.width = (window.scrollY / h * 100) + '%';
+  });
+
+  // Hide scroll indicator
+  window.addEventListener('scroll', function(){
+    var ind = document.getElementById('scrollIndicator');
+    if(window.scrollY > 100) ind.classList.add('hidden');
+    else ind.classList.remove('hidden');
+  });
+
+  // Reveal observer
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal, .eyebrow').forEach(function(el){ ro.observe(el); });
+
+  // Photo break Ken Burns
+  var po = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) e.target.classList.add('in-view');
+      else e.target.classList.remove('in-view');
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.photo-break').forEach(function(el){ po.observe(el); });
+
+  // Section nav
+  var nav = document.getElementById('sectionNav');
+  var dots = document.querySelectorAll('.section-nav-dot');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 300) nav.classList.add('visible');
+    else nav.classList.remove('visible');
+  });
+  dots.forEach(function(dot){
+    dot.addEventListener('click', function(){
+      var target = document.getElementById(this.dataset.target);
+      if(target) target.scrollIntoView({behavior:'smooth'});
+    });
+  });
+  var so = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        dots.forEach(function(d){ d.classList.remove('active'); });
+        var match = document.querySelector('.section-nav-dot[data-target="'+e.target.id+'"]');
+        if(match) match.classList.add('active');
+      }
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('[data-nav]').forEach(function(el){ so.observe(el); });
+
+  // Counter animation
+  var co = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var el = e.target;
+        var target = parseInt(el.dataset.count);
+        var start = 0;
+        var duration = 1500;
+        var startTime = null;
+        function animate(ts){
+          if(!startTime) startTime = ts;
+          var p = Math.min((ts - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(eased * target);
+          if(p < 1) requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+        co.unobserve(el);
+      }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    el.textContent = '0';
+    co.observe(el);
+  });
+
+  // Header parallax
+  var bg = document.querySelector('.header-bg');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY < 800){
+      bg.style.transform = 'scale('+(1 + window.scrollY*0.0001)+') translateY('+(window.scrollY*0.3)+'px)';
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+{
+  "builder": {
+    "company": "Colour Craft Painting",
+    "slug": "colour-craft-painting",
+    "location": "British Columbia",
+    "email": "info@colourcraftpainting.com",
+    "phone": "778-744-0192",
+    "address": "British Columbia",
+    "website": "https://colourcraftpainting.com",
+    "logo_url": "",
+    "logo_white_url": "",
+    "colors": {
+      "primary": "#4a2e0f",
+      "accent": "#7c8b4f",
+      "accent_bg": "#F6F4F0",
+      "light": "#FFFFFF",
+      "dark": "#212326",
+      "body_text": "#575757"
+    },
+    "fonts": {
+      "heading": "Montserrat",
+      "body": "Work Sans",
+      "import": "Montserrat:wght@400;600;700&family=Work+Sans:wght@300;400;500;600"
+    }
+  },
+  "nav_items": [
+    "Services",
+    "Our Work",
+    "About",
+    "Contact"
+  ],
+  "mockup": {
+    "type": "homepage-mockup",
+    "date": "March 2026",
+    "filename": "colour-craft-painting-homepage-mockup.html"
+  },
+  "hero": {
+    "eyebrow": "Professional Painting Services",
+    "headline_html": "Craftsmanship in<br>Every Brushstroke",
+    "subtitle": "Residential and commercial painting across British Columbia. Precision preparation, premium finishes, lasting results.",
+    "cta_text": "View Our Work",
+    "cta_secondary": "Get a Free Estimate",
+    "image_url": "https://colourcraftpainting.com/wp-content/uploads/2025/06/IMG_3263-1024x768.jpeg",
+    "image_position": "center 30%"
+  },
+  "projects_eyebrow": "Our Work",
+  "projects_headline_html": "Recent Projects",
+  "projects_lead": "From full exterior transformations to detailed interior finishes, every project receives the same level of care and attention.",
+  "projects": [
+    {
+      "name": "Commercial Interior Repaint",
+      "location": "British Columbia",
+      "description": "Full commercial interior refresh with premium low-VOC finishes",
+      "image_url": "https://colourcraftpainting.com/wp-content/uploads/2025/06/IMG_3253-1024x768.jpeg"
+    },
+    {
+      "name": "Exterior Residential Transformation",
+      "location": "British Columbia",
+      "description": "Complete exterior prep and repaint on a multi-level home",
+      "image_url": "https://colourcraftpainting.com/wp-content/uploads/2025/06/IMG_3266-1024x768.jpeg"
+    },
+    {
+      "name": "New Construction Finish",
+      "location": "British Columbia",
+      "description": "Interior and exterior coatings for a new custom home build",
+      "image_url": "https://colourcraftpainting.com/wp-content/uploads/2025/06/IMG_3263-1024x768.jpeg"
+    },
+    {
+      "name": "Heritage Home Restoration",
+      "location": "British Columbia",
+      "description": "Careful colour matching and restoration on a character home",
+      "image_url": "https://colourcraftpainting.com/wp-content/uploads/2025/06/IMG_3253-1024x768.jpeg"
+    }
+  ],
+  "images": {
+    "breaks": [
+      {
+        "url": "https://colourcraftpainting.com/wp-content/uploads/2025/06/IMG_3263-1024x768.jpeg",
+        "alt": "Colour Craft Painting project",
+        "caption": ""
+      },
+      {
+        "url": "https://colourcraftpainting.com/wp-content/uploads/2025/06/IMG_3266-1024x768.jpeg",
+        "alt": "Colour Craft Painting exterior work",
+        "caption": ""
+      },
+      {
+        "url": "https://colourcraftpainting.com/wp-content/uploads/2025/06/IMG_3253-1024x768.jpeg",
+        "alt": "Colour Craft Painting detail",
+        "caption": ""
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "About",
+    "headline_html": "The Colour Craft<br>Difference",
+    "paragraphs": [
+      "Colour Craft Painting delivers professional painting services for residential and commercial clients across British Columbia. From colour consultation to final walkthrough, every step is handled with care and clear communication.",
+      "Starting your project is straightforward. Request your free estimate online, by phone, or in person. We explain each step clearly, from colour selection to preparation and scheduling. With defined timelines and transparent pricing, you know what to expect from day one. Professional workmanship without added stress."
+    ],
+    "image_url": "https://colourcraftpainting.com/wp-content/uploads/2025/06/IMG_3266-1024x768.jpeg"
+  },
+  "stats": [
+    {
+      "value": "500+",
+      "label": "Projects Completed"
+    },
+    {
+      "value": "100%",
+      "label": "Satisfaction Guarantee"
+    },
+    {
+      "value": "BC",
+      "label": "Province-Wide Service"
+    }
+  ],
+  "photographer": {
+    "name": "Matt Anthony Photography",
+    "cta_url": "https://mattanthonyphoto.com/discovery-call",
+    "cta_text": "Book a Discovery Call"
+  },
+  "contact": {
+    "eyebrow": "Get in Touch",
+    "headline_html": "Ready for a<br>Fresh Coat?",
+    "subtitle": "Contact Colour Craft Painting for a free estimate on your next residential or commercial project.",
+    "cta_text": "Schedule a Free Estimate"
+  },
+  "year": "2026",
+  "footer": {
+    "description": "Colour Craft Painting delivers professional residential and commercial painting services across British Columbia. Quality preparation, premium finishes, and a commitment to craftsmanship on every project.",
+    "hours": "Mon\u2013Fri 8am\u20135pm",
+    "service_areas": [
+      "British Columbia"
+    ]
+  }
+}

@@ -1,0 +1,2010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Audit &amp; Proposal — Blackfish Homes</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A18;
+    --paper: #F6F4F0;
+    --gold: #C9A96E;
+    --gold-dim: rgba(201,169,110,0.12);
+    --gold-border: rgba(201,169,110,0.25);
+    --gold-glow: rgba(201,169,110,0.06);
+    --stone: #8A8579;
+    --white: #FFFFFF;
+    --light: #FAFAF8;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; -webkit-print-color-adjust:exact; print-color-adjust:exact; scroll-behavior:smooth; }
+  body { background:var(--white); color:var(--ink); font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.75; overflow-x:hidden; }
+
+
+  /* ═══════════════════════════════════════
+     COVER — FULL BLEED CINEMATIC
+     ═══════════════════════════════════════ */
+  .cover {
+    min-height:100vh; background:var(--ink); color:var(--paper);
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding:0 0 0 0; position:relative; page-break-after:always; overflow:hidden;
+  }
+  .cover-image {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    background-image:url("https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/Marine.jpg");
+    background-size:cover; background-position:center 25%;
+    will-change:transform;
+    transition:transform 0.1s linear;
+  }
+  .cover-image::after {
+    content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+    background:linear-gradient(
+      to bottom,
+      rgba(26,26,24,0.3) 0%,
+      rgba(26,26,24,0.1) 30%,
+      rgba(26,26,24,0.4) 60%,
+      rgba(26,26,24,0.92) 85%,
+      rgba(26,26,24,0.98) 100%
+    );
+  }
+  .cover-top {
+    position:absolute; top:0; left:0; right:0; z-index:3;
+    padding:40px 60px; display:flex; justify-content:space-between; align-items:center;
+  }
+  .cover-logo {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:rgba(246,244,240,0.6);
+  }
+  .cover-date {
+    font-family:'Josefin Sans',sans-serif; font-size:0.65rem;
+    letter-spacing:0.2em; color:rgba(246,244,240,0.4);
+  }
+  .cover-content {
+    position:relative; z-index:2; padding:0 60px 80px;
+    max-width:760px;
+  }
+  .cover-eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.4em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:20px; display:flex; align-items:center; gap:16px;
+  }
+  .cover-eyebrow::before {
+    content:''; width:32px; height:1px; background:var(--gold);
+  }
+  .cover h1 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:clamp(2.6rem,5.5vw,4.4rem); line-height:1.08; margin-bottom:20px;
+    letter-spacing:-0.01em;
+    text-shadow:0 2px 40px rgba(0,0,0,0.3);
+  }
+  .cover h1 em {
+    font-style:italic; font-weight:500; color:var(--gold);
+  }
+  .cover-sub {
+    font-size:0.95rem; color:rgba(246,244,240,0.55); max-width:540px;
+    line-height:1.8; margin-bottom:56px;
+    text-shadow:0 1px 20px rgba(0,0,0,0.2);
+  }
+  .cover-meta-bar {
+    display:flex; gap:48px; padding-top:32px;
+    border-top:1px solid rgba(201,169,110,0.15);
+  }
+  .cover-meta-item {
+    font-size:0.75rem; color:rgba(246,244,240,0.35); line-height:1.8;
+  }
+  .cover-meta-item strong {
+    display:block; color:rgba(246,244,240,0.7); font-weight:400;
+    font-family:'Josefin Sans',sans-serif; font-size:0.6rem;
+    letter-spacing:0.15em; text-transform:uppercase; margin-bottom:2px;
+  }
+
+  /* ═══════════════════════════════════════
+     LAYOUT
+     ═══════════════════════════════════════ */
+  .section { padding:120px 60px; max-width:1000px; margin:0 auto; }
+  .section.wide { max-width:1200px; }
+  .section.full { max-width:100%; }
+  .section.dark { background:var(--ink); color:var(--paper); }
+  .section.cream { background:var(--paper); }
+  .section.light { background:var(--light); }
+
+  .eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; display:flex; align-items:center; gap:14px;
+  }
+  .eyebrow::before { content:''; width:0; height:1px; background:var(--gold); transition:width 0.6s 0.2s cubic-bezier(0.16,1,0.3,1); }
+  .eyebrow.visible::before { width:24px; }
+
+  h2 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:2.6rem; line-height:1.12; margin-bottom:32px;
+    letter-spacing:-0.01em; text-wrap:balance;
+  }
+  h2 em { font-style:italic; font-weight:500; position:relative; display:inline; }
+  h2 em::after {
+    content:''; position:absolute; bottom:2px; left:0;
+    width:0; height:1.5px;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.3));
+    transition:width 1s 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  h2.underlined em::after { width:100%; }
+  h3 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.75rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
+    margin:56px 0 20px;
+  }
+  p { margin-bottom:20px; font-size:0.95rem; }
+  .lead { font-size:1.05rem; line-height:1.9; color:var(--stone); text-wrap:pretty; }
+
+  .divider {
+    width:1px; height:80px; background:var(--gold-dim);
+    margin:0 auto; border:none; display:block;
+  }
+  .spacer { height:80px; }
+
+  /* ═══════════════════════════════════════
+     STATS
+     ═══════════════════════════════════════ */
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .stat { background:var(--white); text-align:center; padding:36px 16px; }
+  .section.cream .stat { background:var(--paper); }
+  .stat-val {
+    font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:500;
+    color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+    text-shadow:0 0 40px rgba(201,169,110,0.15);
+    transition:opacity 0.4s ease;
+  }
+  .stat-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--stone);
+  }
+
+  /* ═══════════════════════════════════════
+     SERVICES GRID
+     ═══════════════════════════════════════ */
+  .services { display:grid; grid-template-columns:1fr 1fr; gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .services.three-col { grid-template-columns:1fr 1fr 1fr; }
+  .svc {
+    background:var(--white); padding:40px 36px; position:relative;
+    transition:all 0.3s cubic-bezier(0.16,1,0.3,1);
+    border-left:3px solid transparent;
+  }
+  .svc:hover {
+    border-left-color:var(--gold);
+    background:var(--light);
+  }
+  .svc.new { background:var(--light); }
+  .svc.new:hover { background:var(--white); }
+  .svc-badge {
+    position:absolute; top:20px; right:20px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--gold-border); padding:4px 12px;
+    background:linear-gradient(135deg, rgba(201,169,110,0.08), transparent);
+  }
+  .svc h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.7rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:20px;
+  }
+  .svc ul { list-style:none; }
+  .svc li {
+    font-size:0.85rem; padding:8px 0 8px 24px; position:relative;
+    color:var(--stone); border-bottom:1px solid rgba(26,26,24,0.04);
+  }
+  .svc li:last-child { border:none; }
+  .svc li::before {
+    content:''; position:absolute; left:0; top:16px;
+    width:8px; height:1px; background:var(--gold);
+  }
+
+  /* ═══════════════════════════════════════
+     PRICING TIERS
+     ═══════════════════════════════════════ */
+  .tiers {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+    margin:56px 0; position:relative;
+  }
+  .tier {
+    padding:48px 32px 40px; border:1px solid rgba(26,26,24,0.06);
+    background:var(--white); position:relative; cursor:pointer;
+    transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+    transform-style:preserve-3d; perspective:800px;
+  }
+  .tier:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,0.08), 0 0 0 1px var(--gold-border); z-index:1; }
+  .tier + .tier { border-left:none; }
+  .tier.rec {
+    background:var(--ink); color:var(--paper); border-color:rgba(201,169,110,0.3);
+    transform:scaleY(1.02); z-index:2;
+    box-shadow:0 12px 48px rgba(0,0,0,0.15);
+  }
+  .tier.rec::before {
+    content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+    background:linear-gradient(180deg, rgba(201,169,110,0.03) 0%, transparent 40%);
+    pointer-events:none;
+  }
+  .tier.rec:hover { transform:scaleY(1.02) translateY(-6px); box-shadow:0 24px 64px rgba(0,0,0,0.22), 0 0 40px rgba(201,169,110,0.08); }
+  .tier-badge {
+    position:absolute; top:-1px; left:0; right:0;
+    height:3px; background:linear-gradient(135deg, var(--gold), rgba(201,169,110,0.8));
+  }
+  .tier-badge span {
+    position:absolute; top:8px; left:50%; transform:translateX(-50%);
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--gold); white-space:nowrap;
+  }
+  .tier-name {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--gold);
+    margin:24px 0 12px;
+  }
+  .tier-price {
+    font-family:'Cormorant Garamond',serif; font-size:3.2rem;
+    font-weight:400; line-height:1; margin-bottom:6px;
+  }
+  .tier:not(.rec) .tier-price { color:var(--ink); }
+  .tier.rec .tier-price { color:var(--paper); }
+  .tier-price span { font-size:1rem; color:var(--stone); font-family:'DM Sans',sans-serif; font-weight:300; }
+  .tier-term {
+    font-size:0.75rem; color:var(--stone); margin-bottom:32px;
+    padding-bottom:24px; border-bottom:1px solid var(--gold-dim);
+  }
+  .tier.rec .tier-term { border-color:rgba(201,169,110,0.2); }
+  .tier ul { list-style:none; }
+  .tier li {
+    font-size:0.8rem; padding:7px 0 7px 22px; position:relative;
+    border-bottom:1px solid rgba(26,26,24,0.03);
+  }
+  .tier.rec li { color:rgba(246,244,240,0.75); border-color:rgba(246,244,240,0.05); }
+  .tier li:last-child { border:none; }
+  .tier li::before {
+    content:''; position:absolute; left:0; top:14px;
+    width:8px; height:1px; background:var(--gold);
+  }
+  .tier li.off { opacity:0.25; }
+  .tier li.off::before { background:var(--stone); }
+  .tier-bottom {
+    margin-top:28px; padding-top:20px; border-top:1px solid var(--gold-dim);
+    font-size:0.7rem; color:var(--stone);
+  }
+  .tier.rec .tier-bottom { border-color:rgba(201,169,110,0.2); }
+  .tier-bottom strong { color:var(--gold); font-weight:500; font-size:0.85rem; }
+
+  /* ═══════════════════════════════════════
+     TIER SELECTION
+     ═══════════════════════════════════════ */
+  .tier.selected:not(.rec) {
+    box-shadow:0 0 0 2px var(--gold), 0 20px 60px rgba(0,0,0,0.1);
+  }
+  .tier.rec.selected {
+    box-shadow:0 0 0 2px var(--gold), 0 24px 64px rgba(0,0,0,0.22), 0 0 40px rgba(201,169,110,0.12);
+  }
+  .tier-selected-badge {
+    position:absolute; top:12px; right:12px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.45rem;
+    letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--gold);
+    padding:3px 10px; border-radius:2px;
+    opacity:0; transform:translateY(-4px);
+    transition:opacity 0.3s ease, transform 0.3s ease;
+  }
+  .tier.selected .tier-selected-badge {
+    opacity:1; transform:translateY(0);
+  }
+
+  /* ═══════════════════════════════════════
+     INSIGHT BOX
+     ═══════════════════════════════════════ */
+  .insight {
+    background:var(--light); padding:48px 56px; margin:56px 0;
+    position:relative;
+    border:1px solid rgba(201,169,110,0.08);
+    box-shadow:0 8px 32px rgba(0,0,0,0.03);
+  }
+  .insight::before {
+    content:''; position:absolute; top:0; left:0; bottom:0;
+    width:3px; background:var(--gold);
+    box-shadow:4px 0 16px rgba(201,169,110,0.08);
+  }
+  .insight h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;
+  }
+  .insight p { font-size:0.9rem; margin-bottom:10px; }
+  .insight p:last-child { margin-bottom:0; }
+  .insight .tier-breakdown {
+    margin-top:20px; display:flex; flex-direction:column; gap:8px;
+  }
+  .insight .tb {
+    display:flex; align-items:baseline; gap:12px; font-size:0.88rem;
+  }
+  .insight .tb-label {
+    font-weight:500; color:var(--gold); min-width:160px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.7rem;
+    letter-spacing:0.1em; text-transform:uppercase;
+  }
+  .insight .tb-desc { color:var(--stone); }
+
+  /* ═══════════════════════════════════════
+     ROADMAP
+     ═══════════════════════════════════════ */
+  .roadmap { margin:56px 0; position:relative; }
+  .rm {
+    display:grid; grid-template-columns:200px 1fr; gap:0;
+    border-bottom:1px solid rgba(26,26,24,0.06); min-height:0;
+  }
+  .rm:last-child { border:none; }
+  .rm-left {
+    padding:40px 32px 40px 0; border-right:2px solid var(--gold-dim);
+    position:relative;
+  }
+  .rm-left::after {
+    content:''; position:absolute; right:-5px; top:48px;
+    width:8px; height:8px; border-radius:50%; background:var(--gold);
+  }
+  .rm-month {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:4px;
+  }
+  .rm-label {
+    font-family:'Cormorant Garamond',serif; font-size:1.3rem;
+    font-weight:400; font-style:italic; color:var(--ink); line-height:1.3;
+  }
+  .rm-right { padding:40px 0 40px 40px; }
+  .rm-right ul { list-style:none; }
+  .rm-right li {
+    font-size:0.85rem; padding:6px 0 6px 24px; position:relative; color:var(--stone);
+  }
+  .rm-right li::before {
+    content:''; position:absolute; left:0; top:14px;
+    width:8px; height:1px; background:var(--gold);
+  }
+  .roadmap-line {
+    position:absolute; left:200px; top:48px; width:2px;
+    height:0; background:var(--gold);
+    transition:height 0.05s linear; z-index:1;
+    box-shadow:0 0 6px rgba(201,169,110,0.3);
+  }
+  .roadmap-line::after {
+    content:''; position:absolute; bottom:-4px; left:-3px;
+    width:8px; height:8px; border-radius:50%;
+    background:var(--gold); box-shadow:0 0 12px rgba(201,169,110,0.5);
+  }
+
+  /* ═══════════════════════════════════════
+     BY THE NUMBERS
+     ═══════════════════════════════════════ */
+  .numbers {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    margin:56px 0; background:var(--gold-dim);
+  }
+  .num {
+    background:var(--ink); text-align:center; padding:48px 24px;
+  }
+  .num-val {
+    font-family:'Cormorant Garamond',serif; font-size:3.5rem;
+    font-weight:500; color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+    text-shadow:0 0 60px rgba(201,169,110,0.25), 0 0 120px rgba(201,169,110,0.1);
+    transition:opacity 0.4s ease;
+  }
+  .num-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:rgba(246,244,240,0.4);
+  }
+
+  /* ═══════════════════════════════════════
+     NEXT STEPS
+     ═══════════════════════════════════════ */
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .step {
+    background:var(--white); padding:40px 32px;
+    transition:background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .step:hover {
+    background:var(--light);
+    box-shadow:0 4px 24px rgba(0,0,0,0.04);
+  }
+  .step-num {
+    font-family:'Cormorant Garamond',serif; font-size:3rem;
+    font-weight:400; color:var(--gold); line-height:1; margin-bottom:16px;
+    display:block;
+    text-shadow:0 0 40px rgba(201,169,110,0.15);
+  }
+  .step h4 {
+    font-family:'DM Sans',sans-serif; font-weight:500; font-size:0.95rem; margin-bottom:10px;
+  }
+  .step p { font-size:0.82rem; color:var(--stone); margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ */
+  .footer {
+    background:var(--ink); padding:80px 60px; text-align:center;
+    border-top:1px solid rgba(201,169,110,0.1);
+  }
+  .footer-mark {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.7rem;
+    letter-spacing:0.4em; text-transform:uppercase; color:var(--paper); margin-bottom:20px;
+  }
+  .footer-info {
+    font-size:0.8rem; color:var(--stone); line-height:2.2;
+  }
+  .footer-info a { color:var(--gold); text-decoration:none; }
+  .footer-note {
+    margin-top:40px; font-size:0.6rem; letter-spacing:0.15em;
+    text-transform:uppercase; font-family:'Josefin Sans',sans-serif;
+    color:rgba(246,244,240,0.15);
+  }
+
+  /* ═══════════════════════════════════════
+     SCROLL PROGRESS BAR
+     ═══════════════════════════════════════ */
+  .scroll-progress {
+    position:fixed; top:0; left:0; height:2px; width:0%;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.4));
+    z-index:9999; transition:width 0.05s linear;
+    box-shadow:0 0 8px rgba(201,169,110,0.3);
+  }
+
+  /* ═══════════════════════════════════════
+     SCROLL REVEAL ANIMATIONS
+     ═══════════════════════════════════════ */
+  .reveal {
+    opacity:0; transform:translateY(32px);
+    transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible {
+    opacity:1; transform:translateY(0);
+  }
+  .reveal-delay-1 { transition-delay:0.1s; }
+  .reveal-delay-2 { transition-delay:0.2s; }
+  .reveal-delay-3 { transition-delay:0.3s; }
+  .reveal-delay-4 { transition-delay:0.4s; }
+  .reveal-delay-5 { transition-delay:0.5s; }
+
+  /* ═══════════════════════════════════════
+     COVER CASCADE
+     ═══════════════════════════════════════ */
+  .cover .cover-eyebrow,
+  .cover h1,
+  .cover .cover-sub,
+  .cover .cover-meta-bar {
+    opacity:0; transform:translateY(24px);
+    animation:coverFade 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover .cover-eyebrow { animation-delay:0.3s; }
+  .cover h1 { animation-delay:0.6s; }
+  .cover .cover-sub { animation-delay:0.9s; }
+  .cover .cover-meta-bar { animation-delay:1.2s; }
+  @keyframes coverFade {
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  /* ═══════════════════════════════════════
+     FILM GRAIN OVERLAY
+     ═══════════════════════════════════════ */
+  .grain-section::after {
+    content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size:128px 128px;
+    pointer-events:none; z-index:0; opacity:0.5;
+  }
+  .grain-section { position:relative; }
+  .grain-section > * { position:relative; z-index:1; }
+
+  /* ═══════════════════════════════════════
+     PHOTO BREAK — PARALLAX BANNERS
+     ═══════════════════════════════════════ */
+  .photo-break {
+    width:100%; height:45vh; min-height:320px; max-height:480px;
+    position:relative; overflow:hidden;
+    clip-path:inset(0 0 0 0);
+    transition:clip-path 1.2s cubic-bezier(0.16,1,0.3,1);
+  }
+  .photo-break.revealed { clip-path:inset(0 0 0 0); }
+  .photo-break img {
+    width:100%; height:120%; object-fit:cover; display:block;
+    position:absolute; top:-10%; left:0;
+    filter:brightness(0.85);
+    transition:filter 0.8s cubic-bezier(0.16,1,0.3,1);
+    will-change:transform;
+  }
+  .photo-break:hover img { filter:brightness(0.95); }
+  .photo-break::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:80px;
+    background:linear-gradient(rgba(26,26,24,0.15), transparent);
+    z-index:1; pointer-events:none;
+  }
+  .photo-break::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:120px;
+    background:linear-gradient(transparent, rgba(26,26,24,0.6));
+    z-index:1; pointer-events:none;
+  }
+  .photo-break-caption {
+    position:absolute; bottom:0; left:0; right:0; z-index:2;
+    padding:24px 60px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.3em; text-transform:uppercase;
+    color:rgba(246,244,240,0.5);
+  }
+  .photo-break.in-view img {
+    animation:kenBurns 12s ease-in-out infinite alternate;
+  }
+  @keyframes kenBurns {
+    0% { transform:scale(1) translateY(0); }
+    100% { transform:scale(1.06) translateY(-8px); }
+  }
+
+  /* ═══════════════════════════════════════
+     COVER SCROLL INDICATOR
+     ═══════════════════════════════════════ */
+  .scroll-indicator {
+    position:absolute; bottom:40px; left:50%;
+    transform:translateX(-50%); display:flex; flex-direction:column;
+    align-items:center; gap:8px;
+    opacity:0; animation:coverFade 0.9s 1.8s cubic-bezier(0.16,1,0.3,1) forwards;
+    transition:opacity 0.4s ease;
+  }
+  .scroll-indicator.hidden { opacity:0 !important; }
+  .scroll-indicator-text {
+    font-family:'Josefin Sans',sans-serif; font-size:0.45rem;
+    letter-spacing:0.3em; text-transform:uppercase;
+    color:rgba(246,244,240,0.3);
+  }
+  .scroll-indicator-line {
+    width:1px; height:32px; position:relative; overflow:hidden;
+    background:rgba(246,244,240,0.1);
+  }
+  .scroll-indicator-line::after {
+    content:''; position:absolute; top:-100%; left:0;
+    width:100%; height:100%; background:var(--gold);
+    animation:scrollPulse 2s cubic-bezier(0.16,1,0.3,1) infinite;
+  }
+  @keyframes scrollPulse {
+    0% { top:-100%; }
+    50% { top:100%; }
+    100% { top:100%; }
+  }
+
+  /* ═══════════════════════════════════════
+     COVER CTA BUTTON
+     ═══════════════════════════════════════ */
+  .cover-cta {
+    display:inline-flex; align-items:center; gap:10px;
+    margin-top:32px; padding:12px 28px;
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--paper); border:1px solid rgba(246,244,240,0.25);
+    text-decoration:none; cursor:pointer;
+    transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+    opacity:0; animation:coverFade 0.9s 1.5s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover-cta:hover {
+    border-color:var(--gold); color:var(--gold);
+    padding-right:36px;
+  }
+  .cover-cta-arrow {
+    display:inline-block; transition:transform 0.3s ease;
+    font-size:0.8rem;
+  }
+  .cover-cta:hover .cover-cta-arrow { transform:translateY(3px); }
+
+  /* ═══════════════════════════════════════
+     SECTION NAV DOTS
+     ═══════════════════════════════════════ */
+  .section-nav {
+    position:fixed; right:24px; top:50%; transform:translateY(-50%);
+    z-index:9998; display:flex; flex-direction:column; gap:12px;
+    opacity:0; transition:opacity 0.4s ease;
+  }
+  .section-nav.visible { opacity:1; }
+  .section-nav-dot {
+    width:8px; height:8px; border-radius:50%;
+    background:transparent; border:1px solid var(--stone);
+    cursor:pointer; transition:all 0.3s ease;
+    position:relative;
+  }
+  .section-nav-dot:hover {
+    border-color:var(--gold); transform:scale(1.3);
+  }
+  .section-nav-dot.active {
+    background:var(--gold); border-color:var(--gold);
+    box-shadow:0 0 8px rgba(201,169,110,0.4);
+  }
+  .section-nav-dot::before {
+    content:attr(data-label);
+    position:absolute; right:20px; top:50%; transform:translateY(-50%);
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--gold);
+    white-space:nowrap; opacity:0; pointer-events:none;
+    transition:opacity 0.3s ease, right 0.3s ease;
+  }
+  .section-nav-dot:hover::before {
+    opacity:1; right:24px;
+  }
+
+  /* ═══════════════════════════════════════
+     LOADING SCREEN
+     ═══════════════════════════════════════ */
+  .loader {
+    position:fixed; top:0; left:0; right:0; bottom:0;
+    background:var(--ink); z-index:99999;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+  }
+  .loader.done {
+    opacity:0; visibility:hidden; pointer-events:none;
+  }
+  .loader-brand {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.6em; text-transform:uppercase; color:var(--paper);
+    opacity:0; animation:loaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-sub {
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.9rem;
+    color:var(--stone); margin-top:8px;
+    opacity:0; animation:loaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line {
+    width:80px; height:1px; background:var(--gold-dim); margin-top:24px;
+    position:relative; overflow:hidden; border-radius:1px;
+    opacity:0; animation:loaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line::after {
+    content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation:loaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+  }
+  @keyframes loaderIn { to { opacity:1; } }
+  @keyframes loaderFill { to { left:100%; } }
+
+  /* ═══════════════════════════════════════
+     TESTIMONIAL
+     ═══════════════════════════════════════ */
+  .testimonial {
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.15rem;
+    line-height:1.8; color:var(--stone); margin-bottom:16px;
+  }
+  .testimonial-author {
+    font-family:'Josefin Sans',sans-serif; font-size:0.6rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+  }
+
+  /* ═══════════════════════════════════════
+     SCORECARD
+     ═══════════════════════════════════════ */
+  .scorecard { margin:40px 0 56px; }
+  .score-row {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 0; border-bottom:1px solid rgba(26,26,24,0.06);
+  }
+  .score-row:last-child { border:none; }
+  .score-category {
+    font-family:'DM Sans',sans-serif; font-weight:400; font-size:0.9rem;
+    color:var(--ink);
+  }
+  .score-rating {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.15em; text-transform:uppercase; padding:5px 14px;
+    border-radius:2px;
+  }
+  .score-pass {
+    color:#2D5A3D; background:rgba(45,90,61,0.08); border:1px solid rgba(45,90,61,0.15);
+  }
+  .score-warn {
+    color:#9A7B2C; background:rgba(196,162,101,0.08); border:1px solid rgba(196,162,101,0.2);
+  }
+  .score-fail {
+    color:#8B3A3A; background:rgba(180,60,60,0.06); border:1px solid rgba(180,60,60,0.15);
+  }
+
+  /* ═══════════════════════════════════════
+     AUTHORITY GAP
+     ═══════════════════════════════════════ */
+  .authority-gap {
+    background:var(--light); padding:56px; margin:56px 0;
+    border:1px solid rgba(201,169,110,0.12);
+    position:relative;
+  }
+  .authority-gap::before {
+    content:''; position:absolute; top:0; left:0; right:0;
+    height:3px; background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.3));
+  }
+  .ag-header {
+    display:flex; gap:32px; align-items:flex-start; margin-bottom:8px;
+  }
+  .ag-icon { flex-shrink:0; opacity:0.8; }
+
+  /* ═══════════════════════════════════════
+     COMPETITOR COMPARISON
+     ═══════════════════════════════════════ */
+  .comp-vs {
+    display:grid; grid-template-columns:1fr 48px 1fr; gap:0; margin:56px 0;
+    align-items:stretch;
+  }
+  .comp-side {
+    border:1px solid rgba(26,26,24,0.06); overflow:hidden;
+    background:var(--white);
+  }
+  .comp-side-header {
+    padding:20px 24px; border-bottom:1px solid rgba(26,26,24,0.06);
+    font-family:'Josefin Sans',sans-serif; font-size:0.6rem;
+    letter-spacing:0.2em; text-transform:uppercase;
+  }
+  .comp-side-header.them { color:var(--gold); }
+  .comp-side-header.us { color:#8B3A3A; }
+  .comp-side-img {
+    width:100%; height:280px; object-fit:cover; object-position:top;
+    display:block; filter:brightness(0.95);
+  }
+  .comp-side-footer {
+    padding:16px 24px; font-size:0.75rem; color:var(--stone);
+  }
+  .comp-vs-divider {
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Josefin Sans',sans-serif; font-size:0.6rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--stone);
+  }
+
+  /* ═══════════════════════════════════════
+     URGENCY BANNER
+     ═══════════════════════════════════════ */
+  .urgency-banner {
+    background:var(--ink); padding:48px 56px; margin:56px 0;
+    position:relative; overflow:hidden;
+  }
+  .urgency-banner::before {
+    content:''; position:absolute; top:0; left:0; right:0;
+    height:2px; background:linear-gradient(90deg, #8B3A3A, var(--gold));
+  }
+  .urgency-banner::after {
+    content:''; position:absolute; top:0; right:0; bottom:0; width:40%;
+    background:linear-gradient(90deg, transparent, rgba(201,169,110,0.03));
+    pointer-events:none;
+  }
+  .urgency-icon {
+    font-size:1.8rem; margin-bottom:16px; display:block;
+  }
+  .urgency-banner h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:#C4665A; margin-bottom:16px;
+  }
+  .urgency-banner p {
+    font-size:0.92rem; color:rgba(246,244,240,0.65); line-height:1.85;
+  }
+  .urgency-banner strong { color:var(--paper); font-weight:500; }
+  .urgency-banner em { color:var(--gold); font-style:normal; font-weight:500; }
+  .urgency-timeline {
+    display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px;
+    margin-top:32px; background:rgba(201,169,110,0.1);
+  }
+  .urgency-date {
+    background:var(--ink); padding:24px; text-align:center;
+  }
+  .urgency-date-val {
+    font-family:'Cormorant Garamond',serif; font-size:1.4rem;
+    color:var(--gold); display:block; margin-bottom:4px;
+  }
+  .urgency-date-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.2em; text-transform:uppercase;
+    color:rgba(246,244,240,0.35);
+  }
+
+  /* ═══════════════════════════════════════
+     MOCKUP GALLERY
+     ═══════════════════════════════════════ */
+  .mockup-gallery {
+    display:grid; gap:24px; margin:40px 0;
+  }
+  .mockup-gallery-item {
+    border:1px solid rgba(26,26,24,0.06);
+    overflow:hidden; position:relative;
+  }
+  .mockup-gallery-item img {
+    width:100%; display:block;
+  }
+  .mockup-gallery-label {
+    position:absolute; bottom:0; left:0; right:0;
+    padding:12px 20px;
+    background:linear-gradient(transparent, rgba(26,26,24,0.8));
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:rgba(246,244,240,0.6);
+  }
+
+  /* ═══════════════════════════════════════
+     PRINT
+     ═══════════════════════════════════════ */
+  @media print {
+    .cover { min-height:100vh; }
+    .section { padding:60px; }
+    .tier.rec { transform:none; box-shadow:none; }
+    .tier:hover { transform:none; box-shadow:none; }
+    .scroll-progress, .section-nav, .loader, .cover-cta, .scroll-indicator { display:none; }
+    .photo-break { height:200px; page-break-inside:avoid; clip-path:none !important; }
+    h2 em::after { width:100% !important; }
+    .reveal { opacity:1 !important; transform:none !important; }
+    .eyebrow::before { width:24px !important; }
+    .grain-section::after { display:none; }
+  }
+
+  /* ═══════════════════════════════════════
+     CASE STUDY
+     ═══════════════════════════════════════ */
+  .case-study-header {
+    position:relative; overflow:hidden; min-height:360px;
+    display:flex; align-items:flex-end; margin-bottom:56px;
+  }
+  .case-study-header img {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    object-fit:cover; filter:brightness(0.7);
+  }
+  .case-study-header-content {
+    position:relative; z-index:2; padding:40px 48px; width:100%;
+    background:linear-gradient(transparent, rgba(26,26,24,0.85));
+  }
+  .case-study-header-content h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+    letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;
+  }
+  .case-study-header-content h3 {
+    font-family:'Cormorant Garamond',serif; font-weight:400; font-size:2rem;
+    color:var(--paper); margin:0; letter-spacing:-0.01em; text-transform:none;
+  }
+  .case-study-header-content h3 em { font-style:italic; font-weight:500; color:var(--gold); }
+  .case-study-stats {
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--gold-dim); margin:40px 0;
+  }
+  .case-study-stat {
+    background:var(--ink); text-align:center; padding:32px 16px;
+  }
+  .case-study-stat .num-val {
+    font-family:'Cormorant Garamond',serif; font-size:2.4rem;
+    font-weight:500; color:var(--gold); display:block; line-height:1; margin-bottom:8px;
+  }
+  .case-study-stat .num-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:rgba(246,244,240,0.4);
+  }
+  .case-study-gallery {
+    display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:3px;
+    margin:40px 0;
+  }
+  .case-study-gallery img {
+    width:100%; height:180px; object-fit:cover; display:block;
+    filter:brightness(0.92); transition:filter 0.4s ease;
+  }
+  .case-study-gallery img:hover { filter:brightness(1.05); }
+  .case-study-link {
+    display:inline-flex; align-items:center; gap:10px;
+    margin-top:24px; padding:12px 28px;
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--gold-border);
+    text-decoration:none; transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .case-study-link:hover { border-color:var(--gold); background:var(--gold-dim); }
+
+  /* ═══════════════════════════════════════
+     BROWSER MOCKUP
+     ═══════════════════════════════════════ */
+  .browser-mockup {
+    margin:48px 0 0; border-radius:8px; overflow:hidden;
+    box-shadow:0 24px 80px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06);
+    border:1px solid rgba(26,26,24,0.08);
+  }
+  .browser-bar {
+    background:#F0EFED; padding:12px 16px; display:flex; align-items:center; gap:16px;
+    border-bottom:1px solid rgba(0,0,0,0.06);
+  }
+  .browser-dots { display:flex; gap:6px; flex-shrink:0; }
+  .browser-dot { width:10px; height:10px; border-radius:50%; }
+  .browser-url {
+    flex:1; background:#fff; border-radius:4px; padding:6px 12px;
+    font-family:'DM Sans',sans-serif; font-size:0.75rem; color:var(--stone);
+    display:flex; align-items:center; gap:6px;
+  }
+  .browser-lock { font-size:0.6rem; opacity:0.5; }
+  .browser-viewport {
+    position:relative; width:100%; height:0; padding-bottom:62.5%; /* 16:10 aspect */
+    background:var(--ink); overflow:hidden;
+  }
+  .browser-viewport iframe {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    border:none; transform-origin:top left;
+  }
+
+  /* ═══════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════ */
+  @media (max-width:768px) {
+    .cover-content,.cover-top { padding-left:32px; padding-right:32px; }
+    .section { padding:80px 32px; }
+    .stats,.services,.services.three-col,.tiers,.steps,.numbers { grid-template-columns:1fr; }
+    .case-study-stats { grid-template-columns:1fr 1fr; }
+    .case-study-gallery { grid-template-columns:1fr 1fr; }
+    .case-study-gallery img { height:140px; }
+    .case-study-header { min-height:280px; }
+    .case-study-header-content { padding:24px 32px; }
+    .browser-viewport { padding-bottom:75%; }
+    .browser-mockup { margin:32px -16px 0; border-radius:4px; }
+    .tier + .tier { border-left:1px solid rgba(26,26,24,0.06); border-top:none; }
+    .tier.rec { transform:none; }
+    .rm { grid-template-columns:1fr; }
+    .rm-left { border-right:none; border-bottom:2px solid var(--gold-dim); padding:24px 0; }
+    .rm-left::after { display:none; }
+    .rm-right { padding:24px 0; }
+    .roadmap-line { display:none; }
+    .cover-meta-bar { flex-direction:column; gap:16px; }
+    .footer { padding:60px 32px; }
+    .section-nav { display:none; }
+    .svc { border-left:none !important; }
+    .svc:hover { border-left:none !important; }
+    .photo-break { height:200px; min-height:200px; }
+    .photo-break-caption { padding:12px 32px; }
+    .scroll-indicator { display:none; }
+    .insight { padding:32px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader">
+  <div class="loader-brand">Matt Anthony Photography</div>
+  <div class="loader-sub">Digital Audit &amp; Proposal</div>
+  <div class="loader-line"></div>
+</div>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="section-nav" id="sectionNav"></nav>
+
+<!-- ═══════ COVER ═══════ -->
+<div class="cover">
+  <div class="cover-image"></div>
+  <div class="cover-top">
+    <div class="cover-logo">Matt Anthony Photography</div>
+    <div class="cover-date">March 2026</div>
+  </div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">Blackfish Homes</div>
+    <h1>Twenty years of award-winning builds.<br><em>It's time your digital presence caught up.</em></h1>
+    <p class="cover-sub">You named your company after the orca — a creature that leads with communication and trust. Your website should do the same. This proposal covers website redesign, SEO strategy, and architectural photography to bring your digital presence in line with 20 years of award-winning work.</p>
+    <div class="cover-meta-bar">
+      <div class="cover-meta-item"><strong>Prepared for</strong>David &amp; Dawn Adair</div>
+      <div class="cover-meta-item"><strong>Prepared by</strong>Matt Anthony</div>
+      <div class="cover-meta-item"><strong>Valid through</strong>April 30, 2026</div>
+    </div>
+    <a class="cover-cta" href="#audit"><span>View the Audit</span><span class="cover-cta-arrow">&darr;</span></a>
+  </div>
+  <div class="scroll-indicator" id="scrollIndicator">
+    <div class="scroll-indicator-text">Scroll</div>
+    <div class="scroll-indicator-line"></div>
+  </div>
+</div>
+
+
+<!-- ═══════ 01 — THE AUDIT ═══════ -->
+<div class="section cream" id="audit" data-nav="Audit">
+  <div class="eyebrow">Digital Audit</div>
+  <h2>Blackfish has 20 years of credibility.<br><em>Your website has 7 indexed pages.</em></h2>
+  <p class="lead">David, Dawn — I spent two weeks auditing Blackfish Homes' digital presence — your website, SEO, social media, reviews, and competitive position. Here's what I found: your reputation is outstanding. Your online presence doesn't reflect it. Below is a detailed assessment, scored by category, with specific findings and recommendations.</p>
+
+  <div class="stats">
+    <div class="stat"><span class="stat-val">7</span><span class="stat-lbl">Pages Indexed by Google</span></div>
+    <div class="stat"><span class="stat-val">0</span><span class="stat-lbl">Location Pages</span></div>
+    <div class="stat"><span class="stat-val">0</span><span class="stat-lbl">Blog Posts Ranking</span></div>
+    <div class="stat"><span class="stat-val">1</span><span class="stat-lbl">News Article Since 2019</span></div>
+  </div>
+
+  <h3>Website Assessment</h3>
+  <p>Your site is built on a custom PHP framework that loads content via JavaScript. When I ran it through extraction tools — the same tools search engines use — I got back nothing but CSS. No text. No headings. No content. Google likely can't read your site either.</p>
+  <p>All page titles are identical: "High Performance Custom Home Builder &amp; Renovator - [PAGE]". No location keywords. No differentiation. No meta descriptions.</p>
+  <p>The homepage opens with "RECENT WORK" — no hero, no value proposition, no clear call to action. There are no project case studies. No testimonials on-site. No team page. No awards showcase. One news article from 2019.</p>
+  <p>The tech stack is aging: Bootstrap Glyphicons, Font Awesome 4.5, Slick Carousel — mid-2010s tools that are now 10+ years old.</p>
+
+  <div class="insight">
+    <h4>What This Means</h4>
+    <p>When a prospect searches "custom home builder North Vancouver," Blackfish likely doesn't appear. Your Houzz profile, NV Chamber listing, and directory pages are doing your SEO work for you. Your own website is essentially invisible to organic search.</p>
+  </div>
+
+  <h3>Audit Scorecard</h3>
+  <div class="scorecard">
+    <div class="score-row"><span class="score-category">Website Design &amp; UX</span><span class="score-rating score-warn">Outdated</span></div>
+    <div class="score-row"><span class="score-category">Content &amp; Storytelling</span><span class="score-rating score-fail">Critical Gap</span></div>
+    <div class="score-row"><span class="score-category">Technical SEO</span><span class="score-rating score-fail">Critical Gap</span></div>
+    <div class="score-row"><span class="score-category">Local SEO</span><span class="score-rating score-warn">Weak</span></div>
+    <div class="score-row"><span class="score-category">AI / GEO Visibility</span><span class="score-rating score-fail">Non-existent</span></div>
+    <div class="score-row"><span class="score-category">Social Media</span><span class="score-rating score-warn">Underperforming</span></div>
+    <div class="score-row"><span class="score-category">Reviews &amp; Reputation</span><span class="score-rating score-pass">Strong Quality</span></div>
+    <div class="score-row"><span class="score-category">Awards &amp; Credentials</span><span class="score-rating score-pass">Excellent</span></div>
+    <div class="score-row"><span class="score-category">Photography Assets</span><span class="score-rating score-pass">Good</span></div>
+    <div class="score-row"><span class="score-category">Brand Story &amp; Positioning</span><span class="score-rating score-pass">Strong (Unused)</span></div>
+  </div>
+
+  <h3>SEO &amp; Content Gaps</h3>
+
+  <div class="services">
+    <div class="svc">
+      <div class="svc-badge">Critical</div>
+      <h4>Indexation</h4>
+      <ul>
+        <li>Only 7 pages indexed (should be 40+)</li>
+        <li>JavaScript-rendered content blocks crawlers</li>
+        <li>No XML sitemap evidence</li>
+        <li>No structured data / schema markup</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-badge">Critical</div>
+      <h4>Content</h4>
+      <ul>
+        <li>24+ projects with zero case studies</li>
+        <li>No blog posts ranking</li>
+        <li>No location pages for 8 service areas</li>
+        <li>No FAQ section</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-badge">Weak</div>
+      <h4>Local SEO</h4>
+      <ul>
+        <li>18 Google reviews in 20 years</li>
+        <li>No location-specific content</li>
+        <li>No Google Business Profile optimization</li>
+        <li>No local keyword targeting</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-badge">Non-existent</div>
+      <h4>AI / GEO Visibility</h4>
+      <ul>
+        <li>No structured data for AI tools</li>
+        <li>No FAQ schema</li>
+        <li>No citeable statistics</li>
+        <li>Content not formatted for AI citations</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Competitive Gap — See It For Yourself</h3>
+  <p>While Blackfish has been building award-winning homes, your competitors have been building their online presence. Here's what a prospect sees when they start researching North Shore builders:</p>
+
+  <!-- VISUAL COMPARISON: Hasler vs Blackfish -->
+  <div class="comp-vs reveal">
+    <div class="comp-side">
+      <div class="comp-side-header them">Hasler Homes &middot; 2026 Builder of the Year</div>
+      <div style="padding:24px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+          <div style="background:var(--light); padding:16px; border-left:2px solid rgba(45,90,61,0.3);">
+            <div style="font-family:'Josefin Sans',sans-serif; font-size:0.45rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:4px;">Indexed Pages</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--ink);">40+</div>
+          </div>
+          <div style="background:var(--light); padding:16px; border-left:2px solid rgba(45,90,61,0.3);">
+            <div style="font-family:'Josefin Sans',sans-serif; font-size:0.45rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:4px;">Project Pages</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--ink);">20+</div>
+          </div>
+          <div style="background:var(--light); padding:16px; border-left:2px solid rgba(45,90,61,0.3);">
+            <div style="font-family:'Josefin Sans',sans-serif; font-size:0.45rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:4px;">Blog Posts</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--ink);">Active</div>
+          </div>
+          <div style="background:var(--light); padding:16px; border-left:2px solid rgba(45,90,61,0.3);">
+            <div style="font-family:'Josefin Sans',sans-serif; font-size:0.45rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:4px;">Awards Page</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--ink);">Yes</div>
+          </div>
+        </div>
+        <p style="font-size:0.75rem; color:var(--stone); margin:16px 0 0; line-height:1.7;">Modern site with case studies, team bios, awards showcase, active blog, structured data, and a clear conversion funnel. Won Builder of the Year in 2026.</p>
+      </div>
+    </div>
+
+    <div class="comp-vs-divider">vs</div>
+
+    <div class="comp-side">
+      <div class="comp-side-header us">Blackfish Homes &middot; Current State</div>
+      <div style="padding:24px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+          <div style="background:rgba(180,60,60,0.03); padding:16px; border-left:2px solid rgba(180,60,60,0.2);">
+            <div style="font-family:'Josefin Sans',sans-serif; font-size:0.45rem; letter-spacing:0.2em; text-transform:uppercase; color:#8B3A3A; margin-bottom:4px;">Indexed Pages</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:#8B3A3A;">7</div>
+          </div>
+          <div style="background:rgba(180,60,60,0.03); padding:16px; border-left:2px solid rgba(180,60,60,0.2);">
+            <div style="font-family:'Josefin Sans',sans-serif; font-size:0.45rem; letter-spacing:0.2em; text-transform:uppercase; color:#8B3A3A; margin-bottom:4px;">Project Pages</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:#8B3A3A;">0</div>
+          </div>
+          <div style="background:rgba(180,60,60,0.03); padding:16px; border-left:2px solid rgba(180,60,60,0.2);">
+            <div style="font-family:'Josefin Sans',sans-serif; font-size:0.45rem; letter-spacing:0.2em; text-transform:uppercase; color:#8B3A3A; margin-bottom:4px;">Blog Posts</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:#8B3A3A;">0</div>
+          </div>
+          <div style="background:rgba(180,60,60,0.03); padding:16px; border-left:2px solid rgba(180,60,60,0.2);">
+            <div style="font-family:'Josefin Sans',sans-serif; font-size:0.45rem; letter-spacing:0.2em; text-transform:uppercase; color:#8B3A3A; margin-bottom:4px;">Awards Page</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:#8B3A3A;">No</div>
+          </div>
+        </div>
+        <p style="font-size:0.75rem; color:var(--stone); margin:16px 0 0; line-height:1.7;">JavaScript-dependent pages Google can't read. No case studies, no team page, no awards showcase, no blog, no location pages. One news article from 2019.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>Hasler Homes just won the 2026 Georgie Award for Custom Home Builder of the Year. Shakespeare Homes holds the Grand Georgie. Upward Construction is winning national CHBA awards. All three have modern websites with project pages, blog content, and active SEO strategies. Blackfish has the same calibre of work and a longer track record — but your digital footprint is a fraction of theirs.</p>
+
+  <div class="numbers grain-section">
+    <div class="num"><span class="num-val" data-text="Hasler Homes">Hasler</span><span class="num-lbl">2026 Builder of the Year</span></div>
+    <div class="num"><span class="num-val" data-text="Shakespeare">Shakespeare</span><span class="num-lbl">Grand Georgie Winner</span></div>
+    <div class="num"><span class="num-val" data-text="Upward">Upward</span><span class="num-lbl">National CHBA Awards</span></div>
+  </div>
+
+  <div class="insight">
+    <h4>What They All Have That You Don't</h4>
+    <ul style="list-style:none; margin-top:12px;">
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#8B3A3A;">&#10007;</span> Dedicated project case study pages with storytelling</li>
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#8B3A3A;">&#10007;</span> Team page with founder bios and photos</li>
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#8B3A3A;">&#10007;</span> Awards showcase page</li>
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#8B3A3A;">&#10007;</span> Active blog with SEO-optimized content</li>
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#8B3A3A;">&#10007;</span> Location pages for each service area</li>
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#8B3A3A;">&#10007;</span> Client testimonials on-site</li>
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#8B3A3A;">&#10007;</span> Schema markup and structured data</li>
+      <li style="font-size:0.85rem; padding:6px 0 6px 20px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#8B3A3A;">&#10007;</span> Process/journey page for prospects</li>
+    </ul>
+  </div>
+
+  <h3>Social Media Assessment</h3>
+
+  <div class="services">
+    <div class="svc">
+      <h4>Instagram — 6,077 Followers</h4>
+      <ul>
+        <li>519 posts over 20 years (2/month avg)</li>
+        <li>Great photography but no content strategy</li>
+        <li>No consistent posting schedule</li>
+        <li>Follow:follower ratio nearly 1:1</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Facebook — Low Activity</h4>
+      <ul>
+        <li>Last post: December 24, 2025</li>
+        <li>Good video content (Alpine, Mathers, Marine)</li>
+        <li>Inconsistent posting</li>
+        <li>Underutilizing video assets</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>LinkedIn — 251 Followers</h4>
+      <ul>
+        <li>Minimal presence</li>
+        <li>No thought leadership from David</li>
+        <li>Built Green Board Chair angle completely unused</li>
+        <li>Massive untapped opportunity for authority</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Reviews — Underperforming</h4>
+      <ul>
+        <li>43 total reviews across all platforms in 20 years</li>
+        <li>Google: 18 reviews (should be 100+)</li>
+        <li>No systematic review generation</li>
+        <li>4.75/5 average — excellent quality, terrible volume</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight" style="margin-top:40px;">
+    <h4>What Your Clients Actually Say</h4>
+    <p style="font-style:italic; font-family:'Cormorant Garamond',serif; font-size:1.05rem; line-height:1.8; margin-bottom:16px;">"We are so pleased we chose Blackfish and really believe we couldn't have found a better builder. They guided us every step of the way. Blackfish produce the highest quality work and craftsmanship and were both on-time and on-budget. Nowhere were corners cut."</p>
+    <p style="font-size:0.7rem; font-family:'Josefin Sans',sans-serif; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;">— HomeStars Client Review</p>
+    <p style="font-style:italic; font-family:'Cormorant Garamond',serif; font-size:1.05rem; line-height:1.8; margin-bottom:16px;">"Blackfish took over a major renovation project from another contractor. The first company made me feel very manipulated. Blackfish managed the project in a very hands-on manner, often questioning my requests and offering better or less expensive options. The interaction was excellent, the cost control very diligent and we ended up with a beautiful project."</p>
+    <p style="font-size:0.7rem; font-family:'Josefin Sans',sans-serif; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0;">— HomeStars Client Review</p>
+    <p style="margin-top:20px; font-size:0.85rem; color:var(--stone); margin-bottom:0;">These reviews are buried on third-party platforms. None of them appear on your website. That's fixable.</p>
+  </div>
+
+  <h3>The Authority Gap</h3>
+
+  <div class="authority-gap">
+    <div class="ag-header">
+      <div class="ag-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="23" stroke="var(--gold)" stroke-width="1" fill="none" opacity="0.3"/>
+          <path d="M24 12L27 21H36L29 27L31 36L24 30L17 36L19 27L12 21H21L24 12Z" fill="var(--gold)" opacity="0.15" stroke="var(--gold)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="ag-title">
+        <h4 style="font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">The Credibility Paradox</h4>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:400; line-height:1.3; color:var(--ink); margin-bottom:0;">You chair Built Green Canada's Board of Directors.<br>When someone searches "Built Green builder Vancouver,"<br><em style="color:var(--gold);">your competitors show up first.</em></p>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; margin:40px 0; background:var(--gold-dim);">
+      <div style="background:var(--white); padding:36px;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:16px;">What David Has</div>
+        <ul style="list-style:none;">
+          <li style="font-size:0.85rem; padding:8px 0 8px 24px; position:relative; color:var(--ink); border-bottom:1px solid rgba(26,26,24,0.04);"><span style="position:absolute; left:0; top:16px; width:8px; height:1px; display:block; background:var(--gold);"></span>Built Green Canada Board Chair</li>
+          <li style="font-size:0.85rem; padding:8px 0 8px 24px; position:relative; color:var(--ink); border-bottom:1px solid rgba(26,26,24,0.04);"><span style="position:absolute; left:0; top:16px; width:8px; height:1px; display:block; background:var(--gold);"></span>Georgie Award Winner (multiple)</li>
+          <li style="font-size:0.85rem; padding:8px 0 8px 24px; position:relative; color:var(--ink); border-bottom:1px solid rgba(26,26,24,0.04);"><span style="position:absolute; left:0; top:16px; width:8px; height:1px; display:block; background:var(--gold);"></span>5 HAVAN Ovation Awards</li>
+          <li style="font-size:0.85rem; padding:8px 0 8px 24px; position:relative; color:var(--ink); border-bottom:1px solid rgba(26,26,24,0.04);"><span style="position:absolute; left:0; top:16px; width:8px; height:1px; display:block; background:var(--gold);"></span>17 consecutive Houzz Awards</li>
+          <li style="font-size:0.85rem; padding:8px 0 8px 24px; position:relative; color:var(--ink);"><span style="position:absolute; left:0; top:16px; width:8px; height:1px; display:block; background:var(--gold);"></span>20+ years, 24+ completed projects</li>
+        </ul>
+      </div>
+      <div style="background:var(--white); padding:36px;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:#8B3A3A; margin-bottom:16px;">What Google Sees</div>
+        <ul style="list-style:none;">
+          <li style="font-size:0.85rem; padding:8px 0 8px 24px; position:relative; color:var(--stone); border-bottom:1px solid rgba(26,26,24,0.04);"><span style="position:absolute; left:0; color:#8B3A3A;">&#10007;</span> 7 indexed pages</li>
+          <li style="font-size:0.85rem; padding:8px 0 8px 24px; position:relative; color:var(--stone); border-bottom:1px solid rgba(26,26,24,0.04);"><span style="position:absolute; left:0; color:#8B3A3A;">&#10007;</span> JavaScript-blocked content</li>
+          <li style="font-size:0.85rem; padding:8px 0 8px 24px; position:relative; color:var(--stone); border-bottom:1px solid rgba(26,26,24,0.04);"><span style="position:absolute; left:0; color:#8B3A3A;">&#10007;</span> Zero case studies</li>
+          <li style="font-size:0.85rem; padding:8px 0 8px 24px; position:relative; color:var(--stone); border-bottom:1px solid rgba(26,26,24,0.04);"><span style="position:absolute; left:0; color:#8B3A3A;">&#10007;</span> Zero location pages</li>
+          <li style="font-size:0.85rem; padding:8px 0 8px 24px; position:relative; color:var(--stone);"><span style="position:absolute; left:0; color:#8B3A3A;">&#10007;</span> No structured data, no schema</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="font-size:0.95rem; color:var(--stone); line-height:1.8;">David, this isn't a website problem. It's a <strong style="color:var(--ink);">credibility leak</strong>. You have more authority in green building than anyone on the North Shore — and none of it is visible online. Every day that gap stays open, prospects find Hasler, Shakespeare, or Upward first. Not because they build better. Because they <em>show up</em>.</p>
+  </div>
+</div>
+
+
+<!-- PHOTO BREAK 1 -->
+<div class="photo-break">
+  <img src="https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/Vale.jpg" alt="The Vale Residence — North Vancouver, BC">
+  <div class="photo-break-caption">The Vale Residence &middot; North Vancouver, BC &middot; Built Green Platinum</div>
+</div>
+
+
+<!-- ═══════ 02 — THE SOLUTION ═══════ -->
+<div class="section" data-nav="Solution">
+  <div class="eyebrow">The Fix</div>
+  <h2>One partner. Website, SEO, content,<br>and photography — <em>handled.</em></h2>
+  <p class="lead">I don't build websites in isolation. I build complete digital ecosystems — website, SEO, content strategy, and professional photography — under one roof. Here's what Blackfish needs:</p>
+
+  <div class="services three-col">
+    <div class="svc">
+      <h4>Website Redesign</h4>
+      <ul>
+        <li>Custom Squarespace build (40+ pages)</li>
+        <li>Dedicated project portfolio with case studies</li>
+        <li>Team page featuring David + the founders</li>
+        <li>Awards showcase page</li>
+        <li>Built Green certification content</li>
+        <li>Mobile-first, SEO-ready architecture</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>SEO Strategy</h4>
+      <ul>
+        <li>Technical SEO (meta, schema, sitemap, speed)</li>
+        <li>8 location pages (one per service area)</li>
+        <li>Blog content strategy (monthly SEO posts)</li>
+        <li>Google Business Profile optimization</li>
+        <li>Local keyword targeting for North Shore</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>GEO / AI Optimization</h4>
+      <ul>
+        <li>Structured data for AI search tools</li>
+        <li>FAQ schema across all pages</li>
+        <li>Entity clarity (David Adair + Built Green Board Chair)</li>
+        <li>Citeable statistics and credentials</li>
+        <li>Content formatted for ChatGPT/Perplexity/Gemini</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Architectural Photography</h4>
+      <ul>
+        <li>Full-day project shoots (interiors, exteriors, aerials, twilight)</li>
+        <li>Award-submission specification from day one</li>
+        <li>Multi-format delivery (web, print, social, award)</li>
+        <li>Transport Canada certified drone pilot</li>
+        <li>Full licensing across all channels</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Content Creation</h4>
+      <ul>
+        <li>Project case studies with storytelling</li>
+        <li>Blog posts (building science, green building, process)</li>
+        <li>Social media content from shoot footage</li>
+        <li>Awards submission photography + materials</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Ongoing Management</h4>
+      <ul>
+        <li>Monthly website updates</li>
+        <li>New project pages as builds complete</li>
+        <li>SEO monitoring and optimization</li>
+        <li>Performance reporting</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- PHOTO BREAK 2 -->
+<div class="photo-break">
+  <img src="https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/William.jpg" alt="The William Residence — North Vancouver, BC">
+  <div class="photo-break-caption">The William Residence &middot; North Vancouver, BC &middot; Blackfish Homes</div>
+</div>
+
+
+<!-- ═══════ MOCKUP PREVIEW ═══════ -->
+<div class="section cream" data-nav="Preview">
+  <div class="eyebrow">See What's Possible</div>
+  <h2>I built Blackfish a new homepage.<br><em>Take a look.</em></h2>
+  <p class="lead">Before we discuss pricing, I want to show you what Blackfish could look like online. I designed a complete homepage concept using your own projects, photography, and brand story — including the orca origin story, your Built Green credentials, and your award history.</p>
+  <p>This isn't a template. It's a custom design built specifically for Blackfish Homes, using the same approach I'd take on the full rebuild.</p>
+
+  <!-- HERO SECTION SCREENSHOT -->
+  <div class="mockup-gallery">
+    <div class="mockup-gallery-item reveal">
+      <div class="browser-mockup">
+        <div class="browser-bar">
+          <div class="browser-dots">
+            <span class="browser-dot" style="background:#FF5F57;"></span>
+            <span class="browser-dot" style="background:#FFBD2E;"></span>
+            <span class="browser-dot" style="background:#28CA41;"></span>
+          </div>
+          <div class="browser-url">
+            <span class="browser-lock">&#x1F512;</span>
+            blackfishhomes.ca
+          </div>
+        </div>
+        <div class="browser-viewport" style="height:auto; max-height:none; overflow:visible;">
+          <!-- Hero mockup preview -->
+          <div style="background:#111; color:#fff; padding:0; position:relative; min-height:480px; display:flex; align-items:flex-end; overflow:hidden;">
+            <img src="https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/W12th_Cover.jpg" alt="Blackfish Homepage Hero Concept" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0.6;">
+            <div style="position:relative; z-index:2; padding:48px; max-width:680px;">
+              <div style="font-family:'Inter',sans-serif; font-weight:500; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#C4A265; margin-bottom:20px;">Award-Winning Performance Builder &middot; Est. 2005</div>
+              <div style="font-family:'DM Serif Display',serif; font-size:clamp(32px,4.5vw,52px); font-weight:400; line-height:1.1; margin-bottom:20px;">Where Building Science<br>Meets Design Intent</div>
+              <div style="font-weight:300; font-size:14px; line-height:1.85; color:rgba(255,255,255,0.6); max-width:520px; margin-bottom:32px;">For over two decades, we've crafted custom homes and renovations that perform as beautifully as they look. Built Green Platinum certified. Georgie and Ovation award-winning.</div>
+              <div style="display:flex; gap:12px;">
+                <span style="display:inline-block; padding:14px 28px; background:#2D5A3D; color:#fff; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; border-radius:4px;">View Our Work</span>
+                <span style="display:inline-block; padding:13px 28px; background:transparent; color:#fff; font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; border:1px solid rgba(255,255,255,0.3); border-radius:4px;">Contact Us</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="font-family:'Josefin Sans',sans-serif; font-size:0.5rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); padding:16px 0 0; text-align:center;">Hero Section — Full-Screen Cinematic with Cascading Animation</div>
+    </div>
+
+    <!-- PROJECTS GRID SCREENSHOT -->
+    <div class="mockup-gallery-item reveal reveal-delay-1">
+      <div style="background:#111; padding:48px 40px; overflow:hidden;">
+        <div style="max-width:1000px; margin:0 auto;">
+          <div style="font-family:'Inter',sans-serif; font-weight:600; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#2D5A3D; margin-bottom:20px; display:flex; align-items:center; gap:12px;"><span style="display:block; width:24px; height:1px; background:#2D5A3D;"></span>Featured Work</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:clamp(28px,3.5vw,44px); font-weight:400; color:#fff; margin-bottom:8px;">Built to Perform</div>
+          <div style="font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:40px; max-width:560px;">A selection of custom homes and renovations designed to the highest standard of energy performance and architectural craft.</div>
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px;">
+            <div style="position:relative; overflow:hidden; aspect-ratio:3/4;">
+              <img src="https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/Vale.jpg" alt="Vale" style="width:100%; height:100%; object-fit:cover; filter:brightness(0.8);">
+              <div style="position:absolute; bottom:0; left:0; right:0; padding:20px; background:linear-gradient(transparent, rgba(0,0,0,0.7));">
+                <div style="font-size:10px; color:rgba(255,255,255,0.5); letter-spacing:1px; text-transform:uppercase;">North Vancouver, BC</div>
+                <div style="font-family:'DM Serif Display',serif; font-size:18px; color:#fff;">The Vale Residence</div>
+                <div style="font-size:10px; color:rgba(255,255,255,0.4);">Built Green Platinum &middot; Georgie Winner</div>
+              </div>
+            </div>
+            <div style="position:relative; overflow:hidden; aspect-ratio:3/4;">
+              <img src="https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/Mathers.jpg" alt="Mathers" style="width:100%; height:100%; object-fit:cover; filter:brightness(0.8);">
+              <div style="position:absolute; bottom:0; left:0; right:0; padding:20px; background:linear-gradient(transparent, rgba(0,0,0,0.7));">
+                <div style="font-size:10px; color:rgba(255,255,255,0.5); letter-spacing:1px; text-transform:uppercase;">West Vancouver, BC</div>
+                <div style="font-family:'DM Serif Display',serif; font-size:18px; color:#fff;">The Mathers Residence</div>
+                <div style="font-size:10px; color:rgba(255,255,255,0.4);">Splyce Design &middot; Ovation Winner</div>
+              </div>
+            </div>
+            <div style="position:relative; overflow:hidden; aspect-ratio:3/4;">
+              <img src="https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/W12th_Cover.jpg" alt="W12th" style="width:100%; height:100%; object-fit:cover; filter:brightness(0.8);">
+              <div style="position:absolute; bottom:0; left:0; right:0; padding:20px; background:linear-gradient(transparent, rgba(0,0,0,0.7));">
+                <div style="font-size:10px; color:rgba(255,255,255,0.5); letter-spacing:1px; text-transform:uppercase;">Vancouver, BC</div>
+                <div style="font-family:'DM Serif Display',serif; font-size:18px; color:#fff;">The W 12th Residence</div>
+                <div style="font-size:10px; color:rgba(255,255,255,0.4);">Built Green Platinum</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="font-family:'Josefin Sans',sans-serif; font-size:0.5rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); padding:16px 0 0; text-align:center;">Projects Grid — Asymmetric Masonry with Hover Reveals</div>
+    </div>
+
+    <!-- BUILT GREEN SECTION SCREENSHOT -->
+    <div class="mockup-gallery-item reveal reveal-delay-2">
+      <div style="background:#F5F3EE; padding:48px 40px; overflow:hidden;">
+        <div style="max-width:800px; margin:0 auto; text-align:center;">
+          <div style="font-family:'Inter',sans-serif; font-weight:600; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#2D5A3D; margin-bottom:20px;">Built Green Certified</div>
+          <div style="font-family:'DM Serif Display',serif; font-size:clamp(24px,3vw,36px); font-weight:400; color:#1A1A18; line-height:1.2; margin-bottom:20px;">Not Just Green-Washed.<br>Third-Party Verified.</div>
+          <div style="font-size:14px; color:#6B6860; line-height:1.85; max-width:640px; margin:0 auto 32px;">Every Blackfish home is certified through Built Green Canada. David Adair doesn't just build to the standard. He chairs the organization's Board of Directors.</div>
+          <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:rgba(45,90,61,0.1); margin-top:24px;">
+            <div style="background:#F5F3EE; padding:28px 16px; text-align:center;">
+              <div style="font-family:'DM Serif Display',serif; font-size:2rem; color:#2D5A3D;">86</div>
+              <div style="font-size:9px; letter-spacing:2px; text-transform:uppercase; color:#6B6860;">EnerGuide Rating</div>
+            </div>
+            <div style="background:#F5F3EE; padding:28px 16px; text-align:center;">
+              <div style="font-family:'DM Serif Display',serif; font-size:2rem; color:#2D5A3D;">30%+</div>
+              <div style="font-size:9px; letter-spacing:2px; text-transform:uppercase; color:#6B6860;">More Efficient</div>
+            </div>
+            <div style="background:#F5F3EE; padding:28px 16px; text-align:center;">
+              <div style="font-family:'DM Serif Display',serif; font-size:2rem; color:#2D5A3D;">Platinum</div>
+              <div style="font-size:9px; letter-spacing:2px; text-transform:uppercase; color:#6B6860;">Built Green Level</div>
+            </div>
+            <div style="background:#F5F3EE; padding:28px 16px; text-align:center;">
+              <div style="font-family:'DM Serif Display',serif; font-size:2rem; color:#2D5A3D;">Chair</div>
+              <div style="font-size:9px; letter-spacing:2px; text-transform:uppercase; color:#6B6860;">Board of Directors</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="font-family:'Josefin Sans',sans-serif; font-size:0.5rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); padding:16px 0 0; text-align:center;">Built Green Section — Authority Positioning with Performance Stats</div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:40px;">
+    <a href="https://mattanthonyphoto.github.io/matt-proposals/blackfish/blackfish-homepage-mockup.html" target="_blank" style="display:inline-block; padding:16px 44px; background:var(--gold); color:var(--ink); font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; border-radius:2px; transition:background 0.3s, transform 0.2s;">Open the Full Interactive Demo &rarr;</a>
+    <p style="font-size:0.7rem; color:var(--stone); margin-top:12px;">Scrollable, animated, fully responsive — built exactly like the real thing would be.</p>
+  </div>
+
+  <div class="insight" style="margin-top:48px;">
+    <h4>This Is Not a Template</h4>
+    <p style="margin-bottom:0;">Every section — the orca origin story, the Built Green credentials, the award history, the project grid — was designed from scratch using Blackfish's own content and projects. This is the exact same approach I'd take on the full rebuild. What you're looking at is the starting point, not the ceiling.</p>
+  </div>
+</div>
+
+
+<!-- ═══════ 03 — PRICING ═══════ -->
+<div class="section wide" id="tiers" data-nav="Pricing">
+  <div class="eyebrow">Investment</div>
+  <h2>Three paths forward.<br><em>Same partner.</em></h2>
+
+  <div class="tiers">
+    <div class="tier" data-tier="foundation">
+      <div class="tier-selected-badge">Selected</div>
+      <div class="tier-name">Foundation</div>
+      <div class="tier-price">$7,500</div>
+      <div class="tier-term">One-time investment &middot; Your foot in the door</div>
+      <ul>
+        <li>Full website + SEO audit (15-page report)</li>
+        <li>Competitor analysis (5 competitors)</li>
+        <li>Content strategy and sitemap</li>
+        <li>GEO readiness assessment</li>
+        <li>1 full-day photography shoot (20-25 images)</li>
+        <li>Drone aerials included</li>
+        <li>60-minute strategy session</li>
+        <li class="off">Site redesign / build</li>
+        <li class="off">Ongoing SEO</li>
+        <li class="off">Monthly content</li>
+      </ul>
+      <div class="tier-bottom">Investment<br><strong>$7,500</strong></div>
+    </div>
+
+    <div class="tier rec" data-tier="rebuild">
+      <div class="tier-selected-badge">Selected</div>
+      <div class="tier-badge"><span>Recommended</span></div>
+      <div class="tier-name">Full Rebuild</div>
+      <div class="tier-price">$18,000</div>
+      <div class="tier-term">One-time investment &middot; Includes 3 months Growth Partner ($10,500 value)</div>
+      <ul>
+        <li>Everything in Foundation</li>
+        <li>Custom 40+ page Squarespace build</li>
+        <li>8 location pages</li>
+        <li>Project portfolio with case studies</li>
+        <li>Awards showcase page</li>
+        <li>Team page</li>
+        <li>Built Green content hub</li>
+        <li>Full SEO implementation (meta, schema, sitemap)</li>
+        <li>GEO optimization</li>
+        <li>2 full-day photography shoots (40-50 images)</li>
+        <li>Drone aerials + twilight sessions</li>
+        <li>3 months post-launch Growth Partner included:</li>
+        <li style="padding-left:40px;">Monthly SEO optimization</li>
+        <li style="padding-left:40px;">1 blog post per month</li>
+        <li style="padding-left:40px;">Performance reporting</li>
+      </ul>
+      <div class="tier-bottom">Investment<br><strong>$18,000</strong><br><span style="font-size:0.6rem; color:var(--gold);">then $3,500/mo to continue (optional)</span></div>
+    </div>
+
+    <div class="tier" data-tier="growth">
+      <div class="tier-selected-badge">Selected</div>
+      <div class="tier-name">Growth Partner</div>
+      <div class="tier-price">$3,500 <span>/ mo</span></div>
+      <div class="tier-term">Full rebuild + ongoing retainer &middot; 6-month minimum</div>
+      <ul>
+        <li>Full site rebuild included (weeks 1-8)</li>
+        <li>Monthly SEO optimization</li>
+        <li>1 blog post per month</li>
+        <li>Project page updates as builds complete</li>
+        <li>1 photography shoot per quarter</li>
+        <li>Social media content from shoot footage</li>
+        <li>Award submission support (Georgie, Ovation)</li>
+        <li>Performance reporting (monthly)</li>
+        <li>Google review generation system</li>
+        <li>Priority support</li>
+      </ul>
+      <div class="tier-bottom">Annual investment<br><strong>$42,000</strong><br><span style="font-size:0.6rem; color:var(--gold);">less than 1% of a typical Blackfish project</span></div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <h4>How to Think About This</h4>
+    <p>Blackfish builds homes worth $500K to $10M. A single missed inquiry — one prospect who Googled "custom home builder North Vancouver" and found Hasler or Shakespeare instead of Blackfish — represents more lost revenue than any of these tiers cost.</p>
+    <div class="tier-breakdown">
+      <div class="tb"><span class="tb-label">Foundation</span><span class="tb-desc">Gives you clarity. A detailed audit, strategy, and your first professional shoot. Start here if you want to see the work before committing further.</span></div>
+      <div class="tb"><span class="tb-label">Full Rebuild</span><span class="tb-desc">Fixes the problem. Complete digital presence plus 3 months of ongoing support built in — so you see results before deciding on a retainer.</span></div>
+      <div class="tb"><span class="tb-label">Growth Partner</span><span class="tb-desc">Makes it compound. Everything rebuilds plus ongoing SEO, quarterly photography, content, and award support. This is how you stay ahead of Hasler permanently.</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PHOTO BREAK 3 -->
+<div class="photo-break">
+  <img src="https://www.blackfishhomes.ca/v1site_images/slideshow/gallery1/NewMarket_Classic.jpg" alt="The NewMarket Classic — North Vancouver, BC">
+  <div class="photo-break-caption">The NewMarket Classic &middot; North Vancouver, BC &middot; Blackfish Homes</div>
+</div>
+
+
+<!-- ═══════ 04 — ROADMAP ═══════ -->
+<div class="section light" data-nav="Roadmap">
+  <div class="eyebrow">The Plan</div>
+  <h2>From audit to live site<br><em>in 8 weeks.</em></h2>
+
+  <div class="roadmap">
+    <div class="roadmap-line" id="roadmapLine"></div>
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">Week 1-2</div>
+        <div class="rm-label">Audit &amp; Strategy</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          <li>Full site audit, competitor deep-dive, keyword research</li>
+          <li>Content strategy and information architecture</li>
+          <li>Photography planning (locations, timing, shot list)</li>
+          <li>15-page audit report delivered</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">Week 3-4</div>
+        <div class="rm-label">Design &amp; Shoot</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          <li>Wireframes and visual design</li>
+          <li>2 revision rounds</li>
+          <li>First photography session (Vale or current project)</li>
+          <li>Drone aerials and twilight coverage</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">Week 5-8</div>
+        <div class="rm-label">Build &amp; Launch</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          <li>Full site development (40+ pages)</li>
+          <li>Content writing and copyediting</li>
+          <li>SEO implementation (meta, schema, sitemap)</li>
+          <li>GEO optimization across all pages</li>
+          <li>QA testing and launch</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rm">
+      <div class="rm-left">
+        <div class="rm-month">Ongoing</div>
+        <div class="rm-label">Grow</div>
+      </div>
+      <div class="rm-right">
+        <ul>
+          <li>Monthly SEO optimization</li>
+          <li>Blog content published on schedule</li>
+          <li>Project page updates as builds complete</li>
+          <li>Quarterly photography shoots</li>
+          <li>Performance reporting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><span class="stat-val">40+</span><span class="stat-lbl">Pages</span></div>
+    <div class="stat"><span class="stat-val">8</span><span class="stat-lbl">Location Pages</span></div>
+    <div class="stat"><span class="stat-val">8</span><span class="stat-lbl">Weeks to Launch</span></div>
+    <div class="stat"><span class="stat-val">1</span><span class="stat-lbl">Partner</span></div>
+  </div>
+</div>
+
+
+<!-- ═══════ WHY NOW ═══════ -->
+<div class="urgency-banner reveal">
+  <span class="urgency-icon">&#9200;</span>
+  <h4>Why This Can't Wait</h4>
+  <p><strong>Hasler Homes just won the 2026 Georgie Award for Custom Home Builder of the Year.</strong> They didn't win it because they build better than Blackfish. They won it because they showed up — with professional photography, a modern website, case studies, and a content strategy that made the judges' job easy.</p>
+  <p>The next Georgie submission cycle opens in fall 2026. HAVAN Ovation entries follow shortly after. If you want <em>new photography, a fresh web presence, and award-ready project documentation</em> before those deadlines, the work needs to start now — not in September.</p>
+  <p style="margin-bottom:0;">David, you've been nominated before. You've won before. But the builders winning now have invested in how their work is <strong>presented</strong>, not just how it's built. That's the gap, and it's closable — but only if we start soon enough to have everything ready for submission season.</p>
+
+  <div class="urgency-timeline">
+    <div class="urgency-date">
+      <span class="urgency-date-val">April</span>
+      <span class="urgency-date-lbl">Start engagement</span>
+    </div>
+    <div class="urgency-date">
+      <span class="urgency-date-val">June</span>
+      <span class="urgency-date-lbl">New site + photography live</span>
+    </div>
+    <div class="urgency-date">
+      <span class="urgency-date-val">Fall 2026</span>
+      <span class="urgency-date-lbl">Georgie &amp; Ovation submissions</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════ 05 — CASE STUDY ═══════ -->
+<div class="section" data-nav="Proof">
+  <div class="eyebrow">Case Study</div>
+  <h2>What this looks like<br><em>in practice.</em></h2>
+  <p class="lead">Balmoral Construction is a custom home builder in the Sea-to-Sky corridor. Here's what happened when they invested in professional documentation and a content-driven marketing strategy.</p>
+
+  <div class="case-study-header">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg" alt="Warbler Residence — built by Balmoral Construction, Whistler">
+    <div class="case-study-header-content">
+      <h4>Balmoral Construction</h4>
+      <h3>From invisible online to<br><em>the builder people find first.</em></h3>
+    </div>
+  </div>
+
+  <p>When we started working together, Balmoral had completed over 50 custom homes across the Sea-to-Sky corridor but had zero online presence to show for it. No project pages, no professional photography, no awards, no content strategy.</p>
+
+  <p>We built a full 42-page website with dedicated project pages, location-specific landing pages, and a blog. Every page is backed by professional architectural photography.</p>
+
+  <p>We then launched a monthly content system: professional photo shoots, social media content, Google Business Profile optimization, and award submissions.</p>
+
+  <p>The result: Balmoral now shows up in Google for every key search term in their market. Their website generates qualified leads. Their Instagram showcases the work. And for the first time, their online presence matches the quality of what they actually build.</p>
+
+  <div class="case-study-stats">
+    <div class="case-study-stat"><span class="num-val">42</span><span class="num-lbl">Website Pages Built</span></div>
+    <div class="case-study-stat"><span class="num-val">14</span><span class="num-lbl">Project Pages</span></div>
+    <div class="case-study-stat"><span class="num-val">300+</span><span class="num-lbl">Professional Images</span></div>
+    <div class="case-study-stat"><span class="num-val">7</span><span class="num-lbl">Location Pages</span></div>
+  </div>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dots">
+        <span class="browser-dot" style="background:#FF5F57;"></span>
+        <span class="browser-dot" style="background:#FFBD2E;"></span>
+        <span class="browser-dot" style="background:#28CA41;"></span>
+      </div>
+      <div class="browser-url">
+        <span class="browser-lock">&#x1F512;</span>
+        balmoralconstruction.com
+      </div>
+    </div>
+    <div class="browser-viewport">
+      <img src="https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/93aadd7d-1feb-4c75-bf1e-25a901aa197f/www.balmoralconstruction.com_+%282%29+%281%29.png?content-type=image%2Fpng" alt="Balmoral Construction website — 42 pages built by Matt Anthony Photography" loading="lazy" style="width:100%; display:block;">
+    </div>
+  </div>
+
+  <div class="case-study-gallery">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/40f0f4b4-0146-4139-8682-d3505ba00ba2/warbler-whistler-architectural-photography-matt-anthony-.jpg-36.jpg" alt="Warbler Residence — Balmoral Construction" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/0a5c4ead-f6f9-413c-aaad-b12b03837e78/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg.jpg" alt="Fitzsimmons Residence — Balmoral Construction" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/d4768559-4d0d-4403-a58c-02db15d5b177/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-42.jpg" alt="Fitzsimmons interior — Balmoral Construction" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/98b6bb8c-ede3-4de9-978a-fc8ae91554a6/warbler-whistler-architectural-photography-matt-anthony-.jpg-35.jpg" alt="Warbler exterior — Balmoral Construction" loading="lazy">
+  </div>
+
+  <a class="case-study-link" href="https://www.balmoralconstruction.com" target="_blank">See the Balmoral website <span>&rarr;</span></a>
+
+  <div class="insight">
+    <h4>The Takeaway</h4>
+    <p>Balmoral didn't need to change how they build homes. They needed to <strong>show</strong> how they build homes. The photography, the website, the content system — they're all the same investment. And it compounds every month.</p>
+  </div>
+</div>
+
+
+<!-- ═══════ 06 — NEXT STEPS ═══════ -->
+<div class="section" data-nav="Next Steps">
+  <div class="eyebrow">Next Steps</div>
+  <h2>David, Dawn — let's close<br><em>this gap.</em></h2>
+  <p>You've spent 20 years building a reputation that speaks for itself. The only missing piece is a digital presence that does the same. I'd like to fix that for you. Pick the path that makes sense, and let's get started.</p>
+
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <h4>Pick Your Path</h4>
+      <p>Foundation, Full Rebuild, or Growth Partner. Whichever makes sense for where Blackfish is right now.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <h4>Deposit</h4>
+      <p>50% to lock in your timeline and guarantee priority scheduling.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <h4>Kick Off</h4>
+      <p>30-minute call to align on goals and plan the first shoot.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:24px; font-size:0.85rem; color:var(--stone);">This proposal is valid through <strong style="color:var(--ink);">April 30, 2026</strong>. Starting in April means your new site and photography are live before summer — and ready for Georgie and Ovation submissions in the fall.</p>
+</div>
+
+
+<!-- ═══════ FOOTER ═══════ -->
+<div class="footer grain-section">
+  <div class="footer-mark">Matt Anthony Photography</div>
+  <div class="footer-info">
+    <a href="https://mattanthonyphoto.com">mattanthonyphoto.com</a><br>
+    <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a> &middot; 604.765.9270<br>
+    Squamish, BC
+  </div>
+  <div class="footer-note">This proposal is confidential and prepared exclusively for Blackfish Homes Ltd.</div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ═══════ LOADING SCREEN ═══════ */
+  var loader = document.getElementById('loader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('done'); }, 1100);
+  });
+
+  /* ═══════ SCROLL PROGRESS BAR ═══════ */
+  var progressBar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var s = window.scrollY;
+    progressBar.style.width = (h > 0 ? (s / h) * 100 : 0) + '%';
+  }
+
+  /* ═══════ COVER PARALLAX ═══════ */
+  var coverImg = document.querySelector('.cover-image');
+  function updateParallax(){
+    if(window.scrollY < window.innerHeight){
+      coverImg.style.transform = 'scale(1.08) translateY(' + (window.scrollY * 0.3) + 'px)';
+    }
+  }
+
+  /* ═══════ PHOTO BREAK PARALLAX + KEN BURNS ═══════ */
+  var isTouchDevice = 'ontouchstart' in window;
+  var photoBreakEls = document.querySelectorAll('.photo-break');
+  function updatePhotoParallax(){
+    photoBreakEls.forEach(function(pb){
+      var rect = pb.getBoundingClientRect();
+      var inView = rect.bottom > 0 && rect.top < window.innerHeight;
+      if(inView){
+        pb.classList.add('in-view');
+      } else {
+        pb.classList.remove('in-view');
+      }
+    });
+  }
+
+  /* ═══════ SECTION NAV DOTS ═══════ */
+  var sectionNav = document.getElementById('sectionNav');
+  var navSections = document.querySelectorAll('[data-nav]');
+  var navDots = [];
+  navSections.forEach(function(sec){
+    var dot = document.createElement('div');
+    dot.className = 'section-nav-dot';
+    dot.setAttribute('data-label', sec.getAttribute('data-nav'));
+    dot.addEventListener('click', function(){
+      sec.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+    sectionNav.appendChild(dot);
+    navDots.push({ dot:dot, section:sec });
+  });
+
+  function updateNavDots(){
+    var scrollY = window.scrollY;
+    var winH = window.innerHeight;
+    if(scrollY > winH * 0.5){
+      sectionNav.classList.add('visible');
+    } else {
+      sectionNav.classList.remove('visible');
+    }
+    var active = null;
+    navDots.forEach(function(item){
+      var rect = item.section.getBoundingClientRect();
+      if(rect.top < winH * 0.5 && rect.bottom > winH * 0.3){
+        active = item;
+      }
+      item.dot.classList.remove('active');
+    });
+    if(active) active.dot.classList.add('active');
+  }
+
+  /* ═══════ SCROLL REVEAL ═══════ */
+  var revealTargets = [];
+  document.querySelectorAll('.section, .numbers').forEach(function(section){
+    section.querySelectorAll('.eyebrow, h2, .lead, .stats, .services, .tiers, .insight, .roadmap, .numbers, .steps').forEach(function(el, i){
+      el.classList.add('reveal');
+      if(i > 0 && i < 6) el.classList.add('reveal-delay-' + i);
+      revealTargets.push(el);
+    });
+    section.querySelectorAll('.stat, .svc, .tier, .step, .num, .rm').forEach(function(el, i){
+      el.classList.add('reveal');
+      el.classList.add('reveal-delay-' + Math.min(i + 1, 5));
+      revealTargets.push(el);
+    });
+    Array.prototype.forEach.call(section.children, function(child){
+      if(child.tagName === 'P' && !child.classList.contains('lead') && !child.classList.contains('cover-sub')){
+        child.classList.add('reveal');
+        revealTargets.push(child);
+      }
+    });
+  });
+
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+        animateCounter(entry.target);
+      }
+    });
+  }, { threshold:0.15, rootMargin:'0px 0px -40px 0px' });
+
+  revealTargets.forEach(function(el){ revealObserver.observe(el); });
+
+  /* ═══════ EYEBROW LINE ANIMATION ═══════ */
+  var eyebrows = document.querySelectorAll('.eyebrow');
+  var eyebrowObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        eyebrowObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.5 });
+  eyebrows.forEach(function(eb){ eyebrowObserver.observe(eb); });
+
+  /* ═══════ NUMBER COUNTER ANIMATION ═══════ */
+  function animateCounter(el){
+    var valEl = el.querySelector('.stat-val, .num-val');
+    if(!valEl || valEl.dataset.counted) return;
+    var text = valEl.textContent.trim();
+    // Skip text-only values (like competitor names)
+    if(valEl.dataset.text) return;
+    valEl.dataset.counted = 'true';
+    var hasPlus = text.indexOf('+') > -1;
+    var hasSlash = text.indexOf('/') > -1;
+    var hasDot = text.indexOf('.') > -1;
+    var num = parseFloat(text.replace(/[^0-9.]/g,''));
+    if(isNaN(num) || num === 0) return;
+    var duration = 1200;
+    var start = performance.now();
+    var suffix = hasPlus ? '+' : '';
+    function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+    function tick(now){
+      var t = Math.min((now - start) / duration, 1);
+      var val = ease(t) * num;
+      if(hasDot){
+        valEl.textContent = val.toFixed(1) + suffix;
+      } else {
+        valEl.textContent = Math.round(val) + suffix;
+      }
+      if(t < 1) requestAnimationFrame(tick);
+    }
+    if(hasDot){
+      valEl.textContent = '0.0' + suffix;
+    } else {
+      valEl.textContent = '0' + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  /* ═══════ PHOTO BREAK CURTAIN REVEAL ═══════ */
+  var photoRevealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('revealed');
+        photoRevealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.1 });
+  photoBreakEls.forEach(function(pb){ photoRevealObserver.observe(pb); });
+
+  /* ═══════ HEADLINE GOLD UNDERLINE ═══════ */
+  var headlines = document.querySelectorAll('h2');
+  var headlineObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('underlined');
+        headlineObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.5 });
+  headlines.forEach(function(h){ headlineObserver.observe(h); });
+
+  /* ═══════ SCROLL INDICATOR HIDE ═══════ */
+  var scrollIndicator = document.getElementById('scrollIndicator');
+  function updateScrollIndicator(){
+    if(window.scrollY > 100){
+      scrollIndicator.classList.add('hidden');
+    } else {
+      scrollIndicator.classList.remove('hidden');
+    }
+  }
+
+  /* ═══════ TIER SELECTION + 3D TILT ═══════ */
+  var tiers = document.querySelectorAll('.tier[data-tier]');
+  tiers.forEach(function(tier){
+    tier.addEventListener('click', function(){
+      tiers.forEach(function(t){ t.classList.remove('selected'); });
+      tier.classList.add('selected');
+    });
+    if(!isTouchDevice){
+      tier.addEventListener('mousemove', function(e){
+        var rect = tier.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        tier.style.transform = tier.classList.contains('rec')
+          ? 'scaleY(1.02) perspective(800px) rotateY(' + (x * 4) + 'deg) rotateX(' + (-y * 4) + 'deg)'
+          : 'perspective(800px) rotateY(' + (x * 4) + 'deg) rotateX(' + (-y * 4) + 'deg)';
+      });
+      tier.addEventListener('mouseleave', function(){
+        tier.style.transform = tier.classList.contains('rec') ? 'scaleY(1.02)' : '';
+      });
+    }
+  });
+
+  /* ═══════ ROADMAP LINE DRAW ═══════ */
+  var roadmapLine = document.getElementById('roadmapLine');
+  var roadmap = document.querySelector('.roadmap');
+  function updateRoadmapLine(){
+    if(!roadmap || !roadmapLine) return;
+    var rect = roadmap.getBoundingClientRect();
+    var roadmapTop = rect.top + window.scrollY;
+    var roadmapHeight = rect.height - 96;
+    var scrollPos = window.scrollY + window.innerHeight * 0.6;
+    var progress = (scrollPos - roadmapTop - 48) / roadmapHeight;
+    progress = Math.max(0, Math.min(1, progress));
+    roadmapLine.style.height = (progress * roadmapHeight) + 'px';
+  }
+
+  /* ═══════ SMOOTH SCROLL FOR CTA ═══════ */
+  var ctaBtn = document.querySelector('.cover-cta');
+  if(ctaBtn){
+    ctaBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  }
+
+  /* ═══════ COMBINED SCROLL HANDLER (rAF) ═══════ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateParallax();
+        updatePhotoParallax();
+        updateScrollIndicator();
+        updateRoadmapLine();
+        updateNavDots();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  // Init
+  updateProgress();
+  updateParallax();
+  updatePhotoParallax();
+  updateRoadmapLine();
+  updateNavDots();
+
+})();
+</script>
+
+</body>
+</html>

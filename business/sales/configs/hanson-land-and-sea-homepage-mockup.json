@@ -1,0 +1,130 @@
+{
+  "builder": {
+    "company": "Hanson Land & Sea",
+    "slug": "hanson-land-and-sea",
+    "location": "Sunshine Coast & Powell River, BC",
+    "email": "marlin@hansonlandandsea.com",
+    "phone": "604.989.1728",
+    "website": "https://www.hansonlandandsea.com",
+    "logo_url": "https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/44bb9672-2047-4dd8-9cb7-33b05a576da6/hanson.png",
+    "colors": {
+      "primary": "#2C3529",
+      "accent": "#8B7355",
+      "light": "#F5F3EE",
+      "dark": "#1A1C19"
+    },
+    "fonts": {
+      "heading": "Cormorant Garamond",
+      "body": "DM Sans",
+      "nav": "Josefin Sans"
+    }
+  },
+  "nav_items": [
+    "Projects",
+    "Services",
+    "About",
+    "Contact"
+  ],
+  "hero": {
+    "eyebrow": "Custom Homes · Sunshine Coast & Powell River",
+    "headline_html": "A Timeless Way<br>of <em>Building.</em>",
+    "subtitle": "Family-owned builders crafting custom homes, renovations, and outdoor structures across the Sunshine Coast and Powell River — rooted in West Coast architecture and sustainable construction.",
+    "cta_text": "View Our Work",
+    "cta_secondary": "Start a Conversation",
+    "image_url": "https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/9d435f5b-3a70-48c4-9a30-25cbbe1ef2d9/407C8527.jpg"
+  },
+  "projects": [
+    {
+      "name": "Oceanfront by Battersby Howat",
+      "location": "Sunshine Coast",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/5365ba77-c474-4053-98ce-c40d1b21d6ec/Hanson-Land-and-Sea-2_web8.jpg"
+    },
+    {
+      "name": "Tea House",
+      "location": "Sunshine Coast",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/93408ae2-ee19-4e61-a808-9d2cab99eb93/083A5738.jpg"
+    },
+    {
+      "name": "North Coast Home",
+      "location": "Powell River",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/e353c1ff-ea6f-4d0c-9885-8bfa7f9e0c53/_M1A4307.jpg"
+    }
+  ],
+  "images": {
+    "breaks": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/84dce28a-0fe6-4b59-a969-40ad1355225d/HLS-Dwell-DaveMoormanPhotography-1.jpg",
+        "alt": "Hanson Land & Sea — Dwell Magazine feature"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/13e685c2-e1eb-4b47-aa05-4ad99f6f8f92/A45I5011-copy.jpg",
+        "alt": "Forest Project by Hanson Land & Sea"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/98eaa8cf-1e35-4456-9588-15abb81b1356/AP2I9977.jpg",
+        "alt": "Gower Point by Hanson Land & Sea"
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "About",
+    "headline_html": "Building the<br>Extraordinary, <em>Together.</em>",
+    "paragraphs": [
+      "Hanson Land & Sea is a family-owned construction company serving the Sunshine Coast and Powell River. Marlin and Ryan Hanson bring deep local knowledge, skilled trades collaboration, and a shared commitment to West Coast architecture and sustainable building practices.",
+      "From custom homes to heritage renovations and thoughtful outdoor structures, every project reflects the same values — native materials, clean craftsmanship, and a respect for the landscape that defines coastal British Columbia."
+    ],
+    "image_url": "https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/c9f06064-a160-4da6-a7c3-8b6c52c6fe26/hls_team_5.jpg"
+  },
+  "stats": [
+    { "value": "16", "label": "Years Building", "target": 16 },
+    { "value": "50", "label": "Custom Homes", "target": 50 },
+    { "value": "4", "label": "Dwell Features", "target": 4 },
+    { "value": "2", "label": "Coastal Regions", "target": 2 }
+  ],
+  "process": {
+    "steps": [
+      { "num": "1", "title": "Envision", "desc": "We listen to how you want to live in your space, studying the site and landscape that will shape every decision." },
+      { "num": "2", "title": "Design", "desc": "Working alongside your architect, we refine materials, systems, and details to match the vision and the coast." },
+      { "num": "3", "title": "Build", "desc": "Our skilled trades team brings decades of local experience, building with care for native materials and lasting quality." },
+      { "num": "4", "title": "Deliver", "desc": "A home that belongs to its landscape — built to weather the coast and stand for generations." }
+    ]
+  },
+  "testimonial": {
+    "quote": "Great project and cost management, good communication throughout, and highly professional craftsmen. Hanson Land & Sea delivered exactly what we envisioned.",
+    "name": "Chris Battson",
+    "detail": "Custom Home, Sunshine Coast"
+  },
+  "services": [
+    {
+      "name": "Custom Homes",
+      "desc": "Design-build homes tailored to coastal living — from oceanfront retreats to forest hideaways.",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/8c02077e-880b-4250-9814-1973825579bb/DSCF0225.jpg"
+    },
+    {
+      "name": "Renovations",
+      "desc": "Thoughtful additions and major renovations that respect the existing structure while transforming how you live.",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/06f661ce-415d-448e-9232-7895f5450d60/HL%26S_Grandview_Project_11.jpg"
+    },
+    {
+      "name": "Outdoor Structures",
+      "desc": "Saunas, studios, and outdoor spaces built with the same craftsmanship as our custom homes.",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/6bfe52f7-2174-4932-ac1d-0724e398b941/0V9A1967.jpg"
+    }
+  ],
+  "contact": {
+    "eyebrow": "Get in Touch",
+    "headline_html": "Let's build something<br><em>extraordinary.</em>",
+    "subtitle": "Every Hanson Land & Sea project starts with a conversation about your vision, your site, and the home you want to come back to.",
+    "cta_text": "Start a Conversation"
+  },
+  "photographer": {
+    "name": "Matt Anthony Photography",
+    "cta_url": "https://mattanthonyphoto.com/discovery-call",
+    "cta_text": "Book a Discovery Call"
+  },
+  "year": "2026",
+  "footer": {
+    "description": "Family-owned builders serving the Sunshine Coast and Powell River. West Coast architecture, sustainable construction, and a commitment to craftsmanship on every project.",
+    "service_areas": ["Sunshine Coast", "Powell River - qathet"]
+  }
+}

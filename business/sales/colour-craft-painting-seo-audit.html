@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO &amp; Content Audit — Colour Craft Painting</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A18;
+    --paper: #F6F4F0;
+    --gold: #C9A96E;
+    --gold-dim: rgba(201,169,110,0.12);
+    --gold-border: rgba(201,169,110,0.25);
+    --gold-glow: rgba(201,169,110,0.06);
+    --stone: #8A8579;
+    --white: #FFFFFF;
+    --light: #FAFAF8;
+    --red: #C26E6E;
+    --red-dim: rgba(194,110,110,0.10);
+    --amber: #C9A96E;
+    --green: #6E9E6E;
+    --green-dim: rgba(110,158,110,0.10);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; -webkit-print-color-adjust:exact; print-color-adjust:exact; scroll-behavior:smooth; }
+  body { background:var(--white); color:var(--ink); font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.75; overflow-x:hidden; }
+
+  /* ═══════════════════════════════════════
+     COVER
+     ═══════════════════════════════════════ */
+  .cover {
+    min-height:100vh; background:var(--ink); color:var(--paper);
+    display:flex; flex-direction:column; justify-content:flex-end;
+    position:relative; overflow:hidden;
+  }
+  .cover-image {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    background-size:cover; background-position:center 40%;
+    will-change:transform; transition:transform 0.1s linear;
+  }
+  .cover-image::after {
+    content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+    background:linear-gradient(
+      to bottom,
+      rgba(26,26,24,0.5) 0%,
+      rgba(26,26,24,0.35) 30%,
+      rgba(26,26,24,0.65) 55%,
+      rgba(26,26,24,0.96) 80%,
+      rgba(26,26,24,0.99) 100%
+    );
+  }
+  .cover-top {
+    position:absolute; top:0; left:0; right:0; z-index:3;
+    padding:40px 60px; display:flex; justify-content:space-between; align-items:center;
+  }
+  .cover-logo {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:rgba(246,244,240,0.6);
+  }
+  .cover-date {
+    font-family:'Josefin Sans',sans-serif; font-size:0.65rem;
+    letter-spacing:0.2em; color:rgba(246,244,240,0.4);
+  }
+  .cover-content {
+    position:relative; z-index:2; padding:0 60px 80px; max-width:720px;
+  }
+  .cover-eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.4em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:20px; display:flex; align-items:center; gap:16px;
+  }
+  .cover-eyebrow::before { content:''; width:32px; height:1px; background:var(--gold); }
+  .cover h1 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:clamp(3rem,6vw,5rem); line-height:1.05; margin-bottom:20px;
+    letter-spacing:-0.01em;
+    text-shadow:0 2px 40px rgba(0,0,0,0.5), 0 4px 80px rgba(0,0,0,0.3);
+  }
+  .cover h1 em { font-style:italic; font-weight:500; color:var(--gold); }
+  .cover-sub {
+    font-size:1rem; color:rgba(246,244,240,0.75); max-width:480px;
+    line-height:1.8; margin-bottom:56px;
+    text-shadow:0 1px 20px rgba(0,0,0,0.4), 0 2px 40px rgba(0,0,0,0.2);
+  }
+  .cover-meta-bar {
+    display:flex; gap:48px; padding-top:32px;
+    border-top:1px solid rgba(201,169,110,0.15);
+  }
+  .cover-meta-item {
+    font-size:0.75rem; color:rgba(246,244,240,0.35); line-height:1.8;
+  }
+  .cover-meta-item strong {
+    display:block; color:rgba(246,244,240,0.7); font-weight:400;
+    font-family:'Josefin Sans',sans-serif; font-size:0.6rem;
+    letter-spacing:0.15em; text-transform:uppercase; margin-bottom:2px;
+  }
+  .cover-cta {
+    display:inline-flex; align-items:center; gap:10px;
+    margin-top:32px; padding:12px 28px;
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
+    letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--paper); border:1px solid rgba(246,244,240,0.25);
+    text-decoration:none; cursor:pointer;
+    transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+    opacity:0; animation:coverFade 0.9s 1.5s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover-cta:hover { border-color:var(--gold); color:var(--gold); padding-right:36px; }
+  .cover-cta-arrow { display:inline-block; transition:transform 0.3s ease; font-size:0.8rem; }
+  .cover-cta:hover .cover-cta-arrow { transform:translateY(3px); }
+
+  .cover .cover-eyebrow,
+  .cover h1,
+  .cover .cover-sub,
+  .cover .cover-meta-bar {
+    opacity:0; transform:translateY(24px);
+    animation:coverFade 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .cover .cover-eyebrow { animation-delay:0.3s; }
+  .cover h1 { animation-delay:0.6s; }
+  .cover .cover-sub { animation-delay:0.9s; }
+  .cover .cover-meta-bar { animation-delay:1.2s; }
+  @keyframes coverFade { to { opacity:1; transform:translateY(0); } }
+
+  .scroll-indicator {
+    position:absolute; bottom:40px; left:50%;
+    transform:translateX(-50%); display:flex; flex-direction:column;
+    align-items:center; gap:8px;
+    opacity:0; animation:coverFade 0.9s 1.8s cubic-bezier(0.16,1,0.3,1) forwards;
+    transition:opacity 0.4s ease;
+  }
+  .scroll-indicator.hidden { opacity:0 !important; }
+  .scroll-indicator-text {
+    font-family:'Josefin Sans',sans-serif; font-size:0.45rem;
+    letter-spacing:0.3em; text-transform:uppercase;
+    color:rgba(246,244,240,0.3);
+  }
+  .scroll-indicator-line {
+    width:1px; height:32px; position:relative; overflow:hidden;
+    background:rgba(246,244,240,0.1);
+  }
+  .scroll-indicator-line::after {
+    content:''; position:absolute; top:-100%; left:0;
+    width:100%; height:100%; background:var(--gold);
+    animation:scrollPulse 2s cubic-bezier(0.16,1,0.3,1) infinite;
+  }
+  @keyframes scrollPulse { 0% { top:-100%; } 50% { top:100%; } 100% { top:100%; } }
+
+  /* ═══════════════════════════════════════
+     SCROLL PROGRESS BAR
+     ═══════════════════════════════════════ */
+  .scroll-progress {
+    position:fixed; top:0; left:0; height:2px; width:0%;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.4));
+    z-index:9999; transition:width 0.05s linear;
+    box-shadow:0 0 8px rgba(201,169,110,0.3);
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION NAV DOTS
+     ═══════════════════════════════════════ */
+  .section-nav {
+    position:fixed; right:24px; top:50%; transform:translateY(-50%);
+    z-index:9998; display:flex; flex-direction:column; gap:12px;
+    opacity:0; transition:opacity 0.4s ease;
+  }
+  .section-nav.visible { opacity:1; }
+  .section-nav-dot {
+    width:8px; height:8px; border-radius:50%;
+    background:transparent; border:1px solid var(--stone);
+    cursor:pointer; transition:all 0.3s ease; position:relative;
+  }
+  .section-nav-dot:hover { border-color:var(--gold); transform:scale(1.3); }
+  .section-nav-dot.active {
+    background:var(--gold); border-color:var(--gold);
+    box-shadow:0 0 8px rgba(201,169,110,0.4);
+  }
+  .section-nav-dot::before {
+    content:attr(data-label);
+    position:absolute; right:20px; top:50%; transform:translateY(-50%);
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--gold);
+    white-space:nowrap; opacity:0; pointer-events:none;
+    transition:opacity 0.3s ease, right 0.3s ease;
+  }
+  .section-nav-dot:hover::before { opacity:1; right:24px; }
+
+  /* ═══════════════════════════════════════
+     LAYOUT
+     ═══════════════════════════════════════ */
+  .section { padding:120px 60px; max-width:1000px; margin:0 auto; }
+  .section.wide { max-width:1200px; }
+  .section.full { max-width:100%; }
+  .section.dark { background:var(--ink); color:var(--paper); }
+  .section.cream { background:var(--paper); }
+  .section.light { background:var(--light); }
+
+  .eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; display:flex; align-items:center; gap:14px;
+  }
+  .eyebrow::before {
+    content:''; width:0; height:1px; background:var(--gold);
+    transition:width 0.6s 0.2s cubic-bezier(0.16,1,0.3,1);
+  }
+  .eyebrow.visible::before { width:24px; }
+
+  h2 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:2.6rem; line-height:1.12; margin-bottom:32px;
+    letter-spacing:-0.01em; text-wrap:balance;
+  }
+  h2 em { font-style:italic; font-weight:500; position:relative; display:inline; }
+  h2 em::after {
+    content:''; position:absolute; bottom:2px; left:0;
+    width:0; height:1.5px;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.3));
+    transition:width 1s 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  h2.underlined em::after { width:100%; }
+  h3 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.75rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
+    margin:56px 0 20px;
+  }
+  p { margin-bottom:20px; font-size:0.95rem; }
+  .lead { font-size:1.05rem; line-height:1.9; color:var(--stone); text-wrap:pretty; }
+
+  .divider { width:1px; height:80px; background:var(--gold-dim); margin:0 auto; border:none; display:block; }
+
+  /* ═══════════════════════════════════════
+     SCORE RING
+     ═══════════════════════════════════════ */
+  .score-hero {
+    display:flex; align-items:center; gap:64px; margin:56px 0;
+    padding:56px; background:var(--light); border:1px solid rgba(201,169,110,0.08);
+  }
+  .score-ring {
+    width:180px; height:180px; flex-shrink:0; position:relative;
+  }
+  .score-ring svg { width:100%; height:100%; transform:rotate(-90deg); }
+  .score-ring-bg { fill:none; stroke:rgba(201,169,110,0.12); stroke-width:6; }
+  .score-ring-fill {
+    fill:none; stroke:var(--gold); stroke-width:6;
+    stroke-linecap:round;
+    stroke-dasharray:502;
+    stroke-dashoffset:502;
+    transition:stroke-dashoffset 1.5s cubic-bezier(0.16,1,0.3,1);
+  }
+  .score-ring.animated .score-ring-fill {
+    stroke-dashoffset:226; /* 502 - (502 * 0.55) = 225.9 for 5.5/10 */
+  }
+  .score-ring-val {
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    text-align:center;
+  }
+  .score-ring-num {
+    font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:400;
+    color:var(--gold); line-height:1; display:block;
+    text-shadow:0 0 40px rgba(201,169,110,0.15);
+  }
+  .score-ring-of {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
+  }
+  .score-detail h4 {
+    font-family:'DM Sans',sans-serif; font-weight:500; font-size:1.1rem; margin-bottom:12px;
+  }
+  .score-detail p { font-size:0.9rem; color:var(--stone); margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     STATS
+     ═══════════════════════════════════════ */
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .stat { background:var(--white); text-align:center; padding:36px 16px; }
+  .section.cream .stat { background:var(--paper); }
+  .section.dark .stat { background:var(--ink); }
+  .stat-val {
+    font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:500;
+    color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+    text-shadow:0 0 40px rgba(201,169,110,0.15);
+  }
+  .stat-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--stone);
+  }
+  .section.dark .stat-lbl { color:rgba(246,244,240,0.4); }
+
+  /* ═══════════════════════════════════════
+     NUMBERS
+     ═══════════════════════════════════════ */
+  .numbers {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    margin:56px 0; background:var(--gold-dim);
+  }
+  .num { background:var(--ink); text-align:center; padding:48px 24px; }
+  .num-val {
+    font-family:'Cormorant Garamond',serif; font-size:3.5rem;
+    font-weight:500; color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+    text-shadow:0 0 60px rgba(201,169,110,0.25), 0 0 120px rgba(201,169,110,0.1);
+  }
+  .num-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:rgba(246,244,240,0.4);
+  }
+
+  /* ═══════════════════════════════════════
+     ISSUE CARDS
+     ═══════════════════════════════════════ */
+  .issues { display:grid; grid-template-columns:1fr; gap:1px; margin:40px 0; background:var(--gold-dim); }
+  .issue {
+    background:var(--white); padding:32px 36px; position:relative;
+    border-left:3px solid transparent;
+    transition:all 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  .issue:hover { background:var(--light); }
+  .issue.p0 { border-left-color:var(--red); }
+  .issue.p1 { border-left-color:var(--amber); }
+  .issue.p2 { border-left-color:var(--stone); }
+  .issue.p3 { border-left-color:rgba(138,133,121,0.3); }
+  .issue-header { display:flex; align-items:center; gap:16px; margin-bottom:12px; }
+  .issue-priority {
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.2em; text-transform:uppercase;
+    padding:3px 10px; border-radius:2px; flex-shrink:0;
+  }
+  .issue.p0 .issue-priority { color:var(--red); border:1px solid var(--red-dim); background:rgba(194,110,110,0.04); }
+  .issue.p1 .issue-priority { color:var(--amber); border:1px solid var(--gold-border); background:var(--gold-glow); }
+  .issue.p2 .issue-priority { color:var(--stone); border:1px solid rgba(138,133,121,0.2); background:rgba(138,133,121,0.04); }
+  .issue.p3 .issue-priority { color:rgba(138,133,121,0.6); border:1px solid rgba(138,133,121,0.12); background:rgba(138,133,121,0.02); }
+  .issue h4 {
+    font-family:'DM Sans',sans-serif; font-weight:500; font-size:0.95rem;
+    margin:0; line-height:1.4;
+  }
+  .issue p { font-size:0.85rem; color:var(--stone); margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     PAGE AUDIT TABLE
+     ═══════════════════════════════════════ */
+  .audit-table {
+    width:100%; border-collapse:collapse; margin:40px 0;
+    font-size:0.82rem;
+  }
+  .audit-table thead th {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.55rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    text-align:left; padding:12px 16px; border-bottom:2px solid var(--gold-dim);
+  }
+  .audit-table tbody td {
+    padding:14px 16px; border-bottom:1px solid rgba(26,26,24,0.06);
+    color:var(--stone); vertical-align:top;
+  }
+  .audit-table tbody tr:hover td { background:var(--light); }
+  .audit-table .page-name {
+    font-family:'DM Sans',sans-serif; font-weight:500; color:var(--ink);
+    font-size:0.85rem;
+  }
+  .audit-table .score-cell {
+    font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:500;
+    text-align:center; width:60px;
+  }
+  .score-good { color:var(--green); }
+  .score-ok { color:var(--amber); }
+  .score-bad { color:var(--red); }
+
+  /* ═══════════════════════════════════════
+     INSIGHT CALLOUT
+     ═══════════════════════════════════════ */
+  .insight {
+    background:var(--light); padding:48px 56px; margin:56px 0;
+    position:relative;
+    border:1px solid rgba(201,169,110,0.08);
+    box-shadow:0 8px 32px rgba(0,0,0,0.03);
+  }
+  .insight::before {
+    content:''; position:absolute; top:0; left:0; bottom:0;
+    width:3px; background:var(--gold);
+    box-shadow:4px 0 16px rgba(201,169,110,0.08);
+  }
+  .insight h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;
+  }
+  .insight p { font-size:0.9rem; margin-bottom:10px; }
+  .insight p:last-child { margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     SERVICES GRID
+     ═══════════════════════════════════════ */
+  .services { display:grid; grid-template-columns:1fr 1fr; gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .svc {
+    background:var(--white); padding:40px 36px; position:relative;
+    transition:all 0.3s cubic-bezier(0.16,1,0.3,1);
+    border-left:3px solid transparent;
+  }
+  .svc:hover { border-left-color:var(--gold); background:var(--light); }
+  .svc h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.7rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:20px;
+  }
+  .svc ul { list-style:none; }
+  .svc li {
+    font-size:0.85rem; padding:8px 0 8px 24px; position:relative;
+    color:var(--stone); border-bottom:1px solid rgba(26,26,24,0.04);
+  }
+  .svc li:last-child { border:none; }
+  .svc li::before {
+    content:''; position:absolute; left:0; top:16px;
+    width:8px; height:1px; background:var(--gold);
+  }
+
+  /* ═══════════════════════════════════════
+     NEXT STEPS
+     ═══════════════════════════════════════ */
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .step {
+    background:var(--white); padding:40px 32px;
+    transition:background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .step:hover { background:var(--light); box-shadow:0 4px 24px rgba(0,0,0,0.04); }
+  .step-num {
+    font-family:'Cormorant Garamond',serif; font-size:3rem;
+    font-weight:400; color:var(--gold); line-height:1; margin-bottom:16px;
+    display:block; text-shadow:0 0 40px rgba(201,169,110,0.15);
+  }
+  .step h4 {
+    font-family:'DM Sans',sans-serif; font-weight:500; font-size:0.95rem; margin-bottom:10px;
+  }
+  .step p { font-size:0.82rem; color:var(--stone); margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     PHOTO BREAK
+     ═══════════════════════════════════════ */
+  .photo-break {
+    width:100%; height:45vh; min-height:320px; max-height:480px;
+    position:relative; overflow:hidden;
+  }
+  .photo-break img {
+    width:100%; height:120%; object-fit:cover; display:block;
+    position:absolute; top:-10%; left:0;
+    filter:brightness(0.85); will-change:transform;
+    transition:filter 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .photo-break:hover img { filter:brightness(0.95); }
+  .photo-break::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:80px;
+    background:linear-gradient(rgba(26,26,24,0.15), transparent);
+    z-index:1; pointer-events:none;
+  }
+  .photo-break::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:120px;
+    background:linear-gradient(transparent, rgba(26,26,24,0.6));
+    z-index:1; pointer-events:none;
+  }
+  .photo-break.in-view img {
+    animation:kenBurns 12s ease-in-out infinite alternate;
+  }
+  @keyframes kenBurns {
+    0% { transform:scale(1) translateY(0); }
+    100% { transform:scale(1.06) translateY(-8px); }
+  }
+  .photo-break-caption {
+    position:absolute; bottom:0; left:0; right:0; z-index:2;
+    padding:24px 60px;
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.3em; text-transform:uppercase;
+    color:rgba(246,244,240,0.5);
+  }
+
+  /* ═══════════════════════════════════════
+     GRAIN OVERLAY
+     ═══════════════════════════════════════ */
+  .grain-section::after {
+    content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size:128px 128px;
+    pointer-events:none; z-index:0; opacity:0.5;
+  }
+  .grain-section { position:relative; }
+  .grain-section > * { position:relative; z-index:1; }
+
+  /* ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ */
+  .footer {
+    background:var(--ink); padding:80px 60px; text-align:center;
+    border-top:1px solid rgba(201,169,110,0.1);
+  }
+  .footer-mark {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.7rem;
+    letter-spacing:0.4em; text-transform:uppercase; color:var(--paper); margin-bottom:20px;
+  }
+  .footer-info { font-size:0.8rem; color:var(--stone); line-height:2.2; }
+  .footer-info a { color:var(--gold); text-decoration:none; }
+  .footer-note {
+    margin-top:40px; font-size:0.6rem; letter-spacing:0.15em;
+    text-transform:uppercase; font-family:'Josefin Sans',sans-serif;
+    color:rgba(246,244,240,0.15);
+  }
+
+  /* ═══════════════════════════════════════
+     SCROLL REVEAL
+     ═══════════════════════════════════════ */
+  .reveal {
+    opacity:0; transform:translateY(32px);
+    transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal-delay-1 { transition-delay:0.1s; }
+  .reveal-delay-2 { transition-delay:0.2s; }
+  .reveal-delay-3 { transition-delay:0.3s; }
+  .reveal-delay-4 { transition-delay:0.4s; }
+  .reveal-delay-5 { transition-delay:0.5s; }
+
+  /* ═══════════════════════════════════════
+     LOADING SCREEN
+     ═══════════════════════════════════════ */
+  .loader {
+    position:fixed; top:0; left:0; right:0; bottom:0;
+    background:var(--ink); z-index:99999;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+  }
+  .loader.done { opacity:0; visibility:hidden; pointer-events:none; }
+  .loader-brand {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.6em; text-transform:uppercase; color:var(--paper);
+    opacity:0; animation:loaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-sub {
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.9rem;
+    color:var(--stone); margin-top:8px;
+    opacity:0; animation:loaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line {
+    width:80px; height:1px; background:var(--gold-dim); margin-top:24px;
+    position:relative; overflow:hidden; border-radius:1px;
+    opacity:0; animation:loaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-line::after {
+    content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation:loaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+  }
+  @keyframes loaderIn { to { opacity:1; } }
+  @keyframes loaderFill { to { left:100%; } }
+
+  /* ═══════════════════════════════════════
+     PRINT
+     ═══════════════════════════════════════ */
+  @media print {
+    .cover { min-height:100vh; }
+    .section { padding:60px; }
+    .scroll-progress, .section-nav, .loader, .cover-cta, .scroll-indicator { display:none; }
+    .photo-break { height:200px; }
+    h2 em::after { width:100% !important; }
+    .reveal { opacity:1 !important; transform:none !important; }
+    .eyebrow::before { width:24px !important; }
+    .grain-section::after { display:none; }
+    .score-ring-fill { stroke-dashoffset:226 !important; }
+  }
+
+  /* ═══════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════ */
+  @media (max-width:768px) {
+    .cover-content,.cover-top { padding-left:32px; padding-right:32px; }
+    .section { padding:80px 32px; }
+    .stats,.services,.steps,.numbers { grid-template-columns:1fr; }
+    .cover-meta-bar { flex-direction:column; gap:16px; }
+    .footer { padding:60px 32px; }
+    .section-nav { display:none; }
+    .svc { border-left:none !important; }
+    .svc:hover { border-left:none !important; }
+    .photo-break { height:200px; min-height:200px; }
+    .photo-break-caption { padding:12px 32px; }
+    .scroll-indicator { display:none; }
+    .insight { padding:32px 28px; }
+    .score-hero { flex-direction:column; gap:32px; padding:40px 32px; }
+    .score-ring { width:140px; height:140px; }
+    .audit-table { font-size:0.72rem; }
+    .audit-table thead th, .audit-table tbody td { padding:10px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div class="loader" id="loader">
+  <div class="loader-brand">Matt Anthony Photography</div>
+  <div class="loader-sub">SEO &amp; Content Audit</div>
+  <div class="loader-line"></div>
+</div>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav class="section-nav" id="sectionNav"></nav>
+
+<!-- ═══════════════════════════════════════
+     1. COVER
+     ═══════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-image" id="coverImg" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg');background-position:center 30%;"></div>
+  <div class="cover-top">
+    <div class="cover-logo">Matt Anthony Photography</div>
+    <div class="cover-date">March 2026</div>
+  </div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">Colour Craft Painting</div>
+    <h1>Your work is solid.<br>Your website is <em>holding you back.</em></h1>
+    <p class="cover-sub">A comprehensive SEO and content audit of colourcraftpainting.com, with prioritized fixes and a clear path to higher visibility.</p>
+    <div class="cover-meta-bar">
+      <div class="cover-meta-item"><strong>Prepared for</strong>Brad Samuels, Owner</div>
+      <div class="cover-meta-item"><strong>Prepared by</strong>Matt Anthony</div>
+      <div class="cover-meta-item"><strong>Domain</strong>colourcraftpainting.com</div>
+    </div>
+    <a class="cover-cta" href="#score"><span>See Your Score</span><span class="cover-cta-arrow">&darr;</span></a>
+  </div>
+  <div class="scroll-indicator" id="scrollIndicator">
+    <div class="scroll-indicator-text">Scroll</div>
+    <div class="scroll-indicator-line"></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     2. OVERALL SCORE
+     ═══════════════════════════════════════ -->
+<div class="section cream" id="score" data-nav="Score">
+  <div class="eyebrow">Overall Assessment</div>
+  <h2>Solid bones. <em>Critical gaps.</em></h2>
+  <p class="lead">Colour Craft has the foundation of a strong website, with real project photography, good service page structure, and an SEO plugin in place. But several critical issues are undermining your visibility, your credibility, and your ability to win new clients from search.</p>
+
+  <div class="score-hero">
+    <div class="score-ring" id="scoreRing">
+      <svg viewBox="0 0 180 180">
+        <circle class="score-ring-bg" cx="90" cy="90" r="80" />
+        <circle class="score-ring-fill" cx="90" cy="90" r="80" />
+      </svg>
+      <div class="score-ring-val">
+        <span class="score-ring-num">5.5</span>
+        <span class="score-ring-of">out of 10</span>
+      </div>
+    </div>
+    <div class="score-detail">
+      <h4>Your website is doing half of what it should.</h4>
+      <p>You have Rank Math installed, canonical URLs are correct, and your service pages have decent content depth. But placeholder contact info in production, broken pages, missing schema, a double-redirect chain, and almost zero blog content are costing you leads every week. The good news: every issue here is fixable.</p>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><span class="stat-val">5.5</span><span class="stat-lbl">Overall SEO Score</span></div>
+    <div class="stat"><span class="stat-val">28</span><span class="stat-lbl">Pages in Sitemap</span></div>
+    <div class="stat"><span class="stat-val">6</span><span class="stat-lbl">Blog Posts Total</span></div>
+    <div class="stat"><span class="stat-val">4</span><span class="stat-lbl">Critical Bugs</span></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     3. TECH INFRASTRUCTURE
+     ═══════════════════════════════════════ -->
+<div class="section" data-nav="Technical">
+  <div class="eyebrow">Technical Foundation</div>
+  <h2>The engine under the hood <em>needs work.</em></h2>
+  <p class="lead">Your site runs WordPress with the Avada theme on a Cloudflare CDN. Rank Math handles SEO. The fundamentals are in place, but the implementation has serious gaps that are throttling your search visibility.</p>
+
+  <div class="services">
+    <div class="svc">
+      <h4>Platform Stack</h4>
+      <ul>
+        <li>WordPress + Avada Theme (Fusion Builder)</li>
+        <li>Rank Math SEO plugin</li>
+        <li>Cloudflare CDN</li>
+        <li>WP Rocket caching (installed but underperforming)</li>
+        <li>WordPress Multisite (main + Vancouver + Philadelphia)</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Key Metrics</h4>
+      <ul>
+        <li>Homepage HTML: 677 KB (bloated)</li>
+        <li>Inline CSS: 302 KB across 12 blocks</li>
+        <li>External JS files: 70 scripts</li>
+        <li>Images: 46 on homepage, only 1 lazy-loaded</li>
+        <li>Crawl-delay: 10s (severely throttling bots)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight">
+    <h4>Double Redirect Chain</h4>
+    <p>Your secondary domain colourcraft.ca currently redirects through a double 301: colourcraft.ca &rarr; http://colourcraftpainting.com &rarr; https://colourcraftpainting.com. Every extra redirect wastes crawl budget and adds latency. This should be a single redirect straight to the HTTPS primary domain.</p>
+  </div>
+
+  <div class="insight">
+    <h4>Multisite Content Fragmentation</h4>
+    <p>Service pages exist on both the main site (/interior-house-painting/) and the Vancouver subsite (/vancouver/interior-house-painting-services/). Two pages targeting the same keywords creates keyword cannibalization, where your own pages compete against each other in search results instead of consolidating authority.</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     4. PHOTO BREAK
+     ═══════════════════════════════════════ -->
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef4086f4-81fa-468f-99bf-966ce7d83d89/warbler-whistler-architectural-photography-matt-anthony-.jpg-11.jpg" alt="Warbler Residence — Whistler, BC">
+  <div class="photo-break-caption">Warbler Residence &middot; Whistler, BC &middot; Matt Anthony Photography</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     5. CRITICAL ISSUES
+     ═══════════════════════════════════════ -->
+<div class="section light" data-nav="Issues">
+  <div class="eyebrow">Priority Issues</div>
+  <h2>What needs to be fixed, <em>and when.</em></h2>
+  <p class="lead">25 issues identified across four priority levels. The P0 items are actively hurting your credibility right now. P1 items are costing you search visibility every day they remain unfixed.</p>
+
+  <h3>P0 — Fix Immediately</h3>
+  <div class="issues">
+    <div class="issue p0">
+      <div class="issue-header">
+        <span class="issue-priority">Critical</span>
+        <h4>Placeholder contact info in production header</h4>
+      </div>
+      <p>Your site header shows "1-800-555-5555" and "info@example.com" as contact information. Visitors are seeing fake placeholder data. Your real phone (778-744-0192) only appears lower on the page.</p>
+    </div>
+    <div class="issue p0">
+      <div class="issue-header">
+        <span class="issue-priority">Critical</span>
+        <h4>Schema markup contains "COMPANYPHONE" placeholder</h4>
+      </div>
+      <p>Your structured data sends the literal string "COMPANYPHONE" to Google instead of your actual phone number. This corrupts your search appearance and local SEO signals.</p>
+    </div>
+    <div class="issue p0">
+      <div class="issue-header">
+        <span class="issue-priority">Critical</span>
+        <h4>Broken JavaScript rendering as text on /book/ page</h4>
+      </div>
+      <p>The H1 tag on your booking page displays raw code: <code>' + (loc.headline || loc.name) + '</code>. Visitors see broken template syntax instead of a headline.</p>
+    </div>
+    <div class="issue p0">
+      <div class="issue-header">
+        <span class="issue-priority">Critical</span>
+        <h4>Google Reviews page returns 404</h4>
+      </div>
+      <p>The /google-reviews URL returns a 404 error. Any links pointing to this page from emails, social, or print materials are sending visitors to a dead end.</p>
+    </div>
+  </div>
+
+  <h3>P1 — Fix This Week</h3>
+  <div class="issues">
+    <div class="issue p1">
+      <div class="issue-header">
+        <span class="issue-priority">High</span>
+        <h4>Multiple H1 tags on key pages</h4>
+      </div>
+      <p>Homepage has 2 H1 tags, Squamish page has 3. Google expects one H1 per page. Multiple H1s dilute your keyword targeting and confuse crawlers about what each page is about.</p>
+    </div>
+    <div class="issue p1">
+      <div class="issue-header">
+        <span class="issue-priority">High</span>
+        <h4>Missing H1 tags on Colour Consultation and Contact pages</h4>
+      </div>
+      <p>Two important pages have no H1 tag at all. Without an H1, search engines have no primary signal for what the page is about.</p>
+    </div>
+    <div class="issue p1">
+      <div class="issue-header">
+        <span class="issue-priority">High</span>
+        <h4>No LocalBusiness schema anywhere on the site</h4>
+      </div>
+      <p>For a local painting company, LocalBusiness schema is essential. It tells Google your address, hours, service area, and phone number in a structured format. You are missing this entirely.</p>
+    </div>
+    <div class="issue p1">
+      <div class="issue-header">
+        <span class="issue-priority">High</span>
+        <h4>No FAQPage schema despite FAQ sections on 5+ pages</h4>
+      </div>
+      <p>You have FAQ content on multiple service pages but no FAQPage schema markup. Adding schema would qualify you for rich FAQ snippets in Google, dramatically increasing your search result real estate.</p>
+    </div>
+    <div class="issue p1">
+      <div class="issue-header">
+        <span class="issue-priority">High</span>
+        <h4>Double 301 redirect chain on colourcraft.ca</h4>
+      </div>
+      <p>The secondary domain passes through two redirects before reaching your site. Should be a single redirect to https://colourcraftpainting.com.</p>
+    </div>
+    <div class="issue p1">
+      <div class="issue-header">
+        <span class="issue-priority">High</span>
+        <h4>Crawl-delay: 10 in robots.txt</h4>
+      </div>
+      <p>You are telling search engine bots to wait 10 seconds between requests. This severely throttles how quickly Google can index your pages. Remove it or reduce to 1-2 seconds.</p>
+    </div>
+  </div>
+
+  <h3>P2 — Fix This Month</h3>
+  <div class="issues">
+    <div class="issue p2">
+      <div class="issue-header">
+        <span class="issue-priority">Medium</span>
+        <h4>No geographic keywords in service page titles</h4>
+      </div>
+      <p>Every service page title reads "Service Name | Colour Craft" without any location context. Adding "Vancouver", "BC", or "Sea to Sky" would immediately improve local relevance.</p>
+    </div>
+    <div class="issue p2">
+      <div class="issue-header">
+        <span class="issue-priority">Medium</span>
+        <h4>Referral program meta description is 350+ characters</h4>
+      </div>
+      <p>Google truncates at ~155-160 characters. Your referral page meta description is more than double that, so Google is cutting it off mid-sentence.</p>
+    </div>
+    <div class="issue p2">
+      <div class="issue-header">
+        <span class="issue-priority">Medium</span>
+        <h4>Keyword cannibalization between main site and Vancouver subsite</h4>
+      </div>
+      <p>Duplicate service pages across the main site and Vancouver subsite compete against each other for the same keywords, splitting your authority.</p>
+    </div>
+    <div class="issue p2">
+      <div class="issue-header">
+        <span class="issue-priority">Medium</span>
+        <h4>Only 6 blog posts total</h4>
+      </div>
+      <p>Content marketing is nearly nonexistent. A painting company in multiple markets should be publishing at least 2 posts per month targeting local painting queries.</p>
+    </div>
+    <div class="issue p2">
+      <div class="issue-header">
+        <span class="issue-priority">Medium</span>
+        <h4>Homepage weighs 677 KB with 70 external scripts</h4>
+      </div>
+      <p>Despite having WP Rocket installed, the Avada theme generates massive inline CSS. 302 KB of inline CSS and 70 JavaScript files result in slow load times.</p>
+    </div>
+    <div class="issue p2">
+      <div class="issue-header">
+        <span class="issue-priority">Medium</span>
+        <h4>Only 1 of 46 images has lazy loading</h4>
+      </div>
+      <p>Without lazy loading, all 46 homepage images load at once, killing page speed on mobile. Modern best practice is to lazy-load everything below the fold.</p>
+    </div>
+    <div class="issue p2">
+      <div class="issue-header">
+        <span class="issue-priority">Medium</span>
+        <h4>Sitemap covers only 28 pages, misses Vancouver subsite</h4>
+      </div>
+      <p>Your 19+ Vancouver subsite pages are invisible to Google's sitemap. No post-sitemap exists for blog content either.</p>
+    </div>
+  </div>
+
+  <h3>P3 — Strategic Improvements</h3>
+  <div class="issues">
+    <div class="issue p3">
+      <div class="issue-header">
+        <span class="issue-priority">Growth</span>
+        <h4>Add before/after galleries with project case studies</h4>
+      </div>
+      <p>Turn completed jobs into content assets. Before/after photos with project details build trust and create unique, keyword-rich pages.</p>
+    </div>
+    <div class="issue p3">
+      <div class="issue-header">
+        <span class="issue-priority">Growth</span>
+        <h4>Build a Google Reviews page with embedded widget</h4>
+      </div>
+      <p>A reviews page adds fresh, keyword-rich content from customers and builds social proof for visitors evaluating your services.</p>
+    </div>
+    <div class="issue p3">
+      <div class="issue-header">
+        <span class="issue-priority">Growth</span>
+        <h4>Add BreadcrumbList, Service, and HowTo schema</h4>
+      </div>
+      <p>Additional structured data types would qualify your pages for rich results in Google, increasing click-through rates from search.</p>
+    </div>
+    <div class="issue p3">
+      <div class="issue-header">
+        <span class="issue-priority">Growth</span>
+        <h4>Consolidate dual service page structure</h4>
+      </div>
+      <p>Merge the main site and Vancouver subsite service pages into a single, authoritative version for each service to stop splitting your ranking signals.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     6. PAGE-BY-PAGE SCORES
+     ═══════════════════════════════════════ -->
+<div class="section" data-nav="Pages">
+  <div class="eyebrow">Page-by-Page Audit</div>
+  <h2>How every page <em>stacks up.</em></h2>
+  <p class="lead">Each page was audited for title tag, meta description, heading structure, content depth, schema markup, and keyword targeting.</p>
+
+  <h3>Main Site Pages</h3>
+  <table class="audit-table">
+    <thead>
+      <tr>
+        <th>Page</th>
+        <th>Words</th>
+        <th>H1 Status</th>
+        <th>Key Issue</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="page-name">Homepage</td>
+        <td>1,680</td>
+        <td>2 H1s</td>
+        <td>Placeholder phone, no LocalBusiness schema</td>
+        <td class="score-cell score-ok">5</td>
+      </tr>
+      <tr>
+        <td class="page-name">About</td>
+        <td>1,498</td>
+        <td>Good</td>
+        <td>No team photos, no Person schema</td>
+        <td class="score-cell score-good">7</td>
+      </tr>
+      <tr>
+        <td class="page-name">Interior Painting</td>
+        <td>1,567</td>
+        <td>Good</td>
+        <td>No geo in title, FAQ without schema</td>
+        <td class="score-cell score-good">7</td>
+      </tr>
+      <tr>
+        <td class="page-name">Exterior Painting</td>
+        <td>1,950</td>
+        <td>Good</td>
+        <td>89 images, no lazy loading</td>
+        <td class="score-cell score-good">7</td>
+      </tr>
+      <tr>
+        <td class="page-name">Cabinet Painting</td>
+        <td>1,548</td>
+        <td>Good</td>
+        <td>FAQ present but no schema</td>
+        <td class="score-cell score-good">7</td>
+      </tr>
+      <tr>
+        <td class="page-name">Commercial Painting</td>
+        <td>2,046</td>
+        <td>Good</td>
+        <td>Best structured page on the site</td>
+        <td class="score-cell score-good">8</td>
+      </tr>
+      <tr>
+        <td class="page-name">Deck &amp; Fence</td>
+        <td>1,640</td>
+        <td>Good</td>
+        <td>No geo keywords in title</td>
+        <td class="score-cell score-good">7</td>
+      </tr>
+      <tr>
+        <td class="page-name">House Painters</td>
+        <td>1,319</td>
+        <td>Mismatched</td>
+        <td>H1 says "Residential" but title says "House Painters"</td>
+        <td class="score-cell score-ok">5</td>
+      </tr>
+      <tr>
+        <td class="page-name">Colour Consultation</td>
+        <td>971</td>
+        <td>Missing</td>
+        <td>No H1 tag, thin content</td>
+        <td class="score-cell score-bad">4</td>
+      </tr>
+      <tr>
+        <td class="page-name">Contact</td>
+        <td>496</td>
+        <td>Missing</td>
+        <td>No H1, no LocalBusiness schema</td>
+        <td class="score-cell score-ok">5</td>
+      </tr>
+      <tr>
+        <td class="page-name">Book</td>
+        <td>482</td>
+        <td>Broken JS</td>
+        <td>Raw template code rendering as H1</td>
+        <td class="score-cell score-bad">2</td>
+      </tr>
+      <tr>
+        <td class="page-name">Our Guarantee</td>
+        <td>687</td>
+        <td>Good</td>
+        <td>Strong trust content, could be deeper</td>
+        <td class="score-cell score-good">7</td>
+      </tr>
+      <tr>
+        <td class="page-name">Process</td>
+        <td>866</td>
+        <td>Good</td>
+        <td>Could benefit from HowTo schema</td>
+        <td class="score-cell score-ok">6</td>
+      </tr>
+      <tr>
+        <td class="page-name">Referral Program</td>
+        <td>575</td>
+        <td>Good</td>
+        <td>Meta description 350+ chars</td>
+        <td class="score-cell score-ok">5</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Vancouver Subsite Pages</h3>
+  <table class="audit-table">
+    <thead>
+      <tr>
+        <th>Page</th>
+        <th>Title Quality</th>
+        <th>H1 Status</th>
+        <th>Key Issue</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="page-name">Vancouver Hub</td>
+        <td>Good geo targeting</td>
+        <td>No location in H1</td>
+        <td>Not in sitemap</td>
+        <td class="score-cell score-ok">6</td>
+      </tr>
+      <tr>
+        <td class="page-name">Squamish</td>
+        <td>Excellent</td>
+        <td>3 H1 tags</td>
+        <td>Duplicate and triple H1s</td>
+        <td class="score-cell score-ok">5</td>
+      </tr>
+      <tr>
+        <td class="page-name">Whistler</td>
+        <td>Good</td>
+        <td>Needs check</td>
+        <td>Not in sitemap</td>
+        <td class="score-cell score-ok">5</td>
+      </tr>
+      <tr>
+        <td class="page-name">North Vancouver</td>
+        <td>Good</td>
+        <td>Needs check</td>
+        <td>Not in sitemap</td>
+        <td class="score-cell score-ok">5</td>
+      </tr>
+      <tr>
+        <td class="page-name">Gallery</td>
+        <td>Good</td>
+        <td>OK</td>
+        <td>No before/after, no project context</td>
+        <td class="score-cell score-ok">5</td>
+      </tr>
+      <tr>
+        <td class="page-name">Blog</td>
+        <td>Generic</td>
+        <td>OK</td>
+        <td>Only 6 posts, not in main nav</td>
+        <td class="score-cell score-bad">3</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     7. PHOTO BREAK
+     ═══════════════════════════════════════ -->
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c938566f-ee96-40da-aec4-d51ac9fa7e09/warbler-whistler-architectural-photography-matt-anthony-.jpg-13.jpg" alt="Warbler Residence interior — Whistler, BC">
+  <div class="photo-break-caption">Warbler Residence &middot; Interior &middot; Matt Anthony Photography</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     8. SCHEMA & CONTENT GAP
+     ═══════════════════════════════════════ -->
+<div class="section cream" data-nav="Schema">
+  <div class="eyebrow">Schema &amp; Content</div>
+  <h2>What Google sees <em>vs. what you built.</em></h2>
+  <p class="lead">Schema markup is structured data that tells search engines exactly what your business is, what you offer, and where you operate. Your site has basic schema from Rank Math, but is missing the types that matter most for a local service business.</p>
+
+  <div class="services">
+    <div class="svc">
+      <h4>What You Have</h4>
+      <ul>
+        <li>Organization schema (basic)</li>
+        <li>WebSite with SearchAction</li>
+        <li>WebPage with dates</li>
+        <li>VideoObject (YouTube embed)</li>
+        <li>Canonical URLs (correct)</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>What You're Missing</h4>
+      <ul>
+        <li>LocalBusiness (address, hours, service area)</li>
+        <li>FAQPage (FAQ content exists, no markup)</li>
+        <li>Service (painting service types)</li>
+        <li>AggregateRating / Review</li>
+        <li>BreadcrumbList</li>
+        <li>HowTo (process page)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight">
+    <h4>Schema Bug</h4>
+    <p>Your structured data currently sends <code>"telephone": "COMPANYPHONE"</code> to Google. This is a template placeholder that was never replaced with your actual phone number. It also uses a dual <code>@type: ["Organization", "Person"]</code> which is unusual and may confuse search engines.</p>
+  </div>
+
+  <h3>Blog Content</h3>
+  <p>Your entire blog consists of 6 posts, all under the Vancouver subsite and not accessible from main navigation. For context, a painting company targeting multiple markets should aim for 2-4 posts per month covering topics like seasonal painting tips, project spotlights, colour trends, and location-specific guides.</p>
+
+  <div class="numbers grain-section">
+    <div class="num"><span class="num-val">6</span><span class="num-lbl">Total Blog Posts</span></div>
+    <div class="num"><span class="num-val">0</span><span class="num-lbl">Posts in Sitemap</span></div>
+    <div class="num"><span class="num-val">0</span><span class="num-lbl">Content Calendar</span></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     9. STRENGTHS
+     ═══════════════════════════════════════ -->
+<div class="section" data-nav="Strengths">
+  <div class="eyebrow">What's Working</div>
+  <h2>The foundation <em>is already here.</em></h2>
+  <p class="lead">This is not a tear-down. Colour Craft has real assets that most competitors lack. The strategy is to protect what works and fix what does not.</p>
+
+  <div class="services">
+    <div class="svc">
+      <h4>Real Photography</h4>
+      <ul>
+        <li>Actual project photos, not stock imagery</li>
+        <li>Company truck and crew visible in shots</li>
+        <li>Authentic visual identity that builds trust</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Content Depth</h4>
+      <ul>
+        <li>Service pages average 1,500+ words</li>
+        <li>Commercial page covers 10 sub-verticals</li>
+        <li>Deck page includes arbors, gazebos, sheds</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Trust Signals</h4>
+      <ul>
+        <li>2-year written warranty</li>
+        <li>$3M liability insurance</li>
+        <li>Workers' compensation coverage</li>
+        <li>6% referral commission program</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h4>Local Targeting</h4>
+      <ul>
+        <li>6 location pages (Squamish, Whistler, etc.)</li>
+        <li>Strong personal founder story</li>
+        <li>Real address and local phone numbers</li>
+        <li>Franchise model shows systems and scale</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight">
+    <h4>Photography Opportunity</h4>
+    <p>Your existing photos are real but standard. Professional architectural photography of your completed projects would dramatically improve perceived value, provide unique visual content competitors cannot replicate, support SEO with optimized filenames and alt text, and enable before/after case study content that feeds both your website and social channels.</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     10. WHAT HAPPENS NEXT
+     ═══════════════════════════════════════ -->
+<div class="section light" data-nav="Next Steps">
+  <div class="eyebrow">Next Steps</div>
+  <h2>From audit to <em>action.</em></h2>
+  <p>Brad, this audit shows a site with good bones and fixable problems. The P0 issues should be addressed today. The rest can be tackled in a structured sequence that builds momentum without overwhelming your team. Here is how I can help.</p>
+
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <h4>Review This Report</h4>
+      <p>Walk through the findings and ask any questions. I am happy to do a 30-minute call to discuss priorities and answer anything that is unclear.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <h4>Fix the Critical 4</h4>
+      <p>The P0 items are actively hurting your credibility. Fixing placeholder contact info, broken pages, and corrupted schema can be done in a single day.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <h4>Build a Plan</h4>
+      <p>Whether you tackle this internally or bring in support, I can map out a phased approach that moves from quick wins to strategic growth.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <h4>The Cost of Waiting</h4>
+    <p>Every month without these fixes is a month where potential clients are finding your competitors instead. The P0 issues, especially the placeholder contact info, are actively undermining trust with visitors who do reach your site. Fixing these is not a nice-to-have, it is protecting the investment you have already made in your business.</p>
+  </div>
+
+  <p style="margin-top:24px; font-size:0.85rem; color:var(--stone);">Ready to move forward? Reach out any time at <strong style="color:var(--ink);">info@mattanthonyphoto.com</strong> or book a call at <strong style="color:var(--ink);">mattanthonyphoto.com/discovery-call</strong>.</p>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     11. FOOTER
+     ═══════════════════════════════════════ -->
+<div class="footer grain-section">
+  <div class="footer-mark">Matt Anthony Photography</div>
+  <div class="footer-info">
+    <a href="https://mattanthonyphoto.com">mattanthonyphoto.com</a><br>
+    <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a> &middot; 604.765.9270<br>
+    Squamish, BC
+  </div>
+  <div class="footer-note">This audit is confidential and prepared exclusively for Colour Craft Painting.</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     12. JAVASCRIPT
+     ═══════════════════════════════════════ -->
+<script>
+(function(){
+  'use strict';
+
+  /* ═══════ LOADING SCREEN ═══════ */
+  var loader = document.getElementById('loader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('done'); }, 1100);
+  });
+
+  /* ═══════ SCROLL PROGRESS BAR ═══════ */
+  var progressBar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var s = window.scrollY;
+    progressBar.style.width = (h > 0 ? (s / h) * 100 : 0) + '%';
+  }
+
+  /* ═══════ COVER PARALLAX ═══════ */
+  var coverImg = document.querySelector('.cover-image');
+  function updateParallax(){
+    if(window.scrollY < window.innerHeight){
+      coverImg.style.transform = 'scale(1.08) translateY(' + (window.scrollY * 0.3) + 'px)';
+    }
+  }
+
+  /* ═══════ PHOTO BREAK PARALLAX ═══════ */
+  var photoBreakEls = document.querySelectorAll('.photo-break');
+  function updatePhotoParallax(){
+    photoBreakEls.forEach(function(pb){
+      var rect = pb.getBoundingClientRect();
+      var inView = rect.bottom > 0 && rect.top < window.innerHeight;
+      if(inView){ pb.classList.add('in-view'); }
+      else { pb.classList.remove('in-view'); }
+    });
+  }
+
+  /* ═══════ SECTION NAV DOTS ═══════ */
+  var sectionNav = document.getElementById('sectionNav');
+  var navSections = document.querySelectorAll('[data-nav]');
+  var navDots = [];
+  navSections.forEach(function(sec){
+    var dot = document.createElement('div');
+    dot.className = 'section-nav-dot';
+    dot.setAttribute('data-label', sec.getAttribute('data-nav'));
+    dot.addEventListener('click', function(){
+      sec.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+    sectionNav.appendChild(dot);
+    navDots.push({ dot:dot, section:sec });
+  });
+
+  function updateNavDots(){
+    var scrollY = window.scrollY;
+    var winH = window.innerHeight;
+    if(scrollY > winH * 0.5){ sectionNav.classList.add('visible'); }
+    else { sectionNav.classList.remove('visible'); }
+    var active = null;
+    navDots.forEach(function(item){
+      var rect = item.section.getBoundingClientRect();
+      if(rect.top < winH * 0.5 && rect.bottom > winH * 0.3){ active = item; }
+      item.dot.classList.remove('active');
+    });
+    if(active) active.dot.classList.add('active');
+  }
+
+  /* ═══════ SCROLL REVEAL ═══════ */
+  var revealTargets = [];
+  document.querySelectorAll('.section, .numbers').forEach(function(section){
+    section.querySelectorAll('.eyebrow, h2, .lead, .stats, .services, .insight, .numbers, .steps, .issues, .score-hero').forEach(function(el, i){
+      el.classList.add('reveal');
+      if(i > 0 && i < 6) el.classList.add('reveal-delay-' + i);
+      revealTargets.push(el);
+    });
+    section.querySelectorAll('.stat, .svc, .step, .num, .issue').forEach(function(el, i){
+      el.classList.add('reveal');
+      el.classList.add('reveal-delay-' + Math.min(i + 1, 5));
+      revealTargets.push(el);
+    });
+    Array.prototype.forEach.call(section.children, function(child){
+      if(child.tagName === 'P' && !child.classList.contains('lead') && !child.classList.contains('cover-sub')){
+        child.classList.add('reveal');
+        revealTargets.push(child);
+      }
+    });
+    section.querySelectorAll('h3').forEach(function(el){
+      el.classList.add('reveal');
+      revealTargets.push(el);
+    });
+    section.querySelectorAll('.audit-table').forEach(function(el){
+      el.classList.add('reveal');
+      revealTargets.push(el);
+    });
+  });
+
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+        animateCounter(entry.target);
+      }
+    });
+  }, { threshold:0.15, rootMargin:'0px 0px -40px 0px' });
+  revealTargets.forEach(function(el){ revealObserver.observe(el); });
+
+  /* ═══════ EYEBROW LINE ANIMATION ═══════ */
+  var eyebrows = document.querySelectorAll('.eyebrow');
+  var eyebrowObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        eyebrowObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.5 });
+  eyebrows.forEach(function(eb){ eyebrowObserver.observe(eb); });
+
+  /* ═══════ NUMBER COUNTER ANIMATION ═══════ */
+  function animateCounter(el){
+    var valEl = el.querySelector('.stat-val, .num-val');
+    if(!valEl || valEl.dataset.counted) return;
+    valEl.dataset.counted = 'true';
+    var text = valEl.textContent.trim();
+    var hasPlus = text.indexOf('+') > -1;
+    var hasSlash = text.indexOf('/') > -1;
+    if(hasSlash) return;
+    var num = parseFloat(text.replace(/[^0-9.]/g,''));
+    if(isNaN(num) || num === 0) return;
+    var isDecimal = text.indexOf('.') > -1;
+    var duration = 1200;
+    var start = performance.now();
+    function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+    function tick(now){
+      var t = Math.min((now - start) / duration, 1);
+      var val = ease(t) * num;
+      if(isDecimal){ valEl.textContent = val.toFixed(1) + (hasPlus ? '+' : ''); }
+      else { valEl.textContent = Math.round(val) + (hasPlus ? '+' : ''); }
+      if(t < 1) requestAnimationFrame(tick);
+    }
+    if(isDecimal){ valEl.textContent = '0.0' + (hasPlus ? '+' : ''); }
+    else { valEl.textContent = '0' + (hasPlus ? '+' : ''); }
+    requestAnimationFrame(tick);
+  }
+
+  /* ═══════ PHOTO BREAK REVEAL ═══════ */
+  var photoRevealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('revealed');
+        photoRevealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.1 });
+  photoBreakEls.forEach(function(pb){ photoRevealObserver.observe(pb); });
+
+  /* ═══════ HEADLINE GOLD UNDERLINE ═══════ */
+  var headlines = document.querySelectorAll('h2');
+  var headlineObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('underlined');
+        headlineObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.5 });
+  headlines.forEach(function(h){ headlineObserver.observe(h); });
+
+  /* ═══════ SCROLL INDICATOR HIDE ═══════ */
+  var scrollIndicator = document.getElementById('scrollIndicator');
+  function updateScrollIndicator(){
+    if(window.scrollY > 100){ scrollIndicator.classList.add('hidden'); }
+    else { scrollIndicator.classList.remove('hidden'); }
+  }
+
+  /* ═══════ SCORE RING ANIMATION ═══════ */
+  var scoreRing = document.getElementById('scoreRing');
+  var scoreObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        scoreRing.classList.add('animated');
+        scoreObserver.unobserve(scoreRing);
+      }
+    });
+  }, { threshold:0.5 });
+  scoreObserver.observe(scoreRing);
+
+  /* ═══════ SMOOTH SCROLL FOR CTA ═══════ */
+  var ctaBtn = document.querySelector('.cover-cta');
+  if(ctaBtn){
+    ctaBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  }
+
+  /* ═══════ COMBINED SCROLL HANDLER ═══════ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateParallax();
+        updatePhotoParallax();
+        updateScrollIndicator();
+        updateNavDots();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress();
+  updateParallax();
+  updatePhotoParallax();
+  updateNavDots();
+
+})();
+</script>
+
+</body>
+</html>

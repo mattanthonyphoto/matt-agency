@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Point Architectural Woodwork — Bespoke Millwork | Whistler, BC</title>
+<meta name="description" content="Bespoke millwork and custom cabinetry by trade-certified cabinetmakers in Whistler, BC. 40+ years combined experience. Western Living featured. Serving the Sea to Sky Corridor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   BLACK POINT ARCHITECTURAL WOODWORK — Homepage Concept
+   Design: Matt Anthony Photography
+   Built: March 2026
+   Approach: Elevated redesign of existing brand DNA
+   ═══════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #FFFFFF;
+  --offwhite: #F8F7F5;
+  --warm-black: #1A1A18;
+  --text-primary: #1A1A18;
+  --text-secondary: #6B6860;
+  --text-light: #9A958C;
+  --bronze: #8B7355;
+  --bronze-hover: #9E845F;
+  --border: rgba(0,0,0,0.06);
+  --border-medium: rgba(0,0,0,0.1);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  color: var(--text-secondary);
+  background: var(--white);
+  line-height: 1.75;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+body.loading {
+  overflow: hidden;
+  height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ═══════════════════════════════════════
+   SCROLL PROGRESS BAR
+   ═══════════════════════════════════════ */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  width: 0%; height: 2px;
+  background: var(--bronze);
+  z-index: 10001;
+  transition: none;
+  opacity: 0.5;
+}
+
+/* ═══════════════════════════════════════
+   LOADER
+   ═══════════════════════════════════════ */
+.loader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--white);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-logo {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  opacity: 0;
+  animation: loaderFadeIn 0.4s ease 0.1s forwards;
+}
+
+.loader-line {
+  width: 40px;
+  height: 1px;
+  background: var(--border-medium);
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.loader-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: var(--text-primary);
+  animation: loaderSlide 1s ease 0.2s forwards;
+}
+
+@keyframes loaderFadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes loaderSlide {
+  to { left: 0; }
+}
+
+/* ═══════════════════════════════════════
+   SECTION NAV DOTS
+   ═══════════════════════════════════════ */
+.section-dots {
+  position: fixed;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.section-dots.visible { opacity: 1; }
+
+.section-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 0;
+}
+
+.section-dot:hover {
+  background: rgba(0,0,0,0.35);
+}
+
+.section-dot.active {
+  background: var(--text-primary);
+  transform: scale(1.3);
+}
+
+/* Dark section overrides */
+.section-dot.on-dark {
+  background: rgba(255,255,255,0.25);
+}
+.section-dot.on-dark:hover {
+  background: rgba(255,255,255,0.5);
+}
+.section-dot.on-dark.active {
+  background: var(--white);
+}
+
+@media (max-width: 768px) {
+  .section-dots { display: none; }
+}
+
+/* ═══════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 9500;
+  padding: 0 48px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s ease;
+}
+
+.nav.scrolled {
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--text-primary);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  border-radius: 2px;
+  transition: background 0.3s ease;
+}
+
+.nav.scrolled .nav-logo-icon {
+  background: var(--text-primary);
+}
+
+.nav-logo-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--white);
+  transition: color 0.4s ease;
+}
+
+.nav.scrolled .nav-logo-text {
+  color: var(--text-primary);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.75);
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav.scrolled .nav-links a { color: var(--text-secondary); }
+.nav.scrolled .nav-links a:hover { color: var(--text-primary); }
+
+.nav-contact-btn {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: var(--white);
+  transition: all 0.3s ease;
+}
+
+.nav.scrolled .nav-contact-btn {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+.nav-contact-btn:hover {
+  background: var(--white);
+  color: var(--text-primary);
+  border-color: var(--white);
+}
+
+.nav.scrolled .nav-contact-btn:hover {
+  background: var(--text-primary);
+  color: var(--white);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 28px;
+  height: 24px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  gap: 6px;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: var(--white);
+  transition: all 0.3s ease;
+}
+
+.nav.scrolled .hamburger span { background: var(--text-primary); }
+
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100vh;
+  background: var(--white);
+  z-index: 9400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.mobile-menu.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu a {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  color: var(--text-primary);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.mobile-menu.active a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu.active a:nth-child(2) { transition-delay: 0.05s; }
+.mobile-menu.active a:nth-child(3) { transition-delay: 0.1s; }
+.mobile-menu.active a:nth-child(4) { transition-delay: 0.15s; }
+.mobile-menu.active a:nth-child(5) { transition-delay: 0.2s; }
+
+@media (max-width: 900px) {
+  .nav { padding: 0 24px; }
+  .nav-links, .nav-contact-btn { display: none; }
+  .hamburger { display: flex; }
+}
+
+/* ═══════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════ */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url('https://images.squarespace-cdn.com/content/v1/61fb2ca8224d3c7c7ba0d4c0/85692e79-0b78-41c3-89c7-4e01f306121c/architectural-woodwork-whistler-16.jpg');
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(26,26,24,0.15) 0%,
+    rgba(26,26,24,0.08) 40%,
+    rgba(26,26,24,0.35) 70%,
+    rgba(26,26,24,0.65) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 80px 80px;
+  max-width: 800px;
+}
+
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(38px, 5vw, 60px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.8);
+  max-width: 560px;
+  margin-bottom: 36px;
+  font-weight: 300;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 32px;
+  background: var(--white);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--offwhite);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 32px;
+  background: transparent;
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.35);
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.6);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.4);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+}
+
+.scroll-indicator.hidden { opacity: 0; }
+
+.scroll-indicator-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+@media (max-width: 768px) {
+  .hero-content { padding: 0 24px 60px; }
+  .hero-buttons { flex-direction: column; }
+  .btn-primary, .btn-outline { text-align: center; justify-content: center; }
+}
+
+/* ═══════════════════════════════════════
+   SHARED SECTION STYLES
+   ═══════════════════════════════════════ */
+.section { padding: 120px 80px; }
+
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(30px, 3.5vw, 44px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.section-subtitle {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 560px;
+  font-weight: 300;
+}
+
+.split-line {
+  display: block;
+  overflow: hidden;
+}
+
+.split-line-inner {
+  display: block;
+  transform: translateY(105%);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.revealed .split-line-inner {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .section { padding: 80px 24px; }
+}
+
+/* ═══════════════════════════════════════
+   PORTFOLIO SECTION
+   ═══════════════════════════════════════ */
+.portfolio-section {
+  background: var(--white);
+}
+
+.portfolio-header {
+  max-width: 640px;
+  margin-bottom: 64px;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 20px;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--offwhite);
+}
+
+.project-card a {
+  display: block;
+  position: relative;
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card:hover img {
+  transform: scale(1.04);
+}
+
+.project-card-overlay {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  padding: 40px 28px 28px;
+  background: linear-gradient(to top, rgba(26,26,24,0.7) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.project-card:hover .project-card-overlay {
+  opacity: 1;
+}
+
+.project-card-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.project-card-meta {
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.02em;
+  font-weight: 300;
+}
+
+.project-card-badge {
+  position: absolute;
+  top: 16px; left: 16px;
+  padding: 5px 12px;
+  background: rgba(255,255,255,0.95);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  z-index: 2;
+}
+
+/* Card sizes */
+.project-card--tall { grid-row: span 2; }
+.project-card--tall img { height: 100%; min-height: 560px; }
+.project-card--standard img { aspect-ratio: 4/3; }
+.project-card--wide { grid-column: span 2; }
+.project-card--wide img { aspect-ratio: 16/9; }
+
+@media (max-width: 900px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .project-card--tall { grid-row: span 1; }
+  .project-card--tall img { min-height: auto; aspect-ratio: 4/3; }
+  .project-card--wide { grid-column: span 2; }
+}
+
+@media (max-width: 600px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-card--wide { grid-column: span 1; }
+}
+
+/* ═══════════════════════════════════════
+   PHOTO BREAK
+   ═══════════════════════════════════════ */
+.photo-break {
+  position: relative;
+  height: 55vh;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.photo-break-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: kenBurns 20s ease-in-out infinite alternate;
+}
+
+@keyframes kenBurns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.06) translate(-1%, -1%); }
+}
+
+/* ═══════════════════════════════════════
+   ABOUT SECTION
+   ═══════════════════════════════════════ */
+.about-section {
+  background: var(--offwhite);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-image img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+}
+
+.about-content {
+  max-width: 480px;
+}
+
+.about-content p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.about-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+.about-names {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 48px;
+}
+
+.about-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-name strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.about-name span {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about-content { max-width: 100%; }
+}
+
+/* ═══════════════════════════════════════
+   TESTIMONIAL
+   ═══════════════════════════════════════ */
+.testimonial-section {
+  background: var(--white);
+  text-align: center;
+  padding: 100px 80px;
+}
+
+.testimonial-quote {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text-primary);
+  max-width: 780px;
+  margin: 0 auto 32px;
+  font-weight: 400;
+}
+
+.testimonial-quote::before {
+  content: '\201C';
+  display: block;
+  font-size: 64px;
+  line-height: 0.5;
+  color: var(--bronze);
+  margin-bottom: 24px;
+  font-style: normal;
+}
+
+.testimonial-author {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.testimonial-role {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-top: 4px;
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .testimonial-section { padding: 80px 24px; }
+}
+
+/* ═══════════════════════════════════════
+   SERVICES SECTION
+   ═══════════════════════════════════════ */
+.services-section {
+  background: var(--white);
+}
+
+.services-header {
+  max-width: 560px;
+  margin-bottom: 64px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.service-card {
+  padding: 48px 40px;
+  background: var(--white);
+  transition: background 0.3s ease;
+}
+
+.service-card:hover {
+  background: var(--offwhite);
+}
+
+.service-number {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--text-light);
+  margin-bottom: 16px;
+}
+
+.service-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  font-weight: 400;
+}
+
+.service-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card { padding: 36px 24px; }
+}
+
+/* ═══════════════════════════════════════
+   PROCESS SECTION
+   ═══════════════════════════════════════ */
+.process-section {
+  background: var(--offwhite);
+}
+
+.process-header {
+  max-width: 560px;
+  margin-bottom: 64px;
+}
+
+.process-timeline {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  max-width: 1000px;
+}
+
+.process-timeline::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: var(--border-medium);
+}
+
+.process-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding: 0 12px;
+}
+
+.process-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--text-light);
+  margin: 13px auto 24px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.process-step:hover .process-dot {
+  border-color: var(--bronze);
+  background: var(--bronze);
+}
+
+.process-number {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+.process-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.process-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 160px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .process-timeline {
+    flex-direction: column;
+    gap: 36px;
+  }
+  .process-timeline::before {
+    top: 0;
+    bottom: 0;
+    left: 18px;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+  .process-step {
+    text-align: left;
+    padding-left: 48px;
+  }
+  .process-dot {
+    position: absolute;
+    left: 14px;
+    top: 4px;
+    margin: 0;
+  }
+  .process-desc { margin: 0; max-width: 100%; }
+}
+
+/* ═══════════════════════════════════════
+   STATS BAR
+   ═══════════════════════════════════════ */
+.stats-bar {
+  background: var(--warm-black);
+  padding: 60px 80px;
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+@media (max-width: 768px) {
+  .stats-bar { padding: 48px 24px; gap: 40px; }
+  .stat-number { font-size: 28px; }
+}
+
+/* ═══════════════════════════════════════
+   CTA SECTION
+   ═══════════════════════════════════════ */
+.cta-section {
+  background: var(--warm-black);
+  text-align: center;
+  padding: 120px 80px;
+}
+
+.cta-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(30px, 3.5vw, 44px);
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.cta-text {
+  font-size: 17px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 40px;
+  background: var(--white);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+  background: var(--offwhite);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+  .cta-section { padding: 80px 24px; }
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════ */
+.footer {
+  background: #111110;
+  padding: 80px 80px 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 60px;
+}
+
+.footer-brand-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.footer-brand-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.4);
+  max-width: 280px;
+  margin-bottom: 20px;
+}
+
+.footer-contact-line {
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 6px;
+}
+
+.footer-contact-line a {
+  color: rgba(255,255,255,0.6);
+  transition: color 0.3s ease;
+}
+
+.footer-contact-line a:hover { color: var(--white); }
+
+.footer-col-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 20px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+  transition: color 0.3s ease;
+}
+
+.footer-col a:hover { color: rgba(255,255,255,0.8); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-copyright {
+  font-size: 12px;
+  color: rgba(255,255,255,0.25);
+}
+
+.footer-social a {
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+  transition: color 0.3s ease;
+}
+
+.footer-social a:hover { color: rgba(255,255,255,0.7); }
+
+@media (max-width: 900px) {
+  .footer { padding: 60px 24px 32px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+
+@media (max-width: 600px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+/* ═══════════════════════════════════════
+   CONCEPT BANNER
+   ═══════════════════════════════════════ */
+.concept-banner {
+  position: fixed;
+  bottom: 0; left: 0;
+  width: 100%;
+  z-index: 9600;
+  background: var(--warm-black);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 14px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.concept-banner.visible {
+  transform: translateY(0);
+}
+
+.concept-banner-text {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 400;
+}
+
+.concept-banner-text strong {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.concept-banner-btn {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  background: var(--white);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.concept-banner-btn:hover {
+  background: var(--offwhite);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .concept-banner {
+    padding: 12px 20px;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  .concept-banner-text { font-size: 12px; }
+}
+
+/* ═══════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ═══════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════ */
+@media print {
+  .loader, .scroll-progress, .section-dots, .concept-banner,
+  .nav, .scroll-indicator, .mobile-menu { display: none !important; }
+  body { color: #000; background: #fff; font-size: 12pt; }
+  .hero { height: auto; min-height: auto; page-break-after: always; }
+  .hero-bg { position: relative; height: 300px; }
+  .hero-overlay { background: none; }
+  .hero-content { padding: 24px; color: #000; }
+  .hero-title, .hero-eyebrow, .hero-subtitle { color: #000; opacity: 1; transform: none; }
+  .hero-buttons { display: none; }
+  .section { padding: 40px 24px; page-break-inside: avoid; }
+  .section-title { color: #000; }
+  .stats-bar, .cta-section { background: #f5f5f5; }
+  .stat-number, .cta-title { color: #000; }
+  .stat-label, .cta-text { color: #333; }
+  .footer { background: #f5f5f5; }
+  .footer-brand-name, .footer-col-title { color: #000; }
+  .footer-brand-text, .footer-contact-line, .footer-col a, .footer-copyright { color: #333; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Black Point Architectural Woodwork",
+  "description": "Bespoke millwork and custom cabinetry by trade-certified cabinetmakers in Whistler, BC.",
+  "url": "https://www.blackpointwoodwork.com",
+  "email": "info@blackpointwoodwork.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Whistler",
+    "addressRegion": "BC",
+    "addressCountry": "CA",
+    "streetAddress": "Function Junction"
+  },
+  "areaServed": "Sea to Sky Corridor",
+  "sameAs": [
+    "https://www.instagram.com/blackpointwoodwork"
+  ],
+  "priceRange": "$$$$",
+  "image": "https://images.squarespace-cdn.com/content/v1/61fb2ca8224d3c7c7ba0d4c0/85692e79-0b78-41c3-89c7-4e01f306121c/architectural-woodwork-whistler-16.jpg"
+}
+</script>
+</head>
+<body class="loading">
+
+<!-- Loader -->
+<div class="loader" id="loader">
+  <div class="loader-logo">Black Point</div>
+  <div class="loader-line"></div>
+</div>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Section Nav Dots -->
+<div class="section-dots" id="sectionDots">
+  <button class="section-dot active" data-section="hero" aria-label="Hero"></button>
+  <button class="section-dot" data-section="portfolio" aria-label="Portfolio"></button>
+  <button class="section-dot" data-section="about" aria-label="About"></button>
+  <button class="section-dot" data-section="services" aria-label="Services"></button>
+  <button class="section-dot" data-section="process" aria-label="Process"></button>
+  <button class="section-dot" data-section="contact" aria-label="Contact"></button>
+</div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">B</div>
+    <span class="nav-logo-text">Black Point</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Company</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#services">Services + Process</a></li>
+    <li><a href="#careers">Careers</a></li>
+  </ul>
+  <a href="mailto:info@blackpointwoodwork.com" class="nav-contact-btn">Contact</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" class="mobile-menu-link">Company</a>
+  <a href="#portfolio" class="mobile-menu-link">Portfolio</a>
+  <a href="#services" class="mobile-menu-link">Services + Process</a>
+  <a href="#careers" class="mobile-menu-link">Careers</a>
+  <a href="mailto:info@blackpointwoodwork.com" class="mobile-menu-link">Contact</a>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="hero" data-nav-section>
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" id="heroEyebrow">Whistler, BC &middot; Function Junction</div>
+    <h1 class="hero-title" id="heroTitle">
+      <span class="split-line"><span class="split-line-inner">Bespoke millwork.</span></span>
+      <span class="split-line"><span class="split-line-inner">Collaborative service.</span></span>
+    </h1>
+    <p class="hero-subtitle" id="heroSubtitle">Based in Whistler, Black Point Architectural Woodwork is a boutique shop that specializes in custom-built millwork for both residential and commercial spaces. As a partner in your vision, we'll work with you to make each unique detail a reality: on time, on budget and executed beautifully.</p>
+    <div class="hero-buttons" id="heroButtons">
+      <a href="#portfolio" class="btn-primary">View Our Work</a>
+      <a href="mailto:info@blackpointwoodwork.com" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="scroll-indicator" id="scrollIndicator">
+    <div class="scroll-indicator-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- Portfolio Section -->
+<section class="section portfolio-section" id="portfolio" data-nav-section>
+  <div class="portfolio-header reveal">
+    <div class="section-eyebrow">Portfolio</div>
+    <h2 class="section-title">
+      <span class="split-line"><span class="split-line-inner">A curated selection of our</span></span>
+      <span class="split-line"><span class="split-line-inner">residential and commercial work</span></span>
+    </h2>
+  </div>
+  <div class="portfolio-grid">
+    <!-- Quarry Lane — Tall -->
+    <div class="project-card project-card--tall reveal">
+      <a href="#">
+        <img src="https://images.squarespace-cdn.com/content/v1/61fb2ca8224d3c7c7ba0d4c0/c4979b27-2cce-4587-ab43-cc3abcf40619/1-architectural-woodwork-whistler-16.jpg" alt="Quarry Lane custom millwork by Black Point" loading="lazy">
+        <div class="project-card-overlay">
+          <div class="project-card-name">Quarry Lane</div>
+          <div class="project-card-meta">Wedgewoods, Whistler &middot; TM Builders &middot; Su Casa Design</div>
+        </div>
+      </a>
+    </div>
+    <!-- Falcon Crescent -->
+    <div class="project-card project-card--standard reveal reveal-delay-1">
+      <a href="#">
+        <img src="https://images.squarespace-cdn.com/content/v1/61fb2ca8224d3c7c7ba0d4c0/babd9056-44b2-4867-ac63-2c33d0c9fb70/1-Album+Cover-Stark_FalkonCres_0259.jpg" alt="Falcon Crescent millwork by Black Point" loading="lazy">
+        <div class="project-card-overlay">
+          <div class="project-card-name">Falcon Crescent</div>
+          <div class="project-card-meta">Blueberry, Whistler &middot; STARK Architecture</div>
+        </div>
+      </a>
+    </div>
+    <!-- Panorama Ridge -->
+    <div class="project-card project-card--standard reveal reveal-delay-2">
+      <a href="#">
+        <div class="project-card-badge">Western Living</div>
+        <img src="https://images.squarespace-cdn.com/content/v1/61fb2ca8224d3c7c7ba0d4c0/de6f480f-e75e-4064-b31f-2dee66fb13df/blackpoint-woodwork-08.jpg" alt="Panorama Ridge millwork by Black Point" loading="lazy">
+        <div class="project-card-overlay">
+          <div class="project-card-name">Panorama Ridge</div>
+          <div class="project-card-meta">Brio, Whistler &middot; Western Living Feature</div>
+        </div>
+      </a>
+    </div>
+    <!-- Fitzsimmons Road -->
+    <div class="project-card project-card--standard reveal">
+      <a href="#">
+        <img src="https://images.squarespace-cdn.com/content/v1/61fb2ca8224d3c7c7ba0d4c0/cac1b796-c6c3-4688-922a-7681efae1b51/1-Album+Cover-Copyright-Darby-Magill-5834.jpg" alt="Fitzsimmons Road millwork by Black Point" loading="lazy">
+        <div class="project-card-overlay">
+          <div class="project-card-name">Fitzsimmons Road</div>
+          <div class="project-card-meta">Whistler</div>
+        </div>
+      </a>
+    </div>
+    <!-- Pemberton Meadows -->
+    <div class="project-card project-card--standard reveal reveal-delay-1">
+      <a href="#">
+        <img src="https://images.squarespace-cdn.com/content/v1/61fb2ca8224d3c7c7ba0d4c0/6f585744-b2f4-4517-a752-42a4696e1d18/1-Album+Cover-PembertonMeadows_5176+copy.jpg" alt="Pemberton Meadows millwork by Black Point" loading="lazy">
+        <div class="project-card-overlay">
+          <div class="project-card-name">Pemberton Meadows</div>
+          <div class="project-card-meta">Pemberton</div>
+        </div>
+      </a>
+    </div>
+    <!-- Ecologyst — Wide -->
+    <div class="project-card project-card--wide reveal reveal-delay-2">
+      <a href="#">
+        <img src="https://images.squarespace-cdn.com/content/v1/61fb2ca8224d3c7c7ba0d4c0/f2470d99-c4b0-4f9d-938d-42cc9044288a/blackpoint-woodworking-05.jpg" alt="Ecologyst commercial millwork by Black Point" loading="lazy">
+        <div class="project-card-overlay">
+          <div class="project-card-name">Ecologyst</div>
+          <div class="project-card-meta">Whistler Village &middot; Commercial</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Photo Break 1 -->
+<div class="photo-break">
+  <img class="photo-break-img" src="https://images.squarespace-cdn.com/content/v1/61fb2ca8224d3c7c7ba0d4c0/ac3396f3-3d00-4de3-8086-160c022756e0/4-architectural-woodwork-whistler-06.jpg" alt="Black Point woodwork detail" loading="lazy">
+</div>
+
+<!-- About Section -->
+<section class="section about-section" id="about" data-nav-section>
+  <div class="about-grid">
+    <div class="about-image reveal">
+      <img src="https://images.squarespace-cdn.com/content/v1/61fb2ca8224d3c7c7ba0d4c0/b8ba8ed5-87e9-4425-8e62-85456fcb7315/2-whistler-woodworking-custom.jpg" alt="Black Point workshop craftsmanship" loading="lazy">
+    </div>
+    <div class="about-content reveal reveal-delay-1">
+      <div class="section-eyebrow">Our Company</div>
+      <h2 class="section-title">
+        <span class="split-line"><span class="split-line-inner">Custom craftsmanship in</span></span>
+        <span class="split-line"><span class="split-line-inner">the heart of Whistler</span></span>
+      </h2>
+      <p>Black Point Architectural Woodwork is a boutique millwork shop based in Function Junction, Whistler. Founded by Chris and Zane, both trade-certified Red Seal cabinetmakers with over 20 years of experience each, the shop specializes in bespoke millwork for residential and commercial spaces across the Sea to Sky Corridor.</p>
+      <p>Every project is a collaboration. We partner closely with architects, designers, and builders to bring each vision to life with precision, care, and an uncompromising standard of craftsmanship. From initial concept through final installation, our hands-on approach ensures every detail is executed beautifully.</p>
+      <div class="about-names">
+        <div class="about-name">
+          <strong>Chris</strong>
+          <span>Co-Founder, Red Seal Cabinetmaker</span>
+        </div>
+        <div class="about-name">
+          <strong>Zane</strong>
+          <span>Co-Founder, Red Seal Cabinetmaker</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial -->
+<section class="testimonial-section reveal">
+  <blockquote class="testimonial-quote">Black Point delivered repeatedly with beautiful joinery and creative solutions to complex problems. Their ability to execute our vision to the highest standard was second to none.</blockquote>
+  <div class="testimonial-author">Ryan Pannell</div>
+  <div class="testimonial-role">Whistler Homeowner</div>
+</section>
+
+<!-- Photo Break 2 -->
+<div class="photo-break">
+  <img class="photo-break-img" src="https://images.squarespace-cdn.com/content/v1/61fb2ca8224d3c7c7ba0d4c0/439484c4-0dcd-4edd-9697-95411108928b/7-architectural-woodwork-whistler-03.jpg" alt="Black Point architectural woodwork detail" loading="lazy">
+</div>
+
+<!-- Services Section -->
+<section class="section services-section" id="services" data-nav-section>
+  <div class="services-header reveal">
+    <div class="section-eyebrow">Expertise</div>
+    <h2 class="section-title">
+      <span class="split-line"><span class="split-line-inner">From new builds</span></span>
+      <span class="split-line"><span class="split-line-inner">to renovations</span></span>
+    </h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-number">01</div>
+      <h3 class="service-name">Cabinetry + Millwork Packages</h3>
+      <p class="service-desc">Comprehensive packages that strike the balance between consistency and variety so that each room flows seamlessly.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-number">02</div>
+      <h3 class="service-name">Custom Woodwork</h3>
+      <p class="service-desc">Bespoke pieces designed and built to your exact specifications.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-number">03</div>
+      <h3 class="service-name">Commercial Fit-Outs</h3>
+      <p class="service-desc">Custom millwork solutions for retail, hospitality, and commercial spaces.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-number">04</div>
+      <h3 class="service-name">Additional Services</h3>
+      <p class="service-desc">Machining, material supply, resurfacing, and wall panelling.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Process Section -->
+<section class="section process-section" id="process" data-nav-section>
+  <div class="process-header reveal">
+    <div class="section-eyebrow">Our Process</div>
+    <h2 class="section-title">
+      <span class="split-line"><span class="split-line-inner">Five steps to bring</span></span>
+      <span class="split-line"><span class="split-line-inner">your build to life</span></span>
+    </h2>
+  </div>
+  <div class="process-timeline reveal">
+    <div class="process-step">
+      <div class="process-number">Step 01</div>
+      <div class="process-dot"></div>
+      <h3 class="process-name">Planning + Designing</h3>
+      <p class="process-desc">We review drawings, discuss materials, and establish the scope of your project.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-number">Step 02</div>
+      <div class="process-dot"></div>
+      <h3 class="process-name">Sourcing</h3>
+      <p class="process-desc">We procure the finest materials suited to your design vision and budget.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-number">Step 03</div>
+      <div class="process-dot"></div>
+      <h3 class="process-name">Fabricating</h3>
+      <p class="process-desc">Skilled hands bring your design to life in our Function Junction workshop.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-number">Step 04</div>
+      <div class="process-dot"></div>
+      <h3 class="process-name">Installing</h3>
+      <p class="process-desc">Precision installation by the same team that built your pieces.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-number">Step 05</div>
+      <div class="process-dot"></div>
+      <h3 class="process-name">Follow Up</h3>
+      <p class="process-desc">Final walkthrough and adjustments to ensure everything meets our shared standard.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stat-item reveal">
+    <div class="stat-number" data-target="20" data-suffix="+">0</div>
+    <div class="stat-label">Years Each</div>
+  </div>
+  <div class="stat-item reveal reveal-delay-1">
+    <div class="stat-number" data-target="8">0</div>
+    <div class="stat-label">Featured Projects</div>
+  </div>
+  <div class="stat-item reveal reveal-delay-2">
+    <div class="stat-number" data-target="1">0</div>
+    <div class="stat-label">Western Living Feature</div>
+  </div>
+  <div class="stat-item reveal reveal-delay-3">
+    <div class="stat-number" data-target="5">0</div>
+    <div class="stat-label">Step Process</div>
+  </div>
+</div>
+
+<!-- CTA Section -->
+<section class="cta-section" id="contact" data-nav-section>
+  <div class="reveal">
+    <h2 class="cta-title">Ready to start a project?</h2>
+    <p class="cta-text">Tell us about your vision. We'll handle the millwork.</p>
+    <a href="mailto:info@blackpointwoodwork.com" class="btn-cta">Get in Touch</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Black Point</div>
+      <p class="footer-brand-text">Bespoke millwork and custom cabinetry by trade-certified cabinetmakers in Whistler, BC.</p>
+      <div class="footer-contact-line"><a href="mailto:info@blackpointwoodwork.com">info@blackpointwoodwork.com</a></div>
+      <div class="footer-contact-line">Function Junction, Whistler, BC</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Company</div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#careers" id="careers">Careers</a></li>
+        <li><a href="mailto:info@blackpointwoodwork.com">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Services</div>
+      <ul>
+        <li><a href="#services">Cabinetry + Millwork</a></li>
+        <li><a href="#services">Custom Woodwork</a></li>
+        <li><a href="#services">Commercial Fit-Outs</a></li>
+        <li><a href="#services">Machining + Supply</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Collaborators</div>
+      <ul>
+        <li><a href="#">STARK Architecture</a></li>
+        <li><a href="#">LRD Studio</a></li>
+        <li><a href="#">TM Builders</a></li>
+        <li><a href="#">Gavan Construction</a></li>
+        <li><a href="#">Su Casa Design</a></li>
+        <li><a href="#">Studio Roslyn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copyright">&copy; 2026 Black Point Architectural Woodwork. All rights reserved.</div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/blackpointwoodwork" target="_blank" rel="noopener">@blackpointwoodwork</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Concept Banner -->
+<div class="concept-banner" id="conceptBanner">
+  <div class="concept-banner-text">This is a concept redesign by <strong>Matt Anthony Photography</strong></div>
+  <a href="https://mattanthonyphoto.com/discovery-call" target="_blank" rel="noopener" class="concept-banner-btn">Book a Discovery Call</a>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  /* ═══════════════════════════════════════
+     LOADER
+     ═══════════════════════════════════════ */
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      document.getElementById('loader').classList.add('hidden');
+      document.body.classList.remove('loading');
+      animateHero();
+    }, 1100);
+  });
+
+  /* ═══════════════════════════════════════
+     HERO CASCADE ANIMATION
+     ═══════════════════════════════════════ */
+  function animateHero() {
+    var elements = [
+      { el: document.getElementById('heroEyebrow'), delay: 100 },
+      { el: document.getElementById('heroTitle'), delay: 250 },
+      { el: document.getElementById('heroSubtitle'), delay: 450 },
+      { el: document.getElementById('heroButtons'), delay: 600 }
+    ];
+
+    elements.forEach(function(item) {
+      setTimeout(function() {
+        item.el.style.transition = 'opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)';
+        item.el.style.opacity = '1';
+        item.el.style.transform = 'translateY(0)';
+      }, item.delay);
+    });
+
+    // Trigger split-line reveals in hero
+    setTimeout(function() {
+      var heroTitle = document.getElementById('heroTitle');
+      heroTitle.classList.add('revealed');
+    }, 250);
+  }
+
+  /* ═══════════════════════════════════════
+     SCROLL PROGRESS BAR
+     ═══════════════════════════════════════ */
+  var scrollProgress = document.getElementById('scrollProgress');
+
+  /* ═══════════════════════════════════════
+     HERO PARALLAX
+     ═══════════════════════════════════════ */
+  var heroBg = document.getElementById('heroBg');
+  var heroSection = document.getElementById('hero');
+
+  /* ═══════════════════════════════════════
+     SCROLL INDICATOR HIDE
+     ═══════════════════════════════════════ */
+  var scrollIndicator = document.getElementById('scrollIndicator');
+
+  /* ═══════════════════════════════════════
+     NAV BACKGROUND SWAP
+     ═══════════════════════════════════════ */
+  var nav = document.getElementById('nav');
+
+  /* ═══════════════════════════════════════
+     SECTION DOTS
+     ═══════════════════════════════════════ */
+  var sectionDots = document.getElementById('sectionDots');
+  var dots = sectionDots.querySelectorAll('.section-dot');
+  var sections = document.querySelectorAll('[data-nav-section]');
+
+  dots.forEach(function(dot) {
+    dot.addEventListener('click', function() {
+      var target = document.getElementById(dot.dataset.section);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* ═══════════════════════════════════════
+     CONCEPT BANNER
+     ═══════════════════════════════════════ */
+  var conceptBanner = document.getElementById('conceptBanner');
+
+  /* ═══════════════════════════════════════
+     UNIFIED SCROLL HANDLER
+     ═══════════════════════════════════════ */
+  var ticking = false;
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        var scrollY = window.pageYOffset;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var windowHeight = window.innerHeight;
+
+        // Scroll progress
+        scrollProgress.style.width = (scrollY / docHeight * 100) + '%';
+
+        // Hero parallax
+        if (scrollY < windowHeight) {
+          heroBg.style.transform = 'translateY(' + (scrollY * 0.35) + 'px)';
+        }
+
+        // Scroll indicator hide
+        if (scrollY > 80) {
+          scrollIndicator.classList.add('hidden');
+        } else {
+          scrollIndicator.classList.remove('hidden');
+        }
+
+        // Nav background
+        if (scrollY > 60) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+
+        // Section dots visibility
+        if (scrollY > windowHeight * 0.5) {
+          sectionDots.classList.add('visible');
+        } else {
+          sectionDots.classList.remove('visible');
+        }
+
+        // Concept banner
+        if (scrollY > windowHeight * 0.8) {
+          conceptBanner.classList.add('visible');
+        }
+
+        // Active section dot
+        var currentSection = 'hero';
+        sections.forEach(function(section, index) {
+          var rect = section.getBoundingClientRect();
+          if (rect.top <= windowHeight * 0.5 && rect.bottom > 0) {
+            currentSection = section.id;
+          }
+        });
+
+        // Check if sections are on dark bg for dot styling
+        var darkSections = ['contact'];
+        var isOnDark = darkSections.indexOf(currentSection) !== -1;
+
+        dots.forEach(function(dot) {
+          dot.classList.remove('active', 'on-dark');
+          if (dot.dataset.section === currentSection) {
+            dot.classList.add('active');
+          }
+          if (isOnDark) {
+            dot.classList.add('on-dark');
+          }
+        });
+
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  /* ═══════════════════════════════════════
+     SCROLL REVEAL (IntersectionObserver)
+     ═══════════════════════════════════════ */
+  var revealElements = document.querySelectorAll('.reveal, .split-line');
+
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(function(el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    // Fallback for older browsers
+    revealElements.forEach(function(el) {
+      el.classList.add('revealed');
+    });
+  }
+
+  /* ═══════════════════════════════════════
+     STATS COUNTER ANIMATION
+     ═══════════════════════════════════════ */
+  var statNumbers = document.querySelectorAll('.stat-number[data-target]');
+  var statsCounted = false;
+
+  if ('IntersectionObserver' in window) {
+    var statsObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !statsCounted) {
+          statsCounted = true;
+          animateStats();
+          statsObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    statNumbers.forEach(function(el) {
+      statsObserver.observe(el);
+    });
+  }
+
+  function animateStats() {
+    statNumbers.forEach(function(el) {
+      var target = parseInt(el.dataset.target);
+      var suffix = el.dataset.suffix || '';
+      var duration = 1500;
+      var start = 0;
+      var startTime = null;
+
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = Math.floor(eased * target);
+        el.textContent = current + suffix;
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = target + suffix;
+        }
+      }
+
+      requestAnimationFrame(step);
+    });
+  }
+
+  /* ═══════════════════════════════════════
+     HAMBURGER MENU
+     ═══════════════════════════════════════ */
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.mobile-menu-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
