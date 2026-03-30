@@ -21,6 +21,18 @@ token.json
 # Editor
 .cursor/
 
+# Build output
+dist/
+
+# Wrangler
+.wrangler/
+
+# Photo assets (store externally)
+Photo Assets/
+
+# Reel generator output
+tools/reel-generator/output/
+
 # Images (store externally, not in repo)
 *.jpg
 *.jpeg
