@@ -10,6 +10,7 @@ Subcommands:
   get-follow-ups Get prospects due for follow-up
   stats          Show outreach stats summary
   batch-prep     Get all "Ready to DM" prospects with their details for Claude to research and write DMs
+  scout          Pull last 20 posts from a prospect's IG to find things to comment on during warm-up
 """
 import argparse
 import json
@@ -51,9 +52,9 @@ ICP_TYPES = ["Builder", "Architect", "Interior Designer", "Millwork", "Windows",
              "Landscape", "Lighting", "Flooring", "Hardware", "Envelope"]
 
 HEADERS = [
-    "Company", "Contact Name", "IG Handle", "ICP Type", "Region",
+    "Company", "Contact Name", "IG Handle", "DM Message", "ICP Type", "Region",
     "Website", "Email", "Status", "Warm-Up Started", "DM Sent Date",
-    "Template Used", "DM Message", "Follow-Up 1 Date", "Follow-Up 2 Date",
+    "Template Used", "Follow-Up 1 Date", "Follow-Up 2 Date",
     "Reply Date", "Reply Summary", "Next Action", "Next Action Date",
     "Plan URL", "Pipeline Synced", "Source", "Notes"
 ]
@@ -129,8 +130,8 @@ def create_sheet(args):
             "properties": {"pixelSize": w},
             "fields": "pixelSize",
         }}
-        for i, w in enumerate([180, 150, 140, 130, 120, 200, 200, 120, 110, 110,
-                                120, 300, 110, 110, 110, 250, 150, 110, 250, 80, 100, 300])
+        for i, w in enumerate([180, 150, 140, 350, 130, 120, 200, 200, 120, 110, 110,
+                                120, 110, 110, 110, 250, 150, 110, 250, 80, 100, 300])
     ]
 
     # Freeze header row
@@ -151,7 +152,7 @@ def create_sheet(args):
     requests.append({
         "setDataValidation": {
             "range": {"sheetId": 0, "startRowIndex": 1, "endRowIndex": 500,
-                      "startColumnIndex": 7, "endColumnIndex": 8},
+                      "startColumnIndex": 8, "endColumnIndex": 9},
             "rule": {
                 "condition": {"type": "ONE_OF_LIST",
                               "values": [{"userEnteredValue": s} for s in STATUSES]},
@@ -164,7 +165,7 @@ def create_sheet(args):
     requests.append({
         "setDataValidation": {
             "range": {"sheetId": 0, "startRowIndex": 1, "endRowIndex": 500,
-                      "startColumnIndex": 3, "endColumnIndex": 4},
+                      "startColumnIndex": 4, "endColumnIndex": 5},
             "rule": {
                 "condition": {"type": "ONE_OF_LIST",
                               "values": [{"userEnteredValue": t} for t in ICP_TYPES]},
@@ -192,7 +193,7 @@ def create_sheet(args):
             "addConditionalFormatRule": {
                 "rule": {
                     "ranges": [{"sheetId": 0, "startRowIndex": 1, "endRowIndex": 500,
-                                "startColumnIndex": 7, "endColumnIndex": 8}],
+                                "startColumnIndex": 8, "endColumnIndex": 9}],
                     "booleanRule": {
                         "condition": {"type": "TEXT_EQ", "values": [{"userEnteredValue": status}]},
                         "format": {"backgroundColor": color},
@@ -219,10 +220,10 @@ def add_prospect(args):
     sheets = get_sheets()
 
     row = [
-        args.company, args.contact, args.ig_handle, args.icp_type,
-        args.region or "", args.website or "", args.email or "",
+        args.company, args.contact, args.ig_handle, "",  # DM Message (empty)
+        args.icp_type, args.region or "", args.website or "", args.email or "",
         "New",  # Status
-        "", "", "", "", "", "", "", "",  # DM tracking fields
+        "", "", "", "", "", "", "",  # DM tracking fields
         "", "",  # Next action fields
         "", "No",  # Plan URL, Pipeline Synced
         args.source or "Manual", args.notes or "",
@@ -263,10 +264,10 @@ def update_status(args):
         print(f"ERROR: No prospect found matching '{args.identifier}'")
         return 1
 
-    # Update status (column H = index 7)
+    # Update status (column I = index 8)
     sheets.spreadsheets().values().update(
         spreadsheetId=TRACKER_SHEET_ID,
-        range=f"Prospects!H{match_row}",
+        range=f"Prospects!I{match_row}",
         valueInputOption="USER_ENTERED",
         body={"values": [[args.status]]},
     ).execute()
@@ -276,14 +277,14 @@ def update_status(args):
     if args.status == "Warming":
         sheets.spreadsheets().values().update(
             spreadsheetId=TRACKER_SHEET_ID,
-            range=f"Prospects!I{match_row}",
+            range=f"Prospects!J{match_row}",
             valueInputOption="USER_ENTERED",
             body={"values": [[today]]},
         ).execute()
     elif args.status == "DM Sent":
         sheets.spreadsheets().values().update(
             spreadsheetId=TRACKER_SHEET_ID,
-            range=f"Prospects!J{match_row}",
+            range=f"Prospects!K{match_row}",
             valueInputOption="USER_ENTERED",
             body={"values": [[today]]},
         ).execute()
@@ -335,15 +336,15 @@ def log_dm(args):
     current_row = rows[match_row - 1]
 
     # Determine if this is first DM, follow-up 1, or follow-up 2
-    dm_sent = current_row[9] if len(current_row) > 9 else ""
+    dm_sent = current_row[10] if len(current_row) > 10 else ""
     fu1 = current_row[12] if len(current_row) > 12 else ""
 
     updates = []
     if not dm_sent:
-        updates.append({"range": f"Prospects!H{match_row}", "values": [["DM Sent"]]})
-        updates.append({"range": f"Prospects!J{match_row}", "values": [[today]]})
-        updates.append({"range": f"Prospects!K{match_row}", "values": [[args.template or ""]]})
-        updates.append({"range": f"Prospects!L{match_row}", "values": [[args.message or ""]]})
+        updates.append({"range": f"Prospects!I{match_row}", "values": [["DM Sent"]]})
+        updates.append({"range": f"Prospects!K{match_row}", "values": [[today]]})
+        updates.append({"range": f"Prospects!L{match_row}", "values": [[args.template or ""]]})
+        updates.append({"range": f"Prospects!D{match_row}", "values": [[args.message or ""]]})
         # Set follow-up 1 date to 4 days from now
         fu1_date = (datetime.now() + timedelta(days=4)).strftime("%Y-%m-%d")
         updates.append({"range": f"Prospects!Q{match_row}", "values": [["Follow up if no reply"]]})
@@ -392,15 +393,15 @@ def get_queue(args):
     follow_ups = []
 
     for row in rows[1:]:
-        if len(row) < 8:
+        if len(row) < 9:
             continue
 
         company = row[0] if len(row) > 0 else ""
         contact = row[1] if len(row) > 1 else ""
         handle = row[2] if len(row) > 2 else ""
-        icp = row[3] if len(row) > 3 else ""
-        status = row[7] if len(row) > 7 else ""
-        warm_start = row[8] if len(row) > 8 else ""
+        icp = row[4] if len(row) > 4 else ""
+        status = row[8] if len(row) > 8 else ""
+        warm_start = row[9] if len(row) > 9 else ""
         next_action_date = row[17] if len(row) > 17 else ""
 
         prospect = {"company": company, "contact": contact, "handle": handle, "icp": icp}
@@ -460,13 +461,13 @@ def get_follow_ups(args):
         if len(row) < 18:
             continue
         next_date = row[17] if len(row) > 17 else ""
-        status = row[7] if len(row) > 7 else ""
+        status = row[8] if len(row) > 8 else ""
         if next_date and next_date <= today and status not in ("Won", "Not Interested", "No Response"):
             due.append({
                 "company": row[0],
                 "contact": row[1] if len(row) > 1 else "",
                 "handle": row[2] if len(row) > 2 else "",
-                "icp": row[3] if len(row) > 3 else "",
+                "icp": row[4] if len(row) > 4 else "",
                 "status": status,
                 "action": row[16] if len(row) > 16 else "",
                 "due": next_date,
@@ -490,8 +491,8 @@ def stats(args):
     counts = {}
     icp_counts = {}
     for row in rows[1:]:
-        status = row[7] if len(row) > 7 else "Unknown"
-        icp = row[3] if len(row) > 3 else "Unknown"
+        status = row[8] if len(row) > 8 else "Unknown"
+        icp = row[4] if len(row) > 4 else "Unknown"
         counts[status] = counts.get(status, 0) + 1
         icp_counts[icp] = icp_counts.get(icp, 0) + 1
 
@@ -542,7 +543,7 @@ def prep_dm(args):
 
     today = datetime.now().strftime("%Y-%m-%d")
     updates = [
-        {"range": f"Prospects!L{match_row}", "values": [[args.message]]},
+        {"range": f"Prospects!D{match_row}", "values": [[args.message]]},
         {"range": f"Prospects!Q{match_row}", "values": [["Send pre-written DM"]]},
         {"range": f"Prospects!R{match_row}", "values": [[today]]},
     ]
@@ -550,14 +551,14 @@ def prep_dm(args):
     # Set status to Warming if it's New (Claude prepped it, Matt still needs to warm up)
     # Set Next Action Date to today if warm enough, or +2 days if new
     current_row = rows[match_row - 1]
-    current_status = current_row[7] if len(current_row) > 7 else ""
-    warm_start = current_row[8] if len(current_row) > 8 else ""
+    current_status = current_row[8] if len(current_row) > 8 else ""
+    warm_start = current_row[9] if len(current_row) > 9 else ""
 
     if current_status == "New":
         # New prospect — set to warming, DM ready in 2 days
         send_date = (datetime.now() + timedelta(days=2)).strftime("%Y-%m-%d")
-        updates.append({"range": f"Prospects!H{match_row}", "values": [["Warming"]]})
-        updates.append({"range": f"Prospects!I{match_row}", "values": [[today]]})
+        updates.append({"range": f"Prospects!I{match_row}", "values": [["Warming"]]})
+        updates.append({"range": f"Prospects!J{match_row}", "values": [[today]]})
         updates.append({"range": f"Prospects!R{match_row}", "values": [[send_date]]})
     elif current_status == "Warming" and warm_start:
         try:
@@ -568,7 +569,7 @@ def prep_dm(args):
             updates.append({"range": f"Prospects!R{match_row}", "values": [[today]]})
 
     if args.angle:
-        updates.append({"range": f"Prospects!K{match_row}", "values": [[args.angle]]})
+        updates.append({"range": f"Prospects!L{match_row}", "values": [[args.angle]]})
 
     if args.notes:
         updates.append({"range": f"Prospects!V{match_row}", "values": [[args.notes]]})
@@ -602,19 +603,19 @@ def batch_prep(args):
     ready_to_send = []
 
     for row in rows[1:]:
-        if len(row) < 8:
+        if len(row) < 9:
             continue
 
         company = row[0] if len(row) > 0 else ""
         contact = row[1] if len(row) > 1 else ""
         handle = row[2] if len(row) > 2 else ""
-        icp = row[3] if len(row) > 3 else ""
-        region = row[4] if len(row) > 4 else ""
-        website = row[5] if len(row) > 5 else ""
-        email = row[6] if len(row) > 6 else ""
-        status = row[7] if len(row) > 7 else ""
-        warm_start = row[8] if len(row) > 8 else ""
-        dm_message = row[11] if len(row) > 11 else ""
+        dm_message = row[3] if len(row) > 3 else ""
+        icp = row[4] if len(row) > 4 else ""
+        region = row[5] if len(row) > 5 else ""
+        website = row[6] if len(row) > 6 else ""
+        email = row[7] if len(row) > 7 else ""
+        status = row[8] if len(row) > 8 else ""
+        warm_start = row[9] if len(row) > 9 else ""
         next_action = row[16] if len(row) > 16 else ""
         next_date = row[17] if len(row) > 17 else ""
         notes = row[21] if len(row) > 21 else ""
@@ -660,6 +661,139 @@ def batch_prep(args):
 
     print(json.dumps(output, indent=2))
     return 0
+
+
+# ── scout ──────────────────────────────────────────────────
+
+SCOUT_CACHE_DIR = PROJECT_ROOT / ".tmp" / "ig_scout"
+
+
+def _get_instaloader():
+    """Get an Instaloader instance with saved session."""
+    import instaloader
+
+    L = instaloader.Instaloader(
+        download_pictures=False,
+        download_videos=False,
+        download_video_thumbnails=False,
+        download_geotags=False,
+        download_comments=False,
+        save_metadata=False,
+        compress_json=False,
+        quiet=True,
+    )
+    session_file = PROJECT_ROOT / ".tmp" / "ig_network" / f"session-mattanthonyphoto"
+    if session_file.exists():
+        L.load_session_from_file("mattanthonyphoto", str(session_file))
+    else:
+        print("ERROR: No saved Instagram session found.")
+        print("Run: python3 tools/ig_scrape_network.py login")
+        sys.exit(1)
+    return L
+
+
+def scout(args):
+    """Pull the last N posts from a prospect's IG and output commentable content."""
+    import instaloader
+
+    handle = args.identifier.lower().lstrip("@")
+    count = args.count
+    cache_hours = args.cache_hours
+
+    # Check cache first
+    SCOUT_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    cache_file = SCOUT_CACHE_DIR / f"{handle}.json"
+
+    if cache_file.exists() and not args.refresh:
+        cached = json.load(open(cache_file))
+        cached_at = datetime.strptime(cached["scouted_at"], "%Y-%m-%d %H:%M")
+        if (datetime.now() - cached_at).total_seconds() < cache_hours * 3600:
+            print(json.dumps(cached, indent=2))
+            return 0
+
+    L = _get_instaloader()
+
+    try:
+        profile = instaloader.Profile.from_username(L.context, handle)
+    except instaloader.exceptions.ProfileNotExistsException:
+        print(f"ERROR: Profile @{handle} not found")
+        return 1
+    except instaloader.exceptions.ConnectionException as e:
+        print(f"ERROR: Connection issue — {e}")
+        return 1
+
+    posts = []
+    for i, post in enumerate(profile.get_posts()):
+        if i >= count:
+            break
+
+        caption = post.caption or ""
+        # Truncate very long captions for readability
+        caption_preview = caption[:300] + ("..." if len(caption) > 300 else "")
+
+        post_data = {
+            "date": post.date_utc.strftime("%Y-%m-%d"),
+            "likes": post.likes,
+            "comments": post.comments,
+            "caption": caption_preview,
+            "full_caption": caption,
+            "is_video": post.is_video,
+            "video_view_count": post.video_view_count if post.is_video else None,
+            "hashtags": list(post.caption_hashtags) if post.caption_hashtags else [],
+            "tagged_users": list(post.tagged_users) if post.tagged_users else [],
+            "shortcode": post.shortcode,
+            "url": f"https://www.instagram.com/p/{post.shortcode}/",
+        }
+
+        # Flag high-engagement posts (good candidates for commenting)
+        avg_likes = profile.mediacount and (profile.followers * 0.03)  # rough 3% benchmark
+        if post.likes > avg_likes if avg_likes else post.likes > 50:
+            post_data["high_engagement"] = True
+
+        posts.append(post_data)
+
+        # Rate limiting
+        if (i + 1) % 5 == 0:
+            import time
+            time.sleep(1)
+
+    output = {
+        "handle": handle,
+        "full_name": profile.full_name,
+        "followers": profile.followers,
+        "following": profile.followees,
+        "total_posts": profile.mediacount,
+        "biography": profile.biography or "",
+        "is_private": profile.is_private,
+        "scouted_at": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "posts": posts,
+        "summary": {
+            "posts_fetched": len(posts),
+            "total_likes": sum(p["likes"] for p in posts),
+            "total_comments": sum(p["comments"] for p in posts),
+            "avg_likes": round(sum(p["likes"] for p in posts) / len(posts)) if posts else 0,
+            "avg_comments": round(sum(p["comments"] for p in posts) / len(posts)) if posts else 0,
+            "video_count": sum(1 for p in posts if p["is_video"]),
+            "photo_count": sum(1 for p in posts if not p["is_video"]),
+            "frequently_tagged": _top_tagged(posts),
+        },
+    }
+
+    # Cache the result
+    with open(cache_file, "w") as fp:
+        json.dump(output, fp, indent=2)
+
+    print(json.dumps(output, indent=2))
+    return 0
+
+
+def _top_tagged(posts):
+    """Find the most frequently tagged users across posts."""
+    tag_counts = {}
+    for p in posts:
+        for user in p.get("tagged_users", []):
+            tag_counts[user] = tag_counts.get(user, 0) + 1
+    return sorted(tag_counts.items(), key=lambda x: -x[1])[:5]
 
 
 # ── CLI ─────────────────────────────────────────────────────
@@ -716,6 +850,13 @@ def main():
     # stats
     sub.add_parser("stats", help="Show outreach stats")
 
+    # scout
+    sc = sub.add_parser("scout", help="Pull last N posts from a prospect's IG for warm-up comment ideas")
+    sc.add_argument("identifier", help="IG handle (with or without @)")
+    sc.add_argument("--count", type=int, default=20, help="Number of posts to pull (default 20)")
+    sc.add_argument("--cache-hours", type=int, default=48, help="Use cached data if less than N hours old (default 48)")
+    sc.add_argument("--refresh", action="store_true", help="Ignore cache and re-fetch")
+
     args = parser.parse_args()
 
     commands = {
@@ -728,6 +869,7 @@ def main():
         "get-queue": get_queue,
         "get-follow-ups": get_follow_ups,
         "stats": stats,
+        "scout": scout,
     }
 
     if args.command in commands:
