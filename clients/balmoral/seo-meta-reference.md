@@ -1,4 +1,4 @@
-goo# Balmoral Construction — SEO Meta Reference
+# Balmoral Construction — SEO Meta Reference
 
 Use this document when configuring each page's SEO fields in the Squarespace dashboard.
 
@@ -13,6 +13,27 @@ Use this document when configuring each page's SEO fields in the Squarespace das
 - Meta descriptions: Under 160 characters. Include differentiator, location, and CTA.
 - Blog post titles include `(2026)` for freshness signals — update annually.
 - Location pages lead with `[service] in [city], BC` — the exact query people search.
+
+---
+
+## Audit Summary (March 27, 2026)
+
+**Critical findings:**
+- **0 of 41 pages have the recommended meta titles set** — all are using Squarespace auto-generated titles
+- **0 of 41 pages have meta descriptions** — every page is missing this entirely
+- **7 new pages** added since last reference (Balsam, Wedgewoods, Pinewood, Windline, Land Consultation, Permit Coordination, duplicate blog post)
+- **Duplicate blog post** at `/blog/building-in-pemberton-vs-whistler-1` — should be deleted or 301 redirected to `/blog/building-in-pemberton-vs-whistler`
+- **Contact URL** is `/contact-2` in Squarespace but links in code point to `/contact` — verify redirect is in place
+- **Homepage** is at `/home` in sitemap but should canonical to `/`
+
+**What Squarespace is auto-generating vs what should be set:**
+
+| Page | Current Auto Title | Should Be |
+|------|-------------------|-----------|
+| `/` | (none/generic) | `Custom Home Builder in Whistler, Pemberton & Squamish \| Balmoral Construction` |
+| `/warbler-way` | `Warbler Way Custom Home Whistler — Balmoral Construction` | `Warbler Way — Custom Home in Whistler \| Balmoral Construction` |
+| `/whistler-home-builder` | `Whistler Luxury Custom Homes — Balmoral Construction` | `Custom Home Builder in Whistler, BC \| Balmoral Construction` |
+| `/services` | `Custom Home Building & Renovation Services — Balmoral Construction` | `Services \| Custom Home Building, Renovations & Contracting \| Balmoral` |
 
 ---
 
@@ -31,7 +52,9 @@ balmoralconstruction.com/
 │   ├── /custom-home-building      Custom Home Building
 │   ├── /home-renovations          Home Renovations
 │   ├── /general-contracting       General Contracting
-│   └── /project-management        Project Management
+│   ├── /project-management        Project Management
+│   ├── /land-consultation         Land Consultation ← NEW
+│   └── /permit-coordination       Permit Coordination ← NEW
 │
 ├── /whistler-home-builder         Whistler — Custom Homes
 ├── /whistler-home-renovations     Whistler — Renovations
@@ -50,18 +73,23 @@ balmoralconstruction.com/
 ├── /eagle                         Project — Pemberton
 ├── /mountain-view                 Project — Whistler
 ├── /drifter                       Project — Whistler
+├── /balsam                        Project — Whistler ← NEW
+├── /wedgewoods                    Project — Whistler ← NEW
+├── /pinewood                      Project — Pemberton ← NEW
+├── /windline                      Project — Squamish ← NEW
 │
 ├── /blog                          Blog Hub
 │   ├── /blog/how-much-does-it-cost-to-build-a-custom-home-in-whistler
 │   ├── /blog/how-much-does-it-cost-to-build-a-custom-home-in-pemberton
 │   ├── /blog/building-in-pemberton-vs-whistler
+│   ├── /blog/building-in-pemberton-vs-whistler-1  ← DUPLICATE — delete or 301
 │   ├── /blog/bc-building-permit-process-explained
 │   ├── /blog/bc-energy-step-code-for-homeowners
 │   ├── /blog/project-spotlight-warbler-way
 │   └── /blog/project-spotlight-sugarloaf
 ```
 
-**Total: 34 pages**
+**Total: 41 pages (40 unique + 1 duplicate to remove)**
 
 ---
 
@@ -89,7 +117,7 @@ balmoralconstruction.com/
 
 ### Portfolio `/work`
 - **Meta Title:** `Our Work | Custom Homes in Whistler & Pemberton | Balmoral Construction`
-- **Meta Description:** `10+ custom home projects across the Sea to Sky Corridor. Explore our portfolio of completed builds in Whistler, Pemberton & Squamish.`
+- **Meta Description:** `14 custom home projects across the Sea to Sky Corridor. Explore our portfolio of completed builds in Whistler, Pemberton & Squamish.`
 - **H1:** `Our Work`
 
 ---
@@ -120,6 +148,16 @@ balmoralconstruction.com/
 - **Meta Title:** `Project Management | Custom Home Builds | Balmoral Construction`
 - **Meta Description:** `End-to-end project management for custom homes in the Sea to Sky Corridor. Permit coordination, trade management, and daily site presence from start to occupancy.`
 - **H1:** `Project Management`
+
+### Land Consultation `/land-consultation`
+- **Meta Title:** `Land Consultation | Sea to Sky Property Evaluation | Balmoral Construction`
+- **Meta Description:** `Property evaluation before you buy or build in the Sea to Sky Corridor. Lot assessment, site challenges, and build feasibility for Whistler, Pemberton & Squamish land.`
+- **H1:** `Land Consultation`
+
+### Permit Coordination `/permit-coordination`
+- **Meta Title:** `Building Permit Coordination | Whistler, Pemberton & Squamish | Balmoral`
+- **Meta Description:** `Navigate building permits across the Sea to Sky Corridor. RMOW, VOPB, and District of Squamish expertise from application to occupancy. Balmoral handles the process.`
+- **H1:** `Building Permit Coordination`
 
 ---
 
@@ -209,6 +247,26 @@ balmoralconstruction.com/
 - **Meta Description:** `Custom home in Whistler built with expert finishing carpentry and attention to detail. Mountain living designed for comfort and durability. Built by Balmoral Construction.`
 - **H1:** `Drifter`
 
+### Balsam `/balsam`
+- **Meta Title:** `Balsam — 4,000 Sq Ft Custom Home in Whistler | Balmoral Construction`
+- **Meta Description:** `4,000 sq ft alpine retreat in Whistler steps from the Village. Vaulted ceilings, wood-burning fireplace, and Innotech windows. Designed by Kat Sullivan, built by Balmoral.`
+- **H1:** `Balsam`
+
+### Wedgewoods `/wedgewoods`
+- **Meta Title:** `Wedgewoods — 4,500 Sq Ft Rancher in Whistler | Balmoral Construction`
+- **Meta Description:** `4,500 sq ft single-storey rancher in Whistler's WedgeWoods with Wedge Mountain views. Maya Wassenberg design, Blueprint millwork, Britt Lothrop interiors. Built by Balmoral.`
+- **H1:** `Wedgewoods`
+
+### Pinewood `/pinewood`
+- **Meta Title:** `Pinewood — ICF Custom Home in Pemberton | Balmoral Construction`
+- **Meta Description:** `3,500 sq ft insulated concrete home on the Pemberton Plateau. Energy-efficient ICF construction, Innotech windows, and Blueprint millwork. Built by Balmoral Construction.`
+- **H1:** `Pinewood`
+
+### Windline `/windline`
+- **Meta Title:** `Windline — Equestrian Development in Squamish | Balmoral Construction`
+- **Meta Description:** `Rural equestrian development in Brackendale, Squamish. Riding arena, barns, and staff housing with modern design and Marvin windows. Built by Balmoral Construction.`
+- **H1:** `Windline`
+
 ---
 
 ## Blog Posts
@@ -232,6 +290,10 @@ balmoralconstruction.com/
 - **Meta Title:** `Building in Pemberton vs Whistler — Cost, Land & Lifestyle Compared`
 - **Meta Description:** `Considering Pemberton or Whistler for your custom home? Compare construction costs, land prices, permits, climate, and lifestyle. Honest guide from a builder who works in both.`
 - **H1:** `Building in Pemberton vs Whistler`
+
+### DUPLICATE — Delete `/blog/building-in-pemberton-vs-whistler-1`
+- **Action:** Delete this page or set up a 301 redirect to `/blog/building-in-pemberton-vs-whistler`
+- **Reason:** Duplicate content hurts SEO. Google may index the wrong version or split ranking signals between both.
 
 ### BC Permit Process `/blog/bc-building-permit-process-explained`
 - **Meta Title:** `BC Building Permit Process Explained — Sea to Sky Guide (2026)`
@@ -281,7 +343,11 @@ Each page's `og:title`, `og:description`, and `og:image` should be set via the S
 - [ ] llms.txt and ai.txt for AI search optimization
 - [ ] 301 redirects configured for any old URL patterns
 - [ ] Page load speed: target < 3s (Squarespace CDN handles image delivery)
+- [ ] Delete or 301 redirect `/blog/building-in-pemberton-vs-whistler-1` (duplicate)
+- [ ] Verify `/home` → `/` redirect is working
+- [ ] Verify `/contact` → `/contact-2` redirect is working (or rename slug)
+- [ ] Resubmit sitemap after all meta changes are applied
 
 ---
 
-*Last updated: 2026-03-18*
+*Last updated: 2026-03-27*
