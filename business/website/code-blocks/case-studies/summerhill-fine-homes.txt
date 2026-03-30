@@ -2057,6 +2057,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
+  "name": "Positioning Summerhill as the Sunshine Coast's Premier Luxury Builder",
   "headline": "Positioning Summerhill as the Sunshine Coast's Premier Luxury Builder",
   "description": "How architectural photography and film built a cohesive visual brand for Summerhill Fine Homes across five luxury Sunshine Coast projects.",
   "url": "https://www.mattanthonyphoto.com/summerhill-fine-homes",

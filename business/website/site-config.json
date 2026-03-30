@@ -1,0 +1,738 @@
+{
+  "site": {
+    "name": "Matt Anthony Photography",
+    "domain": "mattanthonyphoto.com",
+    "url": "https://mattanthonyphoto.com"
+  },
+  "pages": [
+    {
+      "url": "/",
+      "slug": "",
+      "file": "sitewide/homepage.html",
+      "meta": {
+        "title": "Architectural Photographer in Vancouver, Squamish, Whistler & BC",
+        "description": "Architectural photography for builders, architects and designers across BC. Thoughtful imagery of completed projects, interiors and construction in progress.",
+        "og_description": "Matt Anthony photographs architecture, interiors and construction across British Columbia — from Whistler to Vancouver, Sunshine Coast to the Okanagan. Thoughtful imagery that helps builders and designers win awards, attract clients and document their best work."
+      }
+    },
+    {
+      "url": "/bio",
+      "file": "core-pages/bio.html",
+      "meta": {
+        "title": "Architectural Photographer in BC | About Matt Anthony",
+        "description": "Architectural photographer based in Squamish, BC. Serving builders, architects and designers from Whistler to Vancouver with intentional project imagery.",
+        "og_description": "Matt Anthony is an architectural photographer based in Squamish, BC. He works with custom home builders, architects and interior designers to create imagery that captures the intent behind every project."
+      }
+    },
+    {
+      "url": "/process",
+      "file": "core-pages/process.html",
+      "meta": {
+        "title": "Architectural Photography Process | Matt Anthony",
+        "description": "A clear, structured approach to architectural photography. From pre-shoot planning to final delivery — see how each project comes together in BC.",
+        "og_description": "Every shoot starts with understanding the project. Learn how Matt Anthony approaches architectural photography — from initial planning and site visits through to final image delivery."
+      }
+    },
+    {
+      "url": "/faqs",
+      "file": "core-pages/faqs.html",
+      "meta": {
+        "title": "Architectural Photography FAQs | Matt Anthony",
+        "description": "Answers to common questions about architectural photography in BC — pricing, timelines, weather planning, deliverables and how to prepare your project.",
+        "og_description": "Got questions about hiring an architectural photographer? Find answers on pricing, what to expect on shoot day, how to prepare your project, timelines and more."
+      }
+    },
+    {
+      "url": "/contact",
+      "file": "core-pages/contact.html",
+      "meta": {
+        "title": "Contact Matt Anthony | Architectural Photographer BC",
+        "description": "Get in touch to discuss your next architectural photography project in BC. Based in Squamish, serving Whistler, Vancouver, Sunshine Coast and beyond.",
+        "og_description": "Ready to photograph your project? Reach out to Matt Anthony to discuss your architectural photography needs anywhere in British Columbia."
+      }
+    },
+    {
+      "url": "/projects",
+      "file": "core-pages/projects.html",
+      "meta": {
+        "title": "Architectural Photography Portfolio | Projects in BC",
+        "description": "Architectural photography portfolio featuring custom homes, commercial builds and interiors across BC. Browse completed projects from Whistler to Vancouver.",
+        "og_description": "Browse Matt Anthony's portfolio of architectural photography projects across British Columbia — custom homes, commercial spaces, interiors and construction documentation."
+      }
+    },
+    {
+      "url": "/journal",
+      "file": "core-pages/journal.html",
+      "meta": {
+        "title": "Architectural Photography Journal | Tips for Builders",
+        "description": "Practical insights on architectural photography for builders, architects and designers. Award submissions, project planning and visual storytelling in BC.",
+        "og_description": "Articles and insights on architectural photography — from preparing your project for a shoot to making the most of your images for awards, marketing and proposals."
+      }
+    },
+
+    {
+      "url": "/project-photography",
+      "file": "service-pages/project-photography.html",
+      "meta": {
+        "title": "Architectural Project Photography | Matt Anthony",
+        "description": "Project photography for completed builds and interiors across BC. Capture the craftsmanship, materials and design intent of your architectural work.",
+        "og_description": "Document your completed projects with architectural photography that highlights craftsmanship, materials and design intent. Serving builders, architects and designers across British Columbia."
+      }
+    },
+    {
+      "url": "/award-publication-imagery",
+      "file": "service-pages/award-publication-imagery.html",
+      "meta": {
+        "title": "Award Submission Photography | Georgie & CHBA Ready",
+        "description": "Award-ready architectural photography for Georgie, CHBA and publication submissions. Images composed to meet judging criteria and editorial standards.",
+        "og_description": "Get photography specifically composed for award submissions and publication features. Matt Anthony understands what Georgie and CHBA judges look for — and how to present your project at its best."
+      }
+    },
+    {
+      "url": "/construction-team-content",
+      "file": "service-pages/build-team-content.html",
+      "meta": {
+        "title": "Construction Lifestyle Photography for Builders",
+        "description": "Construction lifestyle photography that shows your team, process and jobsite culture. Build a visual library for social media, recruitment and proposals.",
+        "og_description": "Lifestyle photography of your construction team in action. Build a library of authentic content for social media, recruitment, proposals and your website — shot on real jobsites across BC."
+      }
+    },
+    {
+      "url": "/creative-partner",
+      "file": "service-pages/creative-partner.html",
+      "meta": {
+        "title": "Ongoing Photography Partner for Builders & Designers | Matt Anthony",
+        "description": "An ongoing creative photography partner for builders and design firms in BC. Consistent imagery across every project, season and marketing need you have.",
+        "og_description": "Instead of hiring a photographer project by project, work with Matt Anthony as an ongoing creative partner. Consistent visual storytelling across all your projects, marketing and award submissions."
+      }
+    },
+    {
+      "url": "/services",
+      "file": "service-pages/services.html",
+      "meta": {
+        "title": "Photography Services | Matt Anthony",
+        "description": "Architectural photography services for builders, architects and designers in BC. Project photography, award imagery, construction content and creative partnerships.",
+        "og_description": "Photography services tailored to the construction and design industry. From single project shoots to ongoing creative partnerships across British Columbia."
+      }
+    },
+    {
+      "url": "/website-seo",
+      "file": "service-pages/website-seo.html",
+      "meta": {
+        "title": "Website Design & SEO for Builders | Matt Anthony",
+        "description": "Website design and SEO services for builders, architects and designers in BC. Get found online with a site that matches the quality of your work.",
+        "og_description": "Professional website design and search engine optimization built specifically for construction and design firms in British Columbia."
+      }
+    },
+
+    {
+      "url": "/summerhill-fine-homes",
+      "file": "case-studies/summerhill-fine-homes.html",
+      "meta": {
+        "title": "Summerhill Fine Homes | Architectural Photography Case Study",
+        "description": "Ongoing architectural photography for Summerhill Fine Homes. See how consistent imagery supports marketing, awards and brand building for custom builders.",
+        "og_description": "A case study in ongoing photography partnership. See how Summerhill Fine Homes uses consistent architectural imagery across their marketing, award submissions and brand presence."
+      }
+    },
+    {
+      "url": "/balmoral-construction",
+      "file": "case-studies/balmoral-construction.html",
+      "meta": {
+        "title": "Balmoral Construction | Architectural Photography Case Study",
+        "description": "Architectural photography case study with Balmoral Construction. Project documentation and visual content for a leading Whistler custom home builder.",
+        "og_description": "See how Balmoral Construction uses architectural photography to document their custom home builds in Whistler and support their marketing and award submissions."
+      }
+    },
+    {
+      "url": "/sitelines-architecture",
+      "file": "case-studies/sitelines-architecture.html",
+      "meta": {
+        "title": "Sitelines Architecture | Architectural Photography Case Study",
+        "description": "Architectural photography for Sitelines Architecture. Capturing design intent, site context and material choices across their BC residential portfolio.",
+        "og_description": "A look at how Sitelines Architecture uses photography to communicate design intent, document completed projects and support their portfolio and award submissions."
+      }
+    },
+    {
+      "url": "/the-window-merchant",
+      "file": "case-studies/the-window-merchant.html",
+      "meta": {
+        "title": "The Window Merchant | Architectural Photography Case Study",
+        "description": "Photography case study with The Window Merchant. Product-in-context imagery that showcases window and door installations in finished BC homes.",
+        "og_description": "See how The Window Merchant uses architectural photography to showcase their products installed in real homes — imagery that supports sales, marketing and trade partnerships."
+      }
+    },
+    {
+      "url": "/lrd-studio-interior-design",
+      "file": "case-studies/lrd-studio-interior-design.html",
+      "meta": {
+        "title": "LRD Studio Interior Design | Photography Case Study",
+        "description": "Interior photography for LRD Studio. Capturing material palettes, spatial flow and design details for an interior design firm based in British Columbia.",
+        "og_description": "A case study in photographing interior design work. See how LRD Studio uses professional imagery to showcase their material choices, spatial design and completed residential projects."
+      }
+    },
+
+    {
+      "url": "/the-perch-sunshine-coast",
+      "file": "project-pages/the-perch-sunshine-coast.html",
+      "meta": {
+        "title": "The Perch, Sunshine Coast | Architectural Photography",
+        "description": "Architectural photography of The Perch on the Sunshine Coast. A modern coastal residence captured in its natural forest and ocean-view setting in BC.",
+        "og_description": "The Perch is a modern residence on the Sunshine Coast surrounded by forest and ocean views. See how this project was photographed to highlight its connection to the coastal BC landscape."
+      }
+    },
+    {
+      "url": "/warbler-whistler",
+      "file": "project-pages/warbler-whistler.html",
+      "meta": {
+        "title": "Warbler, Whistler | Architectural Photography",
+        "description": "Architectural photography of Warbler in Whistler, BC. A mountain home photographed to highlight alpine design, natural materials and site integration.",
+        "og_description": "Warbler is a Whistler residence designed to integrate with its alpine surroundings. See the architectural photography capturing this mountain home's materials, light and landscape."
+      }
+    },
+    {
+      "url": "/fitzsimmons-whistler",
+      "file": "project-pages/fitzsimmons-whistler.html",
+      "meta": {
+        "title": "Fitzsimmons, Whistler | Architectural Photography",
+        "description": "Architectural photography of a custom home in Whistler's Fitzsimmons neighbourhood. Mountain contemporary design captured in all seasons and light.",
+        "og_description": "A custom home in Whistler's Fitzsimmons neighbourhood photographed to showcase its mountain contemporary design, interior details and integration with the surrounding landscape."
+      }
+    },
+    {
+      "url": "/fraser-valley-vista",
+      "file": "project-pages/fraser-valley-vista.html",
+      "meta": {
+        "title": "Fraser Valley Vista | Architectural Photography",
+        "description": "Architectural photography of Fraser Valley Vista. A residential project in the Fraser Valley captured to showcase its expansive views and design details.",
+        "og_description": "Fraser Valley Vista is a residential project photographed to highlight its panoramic views, architectural details and connection to the surrounding Fraser Valley landscape."
+      }
+    },
+    {
+      "url": "/seventh-day-adventist-bc-headquarters",
+      "file": "project-pages/seventh-day-adventist-bc-headquarters.html",
+      "meta": {
+        "title": "SDA BC Headquarters | Commercial Architectural Photography",
+        "description": "Commercial architectural photography of the Seventh-day Adventist BC headquarters. A purpose-built institutional project documented in British Columbia.",
+        "og_description": "Architectural photography of the Seventh-day Adventist BC headquarters — a commercial and institutional project documented to capture the building's design, function and material choices."
+      }
+    },
+    {
+      "url": "/pitt-meadows-residence",
+      "file": "project-pages/pitt-meadows-residence.html",
+      "meta": {
+        "title": "Pitt Meadows Residence | Architectural Photography",
+        "description": "Architectural photography of a custom residence in Pitt Meadows, BC. Interiors, exteriors and design details captured in natural Fraser Valley light.",
+        "og_description": "A custom home in Pitt Meadows photographed to highlight its design, interiors and connection to the Fraser Valley landscape. See the full architectural photography set."
+      }
+    },
+    {
+      "url": "/tranquil-retreat",
+      "file": "project-pages/tranquil-retreat.html",
+      "meta": {
+        "title": "Tranquil Retreat | Architectural Photography",
+        "description": "Architectural photography of Tranquil Retreat. A serene residential project in BC captured to reflect its calm design language and natural surroundings.",
+        "og_description": "Tranquil Retreat is a residential project photographed to reflect its calm, considered design. See how the architecture, interiors and landscape come together in this BC home."
+      }
+    },
+    {
+      "url": "/browns-residence",
+      "file": "project-pages/browns-residence.html",
+      "meta": {
+        "title": "Browns Residence | Architectural Photography",
+        "description": "Architectural photography of Browns Residence in British Columbia. Custom home interiors and exteriors captured with attention to material and light.",
+        "og_description": "Browns Residence is a custom home in BC photographed to showcase its material palette, interior design and the way natural light moves through the spaces."
+      }
+    },
+    {
+      "url": "/net-zero-build-whistler",
+      "file": "project-pages/net-zero-build-whistler.html",
+      "meta": {
+        "title": "Net Zero Build, Whistler | Architectural Photography",
+        "description": "Architectural photography of a net zero home in Whistler. Documenting sustainable construction, high-performance design and mountain building in BC.",
+        "og_description": "A net zero build in Whistler photographed to document its sustainable design, high-performance systems and how it sits within the mountain landscape. A model for green building in BC."
+      }
+    },
+    {
+      "url": "/silver-star-residence",
+      "file": "project-pages/silver-star-residence.html",
+      "meta": {
+        "title": "Silver Star Residence | Architectural Photography",
+        "description": "Architectural photography of a custom residence at Silver Star, BC. Mountain home interiors and exteriors captured in the Okanagan alpine setting.",
+        "og_description": "A custom mountain home at Silver Star in the Okanagan, photographed to showcase its alpine design, warm interiors and views of the surrounding BC landscape."
+      }
+    },
+    {
+      "url": "/sugarloaf-residence",
+      "file": "project-pages/sugarloaf-residence.html",
+      "meta": {
+        "title": "Sugarloaf Residence | Architectural Photography",
+        "description": "Architectural photography of Sugarloaf Residence. A custom home in BC captured to highlight its design, craftsmanship and integration with the site.",
+        "og_description": "Sugarloaf Residence is a custom home photographed to highlight its architectural design, material choices and how the building responds to its BC site context."
+      }
+    },
+    {
+      "url": "/eagle-residence",
+      "file": "project-pages/eagle-residence.html",
+      "meta": {
+        "title": "Eagle Residence | Architectural Photography",
+        "description": "Architectural photography of Eagle Residence in British Columbia. Interiors, exteriors and material details captured in natural light across the home.",
+        "og_description": "Eagle Residence is a custom home in BC photographed to document its architecture, interior finishes and the way natural light defines each space throughout the day."
+      }
+    },
+    {
+      "url": "/wakefield-rooftop-oasis",
+      "file": "project-pages/wakefield-rooftop-oasis.html",
+      "meta": {
+        "title": "Wakefield Rooftop Oasis | Architectural Photography",
+        "description": "Architectural photography of Wakefield Rooftop Oasis. An urban rooftop space in BC designed for outdoor living, captured in natural evening light.",
+        "og_description": "Wakefield Rooftop Oasis is an urban outdoor living space photographed to showcase its design, plantings and views — a rooftop retreat above the city."
+      }
+    },
+    {
+      "url": "/gambier-island-residence",
+      "file": "project-pages/gambier-island-residence.html",
+      "meta": {
+        "title": "Gambier Island Residence | Architectural Photography",
+        "description": "Architectural photography of a remote residence on Gambier Island, BC. Coastal design, natural materials and ocean views documented on location.",
+        "og_description": "A remote island home on Gambier Island photographed to capture its coastal architecture, natural material palette and the surrounding ocean and forest landscape."
+      }
+    },
+    {
+      "url": "/art-deco-reno",
+      "file": "project-pages/art-deco-reno.html",
+      "meta": {
+        "title": "Art Deco Renovation | Architectural Photography",
+        "description": "Architectural photography of an Art Deco renovation in BC. Period details, modern updates and interior design choices documented throughout the home.",
+        "og_description": "An Art Deco home renovation photographed to highlight the balance between period-appropriate details and modern design updates. See the full interior and exterior documentation."
+      }
+    },
+    {
+      "url": "/sunridge-whistler",
+      "file": "project-pages/sunridge-whistler.html",
+      "meta": {
+        "title": "Sunridge, Whistler | Architectural Photography",
+        "description": "Architectural photography of Sunridge in Whistler, BC. A mountain residence captured to showcase its timber details, views and alpine architecture.",
+        "og_description": "Sunridge is a Whistler residence photographed to highlight its timber construction, mountain views and how the architecture responds to its alpine setting in BC."
+      }
+    },
+    {
+      "url": "/west-10th-vancouver",
+      "file": "project-pages/west-10th-vancouver.html",
+      "meta": {
+        "title": "West 10th, Vancouver | Architectural Photography",
+        "description": "Architectural photography of a residential project on West 10th in Vancouver, BC. Urban design, interiors and neighbourhood context captured on site.",
+        "og_description": "A Vancouver residential project on West 10th photographed to document its urban architecture, interior design and how it sits within the surrounding neighbourhood context."
+      }
+    },
+    {
+      "url": "/balsam-way",
+      "file": "project-pages/balsam-way.html",
+      "meta": {
+        "title": "Balsam Way | Architectural Photography",
+        "description": "Architectural photography of Balsam Way. A custom home in BC captured to document its design details, material palette and surrounding landscape.",
+        "og_description": "Balsam Way is a custom residential project photographed to showcase its architectural details, interior finishes and how the home connects to its BC setting."
+      }
+    },
+    {
+      "url": "/sunset-beach",
+      "file": "project-pages/sunset-beach.html",
+      "meta": {
+        "title": "Sunset Beach | Architectural Photography",
+        "description": "Architectural photography of Sunset Beach residence. Coastal living, interior details and waterfront views captured in natural British Columbia light.",
+        "og_description": "A waterfront residence at Sunset Beach photographed to highlight its coastal architecture, interior design and the relationship between indoor spaces and ocean views."
+      }
+    },
+    {
+      "url": "/osprey",
+      "file": "project-pages/osprey.html",
+      "meta": {
+        "title": "Osprey | Architectural Photography",
+        "description": "Architectural photography of Osprey residence in British Columbia. Custom home interiors and exteriors documented with attention to design and light.",
+        "og_description": "Osprey is a custom home in BC photographed to showcase its architecture, interior design and the way the home responds to its natural surroundings."
+      }
+    },
+
+    {
+      "url": "/squamish-architectural-photography",
+      "file": "location-pages/squamish-architectural-photography.html",
+      "meta": {
+        "title": "Squamish Architectural Photography | Matt Anthony",
+        "description": "Architectural photography in Squamish, BC. Locally based photographer serving builders, architects and designers in the Sea to Sky corridor.",
+        "og_description": "Matt Anthony is based in Squamish and photographs architecture, custom homes and interiors throughout the Sea to Sky corridor. Local knowledge, consistent availability and no travel fees."
+      }
+    },
+    {
+      "url": "/whistler-architectural-photography",
+      "file": "location-pages/whistler-architectural-photography.html",
+      "meta": {
+        "title": "Whistler Architectural Photography | Matt Anthony",
+        "description": "Architectural photography in Whistler, BC. Custom homes, mountain builds and alpine interiors photographed by a Sea to Sky-based photographer.",
+        "og_description": "Architectural photography for Whistler's builders, architects and designers. Matt Anthony is based nearby in Squamish and photographs mountain homes, ski chalets and alpine interiors year-round."
+      }
+    },
+    {
+      "url": "/vancouver-architectural-photographer",
+      "file": "location-pages/vancouver-architectural-photographer.html",
+      "meta": {
+        "title": "Vancouver Architectural Photographer | Matt Anthony",
+        "description": "Architectural photographer serving Vancouver, BC. Project photography, interiors and award imagery for builders, architects and design firms.",
+        "og_description": "Matt Anthony photographs architecture, interiors and construction across Vancouver. Working with builders, architects and interior designers who need professional project imagery for marketing and awards."
+      }
+    },
+    {
+      "url": "/sunshine-coast-photography",
+      "file": "location-pages/sunshine-coast-photography.html",
+      "meta": {
+        "title": "Sunshine Coast Architectural Photography | Matt Anthony",
+        "description": "Architectural photography on the Sunshine Coast, BC. Custom homes, waterfront builds and coastal interiors captured in natural Pacific light.",
+        "og_description": "Architectural photography for builders and designers on the Sunshine Coast. Matt Anthony photographs custom homes, waterfront properties and coastal interiors — from Gibsons to Powell River."
+      }
+    },
+    {
+      "url": "/pemberton-photography",
+      "file": "location-pages/pemberton-photography.html",
+      "meta": {
+        "title": "Pemberton Architectural Photography | Matt Anthony",
+        "description": "Architectural photography in Pemberton, BC. Rural estates, mountain homes and agricultural builds photographed in the Pemberton Valley.",
+        "og_description": "Architectural photography for builders and designers in Pemberton and the surrounding valley. Matt Anthony captures rural estates, mountain residences and agricultural properties in natural light."
+      }
+    },
+    {
+      "url": "/fraser-valley-photography",
+      "file": "location-pages/fraser-valley-photography.html",
+      "meta": {
+        "title": "Fraser Valley Architectural Photography | Matt Anthony",
+        "description": "Architectural photography in the Fraser Valley, BC. Custom homes, commercial builds and interiors from Langley to Chilliwack and Abbotsford.",
+        "og_description": "Architectural photography across the Fraser Valley — from Langley and Abbotsford to Chilliwack. Matt Anthony works with builders, architects and designers to document residential and commercial projects."
+      }
+    },
+    {
+      "url": "/okanagan-architectural-photographer",
+      "file": "location-pages/okanagan-architectural-photographer.html",
+      "meta": {
+        "title": "Okanagan Architectural Photographer | Matt Anthony",
+        "description": "Architectural photographer serving the Okanagan, BC. Custom homes, wineries and resort properties from Kelowna to Vernon, captured on location.",
+        "og_description": "Matt Anthony photographs architecture and interiors across the Okanagan — from Kelowna to Vernon and Penticton. Custom homes, commercial builds, wineries and resort properties documented on location."
+      }
+    },
+
+    {
+      "url": "/journal/how-to-photograph-your-project-for-award-submissions",
+      "file": "journal-posts/how-to-photograph-your-project-for-award-submissions.html",
+      "meta": {
+        "title": "How to Photograph Your Project for Award Submissions | Matt Anthony",
+        "description": "Learn how to photograph your building project for award submissions. Practical tips on composition, staging and what judges look for in BC awards.",
+        "og_description": "A guide to getting award-ready photography of your completed project. Covers what to prepare before the shoot, how to stage spaces, and what Georgie and CHBA judges actually look for in submission images."
+      }
+    },
+    {
+      "url": "/journal/why-your-award-submission-photos-arent-working",
+      "file": "journal-posts/why-your-award-submission-photos-arent-working.html",
+      "meta": {
+        "title": "Why Your Award Submission Photos Aren't Working | Matt Anthony",
+        "description": "Common reasons award submission photos fall short. Fix issues with composition, lighting and staging before your next Georgie or CHBA entry.",
+        "og_description": "If your award submissions aren't placing, the photography might be the issue. Learn the most common mistakes builders and designers make with submission imagery — and how to fix them."
+      }
+    },
+    {
+      "url": "/journal/what-georgie-award-judges-look-for-submission-photography",
+      "file": "journal-posts/what-georgie-award-judges-look-for-submission-photography.html",
+      "meta": {
+        "title": "What Georgie Award Judges Look For in Photos | Matt Anthony",
+        "description": "What Georgie Award judges look for in submission photography. Understand judging criteria so your images support a winning entry for your BC project.",
+        "og_description": "Georgie Award judges evaluate projects partly through photography. Learn what they look for in submission images — from composition and lighting to how well the photos communicate design intent."
+      }
+    },
+    {
+      "url": "/journal/roi-professional-architectural-photography-builders",
+      "file": "journal-posts/roi-professional-architectural-photography-builders.html",
+      "meta": {
+        "title": "ROI of Architectural Photography for Builders | Matt Anthony",
+        "description": "The return on professional architectural photography for custom home builders. How quality imagery supports marketing, awards and client acquisition.",
+        "og_description": "Professional architectural photography is an investment, not just an expense. See how builders use project imagery to win awards, attract better clients and build a stronger brand over time."
+      }
+    },
+    {
+      "url": "/journal/project-photography-vs-real-estate-photography",
+      "file": "journal-posts/project-photography-vs-real-estate-photography.html",
+      "meta": {
+        "title": "Project Photography vs Real Estate Photography | Matt Anthony",
+        "description": "Project photography vs real estate photography — what is the difference? Why builders and architects need more than listing photos for their work.",
+        "og_description": "Real estate photography sells a property. Project photography documents the work. Learn why builders, architects and designers need a different approach than what works for MLS listings."
+      }
+    },
+    {
+      "url": "/journal/what-architects-should-look-for-hiring-photographer",
+      "file": "journal-posts/what-architects-should-look-for-hiring-photographer.html",
+      "meta": {
+        "title": "What Architects Should Look For Hiring a Photographer | Matt Anthony",
+        "description": "What architects should look for when hiring a photographer. Key considerations for finding the right fit for your project documentation in BC.",
+        "og_description": "Hiring a photographer to document your architectural work? Learn what to look for in a portfolio, what questions to ask, and how to find someone who understands design intent."
+      }
+    },
+    {
+      "url": "/journal/how-to-prepare-project-architectural-photo-shoot",
+      "file": "journal-posts/how-to-prepare-project-architectural-photo-shoot.html",
+      "meta": {
+        "title": "How to Prepare for an Architectural Photo Shoot | Matt Anthony",
+        "description": "How to prepare your project for an architectural photo shoot. A checklist for builders and designers to get the best results on shoot day.",
+        "og_description": "Preparation makes the difference between good and great architectural photos. Here is a practical checklist for builders and designers to follow before the photographer arrives on site."
+      }
+    },
+    {
+      "url": "/journal/5-details-make-or-break-architectural-interior-photography",
+      "file": "journal-posts/5-details-make-or-break-architectural-interior-photography.html",
+      "meta": {
+        "title": "5 Details That Make or Break Interior Photography | Matt Anthony",
+        "description": "Five details that make or break architectural interior photography. Small choices in styling and light that have an outsized impact on your images.",
+        "og_description": "Interior photography lives or dies in the details. Learn the five things — from styling to natural light — that consistently separate strong architectural interiors from forgettable ones."
+      }
+    },
+    {
+      "url": "/journal/seasonal-considerations-architectural-photography-bc",
+      "file": "journal-posts/seasonal-considerations-architectural-photography-bc.html",
+      "meta": {
+        "title": "Seasonal Considerations for Architectural Photography in BC | Matt Anthony",
+        "description": "Seasonal considerations for architectural photography in British Columbia. How weather, light and landscape affect timing for your project shoot.",
+        "og_description": "BC weather and seasons affect architectural photography in significant ways. Learn how to plan around rain, snow, foliage and golden hour timing to get the best results for your project."
+      }
+    },
+    {
+      "url": "/journal/architectural-photography-whistler-mountain-projects",
+      "file": "journal-posts/architectural-photography-whistler-mountain-projects.html",
+      "meta": {
+        "title": "Architectural Photography in Whistler | Mountain Projects",
+        "description": "Architectural photography for mountain projects in Whistler, BC. How alpine conditions, snow and elevation shape the approach to every shoot.",
+        "og_description": "Photographing architecture in Whistler means working with snow, elevation, mountain light and tight access. Learn how mountain conditions shape the approach to project photography in the Sea to Sky."
+      }
+    },
+    {
+      "url": "/journal/behind-the-shoot-the-perch-sunshine-coast",
+      "file": "journal-posts/behind-the-shoot-the-perch-sunshine-coast.html",
+      "meta": {
+        "title": "Behind the Shoot — The Perch, Sunshine Coast | Matt Anthony",
+        "description": "Behind the shoot at The Perch on the Sunshine Coast. A look at how this coastal BC residence was planned, photographed and delivered.",
+        "og_description": "Go behind the scenes of The Perch, a Sunshine Coast residence. See how the shoot was planned around weather, light and site access — and how the final images came together."
+      }
+    },
+    {
+      "url": "/journal/summerhill-fine-homes-visual-brand-ongoing-photography",
+      "file": "journal-posts/summerhill-fine-homes-visual-brand-ongoing-photography.html",
+      "meta": {
+        "title": "Summerhill Fine Homes Visual Brand & Ongoing Photography | Matt Anthony",
+        "description": "How Summerhill Fine Homes built a visual brand through ongoing architectural photography. A look at the value of a consistent creative partnership.",
+        "og_description": "Summerhill Fine Homes invested in ongoing photography across multiple projects. See how a consistent creative partnership built their visual brand and supported their marketing and award submissions."
+      }
+    },
+    {
+      "url": "/journal/documenting-design-intent-photography-before-build-finished",
+      "file": "journal-posts/documenting-design-intent-photography-before-build-finished.html",
+      "meta": {
+        "title": "Documenting Design Intent Before the Build is Done | Matt Anthony",
+        "description": "Documenting design intent with photography before the build is finished. Why in-progress imagery has value for architects, designers and builders.",
+        "og_description": "You do not have to wait until the project is complete to start photographing. Learn why documenting design intent during construction can be just as valuable as the final images."
+      }
+    },
+    {
+      "url": "/journal/build-visual-library-website-proposals-awards",
+      "file": "journal-posts/how-to-build-visual-library-website-proposals-awards.html",
+      "meta": {
+        "title": "Build a Visual Library for Proposals & Awards | Matt Anthony",
+        "description": "Build a visual library of architectural photography for your website, proposals and award submissions. A long-term content strategy for builders in BC.",
+        "og_description": "A single shoot creates images for years of marketing. Learn how builders and designers can build a visual library that supports their website, proposals, award entries and social media."
+      }
+    },
+    {
+      "url": "/journal/construction-lifestyle-photography-best-social-media-investment-builders",
+      "file": "journal-posts/construction-lifestyle-photography-best-social-media-investment-builders.html",
+      "meta": {
+        "title": "Construction Lifestyle Photography for Social Media | Matt Anthony",
+        "description": "Construction lifestyle photography is the best social media investment for builders. Authentic jobsite content that builds trust and attracts clients.",
+        "og_description": "Forget stock photos and staged shots. Construction lifestyle photography gives builders authentic content that performs on social media — real teams, real jobsites, real work that builds trust with future clients."
+      }
+    },
+
+    {
+      "url": "/journal/architectural-photography-for-publications",
+      "file": "award-guides/architectural-photography-for-publications.html",
+      "meta": {
+        "title": "Architectural Photography for Publications | Matt Anthony",
+        "description": "How to get your architectural project published. A guide to submission-ready photography for design magazines and online publications.",
+        "og_description": "Getting published starts with the right photography. Learn what editors look for and how to prepare submission-ready images for architectural and design publications."
+      }
+    },
+    {
+      "url": "/journal/georgie-awards-guide",
+      "file": "award-guides/georgie-awards-guide.html",
+      "meta": {
+        "title": "Georgie Awards Photography Guide | Matt Anthony",
+        "description": "A complete guide to photography for Georgie Award submissions. What judges look for, how to prepare your project, and image requirements.",
+        "og_description": "Everything you need to know about preparing photography for Georgie Award submissions. Judging criteria, image requirements and how to present your project at its best."
+      }
+    },
+    {
+      "url": "/journal/chba-national-awards-guide",
+      "file": "award-guides/chba-national-awards-guide.html",
+      "meta": {
+        "title": "CHBA National Awards Photography Guide | Matt Anthony",
+        "description": "Photography guide for CHBA National Awards submissions. Image requirements, judging criteria and how to document your project for a winning entry.",
+        "og_description": "Prepare your project photography for CHBA National Awards. Understand what judges evaluate, image specifications and how to present your best work at the national level."
+      }
+    },
+    {
+      "url": "/journal/havan-awards-guide",
+      "file": "award-guides/havan-awards-guide.html",
+      "meta": {
+        "title": "HAVAN Awards Photography Guide | Matt Anthony",
+        "description": "Photography guide for HAVAN Awards submissions. How to photograph your project to meet judging criteria and stand out in the awards program.",
+        "og_description": "A guide to preparing photography for HAVAN Award submissions. Learn what makes award-winning imagery and how to document your project for the best results."
+      }
+    },
+    {
+      "url": "/journal/aibc-awards-guide",
+      "file": "award-guides/aibc-awards-guide.html",
+      "meta": {
+        "title": "AIBC Awards Photography Guide | Matt Anthony",
+        "description": "Photography guide for AIBC architectural awards. How to document your project with images that communicate design intent to the jury.",
+        "og_description": "Preparing photography for AIBC awards requires understanding what the architectural jury evaluates. Learn how to document your project's design intent through professional imagery."
+      }
+    },
+    {
+      "url": "/journal/raic-awards-guide",
+      "file": "award-guides/raic-awards-guide.html",
+      "meta": {
+        "title": "RAIC Awards Photography Guide | Matt Anthony",
+        "description": "Photography guide for RAIC awards submissions. How to present your architectural project with imagery that meets national jury standards.",
+        "og_description": "A guide to photographing your project for RAIC award submissions. Understand national-level judging criteria and how professional imagery supports your entry."
+      }
+    },
+    {
+      "url": "/journal/dezeen-submissions-guide",
+      "file": "award-guides/dezeen-submissions-guide.html",
+      "meta": {
+        "title": "Dezeen Submissions Photography Guide | Matt Anthony",
+        "description": "How to photograph your project for Dezeen submissions. Editorial standards, image requirements and what gets projects featured on Dezeen.",
+        "og_description": "Getting featured on Dezeen starts with the right photography. Learn the editorial standards, image specifications and presentation approach that gets architectural projects noticed."
+      }
+    },
+    {
+      "url": "/journal/dwell-submissions-guide",
+      "file": "award-guides/dwell-submissions-guide.html",
+      "meta": {
+        "title": "Dwell Submissions Photography Guide | Matt Anthony",
+        "description": "How to photograph your project for Dwell magazine. Interior and architectural photography standards for residential design submissions.",
+        "og_description": "Dwell features residential architecture and interior design. Learn how to prepare photography that meets their editorial standards and gets your project considered for publication."
+      }
+    },
+    {
+      "url": "/journal/western-living-submissions",
+      "file": "award-guides/western-living-submissions.html",
+      "meta": {
+        "title": "Western Living Submissions Photography Guide | Matt Anthony",
+        "description": "Photography guide for Western Living magazine submissions. How to present your BC project with images that meet their editorial and design standards.",
+        "og_description": "Western Living showcases the best of BC design. Learn how to prepare your project photography for submission — from image quality and styling to what the editorial team looks for."
+      }
+    },
+
+    {
+      "url": "/pricing-guide/architects",
+      "file": "pricing-guides/architects.html",
+      "meta": {
+        "title": "Architectural Photography Pricing for Architects | Matt Anthony",
+        "description": "Photography pricing guide for architects in BC. Understand costs, packages and what to expect when hiring an architectural photographer for your projects.",
+        "og_description": "A straightforward pricing guide for architects looking to hire a photographer. Covers project photography, award imagery and ongoing creative partnerships."
+      }
+    },
+    {
+      "url": "/pricing-guide/builders",
+      "file": "pricing-guides/builders.html",
+      "meta": {
+        "title": "Architectural Photography Pricing for Builders | Matt Anthony",
+        "description": "Photography pricing guide for custom home builders in BC. Project shoots, construction content, award imagery and retainer options explained.",
+        "og_description": "A clear pricing guide for builders who want professional photography. Covers project documentation, construction lifestyle content, award submissions and ongoing partnerships."
+      }
+    },
+    {
+      "url": "/pricing-guide/interior-designers",
+      "file": "pricing-guides/interior-designers.html",
+      "meta": {
+        "title": "Interior Photography Pricing for Designers | Matt Anthony",
+        "description": "Photography pricing guide for interior designers in BC. Portfolio shoots, editorial imagery and creative partnership options for design firms.",
+        "og_description": "A pricing guide for interior designers looking to invest in professional photography. Covers portfolio shoots, editorial-style imagery and ongoing creative partnerships."
+      }
+    },
+    {
+      "url": "/pricing-guide/trades-suppliers",
+      "file": "pricing-guides/trades-suppliers.html",
+      "meta": {
+        "title": "Photography Pricing for Trades & Suppliers | Matt Anthony",
+        "description": "Photography pricing for trades and suppliers in BC. Product-in-context imagery, installation documentation and marketing content for your business.",
+        "og_description": "Professional photography pricing for trades, suppliers and fabricators. Showcase your products installed in real projects with imagery that supports your sales and marketing."
+      }
+    },
+
+    {
+      "url": "/discovery-call",
+      "file": "utility-pages/discovery-call.html",
+      "meta": {
+        "title": "Book a Discovery Call | Matt Anthony Photography",
+        "description": "Book a free discovery call to discuss your architectural photography project. No obligation — just a conversation about your goals and how we can help.",
+        "og_description": "Ready to discuss your project? Book a free discovery call with Matt Anthony to talk about your architectural photography needs."
+      }
+    },
+    {
+      "url": "/pricing-guide-landing",
+      "file": "utility-pages/pricing-guide-landing.html",
+      "meta": {
+        "title": "Get Pricing | Matt Anthony Photography",
+        "description": "Get a pricing guide for architectural photography services in BC. Select your industry for a tailored breakdown of packages and investment levels.",
+        "og_description": "Request a pricing guide tailored to your industry. Covers project photography, award imagery, construction content and creative partnership options."
+      }
+    },
+    {
+      "url": "/pricing-guide-thank-you",
+      "file": "utility-pages/pricing-guide-thank-you.html",
+      "meta": {
+        "title": "Thank You | Matt Anthony Photography",
+        "description": "Thank you for requesting a pricing guide. Check your inbox for your personalized architectural photography pricing breakdown.",
+        "og_description": "Your pricing guide is on its way. Check your inbox for a detailed breakdown of architectural photography packages and investment levels."
+      }
+    },
+    {
+      "url": "/free-guide",
+      "file": "utility-pages/free-guide.html",
+      "meta": {
+        "title": "Free Photography Guide | Matt Anthony",
+        "description": "Download a free guide on architectural photography for builders and designers in BC. Practical tips to get more from your project imagery.",
+        "og_description": "A free guide to getting the most from architectural photography. Practical advice for builders, architects and designers on preparing projects and using images effectively."
+      }
+    },
+    {
+      "url": "/marketing-plan",
+      "file": "utility-pages/marketing-plan-landing.html",
+      "meta": {
+        "title": "Free Marketing Plan for Builders & Designers | Matt Anthony",
+        "description": "Get a free personalized marketing plan for your construction or design firm. Website audit, competitor analysis and a 90-day action plan.",
+        "og_description": "We will audit your website, analyze your competitors, and build a 90-day marketing roadmap tailored to your firm. Free, no strings attached."
+      }
+    },
+    {
+      "url": "/digital-business-card",
+      "file": "utility-pages/digital-business-card.html",
+      "meta": {
+        "title": "Matt Anthony | Digital Business Card",
+        "description": "Digital business card for Matt Anthony, architectural photographer in British Columbia.",
+        "og_description": "Contact information and quick links for Matt Anthony, architectural photographer based in Squamish, BC."
+      }
+    },
+    {
+      "url": "/project-intake",
+      "file": "utility-pages/project-intake-form.html",
+      "meta": {
+        "title": "Project Intake Form | Matt Anthony Photography",
+        "description": "Submit your project details for an architectural photography shoot. Help us prepare by sharing location, timeline and project specifics.",
+        "og_description": "Fill out the project intake form to help Matt Anthony prepare for your architectural photography shoot. Share project details, location, timeline and any specific requirements."
+      }
+    }
+  ]
+}

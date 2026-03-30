@@ -159,6 +159,11 @@
 <!-- Fix og:image to HTTPS -->
 <meta property="og:image" content="https://static1.squarespace.com/static/6824fd48afd1dd40cd73e146/t/68643f2e3cc74f1722c12ce4/1751400238330/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg?format=1500w" />
 
+<!-- Twitter/X Card — large image for photographer site -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@mattanthonyphoto">
+<meta name="twitter:image" content="https://static1.squarespace.com/static/6824fd48afd1dd40cd73e146/t/68643f2e3cc74f1722c12ce4/1751400238330/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg?format=1500w" />
+
 <!-- Sitewide Structured Data -->
 <script type="application/ld+json">
 {

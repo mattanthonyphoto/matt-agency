@@ -1,0 +1,2228 @@
+<style>.item-pagination{display:none!important}.page-title-wrapper,.page-description-wrapper,.collection-item-title{display:none!important}.sqs-announcement-bar-dropzone{display:none!important}
+
+/* ═══ INTERACTIVE LAYER ═══ */
+
+/* ── Loading screen ── */
+.sv-ws-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a1a18;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s;
+}
+
+.sv-ws-loader.sv-ws-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.sv-ws-loader-brand {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: #f6f4f0;
+  opacity: 0;
+  animation: svWsLoaderIn 0.6s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.sv-ws-loader-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(138,133,121,0.7);
+  margin-top: 8px;
+  opacity: 0;
+  animation: svWsLoaderIn 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.sv-ws-loader-line {
+  width: 80px;
+  height: 1px;
+  background: rgba(201,169,110,0.12);
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+  opacity: 0;
+  animation: svWsLoaderIn 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.sv-ws-loader-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  animation: svWsLoaderFill 1s 0.5s cubic-bezier(0.33,1,0.68,1) forwards;
+}
+
+@keyframes svWsLoaderIn { to { opacity: 1; } }
+@keyframes svWsLoaderFill { to { left: 100%; } }
+
+/* ── Section nav dots ── */
+.sv-ws-section-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.sv-ws-section-nav.sv-ws-nav-visible {
+  opacity: 1;
+}
+
+.sv-ws-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #8a8579;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.sv-ws-nav-dot:hover {
+  border-color: #c9a96e;
+  transform: scale(1.3);
+}
+
+.sv-ws-nav-dot.sv-ws-nav-active {
+  background: #c9a96e;
+  border-color: #c9a96e;
+  box-shadow: 0 0 8px rgba(201,169,110,0.4);
+}
+
+.sv-ws-nav-dot::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, right 0.3s ease;
+}
+
+.sv-ws-nav-dot:hover::before {
+  opacity: 1;
+  right: 24px;
+}
+
+@media (max-width: 768px) {
+  .sv-ws-section-nav { display: none; }
+}
+
+/* ── Scroll progress bar ── */
+.sv-ws-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.4));
+  z-index: 9999;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px rgba(201,169,110,0.4);
+}
+
+/* ── Headline gold underline on em ── */
+.sv-ws-wrap h2 em {
+  position: relative;
+  display: inline;
+}
+
+.sv-ws-wrap h2 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #c9a96e, rgba(201,169,110,0.2));
+  transition: width 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-ws-wrap h2.sv-ws-underlined em::after {
+  width: 100%;
+}
+
+/* ── Divider draw animation ── */
+.sv-ws-divider {
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-ws-divider.sv-ws-drawn {
+  width: 80px;
+}
+
+/* ── Ken Burns on image breaks ── */
+.sv-ws-img-break.sv-ws-in-view img {
+  animation: svWsKenBurns 16s ease-in-out infinite alternate;
+}
+
+@keyframes svWsKenBurns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.06) translate(-4px, -6px); }
+}
+
+/* ── Film grain overlay ── */
+.sv-ws-grain::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.sv-ws-grain {
+  position: relative;
+}
+
+.sv-ws-grain > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Eyebrow gold dash (animated) ── */
+.sv-ws-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sv-ws-eyebrow::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  background: #c9a96e;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-ws-eyebrow.sv-ws-visible::before {
+  width: 24px;
+}
+
+/* ── Inline gold highlights ── */
+.sv-ws-gold { color: #c9a96e; font-weight: 400; }
+
+/* ── Scroll indicator ── */
+.sv-ws-scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 3;
+  transition: opacity 0.4s ease;
+}
+
+.sv-ws-scroll-hint.sv-ws-hidden { opacity: 0; pointer-events: none; }
+
+.sv-ws-scroll-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.45rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.3);
+}
+
+.sv-ws-scroll-line {
+  width: 1px;
+  height: 36px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(246,244,240,0.1);
+}
+
+.sv-ws-scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #c9a96e;
+  animation: svWsScrollPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes svWsScrollPulse {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ── Accent line ── */
+.sv-ws-accent {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.2) 20%, rgba(201,169,110,0.2) 80%, transparent 100%);
+}
+
+/* ── CTA background slow zoom ── */
+.sv-ws-cta-bg img {
+  transition: transform 8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-ws-cta.sv-ws-in-view .sv-ws-cta-bg img {
+  transform: scale(1.08);
+}
+
+/* ── CTA button glow pulse ── */
+.sv-ws-cta-btn {
+  animation: svWsBtnGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes svWsBtnGlow {
+  0% { box-shadow: none; }
+  100% { box-shadow: 0 0 40px rgba(201,169,110,0.15), 0 0 80px rgba(201,169,110,0.05); }
+}
+
+/* ── Hero scroll fade ── */
+.sv-ws-hero-content {
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* ── Stat counter glow ── */
+.sv-ws-stat-num {
+  transition: text-shadow 0.6s ease;
+}
+
+.sv-ws-stat-num.sv-ws-counted {
+  text-shadow: 0 0 20px rgba(201,169,110,0.3);
+}
+
+/* ── Meta bar border draw ── */
+.sv-ws-meta {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  background-image: linear-gradient(#d9d5cd, #d9d5cd), linear-gradient(#d9d5cd, #d9d5cd);
+  background-size: 0% 1px, 0% 1px;
+  background-position: center top, center bottom;
+  background-repeat: no-repeat;
+  transition: background-size 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sv-ws-meta.sv-ws-drawn {
+  background-size: 100% 1px, 100% 1px;
+}
+
+/* ── Photo break depth layers ── */
+.sv-ws-img-break {
+  position: relative;
+  overflow: hidden;
+}
+
+.sv-ws-img-break img {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+.sv-ws-img-break::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(rgba(26,26,24,0.15), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sv-ws-img-break::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: linear-gradient(transparent, rgba(26,26,24,0.55));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ═══ WEBSITE & SEO SERVICE PAGE ═══ */
+.sv-ws-wrap {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #1a1a18;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.sv-ws-wrap img {
+  max-width: 100%;
+  display: block;
+}
+
+.sv-ws-wrap a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── HERO ─── */
+.sv-ws-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 6rem 5vw;
+  background: #1a1a18;
+  overflow: hidden;
+}
+
+.sv-ws-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 20%, rgba(26,26,24,0.6) 60%, rgba(26,26,24,0.92) 100%);
+  z-index: 1;
+}
+
+.sv-ws-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.sv-ws-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  filter: saturate(0.6);
+}
+
+.sv-ws-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.sv-ws-hero-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.sv-ws-hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: #f6f4f0;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.sv-ws-hero h1 em {
+  font-style: italic;
+  color: #c9a96e;
+}
+
+.sv-ws-hero-sub {
+  font-size: 1.05rem;
+  color: #d9d5cd;
+  font-weight: 300;
+  max-width: 560px;
+  line-height: 1.8;
+}
+
+.sv-ws-hero-cta {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 1.1rem 3rem;
+  border: 1px solid #c9a96e !important;
+  background: #c9a96e !important;
+  color: #1a1a18 !important;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 2rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.sv-ws-hero-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.sv-ws-hero-cta:hover::before {
+  transform: translateX(100%);
+}
+
+.sv-ws-hero-cta:hover {
+  background: transparent !important;
+  color: #c9a96e !important;
+  border-color: #c9a96e !important;
+}
+
+/* ─── META BAR ─── */
+.sv-ws-meta {
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid #d9d5cd;
+  border-bottom: 1px solid #d9d5cd;
+}
+
+.sv-ws-meta-item {
+  flex: 1 1 180px;
+  padding: 2rem 5vw;
+  border-right: 1px solid #d9d5cd;
+}
+
+.sv-ws-meta-item:last-child {
+  border-right: none;
+}
+
+.sv-ws-meta-dt {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a8579;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.sv-ws-meta-dd {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #1a1a18;
+}
+
+/* ─── SECTIONS ─── */
+.sv-ws-section {
+  padding: 6rem 5vw;
+}
+
+.sv-ws-narrow {
+  max-width: 720px;
+}
+
+.sv-ws-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #b8975a;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.sv-ws-divider {
+  width: 60px;
+  height: 1px;
+  background: #c9a96e;
+  margin: 0 0 2rem;
+}
+
+.sv-ws-section h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.sv-ws-section p {
+  font-size: 1rem;
+  color: #4a4a46;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.sv-ws-section p:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── STATS BAR ─── */
+.sv-ws-stats-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  background: #1a1a18;
+  margin-top: 3rem;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.sv-ws-stat {
+  flex: 1 1 200px;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  border-right: 1px solid rgba(201,169,110,0.1);
+}
+
+.sv-ws-stat:last-child {
+  border-right: none;
+}
+
+.sv-ws-stat-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: #c9a96e;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.sv-ws-stat-lbl {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8a8579;
+  font-weight: 400;
+}
+
+/* ─── IMAGE BREAK ─── */
+.sv-ws-img-break {
+  width: 100%;
+  height: 70vh;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.sv-ws-img-break img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: clip-path 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.1s linear;
+}
+
+/* ─── WHAT WE DELIVER (two columns) ─── */
+.sv-ws-deliver-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  margin-top: 3rem;
+}
+
+.sv-ws-deliver-col {
+  flex: 1 1 300px;
+}
+
+.sv-ws-deliver-col-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  font-weight: 500;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(201,169,110,0.2);
+}
+
+.sv-ws-deliver-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 0.85rem 0;
+  font-size: 0.95rem;
+  color: #4a4a46;
+  line-height: 1.6;
+  border-bottom: 1px solid #eeece6;
+}
+
+.sv-ws-deliver-item::before {
+  content: '';
+  flex-shrink: 0;
+  width: 16px;
+  height: 1px;
+  background: #c9a96e;
+  margin-top: 0.75rem;
+}
+
+/* ─── PROCESS STEPS ─── */
+.sv-ws-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.sv-ws-step-card {
+  flex: 1 1 220px;
+  padding: 2.5rem 0;
+  border-top: 2px solid #c9a96e;
+  transform: translateY(12px);
+  opacity: 1;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+
+.sv-ws-step-card.sv-ws-entered {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sv-ws-step-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: rgba(201,169,110,0.3);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.sv-ws-step-card h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  color: #1a1a18;
+}
+
+.sv-ws-step-card p {
+  font-size: 0.9rem;
+  color: #8a8579;
+  line-height: 1.7;
+}
+
+/* ─── PROOF / CASE STUDY ─── */
+.sv-ws-proof {
+  background: #f6f4f0;
+  padding: 6rem 5vw;
+}
+
+.sv-ws-proof .sv-ws-narrow {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+/* ── Browser mockup ── */
+.sv-ws-browser {
+  max-width: 940px;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(26,26,24,0.18), 0 10px 30px rgba(26,26,24,0.1);
+  animation: svWsBrowserGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes svWsBrowserGlow {
+  0% { box-shadow: 0 30px 80px rgba(26,26,24,0.18), 0 10px 30px rgba(26,26,24,0.1); }
+  100% { box-shadow: 0 30px 80px rgba(26,26,24,0.18), 0 10px 30px rgba(26,26,24,0.1), 0 0 60px rgba(201,169,110,0.06); }
+}
+
+.sv-ws-browser-bar {
+  background: #2a2a28;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sv-ws-browser-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.sv-ws-browser-dot:nth-child(1) { background: #ff5f57; }
+.sv-ws-browser-dot:nth-child(2) { background: #ffbd2e; }
+.sv-ws-browser-dot:nth-child(3) { background: #28c840; }
+
+.sv-ws-browser-url {
+  flex: 1;
+  background: #1a1a18;
+  border-radius: 6px;
+  padding: 7px 14px;
+  margin-left: 10px;
+  font-size: 12px;
+  color: #8a8579;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.sv-ws-browser-viewport {
+  height: 520px;
+  overflow: hidden;
+  position: relative;
+  background: #1a1a18;
+}
+
+.sv-ws-browser-viewport img {
+  width: 100%;
+  display: block;
+  animation: svWsWebScroll 20s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes svWsWebScroll {
+  0%, 20% { transform: translateY(0); }
+  45%, 55% { transform: translateY(-1500px); }
+  80%, 100% { transform: translateY(0); }
+}
+
+.sv-ws-proof-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.sv-ws-proof-stat {
+  flex: 1 1 140px;
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.sv-ws-proof-stat-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: #b8975a;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.sv-ws-proof-stat-lbl {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8a8579;
+  font-weight: 400;
+}
+
+.sv-ws-proof-link {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(201,169,110,0.3);
+  transition: border-color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.sv-ws-proof-link:hover {
+  border-color: #c9a96e;
+}
+
+/* ─── PRICING ─── */
+.sv-ws-pricing {
+  background: #1a1a18;
+  padding: 6rem 5vw;
+}
+
+.sv-ws-pricing .sv-ws-label {
+  color: #c9a96e;
+}
+
+.sv-ws-pricing .sv-ws-divider {
+  background: rgba(201,169,110,0.4);
+}
+
+.sv-ws-pricing h2 {
+  color: #f6f4f0;
+}
+
+.sv-ws-pricing h2 em {
+  font-style: italic;
+  color: #c9a96e;
+}
+
+.sv-ws-pricing-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 3rem;
+  max-width: 1000px;
+}
+
+.sv-ws-pricing-card {
+  flex: 1 1 280px;
+  border: 1px solid rgba(201,169,110,0.15);
+  border-radius: 2px;
+  padding: 2.5rem 2rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.sv-ws-pricing-card:hover {
+  border-color: rgba(201,169,110,0.4);
+  transform: translateY(-3px);
+}
+
+.sv-ws-pricing-card.sv-ws-featured {
+  border-color: #c9a96e;
+  position: relative;
+}
+
+.sv-ws-pricing-card.sv-ws-featured::before {
+  content: 'Most Popular';
+  position: absolute;
+  top: -10px;
+  left: 2rem;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: #c9a96e;
+  color: #1a1a18;
+  padding: 3px 12px;
+  font-weight: 600;
+}
+
+.sv-ws-pricing-tier {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.sv-ws-pricing-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #f6f4f0;
+  margin-bottom: 0.5rem;
+}
+
+.sv-ws-pricing-price {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #c9a96e;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.sv-ws-pricing-price span {
+  font-size: 0.8rem;
+  color: #8a8579;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.sv-ws-pricing-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sv-ws-pricing-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0.6rem 0;
+  font-size: 0.88rem;
+  color: #d9d5cd;
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(201,169,110,0.06);
+}
+
+.sv-ws-pricing-list li:last-child {
+  border-bottom: none;
+}
+
+.sv-ws-pricing-list li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 12px;
+  height: 1px;
+  background: rgba(201,169,110,0.4);
+  margin-top: 0.65rem;
+}
+
+.sv-ws-pricing-note {
+  font-size: 0.85rem;
+  color: #8a8579;
+  margin-top: 2.5rem;
+  line-height: 1.7;
+  max-width: 720px;
+}
+
+.sv-ws-pricing-note a {
+  color: #c9a96e;
+  border-bottom: 1px solid rgba(201,169,110,0.3);
+  transition: border-color 0.3s ease;
+}
+
+.sv-ws-pricing-note a:hover {
+  border-color: #c9a96e;
+}
+
+/* ─── FAQ ─── */
+.sv-ws-faq {
+  background: #f6f4f0;
+  padding: 6rem 5vw;
+}
+
+.sv-ws-faq-list {
+  max-width: 720px;
+  margin-top: 2rem;
+}
+
+.sv-ws-faq-item {
+  border-bottom: 1px solid #d9d5cd;
+}
+
+.sv-ws-faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  cursor: pointer;
+  gap: 1rem;
+}
+
+.sv-ws-faq-q h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #1a1a18;
+  margin: 0;
+}
+
+.sv-ws-faq-toggle {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.sv-ws-faq-toggle::before,
+.sv-ws-faq-toggle::after {
+  content: '';
+  position: absolute;
+  background: #c9a96e;
+  transition: transform 0.3s ease;
+}
+
+.sv-ws-faq-toggle::before {
+  width: 14px;
+  height: 1px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sv-ws-faq-toggle::after {
+  width: 1px;
+  height: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sv-ws-faq-item.sv-ws-faq-open .sv-ws-faq-toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+.sv-ws-faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+  padding: 0 0;
+}
+
+.sv-ws-faq-item.sv-ws-faq-open .sv-ws-faq-a {
+  max-height: 300px;
+  padding: 0 0 1.5rem;
+}
+
+.sv-ws-faq-a p {
+  font-size: 0.95rem;
+  color: #4a4a46;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ─── CTA ─── */
+.sv-ws-cta {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sv-ws-cta-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.sv-ws-cta-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.4) brightness(0.2);
+}
+
+.sv-ws-cta-c {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 5vw;
+}
+
+.sv-ws-cta-eyebrow {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.sv-ws-cta-eyebrow::before,
+.sv-ws-cta-eyebrow::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: rgba(201,169,110,0.3);
+}
+
+.sv-ws-cta h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 300;
+  color: #f6f4f0;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.sv-ws-cta h2 em {
+  font-style: italic;
+  color: #c9a96e;
+}
+
+.sv-ws-cta-sub {
+  color: #8a8579;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto 3rem;
+}
+
+.sv-ws-cta-btn {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 1.2rem 3.5rem;
+  border: 1px solid #c9a96e !important;
+  background: #c9a96e !important;
+  color: #1a1a18 !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.sv-ws-cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.sv-ws-cta-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.sv-ws-cta-btn:hover {
+  background: transparent !important;
+  color: #c9a96e !important;
+  border-color: #c9a96e !important;
+  box-shadow: 0 0 30px rgba(201,169,110,0.2);
+}
+
+/* ─── OTHER SERVICES ─── */
+.sv-ws-ot {
+  background: #f6f4f0;
+  padding: 5rem 5vw;
+}
+
+.sv-ws-ot-l {
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #b8975a;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.sv-ws-ot-g {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.sv-ws-ot-c {
+  flex: 1 1 240px;
+  max-width: 280px;
+  text-align: center;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.sv-ws-ot-c:hover {
+  transform: translateY(-4px);
+}
+
+.sv-ws-ot-c h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+.sv-ws-ot-c p {
+  font-size: 0.85rem;
+  color: #8a8579;
+  line-height: 1.7;
+}
+
+.sv-ws-ot-c a {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  font-weight: 500;
+}
+
+/* ─── FOOTER ─── */
+.sv-ws-ft-locs{display:flex;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}.sv-ws-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35);font-weight:500;transition:color .3s ease}.sv-ws-ft-locs a:hover{color:#c9a96e}
+.sv-ws-ft {
+  background: #1a1a18;
+  border-top: 1px solid rgba(201,169,110,0.15);
+}
+
+.sv-ws-ft-r {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.25rem 5vw;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.sv-ws-ft-i {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.sv-ws-ft-l {
+  font-size: 7.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c9a96e;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sv-ws-ft-dt {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(201,169,110,0.4);
+  flex-shrink: 0;
+  position: relative;
+  top: -2px;
+}
+
+.sv-ws-ft-i p,
+.sv-ws-ft-i a {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(246,244,240,0.8);
+  font-weight: 300;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sv-ws-ft-i a:hover {
+  color: #c9a96e;
+}
+
+.sv-ws-ft-s {
+  display: flex;
+  gap: 18px;
+}
+
+.sv-ws-ft-rl {
+  margin: 0 5vw;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.15) 20%, rgba(201,169,110,0.15) 80%, transparent 100%);
+}
+
+.sv-ws-ft-b {
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 5vw;
+}
+
+.sv-ws-ft-cp {
+  font-size: 10px;
+  color: rgba(246,244,240,0.35);
+  letter-spacing: 0.08em;
+}
+
+.sv-ws-ft-n {
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.sv-ws-ft-n a {
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(246,244,240,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sv-ws-ft-n a:hover {
+  color: #c9a96e;
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .sv-ws-hero {
+    min-height: 75vh;
+    padding: 4rem 6vw;
+  }
+
+  .sv-ws-section {
+    padding: 4rem 6vw;
+  }
+
+  .sv-ws-meta-item {
+    border-right: none;
+    border-bottom: 1px solid #d9d5cd;
+  }
+
+  .sv-ws-meta-item:last-child {
+    border-bottom: none;
+  }
+
+  .sv-ws-deliver-grid {
+    gap: 2.5rem;
+  }
+
+  .sv-ws-deliver-col {
+    flex: 1 1 100%;
+  }
+
+  .sv-ws-stats-bar {
+    flex-direction: column;
+  }
+
+  .sv-ws-stat {
+    border-right: none;
+    border-bottom: 1px solid rgba(201,169,110,0.1);
+    padding: 1.5rem 2rem;
+  }
+
+  .sv-ws-stat:last-child {
+    border-bottom: none;
+  }
+
+  .sv-ws-steps {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .sv-ws-step-card {
+    flex: 1 1 100%;
+  }
+
+  .sv-ws-proof {
+    padding: 4rem 6vw;
+  }
+
+  .sv-ws-proof-stats {
+    flex-direction: column;
+  }
+
+  .sv-ws-proof-stat {
+    flex: 1 1 100%;
+  }
+
+  .sv-ws-pricing {
+    padding: 4rem 6vw;
+  }
+
+  .sv-ws-pricing-grid {
+    flex-direction: column;
+  }
+
+  .sv-ws-pricing-card {
+    flex: 1 1 100%;
+  }
+
+  .sv-ws-faq {
+    padding: 4rem 6vw;
+  }
+
+  .sv-ws-cta {
+    min-height: 80vh;
+  }
+
+  .sv-ws-ot-g {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .sv-ws-ot-c {
+    max-width: 100%;
+  }
+
+  .sv-ws-img-break {
+    height: 50vh;
+    min-height: 350px;
+  }
+
+  .sv-ws-scroll-hint {
+    bottom: 24px;
+  }
+
+  .sv-ws-browser-viewport {
+    height: 300px;
+  }
+
+  .sv-ws-browser-viewport img {
+    animation-name: svWsWebScrollMobile;
+  }
+
+  @keyframes svWsWebScrollMobile {
+    0%, 20% { transform: translateY(0); }
+    45%, 55% { transform: translateY(-1000px); }
+    80%, 100% { transform: translateY(0); }
+  }
+
+  .sv-ws-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}.sv-ws-ft-locs a{font-size:.55rem}
+
+  .sv-ws-ft-r {
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 2rem 6vw;
+  }
+
+  .sv-ws-ft-rl {
+    margin: 0 6vw;
+  }
+
+  .sv-ws-ft-b {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    padding: 1.25rem 6vw;
+  }
+}
+</style>
+
+<div class="sv-ws-loader" id="svWsLoader">
+  <div class="sv-ws-loader-brand">Matt Anthony Photography</div>
+  <div class="sv-ws-loader-sub">Website &amp; SEO</div>
+  <div class="sv-ws-loader-line"></div>
+</div>
+<nav class="sv-ws-section-nav" id="svWsSectionNav"></nav>
+
+<div class="sv-ws-progress" id="svWsProgress"></div>
+<div class="sv-ws-wrap">
+
+<!-- ═══ HERO ═══ -->
+<div class="sv-ws-hero sv-ws-grain">
+  <div class="sv-ws-hero-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg" alt="Warbler Residence Whistler exterior architectural photography by Matt Anthony">
+  </div>
+  <div class="sv-ws-hero-content">
+    <p class="sv-ws-hero-label">Service 05</p>
+    <h1>Your website should work as hard as <em>your builds do.</em></h1>
+    <p class="sv-ws-hero-sub">We design and optimize websites for builders, architects, and designers. Built to rank. Built to convert. Built to reflect the quality of your work.</p>
+    <a href="/discovery-call" class="sv-ws-hero-cta" target="_blank" rel="noopener">Get Pricing</a>
+  </div>
+  <div class="sv-ws-scroll-hint" id="svWsScrollHint">
+    <span class="sv-ws-scroll-text">Scroll</span>
+    <span class="sv-ws-scroll-line"></span>
+  </div>
+</div>
+
+<!-- ═══ META BAR ═══ -->
+<dl class="sv-ws-meta">
+  <div class="sv-ws-meta-item">
+    <dt class="sv-ws-meta-dt">Platform</dt>
+    <dd class="sv-ws-meta-dd">Squarespace</dd>
+  </div>
+  <div class="sv-ws-meta-item">
+    <dt class="sv-ws-meta-dt">Scope</dt>
+    <dd class="sv-ws-meta-dd">Design, Build, SEO, GEO</dd>
+  </div>
+  <div class="sv-ws-meta-item">
+    <dt class="sv-ws-meta-dt">Timeline</dt>
+    <dd class="sv-ws-meta-dd">4 &ndash; 8 Weeks</dd>
+  </div>
+  <div class="sv-ws-meta-item">
+    <dt class="sv-ws-meta-dt">Proof</dt>
+    <dd class="sv-ws-meta-dd">Balmoral Construction</dd>
+  </div>
+</dl>
+
+<!-- ═══ THE PROBLEM ═══ -->
+<section class="sv-ws-section sv-ws-narrow" data-nav="Problem">
+  <p class="sv-ws-label sv-ws-eyebrow">The Problem</p>
+  <div class="sv-ws-divider"></div>
+  <h2>Your best work is invisible if <em>no one can find it</em></h2>
+  <p>You build homes that people walk into and stop talking. Kitchens that make designers pause. Exteriors that hold their own against the landscape. But when a prospective client searches for a builder in your area, your website does not show up. Or worse, it does, and it looks like it was built in 2014.</p>
+  <p>Most builder and architect websites share the same problems: outdated design that does not reflect current work, no SEO foundation so Google ignores them, slow load times that drive visitors away, and zero strategy for appearing in AI-generated search results. Meanwhile, the firms winning the best projects have clean, fast, portfolio-driven sites that rank locally and convert visitors into discovery calls.</p>
+  <p>Your website is your most important salesperson. It works around the clock, it is the first thing prospects check, and it shapes their impression before you ever speak. If it is not performing, you are leaving projects on the table.</p>
+
+  <div class="sv-ws-stats-bar" id="svWsStatsBar">
+    <div class="sv-ws-stat">
+      <div class="sv-ws-stat-num" data-target="75">75%</div>
+      <div class="sv-ws-stat-lbl">Check Your Website First</div>
+    </div>
+    <div class="sv-ws-stat">
+      <div class="sv-ws-stat-num" data-target="53">53%</div>
+      <div class="sv-ws-stat-lbl">Leave if Load Time > 3s</div>
+    </div>
+    <div class="sv-ws-stat">
+      <div class="sv-ws-stat-num" data-target="68">68%</div>
+      <div class="sv-ws-stat-lbl">Start With a Search Engine</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FULL-WIDTH IMAGE BREAK ═══ -->
+<div class="sv-ws-img-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c938566f-ee96-40da-aec4-d51ac9fa7e09/warbler-whistler-architectural-photography-matt-anthony-.jpg-13.jpg" alt="Warbler Residence Whistler interior architectural photography by Matt Anthony" loading="lazy">
+</div>
+
+<!-- ═══ WHAT WE DELIVER ═══ -->
+<section class="sv-ws-section" data-nav="Services">
+  <div class="sv-ws-narrow">
+    <p class="sv-ws-label sv-ws-eyebrow">What We Deliver</p>
+    <div class="sv-ws-divider"></div>
+    <h2>Two services. <em>One integrated strategy.</em></h2>
+    <p>A website without SEO is a brochure nobody reads. SEO without a well-designed site sends visitors to a poor first impression. We handle both together so every piece of your online presence works toward the same goal: bringing qualified clients to your door.</p>
+  </div>
+  <div class="sv-ws-deliver-grid" id="svWsDeliverGrid">
+    <div class="sv-ws-deliver-col">
+      <p class="sv-ws-deliver-col-label">Website Design &amp; Build</p>
+      <div class="sv-ws-deliver-item">Custom Squarespace design tailored to your brand and portfolio</div>
+      <div class="sv-ws-deliver-item">Dedicated project pages with professional image galleries</div>
+      <div class="sv-ws-deliver-item">Fully responsive across all devices and screen sizes</div>
+      <div class="sv-ws-deliver-item">Fast load times with optimized images and clean code</div>
+      <div class="sv-ws-deliver-item">SEO-ready structure from day one (schema, meta, sitemap)</div>
+      <div class="sv-ws-deliver-item">Contact forms and discovery call booking integration</div>
+    </div>
+    <div class="sv-ws-deliver-col">
+      <p class="sv-ws-deliver-col-label">SEO &amp; GEO Optimization</p>
+      <div class="sv-ws-deliver-item">Technical SEO audit and implementation</div>
+      <div class="sv-ws-deliver-item">Local SEO with geo-targeted location pages</div>
+      <div class="sv-ws-deliver-item">Content strategy aligned with search intent</div>
+      <div class="sv-ws-deliver-item">Structured data and JSON-LD schema markup</div>
+      <div class="sv-ws-deliver-item">GEO optimization for AI search visibility (ChatGPT, Gemini, Perplexity)</div>
+      <div class="sv-ws-deliver-item">Monthly reporting and ongoing technical maintenance</div>
+    </div>
+  </div>
+</section>
+
+<div class="sv-ws-accent"></div>
+
+<!-- ═══ THE PROCESS ═══ -->
+<section class="sv-ws-section" data-nav="Process">
+  <div class="sv-ws-narrow">
+    <p class="sv-ws-label sv-ws-eyebrow">The Process</p>
+    <div class="sv-ws-divider"></div>
+    <h2>Four steps from audit to <em>organic growth</em></h2>
+  </div>
+  <div class="sv-ws-steps" id="svWsSteps">
+    <div class="sv-ws-step-card">
+      <div class="sv-ws-step-num">01</div>
+      <h3>Audit</h3>
+      <p>We assess your current website, review competitor sites, analyze search performance, and identify the gaps. You receive a detailed report with clear priorities before we touch any code.</p>
+    </div>
+    <div class="sv-ws-step-card">
+      <div class="sv-ws-step-num">02</div>
+      <h3>Design</h3>
+      <p>Wireframes and visual design built around your brand, your portfolio, and how your clients actually navigate a builder or architecture website. Every layout decision is intentional.</p>
+    </div>
+    <div class="sv-ws-step-card">
+      <div class="sv-ws-step-num">03</div>
+      <h3>Build</h3>
+      <p>Custom Squarespace development with clean code, structured data, optimized images, and a mobile-first approach. We test across devices, check every link, and launch when it is ready.</p>
+    </div>
+    <div class="sv-ws-step-card">
+      <div class="sv-ws-step-num">04</div>
+      <h3>Grow</h3>
+      <p>Ongoing SEO, content updates, blog posts, and GEO optimization. We track rankings, refine strategy, and keep your site working harder every month. The launch is the starting line, not the finish.</p>
+    </div>
+  </div>
+</section>
+
+<div class="sv-ws-accent"></div>
+
+<!-- ═══ THE PROOF ═══ -->
+<section class="sv-ws-proof" data-nav="Proof">
+  <div class="sv-ws-narrow">
+    <p class="sv-ws-label sv-ws-eyebrow">The Proof</p>
+    <div class="sv-ws-divider"></div>
+    <h2>Balmoral Construction: <em>from scratch to search-ready</em></h2>
+    <p style="font-size:1rem;color:#4a4a46;line-height:1.8;max-width:720px;margin-bottom:2rem">Balmoral Construction needed a website that matched the quality of their luxury builds across Whistler and Pemberton. We designed and built a 42-page custom Squarespace site from the ground up, complete with dedicated project pages, 6 geo-targeted location pages, structured data across every page, and an ongoing SEO strategy that continues to drive organic growth month over month.</p>
+  </div>
+  <div class="sv-ws-browser">
+    <div class="sv-ws-browser-bar">
+      <span class="sv-ws-browser-dot"></span>
+      <span class="sv-ws-browser-dot"></span>
+      <span class="sv-ws-browser-dot"></span>
+      <span class="sv-ws-browser-url">balmoralconstruction.com</span>
+    </div>
+    <div class="sv-ws-browser-viewport">
+      <img src="https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/93aadd7d-1feb-4c75-bf1e-25a901aa197f/www.balmoralconstruction.com_+%282%29+%281%29.png?content-type=image%2Fpng" alt="Balmoral Construction website designed and built by Matt Anthony Photography" loading="lazy">
+    </div>
+  </div>
+  <div class="sv-ws-proof-stats" id="svWsProofStats">
+    <div class="sv-ws-proof-stat">
+      <div class="sv-ws-proof-stat-num sv-ws-stat-num">42</div>
+      <div class="sv-ws-proof-stat-lbl">Pages Built</div>
+    </div>
+    <div class="sv-ws-proof-stat">
+      <div class="sv-ws-proof-stat-num sv-ws-stat-num">6</div>
+      <div class="sv-ws-proof-stat-lbl">Geo-Targeted Pages</div>
+    </div>
+    <div class="sv-ws-proof-stat">
+      <div class="sv-ws-proof-stat-num sv-ws-stat-num">7.5</div>
+      <div class="sv-ws-proof-stat-lbl">GEO Visibility Score</div>
+    </div>
+    <div class="sv-ws-proof-stat">
+      <div class="sv-ws-proof-stat-num sv-ws-stat-num">8</div>
+      <div class="sv-ws-proof-stat-lbl">Blog Posts Live</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:1rem">
+    <a href="/balmoral-construction" class="sv-ws-proof-link">Read the Full Case Study &rarr;</a>
+  </div>
+</section>
+
+<div class="sv-ws-accent"></div>
+
+<!-- ═══ PRICING ═══ -->
+<section class="sv-ws-pricing sv-ws-grain" data-nav="Pricing">
+  <p class="sv-ws-label sv-ws-eyebrow">Pricing Guide</p>
+  <div class="sv-ws-divider"></div>
+  <h2>Straightforward pricing. <em>No surprises.</em></h2>
+  <div class="sv-ws-pricing-grid" id="svWsPricingGrid">
+
+    <div class="sv-ws-pricing-card">
+      <div class="sv-ws-pricing-tier">Tier 01</div>
+      <div class="sv-ws-pricing-name">Site Audit</div>
+      <div class="sv-ws-pricing-price">$1,500</div>
+      <ul class="sv-ws-pricing-list">
+        <li>Full website performance and UX audit</li>
+        <li>SEO technical analysis and keyword review</li>
+        <li>Competitor site benchmarking</li>
+        <li>GEO visibility assessment</li>
+        <li>Prioritized action plan with clear next steps</li>
+      </ul>
+    </div>
+
+    <div class="sv-ws-pricing-card sv-ws-featured">
+      <div class="sv-ws-pricing-tier">Tier 02</div>
+      <div class="sv-ws-pricing-name">Full Rebuild</div>
+      <div class="sv-ws-pricing-price">$5,000 &ndash; $10,000 <span>/ based on scope</span></div>
+      <ul class="sv-ws-pricing-list">
+        <li>Complete custom Squarespace design and build</li>
+        <li>Dedicated project pages with image galleries</li>
+        <li>SEO foundation (schema, meta, sitemap, alt text)</li>
+        <li>Geo-targeted location pages</li>
+        <li>Mobile-optimized responsive design</li>
+        <li>Contact forms and booking integration</li>
+        <li>30-day post-launch support</li>
+      </ul>
+    </div>
+
+    <div class="sv-ws-pricing-card">
+      <div class="sv-ws-pricing-tier">Tier 03</div>
+      <div class="sv-ws-pricing-name">Growth Retainer</div>
+      <div class="sv-ws-pricing-price">$1,500 &ndash; $3,500 <span>/ month</span></div>
+      <ul class="sv-ws-pricing-list">
+        <li>Monthly SEO monitoring and optimization</li>
+        <li>Content updates and new project pages</li>
+        <li>Blog posts targeting high-intent keywords</li>
+        <li>GEO optimization for AI search platforms</li>
+        <li>Monthly performance reporting</li>
+        <li>Ongoing technical maintenance</li>
+      </ul>
+    </div>
+
+  </div>
+  <p class="sv-ws-pricing-note">These tiers can be combined or bundled with our <a href="/creative-partner">Creative Partner</a> retainer for firms that need photography, video, and web under one roof. Every engagement starts with a discovery call to scope the right fit.</p>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="sv-ws-faq" data-nav="FAQ">
+  <p class="sv-ws-label sv-ws-eyebrow">Frequently Asked Questions</p>
+  <div class="sv-ws-divider"></div>
+  <h2>Common questions about <em>website and SEO</em></h2>
+  <div class="sv-ws-faq-list" id="svWsFaqList">
+
+    <div class="sv-ws-faq-item">
+      <div class="sv-ws-faq-q">
+        <h3>Why Squarespace instead of WordPress or a custom build?</h3>
+        <span class="sv-ws-faq-toggle"></span>
+      </div>
+      <div class="sv-ws-faq-a">
+        <p>Squarespace gives us the best balance of design flexibility, speed, and maintainability for portfolio-driven businesses. It handles hosting, security, and SSL out of the box, so you never worry about plugin updates or server maintenance. With custom code blocks, we achieve the same visual quality as a fully custom site at a fraction of the ongoing cost.</p>
+      </div>
+    </div>
+
+    <div class="sv-ws-faq-item">
+      <div class="sv-ws-faq-q">
+        <h3>How long does a full website build take?</h3>
+        <span class="sv-ws-faq-toggle"></span>
+      </div>
+      <div class="sv-ws-faq-a">
+        <p>Most builds take 4 to 8 weeks from kickoff to launch. The timeline depends on the number of pages, how quickly we receive content and feedback, and whether photography is being delivered alongside the build. We set clear milestones so you always know where things stand.</p>
+      </div>
+    </div>
+
+    <div class="sv-ws-faq-item">
+      <div class="sv-ws-faq-q">
+        <h3>What is GEO and why does it matter?</h3>
+        <span class="sv-ws-faq-toggle"></span>
+      </div>
+      <div class="sv-ws-faq-a">
+        <p>GEO stands for Generative Engine Optimization. It is the practice of optimizing your website so that AI-powered search tools like ChatGPT, Gemini, and Perplexity reference your business in their responses. As more people use AI to find service providers, GEO ensures your firm shows up in those conversations alongside traditional search results.</p>
+      </div>
+    </div>
+
+    <div class="sv-ws-faq-item">
+      <div class="sv-ws-faq-q">
+        <h3>Do I need a growth retainer after the site launches?</h3>
+        <span class="sv-ws-faq-toggle"></span>
+      </div>
+      <div class="sv-ws-faq-a">
+        <p>A website launch is the starting line. Without ongoing SEO, content updates, and technical maintenance, your rankings plateau and your site becomes stale. The growth retainer keeps your site active, your content fresh, and your search visibility improving month over month. That said, it is not required. The site we build will be strong on its own.</p>
+      </div>
+    </div>
+
+    <div class="sv-ws-faq-item">
+      <div class="sv-ws-faq-q">
+        <h3>Can I bundle this with photography or social media?</h3>
+        <span class="sv-ws-faq-toggle"></span>
+      </div>
+      <div class="sv-ws-faq-a">
+        <p>Yes. Many of our clients pair website and SEO with our Creative Partner retainer, which covers photography, video, social media, and web under one monthly agreement. It is the most efficient way to keep every channel consistent without managing multiple vendors.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="sv-ws-accent"></div>
+
+<!-- ═══ CTA ═══ -->
+<section class="sv-ws-cta">
+  <div class="sv-ws-cta-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef4086f4-81fa-468f-99bf-966ce7d83d89/warbler-whistler-architectural-photography-matt-anthony-.jpg-11.jpg" alt="Warbler Residence Whistler twilight architectural photography by Matt Anthony" loading="lazy">
+  </div>
+  <div class="sv-ws-cta-c">
+    <p class="sv-ws-cta-eyebrow">Ready to Start</p>
+    <h2>Let your website do <em>the selling.</em></h2>
+    <p class="sv-ws-cta-sub">Book a discovery call. We will review your current site, discuss your goals, and outline exactly what it takes to get your online presence where it needs to be.</p>
+    <a href="/discovery-call" class="sv-ws-cta-btn" target="_blank" rel="noopener">Book a Discovery Call</a>
+  </div>
+</section>
+
+<!-- ═══ OTHER SERVICES ═══ -->
+<div class="sv-ws-ot"><p class="sv-ws-ot-l">Other Services</p><div class="sv-ws-ot-g"><div class="sv-ws-ot-c"><h3>Project Photography</h3><p>Complete visual documentation of your finished build.</p><a href="/project-photography">Learn More</a></div><div class="sv-ws-ot-c"><h3>Creative Partner</h3><p>Your embedded creative department under one retainer.</p><a href="/creative-partner">Learn More</a></div><div class="sv-ws-ot-c"><h3>Award &amp; Publication Imagery</h3><p>Composed for jurors, editors, and industry recognition.</p><a href="/award-publication-imagery">Learn More</a></div></div></div>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="sv-ws-ft">
+<div class="sv-ws-ft-locs"><a href="/squamish-architectural-photography">Squamish</a><a href="/whistler-architectural-photography">Whistler</a><a href="/pemberton-photography">Pemberton</a><a href="/sunshine-coast-photography">Sunshine Coast</a><a href="/vancouver-architectural-photographer">Vancouver</a><a href="/fraser-valley-photography">Fraser Valley</a><a href="/okanagan-architectural-photographer">Okanagan</a></div>
+  <div class="sv-ws-ft-r">
+    <div class="sv-ws-ft-i"><span class="sv-ws-ft-l">Based In</span><span class="sv-ws-ft-dt"></span><p>Squamish, British Columbia</p></div>
+    <div class="sv-ws-ft-i"><span class="sv-ws-ft-l">Email</span><span class="sv-ws-ft-dt"></span><a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a></div>
+    <div class="sv-ws-ft-i"><span class="sv-ws-ft-l">Phone</span><span class="sv-ws-ft-dt"></span><a href="tel:6047659270">604.765.9270</a></div>
+    <div class="sv-ws-ft-i"><span class="sv-ws-ft-l">Follow</span><span class="sv-ws-ft-dt"></span><div class="sv-ws-ft-s"><a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+  </div>
+  <div class="sv-ws-ft-rl"></div>
+  <div class="sv-ws-ft-b">
+    <span class="sv-ws-ft-cp">&copy; 2026 Matt Anthony Photography</span>
+    <nav class="sv-ws-ft-n"><a href="/projects">Projects</a><a href="/journal">Journal</a><a href="/journal/georgie-awards-guide">Georgie Awards</a><a href="/bio">About</a><a href="/contact">Contact</a><a href="/pricing-guide-landing">Get Pricing</a></nav>
+  </div>
+</div>
+
+</div>
+
+<script>
+(function(){
+  var isMobile = 'ontouchstart' in window;
+  var wrap = document.querySelector('.sv-ws-wrap');
+  var progressBar = document.getElementById('svWsProgress');
+  var hero = document.querySelector('.sv-ws-hero');
+  var heroContent = document.querySelector('.sv-ws-hero-content');
+  var heroBg = document.querySelector('.sv-ws-hero-bg');
+
+  /* ═══ LOADING SCREEN ═══ */
+  var loader = document.getElementById('svWsLoader');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ loader.classList.add('sv-ws-done'); }, 1100);
+  });
+
+  /* ═══ SECTION NAV DOTS ═══ */
+  var sectionNav = document.getElementById('svWsSectionNav');
+  var navSections = document.querySelectorAll('[data-nav]');
+  var navDots = [];
+  navSections.forEach(function(sec){
+    var dot = document.createElement('div');
+    dot.className = 'sv-ws-nav-dot';
+    dot.setAttribute('data-label', sec.getAttribute('data-nav'));
+    dot.addEventListener('click', function(){
+      sec.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+    sectionNav.appendChild(dot);
+    navDots.push({ dot:dot, section:sec });
+  });
+
+  function updateNavDots(){
+    var scrollY = window.scrollY;
+    var winH = window.innerHeight;
+    if(scrollY > winH * 0.5) sectionNav.classList.add('sv-ws-nav-visible');
+    else sectionNav.classList.remove('sv-ws-nav-visible');
+    var active = null;
+    navDots.forEach(function(item){
+      var rect = item.section.getBoundingClientRect();
+      if(rect.top < winH * 0.5 && rect.bottom > winH * 0.3) active = item;
+      item.dot.classList.remove('sv-ws-nav-active');
+    });
+    if(active) active.dot.classList.add('sv-ws-nav-active');
+  }
+
+  /* ═══ SCROLL PROGRESS ═══ */
+  function updateProgress(){
+    var s = window.scrollY;
+    var d = document.documentElement.scrollHeight - window.innerHeight;
+    if(d > 0) progressBar.style.width = (s / d * 100) + '%';
+  }
+
+  /* ═══ HERO PARALLAX + FADE ═══ */
+  function updateHero(){
+    var s = window.scrollY;
+    var h = window.innerHeight;
+    if(s > h) return;
+    var ratio = s / h;
+    if(heroBg) heroBg.style.transform = 'translateY(' + (s * 0.35) + 'px) scale(' + (1 + ratio * 0.05) + ')';
+    if(heroContent){
+      heroContent.style.transform = 'translateY(' + (s * 0.15) + 'px)';
+      heroContent.style.opacity = 1 - ratio * 1.2;
+    }
+  }
+
+  /* ═══ PHOTO BREAK PARALLAX ═══ */
+  var photoBreaks = document.querySelectorAll('.sv-ws-img-break');
+  function updatePhotoParallax(){
+    photoBreaks.forEach(function(pb){
+      var rect = pb.getBoundingClientRect();
+      if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+      var center = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+      var img = pb.querySelector('img');
+      if(img) img.style.transform = 'translateY(' + (center * -30) + 'px) scale(1.08)';
+    });
+  }
+
+  /* ═══ HEADLINE GOLD UNDERLINE ═══ */
+  var headObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-ws-underlined'); headObs.unobserve(e.target); }
+    });
+  }, {threshold:0.4});
+  document.querySelectorAll('.sv-ws-wrap h2').forEach(function(h){ headObs.observe(h); });
+
+  /* ═══ EYEBROW DASH DRAW ═══ */
+  var eyeObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-ws-visible'); eyeObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.sv-ws-eyebrow').forEach(function(el){ eyeObs.observe(el); });
+
+  /* ═══ DIVIDER DRAW ═══ */
+  var divObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-ws-drawn'); divObs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.sv-ws-divider').forEach(function(el){ el.style.width = '0'; divObs.observe(el); });
+
+  /* ═══ META BAR BORDER DRAW ═══ */
+  var metaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-ws-drawn'); metaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.sv-ws-meta').forEach(function(el){ metaObs.observe(el); });
+
+  /* ═══ KEN BURNS ═══ */
+  var kenObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) e.target.classList.add('sv-ws-in-view');
+      else e.target.classList.remove('sv-ws-in-view');
+    });
+  }, {threshold:0.1});
+  photoBreaks.forEach(function(el){ kenObs.observe(el); });
+
+  /* ═══ CTA ZOOM ═══ */
+  var ctaObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('sv-ws-in-view'); ctaObs.unobserve(e.target); }
+    });
+  }, {threshold:0.2});
+  document.querySelectorAll('.sv-ws-cta').forEach(function(el){ ctaObs.observe(el); });
+
+  /* ═══ STAT COUNTERS ═══ */
+  function ease(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+  var counterObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting || e.target.classList.contains('sv-ws-counted')) return;
+      e.target.classList.add('sv-ws-counted');
+      var text = e.target.textContent.trim();
+      var hasPlus = text.indexOf('+') !== -1;
+      var hasPercent = text.indexOf('%') !== -1;
+      var hasDot = text.indexOf('.') !== -1;
+      var num = parseFloat(text);
+      if(isNaN(num)) return;
+      var start = performance.now();
+      function tick(now){
+        var t = Math.min((now - start) / 1400, 1);
+        var val = ease(t) * num;
+        var display = hasDot ? val.toFixed(1) : Math.round(val);
+        e.target.textContent = display + (hasPercent ? '%' : '') + (hasPlus ? '+' : '');
+        if(t < 1) requestAnimationFrame(tick);
+      }
+      e.target.textContent = (hasDot ? '0.0' : '0') + (hasPercent ? '%' : '') + (hasPlus ? '+' : '');
+      requestAnimationFrame(tick);
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.sv-ws-stat-num').forEach(function(el){ counterObs.observe(el); });
+
+  /* ═══ PROCESS CARD STAGGER ═══ */
+  var stepObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var cards = e.target.querySelectorAll('.sv-ws-step-card');
+        cards.forEach(function(card, i){
+          setTimeout(function(){ card.classList.add('sv-ws-entered'); }, i * 150);
+        });
+        stepObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.2});
+  var stepsGrid = document.getElementById('svWsSteps');
+  if(stepsGrid) stepObs.observe(stepsGrid);
+
+  /* ═══ DELIVER ITEMS STAGGER ═══ */
+  var delObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var items = e.target.querySelectorAll('.sv-ws-deliver-item');
+        items.forEach(function(item, i){
+          setTimeout(function(){
+            item.style.opacity = '1';
+            item.style.transform = 'translateX(0)';
+          }, i * 80);
+        });
+        delObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.2});
+  var delGrid = document.getElementById('svWsDeliverGrid');
+  if(delGrid){
+    var delItems = delGrid.querySelectorAll('.sv-ws-deliver-item');
+    delItems.forEach(function(item){
+      item.style.opacity = '0';
+      item.style.transform = 'translateX(-8px)';
+      item.style.transition = 'opacity 0.5s ease, transform 0.5s cubic-bezier(0.16,1,0.3,1)';
+    });
+    delObs.observe(delGrid);
+  }
+
+  /* ═══ PRICING CARDS STAGGER ═══ */
+  var priceObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var cards = e.target.querySelectorAll('.sv-ws-pricing-card');
+        cards.forEach(function(card, i){
+          setTimeout(function(){
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, i * 120);
+        });
+        priceObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.2});
+  var priceGrid = document.getElementById('svWsPricingGrid');
+  if(priceGrid){
+    var priceCards = priceGrid.querySelectorAll('.sv-ws-pricing-card');
+    priceCards.forEach(function(card){
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(12px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1)';
+    });
+    priceObs.observe(priceGrid);
+  }
+
+  /* ═══ FAQ ACCORDION ═══ */
+  var faqItems = document.querySelectorAll('.sv-ws-faq-item');
+  faqItems.forEach(function(item){
+    var q = item.querySelector('.sv-ws-faq-q');
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('sv-ws-faq-open');
+      faqItems.forEach(function(fi){ fi.classList.remove('sv-ws-faq-open'); });
+      if(!isOpen) item.classList.add('sv-ws-faq-open');
+    });
+  });
+
+  /* ═══ SCROLL INDICATOR HIDE ═══ */
+  var scrollHint = document.getElementById('svWsScrollHint');
+  function updateScrollHint(){
+    if(window.scrollY > 80) scrollHint.classList.add('sv-ws-hidden');
+    else scrollHint.classList.remove('sv-ws-hidden');
+  }
+
+  /* ═══ COMBINED SCROLL HANDLER ═══ */
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateProgress();
+        updateHero();
+        updatePhotoParallax();
+        updateScrollHint();
+        updateNavDots();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  updateProgress();
+  updateHero();
+  updateScrollHint();
+  updateNavDots();
+})();
+</script>
+
+<!--
+  Website & SEO — Service 05 Code Block
+  mattanthonyphoto.com/website-seo
+
+  Last updated: 2026-03-26
+  Changes:
+    1. Initial build with interactive layer (loader, nav dots, parallax, counter animation, FAQ accordion, card stagger)
+    2. Page structure: Hero, Meta bar, Problem (with stats bar), Image break, What We Deliver (2-col), Process (4-step), Proof (Balmoral browser mockup + stats), Pricing (3-tier), FAQ (5 items), CTA, Other Services, Footer
+    3. All classes use sv-ws- prefix, JS IDs use svWs prefix
+    4. Uses flexbox only (no CSS grid) per Squarespace guidelines
+    5. No custom cursor per feedback rules
+    6. Footer uses div not footer element
+    7. CTA links to /discovery-call
+    8. SEO meta and JSON-LD at bottom
+-->
+
+<!-- SEO Meta -->
+<meta name="description" content="Custom website design, SEO, and GEO optimization for builders, architects, and designers. Squarespace sites built to rank and convert. Serving BC from Squamish.">
+<link rel="canonical" href="https://www.mattanthonyphoto.com/website-seo">
+<meta property="og:title" content="Website & SEO | Custom Sites for Builders & Architects | Matt Anthony Photography">
+<meta property="og:description" content="Custom Squarespace websites and SEO optimization for builders, architects, and designers. Built to rank. Built to convert.">
+<meta property="og:url" content="https://www.mattanthonyphoto.com/website-seo">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Website Design & SEO",
+  "description": "Custom Squarespace website design, build, SEO, and GEO optimization for builders, architects, and interior designers across British Columbia.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Matt Anthony Photography",
+    "url": "https://www.mattanthonyphoto.com",
+    "telephone": "+16047659270",
+    "email": "info@mattanthonyphoto.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Squamish",
+      "addressRegion": "BC",
+      "addressCountry": "CA"
+    },
+    "areaServed": [
+      { "@type": "Place", "name": "Squamish, BC" },
+      { "@type": "Place", "name": "Whistler, BC" },
+      { "@type": "Place", "name": "Pemberton, BC" },
+      { "@type": "Place", "name": "Vancouver, BC" },
+      { "@type": "Place", "name": "Sunshine Coast, BC" },
+      { "@type": "Place", "name": "Fraser Valley, BC" },
+      { "@type": "Place", "name": "Okanagan, BC" }
+    ]
+  },
+  "serviceType": "Website Design and SEO",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Website & SEO Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Site Audit",
+          "description": "Full website performance, UX, and SEO audit with competitor benchmarking and prioritized action plan."
+        },
+        "price": "1500",
+        "priceCurrency": "CAD"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Full Website Rebuild",
+          "description": "Complete custom Squarespace design and build with SEO foundation, project pages, and geo-targeted location pages."
+        },
+        "priceRange": "$5,000 - $10,000",
+        "priceCurrency": "CAD"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Growth Retainer",
+          "description": "Monthly SEO monitoring, content updates, blog posts, GEO optimization, and technical maintenance."
+        },
+        "priceRange": "$1,500 - $3,500/month",
+        "priceCurrency": "CAD"
+      }
+    ]
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why Squarespace instead of WordPress or a custom build?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Squarespace gives us the best balance of design flexibility, speed, and maintainability for portfolio-driven businesses. It handles hosting, security, and SSL out of the box, so you never worry about plugin updates or server maintenance. With custom code blocks, we achieve the same visual quality as a fully custom site at a fraction of the ongoing cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a full website build take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most builds take 4 to 8 weeks from kickoff to launch. The timeline depends on the number of pages, how quickly we receive content and feedback, and whether photography is being delivered alongside the build."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is GEO and why does it matter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GEO stands for Generative Engine Optimization. It is the practice of optimizing your website so that AI-powered search tools like ChatGPT, Gemini, and Perplexity reference your business in their responses. As more people use AI to find service providers, GEO ensures your firm shows up in those conversations alongside traditional search results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a growth retainer after the site launches?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A website launch is the starting line. Without ongoing SEO, content updates, and technical maintenance, your rankings plateau and your site becomes stale. The growth retainer keeps your site active, your content fresh, and your search visibility improving month over month. That said, it is not required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I bundle this with photography or social media?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Many of our clients pair website and SEO with our Creative Partner retainer, which covers photography, video, social media, and web under one monthly agreement."
+      }
+    }
+  ]
+}
+</script>
