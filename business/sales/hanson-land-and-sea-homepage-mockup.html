@@ -120,8 +120,8 @@ a{color:inherit;text-decoration:none}
 
 .hero__counter{
   position:absolute;bottom:32px;right:32px;z-index:2;
-  font-size:11px;font-weight:500;letter-spacing:1px;
-  color:rgba(255,255,255,.6);
+  font-size:14px;font-weight:400;letter-spacing:2px;
+  color:rgba(255,255,255,.7);font-family:var(--serif);
 }
 
 /* ── MARQUEE ── */
@@ -411,12 +411,7 @@ a{color:inherit;text-decoration:none}
   font-family:var(--serif);font-weight:400;
   font-size:clamp(28px,3vw,44px);color:var(--charcoal);margin-top:20px;
 }
-.regions__grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto}
-.region{
-  border:1px solid var(--border);padding:48px 40px;
-  transition:all .4s;
-}
-.region:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(0,0,0,.04)}
+.regions__grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1000px;margin:0 auto}
 .region__title{font-family:var(--serif);font-size:26px;color:var(--charcoal);margin-bottom:6px}
 .region__lead{font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
 .region__areas{font-size:14px;font-weight:300;color:var(--body);line-height:1.85;margin-bottom:24px}
@@ -455,7 +450,7 @@ a{color:inherit;text-decoration:none}
 
 /* ── FOOTER ── */
 .footer{
-  background:var(--charcoal);border-top:1px solid rgba(255,255,255,.06);
+  background:#111110;border-top:1px solid rgba(255,255,255,.06);
   padding:64px clamp(24px,4vw,64px) 0;color:rgba(255,255,255,.4);
 }
 .footer .container{max-width:1400px;margin:0 auto}
@@ -478,6 +473,101 @@ a{color:inherit;text-decoration:none}
   font-size:11px;font-weight:300;color:rgba(255,255,255,.15);
 }
 .footer__land{max-width:420px;text-align:right;line-height:1.5}
+
+/* ── DRAG HINT ── */
+.projects__hint{
+  display:flex;align-items:center;gap:10px;
+  margin-top:24px;padding-left:clamp(24px,4vw,64px);
+  font-size:11px;font-weight:400;letter-spacing:1px;
+  text-transform:uppercase;color:var(--sand);
+  animation:hintPulse 2s ease-in-out infinite;
+}
+.projects__hint svg{width:20px;height:20px;stroke:var(--sand);fill:none}
+@keyframes hintPulse{0%,100%{opacity:.6}50%{opacity:1}}
+
+/* ── PROCESS ── */
+.process{
+  padding:clamp(80px,10vw,140px) 0;
+  background:var(--cream);border-top:1px solid var(--border);
+}
+.process .container{max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,64px)}
+.process__top{margin-bottom:64px}
+.process__heading{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(28px,3vw,44px);line-height:1.15;
+  color:var(--charcoal);margin-top:20px;
+}
+.process__steps{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  position:relative;counter-reset:step;
+}
+.process__steps::before{
+  content:'';position:absolute;top:28px;left:40px;right:40px;
+  height:1px;background:var(--sand);
+}
+.process__step{text-align:center;position:relative;padding:0 16px}
+.process__dot{
+  width:14px;height:14px;border-radius:50%;
+  border:2px solid var(--accent);background:var(--cream);
+  margin:0 auto 36px;position:relative;z-index:2;
+  transition:all .3s;
+}
+.process__step:hover .process__dot{background:var(--accent);box-shadow:0 0 0 6px var(--border)}
+.process__step-num{font-size:11px;font-weight:500;letter-spacing:1.5px;color:var(--accent);margin-bottom:10px}
+.process__step-title{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--charcoal);margin-bottom:12px}
+.process__step-body{font-size:13px;font-weight:300;color:var(--body);line-height:1.8;max-width:220px;margin:0 auto}
+
+/* ── SUSTAINABILITY ── */
+.sustain{
+  padding:clamp(60px,8vw,100px) 0;
+  background:var(--charcoal);
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.sustain .container{max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,64px)}
+.sustain__inner{
+  display:flex;align-items:center;gap:clamp(32px,4vw,80px);
+}
+.sustain__icon{flex-shrink:0;width:56px;height:56px;border-radius:50%;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center}
+.sustain__icon svg{width:24px;height:24px;stroke:var(--accent);fill:none}
+.sustain__text{max-width:700px}
+.sustain__title{font-family:var(--serif);font-size:22px;color:#fff;margin-bottom:8px}
+.sustain__body{font-size:14px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.8}
+
+/* ── REGION CARDS WITH IMAGES ── */
+.region{
+  border:1px solid var(--border);padding:0;
+  transition:all .4s;overflow:hidden;display:flex;flex-direction:column;
+}
+.region:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(0,0,0,.04)}
+.region__image{height:200px;overflow:hidden}
+.region__image img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.region:hover .region__image img{transform:scale(1.04)}
+.region__body{padding:36px 36px 40px}
+
+/* ── INSTAGRAM GRID ── */
+.ig{
+  padding:clamp(60px,8vw,100px) 0;
+  background:var(--cream);border-top:1px solid var(--border);
+}
+.ig .container{max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,64px)}
+.ig__top{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:32px;
+}
+.ig__heading{font-family:var(--serif);font-size:24px;color:var(--charcoal)}
+.ig__handle{font-size:13px;color:var(--accent);font-weight:500;transition:color .3s}
+.ig__handle:hover{color:var(--accent-hover)}
+.ig__grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.ig__item{aspect-ratio:1;overflow:hidden;position:relative}
+.ig__item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease),filter .4s;filter:brightness(.92)}
+.ig__item:hover img{transform:scale(1.06);filter:brightness(.7)}
+.ig__item-overlay{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .3s;
+}
+.ig__item:hover .ig__item-overlay{opacity:1}
+.ig__item-overlay svg{width:24px;height:24px;fill:#fff}
 
 /* ── REVEAL ── */
 .rv{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -506,6 +596,10 @@ a{color:inherit;text-decoration:none}
   .era{grid-template-columns:1fr;gap:16px}
   .era__content{padding-left:0;border-left:none;padding-top:8px;border-top:1px solid var(--sand)}
   .regions__grid{grid-template-columns:1fr}
+  .process__steps{grid-template-columns:1fr 1fr;gap:40px 0}
+  .process__steps::before{display:none}
+  .sustain__inner{flex-direction:column;text-align:center}
+  .ig__grid{grid-template-columns:repeat(3,1fr)}
   .footer__grid{grid-template-columns:1fr 1fr;gap:32px}
   .footer__bottom{flex-direction:column;gap:12px;text-align:center}
   .footer__land{text-align:center;max-width:none}
@@ -516,6 +610,8 @@ a{color:inherit;text-decoration:none}
   .footer__grid{grid-template-columns:1fr}
   .editorial__stats{flex-direction:column}
   .partners__names{flex-direction:column;gap:16px}
+  .process__steps{grid-template-columns:1fr}
+  .ig__grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
 </head>
@@ -703,6 +799,10 @@ a{color:inherit;text-decoration:none}
       <div style="width:clamp(24px,4vw,64px);flex-shrink:0"></div>
     </div>
   </div>
+  <div class="projects__hint">
+    <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M8 12h8M12 8l4 4-4 4"/><path d="M16 12H8M12 16l-4-4 4-4" opacity=".3"/></svg>
+    Drag to explore
+  </div>
 </section>
 
 <!-- Full-bleed image -->
@@ -766,6 +866,19 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
+<!-- Sustainability -->
+<section class="sustain">
+  <div class="container">
+    <div class="sustain__inner rv">
+      <div class="sustain__icon"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M7 10.5c0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5"/><path d="M13.5 10.5c0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5"/></svg></div>
+      <div class="sustain__text">
+        <h3 class="sustain__title">Building with the Land, Not Against It</h3>
+        <p class="sustain__body">Rainwater harvesting, green roofs, reclaimed timber, and energy-efficient design are built into our process from day one. Sustainability isn't an add-on, it's how we've always worked. The Latona House green roof and the Roberts Creek rainwater system are proof that responsible building and beautiful design are the same thing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Services -->
 <section class="services" id="services">
   <div class="container">
@@ -795,6 +908,42 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
+<!-- Process -->
+<section class="process">
+  <div class="container">
+    <div class="process__top rv">
+      <div class="label">Our Approach</div>
+      <h2 class="process__heading">How We Build</h2>
+    </div>
+    <div class="process__steps rv">
+      <div class="process__step">
+        <div class="process__dot"></div>
+        <div class="process__step-num">01</div>
+        <h4 class="process__step-title">Envision</h4>
+        <p class="process__step-body">We listen to how you want to live. Your site, your landscape, your life. Every detail matters before a single nail is driven.</p>
+      </div>
+      <div class="process__step">
+        <div class="process__dot"></div>
+        <div class="process__step-num">02</div>
+        <h4 class="process__step-title">Design</h4>
+        <p class="process__step-body">Working alongside your architect, we refine every material and system to match the vision, the budget, and the coast.</p>
+      </div>
+      <div class="process__step">
+        <div class="process__dot"></div>
+        <div class="process__step-num">03</div>
+        <h4 class="process__step-title">Build</h4>
+        <p class="process__step-body">Skilled trades with decades of local knowledge. Native materials, heavy timber joinery, and durability forged from the coast.</p>
+      </div>
+      <div class="process__step">
+        <div class="process__dot"></div>
+        <div class="process__step-num">04</div>
+        <h4 class="process__step-title">Deliver</h4>
+        <p class="process__step-body">A home that belongs to its landscape. Built to weather the coast and stand for generations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Second quote -->
 <section class="quote-section">
   <div class="quote-section__bg"><img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/51997d21-2d01-4fb6-9151-c3597c9b70aa/A45I6581.jpg" alt="" loading="lazy"></div>
@@ -803,6 +952,17 @@ a{color:inherit;text-decoration:none}
     <div class="quote-section__line"></div>
     <div class="quote-section__author">Randolph Arnett, P.Eng.</div>
     <div class="quote-section__detail">Engineering Consultant</div>
+  </div>
+</section>
+
+<!-- Third quote -->
+<section class="quote-section">
+  <div class="quote-section__bg"><img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/6bfe52f7-2174-4932-ac1d-0724e398b941/0V9A1967.jpg" alt="" loading="lazy"></div>
+  <div class="quote-section__inner rv">
+    <p class="quote-section__text" style="font-size:clamp(20px,2.5vw,32px)">"High safety standards, incredible attention to detail, and a team that truly cares. You can feel the pride they take in their work on every project."</p>
+    <div class="quote-section__line"></div>
+    <div class="quote-section__author">Tara Romer</div>
+    <div class="quote-section__detail">Custom Home Client</div>
   </div>
 </section>
 
@@ -815,21 +975,27 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="regions__grid rv">
       <div class="region">
-        <h3 class="region__title">Lower Sunshine Coast</h3>
-        <div class="region__lead">Led by Marlin Hanson</div>
-        <p class="region__areas">Langdale, Gibsons, Roberts Creek, Sechelt, Halfmoon Bay, Pender Harbour, Egmont, and surrounding islands.</p>
-        <div class="region__contact">
-          <a href="tel:6049891728">604.989.1728</a>
-          <a href="mailto:marlin@hansonlandandsea.com">marlin@hansonlandandsea.com</a>
+        <div class="region__image"><img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/84dce28a-0fe6-4b59-a969-40ad1355225d/HLS-Dwell-DaveMoormanPhotography-1.jpg" alt="Sunshine Coast project" loading="lazy"></div>
+        <div class="region__body">
+          <h3 class="region__title">Lower Sunshine Coast</h3>
+          <div class="region__lead">Led by Marlin Hanson</div>
+          <p class="region__areas">Langdale, Gibsons, Roberts Creek, Sechelt, Halfmoon Bay, Pender Harbour, Egmont, and surrounding islands.</p>
+          <div class="region__contact">
+            <a href="tel:6049891728">604.989.1728</a>
+            <a href="mailto:marlin@hansonlandandsea.com">marlin@hansonlandandsea.com</a>
+          </div>
         </div>
       </div>
       <div class="region">
-        <h3 class="region__title">Powell River &ndash; qathet</h3>
-        <div class="region__lead">Led by Ryan Hanson</div>
-        <p class="region__areas">Powell River, Lund, and surrounding islands.</p>
-        <div class="region__contact">
-          <a href="tel:6044137170">604.413.7170</a>
-          <a href="mailto:ryan@hansonlandandsea.com">ryan@hansonlandandsea.com</a>
+        <div class="region__image"><img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/8c02077e-880b-4250-9814-1973825579bb/DSCF0225.jpg" alt="Powell River project" loading="lazy"></div>
+        <div class="region__body">
+          <h3 class="region__title">Powell River &ndash; qathet</h3>
+          <div class="region__lead">Led by Ryan Hanson</div>
+          <p class="region__areas">Powell River, Lund, and surrounding islands.</p>
+          <div class="region__contact">
+            <a href="tel:6044137170">604.413.7170</a>
+            <a href="mailto:ryan@hansonlandandsea.com">ryan@hansonlandandsea.com</a>
+          </div>
         </div>
       </div>
     </div>
@@ -844,6 +1010,42 @@ a{color:inherit;text-decoration:none}
     <h2 class="cta__heading">Let's build something<br>extraordinary.</h2>
     <p class="cta__body">Every project starts with a conversation about your vision, your site, and the home you want to come back to every day.</p>
     <a href="mailto:marlin@hansonlandandsea.com" class="btn-light">Start a Conversation</a>
+  </div>
+</section>
+
+<!-- Instagram -->
+<section class="ig">
+  <div class="container">
+    <div class="ig__top rv">
+      <h3 class="ig__heading">Follow the Build</h3>
+      <a href="https://www.instagram.com/hansonlandandsea/" target="_blank" class="ig__handle">@hansonlandandsea</a>
+    </div>
+    <div class="ig__grid rv">
+      <div class="ig__item">
+        <img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/5365ba77-c474-4053-98ce-c40d1b21d6ec/Hanson-Land-and-Sea-2_web8.jpg" alt="" loading="lazy">
+        <div class="ig__item-overlay"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg></div>
+      </div>
+      <div class="ig__item">
+        <img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/9cea4adf-ee56-4be8-80cf-c752af9c1b6c/083A1169.jpg" alt="" loading="lazy">
+        <div class="ig__item-overlay"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg></div>
+      </div>
+      <div class="ig__item">
+        <img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/93408ae2-ee19-4e61-a808-9d2cab99eb93/083A5738.jpg" alt="" loading="lazy">
+        <div class="ig__item-overlay"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg></div>
+      </div>
+      <div class="ig__item">
+        <img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/06f661ce-415d-448e-9232-7895f5450d60/HL%26S_Grandview_Project_11.jpg" alt="" loading="lazy">
+        <div class="ig__item-overlay"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg></div>
+      </div>
+      <div class="ig__item">
+        <img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/7ecc0c85-5151-4d92-958e-34c28d41c230/A45I4504.jpg" alt="" loading="lazy">
+        <div class="ig__item-overlay"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg></div>
+      </div>
+      <div class="ig__item">
+        <img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/acc084bf-8677-41e6-b412-4c1638f717d0/AP2I9686.jpg" alt="" loading="lazy">
+        <div class="ig__item-overlay"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg></div>
+      </div>
+    </div>
   </div>
 </section>
 
