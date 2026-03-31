@@ -474,16 +474,19 @@ a{color:inherit;text-decoration:none}
 }
 .footer__land{max-width:420px;text-align:right;line-height:1.5}
 
-/* ── DRAG HINT ── */
-.projects__hint{
-  display:flex;align-items:center;gap:10px;
-  margin-top:24px;padding-left:clamp(24px,4vw,64px);
-  font-size:11px;font-weight:400;letter-spacing:1px;
-  text-transform:uppercase;color:var(--sand);
-  animation:hintPulse 2s ease-in-out infinite;
+/* ── PROJECT CAROUSEL ARROWS ── */
+.projects__nav{
+  display:flex;align-items:center;gap:12px;
 }
-.projects__hint svg{width:20px;height:20px;stroke:var(--sand);fill:none}
-@keyframes hintPulse{0%,100%{opacity:.6}50%{opacity:1}}
+.projects__arrow{
+  width:48px;height:48px;border-radius:50%;
+  border:1px solid var(--sand);background:transparent;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .3s;
+}
+.projects__arrow:hover{border-color:var(--charcoal);background:var(--charcoal)}
+.projects__arrow svg{width:18px;height:18px;stroke:var(--charcoal);fill:none;transition:stroke .3s}
+.projects__arrow:hover svg{stroke:var(--cream)}
 
 /* ── PROCESS ── */
 .process{
@@ -763,7 +766,13 @@ a{color:inherit;text-decoration:none}
         <div class="label">Selected Work</div>
         <h2 class="projects__heading">Built for the Coast</h2>
       </div>
-      <a href="#" class="btn-line" style="flex-shrink:0">All 16 Projects &rarr;</a>
+      <div style="display:flex;align-items:center;gap:24px;flex-shrink:0">
+        <div class="projects__nav">
+          <button class="projects__arrow" id="projPrev" aria-label="Previous"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+          <button class="projects__arrow" id="projNext" aria-label="Next"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+        <a href="#" class="btn-line">All 16 Projects &rarr;</a>
+      </div>
     </div>
   </div>
   <div class="projects__track-wrap" id="projScroll">
@@ -798,10 +807,6 @@ a{color:inherit;text-decoration:none}
       </div>
       <div style="width:clamp(24px,4vw,64px);flex-shrink:0"></div>
     </div>
-  </div>
-  <div class="projects__hint">
-    <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M8 12h8M12 8l4 4-4 4"/><path d="M16 12H8M12 16l-4-4 4-4" opacity=".3"/></svg>
-    Drag to explore
   </div>
 </section>
 
@@ -1125,9 +1130,16 @@ a{color:inherit;text-decoration:none}
   },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
 
-  // Drag-to-scroll on project track
+  // Project carousel — arrows + drag
   var track=document.getElementById('projScroll');
   if(track){
+    var scrollAmt=440;
+    document.getElementById('projPrev').addEventListener('click',function(){
+      track.scrollBy({left:-scrollAmt,behavior:'smooth'});
+    });
+    document.getElementById('projNext').addEventListener('click',function(){
+      track.scrollBy({left:scrollAmt,behavior:'smooth'});
+    });
     var isDown=false,startX,scrollLeft;
     track.addEventListener('mousedown',function(e){isDown=true;track.style.cursor='grabbing';startX=e.pageX-track.offsetLeft;scrollLeft=track.scrollLeft});
     track.addEventListener('mouseleave',function(){isDown=false;track.style.cursor='grab'});
