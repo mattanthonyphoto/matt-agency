@@ -548,6 +548,44 @@ a{color:inherit;text-decoration:none}
 .region:hover .region__image img{transform:scale(1.04)}
 .region__body{padding:36px 36px 40px}
 
+/* ── BLOG ── */
+.blog{padding:clamp(80px,10vw,160px) 0;background:var(--cream)}
+.blog .container{max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,64px)}
+.blog__top{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:56px;
+}
+.blog__heading{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(28px,3vw,44px);line-height:1.15;color:var(--charcoal);margin-top:20px;
+}
+.blog__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.blog-card{display:flex;flex-direction:column;transition:transform .3s}
+.blog-card:hover{transform:translateY(-4px)}
+.blog-card__image{
+  aspect-ratio:16/10;overflow:hidden;margin-bottom:20px;
+}
+.blog-card__image img{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(.92);transition:transform .6s var(--ease);
+}
+.blog-card:hover .blog-card__image img{transform:scale(1.04)}
+.blog-card__tag{
+  font-size:10px;font-weight:500;letter-spacing:2px;
+  text-transform:uppercase;color:var(--accent);margin-bottom:10px;
+}
+.blog-card__title{
+  font-family:var(--serif);font-size:22px;font-weight:400;
+  color:var(--charcoal);line-height:1.3;margin-bottom:12px;
+  transition:color .3s;
+}
+.blog-card:hover .blog-card__title{color:var(--accent)}
+.blog-card__excerpt{
+  font-size:14px;font-weight:300;color:var(--body);line-height:1.75;
+  margin-bottom:16px;
+}
+.blog-card__date{font-size:11px;font-weight:400;color:var(--sand)}
+
 /* ── INSTAGRAM GRID ── */
 .ig{
   padding:clamp(60px,8vw,100px) 0;
@@ -603,6 +641,7 @@ a{color:inherit;text-decoration:none}
   .process__steps::before{display:none}
   .sustain__inner{flex-direction:column;text-align:center}
   .ig__grid{grid-template-columns:repeat(3,1fr)}
+  .blog__grid{grid-template-columns:1fr 1fr}
   .footer__grid{grid-template-columns:1fr 1fr;gap:32px}
   .footer__bottom{flex-direction:column;gap:12px;text-align:center}
   .footer__land{text-align:center;max-width:none}
@@ -615,6 +654,7 @@ a{color:inherit;text-decoration:none}
   .partners__names{flex-direction:column;gap:16px}
   .process__steps{grid-template-columns:1fr}
   .ig__grid{grid-template-columns:repeat(2,1fr)}
+  .blog__grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -949,28 +989,6 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- Second quote -->
-<section class="quote-section">
-  <div class="quote-section__bg"><img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/51997d21-2d01-4fb6-9151-c3597c9b70aa/A45I6581.jpg" alt="" loading="lazy"></div>
-  <div class="quote-section__inner rv">
-    <p class="quote-section__text" style="font-size:clamp(20px,2.5vw,32px)">"Knowledgeable team that managed costs and schedule well, dealt effectively with contractors, and provided cost-effective solutions to the many challenges that arise in a complex build."</p>
-    <div class="quote-section__line"></div>
-    <div class="quote-section__author">Randolph Arnett, P.Eng.</div>
-    <div class="quote-section__detail">Engineering Consultant</div>
-  </div>
-</section>
-
-<!-- Third quote -->
-<section class="quote-section">
-  <div class="quote-section__bg"><img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/6bfe52f7-2174-4932-ac1d-0724e398b941/0V9A1967.jpg" alt="" loading="lazy"></div>
-  <div class="quote-section__inner rv">
-    <p class="quote-section__text" style="font-size:clamp(20px,2.5vw,32px)">"High safety standards, incredible attention to detail, and a team that truly cares. You can feel the pride they take in their work on every project."</p>
-    <div class="quote-section__line"></div>
-    <div class="quote-section__author">Tara Romer</div>
-    <div class="quote-section__detail">Custom Home Client</div>
-  </div>
-</section>
-
 <!-- Regions -->
 <section class="regions">
   <div class="container">
@@ -1003,6 +1021,42 @@ a{color:inherit;text-decoration:none}
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog -->
+<section class="blog">
+  <div class="container">
+    <div class="blog__top rv">
+      <div>
+        <div class="label">Journal</div>
+        <h2 class="blog__heading">From the Build Site</h2>
+      </div>
+      <a href="#" class="btn-line" style="flex-shrink:0">All Articles &rarr;</a>
+    </div>
+    <div class="blog__grid">
+      <a href="#" class="blog-card rv">
+        <div class="blog-card__image"><img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/9cea4adf-ee56-4be8-80cf-c752af9c1b6c/083A1169.jpg" alt="" loading="lazy"></div>
+        <div class="blog-card__tag">Design</div>
+        <h3 class="blog-card__title">Building with Native Timber: Why Local Wood Outperforms Imports on the Coast</h3>
+        <p class="blog-card__excerpt">Western red cedar and Douglas fir aren't just local choices, they're engineered by decades of coastal weather to handle exactly what your home will face.</p>
+        <span class="blog-card__date">March 2026</span>
+      </a>
+      <a href="#" class="blog-card rv rv-d1">
+        <div class="blog-card__image"><img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/7ecc0c85-5151-4d92-958e-34c28d41c230/A45I4504.jpg" alt="" loading="lazy"></div>
+        <div class="blog-card__tag">Budget</div>
+        <h3 class="blog-card__title">What Does It Actually Cost to Build Custom on the Sunshine Coast in 2026?</h3>
+        <p class="blog-card__excerpt">Realistic numbers, common surprises, and how to keep your project on budget without cutting corners on quality or materials.</p>
+        <span class="blog-card__date">February 2026</span>
+      </a>
+      <a href="#" class="blog-card rv rv-d2">
+        <div class="blog-card__image"><img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/84dce28a-0fe6-4b59-a969-40ad1355225d/HLS-Dwell-DaveMoormanPhotography-1.jpg" alt="" loading="lazy"></div>
+        <div class="blog-card__tag">Process</div>
+        <h3 class="blog-card__title">Working with an Architect and a Builder: How the Best Homes Come Together</h3>
+        <p class="blog-card__excerpt">The architect-builder relationship is where great design meets buildable reality. Here's how we collaborate with firms like Battersby Howat and September Architecture.</p>
+        <span class="blog-card__date">January 2026</span>
+      </a>
     </div>
   </div>
 </section>
