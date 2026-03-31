@@ -363,20 +363,28 @@ a{color:inherit;text-decoration:none}
 /* ── TESTIMONIAL — CENTERED PULL QUOTE ── */
 .quote-section{
   padding:clamp(100px,12vw,200px) clamp(24px,4vw,64px);
-  text-align:center;background:var(--warm);
+  text-align:center;position:relative;overflow:hidden;
 }
-.quote-section__inner{max-width:800px;margin:0 auto}
+.quote-section__bg{
+  position:absolute;inset:0;z-index:0;
+}
+.quote-section__bg img{width:100%;height:100%;object-fit:cover}
+.quote-section__bg::after{
+  content:'';position:absolute;inset:0;
+  background:rgba(28,28,26,.82);
+}
+.quote-section__inner{max-width:800px;margin:0 auto;position:relative;z-index:2}
 .quote-section__text{
   font-family:var(--serif);font-style:italic;font-weight:400;
   font-size:clamp(24px,3vw,40px);line-height:1.4;
-  color:var(--charcoal);margin-bottom:40px;
+  color:#fff;margin-bottom:40px;
 }
 .quote-section__line{width:48px;height:1px;background:var(--accent);margin:0 auto 20px}
 .quote-section__author{
   font-size:11px;font-weight:500;letter-spacing:2px;
   text-transform:uppercase;color:var(--accent);
 }
-.quote-section__detail{font-size:13px;font-weight:300;color:var(--body);margin-top:4px}
+.quote-section__detail{font-size:13px;font-weight:300;color:rgba(255,255,255,.5);margin-top:4px}
 
 /* ── PARTNERS ── */
 .partners{
@@ -419,7 +427,15 @@ a{color:inherit;text-decoration:none}
 /* ── CTA ── */
 .cta{
   padding:clamp(100px,12vw,200px) clamp(24px,4vw,64px);
-  text-align:center;background:var(--charcoal);color:#fff;
+  text-align:center;color:#fff;position:relative;overflow:hidden;
+}
+.cta__bg{
+  position:absolute;inset:0;z-index:0;
+}
+.cta__bg img{width:100%;height:100%;object-fit:cover}
+.cta__bg::after{
+  content:'';position:absolute;inset:0;
+  background:rgba(28,28,26,.85);
 }
 .cta__heading{
   font-family:var(--serif);font-weight:400;
@@ -741,6 +757,7 @@ a{color:inherit;text-decoration:none}
 
 <!-- Quote -->
 <section class="quote-section">
+  <div class="quote-section__bg"><img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/e353c1ff-ea6f-4d0c-9885-8bfa7f9e0c53/_M1A4307.jpg" alt="" loading="lazy"></div>
   <div class="quote-section__inner rv">
     <p class="quote-section__text">"Great project and cost management, good communication throughout, and a highly professional team of craftsmen that really care about their work."</p>
     <div class="quote-section__line"></div>
@@ -779,12 +796,13 @@ a{color:inherit;text-decoration:none}
 </div>
 
 <!-- Second quote -->
-<section class="quote-section" style="background:var(--charcoal);color:#fff">
+<section class="quote-section">
+  <div class="quote-section__bg"><img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/51997d21-2d01-4fb6-9151-c3597c9b70aa/A45I6581.jpg" alt="" loading="lazy"></div>
   <div class="quote-section__inner rv">
-    <p class="quote-section__text" style="font-size:clamp(20px,2.5vw,32px);color:#fff">"Knowledgeable team that managed costs and schedule well, dealt effectively with contractors, and provided cost-effective solutions to the many challenges that arise in a complex build."</p>
+    <p class="quote-section__text" style="font-size:clamp(20px,2.5vw,32px)">"Knowledgeable team that managed costs and schedule well, dealt effectively with contractors, and provided cost-effective solutions to the many challenges that arise in a complex build."</p>
     <div class="quote-section__line"></div>
     <div class="quote-section__author">Randolph Arnett, P.Eng.</div>
-    <div class="quote-section__detail" style="color:rgba(255,255,255,.5)">Engineering Consultant</div>
+    <div class="quote-section__detail">Engineering Consultant</div>
   </div>
 </section>
 
@@ -820,10 +838,13 @@ a{color:inherit;text-decoration:none}
 
 <!-- CTA -->
 <section class="cta" id="contact">
-  <div class="label" style="color:var(--accent);justify-content:center;margin-bottom:24px;display:inline-flex;align-items:center;gap:16px"><span style="width:40px;height:1px;background:var(--accent);display:block"></span>Get in Touch</div>
-  <h2 class="cta__heading">Let's build something<br>extraordinary.</h2>
-  <p class="cta__body">Every project starts with a conversation about your vision, your site, and the home you want to come back to every day.</p>
-  <a href="mailto:marlin@hansonlandandsea.com" class="btn-light">Start a Conversation</a>
+  <div class="cta__bg"><img src="https://images.squarespace-cdn.com/content/v1/681a4f3ce91e5f3390de4800/1eede67a-a780-4d09-8072-23c503660a52/A45I4946-copy.jpg" alt="" loading="lazy"></div>
+  <div style="position:relative;z-index:2">
+    <div class="label" style="color:var(--accent);justify-content:center;margin-bottom:24px;display:inline-flex;align-items:center;gap:16px"><span style="width:40px;height:1px;background:var(--accent);display:block"></span>Get in Touch</div>
+    <h2 class="cta__heading">Let's build something<br>extraordinary.</h2>
+    <p class="cta__body">Every project starts with a conversation about your vision, your site, and the home you want to come back to every day.</p>
+    <a href="mailto:marlin@hansonlandandsea.com" class="btn-light">Start a Conversation</a>
+  </div>
 </section>
 
 <!-- Footer -->
