@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photography Pricing — KLAD Surfaces</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A18;
+    --paper: #F6F4F0;
+    --gold: #C9A96E;
+    --gold-dim: rgba(201,169,110,0.12);
+    --gold-border: rgba(201,169,110,0.25);
+    --gold-glow: rgba(201,169,110,0.06);
+    --stone: #8A8579;
+    --white: #FFFFFF;
+    --light: #FAFAF8;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; -webkit-print-color-adjust:exact; print-color-adjust:exact; scroll-behavior:smooth; }
+  body { background:var(--white); color:var(--ink); font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.75; overflow-x:hidden; }
+
+  /* ═══════════════════════════════════════
+     COVER
+     ═══════════════════════════════════════ */
+  .cover {
+    min-height:100vh; background:var(--ink); color:var(--paper);
+    display:flex; flex-direction:column; justify-content:flex-end;
+    position:relative; overflow:hidden;
+  }
+  .cover-image {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    background-image:url("https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ef4086f4-a2a9-43e2-ac0f-cdf72e55b1e3/warbler-whistler-architectural-photography-matt-anthony-.jpg-11.jpg");
+    background-size:cover; background-position:center 35%;
+  }
+  .cover-image::after {
+    content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+    background:linear-gradient(
+      to bottom,
+      rgba(26,26,24,0.3) 0%,
+      rgba(26,26,24,0.1) 30%,
+      rgba(26,26,24,0.4) 60%,
+      rgba(26,26,24,0.92) 85%,
+      rgba(26,26,24,0.98) 100%
+    );
+  }
+  .cover-top {
+    position:absolute; top:0; left:0; right:0; z-index:3;
+    padding:40px 60px; display:flex; justify-content:space-between; align-items:center;
+  }
+  .cover-logo {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:rgba(246,244,240,0.6);
+  }
+  .cover-date {
+    font-family:'Josefin Sans',sans-serif; font-size:0.65rem;
+    letter-spacing:0.2em; color:rgba(246,244,240,0.4);
+  }
+  .cover-content {
+    position:relative; z-index:2; padding:0 60px 80px;
+    max-width:720px;
+  }
+  .cover-eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.4em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:20px; display:flex; align-items:center; gap:16px;
+  }
+  .cover-eyebrow::before {
+    content:''; width:32px; height:1px; background:var(--gold);
+  }
+  .cover h1 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:clamp(3rem,6vw,4.5rem); line-height:1.05; margin-bottom:20px;
+    letter-spacing:-0.01em;
+  }
+  .cover h1 em {
+    font-style:italic; font-weight:500; color:var(--gold);
+  }
+  .cover-sub {
+    font-size:1rem; color:rgba(246,244,240,0.55); max-width:480px;
+    line-height:1.8; margin-bottom:56px;
+  }
+  .cover-meta-bar {
+    display:flex; gap:48px; padding-top:32px;
+    border-top:1px solid rgba(201,169,110,0.15);
+  }
+  .cover-meta-item {
+    font-size:0.75rem; color:rgba(246,244,240,0.35); line-height:1.8;
+  }
+  .cover-meta-item strong {
+    display:block; color:rgba(246,244,240,0.7); font-weight:400;
+    font-family:'Josefin Sans',sans-serif; font-size:0.6rem;
+    letter-spacing:0.15em; text-transform:uppercase; margin-bottom:2px;
+  }
+
+  /* ═══════════════════════════════════════
+     LAYOUT
+     ═══════════════════════════════════════ */
+  .section { padding:100px 60px; max-width:1000px; margin:0 auto; }
+  .section.wide { max-width:1200px; }
+  .section.full { max-width:100%; padding-left:0; padding-right:0; }
+  .section.dark { background:var(--ink); color:var(--paper); max-width:100%; }
+  .section.cream { background:var(--paper); max-width:100%; }
+  .section.light { background:var(--light); max-width:100%; }
+  .section-inner { max-width:880px; margin:0 auto; }
+
+  .eyebrow {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; display:flex; align-items:center; gap:14px;
+  }
+  .eyebrow::before { content:''; width:24px; height:1px; background:var(--gold); }
+
+  h2 {
+    font-family:'Cormorant Garamond',serif; font-weight:400;
+    font-size:2.6rem; line-height:1.12; margin-bottom:32px;
+    letter-spacing:-0.01em;
+  }
+  h2 em { font-style:italic; font-weight:500; }
+  h3 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.75rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
+    margin:56px 0 20px;
+  }
+  p { margin-bottom:20px; font-size:0.95rem; }
+  .lead { font-size:1.05rem; line-height:1.9; color:var(--stone); }
+
+  .divider {
+    width:1px; height:80px; background:var(--gold-dim);
+    margin:0 auto; border:none; display:block;
+  }
+
+  /* ═══════════════════════════════════════
+     PHOTO BREAK
+     ═══════════════════════════════════════ */
+  .photo-break {
+    width:100%; height:45vh; min-height:300px; position:relative; overflow:hidden;
+  }
+  .photo-break img {
+    width:100%; height:100%; object-fit:cover; display:block;
+    transform:scale(1.05);
+  }
+
+  /* ═══════════════════════════════════════
+     STATS
+     ═══════════════════════════════════════ */
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin:56px auto; background:var(--gold-dim); max-width:880px; }
+  .stat { background:var(--white); text-align:center; padding:36px 16px; }
+  .section.cream .stat { background:var(--paper); }
+  .stat-val {
+    font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:500;
+    color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+  }
+  .stat-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--stone);
+  }
+
+  /* ═══════════════════════════════════════
+     PRICING TIERS
+     ═══════════════════════════════════════ */
+  .tiers {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+    margin:56px 0; position:relative;
+  }
+  .tier {
+    padding:48px 32px 40px; border:1px solid rgba(26,26,24,0.06);
+    background:var(--white); position:relative;
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .tier:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,0.08); z-index:1; }
+  .tier + .tier { border-left:none; }
+  .tier.rec {
+    background:var(--ink); color:var(--paper); border-color:var(--gold);
+    transform:scaleY(1.02); z-index:2;
+    box-shadow:0 12px 48px rgba(0,0,0,0.15);
+  }
+  .tier.rec:hover { transform:scaleY(1.02) translateY(-6px); box-shadow:0 24px 64px rgba(0,0,0,0.22); }
+  .tier-badge {
+    position:absolute; top:-1px; left:0; right:0;
+    height:3px; background:var(--gold);
+  }
+  .tier-badge span {
+    position:absolute; top:8px; left:50%; transform:translateX(-50%);
+    font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+    letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--gold); white-space:nowrap;
+  }
+  .tier-name {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--gold);
+    margin:24px 0 12px;
+  }
+  .tier-price {
+    font-family:'Cormorant Garamond',serif; font-size:3.2rem;
+    font-weight:400; line-height:1; margin-bottom:6px;
+  }
+  .tier:not(.rec) .tier-price { color:var(--ink); }
+  .tier.rec .tier-price { color:var(--paper); }
+  .tier-price span { font-size:1rem; color:var(--stone); font-family:'DM Sans',sans-serif; font-weight:300; }
+  .tier-term {
+    font-size:0.75rem; color:var(--stone); margin-bottom:32px;
+    padding-bottom:24px; border-bottom:1px solid var(--gold-dim);
+  }
+  .tier.rec .tier-term { border-color:rgba(201,169,110,0.2); }
+  .tier ul { list-style:none; }
+  .tier li {
+    font-size:0.8rem; padding:7px 0 7px 22px; position:relative;
+    border-bottom:1px solid rgba(26,26,24,0.03);
+  }
+  .tier.rec li { color:rgba(246,244,240,0.75); border-color:rgba(246,244,240,0.05); }
+  .tier li:last-child { border:none; }
+  .tier li::before {
+    content:''; position:absolute; left:0; top:14px;
+    width:8px; height:1px; background:var(--gold);
+  }
+  .tier li.off { opacity:0.25; }
+  .tier li.off::before { background:var(--stone); }
+  .tier-bottom {
+    margin-top:28px; padding-top:20px; border-top:1px solid var(--gold-dim);
+    font-size:0.7rem; color:var(--stone);
+  }
+  .tier.rec .tier-bottom { border-color:rgba(201,169,110,0.2); }
+  .tier-bottom strong { color:var(--gold); font-weight:500; font-size:0.85rem; }
+
+  /* ═══════════════════════════════════════
+     ADD-ONS
+     ═══════════════════════════════════════ */
+  .addons { max-width:560px; margin:40px 0; }
+  .addon {
+    display:flex; justify-content:space-between; padding:16px 0;
+    border-bottom:1px solid rgba(26,26,24,0.06); font-size:0.88rem;
+    color:var(--stone);
+  }
+  .section.dark .addon { border-color:rgba(246,244,240,0.06); }
+  .addon span:last-child { color:var(--gold); font-weight:400; }
+
+  /* ═══════════════════════════════════════
+     INSIGHT CALLOUT
+     ═══════════════════════════════════════ */
+  .insight {
+    background:var(--light); padding:48px 56px; margin:56px 0;
+    position:relative;
+  }
+  .insight::before {
+    content:''; position:absolute; top:0; left:0; bottom:0;
+    width:3px; background:var(--gold);
+  }
+  .insight h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;
+  }
+  .insight p { font-size:0.9rem; margin-bottom:10px; }
+  .insight p:last-child { margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     BY THE NUMBERS
+     ═══════════════════════════════════════ */
+  .numbers {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    margin:56px auto; background:var(--gold-dim); max-width:880px;
+  }
+  .num {
+    background:var(--ink); text-align:center; padding:48px 24px;
+  }
+  .num-val {
+    font-family:'Cormorant Garamond',serif; font-size:3.5rem;
+    font-weight:500; color:var(--gold); display:block; line-height:1; margin-bottom:10px;
+  }
+  .num-lbl {
+    font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:rgba(246,244,240,0.4);
+  }
+
+  /* ═══════════════════════════════════════
+     WHAT YOU GET — DELIVERABLE GRID
+     ═══════════════════════════════════════ */
+  .deliverables { display:grid; grid-template-columns:1fr 1fr; gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .dlv {
+    background:var(--white); padding:40px 36px; position:relative;
+  }
+  .dlv-icon {
+    font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:400;
+    color:var(--gold); line-height:1; margin-bottom:16px; display:block;
+  }
+  .dlv h4 {
+    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.7rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px;
+  }
+  .dlv p { font-size:0.85rem; color:var(--stone); margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     PROCESS STEPS
+     ═══════════════════════════════════════ */
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin:56px 0; background:var(--gold-dim); }
+  .step {
+    background:var(--white); padding:40px 32px;
+  }
+  .section.cream .step { background:var(--paper); }
+  .step-num {
+    font-family:'Cormorant Garamond',serif; font-size:3rem;
+    font-weight:400; color:var(--gold); line-height:1; margin-bottom:16px;
+    display:block;
+  }
+  .step h4 {
+    font-family:'DM Sans',sans-serif; font-weight:500; font-size:0.95rem; margin-bottom:10px;
+  }
+  .step p { font-size:0.82rem; color:var(--stone); margin-bottom:0; }
+
+  /* ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ */
+  .footer {
+    background:var(--ink); color:rgba(246,244,240,0.3); text-align:center;
+    padding:60px; font-size:0.7rem; letter-spacing:0.1em;
+  }
+  .footer a { color:var(--gold); text-decoration:none; }
+  .footer-name {
+    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
+    letter-spacing:0.35em; text-transform:uppercase; color:rgba(246,244,240,0.5);
+    margin-bottom:8px;
+  }
+
+  /* ═══════════════════════════════════════
+     SCROLL PROGRESS
+     ═══════════════════════════════════════ */
+  .scroll-progress {
+    position:fixed; top:0; left:0; height:2px; z-index:999;
+    background:linear-gradient(90deg, var(--gold), rgba(201,169,110,0.4));
+    width:0; transition:width 0.1s linear;
+  }
+
+  /* ═══════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════ */
+  @media (max-width:768px) {
+    .cover-content { padding:0 32px 60px; }
+    .cover-top { padding:24px 32px; }
+    .cover-meta-bar { flex-direction:column; gap:16px; }
+    .section { padding:60px 32px; }
+    .stats { grid-template-columns:repeat(2,1fr); }
+    .tiers { grid-template-columns:1fr; }
+    .tier.rec { transform:none; }
+    .tier + .tier { border-left:1px solid rgba(26,26,24,0.06); border-top:none; }
+    .deliverables { grid-template-columns:1fr; }
+    .steps { grid-template-columns:1fr; }
+    .numbers { grid-template-columns:1fr; }
+    .photo-break { height:200px; min-height:200px; }
+    .insight { padding:32px; }
+  }
+  @media (max-width:480px) {
+    .cover h1 { font-size:2.4rem; }
+    h2 { font-size:2rem; }
+  }
+
+  /* ═══════════════════════════════════════
+     PRINT
+     ═══════════════════════════════════════ */
+  @media print {
+    .scroll-progress { display:none; }
+    .photo-break { height:200px; page-break-inside:avoid; }
+    .tier { page-break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ═══════════════════════════════════════
+     COVER
+     ═══════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-image"></div>
+  <div class="cover-top">
+    <div class="cover-logo">Matt Anthony Photography</div>
+    <div class="cover-date">April 2026</div>
+  </div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">Pricing Guide</div>
+    <h1>Architectural Photography <br>for <em>KLAD Surfaces</em></h1>
+    <p class="cover-sub">Premium photography and drone imaging for architectural cladding, capturing your materials as they were designed to be seen — installed, in context, in the light.</p>
+    <div class="cover-meta-bar">
+      <div class="cover-meta-item">
+        <strong>Prepared For</strong>
+        Don &mdash; KLAD Surfaces
+      </div>
+      <div class="cover-meta-item">
+        <strong>Location</strong>
+        Kelowna &amp; the Okanagan
+      </div>
+      <div class="cover-meta-item">
+        <strong>Includes</strong>
+        Photography + Drone
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     INTRO
+     ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="eyebrow">The Approach</div>
+  <h2>Your materials deserve to be<br>seen <em>in place</em></h2>
+  <p class="lead">Manufacturer product shots show what a panel looks like. Project photography shows what it <em>feels</em> like — on a building, in natural light, at the scale your clients are imagining. That's the gap this work fills.</p>
+  <p>Every shoot is planned around your specific materials and how they interact with the architecture — the texture of concrete under morning light, the patina of weathering steel at golden hour, the warmth of cedar against a mountain backdrop. I use drone imaging on nearly every exterior project to capture elevation, facade rhythm, and context that ground-level photography simply can't.</p>
+  <p>The result is a library of original images you own — for your website, lookbook, social media, and sales conversations. Not manufacturer stock. Your projects. Your installs.</p>
+</div>
+
+<!-- ═══════════════════════════════════════
+     NUMBERS BAR
+     ═══════════════════════════════════════ -->
+<div class="section dark full" style="padding:0;">
+  <div class="numbers">
+    <div class="num">
+      <span class="num-val">60+</span>
+      <span class="num-lbl">Projects Photographed</span>
+    </div>
+    <div class="num">
+      <span class="num-val">TC</span>
+      <span class="num-lbl">Certified Drone Pilot</span>
+    </div>
+    <div class="num">
+      <span class="num-val">7–10</span>
+      <span class="num-lbl">Business Day Turnaround</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PHOTO BREAK
+     ═══════════════════════════════════════ -->
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/76e4a936-a94e-40e3-91d2-fd8a8e1d5a31/eagle-residence-squamish-architectural-photography-matt-anthony-.jpg-7.jpg" alt="Eagle Residence exterior — stone and wood cladding">
+</div>
+
+<!-- ═══════════════════════════════════════
+     WHAT YOU GET
+     ═══════════════════════════════════════ -->
+<div class="section cream" style="padding-top:100px; padding-bottom:100px;">
+  <div class="section-inner">
+    <div class="eyebrow">Deliverables</div>
+    <h2>What every shoot <em>includes</em></h2>
+    <p class="lead">Each project shoot is a complete documentation session — exteriors, material details, and context. Here's what you walk away with.</p>
+
+    <div class="deliverables">
+      <div class="dlv">
+        <span class="dlv-icon">I</span>
+        <h4>Exterior Photography</h4>
+        <p>Full building exteriors from multiple angles and elevations, capturing your cladding as the dominant visual element in context with the architecture.</p>
+      </div>
+      <div class="dlv">
+        <span class="dlv-icon">II</span>
+        <h4>Drone / Aerial Imaging</h4>
+        <p>Elevated perspectives that show facade scale, material pattern, roofline integration, and neighbourhood context. Transport Canada certified Advanced Pilot.</p>
+      </div>
+      <div class="dlv">
+        <span class="dlv-icon">III</span>
+        <h4>Material Detail Shots</h4>
+        <p>Close-up texture, grain, patina, and joint details — the images that sell in a meeting or a printed lookbook. Natural light, no compositing.</p>
+      </div>
+      <div class="dlv">
+        <span class="dlv-icon">IV</span>
+        <h4>Edited &amp; Delivered</h4>
+        <p>Full professional edit in Lightroom. High-resolution files delivered via Dropbox within 7–10 business days. Web-optimized versions included.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PRICING TIERS
+     ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="eyebrow">Investment</div>
+  <h2>Project photography <em>packages</em></h2>
+  <p class="lead">Three options depending on the scope of each project and the depth of coverage you need. Drone is included at every level.</p>
+
+  <div class="tiers">
+    <!-- Single Project -->
+    <div class="tier">
+      <div class="tier-name">Single Project</div>
+      <div class="tier-price">$2,200</div>
+      <div class="tier-term">Per project &middot; 1 location</div>
+      <ul>
+        <li>Half-day shoot (up to 4 hours on site)</li>
+        <li>Exterior photography — multiple angles</li>
+        <li>Drone / aerial coverage</li>
+        <li>Material detail close-ups</li>
+        <li>25–35 edited images</li>
+        <li>High-res + web-optimized delivery</li>
+        <li class="off">Twilight / golden hour session</li>
+        <li class="off">Interior documentation</li>
+      </ul>
+      <div class="tier-bottom">
+        <strong>Best for:</strong> Documenting a single completed install
+      </div>
+    </div>
+
+    <!-- Signature Project — Recommended -->
+    <div class="tier rec">
+      <div class="tier-badge"><span>Recommended</span></div>
+      <div class="tier-name">Signature Project</div>
+      <div class="tier-price">$3,200</div>
+      <div class="tier-term">Per project &middot; 1 location</div>
+      <ul>
+        <li>Full-day shoot (up to 7 hours on site)</li>
+        <li>Exterior photography — comprehensive coverage</li>
+        <li>Drone / aerial at multiple elevations</li>
+        <li>Material detail close-ups</li>
+        <li>Twilight / golden hour session</li>
+        <li>Interior documentation (if applicable)</li>
+        <li>40–55 edited images</li>
+        <li>High-res + web-optimized delivery</li>
+      </ul>
+      <div class="tier-bottom">
+        <strong>Best for:</strong> Flagship projects for your website and lookbook
+      </div>
+    </div>
+
+    <!-- Multi-Project -->
+    <div class="tier">
+      <div class="tier-name">Multi-Project</div>
+      <div class="tier-price">$5,400</div>
+      <div class="tier-term">3 projects &middot; $1,800 each</div>
+      <ul>
+        <li>Three half-day shoots across multiple sites</li>
+        <li>Exterior photography at each location</li>
+        <li>Drone / aerial at every project</li>
+        <li>Material detail close-ups</li>
+        <li>25–35 edited images per project</li>
+        <li>75–105 total images delivered</li>
+        <li>Consistent editing style across all projects</li>
+        <li>Priority scheduling</li>
+      </ul>
+      <div class="tier-bottom">
+        <strong>Best for:</strong> Building a library across your product lines
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <h4>A Note on Value</h4>
+    <p>These images replace manufacturer stock with original content that shows <em>your</em> installs — a permanent marketing asset. Most clients find that a single project shoot generates 12–18 months of social, website, and sales content.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PHOTO BREAK 2
+     ═══════════════════════════════════════ -->
+<div class="photo-break">
+  <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c938566f-c03e-4e7a-a09f-f5b4e1f34c8f/warbler-whistler-architectural-photography-matt-anthony-.jpg-13.jpg" alt="Warbler interior — material details">
+</div>
+
+<!-- ═══════════════════════════════════════
+     ADD-ONS
+     ═══════════════════════════════════════ -->
+<div class="section dark">
+  <div class="section-inner">
+    <div class="eyebrow">Optional Add-Ons</div>
+    <h2 style="color:var(--paper);">Extend any <em>package</em></h2>
+    <p style="color:rgba(246,244,240,0.55);">These can be added to any tier above. All pricing is per project unless noted.</p>
+
+    <div class="addons">
+      <div class="addon">
+        <span>Twilight / golden hour session (if not included)</span>
+        <span>$500 – $800</span>
+      </div>
+      <div class="addon">
+        <span>Additional drone flight (complex sites)</span>
+        <span>$350 – $500</span>
+      </div>
+      <div class="addon">
+        <span>Short-form video content (60-sec walkthrough)</span>
+        <span>$800</span>
+      </div>
+      <div class="addon">
+        <span>Rush delivery (3–5 business days)</span>
+        <span>$300</span>
+      </div>
+      <div class="addon">
+        <span>Third-party image licensing (per party)</span>
+        <span>From $500</span>
+      </div>
+    </div>
+
+    <div class="insight" style="background:rgba(246,244,240,0.04); margin-top:56px;">
+      <h4>Cost-Share Opportunity</h4>
+      <p style="color:rgba(246,244,240,0.6);">If the builder or architect on a project also wants the images, they can license the full set for a fraction of the shoot cost. This is common on my projects — it reduces your effective cost and gives everyone professional content from the same session.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PROCESS
+     ═══════════════════════════════════════ -->
+<div class="section cream" style="padding-top:100px; padding-bottom:100px;">
+  <div class="section-inner">
+    <div class="eyebrow">How It Works</div>
+    <h2>From booking to <em>delivery</em></h2>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h4>Discovery Call</h4>
+        <p>We talk through which projects you want to document, the materials featured, and how you plan to use the images. I'll send a tailored proposal the same day.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h4>Shoot Day</h4>
+        <p>I handle everything on site — lighting, angles, drone flights, detail work. You're welcome to be there but don't need to be. 50% deposit secures the date.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h4>Delivery</h4>
+        <p>Edited images delivered via Dropbox within 7–10 business days. High-resolution files for print. Web-optimized versions for your site and social channels.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     TRAVEL NOTE
+     ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="eyebrow">Logistics</div>
+  <h2>A note on <em>travel</em></h2>
+  <p>I'm based in Squamish, BC and regularly shoot across the Okanagan. For projects in the Kelowna area, a travel fee of <strong>$400</strong> applies to cover vehicle and time. If we schedule multiple projects in the same trip, travel is split across shoots — another reason the Multi-Project package makes sense for building out your library.</p>
+</div>
+
+<!-- ═══════════════════════════════════════
+     CTA / NEXT STEP
+     ═══════════════════════════════════════ -->
+<div class="section dark" style="text-align:center; padding:80px 60px;">
+  <div class="section-inner">
+    <div class="eyebrow" style="justify-content:center;">Next Step</div>
+    <h2 style="color:var(--paper); margin-bottom:20px;">Let's find the <em>right fit</em></h2>
+    <p style="color:rgba(246,244,240,0.55); max-width:520px; margin:0 auto 40px;">A 15-minute call is the fastest way to dial in exactly what you need. I'll have a proposal ready the same day.</p>
+    <a href="https://mattanthonyphoto.com/discovery-call" style="display:inline-block; font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.7rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--ink); background:var(--gold); padding:16px 48px; text-decoration:none; transition:background 0.3s ease;">Book a Call</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ -->
+<div class="footer">
+  <div class="footer-name">Matt Anthony Photography</div>
+  <p>Squamish, BC &middot; 604.765.9270 &middot; <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a></p>
+  <p style="margin-top:8px;"><a href="https://mattanthonyphoto.com">mattanthonyphoto.com</a></p>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SCROLL PROGRESS JS
+     ═══════════════════════════════════════ -->
+<script>
+window.addEventListener('scroll', function() {
+  var h = document.documentElement;
+  var progress = (h.scrollTop || document.body.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  document.getElementById('scrollProgress').style.width = progress + '%';
+});
+</script>
+
+</body>
+</html>
