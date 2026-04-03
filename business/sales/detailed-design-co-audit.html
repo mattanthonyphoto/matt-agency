@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business &amp; Marketing Audit — Detailed Design Co.</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAF8F5;
+  --bg-card: #FFFFFF;
+  --bg-surface: #F2EFEA;
+  --bg-hover: #EDE9E3;
+  --text: #2C2824;
+  --text-dim: #6B6460;
+  --text-muted: #9A9490;
+  --accent: #8B7060;
+  --accent-warm: #A68B78;
+  --accent-dim: rgba(139,112,96,0.08);
+  --accent-glow: rgba(139,112,96,0.04);
+  --border: rgba(139,112,96,0.12);
+  --border-accent: rgba(139,112,96,0.25);
+  --green: #5B8A6F;
+  --green-bg: rgba(91,138,111,0.1);
+  --green-text: #3D7054;
+  --amber: #B8923A;
+  --amber-bg: rgba(184,146,58,0.1);
+  --amber-text: #96762E;
+  --red: #B85555;
+  --red-bg: rgba(184,85,85,0.08);
+  --red-text: #9A4040;
+  --critical: #963D3D;
+  --critical-bg: rgba(150,61,61,0.08);
+  --critical-text: #7A3030;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; scroll-behavior:smooth; }
+body {
+  background:var(--bg); color:var(--text);
+  font-family:'DM Sans',sans-serif; font-weight:300;
+  line-height:1.75; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* PROGRESS BAR */
+.progress { position:fixed; top:0; left:0; height:2px; width:0%; background:var(--accent); z-index:9999; transition:width 0.05s linear; }
+
+/* HEADER */
+.header {
+  position:relative; overflow:hidden; min-height:75vh;
+  display:flex; flex-direction:column; justify-content:flex-end;
+}
+.header-bg {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background-size:cover; background-position:center;
+  filter:brightness(0.45) saturate(0.7);
+}
+.header-bg::after {
+  content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(180deg, rgba(44,40,36,0.1) 0%, rgba(44,40,36,0.85) 100%);
+}
+.header-inner {
+  position:relative; z-index:1; padding:80px 64px 64px; max-width:900px;
+}
+.header-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:#F2EFEA; background:rgba(255,255,255,0.12);
+  padding:6px 14px; border-radius:2px; margin-bottom:24px;
+  border:1px solid rgba(255,255,255,0.2);
+  backdrop-filter:blur(8px);
+}
+.header-badge::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:#F2EFEA; animation:pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+.header h1 {
+  font-family:'Cormorant Garamond',serif; font-weight:400;
+  font-size:clamp(2.4rem,5vw,3.4rem); line-height:1.1;
+  letter-spacing:-0.01em; margin-bottom:16px; color:#FAF8F5;
+}
+.header h1 em { font-style:italic; font-weight:500; color:#D4C4B8; }
+.header-meta {
+  display:flex; gap:32px; margin-top:24px; padding-top:24px;
+  border-top:1px solid rgba(255,255,255,0.15);
+}
+.header-meta-item { font-size:0.8rem; color:rgba(242,239,234,0.6); }
+.header-meta-item strong {
+  display:block; font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+  font-weight:400; letter-spacing:0.15em;
+  text-transform:uppercase; color:rgba(242,239,234,0.8); margin-bottom:2px;
+}
+
+/* SCORE CARDS */
+.scores {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:var(--border); margin:0;
+}
+.score-card {
+  background:var(--bg-card); text-align:center; padding:48px 24px;
+  position:relative; overflow:hidden;
+}
+.score-card::after {
+  content:''; position:absolute; bottom:0; left:20%; right:20%; height:3px;
+  border-radius:2px;
+}
+.score-card.good::after { background:var(--green); }
+.score-card.ok::after { background:var(--amber); }
+.score-card.bad::after { background:var(--red); }
+.score-card.critical::after { background:var(--critical); }
+.score-ring {
+  width:100px; height:100px; margin:0 auto 20px; position:relative;
+  display:flex; align-items:center; justify-content:center;
+}
+.score-ring svg { position:absolute; top:0; left:0; transform:rotate(-90deg); }
+.score-ring-bg { fill:none; stroke:var(--bg-surface); stroke-width:5; }
+.score-ring-fill { fill:none; stroke-width:5; stroke-linecap:round;
+  stroke-dasharray:276.5; transition:stroke-dashoffset 2s cubic-bezier(0.16,1,0.3,1); }
+.score-ring-fill.good { stroke:var(--green); }
+.score-ring-fill.ok { stroke:var(--amber); }
+.score-ring-fill.bad { stroke:var(--red); }
+.score-ring-fill.critical { stroke:var(--critical); }
+.score-number {
+  font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:500;
+  position:relative; z-index:1;
+}
+.score-number.good { color:var(--green-text); }
+.score-number.ok { color:var(--amber-text); }
+.score-number.bad { color:var(--red-text); }
+.score-number.critical { color:var(--critical-text); }
+.score-label {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px;
+}
+.score-grade {
+  font-family:'Josefin Sans',sans-serif; font-size:0.5rem; font-weight:400;
+  letter-spacing:0.1em; text-transform:uppercase;
+  padding:4px 12px; border-radius:2px; display:inline-block;
+}
+.score-grade.good { background:var(--green-bg); color:var(--green-text); }
+.score-grade.ok { background:var(--amber-bg); color:var(--amber-text); }
+.score-grade.bad { background:var(--red-bg); color:var(--red-text); }
+.score-grade.critical { background:var(--critical-bg); color:var(--critical-text); }
+
+/* SECTIONS */
+.section { max-width:860px; margin:0 auto; padding:80px 64px; }
+.section.wide { max-width:1000px; }
+.section.surface { background:var(--bg-surface); max-width:100%; }
+.section.surface .section-inner { max-width:860px; margin:0 auto; }
+.eyebrow {
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:300;
+  letter-spacing:0.35em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:16px; display:flex; align-items:center; gap:14px;
+}
+.eyebrow::before { content:''; width:24px; height:1px; background:var(--accent); }
+h2 {
+  font-family:'Cormorant Garamond',serif; font-weight:400;
+  font-size:2.4rem; line-height:1.12; letter-spacing:-0.01em; margin-bottom:28px;
+  color:var(--text);
+}
+h2 em { font-style:italic; font-weight:500; color:var(--accent); }
+.lead { font-size:1rem; color:var(--text-dim); line-height:1.85; margin-bottom:32px; }
+
+/* CATEGORY HEADERS */
+.category {
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--accent); margin:48px 0 20px; padding-bottom:12px;
+  border-bottom:1px solid var(--border-accent); display:flex; align-items:center; gap:12px;
+}
+.category::before { content:''; width:16px; height:1px; background:var(--accent); }
+
+/* FINDINGS */
+.findings { display:flex; flex-direction:column; gap:2px; }
+.finding {
+  display:grid; grid-template-columns:36px 1fr; gap:16px; padding:16px 20px;
+  background:var(--bg-card); border-radius:6px; align-items:start;
+  border:1px solid var(--border); transition:border-color 0.2s;
+  box-shadow:0 1px 3px rgba(44,40,36,0.04);
+}
+.finding:hover { border-color:var(--border-accent); }
+.finding-status {
+  width:28px; height:28px; border-radius:6px; display:flex;
+  align-items:center; justify-content:center; font-size:0.75rem;
+  font-weight:700; margin-top:1px;
+}
+.finding-status.pass { background:var(--green-bg); color:var(--green-text); }
+.finding-status.warn { background:var(--amber-bg); color:var(--amber-text); }
+.finding-status.fail { background:var(--red-bg); color:var(--red-text); }
+.finding-title { font-weight:500; font-size:0.9rem; margin-bottom:4px; color:var(--text); }
+.finding-detail { font-size:0.82rem; color:var(--text-dim); line-height:1.75; }
+
+/* CALLOUT */
+.callout {
+  background:var(--bg-card); border:1px solid var(--border-accent); border-radius:8px;
+  padding:32px; margin:40px 0; position:relative; overflow:hidden;
+  box-shadow:0 2px 8px rgba(139,112,96,0.06);
+}
+.callout::before {
+  content:''; position:absolute; top:0; left:0; width:3px; height:100%;
+  background:var(--accent); border-radius:2px;
+}
+.callout h4 {
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:16px;
+}
+.callout p { font-size:0.9rem; color:var(--text-dim); margin-bottom:12px; }
+.callout p:last-child { margin-bottom:0; }
+.callout strong { color:var(--text); font-weight:600; }
+
+/* COMPETITOR TABLE */
+.compare-table { width:100%; border-collapse:separate; border-spacing:0; margin:32px 0; border-radius:8px; overflow:hidden; border:1px solid var(--border); box-shadow:0 1px 4px rgba(44,40,36,0.04); }
+.compare-table thead th {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem; font-weight:400;
+  letter-spacing:0.15em; text-transform:uppercase;
+  color:var(--accent); padding:14px 16px; text-align:left;
+  background:var(--bg-surface); border-bottom:1px solid var(--border-accent);
+}
+.compare-table tbody td {
+  font-size:0.82rem; padding:14px 16px; border-bottom:1px solid var(--border);
+  vertical-align:middle; background:var(--bg-card);
+}
+.compare-table tbody tr:last-child td { border-bottom:none; }
+.compare-table tbody tr:hover td { background:var(--bg-hover); }
+.compare-table .you-row td { background:rgba(139,112,96,0.06); }
+.compare-table .you-row td:first-child { color:var(--accent); font-weight:600; }
+.dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:8px; }
+.dot.green { background:var(--green); }
+.dot.amber { background:var(--amber); }
+.dot.red { background:var(--red); }
+.dot.grey { background:var(--text-muted); }
+
+/* STATS BAR */
+.stats-bar {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+  background:var(--border); margin:0;
+}
+.stat-block { background:var(--bg-card); text-align:center; padding:48px 24px; }
+.stat-value {
+  font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:500;
+  color:var(--accent); display:block; line-height:1; margin-bottom:10px;
+}
+.stat-label {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted);
+}
+
+/* ACTION STEPS */
+.steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin:40px 0; border-radius:8px; overflow:hidden; box-shadow:0 1px 4px rgba(44,40,36,0.04); }
+.step { background:var(--bg-card); padding:36px 28px; transition:background 0.2s; }
+.step:hover { background:var(--bg-hover); }
+.step-num {
+  font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:500;
+  color:var(--accent); display:block; margin-bottom:16px;
+}
+.step h4 { font-size:0.95rem; font-weight:500; margin-bottom:10px; color:var(--text); }
+.step p { font-size:0.82rem; color:var(--text-dim); margin:0; line-height:1.6; }
+
+/* PHOTO BREAK */
+.photo-break {
+  width:100%; height:35vh; min-height:240px; max-height:380px;
+  position:relative; overflow:hidden;
+}
+.photo-break img {
+  width:100%; height:120%; object-fit:cover; display:block;
+  position:absolute; top:-10%; left:0; filter:brightness(0.7) saturate(0.8);
+}
+.photo-break-caption {
+  position:absolute; bottom:0; left:0; right:0; z-index:2; padding:16px 64px;
+  font-size:0.6rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase;
+  color:rgba(255,255,255,0.4);
+}
+
+/* TIMELINE */
+.timeline { margin:40px 0; }
+.timeline-phase {
+  background:var(--bg-card); border:1px solid var(--border); border-radius:8px;
+  margin-bottom:2px; overflow:hidden;
+  box-shadow:0 1px 3px rgba(44,40,36,0.04);
+}
+.timeline-phase-header {
+  display:flex; align-items:center; gap:20px; padding:24px 28px;
+  cursor:pointer; transition:background 0.2s;
+}
+.timeline-phase-header:hover { background:var(--bg-hover); }
+.timeline-phase-num {
+  font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:500;
+  color:var(--accent); min-width:40px;
+}
+.timeline-phase-title { font-weight:500; font-size:0.95rem; color:var(--text); }
+.timeline-phase-months {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem; font-weight:400;
+  letter-spacing:0.15em; text-transform:uppercase; color:var(--text-muted);
+  margin-left:auto;
+}
+.timeline-phase-body { padding:0 28px 28px 88px; }
+.timeline-item {
+  display:flex; gap:12px; padding:8px 0; font-size:0.85rem;
+  color:var(--text-dim); line-height:1.6; align-items:baseline;
+}
+.timeline-item::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--accent-warm); flex-shrink:0; margin-top:8px;
+}
+.timeline-month {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem; font-weight:400;
+  letter-spacing:0.15em; text-transform:uppercase; color:var(--accent);
+  margin:20px 0 12px; padding-bottom:8px; border-bottom:1px solid var(--border);
+}
+.timeline-month:first-child { margin-top:0; }
+
+/* DIVIDER */
+.divider { width:1px; height:60px; background:var(--border-accent); margin:0 auto; }
+
+/* FOOTER */
+.footer {
+  background:var(--bg-card); padding:64px; text-align:center;
+  border-top:1px solid var(--border);
+}
+.footer-brand {
+  font-family:'Josefin Sans',sans-serif; font-size:0.7rem; font-weight:300;
+  letter-spacing:0.4em; text-transform:uppercase;
+  color:var(--text); margin-bottom:16px;
+}
+.footer-info { font-size:0.8rem; color:var(--text-muted); line-height:2.2; }
+.footer-info a { color:var(--accent); text-decoration:none; }
+.footer-note {
+  margin-top:32px; font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+  font-weight:300; letter-spacing:0.15em;
+  text-transform:uppercase; color:var(--text-muted); opacity:0.4;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px) {
+  .header-inner { padding:60px 28px 48px; }
+  .section { padding:56px 28px; }
+  .scores { grid-template-columns:1fr 1fr; }
+  .steps { grid-template-columns:1fr; }
+  .stats-bar { grid-template-columns:1fr; }
+  .compare-table { display:block; overflow-x:auto; }
+  .header-meta { flex-direction:column; gap:12px; }
+  .photo-break { height:180px; min-height:180px; }
+  .photo-break-caption { padding:12px 28px; }
+  .timeline-phase-body { padding-left:28px; }
+}
+@media (max-width:480px) {
+  .scores { grid-template-columns:1fr; }
+  h2 { font-size:1.7rem; }
+}
+@media print {
+  .progress { display:none; }
+  body { background:#fff; color:#1a1a1a; }
+  .score-card, .finding, .callout, .step, .stat-block, .compare-table td, .timeline-phase { background:#fff; border:1px solid #ddd; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progressBar"></div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-bg" style="background-image:url('https://images.squarespace-cdn.com/content/v1/663245a511372d6e1b622c73/e1af0ec3-0a8a-40e9-9ab9-1da61270fae5/5033Wesley-DDC-7.jpg?format=2500w');background-position:center 35%;"></div>
+  <div class="header-inner">
+    <div class="header-badge">Full Business &amp; Marketing Audit</div>
+    <h1>Detailed Design Co.<br><em>Growth Roadmap</em></h1>
+    <div class="header-meta">
+      <div class="header-meta-item"><strong>Prepared for</strong>Ainsley &amp; Ryan Sagal</div>
+      <div class="header-meta-item"><strong>Prepared by</strong>Matt Anthony Photography</div>
+      <div class="header-meta-item"><strong>Date</strong>April 2026</div>
+    </div>
+  </div>
+</header>
+
+<!-- SCORE CARDS -->
+<div class="scores">
+
+  <div class="score-card ok">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill ok" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="110.6"></circle>
+      </svg>
+      <span class="score-number ok" data-count="60">0</span>
+    </div>
+    <div class="score-label">Website &amp; SEO</div>
+    <span class="score-grade ok">C+</span>
+  </div>
+
+  <div class="score-card bad">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill bad" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="193.55"></circle>
+      </svg>
+      <span class="score-number bad" data-count="30">0</span>
+    </div>
+    <div class="score-label">Local Search</div>
+    <span class="score-grade bad">D</span>
+  </div>
+
+  <div class="score-card bad">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill bad" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="179.725"></circle>
+      </svg>
+      <span class="score-number bad" data-count="35">0</span>
+    </div>
+    <div class="score-label">Social &amp; Content</div>
+    <span class="score-grade bad">D+</span>
+  </div>
+
+  <div class="score-card good">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill good" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="44.24"></circle>
+      </svg>
+      <span class="score-number good" data-count="84">0</span>
+    </div>
+    <div class="score-label">Service Model</div>
+    <span class="score-grade good">A-</span>
+  </div>
+
+</div>
+
+
+
+<div class="divider"></div>
+
+<!-- WHAT'S WORKING -->
+<section class="section">
+  <div class="eyebrow">What You're Doing Right</div>
+  <h2>Strong foundation.<br><em>Genuinely differentiated.</em></h2>
+  <p class="lead">Before the gaps &mdash; the things that set Detailed Design Co. apart from every other interior design firm in Greater Victoria. These advantages are real and hard to copy.</p>
+
+  <div class="findings">
+
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Unique Market Positioning</div>
+        <div class="finding-detail">"A Builder's Mind. A Designer's Touch." Pre-construction planning + building design + interior design under one roof. <strong>Nobody else in Victoria combines all three.</strong> Jenny Martin doesn't offer pre-construction. Maverick doesn't do building design. You own a white space.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Husband-Wife Complementary Skillset</div>
+        <div class="finding-detail">Ryan brings the building/pre-construction brain, Ainsley brings the design eye. This isn't a gimmick &mdash; it's a genuine operational advantage. Clients get one team instead of coordinating between a designer and a building consultant.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Smart Entry-Level Pricing</div>
+        <div class="finding-detail">$125 in-home consultation, $500 Prep &amp; Plan meeting, standalone services from $1,500. These create low-friction entry points that let clients test the relationship before committing to a full engagement.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Dual Revenue Channels</div>
+        <div class="finding-detail">50% direct clients, 50% builder referrals. Having both sides keeps the pipeline steady. Most young firms are 100% dependent on one source. You've already diversified.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Clear Service Architecture</div>
+        <div class="finding-detail">Three distinct service lines with defined deliverables and transparent pricing. Better organized than most firms at this stage. The "changes cost 3&ndash;5x more mid-build" messaging is resonant and true.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">NKBA Membership</div>
+        <div class="finding-detail">National Kitchen &amp; Bath Association membership signals credibility. Most Victoria firms at this stage don't have it.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <h4>The Core Strength</h4>
+    <p>Your service model is <strong>genuinely differentiated</strong>. The integrated pre-construction + design + build approach is the real competitive advantage. The problem isn't the product &mdash; it's that <strong>almost nobody can find it</strong>. Every gap in this audit is a visibility problem, not a service problem.</p>
+  </div>
+
+</section>
+
+
+
+<div class="stats-bar">
+  <div class="stat-block"><span class="stat-value">358</span><span class="stat-label">Instagram Followers</span></div>
+  <div class="stat-block"><span class="stat-value">33</span><span class="stat-label">Total Instagram Posts</span></div>
+  <div class="stat-block"><span class="stat-value">1</span><span class="stat-label">Google / Houzz Reviews</span></div>
+</div>
+
+
+
+<!-- WEBSITE AUDIT -->
+<section class="section">
+  <div class="eyebrow">Website Audit</div>
+  <h2>Professional build.<br><em>Leaking leads.</em></h2>
+  <p class="lead">The Squarespace site looks professional and communicates your services clearly. But several critical issues are costing you discovery, trust, and conversions.</p>
+
+  <div class="category">Critical Issues</div>
+  <div class="findings">
+
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Meta Description Is Blank</div>
+        <div class="finding-detail">Google is generating its own snippet for your homepage instead of showing your value prop. This kills click-through rate from search results. A 155-character description targeting "Victoria BC interior design, building design &amp; pre-construction planning" would fix this instantly.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">About Page Returns 404</div>
+        <div class="finding-detail">The standalone About page is broken. People want to know who they're hiring &mdash; especially for a service this personal. A broken About page signals neglect. The content exists on the homepage but the dedicated URL is dead.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Building Design Service Page Returns 404</div>
+        <div class="finding-detail"><strong>One of your three core service pages is broken.</strong> This is a revenue page. Anyone clicking "Building Design" from your navigation hits a dead end. Fix immediately.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Zero Testimonials Anywhere on the Site</div>
+        <div class="finding-detail">Social proof is the #1 conversion driver for design firms. You have a 5-star Houzz review praising Ainsley's work. That quote &mdash; and others like it &mdash; should be on the homepage, on every service page, and on a dedicated testimonials page.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Site Last Updated November 2024</div>
+        <div class="finding-detail">A site that hasn't been touched in 5+ months signals inactivity to both Google and prospects. Fresh content, new project posts, and blog articles tell Google the site is alive.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="category">Conversion Gaps</div>
+  <div class="findings">
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">No Lead Magnet or Email Capture</div>
+        <div class="finding-detail">The only CTA is "Book a Free Discovery Call." That's a big commitment for someone just browsing. A free PDF like "The 10 Decisions to Make Before Your Victoria Renovation" would capture emails from people who aren't ready to call yet.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">No Case Studies &mdash; Just Photos</div>
+        <div class="finding-detail">Portfolio shows <em>what</em> you did but not <em>why</em> or <em>how</em>. Before/after stories with budget ranges, timelines, and challenges overcome convert browsers into callers. "This Gordon Head kitchen was $45K, completed in 8 weeks" tells a story a photo gallery can't.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">No Blog or Content Strategy</div>
+        <div class="finding-detail">Zero indexable content beyond service pages. No way to rank for high-intent searches like "how much does a kitchen reno cost in Victoria," "garden suite permits Victoria BC," or "do I need a designer before hiring a builder."</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">No FAQ Section</div>
+        <div class="finding-detail">"Do I need a designer for a permit?" "What's included in a Prep &amp; Plan?" These are high-intent Google searches that could drive qualified traffic. They also reduce friction for visitors already on the site.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="category">SEO Gaps</div>
+  <div class="findings">
+
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">No Structured Data (Schema.org)</div>
+        <div class="finding-detail">Only basic WebSite schema. No LocalBusiness, Service, or Review schema. Google doesn't know DDC is an interior design studio, where you're based, or what services you offer.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">No Location-Specific Pages</div>
+        <div class="finding-detail">You serve Oak Bay, Gordon Head, Sidney, Sooke, and Pender Island. Each could be a landing page targeting "interior designer [location]" searches. These are low-competition, high-intent keywords.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <h4>Website Bottom Line</h4>
+    <p>The site's design quality is <strong>solid</strong>. The critical fixes are: <strong>repair the two broken pages</strong> (Building Design + About), <strong>add testimonials</strong>, and <strong>fill in meta descriptions</strong>. These three moves alone would significantly improve both trust and search visibility. The content strategy (blog, case studies, lead magnet) builds on that foundation.</p>
+  </div>
+
+</section>
+
+
+
+<!-- LOCAL SEO -->
+<section class="section surface">
+  <div class="section-inner">
+    <div class="eyebrow">Local Search Audit</div>
+    <h2>Nearly invisible<br><em>in Greater Victoria.</em></h2>
+    <p class="lead">When a homeowner in Oak Bay, Gordon Head, or Sooke searches "interior designer near me" &mdash; can they find Detailed Design Co.?</p>
+
+    <div class="category">Google Business Profile</div>
+    <div class="findings">
+
+      <div class="finding">
+        <div class="finding-status fail">&#10007;</div>
+        <div>
+          <div class="finding-title">No Google Business Profile Detected</div>
+          <div class="finding-detail">Detailed Design Co. doesn't appear in Google Maps or the Local Pack. For a studio with a physical address in Victoria serving the entire CRD, this is the <strong>single highest-ROI fix available</strong>. Free, takes 20 minutes, unlocks Google Maps, "near me" searches, and review collection.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="category">Directory &amp; Review Presence</div>
+    <div class="findings">
+
+      <div class="finding">
+        <div class="finding-status warn">!</div>
+        <div>
+          <div class="finding-title">Houzz: 11 Projects, 1 Review</div>
+          <div class="finding-detail">The profile exists and is active, but 1 review isn't enough to compete. Jenny Martin has 4.9 stars across dozens of reviews. Target: 10+ Houzz reviews within 90 days.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-status fail">&#10007;</div>
+        <div>
+          <div class="finding-title">No Google Reviews</div>
+          <div class="finding-detail">Without a Google Business Profile, there are zero Google reviews. This is the most visible review platform for local service businesses. Past clients who loved the work have nowhere to say so publicly.</div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-status warn">!</div>
+        <div>
+          <div class="finding-title">Not Listed in Local Directories</div>
+          <div class="finding-detail">Not found on HomeStars, Best of Victoria, BBB, or Victoria Chamber. Each listing is a citation that strengthens local SEO and provides a potential referral channel.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="callout">
+      <h4>Local Search Bottom Line</h4>
+      <p><strong>Google Business Profile is priority #1.</strong> Free, 20 minutes. Add the Kaiser Lane address, service areas (Victoria, Oak Bay, Gordon Head, Sidney, Sooke, Pender Island), 20+ project photos, and services. Then text 10 past clients asking for a Google review. This single action unlocks the largest free discovery channel available to a local service business.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<div class="divider"></div>
+
+<!-- SOCIAL MEDIA -->
+<section class="section">
+  <div class="eyebrow">Social Media Audit</div>
+  <h2>Great content.<br><em>Almost no audience.</em></h2>
+  <p class="lead">The wood slat facade post proves you can create engaging content. But 33 posts and 358 followers means the channel isn't working yet.</p>
+
+  <div class="category">Instagram (@detaileddesignco_)</div>
+  <div class="findings">
+
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">33 Posts Total</div>
+        <div class="finding-detail">For a design firm, this signals a hobby rather than a business. At 3&ndash;4 posts per week, you'd have 150+ posts in a year. Consistency is more important than perfection.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">358 Followers</div>
+        <div class="finding-detail">Benchmark for a Victoria design firm: 2,000&ndash;5,000. Not a vanity metric &mdash; followers are social proof when prospects check your profile before booking a discovery call.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">Handle Has Trailing Underscore</div>
+        <div class="finding-detail">@detaileddesignco_ instead of @detaileddesignco. Makes the account harder to find by name. If the clean handle is available, claim it.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">No Educational or Process Content</div>
+        <div class="finding-detail">Project photos are good, but they're table stakes. Carousels ("5 things your builder wishes you knew before starting a reno"), Reels (site walkthroughs, material reveals), and before/afters drive engagement and establish expertise.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="category">Other Platforms</div>
+  <div class="findings">
+
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Pinterest: Inactive or Non-Existent</div>
+        <div class="finding-detail"><strong>Massive missed opportunity.</strong> Kitchen, bath, and renovation content is Pinterest gold. Pins have a 3&ndash;6 month lifespan vs. Instagram's 24 hours. A Pinterest business account with keyword-rich descriptions could drive passive traffic for years.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">Facebook: Minimal Activity</div>
+        <div class="finding-detail">Facebook organic reach is declining, but Victoria community groups (Oak Bay, Gordon Head, Langford moms groups) are gold for renovation referrals. Answering questions without selling builds trust and visibility.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">LinkedIn: Untapped for Builder Network</div>
+        <div class="finding-detail">Ryan could use LinkedIn to connect with builders, contractors, and trades. Not a primary channel, but builder referrals are 50% of revenue &mdash; worth maintaining a presence.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <h4>Social Media Bottom Line</h4>
+    <p>You have the content &mdash; you just need <strong>consistency and variety</strong>. Target: 4 posts/week on Instagram (2 project, 1 educational carousel, 1 Reel). Launch Pinterest immediately and pin every project photo with keyword-rich descriptions. These two channels alone could triple your monthly inquiries within 6 months.</p>
+  </div>
+
+</section>
+
+
+
+<!-- COMPETITIVE LANDSCAPE -->
+<section class="section wide">
+  <div class="eyebrow">Competitive Landscape</div>
+  <h2>How you compare.<br><em>In Greater Victoria.</em></h2>
+  <p class="lead">Here's how Detailed Design Co.'s presence stacks up against interior designers competing for the same homeowners in the CRD.</p>
+  <table class="compare-table">
+    <thead><tr><th>Designer</th><th>Website</th><th>SEO &amp; Local</th><th>Photography</th><th>Awards</th><th>Social</th></tr></thead>
+    <tbody>
+
+      <tr class="you-row">
+        <td><strong>Detailed Design Co.</strong><br><span style='font-size:0.7rem;color:var(--text-muted);'>Victoria</span></td>
+        <td><span class='dot amber'></span>Good (2 broken pages)</td>
+        <td><span class='dot red'></span>No GBP, no schema</td>
+        <td><span class='dot amber'></span>Decent, not pro</td>
+        <td><span class='dot red'></span>None submitted</td>
+        <td><span class='dot red'></span>33 posts, 358 followers</td>
+      </tr>
+
+      <tr>
+        <td>Jenny Martin Design<br><span style='font-size:0.7rem;color:var(--text-muted);'>Victoria &middot; est. 2007</span></td>
+        <td><span class='dot green'></span>Premium</td>
+        <td><span class='dot green'></span>Strong</td>
+        <td><span class='dot green'></span>Professional</td>
+        <td><span class='dot green'></span>Multiple</td>
+        <td><span class='dot green'></span>Strong presence</td>
+      </tr>
+
+      <tr>
+        <td>Maverick Design<br><span style='font-size:0.7rem;color:var(--text-muted);'>Victoria</span></td>
+        <td><span class='dot green'></span>Professional</td>
+        <td><span class='dot amber'></span>Moderate</td>
+        <td><span class='dot amber'></span>Mixed</td>
+        <td><span class='dot amber'></span>Some</td>
+        <td><span class='dot amber'></span>Active</td>
+      </tr>
+
+      <tr>
+        <td>SGDI (Sarah Gallop)<br><span style='font-size:0.7rem;color:var(--text-muted);'>Victoria</span></td>
+        <td><span class='dot green'></span>Strong</td>
+        <td><span class='dot green'></span>Strong</td>
+        <td><span class='dot green'></span>Professional</td>
+        <td><span class='dot green'></span>Award-winning</td>
+        <td><span class='dot green'></span>Active</td>
+      </tr>
+
+      <tr>
+        <td>MAC Reno Design-Build<br><span style='font-size:0.7rem;color:var(--text-muted);'>Victoria</span></td>
+        <td><span class='dot green'></span>Professional</td>
+        <td><span class='dot green'></span>Strong GBP</td>
+        <td><span class='dot amber'></span>Decent</td>
+        <td><span class='dot amber'></span>Some</td>
+        <td><span class='dot amber'></span>Moderate</td>
+      </tr>
+
+      <tr>
+        <td>Spotted Frog Designs<br><span style='font-size:0.7rem;color:var(--text-muted);'>Victoria</span></td>
+        <td><span class='dot green'></span>Professional</td>
+        <td><span class='dot amber'></span>Moderate</td>
+        <td><span class='dot green'></span>Professional</td>
+        <td><span class='dot green'></span>Award-winning</td>
+        <td><span class='dot amber'></span>Active</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <h4>The Competitive Gap</h4>
+    <p>Your service model is <strong>more integrated</strong> than any competitor in this list. Jenny Martin is luxury-only and doesn't offer pre-construction. MAC Reno is contractor-first. Nobody combines planning + design + build the way you do. But <strong>you're invisible online</strong>. Every competitor has a stronger digital footprint. The good news: this is entirely fixable, and you have a better product to market.</p>
+  </div>
+
+</section>
+
+
+
+<div class="stats-bar">
+  <div class="stat-block"><span class="stat-value">50%</span><span class="stat-label">Revenue From Builder Referrals</span></div>
+  <div class="stat-block"><span class="stat-value">11</span><span class="stat-label">Portfolio Projects</span></div>
+  <div class="stat-block"><span class="stat-value">0</span><span class="stat-label">Google Business Profile</span></div>
+</div>
+
+
+
+<!-- BUSINESS MODEL GAPS -->
+<section class="section">
+  <div class="eyebrow">Business Model Analysis</div>
+  <h2>Revenue gaps.<br><em>Untapped channels.</em></h2>
+  <p class="lead">Your service offering is strong. These are the structural gaps that limit growth and the revenue streams that are sitting on the table.</p>
+
+  <div class="category">Pricing &amp; Packaging</div>
+  <div class="findings">
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">$125 Consultation Is Underpriced</div>
+        <div class="finding-detail">Standard for a credentialed designer in Victoria is $250&ndash;$350. At $125, you're leaving money on the table and potentially signaling a lower tier than your work warrants. Clients willing to pay for design aren't shopping by consultation price.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">No Tiered Service Packages on Site</div>
+        <div class="finding-detail">Prospects don't know if they're looking at a $5K or $50K engagement. Three clear tiers &mdash; Planning Only ($1,500&ndash;$3K), Design Package ($5K&ndash;$15K), Full Service ($15K&ndash;$40K+) &mdash; would pre-qualify leads and reduce sticker shock on discovery calls.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="category">Revenue Concentration</div>
+  <div class="findings">
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">Builder Referral Channel Is Unsystematized</div>
+        <div class="finding-detail">50% of revenue from builders, but no formal referral program, no reciprocal agreements, no "Preferred Builder" list on the site (which would attract builders who want to be listed). This channel is too important to leave informal.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">No Recurring Revenue</div>
+        <div class="finding-detail">Every engagement is project-based. Consider a retainer model for builders who send you 3+ clients per year, or a "design concierge" subscription for past clients doing ongoing updates to their homes.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="category">Untapped Revenue Streams</div>
+  <div class="findings">
+
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Garden Suite / ADU Consulting</div>
+        <div class="finding-detail">Victoria's new SSMUH framework is creating massive demand for garden suite design. You already do this work, but it's not marketed as a standalone offering. A "Garden Suite Design Package" at a fixed price could be a volume product.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">Realtor Partnerships</div>
+        <div class="finding-detail">Victoria realtors selling fixer-uppers need someone to tell their buyers "here's what this renovation will actually cost." A co-branded "New Homeowner Renovation Guide" with 2&ndash;3 realtors would create a steady referral channel.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">Awards Pipeline = Zero</div>
+        <div class="finding-detail">No award submissions visible. NKBA, Georgie (CHBA), and local design awards would build credibility and separate you from the pack. Every award entry needs professional photography &mdash; which also elevates the portfolio.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <h4>Business Model Bottom Line</h4>
+    <p>The foundation is solid. The gaps are <strong>packaging</strong> (make the tiers visible), <strong>partnerships</strong> (formalize the builder channel, add realtors), and <strong>productizing</strong> (garden suite package, awards pipeline). None of this requires hiring &mdash; it requires systemizing what you already do.</p>
+  </div>
+
+</section>
+
+
+
+<!-- 12-MONTH ROADMAP -->
+<section class="section surface">
+  <div class="section-inner">
+    <div class="eyebrow">12-Month Roadmap</div>
+    <h2>The growth plan.<br><em>Phase by phase.</em></h2>
+    <p class="lead">Four phases, twelve months. Each phase builds on the last. Start with the leaks, build the engine, then scale.</p>
+
+    <div class="timeline">
+
+      <!-- PHASE 1 -->
+      <div class="timeline-phase">
+        <div class="timeline-phase-header">
+          <span class="timeline-phase-num">01</span>
+          <div>
+            <div class="timeline-phase-title">Fix the Foundation</div>
+          </div>
+          <span class="timeline-phase-months">Months 1&ndash;3</span>
+        </div>
+        <div class="timeline-phase-body">
+
+          <div class="timeline-month">Month 1 &mdash; Fix the Leaks</div>
+          <div class="timeline-item">Repair broken pages (Building Design + About &mdash; both returning 404)</div>
+          <div class="timeline-item">Write meta descriptions for every page</div>
+          <div class="timeline-item">Claim Google Business Profile &mdash; add 20+ photos, all services, hours, service areas</div>
+          <div class="timeline-item">Collect 5 testimonials from past clients and add to homepage + service pages</div>
+          <div class="timeline-item">Set up link-in-bio tool for Instagram</div>
+
+          <div class="timeline-month">Month 2 &mdash; Content Engine</div>
+          <div class="timeline-item">Launch blog: "Kitchen Reno Costs in Victoria," "Do You Need a Designer Before Hiring a Builder?"</div>
+          <div class="timeline-item">Create PDF lead magnet: "10 Decisions to Make Before Your Renovation"</div>
+          <div class="timeline-item">Set up email list (Mailchimp or Flodesk &mdash; Squarespace integrates natively)</div>
+          <div class="timeline-item">Start posting on Instagram 4x/week: 2 project, 1 educational carousel, 1 Reel</div>
+
+          <div class="timeline-month">Month 3 &mdash; Social Proof Blitz</div>
+          <div class="timeline-item">Push to 10+ Google reviews and 5+ Houzz reviews (text every past client)</div>
+          <div class="timeline-item">Create 3 case studies with before/after, budget range, timeline, client quote</div>
+          <div class="timeline-item">Launch Pinterest business account &mdash; pin all project photos with keyword-rich descriptions</div>
+          <div class="timeline-item">Join 3&ndash;5 Victoria Facebook community groups and start answering renovation questions</div>
+
+        </div>
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="timeline-phase">
+        <div class="timeline-phase-header">
+          <span class="timeline-phase-num">02</span>
+          <div>
+            <div class="timeline-phase-title">Build the Engine</div>
+          </div>
+          <span class="timeline-phase-months">Months 4&ndash;6</span>
+        </div>
+        <div class="timeline-phase-body">
+
+          <div class="timeline-month">Month 4 &mdash; SEO + Local Search</div>
+          <div class="timeline-item">Publish 2 blog posts/month (ongoing cadence)</div>
+          <div class="timeline-item">Create location pages: "Interior Design Oak Bay," "Renovation Planning Sidney BC," "Garden Suite Design Sooke"</div>
+          <div class="timeline-item">Add LocalBusiness + Service + Review schema markup</div>
+          <div class="timeline-item">Submit to local directories: Best of Victoria, BBB, VRBA, chambers</div>
+          <div class="timeline-item">Launch monthly email newsletter to captured leads</div>
+
+          <div class="timeline-month">Month 5 &mdash; Builder Referral System</div>
+          <div class="timeline-item">Identify top 10 builders you work with or want to work with</div>
+          <div class="timeline-item">Create "Builder Partner Program" &mdash; formalize the referral pipeline both directions</div>
+          <div class="timeline-item">Build "Our Trusted Builders" page on site (builders link back = SEO + reciprocity)</div>
+          <div class="timeline-item">Host a small builder appreciation coffee or lunch (5&ndash;8 builders)</div>
+          <div class="timeline-item">Create 1-page PDF: "Why Pre-Construction Design Saves Builders Time &amp; Money"</div>
+
+          <div class="timeline-month">Month 6 &mdash; Productize &amp; Package</div>
+          <div class="timeline-item">Raise consultation fee to $250+GST</div>
+          <div class="timeline-item">Add 3 clear service tiers to the website with investment ranges</div>
+          <div class="timeline-item">Launch "Garden Suite Design Package" as a standalone productized offer</div>
+          <div class="timeline-item">Add a "What to Expect: Investment Guide" page to pre-qualify leads</div>
+
+        </div>
+      </div>
+
+      <!-- PHASE 3 -->
+      <div class="timeline-phase">
+        <div class="timeline-phase-header">
+          <span class="timeline-phase-num">03</span>
+          <div>
+            <div class="timeline-phase-title">Scale &amp; Partner</div>
+          </div>
+          <span class="timeline-phase-months">Months 7&ndash;9</span>
+        </div>
+        <div class="timeline-phase-body">
+
+          <div class="timeline-month">Month 7 &mdash; Content + Authority</div>
+          <div class="timeline-item">Pitch guest article to Boulevard Magazine or YAM Magazine</div>
+          <div class="timeline-item">Apply for NKBA awards (you're already a member)</div>
+          <div class="timeline-item">Pitch to Modern Home Magazine Victoria for a feature</div>
+          <div class="timeline-item">Start "Project Diary" Reel series &mdash; behind-the-scenes of an active project</div>
+          <div class="timeline-item">Instagram target: 1,000+ followers</div>
+
+          <div class="timeline-month">Month 8 &mdash; Strategic Partnerships</div>
+          <div class="timeline-item">Partner with 2&ndash;3 Victoria realtors who sell fixer-uppers for cross-referrals</div>
+          <div class="timeline-item">Partner with a mortgage broker offering renovation financing (HELOC, reno mortgages)</div>
+          <div class="timeline-item">Create co-branded "New Homeowner Renovation Guide" PDF with a realtor partner</div>
+          <div class="timeline-item">Explore membership in Victoria Residential Builders Association (VRBA)</div>
+
+          <div class="timeline-month">Month 9 &mdash; Paid Acquisition Test</div>
+          <div class="timeline-item">Test Google Ads: "interior designer Victoria BC," "renovation planning Victoria," "kitchen renovation Victoria"</div>
+          <div class="timeline-item">Budget: $500&ndash;$1,000/month test run</div>
+          <div class="timeline-item">Test Instagram/Facebook ads targeting Victoria homeowners 30&ndash;55, home renovation interest</div>
+          <div class="timeline-item">Retarget website visitors with portfolio + testimonial ads</div>
+
+        </div>
+      </div>
+
+      <!-- PHASE 4 -->
+      <div class="timeline-phase">
+        <div class="timeline-phase-header">
+          <span class="timeline-phase-num">04</span>
+          <div>
+            <div class="timeline-phase-title">Establish Authority</div>
+          </div>
+          <span class="timeline-phase-months">Months 10&ndash;12</span>
+        </div>
+        <div class="timeline-phase-body">
+
+          <div class="timeline-month">Month 10 &mdash; Awards + Professional Imagery</div>
+          <div class="timeline-item">Submit best projects to Georgie Awards (CHBA), NKBA, and local design awards</div>
+          <div class="timeline-item">Invest in professional architectural photography for 2&ndash;3 hero projects</div>
+          <div class="timeline-item">Pitch completed projects to Western Living, Dwell, or House &amp; Home</div>
+          <div class="timeline-item">Instagram target: 1,500+ followers</div>
+
+          <div class="timeline-month">Month 11 &mdash; Systemize Operations</div>
+          <div class="timeline-item">Build automated client onboarding sequence (emails after discovery call)</div>
+          <div class="timeline-item">Set up client portal or project management system (HoneyBook, Dubsado)</div>
+          <div class="timeline-item">Template all proposals and contracts</div>
+          <div class="timeline-item">Document builder referral pipeline &mdash; track referrals in and out</div>
+
+          <div class="timeline-month">Month 12 &mdash; Review + Year 2 Planning</div>
+          <div class="timeline-item">Audit all channels: website traffic, Google rankings, social growth, lead sources, revenue by service line</div>
+          <div class="timeline-item">Set Year 2 targets: revenue, project count, average project value, marketing spend</div>
+          <div class="timeline-item">Decide on hiring: junior designer or project coordinator?</div>
+          <div class="timeline-item">Evaluate expanding service area: Nanaimo, Duncan, Cowichan Valley</div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ACTION STEPS -->
+<section class="section">
+  <div class="eyebrow">Where to Start</div>
+  <h2>This week.<br><em>Three moves.</em></h2>
+  <p class="lead">Everything in this audit matters, but these three actions would have the biggest immediate impact on Detailed Design Co.'s visibility and lead flow.</p>
+  <div class="steps">
+
+    <div class="step">
+      <span class="step-num">1</span>
+      <h4>Fix Broken Pages + Meta</h4>
+      <p>Two core pages are returning 404 right now. The Building Design service page and the About page. Fix these and add meta descriptions to every page. This is a 2-hour job that stops the bleeding.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-num">2</span>
+      <h4>Claim Google Business Profile</h4>
+      <p>20 minutes. Free. Unlocks Google Maps, "near me" searches, and review collection. Add 20+ project photos, all three service lines, and your Victoria service areas. This single action makes you findable.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-num">3</span>
+      <h4>Collect 10 Reviews</h4>
+      <p>Text every past client this week: "Would you mind leaving a quick Google or Houzz review about working with us?" Social proof is the #1 conversion factor for design firms. You have happy clients &mdash; let them speak for you.</p>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <h4>The Photography Gap</h4>
+    <p>Every competitor in the table above with professional photography is outperforming those without it. Award submissions require it. Publications require it. Your website portfolio would transform with it. When you've got a project wrapping up that deserves to be your hero case study, that's where proper architectural photography changes the trajectory.</p>
+    <p style="margin-bottom:0;">I travel to Vancouver Island regularly &mdash; Victoria, Nanaimo, up to Comox. <strong>If you've got something finishing up in the next couple of months, I'd love to talk about capturing it.</strong></p>
+  </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">Matt Anthony Photography</div>
+  <div class="footer-info">
+    <a href="https://mattanthonyphoto.com">mattanthonyphoto.com</a><br>
+    <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a> &middot; 604.765.9270<br>
+    Squamish, BC
+  </div>
+  <div class="footer-note">This audit is confidential and prepared exclusively for Detailed Design Co.</div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* PROGRESS BAR */
+var bar = document.getElementById('progressBar');
+function updateProgress(){
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+}
+
+/* SCORE RING + COUNTER ANIMATION */
+var rings = document.querySelectorAll('.score-ring-fill');
+var numbers = document.querySelectorAll('.score-number[data-count]');
+var animated = false;
+
+function animateScores(){
+  if(animated) return;
+  var cards = document.querySelector('.scores');
+  if(!cards) return;
+  var rect = cards.getBoundingClientRect();
+  if(rect.top < window.innerHeight * 0.8){
+    animated = true;
+    rings.forEach(function(ring){
+      var target = parseFloat(ring.getAttribute('data-target'));
+      ring.style.strokeDashoffset = target;
+    });
+    numbers.forEach(function(num){
+      var target = parseInt(num.getAttribute('data-count'));
+      var duration = 1500;
+      var start = performance.now();
+      function tick(now){
+        var t = Math.min((now - start) / duration, 1);
+        var ease = 1 - Math.pow(1 - t, 3);
+        num.textContent = Math.round(target * ease);
+        if(t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+}
+
+/* FINDING REVEAL */
+var findings = document.querySelectorAll('.finding, .callout, .step, .timeline-phase');
+findings.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateY(12px)'; el.style.transition='opacity 0.5s ease, transform 0.5s ease'; });
+var revealObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.style.opacity='1';
+      entry.target.style.transform='translateY(0)';
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.1, rootMargin:'0px 0px -20px 0px'});
+findings.forEach(function(el){ revealObserver.observe(el); });
+
+/* SCROLL HANDLER */
+var ticking = false;
+window.addEventListener('scroll', function(){
+  if(!ticking){
+    requestAnimationFrame(function(){
+      updateProgress();
+      animateScores();
+      ticking = false;
+    });
+    ticking = true;
+  }
+},{passive:true});
+
+updateProgress();
+animateScores();
+})();
+</script>
+</body>
+</html>
