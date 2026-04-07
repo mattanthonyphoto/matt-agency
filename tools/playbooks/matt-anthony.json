@@ -372,23 +372,22 @@
       "path": "BD Interior Design/Silverstar Resort",
       "pinterest_url": "https://www.mattanthonyphoto.com/silver-star-residence",
       "architect": "Ian Paine Construction and Design",
-      "design_intent": "Balance drama and restraint with intention through dark-stained timber, raw stone, and metal detailing grounded in the snowy mountain context",
+      "design_intent": "Mountain retreat in the Okanagan featuring dark timber, raw stone, monolithic kitchen, and cedar lounge photographed with natural light.",
       "materials": [
-        "dark-stained timber cladding",
+        "dark timber",
         "raw stone",
-        "metal detailing",
-        "monolithic stone kitchen feature wall",
-        "cedar wrapping",
-        "layered lighting"
+        "cedar",
+        "monolithic kitchen elements"
       ],
-      "brief": "This striking modern retreat sits elevated above the treetops at Silver Star Mountain Resort, merging rugged materials with refined aesthetics. The residence employs sculptural stone elements and bold geometry while maintaining warmth through soft natural textures and strategic lighting. Every interior and exterior space prioritizes atmosphere, natural light, and livability within its dramatic alpine setting. Built by Rich Built Homes with interiors designed by BD Interior Design."
+      "brief": "Mountain retreat in the Okanagan by Ian Paine Construction. Dark timber, raw stone, monolithic kitchen, and cedar lounge photographed with natural light.",
+      "builder": "Ian Paine Construction"
     },
     {
       "slug": "eagle",
       "name": "Eagle Residence",
       "client": "Balmoral Construction",
       "client_handle": "@balmoralconstruction",
-      "location": "Pemberton, BC",
+      "location": "Pemberton, British Columbia",
       "type": "Custom home",
       "features": [],
       "photo_count": 16,
@@ -396,21 +395,19 @@
       "pinterest_url": "https://www.mattanthonyphoto.com/eagle-residence",
       "architect": "Steve Clark",
       "interior_designer": "Britt Lothrop",
-      "design_intent": "Designed with warm materials, clean modern lines, strategic lighting, and seamless indoor-outdoor flow",
+      "design_intent": "Non-combustible design tailored for a mountain setting in Pemberton's Benchlands.",
       "materials": [
-        "insulated concrete construction",
-        "non-combustible materials",
-        "custom architectural millwork by Novat",
-        "Innotech windows"
+        "insulated concrete",
+        "non-combustible materials"
       ],
-      "brief": "This 5,000 square foot residence in Pemberton's Benchlands neighborhood exemplifies durable contemporary design through the integration of insulated concrete and fire-resistant building systems. The collaborative effort between architect Steve Clark, builder Balmoral Construction, and interior designer Britt Lothrop resulted in a home that balances structural integrity with refined residential aesthetics throughout all spaces. The interiors feature custom millwork enhancing kitchen and living areas, while strategically positioned windows frame the surrounding mountain landscape."
+      "brief": "5,000 sq ft insulated concrete home in Pemberton's Benchlands. Non-combustible design and mountain setting by architect Steve Clark."
     },
     {
       "slug": "fitzsimmons",
       "name": "Fitzsimmons Residence",
       "client": "Balmoral Construction",
       "client_handle": "@balmoralconstruction",
-      "location": "Whistler, BC",
+      "location": "Whistler, British Columbia",
       "type": "Custom home",
       "features": [],
       "photo_count": 20,
@@ -418,28 +415,29 @@
       "pinterest_url": "https://www.mattanthonyphoto.com/fitzsimmons-whistler",
       "architect": "Shelter Residential Design (Mark Simone)",
       "interior_designer": "Britt Lothrop",
-      "design_intent": "Disciplined alpine design defined by angular form, material contrast, and spatial clarity",
+      "design_intent": "Disciplined design of a modern alpine home on Fitzsimmons Road, Whistler.",
       "materials": [
         "vertical black standing seam metal cladding",
         "warm cedar siding",
         "floating oak stairs",
         "custom vertical slat accents"
       ],
-      "brief": "This contemporary alpine residence on Fitzsimmons Road exemplifies the strength of collaborative design execution. The home's crisp, angular form juxtaposes vertical black standing seam metal against warm cedar siding, creating visual interest while honoring Whistler's natural character. Internally, the residence embraces minimalist design principles through restraint and precision. Floating oak stairs, custom vertical slat details, and thoughtful material transitions guide both light and movement throughout the space."
+      "brief": "Modern alpine home on Fitzsimmons Road, Whistler. Disciplined design by Balmoral Construction documented through architectural photography.",
+      "builder": "Balmoral Construction"
     },
     {
       "slug": "sugarloaf",
       "name": "Sugarloaf Residence",
       "client": "Balmoral Construction",
       "client_handle": "@balmoralconstruction",
-      "location": "Whistler, BC",
+      "location": "Pemberton, British Columbia",
       "type": "Custom home",
       "features": [],
       "photo_count": 20,
       "path": "Balmoral Construction/Sugarloaf",
       "pinterest_url": "https://www.mattanthonyphoto.com/sugarloaf-residence",
       "architect": "Stark Architecture",
-      "design_intent": "Celebrate Mount Currie and the surrounding forest by framing nature at every turn through expansive Innotech glazing",
+      "design_intent": "A 4,800 sq ft custom home featuring floor-to-ceiling windows strategically positioned to frame views of Mount Currie.",
       "materials": [
         "white oak millwork by Blueprint Millwork",
         "stone kitchen island",
@@ -454,29 +452,29 @@
       "name": "Warbler Residence",
       "client": "Balmoral Construction",
       "client_handle": "@balmoralconstruction",
-      "location": "Whistler, BC",
+      "location": "Whistler, British Columbia",
       "type": "Custom home",
       "features": [],
       "photo_count": 40,
       "path": "Balmoral Construction/Warbler",
       "pinterest_url": "https://www.mattanthonyphoto.com/warbler-whistler",
-      "architect": "Shelter Residential Design (Mark Simone)",
-      "design_intent": "Contemporary alpine design that embraces its mountain setting through bold materiality and intentional craft",
+      "architect": "Shelter Residential Design",
+      "design_intent": "Contemporary alpine home featuring bold cladding, warm cedar, and custom millwork set against a mountain backdrop.",
       "materials": [
-        "black metal cladding",
-        "warm cedar accents",
-        "expansive custom glazing",
-        "bespoke millwork"
+        "cedar",
+        "custom millwork",
+        "bold cladding"
       ],
-      "brief": "Located in Whistler's Wedgewood neighborhood, this residence exemplifies thoughtful design collaboration across disciplines. The home combines striking black metal exterior cladding with warm cedar accents and extensive custom glazing to establish a bold contemporary alpine aesthetic that responds to its mountain context. Inside, natural materials, bespoke millwork, and strategic lighting create refined interiors balancing aesthetic vision with livable spaces. Every element was conceived with design integrity and performance considerations, resulting in a standout example of modern mountain architecture.",
-      "interior_designer": "Britt Lothrop"
+      "brief": "Contemporary alpine home in Whistler by Balmoral Construction and Shelter Residential Design. Bold cladding, warm cedar, and custom millwork against mountain backdrop.",
+      "interior_designer": "Britt Lothrop",
+      "builder": "Balmoral Construction"
     },
     {
       "slug": "sunridge",
-      "name": "Sunridge",
+      "name": "Sunridge Whistler",
       "client": "LRD Studio",
       "client_handle": "@lrdstudio",
-      "location": "Whistler, BC",
+      "location": "Whistler, British Columbia",
       "type": "Log home renovation",
       "features": [
         "curved staircase",
@@ -487,22 +485,23 @@
       "photo_count": 50,
       "path": "LRD Studio/Sunridge",
       "pinterest_url": "https://www.mattanthonyphoto.com/sunridge-whistler",
-      "interior_designer": "LRD Studio (Lauren Ritz)",
-      "design_intent": "Honouring Whistler's heritage, keeping the soul of the log home alive with a modern level of refinement",
+      "interior_designer": "LRD Studio",
+      "design_intent": "Heritage log home renovation in Whistler where raw timber meets natural stone, oak, and soft textiles.",
       "materials": [
         "raw timber",
         "natural stone",
-        "oak flooring",
-        "soft fabrics"
+        "oak",
+        "soft textiles"
       ],
-      "brief": "This major renovation celebrates the original log structure while introducing contemporary sophistication. Rather than concealing the timber framework, the design emphasizes its craftsmanship through thoughtful proportions, strategic lighting, and textural contrasts. The palette combines rustic wood with refined stone and oak elements, creating spaces that feel rooted in nature yet distinctly elevated. Each interior zone offers its own distinct character and experience, balancing heritage authenticity with the comfort and functionality expected in modern residential living. Built by Gavan Construction."
+      "brief": "Heritage log home renovation in Whistler by Gavan Construction and LRD Studio. Raw timber meets natural stone, oak, and soft textiles.",
+      "builder": "Gavan Construction"
     },
     {
       "slug": "gambier",
-      "name": "Gambier Island Residence",
+      "name": "Gambier Island Cabin",
       "client": "Linwood Homes",
       "client_handle": "@linwoodhomes",
-      "location": "Gambier Island, BC",
+      "location": "Gambier Island, British Columbia",
       "type": "Off-grid island cabin",
       "features": [
         "timber frame",
@@ -515,14 +514,15 @@
       "path": "Linwood Homes/Gambier Island",
       "pinterest_url": "https://www.mattanthonyphoto.com/gambier-island-residence",
       "architect": "Linwood Homes",
-      "design_intent": "Soaring wood ceilings, expansive windows, and a natural material palette that connects interiors directly to the surrounding landscape",
+      "design_intent": "A remote island cabin designed for generational use, featuring soaring wood ceilings and ocean views, with all materials delivered by barge and helicopter to create an accessible retreat in an otherwise inaccessible location.",
       "materials": [
-        "wood ceilings",
-        "natural materials",
-        "timber",
-        "tile"
+        "wood",
+        "timber ceilings",
+        "glass",
+        "natural wood finishes"
       ],
-      "brief": "This remote island residence exemplifies the ingenuity required for generational property development in challenging locations. The home was constructed using pre-packaged Linwood materials delivered via barge and helicopter by builder Hayden Killam of Black Thumb Contracting, demonstrating the logistical complexity of island construction. Every design element \u2014 from the dramatic wood ceiling structure to carefully positioned glazing \u2014 reflects the family's deep connection to their property while framing forest and ocean views throughout the residence."
+      "brief": "Remote island cabin by Linwood Homes. Materials delivered by barge and helicopter. Soaring wood ceilings, ocean views, and generational craftsmanship.",
+      "builder": "Linwood Homes"
     },
     {
       "slug": "steelwood",
@@ -565,6 +565,217 @@
         "suspended sculptural fireplace"
       ],
       "brief": "Perched on a rugged shoreline, this modern residence exemplifies refined coastal contemporary design through thoughtful material selection and site integration. Floor-to-ceiling glazing frames panoramic ocean vistas while dark timber cladding anchors the structure within its forested setting, creating visual continuity between built form and landscape. The interior embraces minimalist principles through a neutral palette, polished concrete surfaces, and a sculptural suspended fireplace that serves as the home's focal point. Spaces prioritize unobstructed sightlines and natural illumination, fostering direct engagement with the surrounding environment throughout daily living."
+    },
+    {
+      "name": "The Perch",
+      "architect": "Michel Laflamme Architect",
+      "builder": "Summerhill Fine Homes",
+      "location": "Sunshine Coast, British Columbia",
+      "design_intent": "West Coast contemporary home featuring floor-to-ceiling glass and sculptural fireplace elements in a coastal setting.",
+      "materials": [
+        "floor-to-ceiling glass",
+        "sculptural fireplace",
+        "wood",
+        "concrete",
+        "steel"
+      ],
+      "brief": "West Coast contemporary home on the Sunshine Coast by Michel Laflamme Architect and Summerhill Fine Homes. Floor-to-ceiling glass, sculptural fireplace, coastal setting.",
+      "pinterest_url": "https://www.mattanthonyphoto.com/the-perch-sunshine-coast",
+      "slug": "the-perch",
+      "path": "",
+      "photo_count": 0,
+      "client": "Summerhill Fine Homes"
+    },
+    {
+      "name": "Fraser Valley Vista",
+      "architect": "Sitelines Architecture",
+      "location": "Langley, British Columbia",
+      "design_intent": "A 12,600 sq ft multigenerational home designed to capture escarpment views while incorporating refined interior details and classic design elements.",
+      "materials": [
+        "York pattern floors",
+        "wood flooring",
+        "glass",
+        "natural stone",
+        "interior millwork"
+      ],
+      "brief": "This 12,600 square foot multigenerational home in Langley by Sitelines Architecture showcases refined interior details and classic design elements. The residence takes full advantage of its elevated site with carefully planned escarpment views throughout the living spaces.\n\nThe interior features York pattern floors that add visual interest and timeless appeal to the main living areas. The architectural photography captures the home's sophisticated material palette and the interplay between interior spaces and the surrounding Fraser Valley landscape.\n\nDesigned to accommodate multiple generations under one roof, the home balances privacy and connection through thoughtful spatial planning while maintaining a cohesive design aesthetic throughout.",
+      "pinterest_url": "https://www.mattanthonyphoto.com/fraser-valley-vista",
+      "slug": "fraser-valley-vista",
+      "path": "",
+      "photo_count": 0,
+      "client": "Sitelines Architecture"
+    },
+    {
+      "name": "SDA BC & Yukon Headquarters",
+      "architect": "Sitelines Architecture",
+      "location": "Abbotsford, British Columbia",
+      "design_intent": "A 25,678 sq ft mass timber commercial building featuring twisted beams, transparent glass, and sustainable design principles that showcase the structural beauty of engineered wood.",
+      "materials": [
+        "mass timber",
+        "glulam beams",
+        "glass",
+        "engineered wood",
+        "CLT panels"
+      ],
+      "brief": "The SDA BC & Yukon Headquarters in Abbotsford represents a significant achievement in mass timber commercial construction. At 25,678 square feet, this building by Sitelines Architecture demonstrates the structural and aesthetic possibilities of engineered wood systems in contemporary architecture.\n\nThe design features distinctive twisted glulam beams that create dramatic visual interest while serving essential structural functions. Large expanses of transparent glass work in harmony with the warm timber elements, flooding interior spaces with natural light and creating strong visual connections between indoor and outdoor environments.\n\nThis project exemplifies sustainable building practices through its primary use of mass timber construction. The exposed structural elements celebrate the natural beauty of wood while reducing the building's carbon footprint, making it a model for environmentally responsible commercial architecture in British Columbia.",
+      "pinterest_url": "https://www.mattanthonyphoto.com/seventh-day-adventist-bc-headquarters",
+      "slug": "sda-bc-headquarters",
+      "path": "",
+      "photo_count": 0,
+      "client": "Sitelines Architecture"
+    },
+    {
+      "name": "Osprey Interior Renovation",
+      "builder": "Koze Build & Design",
+      "location": "Pitt Meadows, British Columbia",
+      "design_intent": "Interior renovation by Koze Build & Design. Custom millwork, arched passageways, brass fixtures, and natural wood cabinetry in sunlit spaces.",
+      "materials": [
+        "custom millwork",
+        "natural wood cabinetry",
+        "brass fixtures",
+        "arched passageways"
+      ],
+      "brief": "Interior renovation by Koze Build & Design. Custom millwork, arched passageways, brass fixtures, and natural wood cabinetry in sunlit spaces.",
+      "pinterest_url": "https://www.mattanthonyphoto.com/osprey",
+      "slug": "osprey",
+      "path": "",
+      "photo_count": 0,
+      "client": "Koze Build & Design"
+    },
+    {
+      "name": "Tranquil Retreat",
+      "builder": "Summerhill Fine Homes",
+      "location": "Sandy Hook, Sunshine Coast",
+      "design_intent": "Mid-century-inspired retreat on the Sunshine Coast featuring desert modernism details and fire-smart ICF construction.",
+      "materials": [
+        "walnut",
+        "ICF (insulated concrete forms)"
+      ],
+      "brief": "Mid-century-inspired retreat on the Sunshine Coast by Summerhill Fine Homes. Walnut kitchen, desert modernism details, and fire-smart ICF construction.",
+      "pinterest_url": "https://www.mattanthonyphoto.com/tranquil-retreat",
+      "slug": "tranquil-retreat",
+      "path": "",
+      "photo_count": 0,
+      "client": "Summerhill Fine Homes"
+    },
+    {
+      "name": "Browns Residence",
+      "builder": "Summerhill Fine Homes",
+      "location": "Sunshine Coast, British Columbia",
+      "design_intent": "Net-zero modern home featuring clean lines, natural textures, and thoughtful West Coast design.",
+      "materials": [
+        "natural wood",
+        "concrete",
+        "glass",
+        "steel",
+        "stone"
+      ],
+      "brief": "Net-zero modern home on the Sunshine Coast by Summerhill Fine Homes. Clean lines, natural textures, and thoughtful West Coast design.",
+      "pinterest_url": "https://www.mattanthonyphoto.com/browns-residence",
+      "slug": "browns-residence",
+      "path": "",
+      "photo_count": 0,
+      "client": "Summerhill Fine Homes"
+    },
+    {
+      "name": "Net Zero Build \u2014 Whistler",
+      "builder": "Peak Ventures",
+      "interior_designer": "Gnar Interior Design",
+      "location": "Whistler, British Columbia",
+      "design_intent": "A custom net-zero home designed for sustainable alpine living, featuring vertical wood cladding, stonework, and large-format glazing to maximize natural light and mountain views.",
+      "materials": [
+        "vertical wood cladding",
+        "stonework",
+        "large-format alpine glazing"
+      ],
+      "brief": "Custom net-zero home in Whistler by Peak Ventures and Gnar Interior Design. Vertical wood cladding, stonework, and large-format alpine glazing.",
+      "pinterest_url": "https://www.mattanthonyphoto.com/net-zero-build-whistler",
+      "slug": "net-zero-whistler",
+      "path": "",
+      "photo_count": 0,
+      "client": "Peak Ventures"
+    },
+    {
+      "name": "Wakefield Rooftop Oasis",
+      "architect": "Keck Architecture",
+      "builder": "Summerhill Fine Homes",
+      "location": "Sechelt, Sunshine Coast",
+      "design_intent": "A highbank renovation featuring a rooftop spa that maximizes ocean views while integrating natural wood shingles to create a refined coastal retreat.",
+      "materials": [
+        "wood shingles",
+        "rooftop spa materials",
+        "coastal exterior finishes"
+      ],
+      "brief": "Sunshine Coast renovation by Keck Architecture and Summerhill Fine Homes. Rooftop spa, wood shingles, and highbank ocean views.",
+      "pinterest_url": "https://www.mattanthonyphoto.com/wakefield-rooftop-oasis",
+      "slug": "wakefield-rooftop",
+      "path": "",
+      "photo_count": 0,
+      "client": "Summerhill Fine Homes"
+    },
+    {
+      "name": "Art Deco Reno",
+      "builder": "Summerhill Fine Homes",
+      "interior_designer": "Hazel+Brown",
+      "location": "Roberts Creek, British Columbia",
+      "design_intent": "Art Deco and mid-century renovation combining statement tile, custom millwork, and waterfront views.",
+      "materials": [
+        "statement tile",
+        "custom millwork",
+        "wood flooring",
+        "painted cabinetry",
+        "natural stone",
+        "decorative lighting"
+      ],
+      "brief": "Art Deco and mid-century renovation in Roberts Creek by Summerhill Fine Homes and Hazel+Brown. Statement tile, millwork, and waterfront views.",
+      "pinterest_url": "https://www.mattanthonyphoto.com/art-deco-reno",
+      "slug": "art-deco-reno",
+      "path": "",
+      "photo_count": 0,
+      "client": "Summerhill Fine Homes"
+    },
+    {
+      "name": "West 10th Avenue",
+      "architect": "Feature Projects",
+      "location": "Vancouver, British Columbia",
+      "design_intent": "Contemporary urban home featuring Reynaers window systems, custom skylight, and sustainable design principles.",
+      "materials": [
+        "Reynaers window systems",
+        "custom skylight",
+        "glass",
+        "steel",
+        "concrete"
+      ],
+      "brief": "Contemporary urban home in Vancouver by Feature Projects. Reynaers window systems, custom skylight, and sustainable design across 53 images.",
+      "pinterest_url": "https://www.mattanthonyphoto.com/west-10th-vancouver",
+      "slug": "west-10th",
+      "path": "",
+      "photo_count": 0,
+      "client": "Feature Projects"
+    },
+    {
+      "name": "Balsam Way",
+      "builder": "Tymac Construction",
+      "interior_designer": "LRD Studio",
+      "location": "Whistler, British Columbia",
+      "design_intent": "Classic Whistler log home transformed through white washing, refinishing, and a fresh colour palette.",
+      "brief": "Classic Whistler log home transformed by Tymac Construction and LRD Studio. White washing, refinishing, and a fresh colour palette.",
+      "pinterest_url": "https://www.mattanthonyphoto.com/balsam-way",
+      "slug": "balsam-way",
+      "path": "",
+      "photo_count": 0,
+      "client": "Tymac Construction"
+    },
+    {
+      "name": "Sunset Beach Penthouse",
+      "interior_designer": "ID Design",
+      "location": "Vancouver, British Columbia",
+      "design_intent": "Luxury penthouse featuring panoramic False Creek views with floor-to-ceiling glazing and refined coastal minimalism.",
+      "pinterest_url": "https://www.mattanthonyphoto.com/sunset-beach",
+      "slug": "sunset-beach",
+      "path": "",
+      "photo_count": 0,
+      "client": ""
     }
   ],
   "rotation": {

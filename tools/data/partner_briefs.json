@@ -1,0 +1,63 @@
+{
+  "partners": {
+    "summerhill-fine-homes": {
+      "name": "Summerhill Fine Homes",
+      "type": "builder",
+      "location": "Sunshine Coast, British Columbia",
+      "summary": "Summerhill Fine Homes is a custom home builder operating on the Sunshine Coast in British Columbia, Canada.",
+      "relationship": "Matt Anthony has provided ongoing architectural photography services for Summerhill, helping them build their visual brand through project shoots, team content, and award-winning imagery.",
+      "projects_together": [],
+      "key_quotes": [],
+      "url": "https://www.mattanthonyphoto.com/summerhill-fine-homes"
+    },
+    "balmoral-construction": {
+      "name": "Balmoral Construction",
+      "type": "builder",
+      "location": "Whistler, British Columbia",
+      "summary": "Balmoral Construction is a construction company based in Whistler, BC. They specialize in high-end construction projects in the Whistler area.",
+      "relationship": "Matt Anthony Photography worked with Balmoral Construction on comprehensive visual documentation, providing project photography and supporting a full website rebuild through strategic visual content.",
+      "projects_together": [],
+      "key_quotes": [],
+      "url": "https://www.mattanthonyphoto.com/balmoral-construction"
+    },
+    "sitelines-architecture": {
+      "name": "Sitelines Architecture",
+      "type": "architect",
+      "location": "BC, Canada",
+      "summary": "Sitelines Architecture is an architectural firm specializing in residential and commercial projects across British Columbia. They designed the notable 25,000+ sq ft SDA BC mass timber headquarters.",
+      "relationship": "Matt Anthony has documented Sitelines Architecture's residential and commercial projects throughout BC, providing architectural photography services for their portfolio.",
+      "projects_together": [
+        "SDA BC mass timber headquarters (25,000+ sq ft)",
+        "Various residential projects across BC",
+        "Various commercial projects across BC"
+      ],
+      "key_quotes": [],
+      "url": "https://www.mattanthonyphoto.com/sitelines-architecture"
+    },
+    "the-window-merchant": {
+      "name": "The Window Merchant",
+      "type": "trade",
+      "location": "Canada",
+      "summary": "The Window Merchant is a window and door specialist company that underwent a complete brand transformation through creative content services.",
+      "relationship": "Matt Anthony worked with The Window Merchant on a creative retainer that included consistent photography, video, social media management, and a complete website redesign.",
+      "projects_together": [],
+      "key_quotes": [],
+      "url": "https://www.mattanthonyphoto.com/the-window-merchant"
+    },
+    "lrd-studio": {
+      "name": "LRD Studio",
+      "type": "interior designer",
+      "location": "Whistler, British Columbia",
+      "summary": "LRD Studio is an award-winning interior design studio based in Whistler, BC, specializing in high-end residential renovations and design projects.",
+      "relationship": "Matt Anthony provided architectural photography services to help LRD Studio build a publication-ready visual portfolio across their renovation projects.",
+      "projects_together": [
+        "Sunridge Whistler renovation project",
+        "Additional renovation project"
+      ],
+      "key_quotes": [],
+      "url": "https://www.mattanthonyphoto.com/lrd-studio-interior-design"
+    }
+  },
+  "count": 5,
+  "last_synced": "2026-04-06T20:21:52Z"
+}

@@ -431,6 +431,34 @@ def call_tool(script_name, *args):
     return result
 
 
+def get_relevant_journal_posts(pillar: str, count: int = 2) -> list:
+    """Pull relevant journal posts from the synced library to use as context.
+    For Educational/Process pillars, we use these as inspiration for hooks and angles."""
+    journal_file = Path(__file__).resolve().parent / "data" / "journal_library.json"
+    if not journal_file.exists():
+        return []
+    try:
+        with open(journal_file) as f:
+            data = json.load(f)
+        journals = data.get("journals", [])
+
+        # Map pillar to journal categories
+        pillar_to_cat = {
+            "Educational": ["Education", "Process", "Industry"],
+            "Process & BTS": ["Process", "Case Study"],
+            "Awards & Press": ["Awards"],
+            "Project Showcase": ["Case Study"],
+        }
+        target_cats = pillar_to_cat.get(pillar, [])
+        if not target_cats:
+            return []
+
+        relevant = [j for j in journals if j.get("category") in target_cats]
+        return relevant[:count]
+    except Exception:
+        return []
+
+
 def score_brand_consistency(caption: str, voice_rules: dict) -> dict:
     """Score a caption against brand voice rules. Returns 0-100 score + breakdown.
     Used for the Quality Score field in Notion + portal display."""
@@ -603,6 +631,17 @@ Notable trades to tag: {client_handle}
             for i, ex in enumerate(top_examples, 1):
                 project_context += f"\nExample {i}:\n{ex}\n"
             project_context += "\nWrite the new caption in the same voice as these examples — they reached the largest audiences.\n"
+
+        # Inject relevant journal article context for Educational/Process pillars
+        relevant_journals = get_relevant_journal_posts(pillar, count=2)
+        if relevant_journals:
+            project_context += "\n\n--- RELATED ARTICLES (you've written about this topic — pull insights from here) ---\n"
+            for j in relevant_journals:
+                project_context += f"\n• {j.get('title', '')}\n  Summary: {j.get('summary', '')}\n"
+                points = j.get('key_points', [])[:3]
+                if points:
+                    project_context += "  Key points: " + " · ".join(points) + "\n"
+            project_context += "\n"
 
         # Load images for Vision — use specific carousel images if provided
         hero_images = []
