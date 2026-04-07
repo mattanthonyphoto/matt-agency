@@ -431,7 +431,89 @@ def call_tool(script_name, *args):
     return result
 
 
-def generate_caption_for_post(project_data, platform, post_type, pillar, hook, playbook, projects_dir, specific_images=None):
+def score_brand_consistency(caption: str, voice_rules: dict) -> dict:
+    """Score a caption against brand voice rules. Returns 0-100 score + breakdown.
+    Used for the Quality Score field in Notion + portal display."""
+    if not caption:
+        return {"score": 0, "issues": ["empty caption"]}
+
+    avoid_words = [w.lower() for w in voice_rules.get('vocabulary', {}).get('avoid', [])]
+    use_words = [w.lower() for w in voice_rules.get('vocabulary', {}).get('use', [])]
+    cap_lower = caption.lower()
+
+    issues = []
+    score = 100
+
+    # Penalize avoid words (heavy)
+    for w in avoid_words:
+        if w in cap_lower:
+            issues.append(f"contains '{w}'")
+            score -= 15
+
+    # Penalize hype indicators
+    excl = caption.count("!")
+    if excl > 1:
+        issues.append(f"{excl} exclamation marks")
+        score -= 5 * (excl - 1)
+
+    caps_words = [w for w in caption.split() if len(w) > 3 and w.isupper()]
+    if caps_words:
+        issues.append(f"{len(caps_words)} all-caps words")
+        score -= 5 * len(caps_words)
+
+    # Reward use words (light bonus per matched word, max +10)
+    use_matches = sum(1 for w in use_words if w in cap_lower)
+    score += min(10, use_matches * 2)
+
+    # Reward specific/sensory hook
+    hook = caption[:80].lower()
+    sensory_kw = ["light", "morning", "twilight", "stone", "wood", "concrete", "cedar", "first", "every", "moment", "shadow", "warm", "cold"]
+    if any(kw in hook for kw in sensory_kw):
+        score += 5
+    else:
+        issues.append("hook lacks specific/sensory detail")
+        score -= 3
+
+    # Length appropriateness
+    if len(caption) < 100:
+        issues.append("caption too short")
+        score -= 10
+
+    score = max(0, min(100, score))
+    return {"score": score, "issues": issues}
+
+
+def get_top_caption_examples(account_id: str, count: int = 3) -> list:
+    """Fetch top-performing past captions to use as style examples.
+    Returns list of caption strings ranked by reach."""
+    if not account_id or not LATE_API_KEY:
+        return []
+    try:
+        from datetime import date, timedelta
+        ninety_days_ago = (date.today() - timedelta(days=90)).isoformat()
+        resp = requests.get(
+            f"{LATE_API_BASE}/analytics",
+            headers={"Authorization": f"Bearer {LATE_API_KEY}"},
+            params={"accountId": account_id, "from": ninety_days_ago, "to": date.today().isoformat()},
+            timeout=20
+        )
+        if resp.status_code != 200:
+            return []
+        posts = resp.json().get("posts", [])
+        # Sort by reach, take top N
+        posts.sort(key=lambda p: p.get("analytics", {}).get("reach", 0), reverse=True)
+        examples = []
+        for p in posts[:count]:
+            content = p.get("content", "")
+            if content and len(content) > 100:
+                examples.append(content[:600])  # Cap to avoid bloating prompt
+        return examples
+    except Exception as e:
+        logger.warning(f"Failed to fetch top captions: {e}")
+        return []
+
+
+def generate_caption_for_post(project_data, platform, post_type, pillar, hook, playbook, projects_dir, specific_images=None, top_examples=None):
     """Generate a real caption using Claude Vision via generate_captions.py internals.
 
     Returns the caption string or a placeholder if generation fails.
@@ -498,8 +580,29 @@ Location: {location}
 Standout features: {features}
 Notable trades to tag: {client_handle}
 """
+
+        # Inject rich project brief if available (gives Vision/Claude deep context)
+        brief = project_data.get("brief", "")
+        if brief:
+            project_context += f"\nProject brief (the deeper story):\n{brief}\n"
+        architect = project_data.get("architect", "")
+        if architect:
+            project_context += f"Architect: {architect}\n"
+        materials = project_data.get("materials", [])
+        if materials:
+            project_context += f"Key materials: {', '.join(materials)}\n"
+        design_intent = project_data.get("design_intent", "")
+        if design_intent:
+            project_context += f"Design intent: {design_intent}\n"
         if hook:
             project_context += f"Suggested hook (use this or a variation): {hook}\n"
+
+        # Inject top-performing past captions as style anchors
+        if top_examples:
+            project_context += "\n\n--- STYLE ANCHORS (your own past top-performing posts — match this voice) ---\n"
+            for i, ex in enumerate(top_examples, 1):
+                project_context += f"\nExample {i}:\n{ex}\n"
+            project_context += "\nWrite the new caption in the same voice as these examples — they reached the largest audiences.\n"
 
         # Load images for Vision — use specific carousel images if provided
         hero_images = []
@@ -538,20 +641,121 @@ Notable trades to tag: {client_handle}
                         full_path = os.path.join(proj_path, img_name)
                         hero_images.append({"path": Path(full_path), "subject": "", "category": "", "hero_score": 0})
 
-        # Generate caption
+        # ── STEP 1: Generate 3 caption variations ──
         client_api = get_client()
-        caption = generate_caption(
-            client_api,
-            project_context,
-            platform_lower,
-            content_type,
-            hero_images=hero_images if hero_images else None
-        )
+        variations = []
+        for i in range(3):
+            try:
+                cap = generate_caption(
+                    client_api,
+                    project_context,
+                    platform_lower,
+                    content_type,
+                    hero_images=hero_images if hero_images else None
+                )
+                if cap:
+                    variations.append(cap)
+            except Exception as e:
+                logger.warning(f"Variation {i+1} generation failed: {e}")
 
-        if caption:
-            logger.info(f"Caption generated ({len(caption)} chars) for {project_name} {platform}")
-            return caption
-        return None
+        if not variations:
+            return None
+
+        # ── STEP 2: Score each variation against brand voice ──
+        avoid_words = voice.get('vocabulary', {}).get('avoid', [])
+        use_words = voice.get('vocabulary', {}).get('use', [])
+
+        def score_caption(cap: str) -> dict:
+            cap_lower = cap.lower()
+            penalties = sum(1 for w in avoid_words if w.lower() in cap_lower)
+            bonuses = sum(1 for w in use_words if w.lower() in cap_lower)
+            # Penalize excessive exclamation marks (hype indicator)
+            exclamation_penalty = max(0, cap.count("!") - 1)
+            # Penalize all-caps WORDS (hype indicator)
+            caps_words = sum(1 for w in cap.split() if len(w) > 3 and w.isupper())
+            # Hook strength: first 60 chars have specific or sensory words
+            hook = cap[:60].lower()
+            hook_strength = sum(1 for kw in ["light", "morning", "twilight", "stone", "wood", "concrete", "moment", "first", "every"] if kw in hook)
+            # Length appropriateness
+            target_lens = {"instagram": (200, 800), "linkedin": (400, 1500), "pinterest": (300, 800)}
+            tmin, tmax = target_lens.get(platform_lower, (200, 800))
+            length_ok = 1 if tmin <= len(cap) <= tmax else 0
+
+            return {
+                "score": bonuses - (penalties * 2) - exclamation_penalty - caps_words + hook_strength + length_ok,
+                "penalties": penalties,
+                "bonuses": bonuses,
+                "length": len(cap),
+                "hook_strength": hook_strength,
+            }
+
+        scored = [(cap, score_caption(cap)) for cap in variations]
+        scored.sort(key=lambda x: x[1]["score"], reverse=True)
+        best_caption, best_score = scored[0]
+
+        logger.info(f"Caption variations: {len(variations)}, best score: {best_score['score']}")
+        logger.info(f"  → bonuses: {best_score['bonuses']} use-words, penalties: {best_score['penalties']} avoid-words")
+
+        # ── STEP 3: Critique pass — refine the best variation if it has penalties ──
+        if best_score["penalties"] > 0 or best_score["score"] < 2:
+            try:
+                from anthropic import Anthropic
+                anthropic = Anthropic(api_key=ANTHROPIC_API_KEY)
+
+                critique_prompt = f"""You are an editor refining a social media caption to match a strict brand voice.
+
+Brand voice rules:
+- Tone: {voice.get('tone', 'Professional')}
+- ALWAYS use words/phrases like: {', '.join(use_words)}
+- NEVER use these words: {', '.join(avoid_words)}
+- No exclamation marks
+- No all-caps emphasis
+- {voice.get('perspective', 'First person singular')}
+
+Current caption:
+{best_caption}
+
+Refine this caption to:
+1. Remove any forbidden words
+2. Replace hype language with specific, observed details
+3. Keep the same core message and hashtags
+4. Same approximate length
+5. Make the hook (first sentence) more specific
+
+Return ONLY the refined caption, no preamble or explanation."""
+
+                msg = anthropic.messages.create(
+                    model="claude-sonnet-4-5-20250929",
+                    max_tokens=2000,
+                    messages=[{"role": "user", "content": critique_prompt}]
+                )
+                refined = msg.content[0].text.strip()
+                if refined and len(refined) > 50:
+                    logger.info(f"  → critique pass refined caption ({len(refined)} chars)")
+                    best_caption = refined
+            except Exception as e:
+                logger.warning(f"Critique pass failed: {e}")
+
+        # ── STEP 4: Strip trailing hashtags so they can be posted as first comment ──
+        # (Caller stores hashtags separately and uses Late.dev's first-comment feature)
+        lines = best_caption.split("\n")
+        caption_body_lines = []
+        trailing_hashtags = []
+        # Walk from the end backwards, collecting #hashtag lines
+        in_hashtag_block = True
+        for line in reversed(lines):
+            stripped = line.strip()
+            if in_hashtag_block and (not stripped or stripped.startswith("#") or all(w.startswith("#") for w in stripped.split() if w)):
+                if stripped:
+                    trailing_hashtags.insert(0, stripped)
+            else:
+                in_hashtag_block = False
+                caption_body_lines.insert(0, line)
+        if trailing_hashtags:
+            best_caption = "\n".join(caption_body_lines).rstrip()
+
+        logger.info(f"Caption finalized ({len(best_caption)} chars) for {project_name} {platform}")
+        return best_caption
 
     except Exception as e:
         logger.warning(f"Caption generation failed: {e}")
@@ -826,6 +1030,12 @@ def mode_plan():
             logger.info(f"Skipping {acct['label']} — no connected platforms")
             continue
 
+        # Fetch top-performing captions to use as style anchors for this account
+        ig_id = acct.get("platforms", {}).get("instagram", {}).get("account_id")
+        top_caption_examples = get_top_caption_examples(ig_id, count=3) if ig_id else []
+        if top_caption_examples:
+            logger.info(f"  Style anchors: {len(top_caption_examples)} top captions loaded for {acct['label']}")
+
         schedule = playbook.get("weekly_schedule", [])
         if not schedule:
             continue
@@ -904,7 +1114,8 @@ def mode_plan():
             caption = generate_caption_for_post(
                 project_data, platform, post_type, pillar, hook,
                 playbook, acct.get("projects_dir", ""),
-                specific_images=selected_images
+                specific_images=selected_images,
+                top_examples=top_caption_examples
             )
             if not caption:
                 # Fallback to placeholder if generation fails
@@ -959,15 +1170,26 @@ def mode_plan():
                 "Standard"
             )
 
-            # Quality score — check caption against voice rules
+            # Quality score — full brand consistency check
             quality = "Publish Ready"
+            quality_score_num = 100
+            quality_issues = []
             if caption and "[Caption to be generated" in caption:
                 quality = "Needs Edit"
+                quality_score_num = 0
             elif caption:
-                avoid_words = playbook.get("brand_voice", {}).get("vocabulary", {}).get("avoid", [])
-                caption_lower = caption.lower()
-                if any(word.lower() in caption_lower for word in avoid_words):
+                voice_rules = playbook.get("brand_voice", {})
+                consistency = score_brand_consistency(caption, voice_rules)
+                quality_score_num = consistency["score"]
+                quality_issues = consistency["issues"]
+                if quality_score_num >= 85:
+                    quality = "Publish Ready"
+                elif quality_score_num >= 60:
+                    quality = "Needs Review"
+                else:
                     quality = "Voice Mismatch"
+                if quality_issues:
+                    logger.info(f"  Brand consistency: {quality_score_num}/100 — {', '.join(quality_issues[:3])}")
 
             # Set expiry date (7 days from now)
             expires_date = (date.today() + timedelta(days=7)).isoformat()
