@@ -370,7 +370,18 @@
       ],
       "photo_count": 43,
       "path": "BD Interior Design/Silverstar Resort",
-      "pinterest_url": "https://www.mattanthonyphoto.com/silver-star-residence"
+      "pinterest_url": "https://www.mattanthonyphoto.com/silver-star-residence",
+      "architect": "Ian Paine Construction and Design",
+      "design_intent": "Balance drama and restraint with intention through dark-stained timber, raw stone, and metal detailing grounded in the snowy mountain context",
+      "materials": [
+        "dark-stained timber cladding",
+        "raw stone",
+        "metal detailing",
+        "monolithic stone kitchen feature wall",
+        "cedar wrapping",
+        "layered lighting"
+      ],
+      "brief": "This striking modern retreat sits elevated above the treetops at Silver Star Mountain Resort, merging rugged materials with refined aesthetics. The residence employs sculptural stone elements and bold geometry while maintaining warmth through soft natural textures and strategic lighting. Every interior and exterior space prioritizes atmosphere, natural light, and livability within its dramatic alpine setting. Built by Rich Built Homes with interiors designed by BD Interior Design."
     },
     {
       "slug": "eagle",
@@ -382,7 +393,17 @@
       "features": [],
       "photo_count": 16,
       "path": "Balmoral Construction/Eagle Residence",
-      "pinterest_url": "https://www.mattanthonyphoto.com/eagle-residence"
+      "pinterest_url": "https://www.mattanthonyphoto.com/eagle-residence",
+      "architect": "Steve Clark",
+      "interior_designer": "Britt Lothrop",
+      "design_intent": "Designed with warm materials, clean modern lines, strategic lighting, and seamless indoor-outdoor flow",
+      "materials": [
+        "insulated concrete construction",
+        "non-combustible materials",
+        "custom architectural millwork by Novat",
+        "Innotech windows"
+      ],
+      "brief": "This 5,000 square foot residence in Pemberton's Benchlands neighborhood exemplifies durable contemporary design through the integration of insulated concrete and fire-resistant building systems. The collaborative effort between architect Steve Clark, builder Balmoral Construction, and interior designer Britt Lothrop resulted in a home that balances structural integrity with refined residential aesthetics throughout all spaces. The interiors feature custom millwork enhancing kitchen and living areas, while strategically positioned windows frame the surrounding mountain landscape."
     },
     {
       "slug": "fitzsimmons",
@@ -394,7 +415,17 @@
       "features": [],
       "photo_count": 20,
       "path": "Balmoral Construction/Fitzsimmons Residence",
-      "pinterest_url": "https://www.mattanthonyphoto.com/fitzsimmons-whistler"
+      "pinterest_url": "https://www.mattanthonyphoto.com/fitzsimmons-whistler",
+      "architect": "Shelter Residential Design (Mark Simone)",
+      "interior_designer": "Britt Lothrop",
+      "design_intent": "Disciplined alpine design defined by angular form, material contrast, and spatial clarity",
+      "materials": [
+        "vertical black standing seam metal cladding",
+        "warm cedar siding",
+        "floating oak stairs",
+        "custom vertical slat accents"
+      ],
+      "brief": "This contemporary alpine residence on Fitzsimmons Road exemplifies the strength of collaborative design execution. The home's crisp, angular form juxtaposes vertical black standing seam metal against warm cedar siding, creating visual interest while honoring Whistler's natural character. Internally, the residence embraces minimalist design principles through restraint and precision. Floating oak stairs, custom vertical slat details, and thoughtful material transitions guide both light and movement throughout the space."
     },
     {
       "slug": "sugarloaf",
@@ -407,16 +438,16 @@
       "photo_count": 20,
       "path": "Balmoral Construction/Sugarloaf",
       "pinterest_url": "https://www.mattanthonyphoto.com/sugarloaf-residence",
-      "architect": "STARK Architecture",
-      "design_intent": "A passive house perched on a Pemberton hillside that disappears into the landscape during the day and glows like a lantern at night. Every window framed for a specific mountain or forest view.",
+      "architect": "Stark Architecture",
+      "design_intent": "Celebrate Mount Currie and the surrounding forest by framing nature at every turn through expansive Innotech glazing",
       "materials": [
-        "board-formed concrete",
-        "charred cedar siding",
-        "weathered steel cladding",
-        "white oak interiors",
-        "soapstone counters"
+        "white oak millwork by Blueprint Millwork",
+        "stone kitchen island",
+        "Innotech glazing",
+        "warm interior finishes"
       ],
-      "brief": "Sugarloaf is a Passive House certified custom home built into a Pemberton hillside. The architect's brief was to create a home that 'reads as one gesture' from the road but unfolds into multiple intimate spaces inside. Construction took 18 months. Notable trades: @innotechwindowsdoors (triple-glazed windows), @blueprintmillwork (custom kitchen). The owners are a young family who wanted to age in place \u2014 every space had to work for kids today and grandparents in 30 years."
+      "brief": "This Pemberton residence demonstrates how thoughtful architectural design honors its mountain setting. Expansive windows by Innotech capture views of Mount Currie and surrounding forest from nearly every room, creating visual connections between interior spaces and the natural landscape. The 4,800 sq ft home balances refined architectural form with grounded materiality through warm finishes and carefully selected details. Interior spaces feature white oak millwork, natural stone elements, and material palettes that feel both sophisticated and contextually appropriate to the Sea-to-Sky corridor environment.",
+      "interior_designer": "Britt Lothrop"
     },
     {
       "slug": "warbler",
@@ -429,16 +460,16 @@
       "photo_count": 40,
       "path": "Balmoral Construction/Warbler",
       "pinterest_url": "https://www.mattanthonyphoto.com/warbler-whistler",
-      "architect": "Shelter Residential Design",
-      "design_intent": "A modern mountain home in Whistler that pairs warm cedar interiors with charcoal metal exteriors. The owners wanted a place that felt like 'a high-end ski cabin with no compromise on craft.'",
+      "architect": "Shelter Residential Design (Mark Simone)",
+      "design_intent": "Contemporary alpine design that embraces its mountain setting through bold materiality and intentional craft",
       "materials": [
-        "charred cedar soffits",
-        "blackened steel cladding",
-        "board-formed concrete",
-        "white oak floors",
-        "marble kitchen island"
+        "black metal cladding",
+        "warm cedar accents",
+        "expansive custom glazing",
+        "bespoke millwork"
       ],
-      "brief": "Warbler is a multi-generational home in Whistler designed to host extended family gatherings while still feeling intimate for two. The interior was led by @britt.lothrop and references both Japanese minimalism and Pacific Northwest tradition. Built by Balmoral Construction. The owner credits Britt with 'pulling restraint out of every room.'"
+      "brief": "Located in Whistler's Wedgewood neighborhood, this residence exemplifies thoughtful design collaboration across disciplines. The home combines striking black metal exterior cladding with warm cedar accents and extensive custom glazing to establish a bold contemporary alpine aesthetic that responds to its mountain context. Inside, natural materials, bespoke millwork, and strategic lighting create refined interiors balancing aesthetic vision with livable spaces. Every element was conceived with design integrity and performance considerations, resulting in a standout example of modern mountain architecture.",
+      "interior_designer": "Britt Lothrop"
     },
     {
       "slug": "sunridge",
@@ -455,7 +486,16 @@
       ],
       "photo_count": 50,
       "path": "LRD Studio/Sunridge",
-      "pinterest_url": "https://www.mattanthonyphoto.com/sunridge-whistler"
+      "pinterest_url": "https://www.mattanthonyphoto.com/sunridge-whistler",
+      "interior_designer": "LRD Studio (Lauren Ritz)",
+      "design_intent": "Honouring Whistler's heritage, keeping the soul of the log home alive with a modern level of refinement",
+      "materials": [
+        "raw timber",
+        "natural stone",
+        "oak flooring",
+        "soft fabrics"
+      ],
+      "brief": "This major renovation celebrates the original log structure while introducing contemporary sophistication. Rather than concealing the timber framework, the design emphasizes its craftsmanship through thoughtful proportions, strategic lighting, and textural contrasts. The palette combines rustic wood with refined stone and oak elements, creating spaces that feel rooted in nature yet distinctly elevated. Each interior zone offers its own distinct character and experience, balancing heritage authenticity with the comfort and functionality expected in modern residential living. Built by Gavan Construction."
     },
     {
       "slug": "gambier",
@@ -473,7 +513,16 @@
       ],
       "photo_count": 41,
       "path": "Linwood Homes/Gambier Island",
-      "pinterest_url": "https://www.mattanthonyphoto.com/gambier-island-residence"
+      "pinterest_url": "https://www.mattanthonyphoto.com/gambier-island-residence",
+      "architect": "Linwood Homes",
+      "design_intent": "Soaring wood ceilings, expansive windows, and a natural material palette that connects interiors directly to the surrounding landscape",
+      "materials": [
+        "wood ceilings",
+        "natural materials",
+        "timber",
+        "tile"
+      ],
+      "brief": "This remote island residence exemplifies the ingenuity required for generational property development in challenging locations. The home was constructed using pre-packaged Linwood materials delivered via barge and helicopter by builder Hayden Killam of Black Thumb Contracting, demonstrating the logistical complexity of island construction. Every design element \u2014 from the dramatic wood ceiling structure to carefully positioned glazing \u2014 reflects the family's deep connection to their property while framing forest and ocean views throughout the residence."
     },
     {
       "slug": "steelwood",
@@ -506,15 +555,16 @@
       "photo_count": 26,
       "path": "Summerhill Fine Homes/The Perch",
       "pinterest_url": "https://www.mattanthonyphoto.com/the-perch-sunshine-coast",
-      "architect": "Atelier Michel Laflamme",
-      "design_intent": "A west coast modern home cantilevered over a rocky shoreline on the Sunshine Coast. The architectural brief was to make the building 'disappear into the cliff' while maximizing ocean views.",
+      "architect": "Michel Laflamme Architect",
+      "design_intent": "West Coast contemporary design defined by clean lines, natural materials, and a seamless connection to landscape",
       "materials": [
-        "floor-to-ceiling glass",
-        "dark cedar cladding",
+        "dark wood cladding",
         "polished concrete floors",
-        "white oak millwork"
+        "natural stone",
+        "floor-to-ceiling glass",
+        "suspended sculptural fireplace"
       ],
-      "brief": "The Perch was built into a near-vertical cliff face on BC's Sunshine Coast. The owners \u2014 a Vancouver couple who'd been searching for a wild coastal site for years \u2014 wanted a home that 'felt like camping in a really nice tent.' Summerhill Fine Homes coordinated 12 trades over 14 months. The cantilevered living room extends 18 feet over the rocks below."
+      "brief": "Perched on a rugged shoreline, this modern residence exemplifies refined coastal contemporary design through thoughtful material selection and site integration. Floor-to-ceiling glazing frames panoramic ocean vistas while dark timber cladding anchors the structure within its forested setting, creating visual continuity between built form and landscape. The interior embraces minimalist principles through a neutral palette, polished concrete surfaces, and a sculptural suspended fireplace that serves as the home's focal point. Spaces prioritize unobstructed sightlines and natural illumination, fostering direct engagement with the surrounding environment throughout daily living."
     }
   ],
   "rotation": {
