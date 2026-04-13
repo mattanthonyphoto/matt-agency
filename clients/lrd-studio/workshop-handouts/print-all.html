@@ -1460,6 +1460,163 @@
     transform: translateY(0);
   }
 
+  /* =========================================
+     INTRO / COVER PAGE
+     ========================================= */
+  .cover {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--ink);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0.5in;
+    left: 0.5in;
+    right: 0.5in;
+    bottom: 0.5in;
+    border: 1px solid rgba(255,255,255,0.12);
+    pointer-events: none;
+  }
+
+  .cover__logo {
+    font-size: 10pt;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+  }
+
+  .cover__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52pt;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.05;
+    margin: 0 0 1.5rem 0;
+    max-width: 6in;
+    color: #fff;
+  }
+
+  .cover__line {
+    width: 2in;
+    height: 1px;
+    background: var(--accent);
+    margin: 0 auto 1.5rem;
+  }
+
+  .cover__details {
+    font-size: 10pt;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    line-height: 2.2;
+    font-weight: 400;
+  }
+
+  .cover__details strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  .cover__footer {
+    position: absolute;
+    bottom: 0.75in;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .cover__footer-text {
+    font-size: 8pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* Intro / welcome page */
+  .welcome {
+    justify-content: center;
+  }
+
+  .welcome__eyebrow {
+    font-size: 9pt;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .welcome__headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36pt;
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 0 0 1.5rem 0;
+    max-width: 5.5in;
+    color: var(--ink);
+  }
+
+  .welcome__body {
+    font-size: 11pt;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 5.5in;
+    margin-bottom: 2rem;
+  }
+
+  .welcome__agenda {
+    list-style: none;
+    padding: 0;
+    max-width: 5.5in;
+    margin: 0;
+    counter-reset: agenda;
+  }
+
+  .welcome__agenda li {
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--hairline);
+    font-size: 9.5pt;
+    color: var(--muted);
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+    counter-increment: agenda;
+  }
+
+  .welcome__agenda li:last-child {
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .welcome__agenda li::before {
+    content: counter(agenda, decimal-leading-zero);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14pt;
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 500;
+    min-width: 1.5rem;
+  }
+
+  .welcome__agenda li strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .welcome__agenda .time {
+    color: var(--faint);
+    font-size: 8pt;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
   /* Final export page */
   .export {
     justify-content: center;
@@ -1519,6 +1676,59 @@
     <button onclick="saveData()" class="toolbar-btn">Save Data</button>
     <button onclick="exportPDF()" class="toolbar-btn toolbar-btn--primary">Export PDF</button>
     <span class="hint" style="white-space: nowrap;">April 13, 2026</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     COVER PAGE
+     ============================================================ -->
+<div class="page cover">
+  <div class="cover__logo">Matt Anthony Photography</div>
+  <h1 class="cover__title">Creative Partner Workshop</h1>
+  <div class="cover__line"></div>
+  <div class="cover__details">
+    <strong>LRD Studio</strong> · Lauren Ritz<br>
+    April 13, 2026 · Squamish, BC<br>
+    <br>
+    Strategy · Brand · Content · Execution
+  </div>
+  <div class="cover__footer">
+    <div class="cover__footer-text">Prepared for Lauren Ritz by Matt Anthony</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     WELCOME / INTRO PAGE
+     ============================================================ -->
+<div class="page welcome">
+  <div class="page-tag">— Welcome —</div>
+
+  <div class="welcome__eyebrow">What we're doing today</div>
+
+  <h1 class="welcome__headline">This is the foundation for everything we build together over the next 12 months.</h1>
+
+  <div class="welcome__body">
+    I've spent the past week studying your market, your competition, and how people find interior designers in the Sea-to-Sky corridor. I've scraped every page of your website, audited your SEO, tested how AI tools talk about you, and mapped out the keyword landscape. I found some big opportunities I'm excited about — and a few blind spots we need to fix fast.<br><br>
+    Today I'm going to walk you through what I found, and I need your judgment on about a dozen decisions. By the time we're done, I'll have everything I need to start executing without bothering you for the next 30 days. This is a conversation, not a presentation — stop me any time something doesn't feel right.
+  </div>
+
+  <ul class="welcome__agenda">
+    <li><strong>Voice &amp; identity</strong> — how LRD should sound in every caption, blog post, and page I write <span class="time">15 min</span></li>
+    <li><strong>Strategic direction</strong> — the Mountain Modern thesis and why the window is open <span class="time">15 min</span></li>
+    <li><strong>Live proof</strong> — what happens when you Google yourself right now <span class="time">10 min</span></li>
+    <li><strong>Project portfolio</strong> — which projects we can use, which we feature, and who owns the photos <span class="time">20 min</span></li>
+    <li><strong>Competition</strong> — who's a friend, who's a rival, who's irrelevant <span class="time">10 min</span></li>
+    <li><strong>Website direction</strong> — keep the current look or refresh it <span class="time">10 min</span></li>
+    <li><strong>Photo rights</strong> — the Sunstone question <span class="time">10 min</span></li>
+    <li><strong>Content pillars</strong> — the mix of what we post and how often <span class="time">15 min</span></li>
+    <li><strong>12-month calendar</strong> — every blog post for the next year, mapped to your projects <span class="time">10 min</span></li>
+    <li><strong>First shoot + operations</strong> — Q2 shoot, approval workflow, how we communicate <span class="time">15 min</span></li>
+    <li><strong>Priorities</strong> — you pick what I build first <span class="time">10 min</span></li>
+  </ul>
+
+  <div class="page-footer">
+    <span>Creative Workshop · ~2.5 hours</span>
+    <span>12 handouts</span>
   </div>
 </div>
 
