@@ -1,0 +1,71 @@
+{
+  "matt-anthony": {
+    "label": "Matt Anthony Photography",
+    "type": "owner",
+    "playbook": "tools/playbooks/matt-anthony.json",
+    "platforms": {
+      "instagram": {
+        "handle": "@mattanthonyphoto",
+        "scheduler": "late",
+        "account_id": "69d33609b668e4ea1d4ddcbd"
+      },
+      "linkedin": {
+        "handle": "Matt Anthony Photography",
+        "scheduler": "late",
+        "account_id": "69d3357eb668e4ea1d4ddb3d"
+      },
+      "pinterest": {
+        "handle": "@mattanthonyphoto",
+        "scheduler": "late",
+        "account_id": "69d3359eb668e4ea1d4ddb8e"
+      },
+      "facebook": {
+        "handle": "@mattanthonyphoto",
+        "scheduler": "late",
+        "account_id": "69d3368ab668e4ea1d4dde33"
+      },
+      "googlebusiness": {
+        "handle": "Matt Anthony Photography",
+        "scheduler": "late",
+        "account_id": "69d33644b668e4ea1d4ddd77"
+      },
+      "reddit": {
+        "handle": "CheekCapable7349",
+        "scheduler": "late",
+        "account_id": "69d335f2b668e4ea1d4ddc7f"
+      }
+    },
+    "projects_dir": "/Users/matthewfernandes/Photo Assets",
+    "notion_db_id": "ENV:CONTENT_CALENDAR_DB_ID"
+  },
+  "lrd-studio": {
+    "label": "LRD Studio",
+    "type": "client",
+    "playbook": "tools/playbooks/lrd-studio.json",
+    "approval_timeout_hours": 48,
+    "platforms": {
+      "instagram": {
+        "handle": "@lrdstudio_interiors",
+        "scheduler": "late",
+        "account_id": null
+      }
+    },
+    "projects_dir": "/Users/matthewfernandes/Photo Assets/LRD Studio",
+    "notion_db_id": "33d86897dca28197bd08f8f362028873"
+  },
+  "balmoral": {
+    "label": "Balmoral Construction",
+    "type": "client",
+    "playbook": null,
+    "approval_timeout_hours": 48,
+    "platforms": {
+      "instagram": {
+        "handle": "@balmoralconstruction",
+        "scheduler": "late",
+        "account_id": null
+      }
+    },
+    "projects_dir": "/Users/matthewfernandes/Photo Assets/Balmoral Construction",
+    "notion_db_id": null
+  }
+}

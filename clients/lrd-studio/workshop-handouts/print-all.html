@@ -1,0 +1,3281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LRD Studio — Creative Workshop (April 13, 2026)</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #525252;
+    --faint: #9a9a9a;
+    --hairline: #d8d4cf;
+    --bg: #ffffff;
+    --accent: #8b6f47;
+    --gold: #c4a46c;
+    --red: #b84444;
+    --green: #4a7a4a;
+    --cream: #f6f4f0;
+    --input-bg: #fafaf8;
+    --input-focus: #fcf9f2;
+  }
+
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--ink);
+    background: #e8e4df;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  /* Screen instructions banner — hidden on print */
+  .instructions {
+    position: sticky;
+    top: 0;
+    background: var(--ink);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    z-index: 100;
+    font-size: 10pt;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  }
+  .instructions strong {
+    font-weight: 500;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 8pt;
+    margin-right: 0.5rem;
+  }
+  .instructions .hint {
+    font-size: 9pt;
+    opacity: 0.85;
+  }
+  .instructions kbd {
+    background: rgba(255,255,255,0.15);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 8pt;
+    margin: 0 0.2rem;
+  }
+  @media print {
+    .instructions { display: none !important; }
+    body { background: #fff; }
+  }
+
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    padding: 0.75in;
+    page-break-after: always;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    margin: 0.5in auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  @media print {
+    .page { margin: 0; box-shadow: none; page-break-after: always; }
+  }
+
+  .page.landscape {
+    width: 11in;
+    min-height: 8.5in;
+  }
+
+  .page:last-child { page-break-after: auto; }
+
+  .page-number {
+    position: absolute;
+    top: 0.4in;
+    right: 0.75in;
+    font-size: 8pt;
+    letter-spacing: 0.12em;
+    color: var(--faint);
+    text-transform: uppercase;
+  }
+
+  .page-tag {
+    position: absolute;
+    top: 0.4in;
+    left: 0.75in;
+    font-size: 8pt;
+    letter-spacing: 0.15em;
+    color: var(--faint);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .page-footer {
+    position: absolute;
+    bottom: 0.4in;
+    left: 0.75in;
+    right: 0.75in;
+    display: flex;
+    justify-content: space-between;
+    font-size: 8pt;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+    text-transform: uppercase;
+  }
+
+  /* ---------- FORM ELEMENT STYLES ---------- */
+  input[type="text"],
+  input[type="search"],
+  textarea,
+  select {
+    font-family: 'Poppins', sans-serif;
+    font-size: 10pt;
+    color: var(--ink);
+    background: var(--input-bg);
+    border: none;
+    border-bottom: 1px solid var(--hairline);
+    padding: 0.35rem 0.5rem;
+    width: 100%;
+    outline: none;
+    transition: background 0.15s, border-color 0.15s;
+    font-weight: 400;
+  }
+  input[type="text"]:focus,
+  textarea:focus,
+  select:focus {
+    background: var(--input-focus);
+    border-bottom-color: var(--accent);
+  }
+  textarea {
+    resize: vertical;
+    min-height: 2.5rem;
+    line-height: 1.5;
+    border: 1px solid var(--hairline);
+  }
+  select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%238b6f47'%3e%3cpath d='M8 11L3 6h10z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 0.8rem;
+    padding-right: 1.75rem;
+  }
+
+  /* Radio button groups */
+  .radio-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .radio-option {
+    flex: 1;
+    min-width: fit-content;
+  }
+  .radio-option input[type="radio"] {
+    display: none;
+  }
+  .radio-option label {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--hairline);
+    background: var(--input-bg);
+    font-size: 9pt;
+    text-align: center;
+    cursor: pointer;
+    color: var(--muted);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .radio-option label:hover {
+    background: var(--cream);
+  }
+  .radio-option input[type="radio"]:checked + label {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+  .radio-option.love input[type="radio"]:checked + label { background: var(--green); border-color: var(--green); }
+  .radio-option.neutral input[type="radio"]:checked + label { background: var(--muted); border-color: var(--muted); }
+  .radio-option.rival input[type="radio"]:checked + label { background: var(--red); border-color: var(--red); }
+
+  /* Checkboxes */
+  .checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .checkbox-label input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border: 1.5px solid var(--muted);
+    background: #fff;
+    cursor: pointer;
+    position: relative;
+    margin: 0;
+    flex-shrink: 0;
+    border-radius: 2px;
+  }
+  .checkbox-label input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .checkbox-label input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  /* Field label */
+  .field-label {
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--faint);
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+    display: block;
+  }
+  .field {
+    margin-bottom: 0.6rem;
+  }
+
+  /* =========================================
+     HANDOUT 1 — STRATEGIC THESIS
+     ========================================= */
+  .thesis {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .thesis__eyebrow {
+    font-size: 10pt;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 2rem;
+    font-weight: 500;
+    margin-top: 0.5in;
+  }
+
+  .thesis__headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48pt;
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    max-width: 6.5in;
+    margin: 0 0 2rem 0;
+  }
+
+  .thesis__headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .thesis__reasons {
+    list-style: none;
+    padding: 0;
+    max-width: 5.5in;
+    margin: 0 auto 1.5rem auto;
+    text-align: left;
+  }
+
+  .thesis__reasons li {
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--hairline);
+    font-size: 10pt;
+    font-weight: 400;
+    color: var(--muted);
+    display: flex;
+    gap: 1rem;
+  }
+
+  .thesis__reasons li:last-child {
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .thesis__reasons li strong {
+    color: var(--ink);
+    font-weight: 600;
+    min-width: 1.5rem;
+  }
+
+  .thesis__capture {
+    max-width: 5.5in;
+    margin: 0.25in auto 0;
+    text-align: left;
+  }
+
+  /* =========================================
+     HANDOUT 2 — GEO VISIBILITY GRID
+     ========================================= */
+  .handout-header {
+    margin-bottom: 0.35in;
+    margin-top: 0.5in;
+  }
+
+  .handout-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30pt;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0 0 0.5rem 0;
+    color: var(--ink);
+  }
+
+  .handout-header p {
+    font-size: 10pt;
+    color: var(--muted);
+    margin: 0;
+    max-width: 6in;
+    line-height: 1.5;
+  }
+
+  .geo__summary {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0.3in 0;
+    padding: 0.25in 0;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .geo__stat {
+    flex: 1;
+  }
+
+  .geo__stat .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32pt;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--ink);
+    display: block;
+  }
+
+  .geo__stat .label {
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+    margin-top: 0.25rem;
+    display: block;
+    line-height: 1.3;
+  }
+
+  .geo__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.12in;
+    margin-top: 0.1in;
+  }
+
+  .geo__cell {
+    border: 1px solid var(--hairline);
+    padding: 0.12in 0.15in;
+    font-size: 9pt;
+    min-height: 0.7in;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .geo__cell.fail {
+    background: #fdf4f4;
+    border-color: #e8caca;
+  }
+
+  .geo__cell.pass {
+    background: #f4f8f4;
+    border-color: #c8dcc8;
+  }
+
+  .geo__cell .number {
+    font-size: 7pt;
+    font-weight: 500;
+    color: var(--faint);
+    letter-spacing: 0.08em;
+  }
+
+  .geo__cell .query {
+    font-size: 8.5pt;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-top: 0.1rem;
+    font-weight: 400;
+    padding-right: 0.3in;
+  }
+
+  .geo__cell .query em {
+    color: var(--faint);
+    font-style: italic;
+    font-size: 7pt;
+  }
+
+  .geo__cell .mark {
+    position: absolute;
+    top: 0.1in;
+    right: 0.1in;
+    font-size: 13pt;
+    font-weight: 700;
+  }
+
+  .geo__cell.fail .mark { color: var(--red); }
+  .geo__cell.pass .mark { color: var(--green); }
+
+  /* =========================================
+     HANDOUT 3 — WHITESPACE
+     ========================================= */
+  .whitespace__headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30pt;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0.5in 0 0.5rem 0;
+  }
+
+  .whitespace__sub {
+    font-size: 11pt;
+    color: var(--muted);
+    margin-bottom: 0.3in;
+    max-width: 6in;
+  }
+
+  .whitespace__section {
+    margin-bottom: 0.3in;
+  }
+
+  .whitespace__section h3 {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--faint);
+    margin: 0 0 0.75rem 0;
+    font-weight: 500;
+  }
+
+  .whitespace__firms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .whitespace__firm {
+    font-size: 9.5pt;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--hairline);
+    color: var(--muted);
+    background: var(--cream);
+  }
+
+  .whitespace__firm .loc {
+    color: var(--faint);
+    font-size: 7.5pt;
+    display: block;
+    margin-top: 0.1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .whitespace__empty {
+    padding: 0.35in;
+    border: 2px dashed var(--accent);
+    text-align: center;
+    margin-top: 0.2in;
+    background: #fefaf3;
+  }
+
+  .whitespace__empty .flag {
+    font-size: 9pt;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .whitespace__empty h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26pt;
+    font-weight: 500;
+    margin: 0 0 0.4rem 0;
+    color: var(--ink);
+  }
+
+  .whitespace__empty p {
+    font-size: 10pt;
+    color: var(--muted);
+    margin: 0 auto;
+    max-width: 5in;
+    font-style: italic;
+  }
+
+  .whitespace__callout {
+    margin-top: auto;
+    padding: 0.25in;
+    background: var(--ink);
+    color: #fff;
+    text-align: center;
+  }
+
+  .whitespace__callout .big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16pt;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .whitespace__callout .small {
+    font-size: 8pt;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  /* =========================================
+     HANDOUT 4 — PROJECT CARDS (LANDSCAPE)
+     ========================================= */
+  .project-card {
+    width: 11in;
+    min-height: 8.5in;
+    padding: 0.55in;
+    page-break-after: always;
+    position: relative;
+    display: flex;
+    gap: 0.5in;
+    background: var(--bg);
+    margin: 0.5in auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  @media print {
+    .project-card {
+      margin: 0;
+      box-shadow: none;
+      page: landscape;
+    }
+    @page landscape { size: letter landscape; margin: 0; }
+  }
+
+  .project-card__image {
+    flex: 1.2;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--hairline);
+    min-height: 7.3in;
+  }
+
+  .project-card__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card__number {
+    font-size: 8pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 0.4rem;
+  }
+
+  .project-card__name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40pt;
+    font-weight: 500;
+    line-height: 1;
+    margin: 0 0 0.5rem 0;
+    color: var(--ink);
+  }
+
+  .project-card__location {
+    font-size: 11pt;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .project-card__meta {
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    padding: 0.2in 0;
+    margin-bottom: 0.25in;
+  }
+
+  .project-card__meta-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 8.5pt;
+    padding: 0.25rem 0;
+  }
+
+  .project-card__meta-row .label {
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 7.5pt;
+  }
+
+  .project-card__meta-row .value {
+    color: var(--ink);
+    font-weight: 500;
+    text-align: right;
+  }
+
+  .project-card__decisions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 0.75rem;
+    margin-bottom: 0.25in;
+  }
+
+  .project-card__decisions .field.full {
+    grid-column: 1 / -1;
+  }
+
+  .project-card__notes-field {
+    margin-top: auto;
+  }
+
+  .project-card__notes-field textarea {
+    min-height: 1.4in;
+  }
+
+  /* =========================================
+     HANDOUT 5 — COMPETITOR CARDS
+     ========================================= */
+  .competitor-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3in;
+    padding-top: 0.8in;
+  }
+
+  .competitor-card {
+    border: 1px solid var(--hairline);
+    padding: 0.28in;
+    min-height: 4.2in;
+    display: flex;
+    flex-direction: column;
+    page-break-inside: avoid;
+  }
+
+  .competitor-card__name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19pt;
+    font-weight: 500;
+    margin: 0 0 0.15rem 0;
+    line-height: 1.1;
+  }
+
+  .competitor-card__loc {
+    font-size: 8.5pt;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .competitor-card__pos {
+    font-size: 9pt;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .competitor-card__intel {
+    font-size: 7.5pt;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+  }
+
+  .competitor-card__intel strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .competitor-card__form {
+    margin-top: auto;
+    border-top: 1px solid var(--hairline);
+    padding-top: 0.5rem;
+  }
+
+  .competitor-card__form .radio-group {
+    margin-bottom: 0.4rem;
+  }
+
+  .competitor-card__form .radio-option label {
+    padding: 0.3rem 0.4rem;
+    font-size: 7.5pt;
+  }
+
+  .competitor-card__form textarea {
+    min-height: 1.5rem;
+    font-size: 9pt;
+  }
+
+  /* =========================================
+     HANDOUT 6 — TWO FUTURES
+     ========================================= */
+  .future__tag {
+    font-size: 10pt;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    margin-top: 0.5in;
+  }
+
+  .future__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44pt;
+    font-weight: 500;
+    line-height: 1;
+    margin: 0 0 0.4rem 0;
+  }
+
+  .future__subtitle {
+    font-size: 13pt;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 0.3in;
+  }
+
+  .future__preview {
+    background: var(--cream);
+    border: 1px solid var(--hairline);
+    padding: 0.35in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 0.25in;
+    min-height: 3in;
+  }
+
+  .future__preview-sample {
+    text-align: center;
+  }
+
+  .future__preview-sample .brand {
+    font-size: 10pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .future__preview-sample .hero {
+    font-size: 22pt;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .future__preview-sample .sub {
+    font-size: 9pt;
+    color: var(--muted);
+  }
+
+  .future__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .future__bullets li {
+    padding: 0.55rem 0;
+    border-top: 1px solid var(--hairline);
+    font-size: 9.5pt;
+    color: var(--muted);
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .future__bullets li:last-child {
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .future__bullets li strong {
+    color: var(--ink);
+    font-weight: 600;
+    min-width: 1.2in;
+  }
+
+  .future--refresh .future__preview {
+    background: #fdfbf6;
+    border: 1px solid var(--gold);
+  }
+
+  .future--refresh .future__preview-sample .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14pt;
+    letter-spacing: 0.05em;
+    text-transform: none;
+    color: var(--accent);
+  }
+
+  .future--refresh .future__preview-sample .hero {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  .future__decision {
+    margin-top: 0.4in;
+    padding-top: 0.3in;
+    border-top: 2px solid var(--ink);
+  }
+
+  .future__decision h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18pt;
+    font-weight: 500;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .future__decision .radio-group {
+    margin-bottom: 0.75rem;
+  }
+
+  /* =========================================
+     HANDOUT 7 — THE MENU (FIXED)
+     ========================================= */
+  .menu-page {
+    background: var(--cream);
+    padding: 0.7in 0.7in;
+    position: relative;
+  }
+
+  .menu-page::before {
+    content: '';
+    position: absolute;
+    top: 0.4in;
+    left: 0.4in;
+    right: 0.4in;
+    bottom: 0.4in;
+    border: 1px solid var(--accent);
+    pointer-events: none;
+  }
+
+  .menu__inner {
+    position: relative;
+    padding: 0.35in 0.3in 0.3in;
+  }
+
+  .menu__header {
+    text-align: center;
+    padding-bottom: 0.2in;
+    border-bottom: 1px solid var(--accent);
+    margin-bottom: 0.25in;
+  }
+
+  .menu__header .establishment {
+    font-size: 8pt;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+
+  .menu__header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32pt;
+    font-weight: 400;
+    margin: 0;
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  .menu__header .prix {
+    font-size: 8.5pt;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.4rem;
+  }
+
+  .menu__howto {
+    text-align: center;
+    font-size: 9pt;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 0.2in;
+    padding: 0.25rem 0.5rem;
+    background: rgba(255,255,255,0.5);
+    border-radius: 2px;
+  }
+
+  .menu__section {
+    margin-bottom: 0.22in;
+  }
+
+  .menu__section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15pt;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--accent);
+    margin: 0 0 0.15rem 0;
+    text-align: center;
+  }
+
+  .menu__section .section-sub {
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--faint);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  /* FIXED MENU ITEM LAYOUT */
+  .menu__item {
+    display: flex;
+    align-items: flex-end;
+    padding: 0.35rem 0 0.1rem;
+    gap: 0.5rem;
+  }
+
+  .menu__item .check {
+    flex-shrink: 0;
+    margin-right: 0.25rem;
+  }
+
+  .menu__item .rank {
+    flex-shrink: 0;
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 1px solid var(--accent);
+    background: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10pt;
+    text-align: center;
+    color: var(--accent);
+    font-weight: 600;
+    padding: 0;
+    outline: none;
+    border-radius: 50%;
+    line-height: 1.1rem;
+    margin-right: 0.25rem;
+  }
+  .menu__item .rank:focus {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .menu__item .name {
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 10pt;
+    flex-shrink: 0;
+    padding-bottom: 0.15rem;
+  }
+
+  .menu__item .dots {
+    flex: 1 1 auto;
+    border-bottom: 1.5px dotted var(--faint);
+    height: 1px;
+    margin: 0 0.4rem 0.3rem;
+    min-width: 0.5rem;
+  }
+
+  .menu__item .price {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 9pt;
+    flex-shrink: 0;
+    padding-bottom: 0.15rem;
+  }
+
+  .menu__desc {
+    font-size: 8pt;
+    color: var(--faint);
+    font-style: italic;
+    margin: 0.05rem 0 0.15rem 3.1rem;
+    line-height: 1.35;
+  }
+
+  .menu__footer {
+    text-align: center;
+    font-size: 8pt;
+    color: var(--faint);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-style: italic;
+    margin-top: 0.25in;
+    padding-top: 0.2in;
+    border-top: 1px solid var(--accent);
+  }
+
+  /* =========================================
+     HANDOUT 8 — VOICE RULES
+     ========================================= */
+  .voice__intro {
+    font-size: 10pt;
+    color: var(--muted);
+    margin-bottom: 0.3in;
+    max-width: 6in;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .voice__columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3in;
+    margin-bottom: 0.35in;
+  }
+
+  .voice__col h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17pt;
+    font-weight: 500;
+    margin: 0 0 0.4rem 0;
+  }
+
+  .voice__col.love h3 { color: var(--gold); }
+  .voice__col.hate h3 { color: var(--red); }
+
+  .voice__col .tag {
+    font-size: 7pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faint);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .voice__col input[type="text"] {
+    padding: 0.25rem 0.4rem;
+    font-size: 9pt;
+    margin-bottom: 0.1rem;
+    background: transparent;
+    border-bottom: 1px dotted var(--hairline);
+  }
+  .voice__col input[type="text"]:focus {
+    background: var(--input-focus);
+    border-bottom: 1px solid var(--accent);
+  }
+  .voice__col input[type="text"]::placeholder {
+    color: var(--faint);
+    font-style: italic;
+    font-size: 9pt;
+  }
+
+  .voice__prompts {
+    border-top: 1px solid var(--hairline);
+    padding-top: 0.3in;
+  }
+
+  .voice__prompts h4 {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--faint);
+    margin: 0 0 0.75rem 0;
+    font-weight: 500;
+  }
+
+  .voice__prompt {
+    font-size: 10.5pt;
+    margin-bottom: 0.3in;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .voice__prompt .number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14pt;
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  .voice__prompt .sentence {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem;
+  }
+
+  .voice__prompt input[type="text"] {
+    flex: 1 1 auto;
+    min-width: 2in;
+    font-size: 10.5pt;
+    padding: 0.2rem 0.35rem;
+  }
+
+  /* =========================================
+     HANDOUT NEW — CONTENT PILLARS
+     ========================================= */
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25in;
+    margin-bottom: 0.3in;
+  }
+
+  .pillar-card {
+    border: 1px solid var(--hairline);
+    padding: 0.25in;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pillar-card__weight {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40pt;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .pillar-card__name {
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .pillar-card__desc {
+    font-size: 8.5pt;
+    color: var(--muted);
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
+  }
+
+  .pillar-card__examples {
+    font-size: 7.5pt;
+    color: var(--faint);
+    font-style: italic;
+    line-height: 1.4;
+    padding-top: 0.35rem;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .pillar-card__adjust {
+    margin-top: auto;
+    padding-top: 0.35rem;
+  }
+
+  .pillar-slider {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+  }
+
+  .pillar-slider input[type="range"] {
+    flex: 1;
+    accent-color: var(--accent);
+    height: 2px;
+  }
+
+  .pillar-slider .slider-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14pt;
+    font-weight: 500;
+    color: var(--accent);
+    min-width: 2rem;
+    text-align: right;
+  }
+
+  /* =========================================
+     HANDOUT NEW — EDITORIAL CALENDAR
+     ========================================= */
+  .cal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.5pt;
+  }
+
+  .cal-table th {
+    text-align: left;
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--faint);
+    font-weight: 500;
+    padding: 0.3rem 0.25rem;
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  .cal-table td {
+    padding: 0.3rem 0.25rem;
+    border-bottom: 1px solid var(--hairline);
+    vertical-align: top;
+    color: var(--muted);
+    line-height: 1.35;
+  }
+
+  .cal-table td:first-child {
+    font-weight: 500;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .cal-table td.title-col {
+    font-weight: 400;
+    color: var(--ink);
+    max-width: 3.2in;
+  }
+
+  .cal-table tr.phase-header td {
+    background: var(--cream);
+    font-size: 7pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    padding: 0.35rem 0.25rem;
+  }
+
+  .cal-table .pillar-tag {
+    display: inline-block;
+    font-size: 6.5pt;
+    padding: 0.1rem 0.3rem;
+    background: var(--cream);
+    color: var(--accent);
+    border: 1px solid var(--hairline);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  .cal-reaction {
+    margin-top: 0.25in;
+  }
+
+  /* =========================================
+     HANDOUT NEW — SHOOT DECISION
+     ========================================= */
+  .shoot-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3in;
+    margin-bottom: 0.3in;
+  }
+
+  .shoot-option {
+    border: 2px solid var(--hairline);
+    padding: 0.3in;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .shoot-option__name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24pt;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .shoot-option__desc {
+    font-size: 9.5pt;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .shoot-option__deliverables {
+    font-size: 8pt;
+    color: var(--faint);
+    line-height: 1.5;
+    border-top: 1px solid var(--hairline);
+    padding-top: 0.5rem;
+  }
+
+  .shoot-option__deliverables strong {
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* =========================================
+     HANDOUT NEW — APPROVAL WORKFLOW
+     ========================================= */
+  .workflow-options {
+    margin-bottom: 0.3in;
+  }
+
+  .workflow-opt {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .workflow-opt label {
+    flex: 1;
+    cursor: pointer;
+  }
+
+  .workflow-opt .opt-name {
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 10pt;
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  .workflow-opt .opt-desc {
+    font-size: 8.5pt;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .workflow-opt input[type="radio"] {
+    margin-top: 0.4rem;
+    accent-color: var(--accent);
+    width: 1rem;
+    height: 1rem;
+  }
+
+  /* Toolbar buttons */
+  .toolbar-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 8pt;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .toolbar-btn:hover {
+    background: rgba(255,255,255,0.1);
+  }
+  .toolbar-btn--primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .toolbar-btn--primary:hover {
+    background: #a07f52;
+  }
+
+  /* Print-ready mode: show values as text */
+  .print-value {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: var(--ink);
+    min-height: 1em;
+  }
+  .print-value--empty {
+    color: var(--faint);
+    font-style: italic;
+  }
+  .print-value--check::before {
+    content: '✓ ';
+    color: var(--green);
+    font-weight: 700;
+  }
+  .print-value--radio {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background: var(--ink);
+    color: #fff;
+    font-size: 9pt;
+    font-weight: 500;
+  }
+
+  body.pdf-mode .instructions { display: none !important; }
+  body.pdf-mode input,
+  body.pdf-mode textarea,
+  body.pdf-mode select { display: none !important; }
+  body.pdf-mode .radio-group { display: none !important; }
+  body.pdf-mode .checkbox-label input { display: none !important; }
+  body.pdf-mode .pillar-slider input[type="range"] { display: none !important; }
+
+  /* Toast notification */
+  .toast {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: var(--ink);
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    font-size: 10pt;
+    border-radius: 4px;
+    z-index: 200;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s;
+    pointer-events: none;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Final export page */
+  .export {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .export__headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36pt;
+    margin: 0 0 1rem 0;
+    font-weight: 400;
+  }
+  .export__sub {
+    font-size: 12pt;
+    color: var(--muted);
+    max-width: 5in;
+    margin: 0 auto 2rem;
+  }
+  .export__steps {
+    list-style: none;
+    padding: 0;
+    max-width: 4.5in;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .export__steps li {
+    padding: 0.75rem 0;
+    font-size: 11pt;
+    color: var(--muted);
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    gap: 1rem;
+  }
+  .export__steps li:last-child {
+    border-bottom: 1px solid var(--hairline);
+  }
+  .export__steps .step {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18pt;
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 500;
+    min-width: 1.5rem;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- SCREEN-ONLY INSTRUCTIONS BAR -->
+<div class="instructions">
+  <div>
+    <strong>LRD Creative Workshop</strong>
+    <span class="hint">Fill in as Lauren answers. Data auto-saves to browser. Use buttons below to export.</span>
+  </div>
+  <div style="display: flex; gap: 0.5rem; align-items: center;">
+    <button onclick="saveData()" class="toolbar-btn">Save Data</button>
+    <button onclick="exportPDF()" class="toolbar-btn toolbar-btn--primary">Export PDF</button>
+    <span class="hint" style="white-space: nowrap;">April 13, 2026</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     HANDOUT 1: STRATEGIC THESIS
+     ============================================================ -->
+<div class="page thesis">
+  <div class="page-tag">01 · Thesis</div>
+  <div class="page-number">LRD Studio · April 13, 2026</div>
+
+  <div class="thesis__eyebrow">The Strategic Direction</div>
+
+  <h1 class="thesis__headline">
+    LRD Studio is the<br>
+    <em>Canadian Mountain Modern</em><br>
+    interior design firm.
+  </h1>
+
+  <ol class="thesis__reasons">
+    <li><strong>01</strong><span>You just won Western Living Design 25 for 2026 in the Mountain Modern category. You are literally holding the entry ticket to the vocabulary.</span></li>
+    <li><strong>02</strong><span>No Canadian firm currently owns any mountain modern keyword. Every firm ranking is US-based — Montana, Colorado, Asheville. The whitespace is sitting there.</span></li>
+    <li><strong>03</strong><span>The window to claim the category before someone else notices is roughly 12 to 18 months. After that, this opportunity is gone.</span></li>
+  </ol>
+
+  <div class="thesis__capture">
+    <div class="field">
+      <label class="field-label">— Lauren's gut reaction (capture verbatim)</label>
+      <textarea placeholder="Her exact words here..."></textarea>
+    </div>
+    <div class="field">
+      <label class="field-label">— Final framing she confirms</label>
+      <input type="text" placeholder="Keep, modify, or replace the thesis...">
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Creative Workshop</span>
+    <span>Handout 01 of 08</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     HANDOUT 2: GEO VISIBILITY GRID
+     ============================================================ -->
+<div class="page">
+  <div class="page-tag">02 · Baseline</div>
+  <div class="page-number">LRD Studio · April 13, 2026</div>
+
+  <div class="handout-header">
+    <h1>Where LRD currently appears when someone asks an AI.</h1>
+    <p>Twenty queries tested on April 10, 2026. Each box is one query.</p>
+  </div>
+
+  <div class="geo__summary">
+    <div class="geo__stat">
+      <span class="num">5/20</span>
+      <span class="label">Queries where LRD appears</span>
+    </div>
+    <div class="geo__stat">
+      <span class="num">1/16</span>
+      <span class="label">Non-branded queries</span>
+    </div>
+    <div class="geo__stat">
+      <span class="num">10/20</span>
+      <span class="label">Owned by Articulated</span>
+    </div>
+    <div class="geo__stat">
+      <span class="num">25%</span>
+      <span class="label">Visibility score</span>
+    </div>
+  </div>
+
+  <div class="geo__grid">
+    <div class="geo__cell fail"><span class="mark">✕</span><span class="number">01</span><span class="query">best interior designer in Whistler BC</span></div>
+    <div class="geo__cell pass"><span class="mark">✓</span><span class="number">02</span><span class="query">luxury interior designer Squamish <em>(position 10)</em></span></div>
+    <div class="geo__cell fail"><span class="mark">✕</span><span class="number">03</span><span class="query">interior designer Pemberton BC</span></div>
+    <div class="geo__cell fail"><span class="mark">✕</span><span class="number">04</span><span class="query">top interior design firm Sea-to-Sky corridor</span></div>
+    <div class="geo__cell fail"><span class="mark">✕</span><span class="number">05</span><span class="query">mountain modern interior designer BC</span></div>
+    <div class="geo__cell fail"><span class="mark">✕</span><span class="number">06</span><span class="query">PNW modern interior designer</span></div>
+    <div class="geo__cell fail"><span class="mark">✕</span><span class="number">07</span><span class="query">west coast modern interior design firm BC</span></div>
+    <div class="geo__cell fail"><span class="mark">✕</span><span class="number">08</span><span class="query">interior designer for ski chalet Whistler</span></div>
+    <div class="geo__cell fail"><span class="mark">✕</span><span class="number">09</span><span class="query">kitchen designer Pemberton BC</span></div>
+    <div class="geo__cell fail"><span class="mark">✕</span><span class="number">10</span><span class="query">luxury home renovation interior designer Whistler</span></div>
+    <div class="geo__cell pass"><span class="mark">✓</span><span class="number">11</span><span class="query">commercial interior designer Squamish <em>(top 3)</em></span></div>
+    <div class="geo__cell fail"><span class="mark">✕</span><span class="number">12</span><span class="query">new construction interior designer Whistler</span></div>
+    <div class="geo__cell fail"><span class="mark">✕</span><span class="number">13</span><span class="query">log home renovation designer BC</span></div>
+    <div class="geo__cell fail"><span class="mark">✕</span><span class="number">14</span><span class="query">Western Living Design 25 winners 2026</span></div>
+    <div class="geo__cell pass"><span class="mark">✓</span><span class="number">15</span><span class="query">Lauren Ritz interior designer <em>(branded)</em></span></div>
+    <div class="geo__cell pass"><span class="mark">✓</span><span class="number">16</span><span class="query">LRD Studio Whistler <em>(branded)</em></span></div>
+    <div class="geo__cell fail"><span class="mark">✕</span><span class="number">17</span><span class="query">Sunstone kitchen Pemberton designer</span></div>
+    <div class="geo__cell fail"><span class="mark">✕</span><span class="number">18</span><span class="query">interior designers like Sophie Burke in Whistler</span></div>
+    <div class="geo__cell fail"><span class="mark">✕</span><span class="number">19</span><span class="query">alternatives to Clare Riley interior designer Pemberton</span></div>
+    <div class="geo__cell pass"><span class="mark">✓</span><span class="number">20</span><span class="query">female-led interior design firms Sea-to-Sky BC</span></div>
+  </div>
+
+  <div class="page-footer">
+    <span>Creative Workshop</span>
+    <span>Handout 02 of 08</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     HANDOUT 3: WHITESPACE MAP
+     ============================================================ -->
+<div class="page">
+  <div class="page-tag">03 · Whitespace</div>
+  <div class="page-number">LRD Studio · April 13, 2026</div>
+
+  <h1 class="whitespace__headline">Nobody in Canada owns<br>Mountain Modern.</h1>
+  <p class="whitespace__sub">Every firm that currently ranks for any "mountain modern" interior design keyword is US-based. Here's who — and who isn't.</p>
+
+  <div class="whitespace__section">
+    <h3>— Currently ranking for "mountain modern interior designer"</h3>
+    <div class="whitespace__firms">
+      <div class="whitespace__firm">Pearson Design Group<span class="loc">Bozeman, Montana</span></div>
+      <div class="whitespace__firm">Locati Architects<span class="loc">Bozeman, Montana</span></div>
+      <div class="whitespace__firm">Rocky Mountain Hardware<span class="loc">Idaho / Colorado</span></div>
+      <div class="whitespace__firm">FS Design Group<span class="loc">Park City, Utah</span></div>
+      <div class="whitespace__firm">Z&Co<span class="loc">Aspen, Colorado</span></div>
+      <div class="whitespace__firm">Rachel Blindauer<span class="loc">Asheville, NC</span></div>
+    </div>
+  </div>
+
+  <div class="whitespace__empty">
+    <div class="flag">— Canada —</div>
+    <h2>Zero firms ranking.</h2>
+    <p>No Canadian interior designer has claimed the Mountain Modern vocabulary. The category is sitting in open territory, waiting for a first mover with editorial credibility.</p>
+  </div>
+
+  <div class="whitespace__callout" style="margin-top: 0.3in;">
+    <span class="big">You have the only Canadian entry ticket.</span>
+    <span class="small">Western Living Design 25 · 2026 Mountain Modern Winner</span>
+  </div>
+
+  <div class="page-footer">
+    <span>Creative Workshop</span>
+    <span>Handout 03 of 08</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     HANDOUT 4: 17 PROJECT CARDS (landscape)
+     ============================================================ -->
+
+<!-- Reusable project card template will be repeated 17 times -->
+
+<!-- Project 1 — Sunstone -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/52627ea1-aef1-4832-9760-b47fd05e9da2/Copyright-Darby-Magill-7090.jpg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 01 of 17 · Residential</div>
+    <h2 class="project-card__name">Sunstone</h2>
+    <div class="project-card__location">Pemberton, BC</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">New Build</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Darby Magill</span></div>
+      <div class="project-card__meta-row"><span class="label">Builder</span><span class="value">Dorgelo by Design</span></div>
+      <div class="project-card__meta-row"><span class="label">Recognition</span><span class="value">WL Design 25 · 2026 Winner</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field">
+        <label class="field-label">Can we publish?</label>
+        <select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select>
+      </div>
+      <div class="field">
+        <label class="field-label">How featured?</label>
+        <select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select>
+      </div>
+      <div class="field full">
+        <label class="field-label">Photo rights (who owns the images?)</label>
+        <select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select>
+      </div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 2 — Sunridge -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/294c0d5e-29dd-4ea4-a248-821250dbb9db/sunridge-whistle-web--24.jpg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 02 of 17 · Residential</div>
+    <h2 class="project-card__name">Sunridge</h2>
+    <div class="project-card__location">Whistler, BC</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">Log Home Renovation</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Matt Anthony</span></div>
+      <div class="project-card__meta-row"><span class="label">Builder</span><span class="value">Gavan Construction</span></div>
+      <div class="project-card__meta-row"><span class="label">Image Count</span><span class="value">50 photographs</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 3 — Balsam -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1698002111785-1IZX2SKF48R7COG1CVZO/Copyright-Darby-Magill-0441.jpg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 03 of 17 · Residential</div>
+    <h2 class="project-card__name">Balsam</h2>
+    <div class="project-card__location">Whistler, BC</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">New Build · Full ID</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Darby Magill</span></div>
+      <div class="project-card__meta-row"><span class="label">Builder</span><span class="value">TYMAC Contracting</span></div>
+      <div class="project-card__meta-row"><span class="label">Recognition</span><span class="value">WL featured (Balsam kitchen)</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 4 — Fitzsimmons -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1715884029774-D3UKRO3U9RFKDWPADVF6/Copyright-Darby-Magill-5750.jpg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 04 of 17 · Residential</div>
+    <h2 class="project-card__name">Fitzsimmons</h2>
+    <div class="project-card__location">Whistler, BC</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">Complete Renovation</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Darby Magill</span></div>
+      <div class="project-card__meta-row"><span class="label">Builder</span><span class="value">Gavan Contracting</span></div>
+      <div class="project-card__meta-row"><span class="label">Image Count</span><span class="value">34 photographs</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 5 — Balsam 2 -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/28d6f2c0-8f1f-4dae-b354-52b33dc82398/LRD-2500px-15.jpg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 05 of 17 · Residential</div>
+    <h2 class="project-card__name">Balsam 2</h2>
+    <div class="project-card__location">Whistler, BC</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">Renovation + Interior Design</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Matt Anthony</span></div>
+      <div class="project-card__meta-row"><span class="label">Builder</span><span class="value">Tymac Construction</span></div>
+      <div class="project-card__meta-row"><span class="label">Image Count</span><span class="value">40 photographs</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 6 — Falcon Crescent -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1698269982491-2EJ2D2F4BK7YFRZKAY09/Copyright-Darby-Magill-7318.jpg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 06 of 17 · Residential</div>
+    <h2 class="project-card__name">Falcon Crescent</h2>
+    <div class="project-card__location">Whistler, BC</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">Major Renovation</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Darby Magill</span></div>
+      <div class="project-card__meta-row"><span class="label">Builder</span><span class="value">Schreyer Construction</span></div>
+      <div class="project-card__meta-row"><span class="label">Image Count</span><span class="value">45 photographs</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 7 — Kadenwood -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1698002183254-CHOZ0NYQBFP5PB4WDU64/CopyrightDarbyMagill-4328.jpg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 07 of 17 · Residential</div>
+    <h2 class="project-card__name">Kadenwood</h2>
+    <div class="project-card__location">Whistler, BC</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">Minor Reno + Full FF&amp;E</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Darby Magill</span></div>
+      <div class="project-card__meta-row"><span class="label">Builder</span><span class="value">Gavan Construction</span></div>
+      <div class="project-card__meta-row"><span class="label">Image Count</span><span class="value">60 photographs</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 8 — Panorama -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1675549740329-8OR86IGFK3J3TE49SE7X/20-LRD-DESIGNS-Panorama.jpg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 08 of 17 · Residential</div>
+    <h2 class="project-card__name">Panorama</h2>
+    <div class="project-card__location">Whistler, BC</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">New Build</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Ema Peter</span></div>
+      <div class="project-card__meta-row"><span class="label">Architect</span><span class="value">Mark Simone · Shelter</span></div>
+      <div class="project-card__meta-row"><span class="label">Recognition</span><span class="value">WL Home of the Year finalist</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 9 — Cypress -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1675547821953-MZUGVH2DFFEDZH29H9NG/4-LRD-DESIGNS-CYPRESS.jpg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 09 of 17 · Residential</div>
+    <h2 class="project-card__name">Cypress</h2>
+    <div class="project-card__location">Whistler, BC</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">New Build</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Adam Levitt + Rebecca Ritz</span></div>
+      <div class="project-card__meta-row"><span class="label">Builder</span><span class="value">Ario Construction</span></div>
+      <div class="project-card__meta-row"><span class="label">Image Count</span><span class="value">21 photographs</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 10 — Toni Sailer -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1675549708559-HNQKY7NDBLDBOPY5DEV8/52-LRD-DESIGNS-Tony+Sailer.jpg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 10 of 17 · Residential</div>
+    <h2 class="project-card__name">Toni Sailer</h2>
+    <div class="project-card__location">Whistler, BC</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">New Build</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Adam Levitt + Rebecca Ritz</span></div>
+      <div class="project-card__meta-row"><span class="label">Builder</span><span class="value">Ario Construction</span></div>
+      <div class="project-card__meta-row"><span class="label">Image Count</span><span class="value">55 photographs</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 11 — East Van Loft -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1698085992794-6C5B7MZON7T4BUSDMZYS/LaurenRitzDesign_0246.JPG');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 11 of 17 · Residential</div>
+    <h2 class="project-card__name">East Van Loft</h2>
+    <div class="project-card__location">Vancouver, BC</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">Major Renovation</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Ema Peter</span></div>
+      <div class="project-card__meta-row"><span class="label">Builder</span><span class="value">—</span></div>
+      <div class="project-card__meta-row"><span class="label">Image Count</span><span class="value">31 photographs</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 12 — Needles Drive -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1675557349346-NNZJBRSLNAWJQS8X7KPX/29-LRD-DESIGNS-Needles+Drive.jpg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 12 of 17 · Residential</div>
+    <h2 class="project-card__name">Needles Drive</h2>
+    <div class="project-card__location">Whistler, BC</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">New Build + Full FF&amp;E</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Adam Levitt + Rebecca Ritz</span></div>
+      <div class="project-card__meta-row"><span class="label">Builder</span><span class="value">Ario Construction</span></div>
+      <div class="project-card__meta-row"><span class="label">Image Count</span><span class="value">44 photographs</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 13 — Summer Lane -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1675557611060-TW0P9KB53BDGBF6GF3F5/37-LRD-DESIGNS-Summer+Lane.jpg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 13 of 17 · Residential</div>
+    <h2 class="project-card__name">Summer Lane</h2>
+    <div class="project-card__location">Whistler, BC · Green Lake</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">New Build · ~4,000 sqft</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Adam Levitt + Rebecca Ritz</span></div>
+      <div class="project-card__meta-row"><span class="label">Builder</span><span class="value">Ario Construction</span></div>
+      <div class="project-card__meta-row"><span class="label">Features</span><span class="value">Wine cellar · Library · Loft</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 14 — SRAM -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1675546936742-WPW0OX2US2XA36B0A9WD/16-LRD-DESIGNS-SRAM.jpg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 14 of 17 · Commercial</div>
+    <h2 class="project-card__name">SRAM</h2>
+    <div class="project-card__location">North Vancouver, BC</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">Workspace TI · Brand HQ</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Janis Nicolay</span></div>
+      <div class="project-card__meta-row"><span class="label">Builder</span><span class="value">Ario Construction</span></div>
+      <div class="project-card__meta-row"><span class="label">Features</span><span class="value">14ft original fir rafters</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 15 — Moov Yoga -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1698086171273-RMEAK77NFPERQQ0DFG0J/hallway+2.edited.jpg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 15 of 17 · Commercial</div>
+    <h2 class="project-card__name">Moov Yoga</h2>
+    <div class="project-card__location">Vancouver, BC · Downtown</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">Tenant Improvement</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Jordan Smith</span></div>
+      <div class="project-card__meta-row"><span class="label">Materials</span><span class="value">Black walnut + whitewashed ash</span></div>
+      <div class="project-card__meta-row"><span class="label">Image Count</span><span class="value">19 photographs</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 16 — Stilhavn -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1700613759765-SECPNV2VE0763I5IO871/IMG_1554.jpeg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 16 of 17 · Commercial</div>
+    <h2 class="project-card__name">Stilhavn</h2>
+    <div class="project-card__location">Squamish, BC · Downtown</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">Real Estate Office TI</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Darby Magill</span></div>
+      <div class="project-card__meta-row"><span class="label">Strategic Note</span><span class="value">Only commercial SERP win</span></div>
+      <div class="project-card__meta-row"><span class="label">Image Count</span><span class="value">11 photographs</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Project 17 — Chief Dental -->
+<div class="project-card">
+  <div class="project-card__image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/e0ffde24-b87a-427e-95b1-b72de99f7119/OISO__BLUELINE_CD_V4-1.jpg');"></div>
+  <div class="project-card__content">
+    <div class="project-card__number">Project 17 of 17 · Commercial</div>
+    <h2 class="project-card__name">Chief Dental</h2>
+    <div class="project-card__location">Squamish, BC</div>
+    <div class="project-card__meta">
+      <div class="project-card__meta-row"><span class="label">Type</span><span class="value">Dental Clinic TI</span></div>
+      <div class="project-card__meta-row"><span class="label">Photographer</span><span class="value">Darby Magill</span></div>
+      <div class="project-card__meta-row"><span class="label">Lighting</span><span class="value">AND Lighting · Bocci</span></div>
+      <div class="project-card__meta-row"><span class="label">Note</span><span class="value">Only render on site</span></div>
+    </div>
+    <div class="project-card__decisions">
+      <div class="field"><label class="field-label">Can we publish?</label><select><option value="">—</option><option>Yes — full rights</option><option>Yes — limited use</option><option>No — NDA/sensitive</option><option>Unsure — need to check</option></select></div>
+      <div class="field"><label class="field-label">How featured?</label><select><option value="">—</option><option>Top 5 · hero</option><option>Middle of pack</option><option>Back of portfolio</option><option>Remove entirely</option></select></div>
+      <div class="field full"><label class="field-label">Photo rights</label><select><option value="">—</option><option>LRD owns full rights</option><option>Limited license only</option><option>Photographer owns · needs permission</option><option>Unknown · check contract</option></select></div>
+    </div>
+    <div class="project-card__notes-field">
+      <label class="field-label">— The story that's not on the website —</label>
+      <textarea placeholder="What's the behind-the-scenes / why / challenge?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     HANDOUT 5: COMPETITOR CARDS (2 per page)
+     ============================================================ -->
+<div class="page">
+  <div class="page-tag">05 · Competitors</div>
+  <div class="page-number">Page 1 of 5</div>
+  <div class="competitor-page">
+
+    <div class="competitor-card">
+      <div class="competitor-card__name">Bryn Maryanna Interiors</div>
+      <div class="competitor-card__loc">Whistler, BC</div>
+      <div class="competitor-card__pos">The real #1 in Whistler. Named "most sought-after" in AI-generated answers.</div>
+      <div class="competitor-card__intel"><strong>SERP:</strong> 3/20 queries, top 3 for "new construction Whistler"</div>
+      <div class="competitor-card__intel"><strong>Style:</strong> Modern mountain, warm minimalism</div>
+      <div class="competitor-card__intel"><strong>Gap:</strong> No Pemberton, no commercial, no award</div>
+      <div class="competitor-card__form">
+        <div class="radio-group">
+          <div class="radio-option love"><input type="radio" name="comp1" id="comp1-f"><label for="comp1-f">Friend</label></div>
+          <div class="radio-option neutral"><input type="radio" name="comp1" id="comp1-n"><label for="comp1-n">Neutral</label></div>
+          <div class="radio-option rival"><input type="radio" name="comp1" id="comp1-r"><label for="comp1-r">Rival</label></div>
+        </div>
+        <textarea placeholder="Notes, personal relationship..."></textarea>
+      </div>
+    </div>
+
+    <div class="competitor-card">
+      <div class="competitor-card__name">Articulated Design Studio</div>
+      <div class="competitor-card__loc">Whistler / Sea-to-Sky</div>
+      <div class="competitor-card__pos">Programmatic SEO winner. Per-town landing page for every Sea-to-Sky town.</div>
+      <div class="competitor-card__intel"><strong>SERP:</strong> 10/20 queries — dominates the corridor</div>
+      <div class="competitor-card__intel"><strong>Style:</strong> Generic transitional, volume play</div>
+      <div class="competitor-card__intel"><strong>Gap:</strong> No editorial credibility, no award</div>
+      <div class="competitor-card__form">
+        <div class="radio-group">
+          <div class="radio-option love"><input type="radio" name="comp2" id="comp2-f"><label for="comp2-f">Friend</label></div>
+          <div class="radio-option neutral"><input type="radio" name="comp2" id="comp2-n"><label for="comp2-n">Neutral</label></div>
+          <div class="radio-option rival"><input type="radio" name="comp2" id="comp2-r"><label for="comp2-r">Rival</label></div>
+        </div>
+        <textarea placeholder="Notes, personal relationship..."></textarea>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-tag">05 · Competitors</div>
+  <div class="page-number">Page 2 of 5</div>
+  <div class="competitor-page">
+
+    <div class="competitor-card">
+      <div class="competitor-card__name">Clare Riley Design</div>
+      <div class="competitor-card__loc">Pemberton, BC</div>
+      <div class="competitor-card__pos">Owns the entire Pemberton SERP. Weaker than assumed — only 3 of 20 queries.</div>
+      <div class="competitor-card__intel"><strong>SERP:</strong> 3/20, mostly her own brand queries</div>
+      <div class="competitor-card__intel"><strong>Style:</strong> Pemberton / rural modern</div>
+      <div class="competitor-card__intel"><strong>Gap:</strong> No award in 2026. You have Sunstone.</div>
+      <div class="competitor-card__form">
+        <div class="radio-group">
+          <div class="radio-option love"><input type="radio" name="comp3" id="comp3-f"><label for="comp3-f">Friend</label></div>
+          <div class="radio-option neutral"><input type="radio" name="comp3" id="comp3-n"><label for="comp3-n">Neutral</label></div>
+          <div class="radio-option rival"><input type="radio" name="comp3" id="comp3-r"><label for="comp3-r">Rival</label></div>
+        </div>
+        <textarea placeholder="Notes, personal relationship..."></textarea>
+      </div>
+    </div>
+
+    <div class="competitor-card">
+      <div class="competitor-card__name">GNAR Inc.</div>
+      <div class="competitor-card__loc">Whistler, BC</div>
+      <div class="competitor-card__pos">Ski chalet + mountain modern. Edge case — brand forward, aesthetic-driven.</div>
+      <div class="competitor-card__intel"><strong>SERP:</strong> 2/20 queries</div>
+      <div class="competitor-card__intel"><strong>Style:</strong> Modern ski chalet, bold materials</div>
+      <div class="competitor-card__intel"><strong>Gap:</strong> No cost transparency, no editorial</div>
+      <div class="competitor-card__form">
+        <div class="radio-group">
+          <div class="radio-option love"><input type="radio" name="comp4" id="comp4-f"><label for="comp4-f">Friend</label></div>
+          <div class="radio-option neutral"><input type="radio" name="comp4" id="comp4-n"><label for="comp4-n">Neutral</label></div>
+          <div class="radio-option rival"><input type="radio" name="comp4" id="comp4-r"><label for="comp4-r">Rival</label></div>
+        </div>
+        <textarea placeholder="Notes, personal relationship..."></textarea>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-tag">05 · Competitors</div>
+  <div class="page-number">Page 3 of 5</div>
+  <div class="competitor-page">
+
+    <div class="competitor-card">
+      <div class="competitor-card__name">Cabin Fever Interiors</div>
+      <div class="competitor-card__loc">Whistler, BC</div>
+      <div class="competitor-card__pos">Long-tenured Whistler studio. Traditional rustic lean.</div>
+      <div class="competitor-card__intel"><strong>SERP:</strong> 1/20 (top 10 for "best Whistler")</div>
+      <div class="competitor-card__intel"><strong>Style:</strong> Cabin-forward, warm traditional</div>
+      <div class="competitor-card__intel"><strong>Gap:</strong> Different aesthetic — low conflict</div>
+      <div class="competitor-card__form">
+        <div class="radio-group">
+          <div class="radio-option love"><input type="radio" name="comp5" id="comp5-f"><label for="comp5-f">Friend</label></div>
+          <div class="radio-option neutral"><input type="radio" name="comp5" id="comp5-n"><label for="comp5-n">Neutral</label></div>
+          <div class="radio-option rival"><input type="radio" name="comp5" id="comp5-r"><label for="comp5-r">Rival</label></div>
+        </div>
+        <textarea placeholder="Notes, personal relationship..."></textarea>
+      </div>
+    </div>
+
+    <div class="competitor-card">
+      <div class="competitor-card__name">Sophie Burke Design</div>
+      <div class="competitor-card__loc">Vancouver, BC</div>
+      <div class="competitor-card__pos">WL DOTY 2024 winner. ~26K IG. Aspirational ceiling for Canadian residential.</div>
+      <div class="competitor-card__intel"><strong>SERP:</strong> 1/20 queries</div>
+      <div class="competitor-card__intel"><strong>Style:</strong> Coastal modern, refined</div>
+      <div class="competitor-card__intel"><strong>Gap:</strong> Not in the mountains.</div>
+      <div class="competitor-card__form">
+        <div class="radio-group">
+          <div class="radio-option love"><input type="radio" name="comp6" id="comp6-f"><label for="comp6-f">Friend</label></div>
+          <div class="radio-option neutral"><input type="radio" name="comp6" id="comp6-n"><label for="comp6-n">Neutral</label></div>
+          <div class="radio-option rival"><input type="radio" name="comp6" id="comp6-r"><label for="comp6-r">Rival</label></div>
+        </div>
+        <textarea placeholder="Notes, personal relationship..."></textarea>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-tag">05 · Competitors</div>
+  <div class="page-number">Page 4 of 5</div>
+  <div class="competitor-page">
+
+    <div class="competitor-card">
+      <div class="competitor-card__name">PURE Design · Ami McKay</div>
+      <div class="competitor-card__loc">Vancouver, BC</div>
+      <div class="competitor-card__pos">Aspirational ceiling for female-led BC. Ski chalet + coastal specialty.</div>
+      <div class="competitor-card__intel"><strong>SERP:</strong> 1/20 queries</div>
+      <div class="competitor-card__intel"><strong>Style:</strong> High-end residential, ski chalet, bold</div>
+      <div class="competitor-card__intel"><strong>Gap:</strong> Larger firm, Vancouver-based</div>
+      <div class="competitor-card__form">
+        <div class="radio-group">
+          <div class="radio-option love"><input type="radio" name="comp7" id="comp7-f"><label for="comp7-f">Friend</label></div>
+          <div class="radio-option neutral"><input type="radio" name="comp7" id="comp7-n"><label for="comp7-n">Neutral</label></div>
+          <div class="radio-option rival"><input type="radio" name="comp7" id="comp7-r"><label for="comp7-r">Rival</label></div>
+        </div>
+        <textarea placeholder="Notes, personal relationship..."></textarea>
+      </div>
+    </div>
+
+    <div class="competitor-card">
+      <div class="competitor-card__name">Kelly Deck</div>
+      <div class="competitor-card__loc">Vancouver, BC</div>
+      <div class="competitor-card__pos">Established Vancouver residential. TV personality, book author.</div>
+      <div class="competitor-card__intel"><strong>SERP:</strong> Vancouver dominant, not Sea-to-Sky</div>
+      <div class="competitor-card__intel"><strong>Style:</strong> Classic West Coast modern</div>
+      <div class="competitor-card__intel"><strong>Gap:</strong> Different era, different aesthetic</div>
+      <div class="competitor-card__form">
+        <div class="radio-group">
+          <div class="radio-option love"><input type="radio" name="comp8" id="comp8-f"><label for="comp8-f">Friend</label></div>
+          <div class="radio-option neutral"><input type="radio" name="comp8" id="comp8-n"><label for="comp8-n">Neutral</label></div>
+          <div class="radio-option rival"><input type="radio" name="comp8" id="comp8-r"><label for="comp8-r">Rival</label></div>
+        </div>
+        <textarea placeholder="Notes, personal relationship..."></textarea>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-tag">05 · Competitors</div>
+  <div class="page-number">Page 5 of 5</div>
+  <div class="competitor-page">
+
+    <div class="competitor-card">
+      <div class="competitor-card__name">Stokes Design Co.</div>
+      <div class="competitor-card__loc">Whistler, BC</div>
+      <div class="competitor-card__pos">Boutique Whistler studio. Quieter presence in SERPs.</div>
+      <div class="competitor-card__intel"><strong>SERP:</strong> Low — not a search threat</div>
+      <div class="competitor-card__intel"><strong>Style:</strong> Refined residential</div>
+      <div class="competitor-card__intel"><strong>Gap:</strong> Unknown personal relationship</div>
+      <div class="competitor-card__form">
+        <div class="radio-group">
+          <div class="radio-option love"><input type="radio" name="comp9" id="comp9-f"><label for="comp9-f">Friend</label></div>
+          <div class="radio-option neutral"><input type="radio" name="comp9" id="comp9-n"><label for="comp9-n">Neutral</label></div>
+          <div class="radio-option rival"><input type="radio" name="comp9" id="comp9-r"><label for="comp9-r">Rival</label></div>
+        </div>
+        <textarea placeholder="Notes, personal relationship..."></textarea>
+      </div>
+    </div>
+
+    <div class="competitor-card">
+      <div class="competitor-card__name">Intrepid Interiors</div>
+      <div class="competitor-card__loc">Sea-to-Sky</div>
+      <div class="competitor-card__pos">Corridor-wide positioning. Appears in Whistler SERPs.</div>
+      <div class="competitor-card__intel"><strong>SERP:</strong> 1/20 queries (Whistler)</div>
+      <div class="competitor-card__intel"><strong>Style:</strong> Transitional / adventure-leaning</div>
+      <div class="competitor-card__intel"><strong>Gap:</strong> Unknown relationship</div>
+      <div class="competitor-card__form">
+        <div class="radio-group">
+          <div class="radio-option love"><input type="radio" name="comp10" id="comp10-f"><label for="comp10-f">Friend</label></div>
+          <div class="radio-option neutral"><input type="radio" name="comp10" id="comp10-n"><label for="comp10-n">Neutral</label></div>
+          <div class="radio-option rival"><input type="radio" name="comp10" id="comp10-r"><label for="comp10-r">Rival</label></div>
+        </div>
+        <textarea placeholder="Notes, personal relationship..."></textarea>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     HANDOUT 6: TWO FUTURES
+     ============================================================ -->
+
+<!-- Future A: Keep -->
+<div class="page">
+  <div class="page-tag">06A · Future A</div>
+  <div class="page-number">LRD Studio · April 13, 2026</div>
+
+  <div class="future future--keep">
+    <div class="future__tag">— The Keep —</div>
+    <h1 class="future__title">Future A.</h1>
+    <p class="future__subtitle">Same visual identity. Radically better structure, SEO, and performance.</p>
+  </div>
+
+  <div class="future__preview">
+    <div class="future__preview-sample">
+      <div class="brand" style="font-family: 'Poppins', sans-serif;">LRD STUDIO</div>
+      <div class="hero" style="font-family: 'Poppins', sans-serif; font-weight: 300;">Good design tells the story of who we are.</div>
+      <div class="sub">DESIGN FOR LIFE · RESIDENTIAL + COMMERCIAL</div>
+    </div>
+  </div>
+
+  <ul class="future__bullets">
+    <li><strong>TYPOGRAPHY</strong><span>Keep Poppins. Keep the clean sans-serif system. Your current type voice works.</span></li>
+    <li><strong>COLOR</strong><span>Keep the muted charcoal-on-white palette. Add one warm accent for emphasis only.</span></li>
+    <li><strong>LAYOUT</strong><span>Keep the grid and rhythm. Clean up project cards. Tighter vertical flow.</span></li>
+    <li><strong>STRUCTURE</strong><span>Full rebuild underneath. Schema markup. Project taxonomy. Category filters.</span></li>
+    <li><strong>TIMELINE</strong><span>4 to 6 weeks.</span></li>
+  </ul>
+
+  <div class="page-footer">
+    <span>Creative Workshop</span>
+    <span>Handout 06a of 08</span>
+  </div>
+</div>
+
+<!-- Future B: Refresh -->
+<div class="page">
+  <div class="page-tag">06B · Future B</div>
+  <div class="page-number">LRD Studio · April 13, 2026</div>
+
+  <div class="future future--refresh">
+    <div class="future__tag">— The Refresh —</div>
+    <h1 class="future__title">Future B.</h1>
+    <p class="future__subtitle">Evolve the visual identity toward refined warmth. Same soul, new skin.</p>
+  </div>
+
+  <div class="future future--refresh">
+    <div class="future__preview">
+      <div class="future__preview-sample">
+        <div class="brand">LRD Studio</div>
+        <div class="hero">Good design tells the story of who we are.</div>
+        <div class="sub" style="color: #8b6f47;">MOUNTAIN MODERN · SEA-TO-SKY · SINCE 2017</div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="future__bullets">
+    <li><strong>TYPOGRAPHY</strong><span>Add an editorial serif for display (Cormorant, Freight, or similar). Poppins stays for UI.</span></li>
+    <li><strong>COLOR</strong><span>Warm the palette. Cream whites, earth tones, warm charcoal. Closer to Quiet Luxury.</span></li>
+    <li><strong>LAYOUT</strong><span>More editorial. Asymmetrical project spreads. Larger hero imagery. Story-driven pages.</span></li>
+    <li><strong>STRUCTURE</strong><span>Same rebuild as Future A. Plus brand system refresh and 2-3 design rounds.</span></li>
+    <li><strong>TIMELINE</strong><span>6 to 8 weeks.</span></li>
+  </ul>
+
+  <div class="future__decision">
+    <h3>— The decision —</h3>
+    <div class="radio-group">
+      <div class="radio-option" style="flex: 1;"><input type="radio" name="future" id="future-keep"><label for="future-keep">Future A · KEEP</label></div>
+      <div class="radio-option" style="flex: 1;"><input type="radio" name="future" id="future-modify"><label for="future-modify">Modified Keep</label></div>
+      <div class="radio-option" style="flex: 1;"><input type="radio" name="future" id="future-refresh"><label for="future-refresh">Future B · REFRESH</label></div>
+    </div>
+    <div class="field">
+      <label class="field-label">Specific things to preserve from current site</label>
+      <textarea placeholder="What Lauren loves and doesn't want touched..."></textarea>
+    </div>
+    <div class="field">
+      <label class="field-label">Specific things to change</label>
+      <textarea placeholder="What bugs her about current site..."></textarea>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Creative Workshop</span>
+    <span>Handout 06b of 08</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     HANDOUT 7: THE MENU (FIXED + FILLABLE)
+     ============================================================ -->
+<div class="page menu-page">
+  <div class="menu__inner">
+    <div class="menu__header">
+      <div class="establishment">— LRD Studio · Creative Partner —</div>
+      <h1>The Next 30 Days</h1>
+      <div class="prix">Pick what matters most — I'll build in this order</div>
+    </div>
+
+    <div class="menu__howto">
+      Check your favorites · Number your top 5 in order of priority (1 = first)
+    </div>
+
+    <div class="menu__section">
+      <h2>Quick Wins</h2>
+      <div class="section-sub">— Quick Wins · 1 to 2 Days Each —</div>
+
+      <label class="menu__item">
+        <input type="checkbox" class="check">
+        <input type="text" class="rank" maxlength="1" placeholder="·">
+        <span class="name">Copyright Update</span>
+        <span class="dots"></span>
+        <span class="price">½ hour</span>
+      </label>
+      <div class="menu__desc">A gentle correction of the footer to 2026. Served warm.</div>
+
+      <label class="menu__item">
+        <input type="checkbox" class="check">
+        <input type="text" class="rank" maxlength="1" placeholder="·">
+        <span class="name">Press Page · 2026 WL Win</span>
+        <span class="dots"></span>
+        <span class="price">1 hour</span>
+      </label>
+      <div class="menu__desc">Add the Sunstone Design 25 victory. Paired with fresh photography credit.</div>
+
+      <label class="menu__item">
+        <input type="checkbox" class="check">
+        <input type="text" class="rank" maxlength="1" placeholder="·">
+        <span class="name">Google Business Profile</span>
+        <span class="dots"></span>
+        <span class="price">2 hours</span>
+      </label>
+      <div class="menu__desc">Claimed, populated, and photographed. A local SEO aperitif.</div>
+
+      <label class="menu__item">
+        <input type="checkbox" class="check">
+        <input type="text" class="rank" maxlength="1" placeholder="·">
+        <span class="name">Houzz Profile Refresh</span>
+        <span class="dots"></span>
+        <span class="price">2 hours</span>
+      </label>
+      <div class="menu__desc">All 17 projects, the Sunstone win, the bio. LLM citation appetizer.</div>
+
+      <label class="menu__item">
+        <input type="checkbox" class="check">
+        <input type="text" class="rank" maxlength="1" placeholder="·">
+        <span class="name">laurenritzdesign.com Redirect</span>
+        <span class="dots"></span>
+        <span class="price">½ hour</span>
+      </label>
+      <div class="menu__desc">A clean 301 to consolidate your domain authority.</div>
+
+      <label class="menu__item">
+        <input type="checkbox" class="check">
+        <input type="text" class="rank" maxlength="1" placeholder="·">
+        <span class="name">LinkedIn Profile Merge</span>
+        <span class="dots"></span>
+        <span class="price">1 hour</span>
+      </label>
+      <div class="menu__desc">One Lauren, one story. A tidy digital entity cleanse.</div>
+    </div>
+
+    <div class="menu__section">
+      <h2>The Build</h2>
+      <div class="section-sub">— 1 to 2 Weeks Each —</div>
+
+      <label class="menu__item">
+        <input type="checkbox" class="check">
+        <input type="text" class="rank" maxlength="1" placeholder="·">
+        <span class="name">Squamish Landing Page</span>
+        <span class="dots"></span>
+        <span class="price">3 days</span>
+      </label>
+      <div class="menu__desc">Your home territory, finally ranking. Our biggest quick win.</div>
+
+      <label class="menu__item">
+        <input type="checkbox" class="check">
+        <input type="text" class="rank" maxlength="1" placeholder="·">
+        <span class="name">Pemberton Landing Page</span>
+        <span class="dots"></span>
+        <span class="price">3 days</span>
+      </label>
+      <div class="menu__desc">Anchored on the Sunstone Design 25 win. Served with award buzz.</div>
+
+      <label class="menu__item">
+        <input type="checkbox" class="check">
+        <input type="text" class="rank" maxlength="1" placeholder="·">
+        <span class="name">Sunstone Case Study Page</span>
+        <span class="dots"></span>
+        <span class="price">4 days</span>
+      </label>
+      <div class="menu__desc">The signature dish of the year. Long-form, award-anchored, SEO-loaded.</div>
+
+      <label class="menu__item">
+        <input type="checkbox" class="check">
+        <input type="text" class="rank" maxlength="1" placeholder="·">
+        <span class="name">Alt Text Audit · 699 Images</span>
+        <span class="dots"></span>
+        <span class="price">3 days</span>
+      </label>
+      <div class="menu__desc">Every image earning its keep. An SEO cleanse.</div>
+
+      <label class="menu__item">
+        <input type="checkbox" class="check">
+        <input type="text" class="rank" maxlength="1" placeholder="·">
+        <span class="name">Home Page Rebuild</span>
+        <span class="dots"></span>
+        <span class="price">5 days</span>
+      </label>
+      <div class="menu__desc">First impressions, rebuilt from the ground up.</div>
+
+      <label class="menu__item">
+        <input type="checkbox" class="check">
+        <input type="text" class="rank" maxlength="1" placeholder="·">
+        <span class="name">About Page · with WL Win + Bio</span>
+        <span class="dots"></span>
+        <span class="price">3 days</span>
+      </label>
+      <div class="menu__desc">Your full story, your credentials, your win. Beautifully plated.</div>
+    </div>
+
+    <div class="menu__section">
+      <h2>Content Engine</h2>
+      <div class="section-sub">— Ongoing · Started This Month —</div>
+
+      <label class="menu__item">
+        <input type="checkbox" class="check">
+        <input type="text" class="rank" maxlength="1" placeholder="·">
+        <span class="name">Blog Post 01 · The Sunstone Story</span>
+        <span class="dots"></span>
+        <span class="price">1 week</span>
+      </label>
+      <div class="menu__desc">Load-bearing post for the year. The taste that lingers.</div>
+
+      <label class="menu__item">
+        <input type="checkbox" class="check">
+        <input type="text" class="rank" maxlength="1" placeholder="·">
+        <span class="name">First Social Media Batch</span>
+        <span class="dots"></span>
+        <span class="price">3 days</span>
+      </label>
+      <div class="menu__desc">Three weeks of Instagram + Pinterest, ready for approval.</div>
+
+      <label class="menu__item">
+        <input type="checkbox" class="check">
+        <input type="text" class="rank" maxlength="1" placeholder="·">
+        <span class="name">Q2 Shoot · Scheduled</span>
+        <span class="dots"></span>
+        <span class="price">1 day</span>
+      </label>
+      <div class="menu__desc">Your pick — project or studio marketing. Booked and on the calendar.</div>
+    </div>
+
+    <div class="menu__footer">
+      — Check favorites · Type 1–5 in the circles for your top priorities —
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     HANDOUT 08: CONTENT PILLARS
+     ============================================================ -->
+<div class="page">
+  <div class="page-tag">08 · Pillars</div>
+  <div class="page-number">LRD Studio · April 13, 2026</div>
+
+  <div class="handout-header">
+    <h1>Content pillars.</h1>
+    <p>Every post, every caption, every piece of content maps to one of these four pillars. The default mix below is based on what works for interior designers at your level. Adjust the sliders if the balance doesn't feel right.</p>
+  </div>
+
+  <div class="pillar-grid">
+
+    <div class="pillar-card">
+      <div class="pillar-card__weight">50%</div>
+      <div class="pillar-card__name">Project Showcase</div>
+      <div class="pillar-card__desc">Hero work, finished spaces, full-room reveals, before and afters. The bread and butter. Drives saves, shares, and DM inquiries.</div>
+      <div class="pillar-card__examples">Carousel of Sunstone kitchen from 8 angles · Panorama great room panoramic · Balsam 2 before and after slider</div>
+      <div class="pillar-card__adjust">
+        <label class="field-label">Adjust weight</label>
+        <div class="pillar-slider">
+          <input type="range" min="10" max="70" value="50" oninput="this.nextElementSibling.textContent=this.value+'%'">
+          <span class="slider-val">50%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-card__weight">25%</div>
+      <div class="pillar-card__name">Material &amp; Detail</div>
+      <div class="pillar-card__desc">Tight crops, palette studies, texture shots, material sourcing, millwork details, light studies. High Pinterest performance and long-tail search.</div>
+      <div class="pillar-card__examples">Charred cedar close-up at Sunridge · Pemberton stone slab veining · Hickory flooring grain at Toni Sailer · Custom steel railing detail</div>
+      <div class="pillar-card__adjust">
+        <label class="field-label">Adjust weight</label>
+        <div class="pillar-slider">
+          <input type="range" min="5" max="50" value="25" oninput="this.nextElementSibling.textContent=this.value+'%'">
+          <span class="slider-val">25%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-card__weight">15%</div>
+      <div class="pillar-card__name">Process &amp; BTS</div>
+      <div class="pillar-card__desc">Site visits, sketches, sourcing trips, conversations with trades, material selections on the table, model building. Builds the human connection.</div>
+      <div class="pillar-card__examples">Lauren at the Sunridge site with the millworker · Fabric samples spread on the studio table · Sketchbook concept for a new build · Walk-through video of a demo day</div>
+      <div class="pillar-card__adjust">
+        <label class="field-label">Adjust weight</label>
+        <div class="pillar-slider">
+          <input type="range" min="0" max="40" value="15" oninput="this.nextElementSibling.textContent=this.value+'%'">
+          <span class="slider-val">15%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-card__weight">10%</div>
+      <div class="pillar-card__name">Awards &amp; Press</div>
+      <div class="pillar-card__desc">Award announcements, publication features, editor mentions, event coverage. Smallest by volume but highest social proof. Save heavy usage for the fall publication window.</div>
+      <div class="pillar-card__examples">Western Living Design 25 win announcement · IDIBC Shine submission recap · Feature in Mountain Living · Press page screenshot sharing</div>
+      <div class="pillar-card__adjust">
+        <label class="field-label">Adjust weight</label>
+        <div class="pillar-slider">
+          <input type="range" min="0" max="30" value="10" oninput="this.nextElementSibling.textContent=this.value+'%'">
+          <span class="slider-val">10%</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label class="field-label">Weekly posting cadence (default: 3x/week IG + Pinterest)</label>
+    <div style="font-size: 9pt; color: var(--muted); margin-bottom: 0.5rem; line-height: 1.5; border: 1px solid var(--hairline); padding: 0.3rem 0.5rem; background: var(--cream);">
+      <strong>Mon</strong> — Project Showcase (hero image + voice caption) &nbsp;&nbsp;
+      <strong>Wed</strong> — Material/Detail or Process/BTS (alternating weeks) &nbsp;&nbsp;
+      <strong>Fri</strong> — Project Showcase or Awards/Press
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="field-label">— Lauren's reaction to the pillar mix + any adjustments —</label>
+    <textarea placeholder="Does the balance feel right? Anything she wants more of or less of? Any pillar that feels wrong?"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="field-label">Projects she wants featured MORE (name them)</label>
+    <input type="text" placeholder="e.g., Sunridge, Sunstone, Panorama...">
+  </div>
+
+  <div class="field">
+    <label class="field-label">Projects she wants to WITHHOLD or de-emphasize (NDA, still shooting, client-sensitive)</label>
+    <input type="text" placeholder="e.g., Chief Dental not finished, East Van Loft client doesn't want publicity...">
+  </div>
+
+  <div class="field">
+    <label class="field-label">Any collaborators she CANNOT publicly tag?</label>
+    <input type="text" placeholder="Names and reasons...">
+  </div>
+
+  <div class="page-footer">
+    <span>Creative Workshop</span>
+    <span>Handout 08 of 12</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     HANDOUT 09: 12-MONTH EDITORIAL CALENDAR
+     ============================================================ -->
+<div class="page">
+  <div class="page-tag">09 · Calendar</div>
+  <div class="page-number">LRD Studio · April 13, 2026</div>
+
+  <div class="handout-header">
+    <h1>The 12-month editorial calendar.</h1>
+    <p>One SEO blog post per month for 12 months. Each post is anchored on a real LRD project with real photography, targeting a real keyword with real search demand. Every post feeds a topic cluster and spawns social cross-posts.</p>
+  </div>
+
+  <table class="cal-table">
+    <thead>
+      <tr>
+        <th style="width: 0.6in;">Month</th>
+        <th>Title</th>
+        <th style="width: 1in;">Project</th>
+        <th style="width: 0.8in;">Cluster</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="phase-header"><td colspan="4">Phase 1 — Quick Wins (ride the WL Design 25 buzz)</td></tr>
+      <tr>
+        <td>May '26</td>
+        <td class="title-col">Inside a Pemberton Mountain Modern Kitchen: How Sunstone Won WL Design 25</td>
+        <td>Sunstone</td>
+        <td><span class="pillar-tag">Kitchen</span></td>
+      </tr>
+      <tr>
+        <td>Jun '26</td>
+        <td class="title-col">The PNW Material Stack: What Mountain Modern Actually Looks Like in 2026</td>
+        <td>Balsam + Sunridge</td>
+        <td><span class="pillar-tag">Material</span></td>
+      </tr>
+      <tr>
+        <td>Jul '26</td>
+        <td class="title-col">Renovating a Whistler Log Home: Honouring the Soul Without Freezing It in Time</td>
+        <td>Sunridge</td>
+        <td><span class="pillar-tag">Legacy</span></td>
+      </tr>
+      <tr class="phase-header"><td colspan="4">Phase 2 — Strategic Bets (pillar posts + fall publication window)</td></tr>
+      <tr>
+        <td>Aug '26</td>
+        <td class="title-col"><strong>Mountain Modern Interior Design in the Sea-to-Sky: A Field Guide</strong> <span class="pillar-tag">PILLAR</span></td>
+        <td>4 hero projects</td>
+        <td><span class="pillar-tag">Mtn Modern</span></td>
+      </tr>
+      <tr>
+        <td>Sep '26</td>
+        <td class="title-col">Quiet Luxury in the Mountains: Why the Most Powerful Rooms Are the Quietest</td>
+        <td>Fitzsimmons + Panorama</td>
+        <td><span class="pillar-tag">Quiet Lux</span></td>
+      </tr>
+      <tr>
+        <td>Oct '26</td>
+        <td class="title-col">Designing a Whistler Wine Cellar and Entertaining Home</td>
+        <td>Summer Lane</td>
+        <td><span class="pillar-tag">Entertaining</span></td>
+      </tr>
+      <tr>
+        <td>Nov '26</td>
+        <td class="title-col">From Falcon Crescent to Fitzsimmons: How We Approach a Legacy Transformation</td>
+        <td>Falcon + Fitzsimmons</td>
+        <td><span class="pillar-tag">Legacy</span></td>
+      </tr>
+      <tr>
+        <td>Dec '26</td>
+        <td class="title-col">Designing a Sea-to-Sky Kitchen for Holiday Entertaining</td>
+        <td>Balsam</td>
+        <td><span class="pillar-tag">Kitchen</span></td>
+      </tr>
+      <tr class="phase-header"><td colspan="4">Phase 3 — Pillar Completion (trend authority + renewal setup)</td></tr>
+      <tr>
+        <td>Jan '27</td>
+        <td class="title-col">2027 Interior Design Trends for Sea-to-Sky Homes</td>
+        <td>Multi-project</td>
+        <td><span class="pillar-tag">Quiet Lux</span></td>
+      </tr>
+      <tr>
+        <td>Feb '27</td>
+        <td class="title-col"><strong>How to Start a New Build in the Sea-to-Sky: Month-by-Month Guide</strong> <span class="pillar-tag">PILLAR</span></td>
+        <td>Panorama + Cypress</td>
+        <td><span class="pillar-tag">New Build</span></td>
+      </tr>
+      <tr>
+        <td>Mar '27</td>
+        <td class="title-col">Built Into the Rock Face: The Quiet Engineering Behind Panorama</td>
+        <td>Panorama</td>
+        <td><span class="pillar-tag">Mtn Modern</span></td>
+      </tr>
+      <tr>
+        <td>Apr '27</td>
+        <td class="title-col">FF&amp;E and the Last 10%: Why Furniture, Art, and Install Make or Break It</td>
+        <td>Kadenwood</td>
+        <td><span class="pillar-tag">New Build</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="cal-reaction">
+    <div class="field">
+      <label class="field-label">— Lauren's reaction to the 12 posts — anything to swap, add, or kill?</label>
+      <textarea placeholder="Which titles excite her? Which feel wrong? Any projects she'd rather anchor differently? Any topic she thinks is missing?"></textarea>
+    </div>
+    <div class="field">
+      <label class="field-label">Which 3 posts is she MOST excited about?</label>
+      <input type="text" placeholder="Post numbers or titles...">
+    </div>
+    <div class="field">
+      <label class="field-label">Any anecdotes or behind-the-scenes stories for specific posts?</label>
+      <textarea placeholder="e.g., 'For the Sunstone post, I actually changed the whole fireplace design at 3am the night before the install...'"></textarea>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Creative Workshop</span>
+    <span>Handout 09 of 12</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     HANDOUT 10: Q2 SHOOT DECISION
+     ============================================================ -->
+<div class="page">
+  <div class="page-tag">10 · Shoot</div>
+  <div class="page-number">LRD Studio · April 13, 2026</div>
+
+  <div class="handout-header">
+    <h1>Q2 shoot decision.</h1>
+    <p>Your first of four annual shoots. Each shoot is either a Project Shoot or a Studio Marketing Shoot — your call. I can't do both in one day. Which is more valuable right now?</p>
+  </div>
+
+  <div class="shoot-options">
+    <div class="shoot-option">
+      <div class="radio-group" style="margin-bottom: 0.5rem;">
+        <div class="radio-option" style="flex: 1;"><input type="radio" name="shoot" id="shoot-project"><label for="shoot-project">Choose This</label></div>
+      </div>
+      <div class="shoot-option__name">Project Shoot</div>
+      <div class="shoot-option__desc">Full day on a completed or near-completed project. You get 20-25 edited images + 60-second atmospheric video + reels content. This is the content engine for the next 3 months of social + 2 blog posts.</div>
+      <div class="shoot-option__deliverables">
+        <strong>Best candidate:</strong> Sunridge (Whistler) — log home renovation, curved staircase, stone tower. Already have 50 photos but this would be the hero shoot for Posts #1-3.<br>
+        <strong>Feeds:</strong> Posts #1, #3, social content for May-Jul, Pinterest pin library, mattanthonyphoto.com companion post
+      </div>
+    </div>
+
+    <div class="shoot-option">
+      <div class="radio-group" style="margin-bottom: 0.5rem;">
+        <div class="radio-option" style="flex: 1;"><input type="radio" name="shoot" id="shoot-studio"><label for="shoot-studio">Choose This</label></div>
+      </div>
+      <div class="shoot-option__name">Studio Marketing Shoot</div>
+      <div class="shoot-option__desc">Full day building the About page library, team headshots, studio lifestyle, BTS content, materials flat-lays. This fills the Process &amp; BTS pillar and gives the website rebuild real photography for the About page, team section, and Services page.</div>
+      <div class="shoot-option__deliverables">
+        <strong>Location:</strong> LRD Studio office, 37758 3rd Ave, Squamish<br>
+        <strong>Feeds:</strong> About page rebuild, Services page imagery, team section, IG process/BTS pillar, LinkedIn headshot, press kit photo
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="field-label">Which project if Project Shoot? (confirm or suggest alternative)</label>
+    <input type="text" placeholder="Sunridge? Another project? Something in-progress?">
+  </div>
+
+  <div class="field">
+    <label class="field-label">Preferred timing (late April / early May / other)</label>
+    <input type="text" placeholder="Date range or specific dates...">
+  </div>
+
+  <div class="field">
+    <label class="field-label">Any coordination needed? (client access, builder schedule, staging)</label>
+    <textarea placeholder="Who needs to be contacted? Any furniture to move in/out? Landscaping timing?"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="field-label">Q3 shoot preview — what are you thinking for the fall? (project or studio?)</label>
+    <textarea placeholder="This one should ideally align with the fall publication outreach window (Sep-Oct)..."></textarea>
+  </div>
+
+  <div class="page-footer">
+    <span>Creative Workshop</span>
+    <span>Handout 10 of 12</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     HANDOUT 11: APPROVAL WORKFLOW + OPERATIONS
+     ============================================================ -->
+<div class="page">
+  <div class="page-tag">11 · Operations</div>
+  <div class="page-number">LRD Studio · April 13, 2026</div>
+
+  <div class="handout-header">
+    <h1>How we work together.</h1>
+    <p>I need to know how you want content approved, how fast you respond, and who else is involved. These decisions save us hundreds of micro-conversations over the next 12 months.</p>
+  </div>
+
+  <div style="margin-bottom: 0.3in;">
+    <label class="field-label" style="font-size: 9pt; margin-bottom: 0.5rem;">— Blog post approval workflow —</label>
+    <div class="workflow-options">
+      <div class="workflow-opt">
+        <input type="radio" name="blog-wf" id="blog-wf-a">
+        <label for="blog-wf-a">
+          <span class="opt-name">A. Matt drafts in Notion, Lauren reviews before publishing</span>
+          <span class="opt-desc">Most control. You see every word before it goes live. Requires 24-48hr turnaround per post.</span>
+        </label>
+      </div>
+      <div class="workflow-opt">
+        <input type="radio" name="blog-wf" id="blog-wf-b">
+        <label for="blog-wf-b">
+          <span class="opt-name">B. Matt drafts and publishes, Lauren reviews after</span>
+          <span class="opt-desc">Faster output. You review published posts and request edits if anything feels off. Trust-based.</span>
+        </label>
+      </div>
+      <div class="workflow-opt">
+        <input type="radio" name="blog-wf" id="blog-wf-c">
+        <label for="blog-wf-c">
+          <span class="opt-name">C. First 3 posts: pre-approval. After that: trust-based publishing.</span>
+          <span class="opt-desc">Ramp-up model. You approve the first few until voice is dialed, then Matt runs autonomously.</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 0.3in;">
+    <label class="field-label" style="font-size: 9pt; margin-bottom: 0.5rem;">— Social media approval workflow —</label>
+    <div class="workflow-options">
+      <div class="workflow-opt">
+        <input type="radio" name="social-wf" id="social-wf-a">
+        <label for="social-wf-a">
+          <span class="opt-name">A. Weekly batch review in Notion (Sunday prep → Monday approval)</span>
+          <span class="opt-desc">Most efficient. You review a full week of content in one sitting.</span>
+        </label>
+      </div>
+      <div class="workflow-opt">
+        <input type="radio" name="social-wf" id="social-wf-b">
+        <label for="social-wf-b">
+          <span class="opt-name">B. Each post individually via Notion or text</span>
+          <span class="opt-desc">Most control but most friction. Can slow down scheduling.</span>
+        </label>
+      </div>
+      <div class="workflow-opt">
+        <input type="radio" name="social-wf" id="social-wf-c">
+        <label for="social-wf-c">
+          <span class="opt-name">C. Auto-schedule, Lauren reviews after publishing</span>
+          <span class="opt-desc">Fastest. You trust the pillar framework and voice rules. Review the feed periodically.</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.25in; margin-bottom: 0.25in;">
+    <div class="field">
+      <label class="field-label">Your approval turnaround time</label>
+      <select>
+        <option value="">—</option>
+        <option>Same day</option>
+        <option>24 hours</option>
+        <option>48 hours</option>
+        <option>Weekly batch (weekends)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label class="field-label">Best channel for fast questions</label>
+      <select>
+        <option value="">—</option>
+        <option>Text message</option>
+        <option>Email</option>
+        <option>Notion comments</option>
+        <option>Slack / other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label class="field-label">Who else reviews or approves content?</label>
+      <input type="text" placeholder="Business partner, PR, team member, spouse...">
+    </div>
+    <div class="field">
+      <label class="field-label">Anyone else posting to LRD's Instagram?</label>
+      <input type="text" placeholder="Names + what they post (stories, reels, etc.)">
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.25in; margin-bottom: 0.25in;">
+    <div class="field">
+      <label class="field-label">Phone number for the website? (or keep email-only?)</label>
+      <input type="text" placeholder="Number or 'email only'">
+    </div>
+    <div class="field">
+      <label class="field-label">Team members (names + titles for About page)</label>
+      <textarea style="min-height: 1.5rem;" placeholder="Lauren Ritz — Principal Designer, ..."></textarea>
+    </div>
+    <div class="field">
+      <label class="field-label">Credentials for About page</label>
+      <input type="text" placeholder="IDIBC, IDC, NCIDQ, BCIT — any others?">
+    </div>
+    <div class="field">
+      <label class="field-label">Active projects in next 90 days (shoots, deliverables)</label>
+      <textarea style="min-height: 1.5rem;" placeholder="Any projects nearing completion? Anything we should coordinate?"></textarea>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Creative Workshop</span>
+    <span>Handout 11 of 12</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     HANDOUT 12: VOICE RULES
+     ============================================================ -->
+<div class="page">
+  <div class="page-tag">12 · Voice</div>
+  <div class="page-number">LRD Studio · April 13, 2026</div>
+
+  <div class="handout-header">
+    <h1>The voice rules.</h1>
+    <p class="voice__intro">I'm writing captions, blog posts, and copy in your voice for the next 12 months. Fill this out so I never publish a word that doesn't sound like you.</p>
+  </div>
+
+  <div class="voice__columns">
+    <div class="voice__col love">
+      <h3>Words I reach for.</h3>
+      <span class="tag">— The vocabulary of LRD —</span>
+      <input type="text" placeholder="collaborative">
+      <input type="text" placeholder="partnership">
+      <input type="text" placeholder="transformative">
+      <input type="text" placeholder="refined warmth">
+      <input type="text" placeholder="quiet">
+      <input type="text" placeholder="material">
+      <input type="text" placeholder="honest">
+      <input type="text" placeholder="">
+      <input type="text" placeholder="">
+      <input type="text" placeholder="">
+      <input type="text" placeholder="">
+      <input type="text" placeholder="">
+      <input type="text" placeholder="">
+    </div>
+    <div class="voice__col hate">
+      <h3>Words I never want to see.</h3>
+      <span class="tag">— The physical ick list —</span>
+      <input type="text" placeholder="luxury">
+      <input type="text" placeholder="exclusive">
+      <input type="text" placeholder="elite">
+      <input type="text" placeholder="bespoke">
+      <input type="text" placeholder="cutting-edge">
+      <input type="text" placeholder="world-class">
+      <input type="text" placeholder="curated">
+      <input type="text" placeholder="">
+      <input type="text" placeholder="">
+      <input type="text" placeholder="">
+      <input type="text" placeholder="">
+      <input type="text" placeholder="">
+      <input type="text" placeholder="">
+    </div>
+  </div>
+
+  <div class="voice__prompts">
+    <h4>— Complete the sentences —</h4>
+
+    <div class="voice__prompt">
+      <span class="number">1.</span>
+      <div class="sentence">
+        <span>Good design tells the story of</span>
+        <input type="text" placeholder="...">
+      </div>
+    </div>
+
+    <div class="voice__prompt">
+      <span class="number">2.</span>
+      <div class="sentence">
+        <span>LRD Studio is</span>
+        <input type="text" placeholder="...">
+      </div>
+    </div>
+
+    <div class="voice__prompt">
+      <span class="number">3.</span>
+      <div class="sentence">
+        <span>We are NOT</span>
+        <input type="text" placeholder="...">
+      </div>
+    </div>
+
+    <div class="voice__prompt">
+      <span class="number">4.</span>
+      <div class="sentence">
+        <span>If someone says our work feels</span>
+        <input type="text" placeholder="..." style="max-width: 2.5in;">
+        <span>, we've failed.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Creative Workshop</span>
+    <span>Handout 12 of 12</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     FINAL: SAVE YOUR WORK
+     ============================================================ -->
+<div class="page export">
+  <div class="page-tag">— End —</div>
+  <div class="page-number">LRD Studio · April 13, 2026</div>
+
+  <div class="thesis__eyebrow" style="margin-top: 1.5in;">Workshop Complete</div>
+  <h1 class="export__headline">Save your work.</h1>
+  <p class="export__sub">Your data auto-saves to this browser every 30 seconds. Use the buttons below to export a permanent record.</p>
+
+  <ol class="export__steps">
+    <li><span class="step">1.</span><span>Click <strong>Save Data</strong> in the toolbar to download a JSON backup of every answer.</span></li>
+    <li><span class="step">2.</span><span>Click <strong>Export PDF</strong> to generate a print-ready PDF with all filled values visible.</span></li>
+    <li><span class="step">3.</span><span>In the print dialog, choose <strong>Save as PDF</strong> and enable <strong>Background graphics</strong>.</span></li>
+    <li><span class="step">4.</span><span>Name the file: <em>LRD-Workshop-2026-04-13.pdf</em></span></li>
+  </ol>
+
+  <div style="text-align: center; margin-top: 1.5rem;">
+    <button onclick="saveData()" class="toolbar-btn" style="color: var(--ink); border-color: var(--hairline); font-size: 10pt; padding: 0.6rem 1.5rem; margin-right: 0.5rem;">Save Data (JSON)</button>
+    <button onclick="exportPDF()" class="toolbar-btn toolbar-btn--primary" style="font-size: 10pt; padding: 0.6rem 1.5rem;">Export PDF</button>
+  </div>
+
+  <div class="page-footer">
+    <span>Creative Workshop</span>
+    <span>— End of Document —</span>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STORAGE_KEY = 'lrd-workshop-2026-04-13';
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function collectData() {
+  const data = {};
+  document.querySelectorAll('input, textarea, select').forEach((el, i) => {
+    const key = el.name || el.id || `field_${i}`;
+    if (el.type === 'radio') {
+      if (el.checked) data[key] = el.nextElementSibling?.textContent?.trim() || el.value;
+    } else if (el.type === 'checkbox') {
+      data[key] = el.checked;
+    } else if (el.type === 'range') {
+      data[key] = el.value;
+    } else {
+      data[key] = el.value;
+    }
+  });
+  return data;
+}
+
+function restoreData(data) {
+  if (!data) return;
+  document.querySelectorAll('input, textarea, select').forEach((el, i) => {
+    const key = el.name || el.id || `field_${i}`;
+    if (!(key in data)) return;
+    if (el.type === 'radio') {
+      const label = el.nextElementSibling?.textContent?.trim() || el.value;
+      if (data[key] === label) el.checked = true;
+    } else if (el.type === 'checkbox') {
+      el.checked = data[key];
+    } else if (el.type === 'range') {
+      el.value = data[key];
+      const valSpan = el.nextElementSibling;
+      if (valSpan) valSpan.textContent = data[key] + '%';
+    } else {
+      el.value = data[key];
+    }
+  });
+}
+
+function autoSave() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(collectData()));
+  } catch(e) {}
+}
+
+function saveData() {
+  const data = collectData();
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'LRD-Workshop-2026-04-13.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('Data saved + downloaded as JSON');
+}
+
+function exportPDF() {
+  autoSave();
+
+  document.querySelectorAll('.print-value').forEach(el => el.remove());
+
+  document.querySelectorAll('input[type="text"], input[type="search"], textarea').forEach(el => {
+    const span = document.createElement('span');
+    span.className = 'print-value' + (el.value ? '' : ' print-value--empty');
+    span.textContent = el.value || '—';
+    span.style.fontSize = getComputedStyle(el).fontSize;
+    span.style.display = 'block';
+    span.style.padding = '0.25rem 0';
+    span.style.borderBottom = '1px solid #d8d4cf';
+    span.style.minHeight = el.tagName === 'TEXTAREA' ? (el.scrollHeight + 'px') : 'auto';
+    span.style.whiteSpace = el.tagName === 'TEXTAREA' ? 'pre-wrap' : 'normal';
+    el.parentNode.insertBefore(span, el.nextSibling);
+  });
+
+  document.querySelectorAll('select').forEach(el => {
+    const span = document.createElement('span');
+    const selected = el.options[el.selectedIndex];
+    const val = selected && selected.value ? selected.textContent : '—';
+    span.className = 'print-value' + (selected && selected.value ? '' : ' print-value--empty');
+    span.textContent = val;
+    span.style.fontSize = getComputedStyle(el).fontSize;
+    span.style.display = 'block';
+    span.style.padding = '0.25rem 0';
+    span.style.borderBottom = '1px solid #d8d4cf';
+    el.parentNode.insertBefore(span, el.nextSibling);
+  });
+
+  document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+    if (el.checked) {
+      const span = document.createElement('span');
+      span.className = 'print-value print-value--check';
+      span.style.display = 'inline';
+      el.parentNode.insertBefore(span, el.nextSibling);
+    }
+  });
+
+  document.querySelectorAll('input[type="radio"]').forEach(el => {
+    if (el.checked) {
+      const label = el.nextElementSibling;
+      if (label) {
+        const span = document.createElement('span');
+        span.className = 'print-value print-value--radio';
+        span.textContent = label.textContent.trim();
+        span.style.display = 'inline-block';
+        const group = el.closest('.radio-group');
+        if (group) {
+          const existing = group.querySelector('.print-value--radio');
+          if (!existing) group.parentNode.insertBefore(span, group.nextSibling);
+        }
+      }
+    }
+  });
+
+  document.querySelectorAll('input[type="range"]').forEach(el => {
+    const span = document.createElement('span');
+    span.className = 'print-value';
+    span.textContent = el.value + '%';
+    span.style.fontSize = '14pt';
+    span.style.fontFamily = "'Cormorant Garamond', serif";
+    span.style.fontWeight = '500';
+    span.style.color = '#8b6f47';
+    el.parentNode.insertBefore(span, el.nextSibling);
+  });
+
+  document.body.classList.add('pdf-mode');
+
+  setTimeout(() => {
+    window.print();
+    setTimeout(() => {
+      document.body.classList.remove('pdf-mode');
+      document.querySelectorAll('.print-value').forEach(el => el.remove());
+      toast('PDF exported — form restored');
+    }, 1000);
+  }, 100);
+}
+
+// Auto-save every 30 seconds
+setInterval(autoSave, 30000);
+
+// Also save on every input change
+document.addEventListener('input', () => {
+  clearTimeout(window._saveTimeout);
+  window._saveTimeout = setTimeout(autoSave, 2000);
+});
+
+// Restore on load
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      restoreData(JSON.parse(saved));
+      toast('Previous session restored');
+    }
+  } catch(e) {}
+});
+</script>
+
+</body>
+</html>

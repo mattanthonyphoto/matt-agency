@@ -3,19 +3,20 @@
 for Matt Anthony Photography and client accounts.
 
 Modes:
-  plan      Build next week's content calendar in Notion for all accounts
-  publish   Read today's approved posts from Notion → upload images → schedule via Late/Postiz
-  rotate    Update project rotation state
-  notify    Send Telegram summary linking to Notion calendar for review
-  report    Weekly analytics — sync Late.dev data to Notion + Telegram summary
-  status    Quick queue status across all accounts
+  plan           Build next week's content calendar in Notion for all accounts
+  publish        Read today's approved posts from Notion → upload images → schedule via Late/Postiz
+  rotate         Update project rotation state
+  notify         Send Telegram summary linking to Notion calendar for review
+  report         Weekly analytics — sync Late.dev data to Notion + Telegram summary
+  refine_times   Monthly: compare Late.dev engagement data against playbook posting times, update if better
+  status         Quick queue status across all accounts
 
 Usage:
   python3 tools/the_publicist.py plan
   python3 tools/the_publicist.py publish
   python3 tools/the_publicist.py status
 """
-import sys, os, json, re, subprocess
+import sys, os, json, re, subprocess, textwrap
 from datetime import datetime, timedelta, date
 from pathlib import Path
 
@@ -28,12 +29,46 @@ load_dotenv(PROJECT_ROOT / ".env", override=True)
 
 # === CONFIG ===
 TOOLS_DIR = Path(__file__).resolve().parent
-ACCOUNTS_FILE = TOOLS_DIR / "social_accounts.json"
+# Unified client config — single source of truth shared with the portal.
+# The portal reads this file directly at build time; The Publicist reads the
+# same file at runtime so adding a new client touches one place.
+ACCOUNTS_FILE = TOOLS_DIR / "client-portal" / "data" / "accounts.json"
 PLAYBOOKS_DIR = TOOLS_DIR / "playbooks"
 ROTATION_FILE = TOOLS_DIR / ".social_rotation_state.json"
 
 NOTION_CONTENT_DB_DATA_SOURCE = "collection://0603363c-f282-47a0-a416-430d3158acdf"
-NOTION_CONTENT_DB_ID = "cdd1e6d67f5944ee8a935dfee9360dcb"
+NOTION_CONTENT_DB_ID = "cdd1e6d67f5944ee8a935dfee9360dcb"  # Matt's default
+
+
+def resolve_notion_db_id(account_slug=None):
+    """Resolve the Notion Content Calendar database ID for a given account.
+    Reads from the unified account config. Falls back to Matt's DB if not set."""
+    if account_slug:
+        accounts = load_accounts()
+        acct = accounts.get(account_slug, {})
+        # Preferred: publicist.contentCalendarDbId (unified schema)
+        publicist = acct.get("publicist") or {}
+        db_id = publicist.get("contentCalendarDbId") or acct.get("contentCalendarDbId")
+        if db_id and isinstance(db_id, str) and db_id.startswith("ENV:"):
+            db_id = os.getenv(db_id.split(":", 1)[1])
+        if db_id:
+            return db_id
+    return NOTION_CONTENT_DB_ID
+
+
+def get_all_notion_db_ids():
+    """Return a list of all unique Notion Content Calendar DB IDs across accounts."""
+    accounts = load_accounts()
+    db_ids = set()
+    for slug, acct in accounts.items():
+        publicist = acct.get("publicist") or {}
+        db_id = publicist.get("contentCalendarDbId") or acct.get("contentCalendarDbId")
+        if db_id and isinstance(db_id, str) and db_id.startswith("ENV:"):
+            db_id = os.getenv(db_id.split(":", 1)[1])
+        if db_id:
+            db_ids.add(db_id)
+    db_ids.add(NOTION_CONTENT_DB_ID)  # Always include Matt's
+    return list(db_ids)
 
 LATE_API_KEY = os.getenv("LATE_API_KEY")
 LATE_API_BASE = "https://getlate.dev/api/v1"
@@ -55,9 +90,37 @@ import requests
 # ── Helpers ─────────────────────────────────────────────
 
 def load_accounts():
-    """Load social_accounts.json."""
+    """Load the unified accounts config.
+
+    The file is shared with the portal and uses a nested schema:
+        {"accounts": {"slug": {..., "publicist": {...}}}}
+
+    This returns a flat slug → account map matching the old
+    social_accounts.json shape. Publicist-specific fields nested under
+    `publicist` are lifted to the top level so existing call sites like
+    `acct.get("projects_dir")` continue to work without changes.
+    """
     with open(ACCOUNTS_FILE) as f:
-        return json.load(f)
+        data = json.load(f)
+    # Nested schema (portal-compatible): {"accounts": {...}}
+    accounts = data["accounts"] if isinstance(data, dict) and "accounts" in data else data
+
+    # Flatten the `publicist` nested key up into the account dict so legacy
+    # code that reads projects_dir/playbook/approval_timeout_hours/notion_db_id
+    # at the top level continues to work.
+    flat = {}
+    for slug, acct in accounts.items():
+        merged = dict(acct)
+        publicist_fields = merged.pop("publicist", None) or {}
+        # publicist fields override base only if base doesn't have them
+        for k, v in publicist_fields.items():
+            merged.setdefault(k, v)
+        # Schema alignment: portal uses contentCalendarDbId, legacy used notion_db_id.
+        # Keep both so resolve_notion_db_id() and any stragglers find the right key.
+        if "contentCalendarDbId" in merged and "notion_db_id" not in merged:
+            merged["notion_db_id"] = merged["contentCalendarDbId"]
+        flat[slug] = merged
+    return flat
 
 
 def load_playbook(account_slug):
@@ -89,6 +152,49 @@ def get_today():
     return date.today().isoformat()
 
 
+def resolve_post_time(playbook, platform, post_type, sched_date_str):
+    """Look up the optimal posting time from the playbook's posting_intelligence.
+
+    Returns an ISO datetime string like '2026-04-09T19:30:00Z' (UTC).
+    Falls back to 16:00 UTC (9am PT) if no match found.
+    """
+    intel = playbook.get("posting_intelligence") if playbook else None
+    if not intel:
+        return f"{sched_date_str}T16:00:00Z"
+
+    utc_offset = intel.get("utc_offset_hours", -7)
+    platforms = intel.get("platforms", {})
+
+    # Normalize keys
+    plat_key = platform.lower()
+    type_key = post_type.lower() if post_type else "single"
+
+    # Look up platform → post_type
+    plat_data = platforms.get(plat_key, {})
+    type_data = plat_data.get(type_key)
+
+    # Fallback chain: exact type → "single" → fallback
+    if not type_data:
+        type_data = plat_data.get("single")
+    if not type_data:
+        fallback_utc = intel.get("fallback_utc", "16:00")
+        return f"{sched_date_str}T{fallback_utc}:00Z"
+
+    # Parse the PT time and convert to UTC
+    best_time_pt = type_data.get("best_time_pt", "09:00")
+    try:
+        hour, minute = map(int, best_time_pt.split(":"))
+        utc_hour = hour - utc_offset  # PT is negative offset, so subtracting adds
+        if utc_hour >= 24:
+            utc_hour -= 24
+        elif utc_hour < 0:
+            utc_hour += 24
+        return f"{sched_date_str}T{utc_hour:02d}:{minute:02d}:00Z"
+    except (ValueError, TypeError):
+        fallback_utc = intel.get("fallback_utc", "16:00")
+        return f"{sched_date_str}T{fallback_utc}:00Z"
+
+
 def get_week_dates(start_offset_days=0):
     """Get Mon-Sat dates for next week (or offset)."""
     today = date.today()
@@ -98,6 +204,113 @@ def get_week_dates(start_offset_days=0):
         days_until_monday = 7
     monday = today + timedelta(days=days_until_monday + start_offset_days)
     return [(monday + timedelta(days=i)) for i in range(6)]  # Mon-Sat
+
+
+def burn_story_overlay(image_path, title_text, credit_text=None):
+    """Burn text overlay onto an image for Instagram Stories (9:16 output).
+
+    Uses brand typography (Cormorant Garamond + Josefin Sans) and gold accent.
+    Subtle bottom gradient only — lets the photo breathe.
+    Returns path to the generated file.
+    """
+    from PIL import Image, ImageDraw, ImageFont
+
+    STORY_W, STORY_H = 1080, 1920
+    FONTS_DIR = TOOLS_DIR / "fonts"
+    tmp_dir = PROJECT_ROOT / ".tmp"
+    tmp_dir.mkdir(exist_ok=True)
+
+    # Brand colors
+    GOLD = (201, 169, 110)        # --gold: #C9A96E
+    PAPER = (246, 244, 240)       # --paper: #F6F4F0
+    INK = (26, 26, 24)            # --ink: #1A1A18
+
+    img = Image.open(image_path).convert("RGBA")
+
+    # Crop to 9:16 from center
+    src_w, src_h = img.size
+    target_ratio = STORY_W / STORY_H
+    src_ratio = src_w / src_h
+    if src_ratio > target_ratio:
+        new_w = int(src_h * target_ratio)
+        left = (src_w - new_w) // 2
+        img = img.crop((left, 0, left + new_w, src_h))
+    else:
+        new_h = int(src_w / target_ratio)
+        top = (src_h - new_h) // 2
+        img = img.crop((0, top, src_w, top + new_h))
+
+    img = img.resize((STORY_W, STORY_H), Image.LANCZOS)
+
+    # Bottom gradient only — ease-in curve, bottom 35%
+    overlay = Image.new("RGBA", (STORY_W, STORY_H), (0, 0, 0, 0))
+    draw_overlay = ImageDraw.Draw(overlay)
+    grad_start = int(STORY_H * 0.65)
+    for y in range(grad_start, STORY_H):
+        progress = (y - grad_start) / (STORY_H - grad_start)
+        alpha = int(progress * progress * 180)
+        draw_overlay.rectangle([(0, y), (STORY_W, y + 1)], fill=(*INK, alpha))
+    img = Image.alpha_composite(img, overlay)
+
+    draw = ImageDraw.Draw(img)
+
+    # Load brand fonts
+    try:
+        font_title = ImageFont.truetype(str(FONTS_DIR / "CormorantGaramond-Medium.ttf"), 72)
+    except OSError:
+        font_title = ImageFont.truetype("/System/Library/Fonts/NewYork.ttf", 72)
+    try:
+        font_credit = ImageFont.truetype(str(FONTS_DIR / "JosefinSans-Light.ttf"), 28)
+    except OSError:
+        font_credit = ImageFont.load_default()
+
+    # Wrap title
+    max_chars = 26
+    wrapped = textwrap.fill(title_text, width=max_chars)
+    lines = wrapped.split("\n")
+
+    line_height = 90
+    total_text_h = len(lines) * line_height
+    credit_h = 50 if credit_text else 0
+    block_h = total_text_h + credit_h + 40
+    y_start = STORY_H - block_h - 140
+
+    # Gold accent line above title
+    line_w = 48
+    draw.rectangle(
+        [(STORY_W // 2 - line_w // 2, y_start - 32),
+         (STORY_W // 2 + line_w // 2, y_start - 30)],
+        fill=(*GOLD, 200)
+    )
+
+    # Title — paper white with ink shadow
+    for i, line in enumerate(lines):
+        bbox = draw.textbbox((0, 0), line, font=font_title)
+        tw = bbox[2] - bbox[0]
+        x = (STORY_W - tw) // 2
+        y = y_start + i * line_height
+        draw.text((x + 1, y + 2), line, font=font_title, fill=(*INK, 120))
+        draw.text((x, y), line, font=font_title, fill=(*PAPER, 245))
+
+    # Credit — Josefin Sans Light, uppercase, gold
+    if credit_text:
+        credit_upper = credit_text.upper()
+        spaced = "  ".join(credit_upper)
+        bbox = draw.textbbox((0, 0), spaced, font=font_credit)
+        tw = bbox[2] - bbox[0]
+        if tw > STORY_W - 120:
+            spaced = credit_upper
+            bbox = draw.textbbox((0, 0), spaced, font=font_credit)
+            tw = bbox[2] - bbox[0]
+        x = (STORY_W - tw) // 2
+        y_credit = y_start + total_text_h + 16
+        draw.text((x, y_credit), spaced, font=font_credit, fill=(*GOLD, 200))
+
+    # Save
+    out_path = tmp_dir / f"story_{Path(image_path).stem}.jpg"
+    img.convert("RGB").save(out_path, "JPEG", quality=92)
+    logger.info(f"Story overlay burned → {out_path.name} ({STORY_W}x{STORY_H})")
+    return str(out_path)
 
 
 def upload_image_to_host(image_path):
@@ -122,7 +335,7 @@ def upload_image_to_host(image_path):
         return None
 
 
-def late_create_post(platform, account_id, content, media_items, scheduled_for):
+def late_create_post(platform, account_id, content, media_items, scheduled_for, post_type=None):
     """Create a post via Late API. Supports all platforms."""
     if not LATE_API_KEY:
         logger.error("LATE_API_KEY not set")
@@ -139,9 +352,15 @@ def late_create_post(platform, account_id, content, media_items, scheduled_for):
     }
     late_platform = platform_map.get(platform, platform.lower())
 
+    platform_entry = {"platform": late_platform, "accountId": account_id}
+
+    # Stories require platformSpecificData.contentType inside the platform object
+    if post_type and post_type.lower() == "story":
+        platform_entry["platformSpecificData"] = {"contentType": "story"}
+
     payload = {
         "content": content,
-        "platforms": [{"platform": late_platform, "accountId": account_id}],
+        "platforms": [platform_entry],
         "scheduledFor": scheduled_for
     }
 
@@ -810,12 +1029,13 @@ def notion_headers():
     }
 
 
-def notion_create_page(properties):
-    """Create a page in the Content Calendar Notion database.
+def notion_create_page(properties, db_id=None):
+    """Create a page in a Content Calendar Notion database.
 
     If NOTION_API_KEY is set, creates directly via API.
     Otherwise, queues to JSON file for later push via Claude Code MCP.
     """
+    db_id = db_id or NOTION_CONTENT_DB_ID
     if not NOTION_API_KEY:
         # Queue for later push
         queue = []
@@ -853,7 +1073,7 @@ def notion_create_page(properties):
             notion_props[key] = {"rich_text": [{"text": {"content": str(value)[:2000]}}]}
 
     payload = {
-        "parent": {"database_id": NOTION_CONTENT_DB_ID},
+        "parent": {"database_id": db_id},
         "properties": notion_props
     }
 
@@ -885,42 +1105,41 @@ def notion_create_page(properties):
 
 
 def notion_query_approved_today():
-    """Query Notion for posts with Status=Approved and Scheduled Date=today."""
+    """Query all Content Calendar databases for posts with Status=Approved."""
     if not NOTION_API_KEY:
         logger.warning("No NOTION_API_KEY — cannot query Notion directly. Use Claude Code MCP.")
         return []
 
     today = get_today()
-    # Query all approved posts (scheduled for today or any date)
-    # The agent publishes whatever is approved — the scheduled date
-    # is used for the Late/Postiz scheduling time, not as a gate.
     payload = {
         "filter": {
             "property": "Status", "select": {"equals": "Approved"}
         }
     }
 
-    try:
-        resp = requests.post(
-            f"{NOTION_API_BASE}/databases/{NOTION_CONTENT_DB_ID}/query",
-            headers=notion_headers(),
-            json=payload,
-            timeout=15
-        )
-        if resp.status_code == 200:
-            results = resp.json().get("results", [])
-            logger.info(f"Found {len(results)} approved posts for {today}")
-            return results
-        else:
-            logger.error(f"Notion query failed ({resp.status_code}): {resp.text[:200]}")
-            return []
-    except Exception as e:
-        logger.error(f"Notion query error: {e}")
-        return []
+    all_results = []
+    for db_id in get_all_notion_db_ids():
+        try:
+            resp = requests.post(
+                f"{NOTION_API_BASE}/databases/{db_id}/query",
+                headers=notion_headers(),
+                json=payload,
+                timeout=15
+            )
+            if resp.status_code == 200:
+                results = resp.json().get("results", [])
+                all_results.extend(results)
+            else:
+                logger.error(f"Notion query failed for {db_id} ({resp.status_code}): {resp.text[:200]}")
+        except Exception as e:
+            logger.error(f"Notion query error for {db_id}: {e}")
+
+    logger.info(f"Found {len(all_results)} approved posts across {len(get_all_notion_db_ids())} databases")
+    return all_results
 
 
-def notion_update_status(page_id, status, post_id=None, published_url=None):
-    """Update a Notion page's status and optionally set Post ID and Published URL."""
+def notion_update_status(page_id, status, post_id=None, published_url=None, scheduled_date=None):
+    """Update a Notion page's status and optionally set Post ID, Published URL, and Scheduled Date."""
     if not NOTION_API_KEY:
         return
 
@@ -931,6 +1150,8 @@ def notion_update_status(page_id, status, post_id=None, published_url=None):
         props["Post ID"] = {"rich_text": [{"text": {"content": post_id}}]}
     if published_url:
         props["Published URL"] = {"rich_text": [{"text": {"content": published_url}}]}
+    if scheduled_date:
+        props["Scheduled Date"] = {"date": {"start": scheduled_date}}
 
     try:
         resp = requests.patch(
@@ -983,7 +1204,9 @@ def mode_status():
         lines.append("")
 
     lines.append(f"📅 Today: {get_today()}")
-    lines.append(f"🔗 Notion Calendar: https://notion.so/{NOTION_CONTENT_DB_ID}")
+    for slug, acct in accounts.items():
+        acct_db_id = resolve_notion_db_id(slug)
+        lines.append(f"🔗 {acct['label']} Calendar: https://notion.so/{acct_db_id}")
 
     msg = "\n".join(lines)
     print(msg)
@@ -1143,6 +1366,16 @@ def mode_plan():
                         count = slot.get("count", 5)
                         images = sorted([f for f in os.listdir(full_path) if f.endswith(".jpg")])
                         image_paths = ", ".join(images[:count])
+                    elif slot["type"] == "story":
+                        # Story — pick a detail/material close-up if available, else hero
+                        images = sorted([f for f in os.listdir(full_path) if f.endswith(".jpg")])
+                        detail_keywords = ["detail", "material", "texture", "close", "soapstone", "marble", "tile", "wood", "stone", "brass", "hardware"]
+                        detail_imgs = [f for f in images if any(kw in f.lower() for kw in detail_keywords)]
+                        if detail_imgs:
+                            image_paths = detail_imgs[0]
+                        else:
+                            hero = pick_hero_image(full_path)
+                            image_paths = os.path.basename(hero) if hero else ""
                     else:
                         # Single — pick a hero shot
                         hero = pick_hero_image(full_path)
@@ -1233,6 +1466,9 @@ def mode_plan():
             # Set expiry date (7 days from now)
             expires_date = (date.today() + timedelta(days=7)).isoformat()
 
+            # Resolve optimal posting time from posting_intelligence
+            scheduled_dt = resolve_post_time(playbook, platform, slot["type"], post_date.isoformat())
+
             # Create Notion page
             post_entry = {
                 "Post": title,
@@ -1241,7 +1477,7 @@ def mode_plan():
                 "Post Type": post_type,
                 "Pillar": pillar_notion,
                 "Funnel Stage": funnel_stage,
-                "date:Scheduled Date:start": post_date.isoformat(),
+                "date:Scheduled Date:start": scheduled_dt,
                 "date:Expires:start": expires_date,
                 "Account": account_notion,
                 "Project": project_name,
@@ -1255,8 +1491,9 @@ def mode_plan():
                 "Quality Score": quality
             }
 
-            # Push to Notion
-            result = notion_create_page(post_entry)
+            # Push to Notion (per-account database)
+            acct_db_id = resolve_notion_db_id(slug)
+            result = notion_create_page(post_entry, db_id=acct_db_id)
             status_tag = "→ Notion" if result and result != "queued" else "→ queued"
 
             # Upload images and add page content (if page was created in Notion)
@@ -1307,7 +1544,7 @@ def mode_plan():
 
     save_rotation_state(state)
 
-    msg = f"📋 <b>Weekly Plan Generated</b>\n{total_posts} posts planned for {week_dates[0]} — {week_dates[-1]}\n\n🔗 Review: https://notion.so/{NOTION_CONTENT_DB_ID}"
+    msg = f"📋 <b>Weekly Plan Generated</b>\n{total_posts} posts planned for {week_dates[0]} — {week_dates[-1]}"
     print(msg)
     send_telegram(msg)
 
@@ -1372,11 +1609,19 @@ def mode_publish():
 
         logger.info(f"Publishing: {title} → {platform}")
 
-        # Get scheduled time
+        # Get scheduled time — resolve from posting_intelligence
         sched_date = props.get("Scheduled Date", {}).get("date", {})
-        sched_time = sched_date.get("start", today) if sched_date else today
-        # Default to 9am PT (17:00 UTC)
-        scheduled_for = f"{sched_time}T17:00:00Z"
+        sched_date_start = sched_date.get("start", today) if sched_date else today
+
+        # If the Notion date already has a time component (ISO datetime), respect it
+        if "T" in sched_date_start:
+            scheduled_for = sched_date_start if sched_date_start.endswith("Z") else sched_date_start + "Z"
+        else:
+            # Look up optimal time from playbook posting_intelligence
+            playbook = load_playbook(account_slug)
+            scheduled_for = resolve_post_time(playbook, platform, post_type, sched_date_start)
+
+        logger.info(f"  Scheduled for: {scheduled_for} (from posting_intelligence)")
 
         # All platforms publish through Late
         platform_key = platform.lower()
@@ -1408,6 +1653,19 @@ def mode_publish():
                             break
 
                 if full_img_path:
+                    # Burn text overlay for story posts
+                    if post_type and post_type.lower() == "story":
+                        # Extract quote from title (between [STORY] and —)
+                        story_title = title
+                        if "—" in title:
+                            story_title = title.split("—")[0].strip()
+                        story_title = re.sub(r"^\[STORY\]\s*", "", story_title).strip()
+                        # Credit line from project + account
+                        project_parts_tmp = props.get("Project", {}).get("rich_text", [])
+                        proj_name = project_parts_tmp[0].get("text", {}).get("content", "") if project_parts_tmp else ""
+                        credit = f"{proj_name}  ·  @mattanthonyphoto" if proj_name else "@mattanthonyphoto"
+                        full_img_path = burn_story_overlay(full_img_path, story_title, credit)
+
                     url = upload_image_to_host(full_img_path)
                     if url:
                         media_items.append({"url": url, "type": "image"})
@@ -1420,9 +1678,11 @@ def mode_publish():
                 continue
 
         # Schedule via Late API
-        post_id = late_create_post(platform, account_id, full_caption, media_items, scheduled_for)
+        post_id = late_create_post(platform, account_id, full_caption, media_items, scheduled_for, post_type=post_type)
         if post_id:
-            notion_update_status(page_id, "Scheduled", post_id=post_id)
+            # Sync the actual scheduled date back to Notion (scheduled_for may differ from original)
+            sched_date_sync = scheduled_for[:10] if scheduled_for else None
+            notion_update_status(page_id, "Scheduled", post_id=post_id, scheduled_date=sched_date_sync)
             published_count += 1
 
             # Update rotation state
@@ -1454,8 +1714,6 @@ def mode_notify():
 
     lines = [
         "<b>📋 Weekly Content Calendar Ready for Review</b>",
-        "",
-        f"🔗 <a href='https://notion.so/{NOTION_CONTENT_DB_ID}'>Open in Notion</a>",
         ""
     ]
 
@@ -1474,32 +1732,34 @@ def mode_notify():
         if not has_connected and acct["type"] == "client":
             continue
 
+        acct_db_id = resolve_notion_db_id(slug)
         post_count = len(schedule)
         platforms = list(set(s["platform"] for s in schedule))
         lines.append(f"<b>{acct['label']}</b>: {post_count} posts across {', '.join(platforms)}")
+        lines.append(f"  🔗 <a href='https://notion.so/{acct_db_id}'>Open Calendar</a>")
 
-    # Check for stale posts (approved but past expiry)
+    # Check for stale posts across all databases
     if NOTION_API_KEY:
-        try:
-            stale_resp = requests.post(
-                f"{NOTION_API_BASE}/databases/{NOTION_CONTENT_DB_ID}/query",
-                headers=notion_headers(),
-                json={"filter": {"and": [
-                    {"property": "Status", "select": {"equals": "Ready for Review"}},
-                    {"property": "Expires", "date": {"on_or_before": get_today()}}
-                ]}},
-                timeout=15
-            )
-            stale_count = len(stale_resp.json().get("results", []))
-            if stale_count > 0:
-                lines.append(f"⚠️ <b>{stale_count} stale post(s)</b> — past 7-day review window")
-                lines.append("")
-        except Exception:
-            pass
+        stale_count = 0
+        for db_id in get_all_notion_db_ids():
+            try:
+                stale_resp = requests.post(
+                    f"{NOTION_API_BASE}/databases/{db_id}/query",
+                    headers=notion_headers(),
+                    json={"filter": {"and": [
+                        {"property": "Status", "select": {"equals": "Ready for Review"}},
+                        {"property": "Expires", "date": {"on_or_before": get_today()}}
+                    ]}},
+                    timeout=15
+                )
+                stale_count += len(stale_resp.json().get("results", []))
+            except Exception:
+                pass
+        if stale_count > 0:
+            lines.append(f"\n⚠️ <b>{stale_count} stale post(s)</b> — past 7-day review window")
 
     lines.append("")
     lines.append("Review and approve by Monday morning. Approved posts auto-publish daily at 9am.")
-    lines.append(f"\n📋 <a href='https://notion.so/{NOTION_CONTENT_DB_ID}'>Approval instructions</a>")
 
     msg = "\n".join(lines)
     print(msg)
@@ -1535,12 +1795,13 @@ def late_fetch_analytics(account_id, from_date=None, to_date=None):
         return []
 
 
-def notion_sync_analytics(posts_data):
+def notion_sync_analytics(posts_data, db_id=None):
     """Sync Late analytics into Notion pages.
 
     For each post with analytics, find or create a Notion page and update metrics.
     Returns (synced_count, created_count).
     """
+    db_id = db_id or NOTION_CONTENT_DB_ID
     if not NOTION_API_KEY:
         logger.warning("No NOTION_API_KEY — cannot sync to Notion")
         return 0, 0
@@ -1549,7 +1810,7 @@ def notion_sync_analytics(posts_data):
     existing = {}
     try:
         resp = requests.post(
-            f"{NOTION_API_BASE}/databases/{NOTION_CONTENT_DB_ID}/query",
+            f"{NOTION_API_BASE}/databases/{db_id}/query",
             headers=notion_headers(),
             json={"page_size": 100},
             timeout=15
@@ -1647,7 +1908,7 @@ def notion_sync_analytics(posts_data):
                 resp = requests.post(
                     f"{NOTION_API_BASE}/pages",
                     headers=notion_headers(),
-                    json={"parent": {"database_id": NOTION_CONTENT_DB_ID}, "properties": create_props},
+                    json={"parent": {"database_id": db_id}, "properties": create_props},
                     timeout=15
                 )
                 if resp.status_code == 200:
@@ -1862,7 +2123,7 @@ def mode_report():
                 f"{NOTION_API_BASE}/pages",
                 headers=notion_headers(),
                 json={
-                    "parent": {"database_id": NOTION_CONTENT_DB_ID},
+                    "parent": {"database_id": resolve_notion_db_id("matt-anthony")},
                     "properties": report_props,
                     "children": children
                 },
@@ -1970,17 +2231,18 @@ def mode_revise():
 
     logger.info("Checking for posts needing revision...")
 
-    try:
-        resp = requests.post(
-            f"{NOTION_API_BASE}/databases/{NOTION_CONTENT_DB_ID}/query",
-            headers=notion_headers(),
-            json={"filter": {"property": "Status", "select": {"equals": "Revision Needed"}}},
-            timeout=15
-        )
-        posts = resp.json().get("results", [])
-    except Exception as e:
-        logger.error(f"Notion query error: {e}")
-        return
+    posts = []
+    for db_id in get_all_notion_db_ids():
+        try:
+            resp = requests.post(
+                f"{NOTION_API_BASE}/databases/{db_id}/query",
+                headers=notion_headers(),
+                json={"filter": {"property": "Status", "select": {"equals": "Revision Needed"}}},
+                timeout=15
+            )
+            posts.extend(resp.json().get("results", []))
+        except Exception as e:
+            logger.error(f"Notion query error for {db_id}: {e}")
 
     if not posts:
         logger.info("No posts needing revision")
@@ -2228,15 +2490,15 @@ def mode_email_notify():
 
         label = account.get("label", slug)
 
-        # Query approvals for this client
+        # Query approvals for this client from their own database
+        acct_db_id = resolve_notion_db_id(slug)
         try:
             resp = requests.post(
-                f"{NOTION_API_BASE}/databases/{NOTION_CONTENT_DB_ID}/query",
+                f"{NOTION_API_BASE}/databases/{acct_db_id}/query",
                 headers=notion_headers(),
-                json={"filter": {"and": [
-                    {"property": "Account", "select": {"equals": label}},
-                    {"property": "Status", "select": {"equals": "Ready for Review"}},
-                ]}},
+                json={"filter": {
+                    "property": "Status", "select": {"equals": "Ready for Review"},
+                }},
                 timeout=15
             )
             posts = resp.json().get("results", [])
@@ -2330,20 +2592,21 @@ def mode_regenerate():
         return
 
     logger.info("Checking for declined posts to regenerate...")
-    try:
-        resp = requests.post(
-            f"{NOTION_API_BASE}/databases/{NOTION_CONTENT_DB_ID}/query",
-            headers=notion_headers(),
-            json={"filter": {"and": [
-                {"property": "Status", "select": {"equals": "Cancelled"}},
-                {"property": "Client Notes", "rich_text": {"contains": "DECLINED"}},
-            ]}},
-            timeout=15
-        )
-        posts = resp.json().get("results", [])
-    except Exception as e:
-        logger.error(f"Notion query error: {e}")
-        return
+    posts = []
+    for db_id in get_all_notion_db_ids():
+        try:
+            resp = requests.post(
+                f"{NOTION_API_BASE}/databases/{db_id}/query",
+                headers=notion_headers(),
+                json={"filter": {"and": [
+                    {"property": "Status", "select": {"equals": "Cancelled"}},
+                    {"property": "Client Notes", "rich_text": {"contains": "DECLINED"}},
+                ]}},
+                timeout=15
+            )
+            posts.extend(resp.json().get("results", []))
+        except Exception as e:
+            logger.error(f"Notion query error for {db_id}: {e}")
 
     if not posts:
         logger.info("No declined posts to regenerate")
@@ -2380,6 +2643,187 @@ def mode_regenerate():
     send_telegram(msg)
 
 
+# ── MODE: REFINE TIMES ─────────────────────────────────
+
+def mode_refine_times():
+    """Query Late.dev best-times API, compare against playbook defaults, propose updates.
+
+    Phase 2 of posting intelligence: once enough engagement data exists (≥30 posts),
+    this mode compares real best-performing times against the research-seeded defaults
+    in posting_intelligence and updates the playbook if the delta is meaningful (>1 hr).
+
+    Sends a Telegram summary of what changed (or confirms defaults are holding).
+    Designed to run monthly via cron.
+    """
+    if not LATE_API_KEY:
+        logger.warning("No LATE_API_KEY — cannot query Late for best times")
+        send_telegram("⏱ <b>Refine Times</b>\nSkipped — no LATE_API_KEY")
+        return
+
+    accounts = load_accounts()
+    changes = []
+    checked = 0
+
+    for slug, acct in accounts.items():
+        playbook = load_playbook(slug)
+        if not playbook:
+            continue
+
+        intel = playbook.get("posting_intelligence")
+        if not intel:
+            logger.info(f"{slug}: no posting_intelligence block, skipping")
+            continue
+
+        utc_offset = intel.get("utc_offset_hours", -7)
+        platforms_intel = intel.get("platforms", {})
+
+        # Query Late for each connected platform
+        for plat_key, plat_config in acct.get("platforms", {}).items():
+            account_id = plat_config.get("account_id")
+            if not account_id:
+                continue
+
+            # Fetch analytics to count published posts
+            try:
+                resp = requests.get(
+                    f"{LATE_API_BASE}/posts",
+                    headers={
+                        "Authorization": f"Bearer {LATE_API_KEY}",
+                        "Content-Type": "application/json"
+                    },
+                    params={
+                        "accountId": account_id,
+                        "status": "published",
+                        "limit": 100,
+                    },
+                    timeout=15,
+                )
+                posts_data = resp.json()
+                published_posts = posts_data.get("posts", [])
+                post_count = len(published_posts)
+            except Exception as e:
+                logger.warning(f"Failed to fetch posts for {slug}/{plat_key}: {e}")
+                continue
+
+            checked += 1
+
+            if post_count < 30:
+                logger.info(f"{slug}/{plat_key}: only {post_count} published posts, need ≥30 for refinement")
+                continue
+
+            # Analyze engagement by hour-of-day
+            hour_engagement = {}  # hour_pt -> [engagement_rates]
+            for post in published_posts:
+                scheduled = post.get("scheduledFor") or post.get("publishedAt", "")
+                analytics = post.get("analytics", {})
+
+                if not scheduled:
+                    continue
+
+                # Parse hour and convert to PT
+                try:
+                    dt = datetime.fromisoformat(scheduled.replace("Z", "+00:00"))
+                    pt_hour = (dt.hour + utc_offset) % 24
+                except (ValueError, TypeError):
+                    continue
+
+                # Calculate engagement rate
+                reach = analytics.get("reach", 0)
+                likes = analytics.get("likes", 0)
+                comments = analytics.get("comments", 0)
+                saves = analytics.get("saves", 0)
+                shares = analytics.get("shares", 0)
+
+                if reach > 0:
+                    er = (likes + comments * 2 + saves * 3 + shares * 2) / reach
+                    hour_engagement.setdefault(pt_hour, []).append(er)
+
+            if not hour_engagement:
+                logger.info(f"{slug}/{plat_key}: no engagement data to analyze")
+                continue
+
+            # Find best hour by average weighted engagement
+            best_hour = max(
+                hour_engagement.keys(),
+                key=lambda h: sum(hour_engagement[h]) / len(hour_engagement[h])
+            )
+            best_er = sum(hour_engagement[best_hour]) / len(hour_engagement[best_hour])
+            sample_size = len(hour_engagement[best_hour])
+
+            logger.info(f"{slug}/{plat_key}: best hour = {best_hour}:00 PT "
+                        f"(avg ER: {best_er:.3f}, n={sample_size})")
+
+            # Compare against current playbook defaults
+            plat_intel = platforms_intel.get(plat_key, {})
+            for type_key, type_data in plat_intel.items():
+                current_time = type_data.get("best_time_pt", "09:00")
+                try:
+                    current_hour = int(current_time.split(":")[0])
+                except (ValueError, TypeError):
+                    current_hour = 9
+
+                delta = abs(best_hour - current_hour)
+                if delta > 12:
+                    delta = 24 - delta  # Handle wrap-around
+
+                if delta >= 1 and sample_size >= 5:
+                    old_time = f"{current_hour:02d}:00"
+                    new_time = f"{best_hour:02d}:00"
+
+                    changes.append({
+                        "account": slug,
+                        "platform": plat_key,
+                        "post_type": type_key,
+                        "old_time_pt": old_time,
+                        "new_time_pt": new_time,
+                        "delta_hours": delta,
+                        "avg_er": best_er,
+                        "sample_size": sample_size,
+                    })
+
+                    # Update the playbook in memory
+                    type_data["best_time_pt"] = new_time
+                    type_data["why"] = (
+                        f"Auto-refined {date.today().isoformat()} from Late.dev data. "
+                        f"Best engagement at {new_time} PT (n={sample_size}, avg ER: {best_er:.3f}). "
+                        f"Previous: {old_time} PT."
+                    )
+
+    # Write updated playbook if changes were made
+    if changes:
+        for slug in set(c["account"] for c in changes):
+            playbook = load_playbook(slug)
+            if playbook:
+                playbook["posting_intelligence"]["_last_refined"] = date.today().isoformat()
+                playbook_path = PLAYBOOKS_DIR / f"{slug}.json"
+                with open(playbook_path, "w") as f:
+                    json.dump(playbook, f, indent=2, ensure_ascii=False)
+                logger.info(f"Playbook updated: {playbook_path}")
+
+    # Build Telegram summary
+    lines = [f"⏱ <b>Posting Intelligence — Monthly Refinement</b>"]
+    lines.append(f"Checked {checked} platform(s)")
+    lines.append("")
+
+    if changes:
+        lines.append(f"<b>{len(changes)} time(s) updated:</b>")
+        for c in changes:
+            lines.append(
+                f"  {c['account']}/{c['platform']}/{c['post_type']}: "
+                f"{c['old_time_pt']} → <b>{c['new_time_pt']}</b> PT "
+                f"(Δ{c['delta_hours']}h, n={c['sample_size']}, ER: {c['avg_er']:.3f})"
+            )
+    else:
+        lines.append("No changes — current defaults are holding or insufficient data (under 30 posts / under 5 samples per hour).")
+
+    lines.append("")
+    lines.append("Research defaults remain active until Late.dev has enough engagement data to override.")
+
+    msg = "\n".join(lines)
+    print(msg)
+    send_telegram(msg)
+
+
 MODES = {
     "plan": mode_plan,
     "publish": mode_publish,
@@ -2389,6 +2833,7 @@ MODES = {
     "revise": mode_revise,
     "regenerate": mode_regenerate,
     "email": mode_email_notify,
+    "refine_times": mode_refine_times,
     "status": mode_status,
 }
 
