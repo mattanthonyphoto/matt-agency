@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selected Work — Matt Anthony for Blue Sky Architecture</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1A1A18;
+  --paper: #F6F4F0;
+  --gold: #C9A96E;
+  --gold-dim: rgba(201,169,110,0.12);
+  --gold-border: rgba(201,169,110,0.25);
+  --gold-glow: rgba(201,169,110,0.06);
+  --stone: #8A8579;
+  --white: #FFFFFF;
+  --light: #FAFAF8;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; scroll-behavior:smooth; }
+body { background:var(--ink); color:var(--paper); font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.75; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+
+/* ═══ LOADER ═══ */
+.loader { position:fixed; inset:0; background:var(--ink); z-index:99999; display:flex; flex-direction:column; align-items:center; justify-content:center; transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s; }
+.loader.done { opacity:0; visibility:hidden; pointer-events:none; }
+.loader-brand { font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem; letter-spacing:0.6em; text-transform:uppercase; color:var(--paper); opacity:0; animation:fi 0.6s 0.15s forwards; }
+.loader-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.9rem; color:var(--stone); margin-top:8px; opacity:0; animation:fi 0.6s 0.4s forwards; }
+.loader-line { width:80px; height:1px; background:var(--gold-dim); margin-top:24px; position:relative; overflow:hidden; opacity:0; animation:fi 0.6s 0.3s forwards; }
+.loader-line::after { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,var(--gold),transparent); animation:lf 1s 0.5s forwards; }
+@keyframes fi { to { opacity:1; } }
+@keyframes lf { to { left:100%; } }
+
+/* ═══ SCROLL PROGRESS ═══ */
+.scroll-progress { position:fixed; top:0; left:0; height:2px; width:0%; background:linear-gradient(90deg,var(--gold),rgba(201,169,110,0.4)); z-index:9999; box-shadow:0 0 8px rgba(201,169,110,0.3); }
+
+/* ═══ COVER ═══ */
+.cover { min-height:100vh; background:var(--ink); color:var(--paper); display:flex; flex-direction:column; justify-content:flex-end; position:relative; overflow:hidden; }
+.cover-image { position:absolute; inset:0; background-size:cover; background-position:center 40%; will-change:transform; }
+.cover-image::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(26,26,24,0.35) 0%, rgba(26,26,24,0.25) 30%, rgba(26,26,24,0.5) 55%, rgba(26,26,24,0.94) 80%, rgba(26,26,24,0.99) 100%); }
+.cover-top { position:absolute; top:0; left:0; right:0; z-index:3; padding:40px 60px; display:flex; justify-content:space-between; align-items:center; }
+.cover-logo { font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem; letter-spacing:0.35em; text-transform:uppercase; color:rgba(246,244,240,0.6); }
+.cover-date { font-family:'Josefin Sans',sans-serif; font-size:0.65rem; letter-spacing:0.2em; color:rgba(246,244,240,0.4); }
+.cover-content { position:relative; z-index:2; padding:0 60px 80px; max-width:720px; }
+.cover-eyebrow { font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem; letter-spacing:0.4em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; display:flex; align-items:center; gap:16px; }
+.cover-eyebrow::before { content:''; width:32px; height:1px; background:var(--gold); }
+.cover h1 { font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(3rem,6vw,4.6rem); line-height:1.05; margin-bottom:20px; letter-spacing:-0.01em; text-shadow:0 2px 40px rgba(0,0,0,0.5); text-wrap:balance; }
+.cover h1 em { font-style:italic; font-weight:500; color:var(--gold); }
+.cover-sub { font-size:1rem; color:rgba(246,244,240,0.75); max-width:480px; line-height:1.8; margin-bottom:56px; }
+.cover-meta-bar { display:flex; gap:48px; padding-top:32px; border-top:1px solid rgba(201,169,110,0.15); }
+.cover-meta-item { font-size:0.75rem; color:rgba(246,244,240,0.35); line-height:1.8; }
+.cover-meta-item strong { display:block; color:rgba(246,244,240,0.7); font-weight:400; font-family:'Josefin Sans',sans-serif; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:2px; }
+.cover .cover-eyebrow,.cover h1,.cover .cover-sub,.cover .cover-meta-bar { opacity:0; transform:translateY(24px); animation:cf 0.9s cubic-bezier(0.16,1,0.3,1) forwards; }
+.cover .cover-eyebrow { animation-delay:0.3s; } .cover h1 { animation-delay:0.6s; } .cover .cover-sub { animation-delay:0.9s; } .cover .cover-meta-bar { animation-delay:1.2s; }
+@keyframes cf { to { opacity:1; transform:translateY(0); } }
+.scroll-indicator { position:absolute; bottom:40px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; opacity:0; animation:cf 0.9s 1.8s forwards; transition:opacity 0.4s; z-index:3; }
+.scroll-indicator.hidden { opacity:0 !important; }
+.scroll-indicator-text { font-family:'Josefin Sans',sans-serif; font-size:0.45rem; letter-spacing:0.3em; text-transform:uppercase; color:rgba(246,244,240,0.3); }
+.scroll-indicator-line { width:1px; height:32px; position:relative; overflow:hidden; background:rgba(246,244,240,0.1); }
+.scroll-indicator-line::after { content:''; position:absolute; top:-100%; left:0; width:100%; height:100%; background:var(--gold); animation:sp 2s cubic-bezier(0.16,1,0.3,1) infinite; }
+@keyframes sp { 0%{top:-100%} 50%{top:100%} 100%{top:100%} }
+
+/* ═══ LAYOUT ═══ */
+.section { padding:100px 60px; max-width:1000px; margin:0 auto; }
+.section.wide { max-width:1200px; }
+.section.full { max-width:100%; padding-left:0; padding-right:0; }
+.eyebrow { font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; display:flex; align-items:center; gap:14px; }
+.eyebrow::before { content:''; width:0; height:1px; background:var(--gold); transition:width 0.6s 0.2s cubic-bezier(0.16,1,0.3,1); }
+.eyebrow.visible::before { width:24px; }
+h2 { font-family:'Cormorant Garamond',serif; font-weight:400; font-size:2.6rem; line-height:1.12; margin-bottom:32px; letter-spacing:-0.01em; text-wrap:balance; }
+h2 em { font-style:italic; font-weight:500; position:relative; display:inline; }
+h2 em::after { content:''; position:absolute; bottom:2px; left:0; width:0; height:1.5px; background:linear-gradient(90deg,var(--gold),rgba(201,169,110,0.3)); transition:width 1s 0.3s cubic-bezier(0.16,1,0.3,1); }
+h2.underlined em::after { width:100%; }
+p { margin-bottom:20px; font-size:0.95rem; }
+.lead { font-size:1.05rem; line-height:1.9; color:var(--stone); }
+
+/* ═══ INTRO ═══ */
+.intro-block { border-left:1px solid var(--gold-border); padding-left:32px; margin:40px 0 0; max-width:640px; }
+.intro-block p { color:rgba(246,244,240,0.7); font-size:0.95rem; line-height:1.85; margin-bottom:16px; }
+.intro-block .sig { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.1rem; color:var(--paper); margin-top:24px; margin-bottom:4px; }
+.intro-block .sig-title { font-family:'Josefin Sans',sans-serif; font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); }
+
+/* ═══ DIVIDER ═══ */
+.divider { display:flex; align-items:center; gap:24px; padding:0 60px; max-width:1200px; margin:0 auto; }
+.divider-line { flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--gold-border), transparent); }
+.divider-label { font-family:'Josefin Sans',sans-serif; font-size:0.55rem; letter-spacing:0.4em; text-transform:uppercase; color:var(--stone); white-space:nowrap; }
+
+/* ═══ PROJECT CARD ═══ */
+.project { padding:120px 60px; max-width:1200px; margin:0 auto; }
+.project-header { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:end; margin-bottom:48px; }
+.project-title { font-family:'Cormorant Garamond',serif; font-weight:400; font-size:2.2rem; line-height:1.1; }
+.project-location { font-family:'Josefin Sans',sans-serif; font-size:0.55rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+.project-tagline { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.3rem; color:var(--gold); line-height:1.3; margin-bottom:16px; }
+.project-desc { font-size:0.88rem; color:var(--stone); line-height:1.8; }
+.project-credits { font-family:'Josefin Sans',sans-serif; font-size:0.5rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(246,244,240,0.3); margin-top:12px; line-height:2.2; }
+
+/* ═══ IMAGE GRID ═══ */
+.grid-hero { width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:2px; margin-bottom:2px; }
+.grid-row { display:grid; gap:2px; margin-bottom:2px; }
+.grid-2 { grid-template-columns:1fr 1fr; }
+.grid-3 { grid-template-columns:1fr 1fr 1fr; }
+.grid-2-1 { grid-template-columns:2fr 1fr; }
+.grid-1-2 { grid-template-columns:1fr 2fr; }
+.grid-row img { width:100%; height:100%; object-fit:cover; border-radius:2px; aspect-ratio:3/2; }
+.grid-row.tall img { aspect-ratio:2/3; }
+
+/* ═══ PHOTO BREAK ═══ */
+.photo-break { width:100%; height:60vh; min-height:400px; background-size:cover; background-position:center; background-attachment:fixed; position:relative; }
+.photo-break::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(26,26,24,0.6) 0%, rgba(26,26,24,0.2) 30%, rgba(26,26,24,0.2) 70%, rgba(26,26,24,0.6) 100%); }
+
+/* ═══ CTA ═══ */
+.cta-section { text-align:center; padding:120px 60px; }
+.cta-section h2 { margin-bottom:16px; }
+.cta-section .lead { max-width:500px; margin:0 auto 48px; }
+.cta-btn { display:inline-flex; align-items:center; gap:10px; font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--ink); background:var(--gold); padding:16px 40px; text-decoration:none; transition:all 0.4s; border:none; cursor:pointer; }
+.cta-btn:hover { background:var(--paper); color:var(--ink); transform:translateY(-2px); box-shadow:0 12px 40px rgba(201,169,110,0.2); }
+.cta-btn-outline { display:inline-flex; align-items:center; gap:10px; font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); background:transparent; padding:14px 36px; text-decoration:none; border:1px solid var(--gold-border); transition:all 0.4s; margin-left:16px; }
+.cta-btn-outline:hover { background:var(--gold-dim); border-color:var(--gold); }
+.contact-line { font-size:0.8rem; color:var(--stone); margin-top:32px; }
+.contact-line a { color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold-border); padding-bottom:1px; transition:border-color 0.3s; }
+.contact-line a:hover { border-color:var(--gold); }
+
+/* ═══ FOOTER ═══ */
+.footer { text-align:center; padding:60px; border-top:1px solid rgba(201,169,110,0.08); }
+.footer-brand { font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.55rem; letter-spacing:0.5em; text-transform:uppercase; color:rgba(246,244,240,0.3); margin-bottom:8px; }
+.footer-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.8rem; color:rgba(246,244,240,0.2); }
+
+/* ═══ SCROLL REVEAL ═══ */
+.reveal { opacity:0; transform:translateY(32px); transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width:768px) {
+  .cover-content { padding:0 28px 60px; }
+  .cover-top { padding:24px 28px; }
+  .cover-meta-bar { flex-direction:column; gap:16px; }
+  .section { padding:80px 28px; }
+  .project { padding:80px 28px; }
+  .project-header { grid-template-columns:1fr; gap:24px; }
+  .grid-2, .grid-3, .grid-2-1, .grid-1-2 { grid-template-columns:1fr; }
+  .divider { padding:0 28px; }
+  h2 { font-size:2rem; }
+  .project-title { font-size:1.8rem; }
+  .cta-section { padding:80px 28px; }
+  .cta-btn-outline { margin-left:0; margin-top:12px; }
+  .photo-break { background-attachment:scroll; height:40vh; }
+  .intro-block { padding-left:20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-brand">Matt Anthony</div>
+  <div class="loader-sub">Selected Work</div>
+  <div class="loader-line"></div>
+</div>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="progress"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- COVER -->
+<!-- ═══════════════════════════════════════ -->
+<section class="cover">
+  <div class="cover-image" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e07b8aac-c1ec-4293-b956-79b41aa39f33/5322-backhouse-web-1.jpg');"></div>
+  <div class="cover-top">
+    <div class="cover-logo">Matt Anthony</div>
+    <div class="cover-date">April 2026</div>
+  </div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">Prepared for Blue Sky Architecture</div>
+    <h1>Selected <em>Work</em></h1>
+    <div class="cover-sub">Architectural photography and documentary video across British Columbia's most considered residential projects.</div>
+    <div class="cover-meta-bar">
+      <div class="cover-meta-item"><strong>Photographer</strong>Matt Anthony</div>
+      <div class="cover-meta-item"><strong>Based In</strong>Squamish, BC</div>
+      <div class="cover-meta-item"><strong>Specialization</strong>Architecture + Interiors</div>
+      <div class="cover-meta-item"><strong>Format</strong>Photography + Video</div>
+    </div>
+  </div>
+  <div class="scroll-indicator" id="scrollInd">
+    <div class="scroll-indicator-text">Scroll</div>
+    <div class="scroll-indicator-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- INTRODUCTION -->
+<!-- ═══════════════════════════════════════ -->
+<section class="section">
+  <div class="eyebrow reveal">A Note for Bo</div>
+  <h2 class="reveal">Thank you for <em>looking</em></h2>
+  <div class="intro-block reveal">
+    <p>Bo, thank you for taking the time. What drew me to Blue Sky's work in the first place was that relationship between building and landscape, architecture that reads as part of its site rather than placed on top of it. That sensibility runs through everything I try to do with a camera.</p>
+    <p>I photograph completed architecture, and I also produce short documentary videos of the build process. The goal in both cases is the same: give editors, juries, and peers direct access to the design intent behind the work.</p>
+    <p>Below is a cross-section of recent projects across BC, from coastal to alpine. I've organized them the way they appear on my site, so you can see the range and the consistency.</p>
+    <div class="sig">Matt Anthony</div>
+    <div class="sig-title">Architectural Photography + Documentary Video</div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SHORELINE -->
+<!-- ═══════════════════════════════════════ -->
+<div class="divider reveal">
+  <div class="divider-line"></div>
+  <div class="divider-label">Shoreline</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- THE PERCH -->
+<div class="project reveal">
+  <div class="project-header">
+    <div>
+      <div class="project-location">Sunshine Coast</div>
+      <div class="project-title">The Perch</div>
+    </div>
+    <div>
+      <div class="project-tagline">Cantilevered Over Granite Shoreline</div>
+      <div class="project-desc">A building shaped entirely by its relationship to the site.</div>
+      <div class="project-credits">Architect Michel Laflamme &ensp;|&ensp; Builder Summerhill Fine Homes</div>
+    </div>
+  </div>
+  <img class="grid-hero" src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e07b8aac-c1ec-4293-b956-79b41aa39f33/5322-backhouse-web-1.jpg" alt="The Perch — exterior cantilevered over shoreline" loading="lazy">
+  <div class="grid-row grid-2">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/23aedb76-4c10-4a31-ba9c-9ebd434a25bc/5322-backhouse-web-2.jpg" alt="The Perch — detail" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/34ff99ae-5592-488a-bfd6-ff7b4744ea8d/5322-backhouse-web-15.jpg" alt="The Perch — interior" loading="lazy">
+  </div>
+  <div class="grid-row grid-2-1">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9d699cdf-a6ac-442f-b234-97b0aba24035/5322-backhouse-web-5.jpg" alt="The Perch — view" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8a674d33-4176-43dd-89c1-a565c1c3df48/5322-backhouse-web-24.jpg" alt="The Perch — evening" loading="lazy">
+  </div>
+</div>
+
+<!-- PHOTO BREAK -->
+<div class="photo-break" style="background-image:url('https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/aa77ed99-a103-40dd-bce5-b355bab58632/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-11.jpg');"></div>
+
+<!-- TRANQUIL RETREAT -->
+<div class="project reveal">
+  <div class="project-header">
+    <div>
+      <div class="project-location">Sandy Hook</div>
+      <div class="project-title">Tranquil Retreat</div>
+    </div>
+    <div>
+      <div class="project-tagline">Corrugated Steel Against Tidal Forest</div>
+      <div class="project-desc">Material palette selected to merge with site over time rather than resist it.</div>
+      <div class="project-credits">Designer Rob Milstead &ensp;|&ensp; Builder Summerhill Fine Homes</div>
+    </div>
+  </div>
+  <img class="grid-hero" src="https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/aa77ed99-a103-40dd-bce5-b355bab58632/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-11.jpg" alt="Tranquil Retreat — exterior in tidal forest" loading="lazy">
+  <div class="grid-row grid-2">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8dab354d-32d7-4e2a-8a71-7ef3b5d5482c/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-15.jpg" alt="Tranquil Retreat — material detail" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/5be7e36c-d920-4d5d-9260-da4df4c50415/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-16.jpg" alt="Tranquil Retreat — interior" loading="lazy">
+  </div>
+</div>
+
+<!-- NET ZERO BUILD -->
+<div class="project reveal">
+  <div class="project-header">
+    <div>
+      <div class="project-location">Whistler</div>
+      <div class="project-title">Net Zero Build</div>
+    </div>
+    <div>
+      <div class="project-tagline">Sustainable Architecture at Its Most Ambitious</div>
+      <div class="project-desc">Bold form and purposeful selections against mountain backdrop.</div>
+      <div class="project-credits">Builder Peak Ventures &ensp;|&ensp; Interiors Gnar Interior Design</div>
+    </div>
+  </div>
+  <img class="grid-hero" src="https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/0ab160b7-ec92-4a1d-966a-8fe689ded9e9/peak-ventures-whistler-6.jpg" alt="Net Zero Build — exterior" loading="lazy">
+  <div class="grid-row grid-2">
+    <img src="https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/7199e20e-015a-4f85-8473-9d3d74f49e88/peak-ventures-whistler-16.jpg" alt="Net Zero Build — detail" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/6824fd48afd1dd40cd73e146/9735ee44-cdd3-463c-91e7-057ce01c798e/peak-ventures-whistler-14.jpg" alt="Net Zero Build — interior" loading="lazy">
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ -->
+<!-- ALPINE -->
+<!-- ═══════════════════════════════════════ -->
+<div class="divider reveal">
+  <div class="divider-line"></div>
+  <div class="divider-label">Alpine</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- WARBLER RESIDENCE -->
+<div class="project reveal">
+  <div class="project-header">
+    <div>
+      <div class="project-location">Whistler</div>
+      <div class="project-title">Warbler Residence</div>
+    </div>
+    <div>
+      <div class="project-tagline">Blackened Timber, Autumn Larch</div>
+      <div class="project-desc">Autumn larch turns gold, revealing full silhouette naturally.</div>
+      <div class="project-credits">Architect Shelter Residential Design &ensp;|&ensp; Builder Balmoral Construction &ensp;|&ensp; Interiors Britt Lothrop &ensp;|&ensp; Windows The Window Merchant</div>
+    </div>
+  </div>
+  <img class="grid-hero" src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg" alt="Warbler Residence — exterior in autumn" loading="lazy">
+  <div class="grid-row grid-2">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/98b6bb8c-ede3-4de9-978a-fc8ae91554a6/warbler-whistler-architectural-photography-matt-anthony-.jpg-35.jpg" alt="Warbler Residence — interior" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/02772fb5-a65d-4ec6-82e1-4774876c7693/warbler-whistler-architectural-photography-matt-anthony-.jpg-20.jpg" alt="Warbler Residence — detail" loading="lazy">
+  </div>
+  <div class="grid-row grid-1-2">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c938566f-ee96-40da-aec4-d51ac9fa7e09/warbler-whistler-architectural-photography-matt-anthony-.jpg-13.jpg" alt="Warbler Residence — twilight" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/64c6702a-78ea-4fe3-a601-78bce7c197a8/warbler-whistler-architectural-photography-matt-anthony-.jpg-5.jpg" alt="Warbler Residence — wide" loading="lazy">
+  </div>
+</div>
+
+<!-- PHOTO BREAK -->
+<div class="photo-break" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/312b0797-a43a-4a51-906e-f913c78c7b79/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-3.jpg');"></div>
+
+<!-- FITZSIMMONS RESIDENCE -->
+<div class="project reveal">
+  <div class="project-header">
+    <div>
+      <div class="project-location">Whistler</div>
+      <div class="project-title">Fitzsimmons Residence</div>
+    </div>
+    <div>
+      <div class="project-tagline">Angular Form, Material Contrast</div>
+      <div class="project-desc">Dark cladding against white ground creates strongest visual impact in winter.</div>
+      <div class="project-credits">Architect Shelter Residential Design &ensp;|&ensp; Builder Balmoral Construction &ensp;|&ensp; Interiors Britt Lothrop</div>
+    </div>
+  </div>
+  <img class="grid-hero" src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/312b0797-a43a-4a51-906e-f913c78c7b79/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-3.jpg" alt="Fitzsimmons Residence — winter exterior" loading="lazy">
+  <div class="grid-row grid-2">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ab8c0b1a-742e-4485-9d50-a19c698594bf/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-4.jpg" alt="Fitzsimmons Residence — detail" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/3483950e-abb8-4248-a445-b00c83b5d7f1/fitzsimmons-whistler-architectural-photography-matt-anthony-.jpg-16.jpg" alt="Fitzsimmons Residence — interior" loading="lazy">
+  </div>
+</div>
+
+<!-- SUGARLOAF RESIDENCE -->
+<div class="project reveal">
+  <div class="project-header">
+    <div>
+      <div class="project-location">Pemberton</div>
+      <div class="project-title">Sugarloaf Residence</div>
+    </div>
+    <div>
+      <div class="project-tagline">Framing Mount Currie</div>
+      <div class="project-desc">At twilight, interior light transforms glazing into lanterns against the mountain.</div>
+      <div class="project-credits">Architect STARK Architecture &ensp;|&ensp; Builder Balmoral Construction &ensp;|&ensp; Interiors Britt Lothrop &ensp;|&ensp; Millwork Blueprint</div>
+    </div>
+  </div>
+  <img class="grid-hero" src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/2e8c2fb7-cf13-4456-a1f4-6aadb45a2940/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-18.jpg" alt="Sugarloaf Residence — twilight with Mount Currie" loading="lazy">
+  <div class="grid-row grid-2">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/aaf09b1e-0c8f-4362-bb6b-d1078581c875/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-2.jpg" alt="Sugarloaf Residence — detail" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/edac2720-7248-47f1-be25-3a5ffaa91a3d/surgarloaf-pemberton-architectural-photography-matt-anthony-.jpg-10.jpg" alt="Sugarloaf Residence — interior" loading="lazy">
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ -->
+<!-- INTERIORS -->
+<!-- ═══════════════════════════════════════ -->
+<div class="divider reveal">
+  <div class="divider-line"></div>
+  <div class="divider-label">Interiors</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- BALSAM WAY -->
+<div class="project reveal">
+  <div class="project-header">
+    <div>
+      <div class="project-location">Whistler</div>
+      <div class="project-title">Balsam Way</div>
+    </div>
+    <div>
+      <div class="project-tagline">A Classic Whistler Home, Renewed</div>
+      <div class="project-desc">Original timber retains character while feeling current.</div>
+      <div class="project-credits">Builder Tymac Construction &ensp;|&ensp; Interiors LRD Studio</div>
+    </div>
+  </div>
+  <img class="grid-hero" src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9fb8c663-277d-4d25-b564-10ce1a8a57cf/LRD-2500px-38.jpg" alt="Balsam Way — living space" loading="lazy">
+  <div class="grid-row grid-2">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/8baad882-d517-4bdd-98fd-09ad2530273d/LRD-2500px-7.jpg" alt="Balsam Way — kitchen" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/93a486f5-3280-4e92-b5fe-34729e29a5f7/LRD-2500px-20.jpg" alt="Balsam Way — detail" loading="lazy">
+  </div>
+</div>
+
+<!-- PHOTO BREAK -->
+<div class="photo-break" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/fd1ad420-81be-49cf-8171-509b0a8f3328/siteline-langley-21.jpg');"></div>
+
+<!-- FRASER VALLEY VISTA -->
+<div class="project reveal">
+  <div class="project-header">
+    <div>
+      <div class="project-location">Langley</div>
+      <div class="project-title">Fraser Valley Vista</div>
+    </div>
+    <div>
+      <div class="project-tagline">Suburban Scale, Refined Detail</div>
+      <div class="project-desc">Positioned on escarpment overlooking farmland and coastal range.</div>
+      <div class="project-credits">Architect Sitelines Architecture</div>
+    </div>
+  </div>
+  <img class="grid-hero" src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/fd1ad420-81be-49cf-8171-509b0a8f3328/siteline-langley-21.jpg" alt="Fraser Valley Vista — exterior" loading="lazy">
+  <div class="grid-row grid-2">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/66509d6f-8b6e-45c4-af89-cf2632982163/siteline-langley-5.jpg" alt="Fraser Valley Vista — interior" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/df5a6618-ad13-4096-b694-2f6414af5fc9/siteline-langley-22.jpg" alt="Fraser Valley Vista — detail" loading="lazy">
+  </div>
+</div>
+
+<!-- SDA BC & YUKON -->
+<div class="project reveal">
+  <div class="project-header">
+    <div>
+      <div class="project-location">Abbotsford</div>
+      <div class="project-title">SDA BC &amp; Yukon Headquarters</div>
+    </div>
+    <div>
+      <div class="project-tagline">Institutional Timber and Glass</div>
+      <div class="project-desc">Institutional design balancing warmth with architectural rigor.</div>
+      <div class="project-credits">Architect Sitelines Architecture &ensp;|&ensp; Structural StructureCraft &ensp;|&ensp; Electrical Northwestern Electric</div>
+    </div>
+  </div>
+  <img class="grid-hero" src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ebb37653-5489-4beb-a83f-ad40ed118b6c/sitelines-SDA-web--6.jpg" alt="SDA HQ — main hall" loading="lazy">
+  <div class="grid-row grid-2">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/413989e5-ce9b-4afd-bfb7-d7a1416ef8ea/sitelines-SDA-web--5.jpg" alt="SDA HQ — exterior" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/6c3ffde5-c26e-4796-8551-cfd303e2b0d8/sitelines-SDA-web--11.jpg" alt="SDA HQ — detail" loading="lazy">
+  </div>
+</div>
+
+<!-- BROWN'S RESIDENCE -->
+<div class="project reveal">
+  <div class="project-header">
+    <div>
+      <div class="project-location">Roberts Creek</div>
+      <div class="project-title">Brown's Residence</div>
+    </div>
+    <div>
+      <div class="project-tagline">Board-Formed Concrete and Rain</div>
+      <div class="project-desc">Flat coastal light emphasizes every ridge and surface texture.</div>
+      <div class="project-credits">Architect Hazel+Brown</div>
+    </div>
+  </div>
+  <img class="grid-hero" src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/35e24e7e-8ae5-47fa-9242-792ad3b6e7b9/browns-road-sunshine-coast-architectural-photographer-matt-anthony-7.jpg" alt="Brown's Residence — concrete exterior" loading="lazy">
+  <div class="grid-row grid-2">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/2f6d1495-5b03-4c34-8b78-7b3eaa479c17/browns-road-sunshine-coast-architectural-photographer-matt-anthony-10.jpg" alt="Brown's Residence — detail" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/500155bc-8662-4c70-ab44-feae601fa91e/browns-road-sunshine-coast-architectural-photographer-matt-anthony-16.jpg" alt="Brown's Residence — interior" loading="lazy">
+  </div>
+</div>
+
+<!-- GAMBIER ISLAND -->
+<div class="project reveal">
+  <div class="project-header">
+    <div>
+      <div class="project-location">Gambier Island</div>
+      <div class="project-title">Gambier Island Residence</div>
+    </div>
+    <div>
+      <div class="project-tagline">Accessed Only by Water</div>
+      <div class="project-desc">Structure follows natural clearing rather than imposing alteration.</div>
+      <div class="project-credits">Designer Linwood Homes &ensp;|&ensp; Builder Black Thumb Contracting</div>
+    </div>
+  </div>
+  <img class="grid-hero" src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/ccfb80fe-3b57-490b-bffb-dfe02f8e174e/linwood-gambier-web-34.jpg" alt="Gambier Island Residence — exterior" loading="lazy">
+  <div class="grid-row grid-2">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/e13eccd9-ffa9-4d25-84ec-e6b54a06605b/linwood-gambier-web-26.jpg" alt="Gambier Island Residence — interior" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/01893150-5d74-4b4b-8592-3d5613bb42c9/linwood-gambier-web-10.jpg" alt="Gambier Island Residence — view" loading="lazy">
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ -->
+<!-- CTA -->
+<!-- ═══════════════════════════════════════ -->
+<section class="cta-section reveal">
+  <div class="eyebrow" style="justify-content:center;">Next Step</div>
+  <h2>Let's talk about <em>your projects</em></h2>
+  <p class="lead">If any of this resonates with the way Blue Sky approaches its work, I'd welcome the chance to discuss what a shoot would look like.</p>
+  <a href="https://mattanthonyphoto.com/discovery-call" class="cta-btn">Book a Discovery Call</a>
+  <a href="https://mattanthonyphoto.com/selected-work" class="cta-btn-outline">View Full Portfolio</a>
+  <div class="contact-line">
+    <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a> &ensp;&middot;&ensp; 604.765.9270 &ensp;&middot;&ensp; Squamish, BC
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">Matt Anthony</div>
+  <div class="footer-sub">Architectural Photography + Documentary Video</div>
+</footer>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SCRIPTS -->
+<!-- ═══════════════════════════════════════ -->
+<script>
+// Loader
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('done'), 1200);
+});
+
+// Scroll progress
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('progress').style.width = (window.scrollY / h * 100) + '%';
+  // Hide scroll indicator
+  if (window.scrollY > 100) document.getElementById('scrollInd').classList.add('hidden');
+  else document.getElementById('scrollInd').classList.remove('hidden');
+});
+
+// Scroll reveal
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Underline h2 em
+      const h2 = e.target.querySelector('h2') || (e.target.tagName === 'H2' ? e.target : null);
+      if (h2) h2.classList.add('underlined');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .eyebrow').forEach(el => obs.observe(el));
+
+// Parallax on cover
+window.addEventListener('scroll', () => {
+  const cover = document.querySelector('.cover-image');
+  if (cover) cover.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+});
+</script>
+
+</body>
+</html>
