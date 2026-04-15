@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Marketing Audit — Eisenhauer Woodworks</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #1A1A18;
+  --bg-card: #222220;
+  --bg-surface: #2A2A27;
+  --bg-hover: #333330;
+  --text: #F6F4F0;
+  --text-dim: #B8B2A8;
+  --text-muted: #8A8579;
+  --accent: #C9A96E;
+  --accent-dim: rgba(201,169,110,0.12);
+  --accent-glow: rgba(201,169,110,0.06);
+  --border: rgba(201,169,110,0.08);
+  --border-accent: rgba(201,169,110,0.25);
+  --green: #5B9A6F;
+  --green-bg: rgba(91,154,111,0.12);
+  --green-text: #7BC08E;
+  --amber: #D4A843;
+  --amber-bg: rgba(212,168,67,0.12);
+  --amber-text: #E4C06A;
+  --red: #C45B5B;
+  --red-bg: rgba(196,91,91,0.1);
+  --red-text: #E07A7A;
+  --critical: #A63D3D;
+  --critical-bg: rgba(166,61,61,0.12);
+  --critical-text: #D46A6A;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; scroll-behavior:smooth; }
+body {
+  background:var(--bg); color:var(--text);
+  font-family:'DM Sans',sans-serif; font-weight:300;
+  line-height:1.75; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* PROGRESS BAR */
+.progress { position:fixed; top:0; left:0; height:2px; width:0%; background:var(--accent); z-index:9999; transition:width 0.05s linear; }
+
+/* HEADER */
+.header {
+  position:relative; overflow:hidden; min-height:75vh;
+  display:flex; flex-direction:column; justify-content:flex-end;
+}
+.header-bg {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(135deg, #2a3a2e 0%, #1a2a1e 40%, #1A1A18 100%);
+}
+.header-bg::after {
+  content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(180deg, rgba(26,26,24,0.1) 0%, rgba(26,26,24,0.95) 100%);
+}
+.header-inner {
+  position:relative; z-index:1; padding:80px 64px 64px; max-width:900px;
+}
+.header-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--accent); background:var(--accent-dim);
+  padding:6px 14px; border-radius:2px; margin-bottom:24px;
+  border:1px solid var(--border-accent);
+}
+.header-badge::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--accent); animation:pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+.header h1 {
+  font-family:'Cormorant Garamond',serif; font-weight:400;
+  font-size:clamp(2.4rem,5vw,3.4rem); line-height:1.1;
+  letter-spacing:-0.01em; margin-bottom:16px;
+}
+.header h1 em { font-style:italic; font-weight:500; color:var(--accent); }
+.header-subtitle {
+  font-size:1.05rem; color:var(--text-dim); line-height:1.7;
+  max-width:600px; margin-bottom:8px;
+}
+.header-meta {
+  display:flex; gap:32px; margin-top:24px; padding-top:24px;
+  border-top:1px solid rgba(201,169,110,0.15); flex-wrap:wrap;
+}
+.header-meta-item { font-size:0.8rem; color:var(--text-muted); }
+.header-meta-item strong {
+  display:block; font-family:'Josefin Sans',sans-serif; font-size:0.55rem;
+  font-weight:400; letter-spacing:0.15em;
+  text-transform:uppercase; color:var(--text-dim); margin-bottom:2px;
+}
+
+/* SCORE CARDS */
+.scores {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:var(--border); margin:0;
+}
+.score-card {
+  background:var(--bg-card); text-align:center; padding:48px 24px;
+  position:relative; overflow:hidden;
+}
+.score-card::after {
+  content:''; position:absolute; bottom:0; left:20%; right:20%; height:3px;
+  border-radius:2px;
+}
+.score-card.good::after { background:var(--green); }
+.score-card.ok::after { background:var(--amber); }
+.score-card.bad::after { background:var(--red); }
+.score-card.critical::after { background:var(--critical); }
+.score-ring {
+  width:100px; height:100px; margin:0 auto 20px; position:relative;
+  display:flex; align-items:center; justify-content:center;
+}
+.score-ring svg { position:absolute; top:0; left:0; transform:rotate(-90deg); }
+.score-ring-bg { fill:none; stroke:var(--bg-surface); stroke-width:5; }
+.score-ring-fill { fill:none; stroke-width:5; stroke-linecap:round;
+  stroke-dasharray:276.5; transition:stroke-dashoffset 2s cubic-bezier(0.16,1,0.3,1); }
+.score-ring-fill.good { stroke:var(--green); }
+.score-ring-fill.ok { stroke:var(--amber); }
+.score-ring-fill.bad { stroke:var(--red); }
+.score-ring-fill.critical { stroke:var(--critical); }
+.score-number {
+  font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:500;
+  position:relative; z-index:1;
+}
+.score-number.good { color:var(--green-text); }
+.score-number.ok { color:var(--amber-text); }
+.score-number.bad { color:var(--red-text); }
+.score-number.critical { color:var(--critical-text); }
+.score-label {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px;
+}
+.score-grade {
+  font-family:'Josefin Sans',sans-serif; font-size:0.5rem; font-weight:400;
+  letter-spacing:0.1em; text-transform:uppercase;
+  padding:4px 12px; border-radius:2px; display:inline-block;
+}
+.score-grade.good { background:var(--green-bg); color:var(--green-text); }
+.score-grade.ok { background:var(--amber-bg); color:var(--amber-text); }
+.score-grade.bad { background:var(--red-bg); color:var(--red-text); }
+.score-grade.critical { background:var(--critical-bg); color:var(--critical-text); }
+
+/* SECTIONS */
+.section { max-width:860px; margin:0 auto; padding:80px 64px; }
+.section.wide { max-width:1000px; }
+.section.surface { background:var(--bg-surface); max-width:100%; }
+.section.surface .section-inner { max-width:860px; margin:0 auto; }
+.eyebrow {
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:300;
+  letter-spacing:0.35em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:16px; display:flex; align-items:center; gap:14px;
+}
+.eyebrow::before { content:''; width:24px; height:1px; background:var(--accent); }
+h2 {
+  font-family:'Cormorant Garamond',serif; font-weight:400;
+  font-size:2.4rem; line-height:1.12; letter-spacing:-0.01em; margin-bottom:28px;
+}
+h2 em { font-style:italic; font-weight:500; color:var(--accent); }
+.lead { font-size:1rem; color:var(--text-dim); line-height:1.85; margin-bottom:32px; }
+
+/* CATEGORY HEADERS */
+.category {
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--accent); margin:48px 0 20px; padding-bottom:12px;
+  border-bottom:1px solid var(--border-accent); display:flex; align-items:center; gap:12px;
+}
+.category::before { content:''; width:16px; height:1px; background:var(--accent); }
+.category:first-of-type { margin-top:0; }
+
+/* FINDINGS */
+.findings { display:flex; flex-direction:column; gap:2px; }
+.finding {
+  display:grid; grid-template-columns:36px 1fr; gap:16px; padding:16px 20px;
+  background:var(--bg-card); border-radius:6px; align-items:start;
+  border:1px solid var(--border); transition:border-color 0.2s;
+}
+.finding:hover { border-color:var(--border-accent); }
+.finding-status {
+  width:28px; height:28px; border-radius:6px; display:flex;
+  align-items:center; justify-content:center; font-size:0.75rem;
+  font-weight:700; margin-top:1px;
+}
+.finding-status.pass { background:var(--green-bg); color:var(--green-text); }
+.finding-status.warn { background:var(--amber-bg); color:var(--amber-text); }
+.finding-status.fail { background:var(--red-bg); color:var(--red-text); }
+.finding-title { font-weight:500; font-size:0.9rem; margin-bottom:4px; }
+.finding-detail { font-size:0.82rem; color:var(--text-dim); line-height:1.75; }
+
+/* CALLOUT */
+.callout {
+  background:var(--bg-card); border:1px solid var(--border-accent); border-radius:8px;
+  padding:32px; margin:40px 0; position:relative; overflow:hidden;
+}
+.callout::before {
+  content:''; position:absolute; top:0; left:0; width:3px; height:100%;
+  background:var(--accent); border-radius:2px;
+}
+.callout h4 {
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:16px;
+}
+.callout p { font-size:0.9rem; color:var(--text-dim); margin-bottom:12px; }
+.callout p:last-child { margin-bottom:0; }
+.callout strong { color:var(--text); font-weight:600; }
+
+/* COMPETITOR TABLE */
+.compare-table { width:100%; border-collapse:separate; border-spacing:0; margin:32px 0; border-radius:8px; overflow:hidden; border:1px solid var(--border); }
+.compare-table thead th {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem; font-weight:400;
+  letter-spacing:0.15em; text-transform:uppercase;
+  color:var(--accent); padding:14px 16px; text-align:left;
+  background:var(--bg-surface); border-bottom:1px solid var(--border-accent);
+}
+.compare-table tbody td {
+  font-size:0.82rem; padding:14px 16px; border-bottom:1px solid var(--border);
+  vertical-align:middle; background:var(--bg-card);
+}
+.compare-table tbody tr:last-child td { border-bottom:none; }
+.compare-table tbody tr:hover td { background:var(--bg-hover); }
+.compare-table .you-row td { background:var(--accent-dim); }
+.compare-table .you-row td:first-child { color:var(--accent); font-weight:600; }
+.dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:8px; }
+.dot.green { background:var(--green); }
+.dot.amber { background:var(--amber); }
+.dot.red { background:var(--red); }
+.dot.grey { background:var(--text-muted); }
+
+/* KEYWORD TABLE */
+.keyword-table { width:100%; border-collapse:separate; border-spacing:0; margin:32px 0; border-radius:8px; overflow:hidden; border:1px solid var(--border); font-size:0.8rem; }
+.keyword-table thead th {
+  font-family:'Josefin Sans',sans-serif; font-size:0.5rem; font-weight:400;
+  letter-spacing:0.15em; text-transform:uppercase;
+  color:var(--accent); padding:12px 14px; text-align:left;
+  background:var(--bg-surface); border-bottom:1px solid var(--border-accent);
+}
+.keyword-table tbody td {
+  padding:10px 14px; border-bottom:1px solid var(--border);
+  vertical-align:middle; background:var(--bg-card); color:var(--text-dim);
+}
+.keyword-table tbody tr:last-child td { border-bottom:none; }
+.keyword-table tbody tr:hover td { background:var(--bg-hover); }
+.keyword-table .rank-good { color:var(--green-text); font-weight:500; }
+.keyword-table .rank-bad { color:var(--red-text); }
+.keyword-table .rank-ok { color:var(--amber-text); }
+.keyword-table .keyword { color:var(--text); font-family:'JetBrains Mono',monospace; font-size:0.72rem; }
+
+/* STATS BAR */
+.stats-bar {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+  background:var(--border); margin:0;
+}
+.stats-bar.four { grid-template-columns:repeat(4,1fr); }
+.stat-block { background:var(--bg-card); text-align:center; padding:48px 24px; }
+.stat-value {
+  font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:500;
+  color:var(--accent); display:block; line-height:1; margin-bottom:10px;
+  text-shadow:0 0 40px rgba(201,169,110,0.15);
+}
+.stat-value.red { color:var(--red-text); text-shadow:0 0 40px rgba(196,91,91,0.15); }
+.stat-value.critical { color:var(--critical-text); text-shadow:0 0 40px rgba(166,61,61,0.15); }
+.stat-label {
+  font-family:'Josefin Sans',sans-serif; font-size:0.55rem; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted);
+}
+
+/* ACTION STEPS */
+.steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin:40px 0; border-radius:8px; overflow:hidden; }
+.step { background:var(--bg-card); padding:36px 28px; transition:background 0.2s; }
+.step:hover { background:var(--bg-hover); }
+.step-num {
+  font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:500;
+  color:var(--accent); display:block; margin-bottom:16px;
+}
+.step h4 { font-size:0.95rem; font-weight:500; margin-bottom:10px; }
+.step p { font-size:0.82rem; color:var(--text-dim); margin:0; line-height:1.6; }
+
+/* DIVIDER */
+.divider { width:1px; height:60px; background:var(--border); margin:0 auto; }
+
+/* SECTION BREAK */
+.section-break {
+  width:100%; padding:56px 64px; text-align:center;
+  background:var(--bg-surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+}
+.section-break-number {
+  font-family:'Cormorant Garamond',serif; font-size:5rem; font-weight:500;
+  color:var(--accent); opacity:0.15; line-height:1; margin-bottom:8px;
+}
+.section-break-label {
+  font-family:'Josefin Sans',sans-serif; font-size:0.6rem; font-weight:400;
+  letter-spacing:0.3em; text-transform:uppercase; color:var(--text-muted);
+}
+
+/* FOOTER */
+.footer {
+  background:var(--bg-card); padding:64px; text-align:center;
+  border-top:1px solid var(--border);
+}
+.footer-brand {
+  font-family:'Josefin Sans',sans-serif; font-size:0.7rem; font-weight:300;
+  letter-spacing:0.4em; text-transform:uppercase;
+  color:var(--text); margin-bottom:16px;
+}
+.footer-info { font-size:0.8rem; color:var(--text-muted); line-height:2.2; }
+.footer-info a { color:var(--accent); text-decoration:none; }
+.footer-note {
+  margin-top:32px; font-family:'Josefin Sans',sans-serif; font-size:0.5rem;
+  font-weight:300; letter-spacing:0.15em;
+  text-transform:uppercase; color:var(--text-muted); opacity:0.4;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px) {
+  .header-inner { padding:60px 28px 48px; }
+  .section { padding:56px 28px; }
+  .scores { grid-template-columns:1fr 1fr; }
+  .steps { grid-template-columns:1fr; }
+  .stats-bar, .stats-bar.four { grid-template-columns:1fr 1fr; }
+  .compare-table, .keyword-table { display:block; overflow-x:auto; }
+  .header-meta { flex-direction:column; gap:12px; }
+}
+@media (max-width:480px) {
+  .scores { grid-template-columns:1fr; }
+  .stats-bar, .stats-bar.four { grid-template-columns:1fr; }
+  h2 { font-size:1.7rem; }
+}
+@media print {
+  .progress { display:none; }
+  body { background:#fff; color:#1a1a1a; }
+  .score-card, .finding, .callout, .step, .stat-block, .compare-table td, .keyword-table td { background:#fff; border:1px solid #ddd; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progressBar"></div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-bg"></div>
+  <div class="header-inner">
+    <div class="header-badge">Confidential Marketing Audit</div>
+    <h1>Eisenhauer Woodworks<br><em>Full Marketing Audit</em></h1>
+    <p class="header-subtitle">A comprehensive analysis of website, SEO, social media, reviews, directories, awards, and competitive positioning across the East Kootenay market.</p>
+    <div class="header-meta">
+      <div class="header-meta-item"><strong>Prepared for</strong>Jeremy Eisenhauer, Owner</div>
+      <div class="header-meta-item"><strong>Prepared by</strong>Matt Anthony Photography</div>
+      <div class="header-meta-item"><strong>Date</strong>April 2026</div>
+      <div class="header-meta-item"><strong>Domain</strong>eisenhauer.build</div>
+    </div>
+  </div>
+</header>
+
+<!-- SCORE CARDS -->
+<div class="scores">
+  <div class="score-card critical">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill critical" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="234.025"></circle>
+      </svg>
+      <span class="score-number critical" data-count="15">0</span>
+    </div>
+    <div class="score-label">Technical SEO</div>
+    <span class="score-grade critical">F</span>
+  </div>
+
+  <div class="score-card critical">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill critical" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="221.2"></circle>
+      </svg>
+      <span class="score-number critical" data-count="20">0</span>
+    </div>
+    <div class="score-label">Search Visibility</div>
+    <span class="score-grade critical">F</span>
+  </div>
+
+  <div class="score-card critical">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill critical" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="248.85"></circle>
+      </svg>
+      <span class="score-number critical" data-count="10">0</span>
+    </div>
+    <div class="score-label">Social Proof</div>
+    <span class="score-grade critical">F</span>
+  </div>
+
+  <div class="score-card bad">
+    <div class="score-ring">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="44"></circle>
+        <circle class="score-ring-fill bad" cx="50" cy="50" r="44"
+          stroke-dasharray="276.5" stroke-dashoffset="276.5"
+          data-target="165.9"></circle>
+      </svg>
+      <span class="score-number bad" data-count="40">0</span>
+    </div>
+    <div class="score-label">Visual Assets</div>
+    <span class="score-grade bad">D</span>
+  </div>
+</div>
+
+
+<!-- HEADLINE STATS -->
+<div class="stats-bar four">
+  <div class="stat-block"><span class="stat-value red">0</span><span class="stat-label">Meta Descriptions</span></div>
+  <div class="stat-block"><span class="stat-value red">0</span><span class="stat-label">Reviews on Houzz</span></div>
+  <div class="stat-block"><span class="stat-value red">0</span><span class="stat-label">Awards Entered</span></div>
+  <div class="stat-block"><span class="stat-value critical">5</span><span class="stat-label">Pages Indexed by Google</span></div>
+</div>
+
+
+<div class="divider"></div>
+
+
+<!-- SECTION 1: TECHNICAL SEO -->
+<section class="section">
+  <div class="eyebrow">01 &mdash; Technical SEO</div>
+  <h2>Yoast is installed.<br><em>Nobody configured it.</em></h2>
+  <p class="lead">Eisenhauer.build runs WordPress with Yoast SEO, the industry-standard plugin. Every field Yoast provides &mdash; meta descriptions, schema markup, Open Graph, focus keywords &mdash; is empty or broken. The tools are there. They've never been used.</p>
+
+  <div class="category">Critical Failures</div>
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Zero Meta Descriptions (0 of 35+ pages)</div>
+        <div class="finding-detail">Not a single page on the entire site has a meta description. Google auto-generates snippets from page content, which means <strong>every search result is an uncontrolled first impression</strong>. Yoast provides the fields. They were never filled in.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Zero Structured Data / Schema Markup</div>
+        <div class="finding-detail">No LocalBusiness, Organization, Article, FAQ, BreadcrumbList, or any schema type. Google doesn't know Eisenhauer Woodworks is a builder, where it's located, or what it does. The FAQ page has 6 structured Q&As that <strong>could generate rich snippets</strong> in search results &mdash; but there's no FAQ schema to enable them.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">No Google Analytics or Tag Manager</div>
+        <div class="finding-detail">No analytics tracking detected on any page. <strong>The marketing team cannot measure ROI because they have no data.</strong> No traffic data, no user behavior, no conversion tracking. The Inquire thank-you page has no conversion pixel &mdash; form submissions aren't being counted.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">53 Images Missing Alt Text on Two Flagship Projects</div>
+        <div class="finding-detail">The Coulter Residence (28 images) and Morrison Farmhouse (25 images) &mdash; the two most important projects on the site &mdash; have <strong>zero alt text on every single image</strong>. Estimated 60-80+ images sitewide are invisible to search engines.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Only 5 of 35+ Pages Indexed by Google</div>
+        <div class="finding-detail">A <code>site:eisenhauer.build</code> search returns only 5 results. The services page, about page, FAQ, build guide, and 4+ portfolio pages are <strong>not indexed by Google</strong>. They exist on the server but are invisible to search.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category">Garbled Title Tags</div>
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Inquire: "Inquire Homework's &amp; Woodworks"</div>
+        <div class="finding-detail">Garbled, nonsensical text. Likely AI-generated or auto-suggested and never proofread. This is what prospects see in Google search results.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Taqueria: "Taqueria el Corazon <strong>Bulid</strong> Now"</div>
+        <div class="finding-detail">A typo visible in Google SERPs. "Bulid" instead of "Build." This has been live in search results for over a year.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Larch Drive: "Dr Larch | Larch Drive"</div>
+        <div class="finding-detail">Nonsensical. "Dr Larch" appears to be auto-generated text that was never reviewed.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Build Guide Uses About Page's Title Tag</div>
+        <div class="finding-detail">Duplicate title: both the About page and Build Guide show "Eisenhauer Woodworks About | Eisenhauer Luxury construction." Google penalizes duplicate titles.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Demo Shop Test Page Is Live and Indexed</div>
+        <div class="finding-detail">"Eisenhauer Woodworks Demo Shop | Demo Shop Woodworks" &mdash; a leftover development page that says "This is a custom category page for Shop." Live, indexable, unprofessional.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category">Additional Technical Issues</div>
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Three Legacy Domains Still Live</div>
+        <div class="finding-detail"><strong>eisenhauer.build</strong> (current), <strong>jeisenhauerwoodworks.squarespace.com</strong> (old site, lists Vancouver), and <strong>jeisenhauerwoodworks.com</strong> &mdash; all indexed by Google. No redirects. Authority fragmented across three domains. The old site shows a Vancouver address while the current one says Kimberley.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">robots.txt Has crawl-delay: 60</div>
+        <div class="finding-detail">Tells Bing crawlers to wait 60 seconds between requests, dramatically slowing index coverage on Microsoft's search engine. No sitemap URL declared in robots.txt either.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">No Open Graph Tags</div>
+        <div class="finding-detail">No og:title, og:description, or og:image on any page. When someone shares a project on Facebook or LinkedIn, the preview is unpredictable.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">No WebP Images, No Lazy Loading</div>
+        <div class="finding-detail">All images served as JPEG/PNG. No modern format optimization. No lazy loading detected on gallery pages with 25+ images.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h4>Technical SEO Bottom Line</h4>
+    <p>The site has the tools (WordPress + Yoast) but <strong>none of the configuration</strong>. Zero meta descriptions, zero schema, zero analytics, garbled title tags with visible typos, and three legacy domains splitting authority. These are fundamental items that should have been addressed when the site launched. <strong>The marketing team cannot measure ROI because they never installed tracking.</strong></p>
+  </div>
+</section>
+
+
+
+
+<div class="divider"></div>
+
+
+
+
+<!-- SECTION 2: SEARCH VISIBILITY -->
+<section class="section surface">
+  <div class="section-inner">
+    <div class="eyebrow">02 &mdash; Search Visibility</div>
+    <h2>20 keywords tested.<br><em>Invisible on 15 of them.</em></h2>
+    <p class="lead">Eisenhauer Woodworks serves six cities across the East Kootenays. We tested 20 commercial search terms. Eisenhauer appears on only 5. Their direct competitor Munter Design &amp; Build appears on 12, often in the #1 position.</p>
+
+    <table class="keyword-table">
+      <thead>
+        <tr><th>Keyword</th><th>Eisenhauer</th><th>Munter</th><th>Winner</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="keyword">custom home builder Kimberley BC</td><td class="rank-ok">#3</td><td class="rank-good">#2</td><td>Munter</td></tr>
+        <tr><td class="keyword">custom home builder Cranbrook BC</td><td class="rank-bad">Not found</td><td class="rank-good">#3 + #4</td><td>Munter</td></tr>
+        <tr><td class="keyword">custom home builder Fernie BC</td><td class="rank-bad">Not found</td><td class="rank-ok">#4</td><td>Munter</td></tr>
+        <tr><td class="keyword">custom home builder Invermere BC</td><td class="rank-bad">Not found</td><td class="rank-bad">Not found</td><td>&mdash;</td></tr>
+        <tr><td class="keyword">custom home builder Radium Hot Springs</td><td class="rank-bad">Not found</td><td class="rank-bad">Not found</td><td>&mdash;</td></tr>
+        <tr><td class="keyword">custom home builder Kaslo BC</td><td class="rank-ok">~#6</td><td class="rank-bad">Not found</td><td>Eisenhauer</td></tr>
+        <tr><td class="keyword">custom home builder East Kootenay</td><td class="rank-bad">~#9</td><td class="rank-good">#1</td><td>Munter</td></tr>
+        <tr><td class="keyword">luxury home builder Kootenays</td><td class="rank-bad">~#9</td><td class="rank-good">#1 + #5</td><td>Munter</td></tr>
+        <tr><td class="keyword">custom home builder Kootenay</td><td class="rank-bad">Not found</td><td class="rank-ok">#3</td><td>Munter</td></tr>
+        <tr><td class="keyword">home renovation Kimberley BC</td><td class="rank-bad">Not found</td><td class="rank-bad">Not found</td><td>&mdash;</td></tr>
+        <tr><td class="keyword">custom woodworking Kootenays</td><td class="rank-bad">Not found</td><td class="rank-bad">Not found</td><td>&mdash;</td></tr>
+        <tr><td class="keyword">design build Kimberley BC</td><td class="rank-bad">Not found</td><td class="rank-ok">#6&ndash;8</td><td>Munter</td></tr>
+        <tr><td class="keyword">design build Cranbrook BC</td><td class="rank-bad">Not found</td><td class="rank-good">#2 + #4</td><td>Munter</td></tr>
+        <tr><td class="keyword">cost to build custom home Kootenays</td><td class="rank-bad">Not found</td><td class="rank-bad">Not found</td><td>&mdash;</td></tr>
+        <tr><td class="keyword">custom home builder near me (BC)</td><td class="rank-bad">Not found</td><td class="rank-good">#1</td><td>Munter</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <h4>Why Munter Outranks Eisenhauer</h4>
+      <p>Munter has <strong>dedicated location pages</strong> for Kimberley (/kimberley), Cranbrook (/cranbrook), and Fernie (/fernie). Each page is 1,200&ndash;1,500 words with localized keywords, 5+ client testimonials, process breakdowns, and project photos. Eisenhauer has <strong>zero location pages</strong> despite claiming to serve six cities.</p>
+      <p>Munter is also running <strong>active Google Ads campaigns</strong> (confirmed via URL parameters). Eisenhauer runs zero paid advertising.</p>
+      <p><strong>"Custom home builder near me"</strong> &mdash; the highest-intent search a prospect can type &mdash; shows Munter at #1. Eisenhauer doesn't appear at all.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+<div class="divider"></div>
+
+
+
+
+<!-- SECTION 3: LOCAL SEO -->
+<section class="section">
+  <div class="eyebrow">03 &mdash; Local SEO</div>
+  <h2>No Google Business Profile.<br><em>No map presence.</em></h2>
+  <p class="lead">When a homeowner in Kimberley searches "custom home builder near me," the first thing they see is the Google Map Pack. Eisenhauer Woodworks doesn't appear in it.</p>
+
+  <div class="category">Google Business Profile</div>
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">No Google Business Profile Confirmed</div>
+        <div class="finding-detail">Multiple search queries returned no Google Maps listing, no star rating, no review count. Either the GBP doesn't exist, is unclaimed, or has zero activity. <strong>This is free, takes 30 minutes, and is the single most impactful local SEO fix.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category">NAP Inconsistency</div>
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Three Different Cities Across Listings</div>
+        <div class="finding-detail">Website says <strong>Kimberley</strong>. ZoomInfo and Visit Kaslo say <strong>Kaslo</strong>. Old Squarespace site says <strong>Vancouver</strong>. Three conflicting locations across the web destroy Google's trust in location data.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">Phone Number Signals Wrong Location</div>
+        <div class="finding-detail">250-353 is a Kaslo/Nelson area exchange. Kimberley uses 250-427. The phone number itself signals the wrong geography to search engines.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">Four Business Name Variations</div>
+        <div class="finding-detail">"Eisenhauer Woodworks," "Eisenhauer Woodworks Inc," "J. Eisenhauer Woodworks," and "J Eisenhauer Woodworks" appear across different directories. Inconsistent naming dilutes citation value.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category">Zero Location Pages</div>
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Serves 6 Cities. Ranks in 1.</div>
+        <div class="finding-detail">Eisenhauer claims to serve Kimberley, Cranbrook, Fernie, Invermere, Radium Hot Springs, and Kaslo. There are zero location-specific landing pages for any of them. Munter has dedicated pages for three cities and ranks in all three.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h4>Local SEO Bottom Line</h4>
+    <p>No Google Business Profile, conflicting addresses across the web, and zero location pages. <strong>The foundation of local search visibility doesn't exist.</strong> A builder charging $750K&ndash;$2.5M per project should be the first result when someone in their service area searches "custom home builder near me."</p>
+  </div>
+</section>
+
+
+
+
+<div class="stats-bar">
+  <div class="stat-block"><span class="stat-value red">3</span><span class="stat-label">Conflicting Addresses</span></div>
+  <div class="stat-block"><span class="stat-value red">0</span><span class="stat-label">Location Pages</span></div>
+  <div class="stat-block"><span class="stat-value red">22</span><span class="stat-label">Missing Directory Listings</span></div>
+</div>
+
+
+
+
+<div class="divider"></div>
+
+
+
+
+<!-- SECTION 4: REVIEWS & SOCIAL PROOF -->
+<section class="section surface">
+  <div class="section-inner">
+    <div class="eyebrow">04 &mdash; Reviews &amp; Social Proof</div>
+    <h2>Twenty years of building.<br><em>Zero reviews.</em></h2>
+    <p class="lead">We checked 8 review platforms and 30 directories. After nearly 20 years and dozens of completed projects, Eisenhauer Woodworks has approximately 3 unrated reviews on Facebook and nothing else. Anywhere.</p>
+
+    <table class="compare-table">
+      <thead><tr><th>Platform</th><th>Eisenhauer</th><th>Munter (Competitor)</th></tr></thead>
+      <tbody>
+        <tr><td>Google Business</td><td><span class="dot red"></span>Not found</td><td><span class="dot green"></span>Active with reviews</td></tr>
+        <tr><td>Houzz</td><td><span class="dot red"></span>0 reviews</td><td><span class="dot green"></span>9 reviews, 5.0 stars</td></tr>
+        <tr><td>TrustedPros</td><td><span class="dot red"></span>Not listed</td><td><span class="dot green"></span>5 reviews, 5.0 rating</td></tr>
+        <tr><td>Yellow Pages</td><td><span class="dot red"></span>Not listed</td><td><span class="dot green"></span>2 reviews, 5/5</td></tr>
+        <tr><td>Facebook</td><td><span class="dot amber"></span>~3 (unrated)</td><td><span class="dot green"></span>Active reviews</td></tr>
+        <tr><td>Yelp</td><td><span class="dot red"></span>Not listed</td><td><span class="dot amber"></span>Listed</td></tr>
+        <tr><td>BuildZoom</td><td><span class="dot red"></span>0 reviews</td><td><span class="dot grey"></span>N/A</td></tr>
+        <tr><td>HomeStars</td><td><span class="dot red"></span>Not listed</td><td><span class="dot grey"></span>Not confirmed</td></tr>
+        <tr style="border-top:2px solid var(--border-accent);">
+          <td><strong>Total Reviews</strong></td>
+          <td><strong style="color:var(--red-text);">~3 unrated</strong></td>
+          <td><strong style="color:var(--green-text);">16+ (all 5-star)</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="findings" style="margin-top:32px;">
+      <div class="finding">
+        <div class="finding-status fail">&#10007;</div>
+        <div>
+          <div class="finding-title">Zero Testimonials on Website</div>
+          <div class="finding-detail">Not one client quote anywhere on the site. No project pages feature the homeowner's perspective. No social proof of any kind beyond "nearly 20 years of experience."</div>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-status fail">&#10007;</div>
+        <div>
+          <div class="finding-title">Houzz Says "You Could Be the First Review"</div>
+          <div class="finding-detail">Every prospect who searches "Eisenhauer Woodworks reviews" sees an empty Houzz profile. Meanwhile, Munter shows 5-star ratings with named clients describing quality, timeliness, and budget adherence.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h4>Social Proof Bottom Line</h4>
+      <p>For a builder charging $750K&ndash;$2.5M per project, having <strong>zero reviews on every major platform</strong> is a measurable trust deficit. Every prospect who does due diligence online will find nothing &mdash; or worse, they'll find Munter's 5-star reviews first.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+<div class="divider"></div>
+
+
+
+
+<!-- SECTION 5: VISUAL ASSETS -->
+<section class="section">
+  <div class="eyebrow">05 &mdash; Photography &amp; Visual Assets</div>
+  <h2>The brand says "built by hand."<br><em>The images don't show it.</em></h2>
+  <p class="lead">Eisenhauer's entire identity rests on handcraft, Wabi-Sabi aesthetics, and a four-generation woodworking heritage. But there's a fundamental disconnect: the story is told entirely in text. The photography doesn't capture the craft, the process, or the human side of building.</p>
+
+  <div class="category">What Exists</div>
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-status pass">&#10003;</div>
+      <div>
+        <div class="finding-title">Two Projects with Professional Photography</div>
+        <div class="finding-detail">The Coulter Residence (28 photos) and Morrison Farmhouse (25 photos) have professional-quality compositions. These carry the visual weight of the entire site.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">Morrison Photos Sourced from Flickr</div>
+        <div class="finding-detail">Filenames contain Flickr IDs (e.g., <code>53075783185_9c807e0c06_k.jpeg</code>). The "_k" suffix is Flickr's "Large 2048" size &mdash; not full-resolution originals. This is not a professional delivery pipeline.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">Remaining Projects Are Thin</div>
+        <div class="finding-detail">Larch Drive (10 images), Chan Residence (11), Amundsen Road (8&ndash;11), McKinney-Behn (9). Only 6 custom home projects shown after nearly 20 years. Either work isn't being photographed, or it isn't being shown.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category">What's Missing</div>
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Zero Twilight / Dusk Photography</div>
+        <div class="finding-detail">The gold standard for luxury home marketing. For $800K&ndash;$1.8M mountain homes with Kootenay views, twilight exteriors are non-negotiable. Not one image on the site.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Zero Aerial / Drone Photography</div>
+        <div class="finding-detail">Mountain context, valley settings, property scale, site integration &mdash; none of this is captured. Aerial photography shows how a home belongs to its landscape.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Zero Process / Craftsmanship Photography</div>
+        <div class="finding-detail">This is the single biggest brand contradiction. The homepage says "Hand Built." The About page describes four generations of carpenters. But there is <strong>not one image</strong> showing hands at work, timber being selected, joints being cut, or any of the craft that defines this brand.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Zero Lifestyle Photography</div>
+        <div class="finding-detail">Every home feels empty and unlived-in. No warmth, no people, no sense of "what it feels like to live here." Lifestyle photography humanizes the work and creates emotional connection.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">No Team or Headshot Photography</div>
+        <div class="finding-detail">Only one construction-site candid of Jeremy. No professional headshot. No team photos despite having a year-round crew of 6&ndash;8. The people behind the brand are invisible.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h4>The Brand Story Gap</h4>
+    <p>Eisenhauer's story &mdash; four generations of carpenters, Inside Passage fine woodworking training, Wabi-Sabi philosophy, "built by hand" &mdash; is <strong>genuinely differentiated</strong>. No other builder in the East Kootenays has this narrative. But the story exists only in text. Professional architectural and documentary photography would <strong>bridge the gap between what the brand says and what it shows</strong>.</p>
+  </div>
+</section>
+
+
+
+
+<div class="divider"></div>
+
+
+
+
+<!-- SECTION 6: SOCIAL MEDIA -->
+<section class="section surface">
+  <div class="section-inner">
+    <div class="eyebrow">06 &mdash; Social Media</div>
+    <h2>Fragmented presence.<br><em>No content strategy.</em></h2>
+    <p class="lead">Instagram is active but isolated. Facebook is fragmented across three pages. LinkedIn, YouTube, and Pinterest are either dormant or non-existent. No cross-platform repurposing. No collaborator tagging.</p>
+
+    <div class="category">Platform Audit</div>
+    <div class="findings">
+      <div class="finding">
+        <div class="finding-status warn">!</div>
+        <div>
+          <div class="finding-title">Instagram (@eisenhauer.wood) &mdash; Active, but Isolated</div>
+          <div class="finding-detail">Posting Reels and project photos ~2&ndash;4x per month. Caption style is authentic and brand-aligned. But no collaborator tagging, no hashtag strategy, no cross-platform repurposing, and content stays only on Instagram.</div>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-status fail">&#10007;</div>
+        <div>
+          <div class="finding-title">Facebook &mdash; Three Separate Pages</div>
+          <div class="finding-detail"><strong>facebook.com/eisenhauer.build</strong> (Kimberley, ~465 likes), <strong>facebook.com/eisenhauerwood</strong> (Kaslo, ~416 likes), and a third URL. A small audience fragmented across three pages, with conflicting location data.</div>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-status fail">&#10007;</div>
+        <div>
+          <div class="finding-title">LinkedIn &mdash; Personal Only, 65 Connections</div>
+          <div class="finding-detail">Jeremy's personal profile has 65 connections. No company page exists. Zero thought leadership. Missing the entire B2B referral channel (architects, designers, realtors).</div>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-status fail">&#10007;</div>
+        <div>
+          <div class="finding-title">YouTube &mdash; Non-existent</div>
+          <div class="finding-detail">Despite producing walkthrough Reels for Instagram, none are repurposed for YouTube. Competitor Munter has a YouTube channel (@MunterDesignBuild).</div>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-status fail">&#10007;</div>
+        <div>
+          <div class="finding-title">Pinterest &mdash; Claimed but Dormant</div>
+          <div class="finding-detail">Profile exists at pinterest.com/eisenhauerw but shows no evidence of active pinning. For a visual portfolio business, Pinterest drives significant organic traffic to project pages.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h4>Social Media Bottom Line</h4>
+      <p>Instagram is the one active channel, but content stays siloed. <strong>No repurposing, no collaboration, no B2B presence.</strong> Three Facebook pages split a small audience. YouTube &mdash; where long-form project walkthroughs would perform &mdash; doesn't exist. Every Reel Eisenhauer creates could be a YouTube Short, a Pinterest Pin, and a LinkedIn post. None of that is happening.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+<div class="divider"></div>
+
+
+
+
+<!-- SECTION 7: CONTENT & WEBSITE -->
+<section class="section">
+  <div class="eyebrow">07 &mdash; Content &amp; Website</div>
+  <h2>The blog died 10 months ago.<br><em>The content is thin.</em></h2>
+  <p class="lead">Eisenhauer's "Build Guide" blog published 12 solid articles between July 2024 and June 2025. Nothing since. The services page is 180 words. Portfolio pages average 200 words with no specs, no client stories, no CTAs.</p>
+
+  <div class="category">Content Thinness</div>
+  <div class="findings">
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Services Page: 180 Words</div>
+        <div class="finding-detail">A luxury builder's services page should be 800&ndash;1,500+ words covering process, materials, certifications, and service areas. Munter's Kimberley location page alone is 1,200&ndash;1,400 words with testimonials and a process breakdown.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Blog Dead Since June 2025</div>
+        <div class="finding-detail">12 posts total, average 575 words (too thin for competitive keywords). The content was genuinely useful when it existed &mdash; cost transparency, builder selection advice. But 10+ months of silence kills SEO momentum.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status fail">&#10007;</div>
+      <div>
+        <div class="finding-title">Inquire Page Says "Now Booking 2025&ndash;2026 Builds"</div>
+        <div class="finding-detail">Six months out of date. Signals the site isn't actively maintained.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">No Project Specs or Case Studies</div>
+        <div class="finding-detail">Portfolio pages have photos and ~200 words of narrative. No square footage, bedroom count, build timeline, budget range, or material specifications. No client testimonials on project pages. No CTAs.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-status warn">!</div>
+      <div>
+        <div class="finding-title">Total Estimated Site Content: ~8,000&ndash;10,000 Words</div>
+        <div class="finding-detail">A competitive luxury builder site should have 30,000&ndash;50,000+ words across services, locations, projects, and educational content.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h4>Content Bottom Line</h4>
+    <p>The site has a strong brand voice when it's actually writing. The Wabi-Sabi philosophy, the family legacy, the material sensitivity &mdash; it's compelling. But <strong>there isn't enough of it</strong>. Thin pages, a dead blog, and no email capture mean the website generates almost no organic traffic and converts none of it into a relationship.</p>
+  </div>
+</section>
+
+
+
+
+<div class="divider"></div>
+
+
+
+
+<!-- SECTION 8: AWARDS & PRESS -->
+<section class="section surface">
+  <div class="section-inner">
+    <div class="eyebrow">08 &mdash; Awards &amp; Press</div>
+    <h2>Award-worthy work.<br><em>Zero submissions.</em></h2>
+    <p class="lead">Eisenhauer builds $750K&ndash;$2.5M custom homes with a four-generation woodworking legacy and a CHBA membership. They've entered zero awards. Meanwhile, their direct competitor Munter &mdash; founded a decade later &mdash; has 8+ awards including a 2025 national finalist.</p>
+
+    <table class="compare-table">
+      <thead><tr><th>Awards Program</th><th>Eisenhauer</th><th>Munter</th></tr></thead>
+      <tbody>
+        <tr><td>CHBA Keystone Awards (Regional)</td><td><span class="dot red"></span>Never entered</td><td><span class="dot green"></span>Silver 2020, Gold 2023, Gold x2 2024</td></tr>
+        <tr><td>CHBA National Awards</td><td><span class="dot red"></span>Never entered</td><td><span class="dot green"></span>Finalist 2025 ("Black Forest Vista")</td></tr>
+        <tr><td>Georgie Awards (Provincial)</td><td><span class="dot red"></span>Never entered</td><td><span class="dot grey"></span>Not confirmed</td></tr>
+        <tr><td>Houzz Best of Houzz</td><td><span class="dot red"></span>Not eligible (0 reviews)</td><td><span class="dot green"></span>2018, 2019, 2020</td></tr>
+        <tr><td>Kimberley Business Awards</td><td><span class="dot red"></span>Never entered</td><td><span class="dot grey"></span>Not confirmed</td></tr>
+      </tbody>
+    </table>
+
+    <div class="category">Press Coverage</div>
+    <div class="findings">
+      <div class="finding">
+        <div class="finding-status pass">&#10003;</div>
+        <div>
+          <div class="finding-title">House Story TV Feature (Episode 12)</div>
+          <div class="finding-detail">"The Carpenter's Delight" &mdash; the Morrison Farmhouse was featured on House Story. This is legitimate earned media. But it's mentioned in passing on the homepage and <strong>not embedded, not linked, and has no dedicated press page</strong>.</div>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-status fail">&#10007;</div>
+        <div>
+          <div class="finding-title">No Other Press Coverage</div>
+          <div class="finding-detail">Not featured in Kootenay Business Magazine (which has profiled competitors), Kimberley Bulletin (which runs Munter's sponsored content), Kootenay Mountain Culture, or any other publication.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h4>Awards Bottom Line</h4>
+      <p>The Coulter Residence and Morrison Farmhouse are <strong>genuinely award-worthy builds</strong>. The CHBA Keystone Awards, Georgie Awards, and CHBA National Awards are all open to CHBA members &mdash; which Eisenhauer already is. <strong>The prerequisite for every award submission is professional photography.</strong> Award entries are evaluated primarily on imagery. Entering and winning would immediately change competitive positioning.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+<div class="divider"></div>
+
+
+
+
+<!-- SECTION 9: COMPETITIVE LANDSCAPE -->
+<section class="section wide">
+  <div class="eyebrow">09 &mdash; Competitive Landscape</div>
+  <h2>Munter was founded 10 years later.<br><em>They dominate every channel.</em></h2>
+  <p class="lead">Munter Design &amp; Build, headquartered in the same town of Kimberley, is Eisenhauer's primary competitor. Founded in 2015, with 10+ named staff including a dedicated Marketing Manager, they've built the marketing infrastructure that Eisenhauer's team has not.</p>
+
+  <table class="compare-table">
+    <thead><tr><th>Factor</th><th>Eisenhauer</th><th>Munter</th></tr></thead>
+    <tbody>
+      <tr class="you-row"><td>Founded</td><td>~2006</td><td>2015</td></tr>
+      <tr><td>Team on Website</td><td>Owner only</td><td><span class="dot green"></span>10+ named staff</td></tr>
+      <tr><td>Design Capability</td><td>External only</td><td><span class="dot green"></span>In-house architecture + interior</td></tr>
+      <tr><td>Portfolio Projects</td><td>6 custom homes</td><td><span class="dot green"></span>16 named projects</td></tr>
+      <tr><td>Location Pages</td><td><span class="dot red"></span>0</td><td><span class="dot green"></span>3 (Kimberley, Cranbrook, Fernie)</td></tr>
+      <tr><td>Houzz Reviews</td><td><span class="dot red"></span>0</td><td><span class="dot green"></span>9 (5.0 stars)</td></tr>
+      <tr><td>Total Reviews</td><td><span class="dot red"></span>~3 unrated</td><td><span class="dot green"></span>16+ (all 5-star)</td></tr>
+      <tr><td>Awards</td><td><span class="dot red"></span>0</td><td><span class="dot green"></span>8+ (national finalist)</td></tr>
+      <tr><td>Certifications</td><td>CHBA</td><td><span class="dot green"></span>CHBA + Passive House</td></tr>
+      <tr><td>Google Ads</td><td><span class="dot red"></span>None</td><td><span class="dot green"></span>Active campaigns</td></tr>
+      <tr><td>Keyword Rankings</td><td><span class="dot red"></span>5 of 20</td><td><span class="dot green"></span>12 of 20</td></tr>
+      <tr><td>YouTube</td><td><span class="dot red"></span>None</td><td><span class="dot green"></span>@MunterDesignBuild</td></tr>
+      <tr><td>Indexed Pages</td><td><span class="dot red"></span>5</td><td><span class="dot green"></span>10+</td></tr>
+      <tr><td>Blog/Content</td><td><span class="dot red"></span>Dead (10+ months)</td><td><span class="dot green"></span>Active media section</td></tr>
+      <tr><td>Press Coverage</td><td><span class="dot amber"></span>1 podcast</td><td><span class="dot green"></span>Multiple outlets</td></tr>
+      <tr><td>Marketing Manager</td><td><span class="dot red"></span>No</td><td><span class="dot green"></span>Alesha Thompson (named)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <h4>The Gap Isn't Quality of Work</h4>
+    <p>Eisenhauer's craftsmanship, design philosophy, and heritage are <strong>genuinely superior</strong> to most competitors. The gap is entirely in marketing execution. Munter has built the infrastructure &mdash; location pages, reviews, awards, directories, ads, press relationships, and a marketing hire &mdash; while Eisenhauer's team has left it unbuilt. <strong>The good news: most of this is catchable. Awards, reviews, and content don't require years &mdash; they require a plan and the visual assets to execute it.</strong></p>
+  </div>
+</section>
+
+
+
+
+<div class="stats-bar four">
+  <div class="stat-block"><span class="stat-value">20</span><span class="stat-label">Years of Craft</span></div>
+  <div class="stat-block"><span class="stat-value">4</span><span class="stat-label">Generations of Carpenters</span></div>
+  <div class="stat-block"><span class="stat-value red">0</span><span class="stat-label">Awards Entered</span></div>
+  <div class="stat-block"><span class="stat-value red">0</span><span class="stat-label">Houzz Reviews</span></div>
+</div>
+
+
+
+
+<!-- SECTION 10: ACTION PLAN -->
+<section class="section">
+  <div class="eyebrow">10 &mdash; What I'd Fix First</div>
+  <h2>The action plan.<br><em>Priority order.</em></h2>
+  <p class="lead">Photography is the prerequisite for nearly every item on this list. Awards require professional imagery. Press pitches need hero shots. Social content needs a visual pipeline. Reviews need projects worth showing. It all starts with the same thing.</p>
+
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <h4>Professional Photography of Top 3 Projects</h4>
+      <p>Twilight exteriors, aerial/drone, interior details, material close-ups, and process/craftsmanship documentation. One shoot creates the raw material for everything below: awards, press, social, website, directories.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <h4>Enter the CHBA Keystone &amp; Georgie Awards</h4>
+      <p>Eisenhauer is already a CHBA member. The Coulter Residence and Morrison Farmhouse are award-worthy. Professional photography is the submission requirement. One award win changes competitive positioning overnight.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <h4>Build the Review &amp; Content Infrastructure</h4>
+      <p>Google Business Profile (30 minutes, free). Past client reviews on Houzz. Testimonials on the website. Project case studies with specs. Content that turns craft into credibility.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h4>How Photography Feeds Every Channel</h4>
+    <p><strong>Awards:</strong> CHBA Keystone and Georgie submissions are judged primarily on imagery. No professional photos = no entry.</p>
+    <p><strong>Press:</strong> Kootenay Mountain Culture, Western Living, and Kootenay Business all require hero imagery to run a feature.</p>
+    <p><strong>Social:</strong> One professional shoot generates 6&ndash;12 months of Instagram, LinkedIn, Pinterest, and YouTube content.</p>
+    <p><strong>Website:</strong> Project pages with professional photography, material details, and twilight exteriors convert browsers into inquiries.</p>
+    <p><strong>Directories:</strong> Houzz, Google Business, and every other platform perform better with professional project imagery.</p>
+    <p style="margin-top:16px;color:var(--text);"><strong>One relationship. One investment. Every channel benefits.</strong></p>
+  </div>
+</section>
+
+
+
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">Matt Anthony Photography</div>
+  <div class="footer-info">
+    <a href="https://mattanthonyphoto.com">mattanthonyphoto.com</a><br>
+    <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a> &middot; 604.765.9270<br>
+    Squamish, BC
+  </div>
+  <div class="footer-note">This audit is confidential and prepared exclusively for Eisenhauer Woodworks.</div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* PROGRESS BAR */
+var bar = document.getElementById('progressBar');
+function updateProgress(){
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+}
+
+/* SCORE RING + COUNTER ANIMATION */
+var rings = document.querySelectorAll('.score-ring-fill');
+var numbers = document.querySelectorAll('.score-number[data-count]');
+var animated = false;
+
+function animateScores(){
+  if(animated) return;
+  var cards = document.querySelector('.scores');
+  if(!cards) return;
+  var rect = cards.getBoundingClientRect();
+  if(rect.top < window.innerHeight * 0.8){
+    animated = true;
+    rings.forEach(function(r){
+      var target = parseFloat(r.getAttribute('data-target'));
+      r.style.strokeDashoffset = target;
+    });
+    numbers.forEach(function(n){
+      var end = parseInt(n.getAttribute('data-count'),10);
+      var start = 0;
+      var duration = 1800;
+      var startTime = null;
+      function step(ts){
+        if(!startTime) startTime = ts;
+        var p = Math.min((ts - startTime) / duration, 1);
+        var ease = 1 - Math.pow(1 - p, 4);
+        n.textContent = Math.round(start + (end - start) * ease);
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+}
+
+/* FADE-IN */
+function initFade(){
+  var els = document.querySelectorAll('.finding, .callout, .step, .stat-block');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){ e.style.opacity = 1; });
+    return;
+  }
+  els.forEach(function(e){ e.style.opacity = 0; e.style.transform = 'translateY(12px)'; e.style.transition = 'opacity 0.5s ease, transform 0.5s ease'; });
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.style.opacity = 1;
+        en.target.style.transform = 'translateY(0)';
+        obs.unobserve(en.target);
+      }
+    });
+  }, { threshold:0.1 });
+  els.forEach(function(e){ obs.observe(e); });
+}
+
+window.addEventListener('scroll', function(){ updateProgress(); animateScores(); }, { passive:true });
+window.addEventListener('load', function(){ updateProgress(); animateScores(); initFade(); });
+})();
+</script>
+</body>
+</html>
