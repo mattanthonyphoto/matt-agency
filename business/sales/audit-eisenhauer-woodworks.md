@@ -23,11 +23,11 @@
 |---|---|---|
 | SEO — Technical | 1/10 | No meta descriptions, no schema, garbled titles, duplicate pages |
 | SEO — Search Visibility | 2/10 | Invisible outside Kimberley. Only ranks for 5 of 20 keywords tested |
-| SEO — Local | 1/10 | No confirmed GBP, no location pages, conflicting NAP across directories |
+| SEO — Local | 2/10 | GBP exists (6 five-star reviews) but no location pages, conflicting NAP across directories |
 | Photography & Visual Assets | 4/10 | Two projects have decent photos; no twilight, drone, process, or lifestyle |
 | Website UX & Content | 3/10 | Dated CTAs, thin pages, dead blog, no testimonials, garbled title tags |
 | Social Media | 3/10 | IG active but thin; FB fragmented across 3 pages; no LinkedIn/YouTube |
-| Reviews & Social Proof | 1/10 | Zero reviews on Houzz/Google/BuildZoom. ~3 unrated FB reviews total |
+| Reviews & Social Proof | 2.5/10 | 6 five-star Google reviews, but 0 on Houzz/BuildZoom/TrustedPros. ~3 unrated FB reviews. Reviews concentrated on one platform |
 | Directory Presence | 2/10 | Listed on ~8 of 30 platforms checked. Several have wrong address |
 | Awards & Press | 2/10 | Zero awards entered. One House Story episode (under-leveraged) |
 | Competitor Position | 2/10 | Munter (same town, founded 10 years later) dominates every channel |
@@ -130,10 +130,8 @@ Nobody owns "cost to build custom home Kootenays" or "cost to build house Kimber
 
 ## 3. SEO — Local
 
-### Google Business Profile: Not Found
-Multiple searches across different query types returned no Google Maps listing, no star rating, no review count for Eisenhauer Woodworks. Either the GBP doesn't exist, is unclaimed, or has zero reviews (making it invisible).
-
-**This is arguably the single biggest marketing failure.** A Google Business Profile is free, takes 30 minutes to set up, and is the primary driver of "near me" searches and map pack visibility.
+### Google Business Profile: Exists — 6 Reviews, 5.0 Stars
+Eisenhauer has an active Google Business Profile with 6 five-star reviews. This is a genuine asset and a solid foundation. However, it is the **only platform with reviews** — Houzz, BuildZoom, TrustedPros, Yellow Pages, and HomeStars all show zero. The GBP could also be further optimized with more photos, service area coverage, and regular posts.
 
 ### No Location Pages
 Eisenhauer claims to serve Kimberley, Cranbrook, Fernie, Invermere, Radium Hot Springs, and Kaslo. They have zero location-specific landing pages for any of these cities.
@@ -303,7 +301,7 @@ One photographer — Rachel Pick (rachelpick.ca) — is credited for workshop/wo
 
 | Platform | Eisenhauer | Munter |
 |---|---|---|
-| Google Business Profile | 0 (not confirmed to exist) | Exists with reviews |
+| Google Business Profile | 6 reviews, 5.0 stars | Exists with reviews |
 | Houzz | **0 reviews** ("You could be the first review") | **9 reviews, 5.0 stars** |
 | BuildZoom | 0 reviews | N/A |
 | TrustedPros | Not listed | **5 reviews, 5.0 rating** |
@@ -314,17 +312,18 @@ One photographer — Rachel Pick (rachelpick.ca) — is credited for workshop/wo
 | **TOTAL** | **~3 unrated** | **16+ verified, all 5-star** |
 
 ### The Social Proof Vacuum
-For a builder charging $750K–$2.5M per project, with nearly 20 years of experience and presumably dozens of satisfied clients, having zero reviews on Houzz, zero on Google, and zero testimonials on their website is a massive trust deficit. Every prospect who Googles "Eisenhauer Woodworks reviews" sees an empty Houzz profile that literally says "You could be the first review."
+The 6 five-star Google reviews are a genuine asset. But they're the only reviews that exist anywhere online. Houzz — the most important directory for builders — literally says "You could be the first review." BuildZoom, TrustedPros, Yellow Pages, and HomeStars all show zero. No testimonials appear on the website.
 
-Meanwhile, prospects Googling "Munter Design Build reviews" see 5-star ratings across multiple platforms with named clients describing quality, timeliness, and budget adherence.
+Meanwhile, prospects checking Munter find 5-star reviews spread across 4+ platforms (Houzz, TrustedPros, Yellow Pages, Google) with named clients describing quality, timeliness, and budget adherence. The gap isn't about having no reviews — it's about having reviews in only one place.
 
 ---
 
 ## 8. Directory Presence (30 Platforms Checked)
 
 ### Eisenhauer Is Listed On (~8 of 30):
-1. Houzz (0 reviews, 2 projects)
-2. BuildZoom (0 reviews, score 92)
+1. Google Business Profile (6 reviews, 5.0 stars)
+2. Houzz (0 reviews, 2 projects)
+3. BuildZoom (0 reviews, score 92)
 3. CHBA (member listing, sparse)
 4. Facebook (3 fragmented pages)
 5. ZoomInfo (**Kaslo address** — wrong)
@@ -333,7 +332,7 @@ Meanwhile, prospects Googling "Munter Design Build reviews" see 5-star ratings a
 8. BC Registry / OrgBook (entity BC1475497)
 
 ### Eisenhauer Is NOT Listed On (~22 of 30):
-- Google Business Profile (not confirmed)
+- (Google Business Profile is listed — see review section above)
 - Yelp
 - HomeStars
 - TrustedPros
@@ -502,7 +501,7 @@ No redirects exist between these domains. Google is indexing content from all th
 ## 13. What Eisenhauer's Marketing Team Should Have Done
 
 ### Foundation (Should Already Exist)
-- [ ] Google Business Profile — claimed, optimized, actively collecting reviews
+- [ ] Google Business Profile — optimize existing profile (more photos, posts, service areas), actively collect more reviews
 - [ ] Meta descriptions on all 35+ pages
 - [ ] Schema markup (LocalBusiness + FAQ + Article)
 - [ ] Fix garbled title tags and typos visible in Google SERPs
@@ -548,9 +547,9 @@ Jeremy's concern is justified. His marketing team has:
 - Left zero meta descriptions across 35+ pages
 - Never set up schema markup despite having Yoast installed
 - Published garbled title tags with typos visible in Google SERPs
-- Failed to claim or optimize a Google Business Profile
+- Left the Google Business Profile under-optimized with only 6 reviews after 20 years
 - Built zero location pages for any service area
-- Collected zero reviews on any platform
+- Collected reviews on only one platform (Google) while Houzz, TrustedPros, and every other directory sit at zero
 - Entered zero awards in 20 years
 - Let the blog die for 10+ months
 - Left three legacy domains live and fragmenting authority
