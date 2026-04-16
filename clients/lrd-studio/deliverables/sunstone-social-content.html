@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sunstone, Social Media Content Package | LRD Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #525252;
+    --faint: #9a9a9a;
+    --hairline: #d8d4cf;
+    --bg: #ffffff;
+    --accent: #8b6f47;
+    --cream: #f6f4f0;
+  }
+  @page { size: letter; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--ink);
+    background: #e8e4df;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    font-size: 10pt;
+  }
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    padding: 0.65in;
+    page-break-after: always;
+    position: relative;
+    background: var(--bg);
+    margin: 0.5in auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; box-shadow: none; }
+    .toolbar { display: none !important; }
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .toolbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink); color: #fff;
+    padding: 0.6rem 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 9pt;
+  }
+  .toolbar strong { color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; font-size: 8pt; }
+  .toolbar button {
+    font-family: 'Poppins', sans-serif; font-size: 8pt; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.35rem 0.75rem; border: 1px solid var(--accent);
+    background: var(--accent); color: #fff; cursor: pointer; border-radius: 3px;
+  }
+
+  /* Cover */
+  .cover {
+    background: var(--ink); color: #fff;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    min-height: 11in;
+  }
+  .cover::before {
+    content: ''; position: absolute;
+    top: 0.5in; left: 0.5in; right: 0.5in; bottom: 0.5in;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56pt; font-weight: 400; font-style: italic;
+    margin: 0 0 0.5rem; line-height: 1.05;
+  }
+  .cover .sub {
+    font-size: 10pt; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); margin-bottom: 2rem;
+  }
+  .cover .details {
+    font-size: 9pt; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em; line-height: 2;
+  }
+  .cover .details strong { color: rgba(255,255,255,0.7); font-weight: 500; }
+  .cover .award {
+    margin-top: 2rem; padding: 0.5rem 1.5rem;
+    border: 1px solid var(--accent); color: var(--accent);
+    font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500;
+  }
+
+  /* Section headers */
+  h2.section {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28pt; font-weight: 400; margin: 0 0 0.3rem;
+    line-height: 1.1; color: var(--ink);
+  }
+  .section-meta {
+    font-size: 8pt; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--faint); margin-bottom: 0.4in; font-weight: 500;
+  }
+  .tag {
+    display: inline-block; font-size: 7pt; padding: 0.15rem 0.4rem;
+    background: var(--cream); border: 1px solid var(--hairline);
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em;
+    font-weight: 500; margin-right: 0.3rem;
+  }
+
+  /* Carousel grid */
+  .carousel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.15in;
+    margin-bottom: 0.25in;
+  }
+  .carousel-grid img {
+    width: 100%; aspect-ratio: 1;
+    object-fit: cover; border: 1px solid var(--hairline);
+  }
+  .carousel-grid .slide-num {
+    font-size: 7pt; text-align: center; color: var(--faint);
+    margin-top: 0.1rem; letter-spacing: 0.08em;
+  }
+
+  /* Caption block */
+  .caption-block {
+    background: var(--cream);
+    border-left: 3px solid var(--accent);
+    padding: 0.3in;
+    margin-bottom: 0.2in;
+    font-size: 9.5pt;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+  .caption-block .hook {
+    font-weight: 500; color: var(--ink);
+    font-size: 10.5pt; display: block;
+    margin-bottom: 0.5rem;
+  }
+  .caption-block .credits {
+    font-size: 8pt; color: var(--faint);
+    margin-top: 0.5rem; padding-top: 0.4rem;
+    border-top: 1px solid var(--hairline);
+  }
+  .caption-block .hashtags {
+    font-size: 7.5pt; color: var(--faint);
+    margin-top: 0.3rem; line-height: 1.6;
+  }
+
+  /* Hero image */
+  .hero-img {
+    width: 100%; max-height: 4.5in;
+    object-fit: cover; margin-bottom: 0.2in;
+    border: 1px solid var(--hairline);
+  }
+
+  /* Single post */
+  .single-post {
+    display: flex; gap: 0.3in;
+    margin-bottom: 0.35in;
+    padding-bottom: 0.35in;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .single-post img {
+    width: 2.8in; height: 2.8in;
+    object-fit: cover; border: 1px solid var(--hairline);
+    flex-shrink: 0;
+  }
+  .single-post .caption-block {
+    flex: 1; margin-bottom: 0;
+  }
+
+  /* Pinterest table */
+  .pin-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 8.5pt; margin-bottom: 0.3in;
+  }
+  .pin-table th {
+    text-align: left; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--faint); font-weight: 500;
+    padding: 0.25rem; border-bottom: 1.5px solid var(--ink);
+  }
+  .pin-table td {
+    padding: 0.3rem 0.25rem; border-bottom: 1px solid var(--hairline);
+    vertical-align: middle; color: var(--muted);
+  }
+  .pin-table img {
+    width: 0.6in; height: 0.6in; object-fit: cover;
+    border: 1px solid var(--hairline);
+  }
+
+  /* LinkedIn */
+  .linkedin-block {
+    background: #f3f6f8; border-left: 3px solid #0a66c2;
+    padding: 0.3in; margin-bottom: 0.3in;
+    font-size: 9.5pt; line-height: 1.65; color: var(--muted);
+  }
+  .linkedin-block .li-tag {
+    font-size: 7pt; text-transform: uppercase; letter-spacing: 0.15em;
+    color: #0a66c2; font-weight: 600; margin-bottom: 0.5rem;
+  }
+
+  /* Footer */
+  .page-footer {
+    position: absolute; bottom: 0.4in; left: 0.65in; right: 0.65in;
+    display: flex; justify-content: space-between;
+    font-size: 7pt; letter-spacing: 0.1em; color: var(--faint); text-transform: uppercase;
+  }
+
+  .cdn { display: none; } /* hide CDN base for clean reading */
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div><strong>LRD Studio</strong> &nbsp; Sunstone Content Package, Review Before Publishing</div>
+  <button onclick="window.print()">Save as PDF</button>
+</div>
+
+<!-- COVER -->
+<div class="page cover">
+  <div class="sub">LRD Studio &middot; Content Package</div>
+  <h1>Sunstone</h1>
+  <div class="details">
+    <strong>Pemberton, BC</strong> &middot; New Build<br>
+    Builder: Dorgelo by Design<br>
+    Photography: Darby Magill
+  </div>
+  <div class="award">Western Living Design 25 Winner &middot; 2026</div>
+</div>
+
+<!-- CAROUSEL 1: THE KITCHEN STORY -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Project Showcase</span> <span class="tag">Instagram</span>
+    &nbsp; Post 1 of 5
+  </div>
+  <h2 class="section">The Kitchen Story</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">8 slides &middot; Narrative arc: hero reveal &rarr; the material palette &rarr; exposed shelf with dishes &rarr; long view showing wood band &rarr; island waterfall edge &rarr; around the corner &rarr; hidden pantry &rarr; the view from here</p>
+
+  <div class="carousel-grid">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/9995678d-d52a-46a5-aff3-788d1f96d159/Copyright-Darby-Magill-7134.jpg?format=500w" alt="Kitchen island with stools"><div class="slide-num">01 &middot; The kitchen</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/901fe1e7-bb04-47e4-9fc8-b873fa951d2f/Copyright-Darby-Magill-7150.jpg?format=500w" alt="Dark stone backsplash with oak"><div class="slide-num">02 &middot; Dark stone + oak</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/cc9e93ea-f5c8-44a5-8553-9c19af923e3e/Copyright-Darby-Magill-7126.jpg?format=500w" alt="Sink with exposed shelf and everyday dishes"><div class="slide-num">03 &middot; Everyday dishes</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/a97dfca2-cb4d-4cff-9b4b-a92603c2432d/Copyright-Darby-Magill-7176.jpg?format=500w" alt="Full kitchen length showing wood band and underlit cabinets"><div class="slide-num">04 &middot; The wood band</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/146a7415-6aed-492a-922d-d9a238bfa497/Copyright-Darby-Magill-7161.jpg?format=500w" alt="Island end dark stone waterfall edge"><div class="slide-num">05 &middot; Waterfall edge</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/14431dae-5879-4dd1-8458-55b37cefdeb8/Copyright-Darby-Magill-7168.jpg?format=500w" alt="Kitchen corner near hidden pantry"><div class="slide-num">06 &middot; Around the corner</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/6e462668-d026-44d1-ac84-6fdb6202a591/Copyright-Darby-Magill-7185.jpg?format=500w" alt="Hidden pantry with wine fridge"><div class="slide-num">07 &middot; Hidden pantry</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/e45e0c28-054c-4803-803f-8d3c908b015f/Copyright-Darby-Magill-7163.jpg?format=500w" alt="Kitchen faucet with daisies on dark stone"><div class="slide-num">08 &middot; The quiet moments</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">Not everyone wants their everyday dishes behind a door.</span>
+    A long exposed shelf runs the length of this kitchen. The bowls and cups they reach for every morning, right there. Underneath, an in-set metal reveal separates the countertop from the wood band on the lower cabinets.
+    <br><br>
+    Around the corner, a hidden pantry. No door. Full-height wine fridge. You wouldn't know it's there.
+    <br><br>
+    Sunstone. Pemberton, BC. Western Living Design 25 winner, 2026.
+    <div class="credits">Photography @darbymagillphotography &middot; Build @dorgelobydesign</div>
+    <div class="hashtags">#interiordesign #pemberton #kitchendesign #westernliving #seatosky #customkitchen #interiordesigner #bcdesign #mountainhome</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Sunstone Content Package</span><span>Carousel 1 of 5</span></div>
+</div>
+
+<!-- CAROUSEL 2: THE DETAILS THAT DISAPPEAR -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Material &amp; Detail</span> <span class="tag">Instagram</span>
+    &nbsp; Post 2 of 5
+  </div>
+  <h2 class="section">The Details That Disappear</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">8 slides &middot; Narrative arc: entry shelf &rarr; hidden drawer close-up &rarr; powder room texture &rarr; C-nightstand &rarr; pull-out folding shelf &rarr; office daybed storage &rarr; stair tread detail &rarr; mudroom (everything in its place)</p>
+
+  <div class="carousel-grid">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/c878bd44-4e99-427e-ab86-61a854c87f27/Copyright-Darby-Magill-7305.jpg?format=500w" alt="Entry shelf with hidden key drawer"><div class="slide-num">01 &middot; Looks simple</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1b44cadc-1011-427a-b731-09f67f65f180/Copyright-Darby-Magill-7299.jpg?format=500w" alt="Entry shelf close-up hidden drawer"><div class="slide-num">02 &middot; Hidden key drawer</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/4d910b0f-3fa7-4a04-b5ed-721a9ca02157/Copyright-Darby-Magill-6711.jpg?format=500w" alt="Powder room chevron texture"><div class="slide-num">03 &middot; Chevron texture</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/4df0634d-9933-43be-8c8d-51551645b744/Copyright-Darby-Magill-6829.jpg?format=500w" alt="C-shaped integrated nightstand"><div class="slide-num">04 &middot; Floating nightstand</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/591dff40-975a-4eb9-a032-6ec6e08bd6b8/Copyright-Darby-Magill-6983.jpg?format=500w" alt="Wardrobe pull-out folding shelf"><div class="slide-num">05 &middot; Fold where it goes</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/6ac7a75a-33d4-40ac-9258-16cb2cd21074/Copyright-Darby-Magill-7009.jpg?format=500w" alt="Office daybed storage drawer detail"><div class="slide-num">06 &middot; Storage underneath</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/eaedb8bd-690d-4c83-9c71-eb610f2f2863/Copyright-Darby-Magill-7032.jpg?format=500w" alt="Stair tread wood cap detail"><div class="slide-num">07 &middot; The wood cap</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/36dfc4cc-f36a-4aac-9403-4576c37fa01b/Copyright-Darby-Magill-7273.jpg?format=500w" alt="Mudroom everything in place"><div class="slide-num">08 &middot; Everything placed</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">The things that disappear are the things we think about the most.</span>
+    A hidden key drawer under the entry shelf. Mitered top, opens from the bottom. You'd never know.
+    <br><br>
+    Matte chevron tile in the powder room with an irregular texture that shifts with the light. C-shaped nightstands that float off the headboard. A pull-out folding shelf in the wardrobe so you fold things right where they're going.
+    <br><br>
+    The best details don't ask to be noticed.
+    <div class="credits">Photography @darbymagillphotography &middot; Build @dorgelobydesign</div>
+    <div class="hashtags">#interiordesign #millworkdesign #customdetails #pemberton #seatosky #bcinteriors #wardrobedesign #interiordetails</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Sunstone Content Package</span><span>Carousel 2 of 5</span></div>
+</div>
+
+<!-- CAROUSEL 3: THE PRIMARY SUITE -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Project Showcase</span> <span class="tag">Instagram</span>
+    &nbsp; Post 3 of 5
+  </div>
+  <h2 class="section">The Primary Suite</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">8 slides &middot; Narrative arc: bedroom entrance &rarr; headboard detail &rarr; C-nightstand &rarr; bedroom fireplace &rarr; ensuite tub + wood shroud &rarr; tub mountain view &rarr; dressing table &rarr; wardrobe</p>
+
+  <div class="carousel-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/6fd4bd7f-0743-46c6-ab9f-b6edb0bcc497/Copyright-Darby-Magill-6896.jpg?format=500w" alt="Bedroom with Vertigo pendant"><div class="slide-num">01 &middot; You enter here</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/4df0634d-9933-43be-8c8d-51551645b744/Copyright-Darby-Magill-6829.jpg?format=500w" alt="Custom headboard with C-nightstand"><div class="slide-num">02 &middot; The headboard</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/281b9726-a438-4c52-8519-ab9f35c6a852/Copyright-Darby-Magill-6879.jpg?format=500w" alt="Bedroom fireplace niche with breakfast"><div class="slide-num">03 &middot; Bedroom fireplace</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/cb08c0cd-282f-4464-b52c-c22fc43d8166/Copyright-Darby-Magill-6912.jpg?format=500w" alt="Bedroom wide with pendant and fireplace"><div class="slide-num">04 &middot; The whole room</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/244ba40f-4056-4d8f-ad66-cf62c30f28fe/Copyright-Darby-Magill-6957.jpg?format=500w" alt="Ensuite tub with wood shroud and pendant"><div class="slide-num">05 &middot; Wood shroud + pendant</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/be3572da-42ec-4467-b1b4-e8a97daa5568/Copyright-Darby-Magill-6932.jpg?format=500w" alt="Freestanding tub with mountain view"><div class="slide-num">06 &middot; The valley from the tub</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/32da03cd-6486-4240-93c9-76ee6e53e058/Copyright-Darby-Magill-6935.jpg?format=500w" alt="Dressing table with tub visible behind"><div class="slide-num">07 &middot; Dressing table</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/591dff40-975a-4eb9-a032-6ec6e08bd6b8/Copyright-Darby-Magill-6983.jpg?format=500w" alt="Wardrobe pull-out folding shelf"><div class="slide-num">08 &middot; Pull-out folding shelf</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">A custom fireplace in the primary bedroom. Sometimes you need the warmth before you've even left the room.</span>
+    The headboard is a full wall of dark paneling. The nightstands are C-shapes that float directly off it. No legs, no cords. In the ensuite, a wood shroud wraps the tub with a pendant above it. Through the window, the valley.
+    <br><br>
+    Tucked into the millwork, a dressing table with a lit mirror and little makeup drawers.
+    <br><br>
+    Sunstone. Pemberton, BC.
+    <div class="credits">Photography @darbymagillphotography &middot; Build @dorgelobydesign &middot; Furniture @curatedbychrissy</div>
+    <div class="hashtags">#primarysuite #bathroomdesign #interiordesign #pemberton #freestandingtub #mountainview #customfireplace #bedroomdesign</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Sunstone Content Package</span><span>Carousel 3 of 5</span></div>
+</div>
+
+<!-- CAROUSEL 4: THE MOUNTAIN OUTSIDE -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Project Showcase</span> <span class="tag">Instagram</span>
+    &nbsp; Post 4 of 5
+  </div>
+  <h2 class="section">The Mountain Outside</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">6 slides &middot; Narrative arc: terrace panorama &rarr; cedar + glass &rarr; pool deck &rarr; a single chair &rarr; mountain view from the ensuite tub &rarr; indoor-outdoor threshold</p>
+
+  <div class="carousel-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/69777cc1-7cce-4832-80dd-f19aaf651627/Copyright-Darby-Magill-7196.jpg?format=500w" alt="Pool terrace with mountain panorama"><div class="slide-num">01 &middot; The terrace</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/02810e84-cf9c-431b-b2f9-358564549f6e/Copyright-Darby-Magill-7254.jpg?format=500w" alt="Poolside with cedar and glass"><div class="slide-num">02 &middot; Cedar + glass</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/33ee5c93-976f-41ec-b414-aa66add4e37b/Copyright-Darby-Magill-7261.jpg?format=500w" alt="Pool deck wide"><div class="slide-num">03 &middot; The pool deck</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/a991ea9b-3f8f-41e3-9028-535e3ffffd47/Copyright-Darby-Magill-7218.jpg?format=500w" alt="Lounge chair with mountain view"><div class="slide-num">04 &middot; One chair, the valley</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/be3572da-42ec-4467-b1b4-e8a97daa5568/Copyright-Darby-Magill-6932.jpg?format=500w" alt="Freestanding tub with mountain view"><div class="slide-num">05 &middot; Same view, from the tub</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/efa7f649-329a-41c1-a913-5920bc7ef3ed/Copyright-Darby-Magill-7114.jpg?format=500w" alt="Living room with mountains visible through floor-to-ceiling windows"><div class="slide-num">06 &middot; The landscape inside</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">When the landscape does this much, you don't fight it. You design around it.</span>
+    Every window in this house was placed to hold a view. The pool terrace opens directly to the mountains. The primary ensuite frames the same panorama from the tub. Even the living room, the valley is right there through the glass.
+    <br><br>
+    Up high above the hills of Pemberton, the mountains are part of the room.
+    <div class="credits">Photography @darbymagillphotography &middot; Build @dorgelobydesign</div>
+    <div class="hashtags">#pemberton #mountainhome #pooldesign #indooroutdoor #seatosky #bcarchitecture #interiordesign #mountainview</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Sunstone Content Package</span><span>Carousel 4 of 5</span></div>
+</div>
+
+<!-- CAROUSEL 5: THE AWARD STORY -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Awards &amp; Press</span> <span class="tag">Instagram</span>
+    &nbsp; Post 5 of 5 &middot; PUBLISH FIRST
+  </div>
+  <h2 class="section">The Award Story</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">8 slides &middot; The award-winning kitchen, detail by detail</p>
+
+  <div class="carousel-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/9995678d-d52a-46a5-aff3-788d1f96d159/Copyright-Darby-Magill-7134.jpg?format=500w" alt="Kitchen island with stools"><div class="slide-num">01 &middot; The kitchen</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/901fe1e7-bb04-47e4-9fc8-b873fa951d2f/Copyright-Darby-Magill-7150.jpg?format=500w" alt="Dark stone backsplash with oak"><div class="slide-num">02 &middot; Dark stone + oak</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/cc9e93ea-f5c8-44a5-8553-9c19af923e3e/Copyright-Darby-Magill-7126.jpg?format=500w" alt="Exposed shelf with everyday dishes"><div class="slide-num">03 &middot; Everyday dishes</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/a97dfca2-cb4d-4cff-9b4b-a92603c2432d/Copyright-Darby-Magill-7176.jpg?format=500w" alt="Kitchen long view with underlit cabinets"><div class="slide-num">04 &middot; The wood band</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/146a7415-6aed-492a-922d-d9a238bfa497/Copyright-Darby-Magill-7161.jpg?format=500w" alt="Island waterfall edge"><div class="slide-num">05 &middot; Waterfall edge</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/14431dae-5879-4dd1-8458-55b37cefdeb8/Copyright-Darby-Magill-7168.jpg?format=500w" alt="Kitchen corner near pantry"><div class="slide-num">06 &middot; Around the corner</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/6e462668-d026-44d1-ac84-6fdb6202a591/Copyright-Darby-Magill-7185.jpg?format=500w" alt="Hidden pantry with wine fridge"><div class="slide-num">07 &middot; Hidden pantry</div></div>
+    <div><img src="WL-Design-25-WINNER-grayscale.jpg" alt="Western Living Design 25 Winner 2026 badge"><div class="slide-num">08 &middot; WL Design 25 Winner</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">This kitchen just won the Western Living Design 25 Award for 2026. Still processing this one.</span>
+    A long exposed shelf where our clients keep their everyday dishes. Not everyone wants that, but they did. An in-set metal reveal between the countertop and the wood band. A hidden pantry around the corner with a full-height wine fridge, completely concealed.
+    <br><br>
+    Every detail in this kitchen was designed around how this family actually lives. Sunstone. Pemberton, BC.
+    <br><br>
+    Grateful to be recognized. Thank you to the clients who trusted us with their home.
+    <div class="credits">Build @dorgelobydesign &middot; Photography @darbymagillphotography</div>
+    <div class="hashtags">#westernliving #design25 #awardwinning #interiordesign #pemberton #kitchendesign #seatosky #lrdstudio #bcdesign</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Sunstone Content Package</span><span>Carousel 5 of 5</span></div>
+</div>
+
+<!-- SINGLE POSTS -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Single Posts</span> <span class="tag">Instagram</span>
+  </div>
+  <h2 class="section">Single Posts</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">3 standalone posts for high-performing individual images</p>
+
+  <div class="single-post">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/7ddd57ef-232e-4344-96e6-869387089e2c/Copyright-Darby-Magill-7090.jpg?format=500w" alt="Fireplace">
+    <div class="caption-block">
+      <span class="hook">The Fireplace</span>
+      The custom fluted asymmetrical fireplace at Sunstone. Dark steel, stacked firewood, a concrete hearth.
+      <br><br>
+      A fireplace doesn't have to be symmetrical to feel balanced. Sometimes asymmetry is what gives a room its character.
+      <div class="credits">Photography @darbymagillphotography &middot; Build @dorgelobydesign</div>
+    </div>
+  </div>
+
+  <div class="single-post">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/be3572da-42ec-4467-b1b4-e8a97daa5568/Copyright-Darby-Magill-6932.jpg?format=500w" alt="Ensuite">
+    <div class="caption-block">
+      <span class="hook">The Ensuite</span>
+      The wood shroud wraps the sides of the tub. A pendant above. Through the window, the valley.
+      <br><br>
+      Just out of frame, a dressing table with a lit mirror and little makeup drawers tucked into the millwork. The quiet moments matter as much as the big ones.
+      <div class="credits">Photography @darbymagillphotography</div>
+    </div>
+  </div>
+
+  <div class="single-post" style="border-bottom: none;">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/f7a79cea-ed9a-44fd-9a58-ae304524e50f/Copyright-Darby-Magill-7069.jpg?format=500w" alt="Staircase">
+    <div class="caption-block">
+      <span class="hook">The Staircase</span>
+      The stairs have this wood cap that hides all the stanchions. Through the glass, woodcaps and clean lines. The posts on either end, a custom metal fin.
+      <br><br>
+      One of our favorite details. Simple, but it changes everything about moving between floors.
+      <div class="credits">Photography @darbymagillphotography</div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>LRD Studio &middot; Sunstone Content Package</span><span>Single Posts</span></div>
+</div>
+
+<!-- PINTEREST + LINKEDIN -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Pinterest</span> 12 pins &middot; All linking to lrdstudio.ca/projects/residential/sunstone
+  </div>
+  <h2 class="section">Pinterest Pins</h2>
+
+  <table class="pin-table">
+    <thead><tr><th></th><th>Pin Title (SEO optimized)</th><th>Board</th></tr></thead>
+    <tbody>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/901fe1e7-bb04-47e4-9fc8-b873fa951d2f/Copyright-Darby-Magill-7150.jpg?format=100w"></td><td>Pemberton Kitchen Design with Exposed Shelf and Dark Stone Backsplash</td><td>Kitchen</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/9995678d-d52a-46a5-aff3-788d1f96d159/Copyright-Darby-Magill-7134.jpg?format=100w"></td><td>Kitchen Island with Dark Stone Waterfall and Woven Leather Stools</td><td>Kitchen</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/7ddd57ef-232e-4344-96e6-869387089e2c/Copyright-Darby-Magill-7090.jpg?format=100w"></td><td>Custom Asymmetrical Steel Fireplace with Firewood Storage</td><td>Fireplace</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/be3572da-42ec-4467-b1b4-e8a97daa5568/Copyright-Darby-Magill-6932.jpg?format=100w"></td><td>Freestanding Tub with Mountain View in Pemberton BC Ensuite</td><td>Bathroom</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/f7a79cea-ed9a-44fd-9a58-ae304524e50f/Copyright-Darby-Magill-7069.jpg?format=100w"></td><td>Custom Staircase with Wood Cap Glass Panels and Metal Fins</td><td>Staircase</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/4d910b0f-3fa7-4a04-b5ed-721a9ca02157/Copyright-Darby-Magill-6711.jpg?format=100w"></td><td>Matte Chevron Tile Powder Room with Vessel Sink</td><td>Powder Room</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/0c22b9bc-2643-4ba7-8a2a-3f453321dc0a/Copyright-Darby-Magill-6976.jpg?format=100w"></td><td>Custom Wardrobe with Underlit Open Shelving and Oak Drawers</td><td>Wardrobe</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/9fd34db4-5973-47c3-a49e-831a93023875/Copyright-Darby-Magill-6986.jpg?format=100w"></td><td>Home Office with Integrated Daybed and Window Seat Storage</td><td>Home Office</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/02810e84-cf9c-431b-b2f9-358564549f6e/Copyright-Darby-Magill-7254.jpg?format=100w"></td><td>Pool Deck with Cedar Siding and Mountain View Pemberton BC</td><td>Outdoor</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/4df0634d-9933-43be-8c8d-51551645b744/Copyright-Darby-Magill-6829.jpg?format=100w"></td><td>Primary Bedroom with Custom Headboard and C-Shaped Nightstand</td><td>Bedroom</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/c878bd44-4e99-427e-ab86-61a854c87f27/Copyright-Darby-Magill-7305.jpg?format=100w"></td><td>Entry Millwork with Hidden Key Drawer and Built-In Bench</td><td>Entry</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/6e462668-d026-44d1-ac84-6fdb6202a591/Copyright-Darby-Magill-7185.jpg?format=100w"></td><td>Hidden Walk-In Pantry with Full Height Wine Fridge</td><td>Kitchen</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-meta" style="margin-top: 0.4in;">
+    <span class="tag">LinkedIn</span> 2 posts
+  </div>
+  <h2 class="section" style="font-size: 22pt;">LinkedIn</h2>
+
+  <div class="linkedin-block">
+    <div class="li-tag">Award Announcement</div>
+    We're honored to share that Sunstone has been recognized with the Western Living Design 25 Award for 2026.
+    <br><br>
+    This home in Pemberton, BC was a collaboration with Dorgelo by Design, photographed by Darby Magill. Our clients welcomed a dramatic flair, and together we created something we're genuinely proud of.
+    <br><br>
+    The kitchen's exposed shelf, the hidden pantry, the custom asymmetrical fireplace, the staircase with its wood caps and metal fins, the ensuite with mountains through the window. Every detail was designed to feel intentional without being precious.
+    <br><br>
+    Thank you to Western Living and to the clients who trusted us with their home.
+  </div>
+
+  <div class="linkedin-block">
+    <div class="li-tag">Design Process &middot; Educational</div>
+    One of the details I love most at Sunstone is the entry shelf. It looks simple. A floating surface, a mirror, a place for flowers.
+    <br><br>
+    Underneath, there's a hidden key drawer. The top is mitered so the seam is invisible. You open it from the bottom. You'd never know it was there.
+    <br><br>
+    This is what I mean when I say design is equal parts logic and creative. The creative part is the composition. The logic part is asking: where do the keys actually go? Where does the phone charge? What happens when you walk in the door at 9pm with groceries and boots?
+    <br><br>
+    The best details are the ones that disappear.
+  </div>
+
+  <div class="page-footer"><span>LRD Studio &middot; Sunstone Content Package</span><span>Pinterest + LinkedIn</span></div>
+</div>
+
+<!-- PUBLISHING NOTES -->
+<div class="page" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+  <div style="max-width: 5in;">
+    <div style="font-size: 8pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--faint); margin-bottom: 1rem;">Publishing Notes</div>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; font-weight: 400; margin: 0 0 1.5rem;">Before we publish.</h2>
+
+    <div style="text-align: left; font-size: 9.5pt; color: var(--muted); line-height: 1.7;">
+      <p><strong style="color: var(--ink);">Photo rights.</strong> All Sunstone photography is by Darby Magill. Confirm usage rights with Lauren before any of this content goes live. If rights are limited, these posts hold as drafts until resolved.</p>
+      <p><strong style="color: var(--ink);">Voice check.</strong> Every caption uses Lauren's own words and phrasing from her voice recordings. Review with Lauren at the workshop to confirm tone feels right.</p>
+      <p><strong style="color: var(--ink);">Publish order.</strong> Carousel 5 (The Award Story) goes first, while the WL Design 25 win is still fresh news. Then space the remaining 4 carousels + 3 singles across 4-6 weeks.</p>
+      <p><strong style="color: var(--ink);">Cross-posting.</strong> Sunstone was not shot by Matt. No companion posts on @mattanthonyphoto for this project. Cross-posting applies to Sunridge, Balsam 2, and future projects Matt photographs.</p>
+      <p><strong style="color: var(--ink);">Pinterest.</strong> All 12 pins link to lrdstudio.ca/projects/residential/sunstone. Schedule across 2-3 weeks, not all at once.</p>
+    </div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Sunstone Content Package</span><span>End</span></div>
+</div>
+
+</body>
+</html>

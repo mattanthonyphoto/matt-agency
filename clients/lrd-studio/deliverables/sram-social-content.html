@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SRAM, Social Media Content Package | LRD Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #525252;
+    --faint: #9a9a9a;
+    --hairline: #d8d4cf;
+    --bg: #ffffff;
+    --accent: #8b6f47;
+    --cream: #f6f4f0;
+  }
+  @page { size: letter; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--ink);
+    background: #e8e4df;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    font-size: 10pt;
+  }
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    padding: 0.65in;
+    page-break-after: always;
+    position: relative;
+    background: var(--bg);
+    margin: 0.5in auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; box-shadow: none; }
+    .toolbar { display: none !important; }
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .toolbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink); color: #fff;
+    padding: 0.6rem 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 9pt;
+  }
+  .toolbar strong { color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; font-size: 8pt; }
+  .toolbar button {
+    font-family: 'Poppins', sans-serif; font-size: 8pt; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.35rem 0.75rem; border: 1px solid var(--accent);
+    background: var(--accent); color: #fff; cursor: pointer; border-radius: 3px;
+  }
+
+  /* Cover */
+  .cover {
+    background: var(--ink); color: #fff;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    min-height: 11in;
+  }
+  .cover::before {
+    content: ''; position: absolute;
+    top: 0.5in; left: 0.5in; right: 0.5in; bottom: 0.5in;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56pt; font-weight: 400; font-style: italic;
+    margin: 0 0 0.5rem; line-height: 1.05;
+  }
+  .cover .sub {
+    font-size: 10pt; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); margin-bottom: 2rem;
+  }
+  .cover .details {
+    font-size: 9pt; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em; line-height: 2;
+  }
+  .cover .details strong { color: rgba(255,255,255,0.7); font-weight: 500; }
+  .cover .award {
+    margin-top: 2rem; padding: 0.5rem 1.5rem;
+    border: 1px solid var(--accent); color: var(--accent);
+    font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500;
+  }
+
+  /* Section headers */
+  h2.section {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28pt; font-weight: 400; margin: 0 0 0.3rem;
+    line-height: 1.1; color: var(--ink);
+  }
+  .section-meta {
+    font-size: 8pt; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--faint); margin-bottom: 0.4in; font-weight: 500;
+  }
+  .tag {
+    display: inline-block; font-size: 7pt; padding: 0.15rem 0.4rem;
+    background: var(--cream); border: 1px solid var(--hairline);
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em;
+    font-weight: 500; margin-right: 0.3rem;
+  }
+
+  /* Carousel grid */
+  .carousel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.15in;
+    margin-bottom: 0.25in;
+  }
+  .carousel-grid img {
+    width: 100%; aspect-ratio: 1;
+    object-fit: cover; border: 1px solid var(--hairline);
+  }
+  .carousel-grid .slide-num {
+    font-size: 7pt; text-align: center; color: var(--faint);
+    margin-top: 0.1rem; letter-spacing: 0.08em;
+  }
+
+  /* Caption block */
+  .caption-block {
+    background: var(--cream);
+    border-left: 3px solid var(--accent);
+    padding: 0.3in;
+    margin-bottom: 0.2in;
+    font-size: 9.5pt;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+  .caption-block .hook {
+    font-weight: 500; color: var(--ink);
+    font-size: 10.5pt; display: block;
+    margin-bottom: 0.5rem;
+  }
+  .caption-block .credits {
+    font-size: 8pt; color: var(--faint);
+    margin-top: 0.5rem; padding-top: 0.4rem;
+    border-top: 1px solid var(--hairline);
+  }
+  .caption-block .hashtags {
+    font-size: 7.5pt; color: var(--faint);
+    margin-top: 0.3rem; line-height: 1.6;
+  }
+
+  /* Hero image */
+  .hero-img {
+    width: 100%; max-height: 4.5in;
+    object-fit: cover; margin-bottom: 0.2in;
+    border: 1px solid var(--hairline);
+  }
+
+  /* Single post */
+  .single-post {
+    display: flex; gap: 0.3in;
+    margin-bottom: 0.35in;
+    padding-bottom: 0.35in;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .single-post img {
+    width: 2.8in; height: 2.8in;
+    object-fit: cover; border: 1px solid var(--hairline);
+    flex-shrink: 0;
+  }
+  .single-post .caption-block {
+    flex: 1; margin-bottom: 0;
+  }
+
+  /* Stories section */
+  .story-row {
+    display: flex; gap: 0.2in;
+    margin-bottom: 0.3in;
+  }
+  .story-frame {
+    flex: 1; position: relative;
+    border: 1px solid var(--hairline);
+    overflow: hidden;
+  }
+  .story-frame img {
+    width: 100%; aspect-ratio: 9/16;
+    object-fit: cover; display: block;
+  }
+  .story-frame .story-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: #fff; padding: 0.3in 0.15in 0.15in;
+    font-size: 7.5pt; line-height: 1.5;
+    font-weight: 400;
+  }
+  .story-label {
+    font-size: 7pt; text-align: center; color: var(--faint);
+    margin-top: 0.1rem; letter-spacing: 0.08em;
+  }
+
+  /* Pinterest table */
+  .pin-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 8.5pt; margin-bottom: 0.3in;
+  }
+  .pin-table th {
+    text-align: left; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--faint); font-weight: 500;
+    padding: 0.25rem; border-bottom: 1.5px solid var(--ink);
+  }
+  .pin-table td {
+    padding: 0.3rem 0.25rem; border-bottom: 1px solid var(--hairline);
+    vertical-align: middle; color: var(--muted);
+  }
+  .pin-table img {
+    width: 0.6in; height: 0.6in; object-fit: cover;
+    border: 1px solid var(--hairline);
+  }
+
+  /* LinkedIn */
+  .linkedin-block {
+    background: #f3f6f8; border-left: 3px solid #0a66c2;
+    padding: 0.3in; margin-bottom: 0.3in;
+    font-size: 9.5pt; line-height: 1.65; color: var(--muted);
+  }
+  .linkedin-block .li-tag {
+    font-size: 7pt; text-transform: uppercase; letter-spacing: 0.15em;
+    color: #0a66c2; font-weight: 600; margin-bottom: 0.5rem;
+  }
+
+  /* Footer */
+  .page-footer {
+    position: absolute; bottom: 0.4in; left: 0.65in; right: 0.65in;
+    display: flex; justify-content: space-between;
+    font-size: 7pt; letter-spacing: 0.1em; color: var(--faint); text-transform: uppercase;
+  }
+
+  .cdn { display: none; } /* hide CDN base for clean reading */
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div><strong>LRD Studio</strong> &nbsp; SRAM Content Package, Review Before Publishing</div>
+  <button onclick="window.print()">Save as PDF</button>
+</div>
+
+<!-- COVER -->
+<div class="page cover">
+  <div class="sub">LRD Studio &middot; Content Package</div>
+  <h1>SRAM</h1>
+  <div class="details">
+    <strong>North Vancouver, BC</strong> &middot; Commercial<br>
+    Builder: Ario Construction<br>
+    Photography: Janis Nicolay
+  </div>
+  <div class="award">Commercial Workspace</div>
+</div>
+
+<!-- CAROUSEL 1: THE WHEEL CONCEPT -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Project Showcase</span> <span class="tag">Instagram</span>
+    &nbsp; Post 1 of 3
+  </div>
+  <h2 class="section">The Wheel Concept</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">7 slides &middot; Narrative arc: curved wall reveal &rarr; full open floor &rarr; meeting room in the curve &rarr; backlit logo &rarr; kitchen bar &rarr; open office &rarr; lounge in brand colors</p>
+
+  <div class="carousel-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/41426d63-8f87-43c4-bb2c-c7af3a1bf9e3/3-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Curved wall with fig tree, red-cushion bar stools, garage door, globe pendants"><div class="slide-num">01 &middot; The curve</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/e3b11929-702c-4bf0-842d-dfbcd8e5aad5/6-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Main floor hero with red-cushion bar stools, fig tree, bikes mounted on wall, modular sofas"><div class="slide-num">02 &middot; Full floor</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/f13e845c-828f-4067-a704-e42bb5705fbf/7-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Curved glass meeting room with geometric vinyl floor and dark conference table"><div class="slide-num">03 &middot; Meeting room</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/93a613a6-7fc1-4f42-a3fa-69fc92971503/1-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Backlit SRAM logo on oak paneling with red glow, geometric tile floor, foosball visible"><div class="slide-num">04 &middot; Logo</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/e1c0b64b-0cce-4c86-9578-67ec4d56adf5/2-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Kitchen bar front with five black swivel stools, white ceramic A&D pendants, dark cabinets"><div class="slide-num">05 &middot; Kitchen bar</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/302956fd-e5d7-4bab-9546-37750ecf4b18/20-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Work stations with desks, task chairs, felt acoustic panels overhead, timber posts"><div class="slide-num">06 &middot; Open office</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/00ca7782-266f-4108-9474-0cb7d79bf4b2/9-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Modular sofas in SRAM red, grey, and black brand colors with bike racing photos on wall"><div class="slide-num">07 &middot; Sofas</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">The floor plan of this space started with a single idea: the wheel.</span>
+    SRAM Canada's marketing HQ is built around a curve that emanates the shape of a bike cog. Within that wheel, geometric shapes echo the intricate mechanical parts SRAM makes.
+    <br><br>
+    Old shipping building near the Shipyards. Exposed fir timbers, all original. Oak paneling at the entry, a fig tree grounding everything. The people who work here ride. The space had to feel like that too.
+    <div class="credits">Photography @janisnicolay &middot; Build @arioconstruction</div>
+    <div class="hashtags">#commercialdesign #officedesign #workplacedesign #interiordesign #northvancouver #commercialinteriors #workspacedesign #seatosky #bcdesign</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; SRAM Content Package</span><span>Carousel 1 of 3</span></div>
+</div>
+
+<!-- CAROUSEL 2: BRAND IN EVERY DETAIL -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Material &amp; Detail</span> <span class="tag">Instagram</span>
+    &nbsp; Post 2 of 3
+  </div>
+  <h2 class="section">Brand in Every Detail</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">6 slides &middot; Narrative arc: backlit logo &rarr; bike storage first impression &rarr; geometric flooring &rarr; brand-color sofas &rarr; kitchen bar &rarr; the complete picture</p>
+
+  <div class="carousel-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/93a613a6-7fc1-4f42-a3fa-69fc92971503/1-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Backlit SRAM logo on oak paneling with red glow, geometric tile floor"><div class="slide-num">01 &middot; The logo wall</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/dfb03a3a-f9de-4c85-9bc3-cac65cdda151/10-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Bike storage entry with bikes mounted vertically, SRAM logo visible, geometric tile"><div class="slide-num">02 &middot; Bikes first</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/f13e845c-828f-4067-a704-e42bb5705fbf/7-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Curved glass meeting room with geometric vinyl floor and dark conference table"><div class="slide-num">03 &middot; Geometric floor</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/00ca7782-266f-4108-9474-0cb7d79bf4b2/9-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Modular sofas in SRAM red, grey, and black brand colors with bike racing photos on wall"><div class="slide-num">04 &middot; Brand colors</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/e1c0b64b-0cce-4c86-9578-67ec4d56adf5/2-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Kitchen bar front with five black swivel stools, white ceramic A&D pendants, dark cabinets"><div class="slide-num">05 &middot; The kitchen bar</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/5b1535bb-3e34-424c-b2de-c2d5e616285d/5-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Curved meeting room wide with glass walls, geometric floor, fig tree, timbers, sofas"><div class="slide-num">06 &middot; The complete picture</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">SRAM's brand colors are black, grey, and red. We didn't paint them on a wall. We wove them through the whole design.</span>
+    Modular sofas in those three tones. Geometric backsplash tile. Recycled vinyl with polygonal patterns in the meeting rooms. Every surface carries the brand without feeling like a showroom.
+    <br><br>
+    The bike storage is fully visible at the entry, not hidden. The backlit logo on oak paneling casts a warm red glow. When the brand is authentic, it shows up in the materials, not just the signage.
+    <div class="credits">Photography @janisnicolay &middot; Build @arioconstruction</div>
+    <div class="hashtags">#commercialdesign #officedesign #workplacedesign #branddesign #interiordesign #northvancouver #materialpalette #commercialinteriors #recycledmaterials #bcdesign</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; SRAM Content Package</span><span>Carousel 2 of 3</span></div>
+</div>
+
+<!-- CAROUSEL 3: WHERE WORK MEETS LIFE -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Project Showcase</span> <span class="tag">Instagram</span>
+    &nbsp; Post 3 of 3
+  </div>
+  <h2 class="section">Where Work Meets Life</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">6 slides &middot; Narrative arc: bike rider through office &rarr; colorful lounge &rarr; kitchen bar &rarr; inside the curved meeting room &rarr; fig tree framing private meeting &rarr; the whole floor, life happening</p>
+
+  <div class="carousel-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/302956fd-e5d7-4bab-9546-37750ecf4b18/20-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Work stations with desks, task chairs, felt acoustic panels overhead, timber posts"><div class="slide-num">01 &middot; The work floor</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3bb8b641-d544-4a6f-b659-93b9891c8d4b/13-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Sofas from behind in red, grey, and black with curved wall, kitchen bar visible behind"><div class="slide-num">02 &middot; Comfort zone</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/989d52a0-7bca-4308-ac66-2ccfc719dbd5/14-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Kitchen bar side view with five grey stools, white pendants, fig tree, meeting room glass visible"><div class="slide-num">03 &middot; Kitchen</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/2fab22c8-6e8a-4d89-9610-794a88281fc9/17-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Inside meeting room with geometric vinyl floor, task chairs, TV, communal table through glass"><div class="slide-num">04 &middot; Meeting room</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/e2c920c7-b128-4e98-b38b-176405e64ff2/15-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Person riding bike through office with fig tree and concrete planter"><div class="slide-num">05 &middot; Bike through office</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/b52ee734-bf22-4b98-b50e-73fab8652551/16-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Main floor with fig tree prominent, bar stools, bikes"><div class="slide-num">06 &middot; The fig tree</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">SRAM Canada builds their work culture around a simple idea: work and life aren't separate.</span>
+    Kitchen bar with a proper espresso station, because the morning starts here. Modular sofas that are genuinely comfortable. Meeting rooms that curve with the architecture, wrapped in glass so the fig tree stays visible from every seat.
+    <br><br>
+    No assigned seating, no corner offices. And yes, that's someone riding a bike through the office. Commercial design, done honestly, tells you everything about the people inside.
+    <div class="credits">Photography @janisnicolay &middot; Build @arioconstruction</div>
+    <div class="hashtags">#commercialdesign #officedesign #workplacedesign #worklifebalance #interiordesign #northvancouver #modernoffice #workculture #commercialinteriors</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; SRAM Content Package</span><span>Carousel 3 of 3</span></div>
+</div>
+
+<!-- SINGLE POSTS -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Single Posts</span> <span class="tag">Instagram</span>
+  </div>
+  <h2 class="section">Single Posts</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">2 standalone posts for high-performing individual images</p>
+
+  <div class="single-post">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/6e2a2435-e6db-4eeb-bf78-9538ce92ccef/11-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Open floor wide with modular sofas in red, grey, and black, foosball table, fig tree, globe pendants, timbers">
+    <div class="caption-block">
+      <span class="hook">The Fig Tree</span>
+      Not a fake one. Not a small one. An incredible fig tree in a concrete planter anchoring the entire open floor at SRAM Canada's headquarters.
+      <br><br>
+      Visible from the meeting rooms, the kitchen, the lounge. Softening the industrial bones of this old shipping building near the Shipyards in North Vancouver. Even in a workspace designed for a bike brand, nature belongs in the conversation.
+      <div class="credits">Photography @janisnicolay &middot; Build @arioconstruction</div>
+      <div class="hashtags">#commercialdesign #officedesign #interiordesign #indoorplants #workplacedesign #northvancouver #biophilicdesign</div>
+    </div>
+  </div>
+
+  <div class="single-post" style="border-bottom: none;">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/93a613a6-7fc1-4f42-a3fa-69fc92971503/1-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Backlit SRAM logo on oak paneling with red glow, geometric tile floor, foosball visible">
+    <div class="caption-block">
+      <span class="hook">The Entry</span>
+      Backlit SRAM logo on oak paneling. Geometric tile floor in black, grey, and white. Just beyond, bikes and a foosball table. First impressions in a commercial space set the tone for everything that follows.
+      <br><br>
+      This entry tells you who works here before anyone says a word. Oak paneling was the client's nod to west coast heritage. The red glow behind the letters is quiet but unmistakable.
+      <div class="credits">Photography @janisnicolay &middot; Build @arioconstruction</div>
+      <div class="hashtags">#commercialdesign #officedesign #entrydesign #workplacedesign #brandidentity #northvancouver #interiordesign #commercialinteriors</div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>LRD Studio &middot; SRAM Content Package</span><span>Single Posts</span></div>
+</div>
+
+<!-- STORIES -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Instagram Stories</span> 3 sequences &middot; 9 frames total
+  </div>
+  <h2 class="section">Stories</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.25in;">9:16 vertical crops. Static images with text overlay. Post 2-3 hours before each companion carousel.</p>
+
+  <!-- Story Sequence 1 -->
+  <p style="font-size: 8pt; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin: 0 0 0.15in;">Sequence 1 &mdash; The Space &nbsp; <span style="color: var(--faint); font-weight: 400;">(supports Carousel 1)</span></p>
+  <div class="story-row">
+    <div class="story-frame">
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/41426d63-8f87-43c4-bb2c-c7af3a1bf9e3/3-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Curved wall with fig tree, red-cushion bar stools, garage door">
+      <div class="story-overlay">"The floor plan started with a single idea: the wheel."</div>
+    </div>
+    <div class="story-frame">
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/e3b11929-702c-4bf0-842d-dfbcd8e5aad5/6-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Main floor hero with exposed timbers, bar stools, fig tree, bikes">
+      <div class="story-overlay">"Old shipping building. Original fir timbers."</div>
+    </div>
+    <div class="story-frame">
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/6e2a2435-e6db-4eeb-bf78-9538ce92ccef/11-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Open floor wide with sofas, foosball, fig tree, globe pendants">
+      <div class="story-overlay">"SRAM Canada HQ &mdash; new on the feed."</div>
+    </div>
+  </div>
+
+  <!-- Story Sequence 2 -->
+  <p style="font-size: 8pt; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin: 0 0 0.15in;">Sequence 2 &mdash; Brand in the Materials &nbsp; <span style="color: var(--faint); font-weight: 400;">(supports Carousel 2)</span></p>
+  <div class="story-row">
+    <div class="story-frame">
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/93a613a6-7fc1-4f42-a3fa-69fc92971503/1-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Backlit SRAM logo on oak paneling with red glow">
+      <div class="story-overlay">"Black, grey, and red. Not painted on a wall."</div>
+    </div>
+    <div class="story-frame">
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/dfb03a3a-f9de-4c85-9bc3-cac65cdda151/10-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Bike storage entry with bikes mounted vertically, SRAM logo visible">
+      <div class="story-overlay">"The bikes aren't hidden. They're the culture."</div>
+    </div>
+    <div class="story-frame">
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/00ca7782-266f-4108-9474-0cb7d79bf4b2/9-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Modular sofas in SRAM red, grey, and black brand colors">
+      <div class="story-overlay">"Woven through every surface. See our latest post."</div>
+    </div>
+  </div>
+
+  <!-- Story Sequence 3 -->
+  <p style="font-size: 8pt; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin: 0 0 0.15in;">Sequence 3 &mdash; Work Meets Life &nbsp; <span style="color: var(--faint); font-weight: 400;">(supports Carousel 3)</span></p>
+  <div class="story-row">
+    <div class="story-frame">
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/989d52a0-7bca-4308-ac66-2ccfc719dbd5/14-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Kitchen bar side view with grey stools, white pendants, fig tree">
+      <div class="story-overlay">"The morning gathering point."</div>
+    </div>
+    <div class="story-frame">
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/e2c920c7-b128-4e98-b38b-176405e64ff2/15-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Person riding bike through office, fig tree, concrete planter">
+      <div class="story-overlay">"Yes, someone's riding a bike through the office."</div>
+    </div>
+    <div class="story-frame">
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/b52ee734-bf22-4b98-b50e-73fab8652551/16-LRD-DESIGNS-SRAM.jpg?format=500w" alt="Main floor with fig tree prominent, bar stools, bikes">
+      <div class="story-overlay">"Where work meets life. New on the feed."</div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>LRD Studio &middot; SRAM Content Package</span><span>Stories</span></div>
+</div>
+
+<!-- PINTEREST + LINKEDIN -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Pinterest</span> 8 pins &middot; All linking to lrdstudio.ca/projects/commercial/sram
+  </div>
+  <h2 class="section">Pinterest Pins</h2>
+
+  <table class="pin-table">
+    <thead><tr><th></th><th>Pin Title (SEO optimized)</th><th>Board</th></tr></thead>
+    <tbody>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/41426d63-8f87-43c4-bb2c-c7af3a1bf9e3/3-LRD-DESIGNS-SRAM.jpg?format=100w"></td><td>Commercial Office Design with Curved Wall Concept and Exposed Fir Timbers North Vancouver</td><td>Commercial Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/f13e845c-828f-4067-a704-e42bb5705fbf/7-LRD-DESIGNS-SRAM.jpg?format=100w"></td><td>Curved Glass Meeting Room with Geometric Recycled Vinyl Flooring</td><td>Office Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/93a613a6-7fc1-4f42-a3fa-69fc92971503/1-LRD-DESIGNS-SRAM.jpg?format=100w"></td><td>Backlit Brand Logo on Oak Paneling Commercial Entry Design</td><td>Commercial Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/e1c0b64b-0cce-4c86-9578-67ec4d56adf5/2-LRD-DESIGNS-SRAM.jpg?format=100w"></td><td>Commercial Kitchen Bar with Black Cabinetry and Ceramic Pendants</td><td>Office Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/00ca7782-266f-4108-9474-0cb7d79bf4b2/9-LRD-DESIGNS-SRAM.jpg?format=100w"></td><td>Modular Lounge Sofas in Brand Colors for Modern Workplace</td><td>Office Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/dfb03a3a-f9de-4c85-9bc3-cac65cdda151/10-LRD-DESIGNS-SRAM.jpg?format=100w"></td><td>Visible Bike Storage Display in Commercial Office Entry</td><td>Commercial Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/302956fd-e5d7-4bab-9546-37750ecf4b18/20-LRD-DESIGNS-SRAM.jpg?format=100w"></td><td>Open Plan Office with Standing Desks Skylights and Exposed Timber Ceiling</td><td>Office Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/6e2a2435-e6db-4eeb-bf78-9538ce92ccef/11-LRD-DESIGNS-SRAM.jpg?format=100w"></td><td>Contemporary Workplace Design with Indoor Fig Tree and Heritage Timbers</td><td>Commercial Design</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-meta" style="margin-top: 0.4in;">
+    <span class="tag">LinkedIn</span> 2 posts
+  </div>
+  <h2 class="section" style="font-size: 22pt;">LinkedIn</h2>
+
+  <div class="linkedin-block">
+    <div class="li-tag">Design Thinking &middot; The Cog Concept</div>
+    We designed SRAM Canada's marketing headquarters around a single concept: the wheel. The floor plan follows a curve that emanates the shape of a bike cog. You wouldn't walk in and think "bike wheel," but you'd feel the openness, the flow.
+    <br><br>
+    Within that wheel, geometric complexity. Trapezoidal tile in the backsplash. Polygonal recycled vinyl in the meeting rooms. The balance between the broad curve and the fine geometry became the design language for the entire space.
+    <br><br>
+    The building is an old shipping warehouse near the Shipyards in North Vancouver. Exposed fir timbers and ceiling, all original. Commercial design works best when the concept comes from the client's identity, not from a trend library.
+    <br><br>
+    Photography: Janis Nicolay &middot; Construction: Ario Construction
+  </div>
+
+  <div class="linkedin-block">
+    <div class="li-tag">Heritage &middot; Adaptive Reuse</div>
+    One of the most rewarding parts of the SRAM project was working within a heritage structure. Old shipping warehouse near the Shipyards in North Vancouver. Exposed fir timbers and original ceiling. Details you can't fabricate.
+    <br><br>
+    Timbers refinished, not replaced. Ceiling cleaned up and left exposed. Industrial garage door stayed. The new elements, curved walls, oak paneling, modular furniture, sit in conversation with the existing bones rather than compete with them.
+    <br><br>
+    More brands are moving into older structures instead of new construction. The character gives a workspace something glass and steel cannot. The work is in knowing what to keep and what to add.
+    <br><br>
+    Photography: Janis Nicolay &middot; Construction: Ario Construction
+  </div>
+
+  <div class="page-footer"><span>LRD Studio &middot; SRAM Content Package</span><span>Pinterest + LinkedIn</span></div>
+</div>
+
+<!-- PUBLISHING NOTES -->
+<div class="page" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+  <div style="max-width: 5in;">
+    <div style="font-size: 8pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--faint); margin-bottom: 1rem;">Publishing Notes</div>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; font-weight: 400; margin: 0 0 1.5rem;">Before we publish.</h2>
+
+    <div style="text-align: left; font-size: 9.5pt; color: var(--muted); line-height: 1.7;">
+      <p><strong style="color: var(--ink);">Photo rights.</strong> All SRAM photography is by Janis Nicolay. Confirm usage rights with Lauren before any of this content goes live. If rights are limited, these posts hold as drafts until resolved.</p>
+      <p><strong style="color: var(--ink);">Voice check.</strong> Every caption uses Lauren's own words and phrasing. Review with Lauren to confirm tone feels right.</p>
+      <p><strong style="color: var(--ink);">Handle verification.</strong> Verify @janisnicolay, @arioconstruction, and any SRAM handle (@sramcanada or @srammtb) with Lauren before publishing. Tag SRAM only if Lauren approves.</p>
+      <p><strong style="color: var(--ink);">Cross-posting.</strong> SRAM was not shot by Matt. No companion posts on @mattanthonyphoto for this project.</p>
+      <p><strong style="color: var(--ink);">Commercial positioning.</strong> This is LRD's only commercial project. Use it intentionally to show range beyond residential. LinkedIn posts are especially important here: commercial content reaches facilities managers, brand directors, and commercial real estate professionals. Schedule LinkedIn during business hours (Tuesday-Thursday, 9-11am PT).</p>
+      <p><strong style="color: var(--ink);">Pinterest.</strong> All 8 pins link to lrdstudio.ca/projects/commercial/sram. Schedule across 2-3 weeks, not all at once.</p>
+      <p><strong style="color: var(--ink);">Hashtag note.</strong> Commercial-specific tags (#commercialdesign, #officedesign, #workplacedesign) are on every post. These reach a different audience than LRD's typical residential tags.</p>
+    </div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; SRAM Content Package</span><span>End</span></div>
+</div>
+
+</body>
+</html>

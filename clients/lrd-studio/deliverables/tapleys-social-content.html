@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tapleys, Social Media Content Package | LRD Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #525252;
+    --faint: #9a9a9a;
+    --hairline: #d8d4cf;
+    --bg: #ffffff;
+    --accent: #8b6f47;
+    --cream: #f6f4f0;
+  }
+  @page { size: letter; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--ink);
+    background: #e8e4df;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    font-size: 10pt;
+  }
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    padding: 0.65in;
+    page-break-after: always;
+    position: relative;
+    background: var(--bg);
+    margin: 0.5in auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; box-shadow: none; }
+    .toolbar { display: none !important; }
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .toolbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink); color: #fff;
+    padding: 0.6rem 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 9pt;
+  }
+  .toolbar strong { color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; font-size: 8pt; }
+  .toolbar button {
+    font-family: 'Poppins', sans-serif; font-size: 8pt; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.35rem 0.75rem; border: 1px solid var(--accent);
+    background: var(--accent); color: #fff; cursor: pointer; border-radius: 3px;
+  }
+
+  /* Cover */
+  .cover {
+    background: var(--ink); color: #fff;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    min-height: 11in;
+  }
+  .cover::before {
+    content: ''; position: absolute;
+    top: 0.5in; left: 0.5in; right: 0.5in; bottom: 0.5in;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56pt; font-weight: 400; font-style: italic;
+    margin: 0 0 0.5rem; line-height: 1.05;
+  }
+  .cover .sub {
+    font-size: 10pt; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); margin-bottom: 2rem;
+  }
+  .cover .details {
+    font-size: 9pt; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em; line-height: 2;
+  }
+  .cover .details strong { color: rgba(255,255,255,0.7); font-weight: 500; }
+
+  /* Section headers */
+  h2.section {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28pt; font-weight: 400; margin: 0 0 0.3rem;
+    line-height: 1.1; color: var(--ink);
+  }
+  .section-meta {
+    font-size: 8pt; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--faint); margin-bottom: 0.4in; font-weight: 500;
+  }
+  .tag {
+    display: inline-block; font-size: 7pt; padding: 0.15rem 0.4rem;
+    background: var(--cream); border: 1px solid var(--hairline);
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em;
+    font-weight: 500; margin-right: 0.3rem;
+  }
+
+  /* Carousel grid */
+  .carousel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.15in;
+    margin-bottom: 0.25in;
+  }
+  .carousel-grid img {
+    width: 100%; aspect-ratio: 1;
+    object-fit: cover; border: 1px solid var(--hairline);
+  }
+  .carousel-grid .slide-num {
+    font-size: 7pt; text-align: center; color: var(--faint);
+    margin-top: 0.1rem; letter-spacing: 0.08em;
+  }
+
+  /* Caption block */
+  .caption-block {
+    background: var(--cream);
+    border-left: 3px solid var(--accent);
+    padding: 0.3in;
+    margin-bottom: 0.2in;
+    font-size: 9.5pt;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+  .caption-block .hook {
+    font-weight: 500; color: var(--ink);
+    font-size: 10.5pt; display: block;
+    margin-bottom: 0.5rem;
+  }
+  .caption-block .credits {
+    font-size: 8pt; color: var(--faint);
+    margin-top: 0.5rem; padding-top: 0.4rem;
+    border-top: 1px solid var(--hairline);
+  }
+  .caption-block .hashtags {
+    font-size: 7.5pt; color: var(--faint);
+    margin-top: 0.3rem; line-height: 1.6;
+  }
+
+  /* Hero image */
+  .hero-img {
+    width: 100%; max-height: 4.5in;
+    object-fit: cover; margin-bottom: 0.2in;
+    border: 1px solid var(--hairline);
+  }
+
+  /* Single post */
+  .single-post {
+    display: flex; gap: 0.3in;
+    margin-bottom: 0.35in;
+    padding-bottom: 0.35in;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .single-post img {
+    width: 2.8in; height: 2.8in;
+    object-fit: cover; border: 1px solid var(--hairline);
+    flex-shrink: 0;
+  }
+  .single-post .caption-block {
+    flex: 1; margin-bottom: 0;
+  }
+
+  /* Pinterest table */
+  .pin-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 8.5pt; margin-bottom: 0.3in;
+  }
+  .pin-table th {
+    text-align: left; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--faint); font-weight: 500;
+    padding: 0.25rem; border-bottom: 1.5px solid var(--ink);
+  }
+  .pin-table td {
+    padding: 0.3rem 0.25rem; border-bottom: 1px solid var(--hairline);
+    vertical-align: middle; color: var(--muted);
+  }
+  .pin-table img {
+    width: 0.6in; height: 0.6in; object-fit: cover;
+    border: 1px solid var(--hairline);
+  }
+
+  /* LinkedIn */
+  .linkedin-block {
+    background: #f3f6f8; border-left: 3px solid #0a66c2;
+    padding: 0.3in; margin-bottom: 0.3in;
+    font-size: 9.5pt; line-height: 1.65; color: var(--muted);
+  }
+  .linkedin-block .li-tag {
+    font-size: 7pt; text-transform: uppercase; letter-spacing: 0.15em;
+    color: #0a66c2; font-weight: 600; margin-bottom: 0.5rem;
+  }
+
+  /* Stories */
+  .story-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.15in;
+    margin-bottom: 0.3in;
+  }
+  .story-card {
+    position: relative;
+    aspect-ratio: 9/16;
+    overflow: hidden;
+    border: 1px solid var(--hairline);
+    background: var(--ink);
+  }
+  .story-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+  }
+  .story-card .story-text {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 0.2in 0.15in;
+    color: #fff;
+    font-size: 6.5pt;
+    line-height: 1.4;
+    font-weight: 400;
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+  }
+  .story-card .story-frame {
+    position: absolute;
+    top: 0.08in; left: 0; right: 0;
+    text-align: center;
+    font-size: 5.5pt;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Verify label */
+  .verify {
+    display: inline-block;
+    font-size: 6pt;
+    padding: 0.05rem 0.25rem;
+    background: #fff3cd;
+    border: 1px solid #e0c97a;
+    color: #856404;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    margin-left: 0.15rem;
+    vertical-align: middle;
+  }
+
+  /* Footer */
+  .page-footer {
+    position: absolute; bottom: 0.4in; left: 0.65in; right: 0.65in;
+    display: flex; justify-content: space-between;
+    font-size: 7pt; letter-spacing: 0.1em; color: var(--faint); text-transform: uppercase;
+  }
+
+  .cdn { display: none; }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div><strong>LRD Studio</strong> &nbsp; Tapleys Content Package, Review Before Publishing</div>
+  <button onclick="window.print()">Save as PDF</button>
+</div>
+
+<!-- COVER -->
+<div class="page cover">
+  <div class="sub">LRD Studio &middot; Content Package</div>
+  <h1>Tapleys</h1>
+  <div class="details">
+    <strong>Whistler, BC</strong> &middot; Major Renovation<br>
+    Builder: Tymac Construction<br>
+    Photography: Matt Anthony<br>
+    Styling: LRD Studio
+  </div>
+</div>
+
+<!-- CAROUSEL 1: THE TRANSFORMATION -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Project Showcase</span> <span class="tag">Instagram</span>
+    &nbsp; Post 1 of 4
+  </div>
+  <h2 class="section">The Transformation</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">8 slides &middot; Narrative arc: transformed kitchen &rarr; whitewashed fir up close &rarr; living room lighter palette &rarr; hickory floors &rarr; fireplace anchor &rarr; modernized staircase &rarr; open wardrobe &rarr; a hit of teal</p>
+
+  <div class="carousel-grid">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/a5eac8b7-aec8-4754-9927-a1b90ed94cce/LRD-2500px-7.jpg?format=500w" alt="Kitchen hero with teal zellige backsplash, Carmana hood surround, island with wine pocket, floating shelves, black pendants"><div class="slide-num">01 &middot; The kitchen</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3e0bac51-a474-4a8a-b1cd-1dae2f157329/LRD-2500px-18.jpg?format=500w" alt="Open plan wide with kitchen island and pendants left, whitewashed fir post center, dining right"><div class="slide-num">02 &middot; Open plan</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/282e38c5-866b-4efc-8300-a79f88500ef0/LRD-2500px-1.jpg?format=500w" alt="Living room wide with Carmana fireplace, art flanking, grey sofa, glass coffee table, sliding doors"><div class="slide-num">03 &middot; Living room</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/2baa43fe-5944-4d74-ae6e-cbb8053ffc50/LRD-2500px-2.jpg?format=500w" alt="Open plan dining and living with wood table, black chairs, modern pendant, hickory floors, vaulted ceiling, forest windows"><div class="slide-num">04 &middot; Dining</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/f503a25e-8c83-49b8-bd18-dcd9f48e1d6b/LRD-2500px-6.jpg?format=500w" alt="Living room fireplace detail with Carmana stone, ledge, vases, window"><div class="slide-num">05 &middot; Fireplace</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/56f7df4e-cbc7-4367-97ed-f9ce06dfd667/LRD-2500px-39.jpg?format=500w" alt="Modernized staircase with boxy top cap, glass panels, refinished handrail, oak closet door"><div class="slide-num">06 &middot; Staircase</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/dbe17830-7da4-46b5-be73-d573d7a6a5c5/LRD-2500px-20.jpg?format=500w" alt="Walk-in wardrobe corridor with oak both sides, skylight at end, black hardware"><div class="slide-num">07 &middot; Wardrobe</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/7687e54e-7cc3-4bff-b095-82ee84edd4f7/LRD-2500px-37.jpg?format=500w" alt="Boys bathroom with teal zellige tile above vanity, backlit mirror, oak vanity"><div class="slide-num">08 &middot; Teal accent</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">This home came to us full of warmth that had aged past its time.</span>
+    The fir had that classical orange tone. The family was ready for something lighter. We had it all refinished with a whitewash — the grain is still there, but the whole house opened up.
+    <br><br>
+    Hickory floors, lighter millwork, and hits of teal chosen by the two boys. A home that feels like the people who live in it. Tapleys, Whistler.
+    <div class="credits">Photography @mattanthonyphoto &middot; Build @tymacconstruction &middot; Styling @lrdstudio_interiors</div>
+    <div class="hashtags">#interiordesign #whistler #homerenovation #seatosky #whitewash #mountainhome #interiordesigner #bcdesign #renovationdesign</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Tapleys Content Package</span><span>Carousel 1 of 4</span></div>
+</div>
+
+<!-- CAROUSEL 2: THE KITCHEN DETAILS -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Material &amp; Detail</span> <span class="tag">Instagram</span>
+    &nbsp; Post 2 of 4
+  </div>
+  <h2 class="section">The Kitchen Details</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">7 slides &middot; Narrative arc: floating shelves flanking stove &rarr; island with waterfall + wine pocket &rarr; cookbook pocket at island end &rarr; flattened gooseneck faucet &rarr; hidden coffee nook &rarr; black + brass hardware &rarr; full kitchen</p>
+
+  <div class="carousel-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/ab3fb1bf-9863-4291-bd38-df58e64aaae9/LRD-2500px-14.jpg?format=500w" alt="Kitchen counter with floating shelves flanking stove, teal zellige backsplash, bread, brass and black hardware"><div class="slide-num">01 &middot; Floating shelves</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/a5eac8b7-aec8-4754-9927-a1b90ed94cce/LRD-2500px-7.jpg?format=500w" alt="Kitchen hero showing wine pocket at island base, teal zellige, Carmana hood surround, floating shelves"><div class="slide-num">02 &middot; Wine pocket</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/2364cf06-bfea-49c4-a1bd-30a91bff277f/LRD-2500px-10.jpg?format=500w" alt="Kitchen island straight-on with three black stools, wine pocket at island end, cookbooks, pendants, teal tile"><div class="slide-num">03 &middot; Cookbook pocket</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/8bb5e578-2bf0-4db0-a02b-27284a57d350/LRD-2500px-13.jpg?format=500w" alt="Flattened gooseneck black faucet detail with teal zellige tile behind"><div class="slide-num">04 &middot; The faucet</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3d3cf9f5-da32-4eba-a8dd-28f7f410a74a/LRD-2500px-5.jpg?format=500w" alt="Coffee nook with teal zellige tile, coffee machine, mugs, oak, black hardware"><div class="slide-num">05 &middot; Coffee nook</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/5058dcbc-ac48-4dd8-875f-7ef50fa8074b/LRD-2500px-17.jpg?format=500w" alt="Kitchen window detail with teal tile, bread, flowers, towel, forest view, brass hardware"><div class="slide-num">06 &middot; Hardware</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/2364cf06-bfea-49c4-a1bd-30a91bff277f/LRD-2500px-10.jpg?format=500w" alt="Kitchen island straight-on, full kitchen view with stools, pendants, teal backsplash"><div class="slide-num">07 &middot; The full kitchen</div></div>
+    <div style="aspect-ratio: 1;"></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">This kitchen is full of little moments that reward you for looking closer.</span>
+    Floating shelves flanking the stove. A wine pocket and cookbook pocket at the island. A hidden coffee nook around the corner you discover on day two and never stop using.
+    <br><br>
+    Flattened gooseneck faucets, black and brass hardware by M-Tack. A kitchen that reveals itself slowly.
+    <div class="credits">Photography @mattanthonyphoto &middot; Build @tymacconstruction</div>
+    <div class="hashtags">#kitchendesign #interiordesign #whistler #seatosky #customkitchen #kitchendetails #waterfallcountertop #floatingshelves #bcdesign #mountainhome</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Tapleys Content Package</span><span>Carousel 2 of 4</span></div>
+</div>
+
+<!-- CAROUSEL 3: COLOR, CRAFT & CHARACTER -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Material &amp; Detail</span> <span class="tag">Instagram</span>
+    &nbsp; Post 3 of 4
+  </div>
+  <h2 class="section">Color, Craft &amp; Character</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">8 slides &middot; Narrative arc: organic zellige tile &rarr; teal accent &rarr; wood fins on fireplace &rarr; black + brass hardware &rarr; backlit niche &rarr; underlit vanity &rarr; black Carmana stone &rarr; turquoise woven through</p>
+
+  <div class="carousel-grid">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/282e38c5-866b-4efc-8300-a79f88500ef0/LRD-2500px-1.jpg?format=500w" alt="Living room wide with Carmana fireplace, art flanking, grey sofa, glass coffee table"><div class="slide-num">01 &middot; Fireplace</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3d3cf9f5-da32-4eba-a8dd-28f7f410a74a/LRD-2500px-5.jpg?format=500w" alt="Coffee nook with teal zellige tile, coffee machine, mugs, oak, black hardware"><div class="slide-num">02 &middot; Teal</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1133b7d2-c127-4b95-b678-e4ab43d06691/LRD-2500px-15.jpg?format=500w" alt="Kitchen zellige close-up with teal tile, floating shelf, bread on island, utensils"><div class="slide-num">03 &middot; Zellige</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/2fe16077-e2d9-4dd6-a47a-e985cef65839/LRD-2500px-16.jpg?format=500w" alt="Carmana stone fireplace close-up with black stone surround"><div class="slide-num">04 &middot; Carmana stone</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/ab3fb1bf-9863-4291-bd38-df58e64aaae9/LRD-2500px-14.jpg?format=500w" alt="Kitchen counter showing black and brass hardware, teal zellige, floating shelves"><div class="slide-num">05 &middot; Hardware</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1cf3fa4e-cedc-4f79-a5f2-4133726fb4ed/LRD-2500px-25.jpg?format=500w" alt="Bathroom with zellige accent wall, built-in tub, black fixtures, window, underlit vanity"><div class="slide-num">06 &middot; Underlit</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1c0c190d-5006-435f-9fa2-09b5c2b44210/LRD-2500px-27.jpg?format=500w" alt="Family room with two-sided fireplace, stone ledge, TV niche, grey sofa, fir beam"><div class="slide-num">07 &middot; Family fireplace</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/126308a8-1641-4f6f-b143-daac86bdf29c/LRD-2500px-28.jpg?format=500w" alt="Oak slatted panel detail that doubles as game storage closet"><div class="slide-num">08 &middot; Slatted panel</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">The palette in this house started with a conversation about what to keep.</span>
+    The fir was staying. We whitewashed it, brought in hickory floors, and built the color story from there. Organic zellige tile, black Carmana stone from Vancouver Island, black and brass hardware by M-Tack.
+    <br><br>
+    The boys chose the teals and turquoises. Those hits of color give every room a warmth that feels personal, not prescribed.
+    <div class="credits">Photography @mattanthonyphoto &middot; Build @tymacconstruction</div>
+    <div class="hashtags">#materialpalette #interiordesign #zellige #whistler #seatosky #colorpalette #carmanastone #blackandbrass #bcinteriors #mountainhome</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Tapleys Content Package</span><span>Carousel 3 of 4</span></div>
+</div>
+
+<!-- CAROUSEL 4: DESIGNED FOR GENERATIONS -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Design Philosophy</span> <span class="tag">Instagram</span>
+    &nbsp; Post 4 of 4
+  </div>
+  <h2 class="section">Designed for Generations</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">6 slides &middot; Narrative arc: parent suite kitchenette &rarr; private ensuite &rarr; self-contained wardrobe &rarr; family room fireplace &rarr; game closet behind slatted panel &rarr; the family's palette together</p>
+
+  <div class="carousel-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/121be012-dea6-4b2e-8e91-7a99d27d803a/LRD-2500px-30.jpg?format=500w" alt="Parent suite kitchenette wide with white cabinets, white tile, black faucet, pears, storage"><div class="slide-num">01 &middot; Parent kitchenette</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/4d6443ad-2d0f-461f-a75d-2a0944638630/LRD-2500px-31.jpg?format=500w" alt="Parent suite kitchenette detail with white cabinets, tile, gooseneck faucet, towel"><div class="slide-num">02 &middot; Kitchenette detail</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/c2a21fa0-8924-46ad-80cb-0afd12e05232/LRD-2500px-34.jpg?format=500w" alt="Parent suite bathroom with simple oak vanity, black faucet, mirror, sconce"><div class="slide-num">03 &middot; Parent ensuite</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1c0c190d-5006-435f-9fa2-09b5c2b44210/LRD-2500px-27.jpg?format=500w" alt="Family room with two-sided fireplace, stone ledge, TV niche, grey sofa, fir beam"><div class="slide-num">04 &middot; Family room</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/636fdbb0-c4fe-4463-8b4f-5ffd88d0343a/LRD-2500px-36.jpg?format=500w" alt="Mudroom with white cubbies, hooks, oak bench, teal accent pillow"><div class="slide-num">05 &middot; Mudroom</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/e01de1ed-224f-4507-bd75-c3a0a2a2ec89/LRD-2500px-26.jpg?format=500w" alt="Bedroom with wardrobe left, wood bed, forest windows, fur throw"><div class="slide-num">06 &middot; Bedroom</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">One of the most thoughtful parts of this home is a space most guests will never see.</span>
+    A parent suite with its own kitchenette, ensuite, and wardrobe. Completely self-contained. Designed for families thinking about the long view.
+    <br><br>
+    Game closet behind a slatted panel. Two-sided fireplace. Rooms built for real life. And those hits of teal? Chosen by the boys.
+    <div class="credits">Photography @mattanthonyphoto &middot; Build @tymacconstruction</div>
+    <div class="hashtags">#multigenerationaldesign #interiordesign #whistler #familyhome #seatosky #designforfamilies #thoughtfuldesign #bcdesign</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Tapleys Content Package</span><span>Carousel 4 of 4</span></div>
+</div>
+
+<!-- SINGLE POSTS -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Single Posts</span> <span class="tag">Instagram</span>
+  </div>
+  <h2 class="section">Single Posts</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">3 standalone posts for high-performing individual images</p>
+
+  <div class="single-post">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/f503a25e-8c83-49b8-bd18-dcd9f48e1d6b/LRD-2500px-6.jpg?format=500w" alt="Living room fireplace detail with Carmana stone, ledge, vases, window">
+    <div class="caption-block">
+      <span class="hook">The Fireplace with Wood Fins</span>
+      The living room fireplace at Tapleys has this design detail we stumbled on and then couldn't let go of. Wood fins on either side, framing the hearth.
+      <br><br>
+      It was one of those discoveries that happens mid-process, when you're working through the build and something unexpected clicks. We love that about renovation work. The existing structure pushes you somewhere you wouldn't have gone in a new build, and it's often better for it.
+      <div class="credits">Photography @mattanthonyphoto &middot; Build @tymacconstruction</div>
+      <div class="hashtags">#fireplacedesign #interiordesign #whistler #wooddetail #customfireplace #seatosky #homerenovation</div>
+    </div>
+  </div>
+
+  <div class="single-post">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/56f7df4e-cbc7-4367-97ed-f9ce06dfd667/LRD-2500px-39.jpg?format=500w" alt="Modernized staircase with boxy top cap, glass panels, refinished handrail, oak closet door">
+    <div class="caption-block">
+      <span class="hook">The Modernized Staircase</span>
+      These stairs were existing. We modernized them with a boxy top cap, glass panels, and then took the original handrail, had it refinished, and added a light underneath.
+      <br><br>
+      That's it. No structural changes. But the transformation was complete. Sometimes the simplest moves carry the most weight, especially in a renovation where honoring the bones of a home is the whole point.
+      <div class="credits">Photography @mattanthonyphoto &middot; Build @tymacconstruction</div>
+      <div class="hashtags">#staircasedesign #homerenovation #interiordesign #whistler #seatosky #modernstairs #renovationtransformation</div>
+    </div>
+  </div>
+
+  <div class="single-post" style="border-bottom: none;">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3d3cf9f5-da32-4eba-a8dd-28f7f410a74a/LRD-2500px-5.jpg?format=500w" alt="Coffee nook with teal zellige tile, coffee machine, mugs, oak, black hardware">
+    <div class="caption-block">
+      <span class="hook">The Hidden Coffee Nook</span>
+      There's this coffee nook tucked around the corner from the kitchen. It's hidden from the main space but still exposed, not behind a door. One of those in-between spots that becomes the favorite spot.
+      <br><br>
+      We find that the moments people love most in a home aren't the grand ones. They're the 7am ones, the quiet corners where the morning routine starts before anyone else is up.
+      <div class="credits">Photography @mattanthonyphoto &middot; Build @tymacconstruction</div>
+      <div class="hashtags">#coffeenook #kitchendesign #interiordesign #whistler #seatosky #hiddendetails #morningroutine #thoughtfuldesign</div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>LRD Studio &middot; Tapleys Content Package</span><span>Single Posts</span></div>
+</div>
+
+<!-- STORIES -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Instagram Stories</span> 4 sequences &middot; 9:16 vertical &middot; Static images with text overlay
+  </div>
+  <h2 class="section">Stories</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.25in;">Post each sequence 2-3 hours before its corresponding carousel. No "swipe up" or "tap here" CTAs.</p>
+
+  <!-- Story Sequence 1 -->
+  <p style="color: var(--ink); font-size: 9pt; font-weight: 500; margin: 0 0 0.15in;">Sequence 1 &mdash; The Transformation <span style="font-weight: 300; color: var(--faint);">(supports Carousel 1)</span></p>
+  <div class="story-grid">
+    <div class="story-card">
+      <div class="story-frame">1 of 4</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/2baa43fe-5944-4d74-ae6e-cbb8053ffc50/LRD-2500px-2.jpg?format=500w" alt="Open plan dining and living with vaulted ceiling, hickory floors, forest windows">
+      <div class="story-text">"The fir used to be orange. The family was ready for something lighter."</div>
+    </div>
+    <div class="story-card">
+      <div class="story-frame">2 of 4</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3e0bac51-a474-4a8a-b1cd-1dae2f157329/LRD-2500px-18.jpg?format=500w" alt="Open plan wide with whitewashed fir post center, kitchen island left, dining right">
+      <div class="story-text">"Whitewashed. Refinished. Still the same grain."</div>
+    </div>
+    <div class="story-card">
+      <div class="story-frame">3 of 4</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/7687e54e-7cc3-4bff-b095-82ee84edd4f7/LRD-2500px-37.jpg?format=500w" alt="Boys bathroom with teal zellige tile above vanity, backlit mirror, oak vanity">
+      <div class="story-text">"The boys chose the teal."</div>
+    </div>
+    <div class="story-card">
+      <div class="story-frame">4 of 4</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/282e38c5-866b-4efc-8300-a79f88500ef0/LRD-2500px-1.jpg?format=500w" alt="Living room wide with Carmana fireplace, art flanking, grey sofa">
+      <div class="story-text">"Tapleys, Whistler &mdash; new on the feed."</div>
+    </div>
+  </div>
+
+  <!-- Story Sequence 2 -->
+  <p style="color: var(--ink); font-size: 9pt; font-weight: 500; margin: 0.15in 0 0.15in;">Sequence 2 &mdash; Kitchen Details <span style="font-weight: 300; color: var(--faint);">(supports Carousel 2)</span></p>
+  <div class="story-grid">
+    <div class="story-card">
+      <div class="story-frame">1 of 4</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/2364cf06-bfea-49c4-a1bd-30a91bff277f/LRD-2500px-10.jpg?format=500w" alt="Kitchen island straight-on with stools, wine pocket at end, cookbooks, pendants">
+      <div class="story-text">"A wine pocket and a cookbook pocket. At the island."</div>
+    </div>
+    <div class="story-card">
+      <div class="story-frame">2 of 4</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3d3cf9f5-da32-4eba-a8dd-28f7f410a74a/LRD-2500px-5.jpg?format=500w" alt="Coffee nook with teal zellige tile, coffee machine, mugs, oak">
+      <div class="story-text">"Hidden coffee nook around the corner."</div>
+    </div>
+    <div class="story-card">
+      <div class="story-frame">3 of 4</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/ab3fb1bf-9863-4291-bd38-df58e64aaae9/LRD-2500px-14.jpg?format=500w" alt="Kitchen counter with floating shelves flanking stove, teal zellige, brass and black hardware">
+      <div class="story-text">"Two floating shelves flanking the stove."</div>
+    </div>
+    <div class="story-card">
+      <div class="story-frame">4 of 4</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/8bb5e578-2bf0-4db0-a02b-27284a57d350/LRD-2500px-13.jpg?format=500w" alt="Flattened gooseneck black faucet detail with teal zellige tile behind">
+      <div class="story-text">"Every detail &mdash; new on the feed."</div>
+    </div>
+  </div>
+
+  <!-- Story Sequence 3 -->
+  <p style="color: var(--ink); font-size: 9pt; font-weight: 500; margin: 0.15in 0 0.15in;">Sequence 3 &mdash; Color &amp; Craft <span style="font-weight: 300; color: var(--faint);">(supports Carousel 3)</span></p>
+  <div class="story-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="story-card">
+      <div class="story-frame">1 of 3</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/f503a25e-8c83-49b8-bd18-dcd9f48e1d6b/LRD-2500px-6.jpg?format=500w" alt="Living room fireplace detail with Carmana stone, ledge, vases, window">
+      <div class="story-text">"We stumbled on the wood fins. Then couldn't let go."</div>
+    </div>
+    <div class="story-card">
+      <div class="story-frame">2 of 3</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1133b7d2-c127-4b95-b678-e4ab43d06691/LRD-2500px-15.jpg?format=500w" alt="Kitchen zellige close-up with teal tile, floating shelf, bread on island, utensils">
+      <div class="story-text">"Zellige tiles. Organic texture. Every piece different."</div>
+    </div>
+    <div class="story-card">
+      <div class="story-frame">3 of 3</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/ab3fb1bf-9863-4291-bd38-df58e64aaae9/LRD-2500px-14.jpg?format=500w" alt="Kitchen counter showing black and brass hardware, teal zellige, floating shelves">
+      <div class="story-text">"Black and brass. By M-Tack. See our latest post."</div>
+    </div>
+  </div>
+
+  <!-- Story Sequence 4 -->
+  <p style="color: var(--ink); font-size: 9pt; font-weight: 500; margin: 0.15in 0 0.15in;">Sequence 4 &mdash; Designed for Generations <span style="font-weight: 300; color: var(--faint);">(supports Carousel 4)</span></p>
+  <div class="story-grid">
+    <div class="story-card">
+      <div class="story-frame">1 of 4</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/121be012-dea6-4b2e-8e91-7a99d27d803a/LRD-2500px-30.jpg?format=500w" alt="Parent suite kitchenette wide with white cabinets, white tile, black faucet, pears">
+      <div class="story-text">"A parent suite with its own kitchenette."</div>
+    </div>
+    <div class="story-card">
+      <div class="story-frame">2 of 4</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/c2a21fa0-8924-46ad-80cb-0afd12e05232/LRD-2500px-34.jpg?format=500w" alt="Parent suite bathroom with simple oak vanity, black faucet, mirror, sconce">
+      <div class="story-text">"Its own ensuite and wardrobe."</div>
+    </div>
+    <div class="story-card">
+      <div class="story-frame">3 of 4</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1c0c190d-5006-435f-9fa2-09b5c2b44210/LRD-2500px-27.jpg?format=500w" alt="Family room with two-sided fireplace, stone ledge, TV niche, grey sofa, fir beam">
+      <div class="story-text">"Designed for families. For years to come."</div>
+    </div>
+    <div class="story-card">
+      <div class="story-frame">4 of 4</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/636fdbb0-c4fe-4463-8b4f-5ffd88d0343a/LRD-2500px-36.jpg?format=500w" alt="Mudroom with white cubbies, hooks, oak bench, teal accent pillow">
+      <div class="story-text">"New on the feed &mdash; see our latest post."</div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>LRD Studio &middot; Tapleys Content Package</span><span>Stories</span></div>
+</div>
+
+<!-- PINTEREST + LINKEDIN -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Pinterest</span> 10 pins &middot; All linking to lrdstudio.ca/projects/residential/tapleys
+  </div>
+  <h2 class="section">Pinterest Pins</h2>
+
+  <table class="pin-table">
+    <thead><tr><th></th><th>Pin Title (SEO optimized)</th><th>Board</th></tr></thead>
+    <tbody>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/a5eac8b7-aec8-4754-9927-a1b90ed94cce/LRD-2500px-7.jpg?format=100w"></td><td>Whistler Kitchen Renovation with Whitewashed Fir Beams and Lighter Millwork</td><td>Kitchen Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/2364cf06-bfea-49c4-a1bd-30a91bff277f/LRD-2500px-10.jpg?format=100w"></td><td>Kitchen Island with Waterfall Countertop Wine Pocket and Cookbook Storage</td><td>Kitchen Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3d3cf9f5-da32-4eba-a8dd-28f7f410a74a/LRD-2500px-5.jpg?format=100w"></td><td>Hidden Coffee Nook in Whistler Kitchen Renovation</td><td>Kitchen Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/f503a25e-8c83-49b8-bd18-dcd9f48e1d6b/LRD-2500px-6.jpg?format=100w"></td><td>Living Room Fireplace with Wood Fin Design Detail Whistler BC</td><td>Fireplace Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/56f7df4e-cbc7-4367-97ed-f9ce06dfd667/LRD-2500px-39.jpg?format=100w"></td><td>Modernized Staircase with Boxy Top Cap Glass Panels and Underlit Handrail</td><td>Staircase Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/b1e3505c-220e-4d99-a03b-7d0405413184/LRD-2500px-21.jpg?format=100w"></td><td>Organic Zellige Tile Bathroom with Underlit Vanity and Niche</td><td>Bathroom Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/dbe17830-7da4-46b5-be73-d573d7a6a5c5/LRD-2500px-20.jpg?format=100w"></td><td>Open Concept Wardrobe with Skylight and Custom Millwork Whistler</td><td>Wardrobe Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1c0c190d-5006-435f-9fa2-09b5c2b44210/LRD-2500px-27.jpg?format=100w"></td><td>Two-Sided Family Room Fireplace with Stone Ledge and Slatted Panel Storage</td><td>Fireplace Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/121be012-dea6-4b2e-8e91-7a99d27d803a/LRD-2500px-30.jpg?format=100w"></td><td>Multigenerational Parent Suite with Kitchenette and Private Ensuite</td><td>Bedroom Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/ab3fb1bf-9863-4291-bd38-df58e64aaae9/LRD-2500px-14.jpg?format=100w"></td><td>Black and Brass Hardware Combination with Whitewashed Fir and Hickory Floors</td><td>Interior Design Details</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-meta" style="margin-top: 0.4in;">
+    <span class="tag">LinkedIn</span> 2 posts
+  </div>
+  <h2 class="section" style="font-size: 22pt;">LinkedIn</h2>
+
+  <div class="linkedin-block">
+    <div class="li-tag">Honoring Existing Materials</div>
+    We just wrapped the photography for Tapleys, a major renovation in Whistler we designed with Tymac Construction and photographed by Matt Anthony.
+    <br><br>
+    The palette started with a question: what do we do with the fir? The tone had aged into a deep orange the family had outgrown. We had it all refinished with a whitewash — lighter, but the grain and character are still there. From there, hickory floors, black Carmana stone from Vancouver Island, organic zellige, black and brass hardware by M-Tack.
+    <br><br>
+    Renovation design works within constraints, and those constraints push you somewhere more interesting. The best renovation work doesn't erase a home's history. It brings it forward.
+    <br><br>
+    Photography by Matt Anthony. Build by Tymac Construction.
+    <br>
+    lrdstudio.ca/projects/residential/tapleys
+  </div>
+
+  <div class="linkedin-block">
+    <div class="li-tag">Designing for Multigenerational Living</div>
+    We're seeing more families design for the long view.
+    <br><br>
+    At Tapleys in Whistler, the clients asked for a parent suite with its own kitchenette, ensuite, and wardrobe. Not a guest room. A fully self-contained living space designed so that family could live there comfortably for years.
+    <br><br>
+    The rest of the house reflects that same generosity. The boys chose the teal tones throughout. A game closet hides behind a slatted panel. Every space designed for real life.
+    <br><br>
+    Multigenerational design isn't a trend. It's a return to how homes were always meant to work.
+  </div>
+
+  <div class="page-footer"><span>LRD Studio &middot; Tapleys Content Package</span><span>Pinterest + LinkedIn</span></div>
+</div>
+
+<!-- PUBLISHING NOTES -->
+<div class="page" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+  <div style="max-width: 5in;">
+    <div style="font-size: 8pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--faint); margin-bottom: 1rem;">Publishing Notes</div>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; font-weight: 400; margin: 0 0 1.5rem;">Before we publish.</h2>
+
+    <div style="text-align: left; font-size: 9.5pt; color: var(--muted); line-height: 1.7;">
+      <p><strong style="color: var(--ink);">Photo rights.</strong> All Tapleys photography is by Matt Anthony. Matt owns the photo rights. No usage restrictions apply.</p>
+      <p><strong style="color: var(--ink);">Photo verification complete.</strong> All photo-to-room assignments in this package have been verified against the actual CDN images on lrdstudio.ca/projects/residential/tapleys.</p>
+      <p><strong style="color: var(--ink);">Voice check.</strong> Every caption uses Lauren's own words and phrasing from her voice recordings. Review with Lauren to confirm tone feels right.</p>
+      <p><strong style="color: var(--ink);">Builder handle.</strong> Verify @tymacconstruction is the correct Instagram handle with Lauren before publishing.</p>
+      <p><strong style="color: var(--ink);">Hardware credit.</strong> M-Tack hardware is referenced in captions. Verify if they have an Instagram handle and tag accordingly.</p>
+      <p><strong style="color: var(--ink);">Cross-posting.</strong> Tapleys was shot by Matt. Companion posts should go on @mattanthonyphoto 2-3 days after LRD's posts. Matt's versions in his voice (material/photography perspective), tagging @lrdstudio_interiors as designer. LRD posts first since the project is Lauren's.</p>
+      <p><strong style="color: var(--ink);">Publish order.</strong> Space 4 carousels + 3 singles across 4-6 weeks. Pair each story sequence with its carousel, posting stories 2-3 hours before.</p>
+      <p><strong style="color: var(--ink);">Pinterest.</strong> All 10 pins link to lrdstudio.ca/projects/residential/tapleys. Schedule across 2-3 weeks, not all at once.</p>
+    </div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Tapleys Content Package</span><span>End</span></div>
+</div>
+
+</body>
+</html>

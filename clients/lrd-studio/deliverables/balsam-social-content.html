@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Balsam, Social Media Content Package | LRD Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #525252;
+    --faint: #9a9a9a;
+    --hairline: #d8d4cf;
+    --bg: #ffffff;
+    --accent: #8b6f47;
+    --cream: #f6f4f0;
+  }
+  @page { size: letter; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--ink);
+    background: #e8e4df;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    font-size: 10pt;
+  }
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    padding: 0.65in;
+    page-break-after: always;
+    position: relative;
+    background: var(--bg);
+    margin: 0.5in auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; box-shadow: none; }
+    .toolbar { display: none !important; }
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .toolbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink); color: #fff;
+    padding: 0.6rem 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 9pt;
+  }
+  .toolbar strong { color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; font-size: 8pt; }
+  .toolbar button {
+    font-family: 'Poppins', sans-serif; font-size: 8pt; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.35rem 0.75rem; border: 1px solid var(--accent);
+    background: var(--accent); color: #fff; cursor: pointer; border-radius: 3px;
+  }
+
+  /* Cover */
+  .cover {
+    background: var(--ink); color: #fff;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    min-height: 11in;
+  }
+  .cover::before {
+    content: ''; position: absolute;
+    top: 0.5in; left: 0.5in; right: 0.5in; bottom: 0.5in;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56pt; font-weight: 400; font-style: italic;
+    margin: 0 0 0.5rem; line-height: 1.05;
+  }
+  .cover .sub {
+    font-size: 10pt; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); margin-bottom: 2rem;
+  }
+  .cover .details {
+    font-size: 9pt; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em; line-height: 2;
+  }
+  .cover .details strong { color: rgba(255,255,255,0.7); font-weight: 500; }
+
+  /* Section headers */
+  h2.section {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28pt; font-weight: 400; margin: 0 0 0.3rem;
+    line-height: 1.1; color: var(--ink);
+  }
+  .section-meta {
+    font-size: 8pt; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--faint); margin-bottom: 0.4in; font-weight: 500;
+  }
+  .tag {
+    display: inline-block; font-size: 7pt; padding: 0.15rem 0.4rem;
+    background: var(--cream); border: 1px solid var(--hairline);
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em;
+    font-weight: 500; margin-right: 0.3rem;
+  }
+
+  /* Carousel grid */
+  .carousel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.15in;
+    margin-bottom: 0.25in;
+  }
+  .carousel-grid img {
+    width: 100%; aspect-ratio: 1;
+    object-fit: cover; border: 1px solid var(--hairline);
+  }
+  .carousel-grid .slide-num {
+    font-size: 7pt; text-align: center; color: var(--faint);
+    margin-top: 0.1rem; letter-spacing: 0.08em;
+  }
+
+  /* Caption block */
+  .caption-block {
+    background: var(--cream);
+    border-left: 3px solid var(--accent);
+    padding: 0.3in;
+    margin-bottom: 0.2in;
+    font-size: 9.5pt;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+  .caption-block .hook {
+    font-weight: 500; color: var(--ink);
+    font-size: 10.5pt; display: block;
+    margin-bottom: 0.5rem;
+  }
+  .caption-block .credits {
+    font-size: 8pt; color: var(--faint);
+    margin-top: 0.5rem; padding-top: 0.4rem;
+    border-top: 1px solid var(--hairline);
+  }
+  .caption-block .hashtags {
+    font-size: 7.5pt; color: var(--faint);
+    margin-top: 0.3rem; line-height: 1.6;
+  }
+
+  /* Hero image */
+  .hero-img {
+    width: 100%; max-height: 4.5in;
+    object-fit: cover; margin-bottom: 0.2in;
+    border: 1px solid var(--hairline);
+  }
+
+  /* Single post */
+  .single-post {
+    display: flex; gap: 0.3in;
+    margin-bottom: 0.35in;
+    padding-bottom: 0.35in;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .single-post img {
+    width: 2.8in; height: 2.8in;
+    object-fit: cover; border: 1px solid var(--hairline);
+    flex-shrink: 0;
+  }
+  .single-post .caption-block {
+    flex: 1; margin-bottom: 0;
+  }
+
+  /* Story grid */
+  .story-sequence {
+    margin-bottom: 0.35in;
+    padding-bottom: 0.35in;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .story-sequence:last-of-type { border-bottom: none; }
+  .story-sequence h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16pt; font-weight: 400; margin: 0 0 0.15in;
+    color: var(--ink);
+  }
+  .story-sequence .story-note {
+    font-size: 8pt; color: var(--faint); margin-bottom: 0.2in;
+    letter-spacing: 0.05em;
+  }
+  .story-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.15in;
+  }
+  .story-grid .story-frame {
+    position: relative;
+    border: 1px solid var(--hairline);
+    overflow: hidden;
+  }
+  .story-grid .story-frame img {
+    width: 100%; aspect-ratio: 9/16;
+    object-fit: cover; display: block;
+  }
+  .story-grid .story-frame .overlay-text {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: #fff; font-size: 7pt; padding: 0.4rem 0.25rem 0.2rem;
+    line-height: 1.4; text-align: center;
+  }
+  .story-grid .slide-num {
+    font-size: 7pt; text-align: center; color: var(--faint);
+    margin-top: 0.1rem; letter-spacing: 0.08em;
+  }
+
+  /* Pinterest table */
+  .pin-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 8.5pt; margin-bottom: 0.3in;
+  }
+  .pin-table th {
+    text-align: left; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--faint); font-weight: 500;
+    padding: 0.25rem; border-bottom: 1.5px solid var(--ink);
+  }
+  .pin-table td {
+    padding: 0.3rem 0.25rem; border-bottom: 1px solid var(--hairline);
+    vertical-align: middle; color: var(--muted);
+  }
+  .pin-table img {
+    width: 0.6in; height: 0.6in; object-fit: cover;
+    border: 1px solid var(--hairline);
+  }
+
+  /* LinkedIn */
+  .linkedin-block {
+    background: #f3f6f8; border-left: 3px solid #0a66c2;
+    padding: 0.3in; margin-bottom: 0.3in;
+    font-size: 9.5pt; line-height: 1.65; color: var(--muted);
+  }
+  .linkedin-block .li-tag {
+    font-size: 7pt; text-transform: uppercase; letter-spacing: 0.15em;
+    color: #0a66c2; font-weight: 600; margin-bottom: 0.5rem;
+  }
+
+  /* Footer */
+  .page-footer {
+    position: absolute; bottom: 0.4in; left: 0.65in; right: 0.65in;
+    display: flex; justify-content: space-between;
+    font-size: 7pt; letter-spacing: 0.1em; color: var(--faint); text-transform: uppercase;
+  }
+
+  .cdn { display: none; }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div><strong>LRD Studio</strong> &nbsp; Balsam Content Package, Review Before Publishing</div>
+  <button onclick="window.print()">Save as PDF</button>
+</div>
+
+<!-- COVER -->
+<div class="page cover">
+  <div class="sub">LRD Studio &middot; Content Package</div>
+  <h1>Balsam</h1>
+  <div class="details">
+    <strong>Whistler, BC</strong> &middot; New Build<br>
+    Builder: TYMAC Contracting<br>
+    Photography: Darby Magill<br>
+    Custom Furniture: Lock &amp; Mortise + Benson
+  </div>
+</div>
+
+<!-- CAROUSEL 1: THE KITCHEN STORY -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Project Showcase</span> <span class="tag">Instagram</span>
+    &nbsp; Post 1 of 5
+  </div>
+  <h2 class="section">The Kitchen Story</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">8 slides &middot; Narrative arc: hero kitchen wide &rarr; island straight-on &rarr; island end detail &rarr; built-in wine fridge &rarr; oak bar detail &rarr; alternate angle &rarr; dining room beyond &rarr; wine room</p>
+
+  <div class="carousel-grid">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/9ee945b7-f395-43b9-b206-015a4b2b86ec/Copyright-Darby-Magill-0441.jpg?format=500w" alt="Full kitchen with cold rolled steel hood and sloped ceiling"><div class="slide-num">01 &middot; The kitchen</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/72feb300-dfef-41ff-9a08-246c6ae333d6/Copyright-Darby-Magill-0531.jpg?format=500w" alt="Kitchen island with four stools and glass pendants"><div class="slide-num">02 &middot; The island</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/4d57e32d-86da-4672-9d05-cc0a07e433cf/Copyright-Darby-Magill-0541.jpg?format=500w" alt="Island end detail with glass-front wine cabinet"><div class="slide-num">03 &middot; Rustic oak texture</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/c4c3a5c3-087b-48e1-a836-78c8bccb7bd2/Copyright-Darby-Magill-0491.jpg?format=500w" alt="Built-in glassware display at island end"><div class="slide-num">04 &middot; Built-in display</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1b62fa5d-a30a-492d-8097-d2f15817db87/Copyright-Darby-Magill-0627.jpg?format=500w" alt="Island bar detail with oak panels and bread on cutting board"><div class="slide-num">05 &middot; Oak panels</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/c0d1d863-919a-4cf5-b938-7bd3e7ed8a3f/Copyright-Darby-Magill-0639.jpg?format=500w" alt="Glass shaker cabinets flanking steel hood"><div class="slide-num">06 &middot; Glass shaker cabinets</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/8e67d376-2c36-4870-bbcd-24677917d310/Copyright-Darby-Magill-0450.jpg?format=500w" alt="Dining room with live edge walnut table"><div class="slide-num">07 &middot; The dining room</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/fdfc8f71-30a0-438c-bb01-ccd4ca710b54/Copyright-Darby-Magill-0555.jpg?format=500w" alt="Glass wine room with cove lighting"><div class="slide-num">08 &middot; The wine room</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">This kitchen has a very tall sloped ceiling at the top of it, and that height needed an anchor.</span>
+    Cold rolled steel with horizontal framework for the hood, carried into the backsplash. Chisel limestone flanking the stove. Rustic brushed oak throughout. Metal, stone, and wood all layered together.
+    <br><br>
+    This is Balsam, in Whistler. One of our favorite kitchens to date.
+    <div class="credits">Photography @darbymagillphotography &middot; Build @tymaccontracting &middot; Custom furniture @lockandmortise + Benson</div>
+    <div class="hashtags">#interiordesign #whistler #kitchendesign #seatosky #coldrolledsteel #customkitchen #interiordesigner #bcdesign #mountainhome</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Balsam Content Package</span><span>Carousel 1 of 5</span></div>
+</div>
+
+<!-- CAROUSEL 2: THE WINE ROOM & ENTERTAINING -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Project Showcase</span> <span class="tag">Instagram</span>
+    &nbsp; Post 2 of 5
+  </div>
+  <h2 class="section">The Wine Room &amp; Entertaining</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">7 slides &middot; Narrative arc: wine room &rarr; dining table &rarr; chandelier detail &rarr; tiki bar &rarr; entertaining flow &rarr; kitchen anchoring &rarr; media room</p>
+
+  <div class="carousel-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/fdfc8f71-30a0-438c-bb01-ccd4ca710b54/Copyright-Darby-Magill-0555.jpg?format=500w" alt="Glass-enclosed wine room with cove lighting"><div class="slide-num">01 &middot; The wine room</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/8e67d376-2c36-4870-bbcd-24677917d310/Copyright-Darby-Magill-0450.jpg?format=500w" alt="Live edge walnut table with wishbone chairs"><div class="slide-num">02 &middot; The dining table</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/eee592ef-bfc7-4f27-a2ae-60be5a4a494c/Copyright-Darby-Magill-0634.jpg?format=500w" alt="Art deco brass and glass globe chandelier"><div class="slide-num">03 &middot; The chandelier</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/027cf793-e939-47b5-92c9-b39408cc27ac/Copyright-Darby-Magill-0657.jpg?format=500w" alt="Tiki bar with accordion window"><div class="slide-num">04 &middot; The teaky lounge</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/caeba788-5ea4-44b1-998f-290b30a5521a/Copyright-Darby-Magill-0626.jpg?format=500w" alt="Open floor plan from living to kitchen"><div class="slide-num">05 &middot; The flow</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/9ee945b7-f395-43b9-b206-015a4b2b86ec/Copyright-Darby-Magill-0441.jpg?format=500w" alt="Kitchen anchoring the entertaining flow"><div class="slide-num">06 &middot; The kitchen</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/47b79596-d4a9-4d7a-8854-43de31d04205/Copyright-Darby-Magill-0693.jpg?format=500w" alt="Media room with tiki bar on the left"><div class="slide-num">07 &middot; The media room</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">Next to the kitchen there's this jewel box of a wine room.</span>
+    Chisel limestone on the back wall, bottles mounted on brass brackets, cove lighting throughout. It glows. Open the sliding doors to the deck and the whole space becomes one big entertaining room.
+    <br><br>
+    Downstairs, the clients' teaky lounge opens to an accordion window with a bar top. This home was designed around gathering.
+    <div class="credits">Photography @darbymagillphotography &middot; Build @tymaccontracting</div>
+    <div class="hashtags">#wineroom #interiordesign #whistler #entertainingathome #seatosky #diningroom #custombar #mountainhome #bcinteriors</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Balsam Content Package</span><span>Carousel 2 of 5</span></div>
+</div>
+
+<!-- CAROUSEL 3: THE HIDDEN DETAILS -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Material &amp; Detail</span> <span class="tag">Instagram</span>
+    &nbsp; Post 3 of 5
+  </div>
+  <h2 class="section">The Hidden Details</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">8 slides &middot; Narrative arc: underlit stairs &rarr; concealed storage &rarr; angled entry tile &rarr; wardrobe &rarr; concealed wine fridge &rarr; media room closet &rarr; stairwell looking up &rarr; powder room</p>
+
+  <div class="carousel-grid">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3fb1a61c-5e40-43ca-b381-deb53fee5db9/Copyright-Darby-Magill-0678.jpg?format=500w" alt="Oak stairs with underlit risers"><div class="slide-num">01 &middot; Underlit stairs</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/f0857a8e-af73-4521-bae5-a94eb62898cf/Copyright-Darby-Magill-0696.jpg?format=500w" alt="Concealed paneled storage with invisible handles"><div class="slide-num">02 &middot; Invisible handles</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/a5991167-d278-4a43-8e96-daa1ec339f45/Copyright-Darby-Magill-0432.jpg?format=500w" alt="Entry with angled slate tile floor"><div class="slide-num">03 &middot; Angled tile</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3fd1a88d-8ab3-4711-baa2-081b0179d7f6/Copyright-Darby-Magill-0575.jpg?format=500w" alt="Open concept wardrobe with underlit rods"><div class="slide-num">04 &middot; Underlit wardrobe</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/c4c3a5c3-087b-48e1-a836-78c8bccb7bd2/Copyright-Darby-Magill-0491.jpg?format=500w" alt="Concealed wine fridge built into island"><div class="slide-num">05 &middot; Hidden fridge</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/47b79596-d4a9-4d7a-8854-43de31d04205/Copyright-Darby-Magill-0693.jpg?format=500w" alt="Media room with concealed closet door"><div class="slide-num">06 &middot; Concealed door</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/4fb16412-c653-44ba-8979-268d4dd784eb/Copyright-Darby-Magill-0683.jpg?format=500w" alt="Looking up stairwell to wine room"><div class="slide-num">07 &middot; Looking up</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/550d3b41-25b9-41b7-8067-9e07c4ac8409/Copyright-Darby-Magill-0723.jpg?format=500w" alt="Powder room with ocean black natural stone"><div class="slide-num">08 &middot; The powder room</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">The things we spend the most time on are the things you're not supposed to notice.</span>
+    Each stair is underlit, a warm glow guiding you through the house at night. The entry tiles follow the angled floor line, a detail that feels inevitable once you see it. Cabinetry inset with wall paneling you wouldn't know was there.
+    <br><br>
+    The best design decisions are the ones that disappear into how a home actually works.
+    <div class="credits">Photography @darbymagillphotography &middot; Build @tymaccontracting</div>
+    <div class="hashtags">#interiordetails #millworkdesign #customdetails #whistler #seatosky #bcinteriors #staircasedesign #wardrobedesign #hiddendetails</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Balsam Content Package</span><span>Carousel 3 of 5</span></div>
+</div>
+
+<!-- CAROUSEL 4: THE PRIMARY SUITE -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Project Showcase</span> <span class="tag">Instagram</span>
+    &nbsp; Post 4 of 5
+  </div>
+  <h2 class="section">The Primary Suite</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">7 slides &middot; Narrative arc: ensuite tub detail &rarr; ensuite wide &rarr; bedroom mountain view &rarr; breakfast tray &rarr; accent chair &rarr; wardrobe &rarr; powder room</p>
+
+  <div class="carousel-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/d70fd53d-43bd-4a9e-846f-8f31cc1be22f/Copyright-Darby-Magill-0569.jpg?format=500w" alt="Freestanding black tub with breccia sarda accent wall"><div class="slide-num">01 &middot; The black tub</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/d955c34d-d3d6-40b2-857a-30c4fd16c155/Copyright-Darby-Magill-0474.jpg?format=500w" alt="Full ensuite with tub centered in the room"><div class="slide-num">02 &middot; The full ensuite</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/06bef781-d034-482d-bfac-d0aa9983977e/Copyright-Darby-Magill-0579.jpg?format=500w" alt="Mountain view through corner windows with breakfast tray"><div class="slide-num">03 &middot; The mountain view</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/c8079a66-6691-4128-92ef-8b59b074cfcc/Copyright-Darby-Magill-0585.jpg?format=500w" alt="Breakfast tray on fur throw with mountains beyond"><div class="slide-num">04 &middot; Breakfast in bed</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/8d763538-d6a0-4448-b209-662d485b7adc/Copyright-Darby-Magill-0591.jpg?format=500w" alt="Accent chair with mushroom side table"><div class="slide-num">05 &middot; The reading corner</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3fd1a88d-8ab3-4711-baa2-081b0179d7f6/Copyright-Darby-Magill-0575.jpg?format=500w" alt="Open concept wardrobe with underlit rods"><div class="slide-num">06 &middot; The wardrobe</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/550d3b41-25b9-41b7-8067-9e07c4ac8409/Copyright-Darby-Magill-0723.jpg?format=500w" alt="Powder room with ocean black natural stone"><div class="slide-num">07 &middot; The powder room</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">The primary ensuite has the tub right in the centre of the room.</span>
+    Freestanding and black, with a breccia sarda accent wall behind it. Every material chosen to be honest about what it is. Stone that looks like stone. Wood that still has its grain.
+    <br><br>
+    The bedroom opens to panoramic mountain views. We kept the palette quiet so the landscape could do the work.
+    <div class="credits">Photography @darbymagillphotography &middot; Build @tymaccontracting</div>
+    <div class="hashtags">#primarysuite #bathroomdesign #interiordesign #whistler #freestandingtub #mountainview #powderroom #ensuitedesign</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Balsam Content Package</span><span>Carousel 4 of 5</span></div>
+</div>
+
+<!-- CAROUSEL 5: THE POWDER ROOM & STONE STORY -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Material &amp; Detail</span> <span class="tag">Instagram</span>
+    &nbsp; Post 5 of 5
+  </div>
+  <h2 class="section">The Powder Room &amp; Stone Story</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">6 slides &middot; Narrative arc: powder room &rarr; Kingston slate fireplace &rarr; living room wide &rarr; breccia sarda tub wall &rarr; chisel limestone kitchen &rarr; chisel limestone wine room</p>
+
+  <div class="carousel-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/550d3b41-25b9-41b7-8067-9e07c4ac8409/Copyright-Darby-Magill-0723.jpg?format=500w" alt="Powder room with ocean black natural stone and backlit mirror"><div class="slide-num">01 &middot; Ocean black stone</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/f8b62742-b359-46e3-8484-fe6ac16b83f8/Copyright-Darby-Magill-0544.jpg?format=500w" alt="Kingston slate fireplace with oak mantel"><div class="slide-num">02 &middot; Kingston slate</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/55ec6322-66b9-4954-ae6b-c2d671b0ae79/Copyright-Darby-Magill-0552.jpg?format=500w" alt="Full living room with Kingston slate fireplace"><div class="slide-num">03 &middot; The living room</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/d70fd53d-43bd-4a9e-846f-8f31cc1be22f/Copyright-Darby-Magill-0569.jpg?format=500w" alt="Breccia sarda accent wall behind black tub"><div class="slide-num">04 &middot; Breccia sarda</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/9ee945b7-f395-43b9-b206-015a4b2b86ec/Copyright-Darby-Magill-0441.jpg?format=500w" alt="Chisel limestone flanking steel hood"><div class="slide-num">05 &middot; Chisel limestone</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/fdfc8f71-30a0-438c-bb01-ccd4ca710b54/Copyright-Darby-Magill-0555.jpg?format=500w" alt="Chisel limestone repeated in wine room"><div class="slide-num">06 &middot; Stone repeated</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">Every stone in this home tells a different story.</span>
+    Ocean black natural stone in the powder room, shifting with the light. Kingston slate from Ontario on the fireplace, connecting the clients to where they came from. Chisel limestone flanking the kitchen hood and repeated in the wine room.
+    <br><br>
+    Every slab is different. You can't predict exactly what it will look like installed. That's the whole point.
+    <div class="credits">Photography @darbymagillphotography &middot; Build @tymaccontracting</div>
+    <div class="hashtags">#naturalstone #interiordesign #whistler #powderroom #limestone #materialpalette #stonedesign #seatosky #bcinteriors #mountainhome</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Balsam Content Package</span><span>Carousel 5 of 5</span></div>
+</div>
+
+<!-- SINGLE POSTS -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Single Posts</span> <span class="tag">Instagram</span>
+  </div>
+  <h2 class="section">Single Posts</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">3 standalone posts for high-performing individual images</p>
+
+  <div class="single-post">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/9ee945b7-f395-43b9-b206-015a4b2b86ec/Copyright-Darby-Magill-0441.jpg?format=500w" alt="Kitchen with cold rolled steel hood">
+    <div class="caption-block">
+      <span class="hook">The Steel Hood</span>
+      Cold rolled steel with horizontal framework, anchoring a kitchen with very tall sloped ceilings. Chisel limestone flanking the stove. Rustic brushed oak warming everything around it.
+      <br><br>
+      This is Balsam in Whistler. One of our favorite material combinations.
+      <div class="credits">Photography @darbymagillphotography &middot; Build @tymaccontracting</div>
+      <div class="hashtags">#kitchendesign #coldrolledsteel #interiordesign #whistler #customkitchen #materialpalette</div>
+    </div>
+  </div>
+
+  <div class="single-post">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/550d3b41-25b9-41b7-8067-9e07c4ac8409/Copyright-Darby-Magill-0723.jpg?format=500w" alt="Powder room with ocean black natural stone">
+    <div class="caption-block">
+      <span class="hook">The Powder Room</span>
+      Ocean black natural stone, a floating carmana vanity, and a backlit mirror that makes the whole space glow.
+      <br><br>
+      A small room that holds a lot of material presence. Balsam, Whistler.
+      <div class="credits">Photography @darbymagillphotography</div>
+      <div class="hashtags">#powderroom #bathroomdesign #naturalstone #interiordesign #whistler #carmana #seatosky</div>
+    </div>
+  </div>
+
+  <div class="single-post" style="border-bottom: none;">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3fb1a61c-5e40-43ca-b381-deb53fee5db9/Copyright-Darby-Magill-0678.jpg?format=500w" alt="Underlit staircase with glass railing">
+    <div class="caption-block">
+      <span class="hook">The Underlit Stairs</span>
+      The stairs at Balsam. Each step underlit with a warm glow, glass railing with black mounts, looking up toward the wine room.
+      <br><br>
+      Sometimes the simplest details change how a home feels after dark. These stairs are quiet during the day and come alive at night.
+      <div class="credits">Photography @darbymagillphotography &middot; Build @tymaccontracting</div>
+      <div class="hashtags">#staircasedesign #underlitstairs #interiordetails #whistler #customstairs #interiordesign</div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>LRD Studio &middot; Balsam Content Package</span><span>Single Posts</span></div>
+</div>
+
+<!-- STORIES -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Stories</span> <span class="tag">Instagram</span> 4 sequences &middot; 9:16 vertical &middot; Static with text overlay
+  </div>
+  <h2 class="section">Instagram Stories</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">Publish each sequence 2-3 hours before its companion carousel post. CTA: "See our latest post" or "New on the feed."</p>
+
+  <div class="story-sequence">
+    <h3>Sequence 1 &mdash; The Kitchen</h3>
+    <div class="story-note">Supports Carousel 1 &middot; Post same day as Kitchen carousel, 2-3 hours before</div>
+    <div class="story-grid">
+      <div>
+        <div class="story-frame">
+          <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/9ee945b7-f395-43b9-b206-015a4b2b86ec/Copyright-Darby-Magill-0441.jpg?format=500w" alt="Kitchen wide">
+          <div class="overlay-text">Cold rolled steel. Chisel limestone. Rustic oak.</div>
+        </div>
+        <div class="slide-num">Frame 1</div>
+      </div>
+      <div>
+        <div class="story-frame">
+          <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1b62fa5d-a30a-492d-8097-d2f15817db87/Copyright-Darby-Magill-0627.jpg?format=500w" alt="Island bar detail">
+          <div class="overlay-text">One of our favorite kitchens to date.</div>
+        </div>
+        <div class="slide-num">Frame 2</div>
+      </div>
+      <div>
+        <div class="story-frame">
+          <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/c0d1d863-919a-4cf5-b938-7bd3e7ed8a3f/Copyright-Darby-Magill-0639.jpg?format=500w" alt="Kitchen alternate angle">
+          <div class="overlay-text">The broom closet? You'd never know it's there.</div>
+        </div>
+        <div class="slide-num">Frame 3</div>
+      </div>
+      <div>
+        <div class="story-frame">
+          <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/72feb300-dfef-41ff-9a08-246c6ae333d6/Copyright-Darby-Magill-0531.jpg?format=500w" alt="Kitchen island straight-on">
+          <div class="overlay-text">New on the feed &mdash; Balsam Kitchen.</div>
+        </div>
+        <div class="slide-num">Frame 4</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-sequence">
+    <h3>Sequence 2 &mdash; Wine Room &amp; Entertaining</h3>
+    <div class="story-note">Supports Carousel 2 &middot; Post same day as Wine Room carousel</div>
+    <div class="story-grid">
+      <div>
+        <div class="story-frame">
+          <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/fdfc8f71-30a0-438c-bb01-ccd4ca710b54/Copyright-Darby-Magill-0555.jpg?format=500w" alt="Wine room">
+          <div class="overlay-text">A jewel box of a wine room.</div>
+        </div>
+        <div class="slide-num">Frame 1</div>
+      </div>
+      <div>
+        <div class="story-frame">
+          <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/027cf793-e939-47b5-92c9-b39408cc27ac/Copyright-Darby-Magill-0657.jpg?format=500w" alt="Tiki bar">
+          <div class="overlay-text">They call it the teaky lounge.</div>
+        </div>
+        <div class="slide-num">Frame 2</div>
+      </div>
+      <div>
+        <div class="story-frame">
+          <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/8e67d376-2c36-4870-bbcd-24677917d310/Copyright-Darby-Magill-0450.jpg?format=500w" alt="Dining room">
+          <div class="overlay-text">This home was designed around gathering.</div>
+        </div>
+        <div class="slide-num">Frame 3</div>
+      </div>
+      <div>
+        <div class="story-frame">
+          <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/caeba788-5ea4-44b1-998f-290b30a5521a/Copyright-Darby-Magill-0626.jpg?format=500w" alt="Open floor plan">
+          <div class="overlay-text">See our latest post.</div>
+        </div>
+        <div class="slide-num">Frame 4</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-sequence">
+    <h3>Sequence 3 &mdash; Hidden Details</h3>
+    <div class="story-note">Supports Carousel 3 &middot; Post same day as Hidden Details carousel</div>
+    <div class="story-grid">
+      <div>
+        <div class="story-frame">
+          <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3fb1a61c-5e40-43ca-b381-deb53fee5db9/Copyright-Darby-Magill-0678.jpg?format=500w" alt="Underlit stairs">
+          <div class="overlay-text">Each step underlit. A warm glow guiding you up.</div>
+        </div>
+        <div class="slide-num">Frame 1</div>
+      </div>
+      <div>
+        <div class="story-frame">
+          <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/f0857a8e-af73-4521-bae5-a94eb62898cf/Copyright-Darby-Magill-0696.jpg?format=500w" alt="Concealed storage">
+          <div class="overlay-text">You wouldn't know it was there.</div>
+        </div>
+        <div class="slide-num">Frame 2</div>
+      </div>
+      <div>
+        <div class="story-frame">
+          <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3fd1a88d-8ab3-4711-baa2-081b0179d7f6/Copyright-Darby-Magill-0575.jpg?format=500w" alt="Wardrobe">
+          <div class="overlay-text">Even the wardrobe rods are underlit.</div>
+        </div>
+        <div class="slide-num">Frame 3</div>
+      </div>
+      <div>
+        <div class="story-frame">
+          <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/550d3b41-25b9-41b7-8067-9e07c4ac8409/Copyright-Darby-Magill-0723.jpg?format=500w" alt="Powder room">
+          <div class="overlay-text">New on the feed &mdash; the things we spend the most time on.</div>
+        </div>
+        <div class="slide-num">Frame 4</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-sequence">
+    <h3>Sequence 4 &mdash; The Stone &amp; Ontario Story</h3>
+    <div class="story-note">Supports Carousel 5 &middot; Post same day as Powder Room &amp; Stone carousel</div>
+    <div class="story-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div>
+        <div class="story-frame">
+          <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/550d3b41-25b9-41b7-8067-9e07c4ac8409/Copyright-Darby-Magill-0723.jpg?format=500w" alt="Powder room">
+          <div class="overlay-text">Ocean black natural stone. One of our favourite designs.</div>
+        </div>
+        <div class="slide-num">Frame 1</div>
+      </div>
+      <div>
+        <div class="story-frame">
+          <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/f8b62742-b359-46e3-8484-fe6ac16b83f8/Copyright-Darby-Magill-0544.jpg?format=500w" alt="Kingston slate fireplace">
+          <div class="overlay-text">Kingston slate. From Ontario, where the clients are from.</div>
+        </div>
+        <div class="slide-num">Frame 2</div>
+      </div>
+      <div>
+        <div class="story-frame">
+          <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/55ec6322-66b9-4954-ae6b-c2d671b0ae79/Copyright-Darby-Magill-0552.jpg?format=500w" alt="Living room wide">
+          <div class="overlay-text">Every material tells a story. See our latest post.</div>
+        </div>
+        <div class="slide-num">Frame 3</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>LRD Studio &middot; Balsam Content Package</span><span>Stories</span></div>
+</div>
+
+<!-- PINTEREST + LINKEDIN -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Pinterest</span> 12 pins &middot; All linking to lrdstudio.ca/projects/residential/balsam
+  </div>
+  <h2 class="section">Pinterest Pins</h2>
+
+  <table class="pin-table">
+    <thead><tr><th></th><th>Pin Title (SEO optimized)</th><th>Board</th></tr></thead>
+    <tbody>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/9ee945b7-f395-43b9-b206-015a4b2b86ec/Copyright-Darby-Magill-0441.jpg?format=100w"></td><td>Whistler Kitchen Design with Cold Rolled Steel Hood and Chisel Limestone Backsplash</td><td>Kitchen Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/72feb300-dfef-41ff-9a08-246c6ae333d6/Copyright-Darby-Magill-0531.jpg?format=100w"></td><td>Rustic Oak Kitchen Island with Glass Pendant Lights and Professional Range</td><td>Kitchen Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/fdfc8f71-30a0-438c-bb01-ccd4ca710b54/Copyright-Darby-Magill-0555.jpg?format=100w"></td><td>Glass Enclosed Wine Room with Cove Lighting and Chisel Limestone Wall</td><td>Wine Room Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/550d3b41-25b9-41b7-8067-9e07c4ac8409/Copyright-Darby-Magill-0723.jpg?format=100w"></td><td>Powder Room with Ocean Black Natural Stone Wall and Backlit Mirror</td><td>Powder Room</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3fb1a61c-5e40-43ca-b381-deb53fee5db9/Copyright-Darby-Magill-0678.jpg?format=100w"></td><td>Underlit Oak Staircase with Glass Railing and Warm Glow Risers</td><td>Staircase Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/d70fd53d-43bd-4a9e-846f-8f31cc1be22f/Copyright-Darby-Magill-0569.jpg?format=100w"></td><td>Freestanding Black Tub with Breccia Sarda Stone Accent Wall Whistler BC</td><td>Bathroom Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/f8b62742-b359-46e3-8484-fe6ac16b83f8/Copyright-Darby-Magill-0544.jpg?format=100w"></td><td>Kingston Slate Fireplace with Oak Mantel and Firewood Storage</td><td>Fireplace Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/8e67d376-2c36-4870-bbcd-24677917d310/Copyright-Darby-Magill-0450.jpg?format=100w"></td><td>Live Edge Walnut Dining Table with Art Deco Globe Chandelier</td><td>Dining Room Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3fd1a88d-8ab3-4711-baa2-081b0179d7f6/Copyright-Darby-Magill-0575.jpg?format=100w"></td><td>Open Concept Walk-In Wardrobe with Underlit Hanging Rods</td><td>Wardrobe Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/027cf793-e939-47b5-92c9-b39408cc27ac/Copyright-Darby-Magill-0657.jpg?format=100w"></td><td>Custom Home Bar with Accordion Window and Floating Shelves Whistler</td><td>Home Bar Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/a5991167-d278-4a43-8e96-daa1ec339f45/Copyright-Darby-Magill-0432.jpg?format=100w"></td><td>Mountain Home Entry with Angled Slate Tile and Oak Paneled Walls</td><td>Entry Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/06bef781-d034-482d-bfac-d0aa9983977e/Copyright-Darby-Magill-0579.jpg?format=100w"></td><td>Primary Bedroom with Panoramic Mountain View and Corner Windows Whistler</td><td>Bedroom Design</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-meta" style="margin-top: 0.4in;">
+    <span class="tag">LinkedIn</span> 2 posts
+  </div>
+  <h2 class="section" style="font-size: 22pt;">LinkedIn</h2>
+
+  <div class="linkedin-block">
+    <div class="li-tag">The Material Story</div>
+    We just wrapped Balsam, a new build in Whistler designed from the ground up with TYMAC Contracting.
+    <br><br>
+    Cold rolled steel for the kitchen hood. Chisel limestone flanking the range and repeated in the wine room. Kingston slate from Ontario for the fireplace, connecting the clients to home. Every room has a moment where two or three materials meet.
+    <br><br>
+    The best spaces aren't about any single finish. They're about how honest materials interact.
+    <br><br>
+    Photography by Darby Magill &middot; Build by TYMAC Contracting &middot; Custom furniture by Lock &amp; Mortise and Benson &middot; lrdstudio.ca/projects/residential/balsam
+  </div>
+
+  <div class="linkedin-block">
+    <div class="li-tag">The Concealed Design &middot; Educational</div>
+    One of the things we think about a lot at LRD Studio is what to hide.
+    <br><br>
+    At Balsam in Whistler, the broom closet is concealed behind flat panel millwork. Entry cabinetry reads as architecture, not storage. A closet door in the media room disappears into the wall. The wardrobe rods are underlit.
+    <br><br>
+    The most thoughtful design decisions are the ones nobody notices. When everything functional feels invisible, what's left is a home that simply works.
+  </div>
+
+  <div class="page-footer"><span>LRD Studio &middot; Balsam Content Package</span><span>Pinterest + LinkedIn</span></div>
+</div>
+
+<!-- PUBLISHING NOTES -->
+<div class="page" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+  <div style="max-width: 5in;">
+    <div style="font-size: 8pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--faint); margin-bottom: 1rem;">Publishing Notes</div>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; font-weight: 400; margin: 0 0 1.5rem;">Before we publish.</h2>
+
+    <div style="text-align: left; font-size: 9.5pt; color: var(--muted); line-height: 1.7;">
+      <p><strong style="color: var(--ink);">Photo rights.</strong> All Balsam photography is by Darby Magill. Confirm usage rights with Lauren before any of this content goes live. If rights are limited, these posts hold as drafts until resolved.</p>
+      <p><strong style="color: var(--ink);">Voice check.</strong> Every caption uses Lauren's own words and phrasing from her voice recordings. Review with Lauren to confirm tone feels right.</p>
+      <p><strong style="color: var(--ink);">Publish order.</strong> Space the 5 carousels + 3 singles across 4-6 weeks. Post companion stories 2-3 hours before each carousel.</p>
+      <p><strong style="color: var(--ink);">Builder handle.</strong> Verify @tymaccontracting with Lauren before publishing. Also verify @lockandmortise and Benson handles.</p>
+      <p><strong style="color: var(--ink);">Cross-posting.</strong> Balsam was not shot by Matt. No companion posts on @mattanthonyphoto for this project. Cross-posting applies to Sunridge, Balsam 2, and future projects Matt photographs.</p>
+      <p><strong style="color: var(--ink);">Kingston slate.</strong> The fireplace stone is from Ontario, where the clients are originally from. This is a personal detail worth including but use once per content cycle.</p>
+      <p><strong style="color: var(--ink);">"Teaky lounge."</strong> The clients' name for the media room bar. Use this detail sparingly (once per content cycle) to keep it charming, not repetitive.</p>
+      <p><strong style="color: var(--ink);">Pinterest.</strong> All 12 pins link to lrdstudio.ca/projects/residential/balsam. Schedule across 2-3 weeks, not all at once.</p>
+    </div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Balsam Content Package</span><span>End</span></div>
+</div>
+
+</body>
+</html>

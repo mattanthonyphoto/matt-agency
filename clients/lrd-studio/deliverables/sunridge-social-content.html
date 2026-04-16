@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sunridge, Social Media Content Package | LRD Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #525252;
+    --faint: #9a9a9a;
+    --hairline: #d8d4cf;
+    --bg: #ffffff;
+    --accent: #8b6f47;
+    --cream: #f6f4f0;
+  }
+  @page { size: letter; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--ink);
+    background: #e8e4df;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    font-size: 10pt;
+  }
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    padding: 0.65in;
+    page-break-after: always;
+    position: relative;
+    background: var(--bg);
+    margin: 0.5in auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; box-shadow: none; }
+    .toolbar { display: none !important; }
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .toolbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink); color: #fff;
+    padding: 0.6rem 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 9pt;
+  }
+  .toolbar strong { color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; font-size: 8pt; }
+  .toolbar button {
+    font-family: 'Poppins', sans-serif; font-size: 8pt; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.35rem 0.75rem; border: 1px solid var(--accent);
+    background: var(--accent); color: #fff; cursor: pointer; border-radius: 3px;
+  }
+
+  /* Cover */
+  .cover {
+    background: var(--ink); color: #fff;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    min-height: 11in;
+  }
+  .cover::before {
+    content: ''; position: absolute;
+    top: 0.5in; left: 0.5in; right: 0.5in; bottom: 0.5in;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56pt; font-weight: 400; font-style: italic;
+    margin: 0 0 0.5rem; line-height: 1.05;
+  }
+  .cover .sub {
+    font-size: 10pt; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); margin-bottom: 2rem;
+  }
+  .cover .details {
+    font-size: 9pt; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em; line-height: 2;
+  }
+  .cover .details strong { color: rgba(255,255,255,0.7); font-weight: 500; }
+
+  /* Section headers */
+  h2.section {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28pt; font-weight: 400; margin: 0 0 0.3rem;
+    line-height: 1.1; color: var(--ink);
+  }
+  .section-meta {
+    font-size: 8pt; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--faint); margin-bottom: 0.4in; font-weight: 500;
+  }
+  .tag {
+    display: inline-block; font-size: 7pt; padding: 0.15rem 0.4rem;
+    background: var(--cream); border: 1px solid var(--hairline);
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em;
+    font-weight: 500; margin-right: 0.3rem;
+  }
+
+  /* Carousel grid */
+  .carousel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.15in;
+    margin-bottom: 0.25in;
+  }
+  .carousel-grid img {
+    width: 100%; aspect-ratio: 1;
+    object-fit: cover; border: 1px solid var(--hairline);
+  }
+  .carousel-grid .slide-num {
+    font-size: 7pt; text-align: center; color: var(--faint);
+    margin-top: 0.1rem; letter-spacing: 0.08em;
+  }
+
+  /* Caption block */
+  .caption-block {
+    background: var(--cream);
+    border-left: 3px solid var(--accent);
+    padding: 0.3in;
+    margin-bottom: 0.2in;
+    font-size: 9.5pt;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+  .caption-block .hook {
+    font-weight: 500; color: var(--ink);
+    font-size: 10.5pt; display: block;
+    margin-bottom: 0.5rem;
+  }
+  .caption-block .credits {
+    font-size: 8pt; color: var(--faint);
+    margin-top: 0.5rem; padding-top: 0.4rem;
+    border-top: 1px solid var(--hairline);
+  }
+  .caption-block .hashtags {
+    font-size: 7.5pt; color: var(--faint);
+    margin-top: 0.3rem; line-height: 1.6;
+  }
+
+  /* Hero image */
+  .hero-img {
+    width: 100%; max-height: 4.5in;
+    object-fit: cover; margin-bottom: 0.2in;
+    border: 1px solid var(--hairline);
+  }
+
+  /* Single post */
+  .single-post {
+    display: flex; gap: 0.3in;
+    margin-bottom: 0.35in;
+    padding-bottom: 0.35in;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .single-post img {
+    width: 2.8in; height: 2.8in;
+    object-fit: cover; border: 1px solid var(--hairline);
+    flex-shrink: 0;
+  }
+  .single-post .caption-block {
+    flex: 1; margin-bottom: 0;
+  }
+
+  /* Story grid */
+  .story-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.15in;
+    margin-bottom: 0.25in;
+  }
+  .story-frame {
+    position: relative;
+    aspect-ratio: 9/16;
+    overflow: hidden;
+    border: 1px solid var(--hairline);
+  }
+  .story-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .story-frame .overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: #fff; padding: 0.3rem 0.2rem;
+    font-size: 6pt; line-height: 1.4;
+    text-align: center;
+  }
+  .story-frame .frame-num {
+    position: absolute; top: 0.15rem; left: 0.2rem;
+    font-size: 6pt; color: rgba(255,255,255,0.6);
+    letter-spacing: 0.08em;
+  }
+
+  /* Pinterest table */
+  .pin-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 8.5pt; margin-bottom: 0.3in;
+  }
+  .pin-table th {
+    text-align: left; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--faint); font-weight: 500;
+    padding: 0.25rem; border-bottom: 1.5px solid var(--ink);
+  }
+  .pin-table td {
+    padding: 0.3rem 0.25rem; border-bottom: 1px solid var(--hairline);
+    vertical-align: middle; color: var(--muted);
+  }
+  .pin-table img {
+    width: 0.6in; height: 0.6in; object-fit: cover;
+    border: 1px solid var(--hairline);
+  }
+
+  /* LinkedIn */
+  .linkedin-block {
+    background: #f3f6f8; border-left: 3px solid #0a66c2;
+    padding: 0.3in; margin-bottom: 0.3in;
+    font-size: 9.5pt; line-height: 1.65; color: var(--muted);
+  }
+  .linkedin-block .li-tag {
+    font-size: 7pt; text-transform: uppercase; letter-spacing: 0.15em;
+    color: #0a66c2; font-weight: 600; margin-bottom: 0.5rem;
+  }
+
+  /* Footer */
+  .page-footer {
+    position: absolute; bottom: 0.4in; left: 0.65in; right: 0.65in;
+    display: flex; justify-content: space-between;
+    font-size: 7pt; letter-spacing: 0.1em; color: var(--faint); text-transform: uppercase;
+  }
+
+  .cdn { display: none; } /* hide CDN base for clean reading */
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div><strong>LRD Studio</strong> &nbsp; Sunridge Content Package, Review Before Publishing</div>
+  <button onclick="window.print()">Save as PDF</button>
+</div>
+
+<!-- COVER -->
+<div class="page cover">
+  <div class="sub">LRD Studio &middot; Content Package</div>
+  <h1>Sunridge</h1>
+  <div class="details">
+    <strong>Whistler, BC</strong> &middot; Renovation<br>
+    Builder: Gavan Construction<br>
+    Photography: Matt Anthony
+  </div>
+</div>
+
+<!-- CAROUSEL 1: THE STONE TOWER -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Project Showcase</span> <span class="tag">Instagram</span>
+    &nbsp; Post 1 of 5
+  </div>
+  <h2 class="section">The Stone Tower</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">8 slides &middot; Narrative arc: stone tower with floating treads &rarr; bar in stone arch &rarr; powder room inside tower &rarr; arched mirror detail &rarr; tower meets living room &rarr; stone continuing into fireplace &rarr; wine fridge and sparkling water &rarr; back to the tower, full circle</p>
+
+  <div class="carousel-grid">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/b30d42a9-6e68-4cc0-85ca-0e2959a353d8/sunridge-whistle-web--27.jpg?format=500w" alt="Round stone tower with floating wood treads and glass railing"><div class="slide-num">01 &middot; The tower</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/5461255e-32f2-4b6d-9ac7-6128ec44ae2c/sunridge-whistle-web--24.jpg?format=500w" alt="Bar embedded in stone arch with cedar ceiling and glassware"><div class="slide-num">02 &middot; The bar inside</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1fdf4835-9bd6-4409-aabe-6efacff267cd/sunridge-whistle-web--12.jpg?format=500w" alt="Wine cellar inside stone tower with curved racks and barrel"><div class="slide-num">03 &middot; Wine cellar</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/bff2e130-2286-45b3-b0ff-1a8637c14131/sunridge-whistle-web--22.jpg?format=500w" alt="Powder room with arched mirror and pedestal sink"><div class="slide-num">04 &middot; Hidden powder room</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/79ea3751-cffd-47ca-b538-104aed2683d2/sunridge-whistle-web--23.jpg?format=500w" alt="Arched mirror detail with pedestal sink and backlit glow"><div class="slide-num">05 &middot; Arched mirror</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/cee7c3d4-d7ef-4649-812a-f86317e0bf31/sunridge-whistle-web-revision-3.jpg?format=500w" alt="Lower living room where stone tower meets the curved staircase"><div class="slide-num">06 &middot; Tower meets living</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/38b3a48b-f383-42f6-8c9c-46b1dbc3b72a/sunridge-whistle-web--26.jpg?format=500w" alt="Double-height stone fireplace with carved art and Bachi chandelier"><div class="slide-num">07 &middot; Stone into fireplace</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/ed4c7830-5cc1-4c86-b919-3a1a830703dd/sunridge-whistle-web--29.jpg?format=500w" alt="Living room overhead view looking down at fireplace and chandelier"><div class="slide-num">08 &middot; Full circle</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">There's a round stone structure in the middle of this house. Everything revolves around it.</span>
+    Floating wood treads and glass wrap the outside. Inside: a wine fridge, a hot-cold-sparkling water faucet, and a cedar ceiling with lit shelving. Walk around the other side and you're in a powder room with a backlit arched mirror.
+    <br><br>
+    The stone became the thread connecting old and new at Sunridge. It runs from the kitchen through the stairs and into the living space.
+    <div class="credits">Photography @mattanthonyphoto</div>
+    <div class="hashtags">#whistler #interiordesign #staircasedesign #naturalstone #seatosky #loghomerenovation #powderroom #interiordesigner #bcdesign</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Sunridge Content Package</span><span>Carousel 1 of 5</span></div>
+</div>
+
+<!-- CAROUSEL 2: HERITAGE MEETS MODERN -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Design Philosophy</span> <span class="tag">Instagram</span>
+    &nbsp; Post 2 of 5
+  </div>
+  <h2 class="section">Heritage Meets Modern</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">7 slides &middot; Narrative arc: marble island against log wall &rarr; new oak meets original log &rarr; full kitchen, logs and modern &rarr; double-height stone fireplace &rarr; modern console against log entry &rarr; art and lighting on log walls &rarr; the exterior, heritage form</p>
+
+  <div class="carousel-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/174e5f25-a0ef-4302-818c-ed0c90dd651a/sunridge-whistle-web--42.jpg?format=500w" alt="Kitchen wide from living room with log wall, black island, bar stools"><div class="slide-num">01 &middot; Kitchen + logs</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/c21d16bc-9d3e-4661-8dab-212ef12a3759/sunridge-whistle-web--45.jpg?format=500w" alt="Kitchen straight-on with marble waterfall island and log wall"><div class="slide-num">02 &middot; Marble meets timber</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/493971da-19b1-4a43-86c1-5d7bd9f3acb5/sunridge-whistle-web--50.jpg?format=500w" alt="Marble waterfall island close-up with range hood and stools"><div class="slide-num">03 &middot; The waterfall</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/9a16dd5a-9f57-4a07-8554-f7943f2ce222/sunridge-whistle-web-revision-4.jpg?format=500w" alt="Oak cabinetry detail meeting original log wall with black hardware"><div class="slide-num">04 &middot; Oak meets log</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/e3db032e-aad2-4a6d-998d-a706b1af790f/sunridge-whistle-web--49.jpg?format=500w" alt="Kitchen sink with forest view through window"><div class="slide-num">05 &middot; Forest through glass</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/a1bf2e4c-c8cf-46a5-b657-f3d168a7f084/sunridge-whistle-web--25.jpg?format=500w" alt="Dining room with log beam ceiling and mountain view"><div class="slide-num">06 &middot; Dining under beams</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/2db1e354-9e27-4587-badb-80e55aa753b2/sunridge-whistle-web--28.jpg?format=500w" alt="Living room with stone fireplace and mountain views"><div class="slide-num">07 &middot; The living room</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">The logs were staying. That was the starting point.</span>
+    Sunridge is a timber log home in Whistler. Every design decision started with: how does this sit beside a round timber beam?
+    <br><br>
+    In the kitchen, white oak and black oak cabinetry meet the original log wall. That junction had to feel effortless. The marble island grounds the space. Natural stone, modern lighting, and clean lines complement the heritage structure rather than fight it.
+    <div class="credits">Photography @mattanthonyphoto</div>
+    <div class="hashtags">#loghomerenovation #whistler #timberframe #kitchendesign #interiordesign #seatosky #heritagehome #mountainhome #bcinteriors</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Sunridge Content Package</span><span>Carousel 2 of 5</span></div>
+</div>
+
+<!-- CAROUSEL 3: THE KITCHEN & COFFEE BAR -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Project Showcase</span> <span class="tag">Instagram</span>
+    &nbsp; Post 3 of 5
+  </div>
+  <h2 class="section">The Kitchen &amp; Coffee Bar</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">8 slides &middot; Narrative arc: kitchen in full &rarr; bar seating with forest &rarr; appliance wall, oak uppers &rarr; sink into the forest &rarr; coffee bar with retractable doors &rarr; coffee station in context &rarr; galley view toward range &rarr; island detail, forest filling windows</p>
+
+  <div class="carousel-grid">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/c21d16bc-9d3e-4661-8dab-212ef12a3759/sunridge-whistle-web--45.jpg?format=500w" alt="Kitchen straight-on hero with marble waterfall island and forest window"><div class="slide-num">01 &middot; The kitchen</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/7c09056b-2df2-4ce0-bb73-44e7a96671b3/sunridge-whistle-web--48.jpg?format=500w" alt="Kitchen galley view toward pro range and log wall"><div class="slide-num">02 &middot; The galley</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/27c6997a-3298-40e4-97a4-eb1f76fcc09d/sunridge-whistle-web--47.jpg?format=500w" alt="Fridge and coffee station with log wall and art above"><div class="slide-num">03 &middot; Coffee station</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3b57efcb-8f70-4587-bdea-2d291beb2fb4/sunridge-whistle-web--46.jpg?format=500w" alt="Kitchen appliance wall with fridge, ovens, oak cabinets"><div class="slide-num">04 &middot; Appliance wall</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/6fc76187-9eb9-45a2-8d87-bc6445f4a085/sunridge-whistle-web--44.jpg?format=500w" alt="Kitchen closer with island, bar stools, and log wall"><div class="slide-num">05 &middot; The island</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/e3db032e-aad2-4a6d-998d-a706b1af790f/sunridge-whistle-web--49.jpg?format=500w" alt="Kitchen sink detail with forest view window"><div class="slide-num">06 &middot; Sink + forest</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/174e5f25-a0ef-4302-818c-ed0c90dd651a/sunridge-whistle-web--42.jpg?format=500w" alt="Kitchen wide from living room with log wall and black island"><div class="slide-num">07 &middot; From the living room</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/493971da-19b1-4a43-86c1-5d7bd9f3acb5/sunridge-whistle-web--50.jpg?format=500w" alt="Marble waterfall island close-up with range hood visible"><div class="slide-num">08 &middot; The waterfall</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">Morning sports with your coffee. That was the request.</span>
+    The coffee bar has retractable doors that reveal a hidden TV. Close them and it's a clean oak station. Open them and you've got the game on while you wait for the kettle.
+    <br><br>
+    White oak and black oak cabinetry sit against the original log walls. The marble island anchors the center with bar seating looking into the forest. Logs, stone, oak. Nothing pretending to be something else.
+    <div class="credits">Photography @mattanthonyphoto</div>
+    <div class="hashtags">#kitchendesign #whistler #coffeestation #whiteoak #marbleisland #interiordesign #loghome #seatosky #mountainkitchen #bcdesign</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Sunridge Content Package</span><span>Carousel 3 of 5</span></div>
+</div>
+
+<!-- CAROUSEL 4: SIX BATHROOMS, ONE THREAD -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Material &amp; Detail</span> <span class="tag">Instagram</span>
+    &nbsp; Post 4 of 5
+  </div>
+  <h2 class="section">Six Bathrooms, One Thread</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">8 slides &middot; Narrative arc: black freestanding tub with breccia sarda &rarr; double waterfall vanity &rarr; guest bath with limestone and finger tile &rarr; walk-in shower with backlit niche &rarr; vanity detail with oak and black hardware &rarr; second shower with different tile &rarr; guest freestanding tub &rarr; the powder room, number six</p>
+
+  <div class="carousel-grid">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3d6322e6-8fc7-4146-b10e-5e9e4a48789e/sunridge-whistle-web--34.jpg?format=500w" alt="Black freestanding tub with breccia sarda stone accent wall"><div class="slide-num">01 &middot; Primary tub</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/6847f944-d86d-40e4-8cf9-2dc00a75e1eb/sunridge-whistle-web--32.jpg?format=500w" alt="Primary ensuite double vanity with waterfall stone counter and cedar ceiling"><div class="slide-num">02 &middot; Double vanity</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/cb349beb-3d68-443d-b40b-6c80adc9dbd1/sunridge-whistle-web--33.jpg?format=500w" alt="Ensuite vanity with mountain view through angular window"><div class="slide-num">03 &middot; Mountain view</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/534d7217-3cd8-4c06-8430-1e35ba5e59d3/sunridge-whistle-web--5.jpg?format=500w" alt="Guest bathroom vanity with oak, limestone counter, and finger tile"><div class="slide-num">04 &middot; Guest vanity</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/5a8216eb-40ac-44f3-a0dd-f5f511284ced/sunridge-whistle-web--14.jpg?format=500w" alt="Walk-in shower enclosure with stone tile, bench, and rain head"><div class="slide-num">05 &middot; Walk-in shower</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/32c75771-2cde-453f-8fae-18a4af25cdea/sunridge-whistle-web--2.jpg?format=500w" alt="Shower niche detail with backlit stone tile and black fixtures"><div class="slide-num">06 &middot; Shower niche</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/ae5caa00-80b9-4550-a83e-fba2840f44ae/sunridge-whistle-web--13.jpg?format=500w" alt="Bathroom inside stone tower with curved vanity and vessel sink"><div class="slide-num">07 &middot; Bathroom in tower</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/bff2e130-2286-45b3-b0ff-1a8637c14131/sunridge-whistle-web--22.jpg?format=500w" alt="Powder room with arched mirror and pedestal sink"><div class="slide-num">08 &middot; Powder room</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">Five bathrooms and a powder room. Each one different. All of them connected.</span>
+    The constants: natural limestone, black Fantini fixtures, backlit mirrors, black wall sconces. Everything else shifts room to room. Finger tile and oak in one. Chapel-quality porcelain in another. Breccia sarda and a freestanding black tub in the primary.
+    <br><br>
+    Enough consistency to feel like one house. Enough variation to make each room its own moment.
+    <div class="credits">Photography @mattanthonyphoto</div>
+    <div class="hashtags">#bathroomdesign #whistler #naturalstone #blackfixtures #interiordesign #ensuite #powderroom #bathroomrenovation #seatosky #bcinteriors</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Sunridge Content Package</span><span>Carousel 4 of 5</span></div>
+</div>
+
+<!-- CAROUSEL 5: THE PRIMARY SUITE -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Carousel</span> <span class="tag">Project Showcase</span> <span class="tag">Instagram</span>
+    &nbsp; Post 5 of 5
+  </div>
+  <h2 class="section">The Primary Suite</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">7 slides &middot; Narrative arc: vanity with mountain view &rarr; double vanity with sconces &rarr; black tub with breccia sarda &rarr; tub area with towel storage &rarr; custom sauna &rarr; bedroom with expanded windows &rarr; custom wardrobe with oak shelving</p>
+
+  <div class="carousel-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/6847f944-d86d-40e4-8cf9-2dc00a75e1eb/sunridge-whistle-web--32.jpg?format=500w" alt="Primary ensuite double vanity with waterfall stone counter and cedar ceiling"><div class="slide-num">01 &middot; Double vanity</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3d6322e6-8fc7-4146-b10e-5e9e4a48789e/sunridge-whistle-web--34.jpg?format=500w" alt="Black freestanding tub with breccia sarda stone accent wall"><div class="slide-num">02 &middot; Black tub</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/81422414-545c-4c0d-872d-29f933ffb44d/sunridge-whistle-web--35.jpg?format=500w" alt="Black tub wider view with frosted glass door and towel storage"><div class="slide-num">03 &middot; Tub wider</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1771966243983-K0CRY04YAKUYU8RT2BV0/sunridge-whistle-web--38.jpg?format=500w" alt="Primary ensuite steam shower with backlit niche and bench"><div class="slide-num">04 &middot; Steam shower</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/c73de30b-64ba-469e-9435-1db74da6b744/sunridge-whistle-web--40.jpg?format=500w" alt="Walk-in closet with oak shelving and vaulted triangular window"><div class="slide-num">05 &middot; Walk-in closet</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/b3f018b8-4aef-441c-8489-b23088f63dd0/sunridge-whistle-web--41.jpg?format=500w" alt="Primary bedroom with vaulted ceiling, forest view, and log beam"><div class="slide-num">06 &middot; The bedroom</div></div>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/92d17393-800b-4f50-90ae-77fd47d08768/sunridge-whistle-web--39.jpg?format=500w" alt="Vanity drawer detail with oak drawers, marble waterfall edge, black hardware"><div class="slide-num">07 &middot; Vanity detail</div></div>
+  </div>
+
+  <div class="caption-block">
+    <span class="hook">The primary suite at Sunridge is where we got to push the materials the furthest.</span>
+    Breccia sarda wraps the wet areas. A freestanding black tub sits near the window with alabaster sconces and towel warmers. The steam shower glows with under-bench and niche lighting. Next door, a custom cedar sauna with the same level of intention.
+    <br><br>
+    We expanded the bedroom windows to bring in more forest. The wardrobe is custom oak shelving under a vaulted window. Every odd corner in this suite got worked into something useful.
+    <div class="credits">Photography @mattanthonyphoto</div>
+    <div class="hashtags">#primarysuite #bathroomdesign #whistler #freestandingtub #saunadesign #interiordesign #mountainhome #ensuite #seatosky</div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Sunridge Content Package</span><span>Carousel 5 of 5</span></div>
+</div>
+
+<!-- SINGLE POSTS -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Single Posts</span> <span class="tag">Instagram</span>
+  </div>
+  <h2 class="section">Single Posts</h2>
+  <p style="color: var(--faint); font-size: 9pt; margin: 0 0 0.3in;">3 standalone posts for high-performing individual images</p>
+
+  <div class="single-post">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/ed4c7830-5cc1-4c86-b919-3a1a830703dd/sunridge-whistle-web--29.jpg?format=500w" alt="Living room overhead view with Bachi hand-blown glass chandelier and stone fireplace">
+    <div class="caption-block">
+      <span class="hook">Bachi Chandelier</span>
+      Hand-blown glass by Bachi, a local BC artist. The bubbles catch light differently at every hour. Against stone and log beams, it brings a softness the room needed.
+      <br><br>
+      We brought in two local makers at Sunridge: Bachi for this piece and Matthew McCormick for the entry pendant. Both feel like they belong here.
+      <div class="credits">Photography @mattanthonyphoto &middot; Chandelier @babordeaux</div>
+    </div>
+  </div>
+
+  <div class="single-post">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/bff2e130-2286-45b3-b0ff-1a8637c14131/sunridge-whistle-web--22.jpg?format=500w" alt="Powder room with arched mirror and pedestal sink inside stone tower">
+    <div class="caption-block">
+      <span class="hook">Powder Room Arched Mirror</span>
+      Inside the stone tower, a powder room you wouldn't expect. An arched alcove, a pedestal sink, a backlit mirror. Finger tile lines the walls.
+      <br><br>
+      The same stone the staircase wraps around, the same stone that runs through the kitchen. All one gesture.
+      <div class="credits">Photography @mattanthonyphoto</div>
+    </div>
+  </div>
+
+  <div class="single-post" style="border-bottom: none;">
+    <img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/5461255e-32f2-4b6d-9ac7-6128ec44ae2c/sunridge-whistle-web--24.jpg?format=500w" alt="Bar in stone arch with cedar ceiling and lit shelving">
+    <div class="caption-block">
+      <span class="hook">Bar in Stone Arch</span>
+      Stone arch, cedar ceiling, lit shelving on either side. Wine fridge, glassware within reach, and a hot-cold-sparkling water faucet.
+      <br><br>
+      Sometimes the best moments in a house aren't the big rooms. They're the ones you pass through.
+      <div class="credits">Photography @mattanthonyphoto</div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>LRD Studio &middot; Sunridge Content Package</span><span>Single Posts</span></div>
+</div>
+
+<!-- STORIES -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Stories</span> <span class="tag">Instagram</span>
+    &nbsp; 5 sequences &middot; 9:16 vertical, static with text overlay
+  </div>
+  <h2 class="section">Instagram Stories</h2>
+
+  <p style="color: var(--faint); font-size: 8pt; margin: 0 0 0.2in; text-transform: uppercase; letter-spacing: 0.1em;">Sequence 1 &mdash; The Stone Tower &middot; Post same day as Carousel 1, 2-3 hours before</p>
+  <div class="story-grid">
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/b30d42a9-6e68-4cc0-85ca-0e2959a353d8/sunridge-whistle-web--27.jpg?format=500w" alt="Stone tower with floating treads and glass railing"><div class="frame-num">01</div><div class="overlay">"A round stone structure anchors the middle of the house."</div></div>
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/5461255e-32f2-4b6d-9ac7-6128ec44ae2c/sunridge-whistle-web--24.jpg?format=500w" alt="Bar in stone arch with cedar ceiling"><div class="frame-num">02</div><div class="overlay">"Inside: a bar. Cedar ceiling. Hot, cold, and sparkling water."</div></div>
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/bff2e130-2286-45b3-b0ff-1a8637c14131/sunridge-whistle-web--22.jpg?format=500w" alt="Powder room with arched mirror and pedestal sink"><div class="frame-num">03</div><div class="overlay">"And a powder room with a backlit arched mirror."</div></div>
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/38b3a48b-f383-42f6-8c9c-46b1dbc3b72a/sunridge-whistle-web--26.jpg?format=500w" alt="Double-height stone fireplace with Bachi chandelier"><div class="frame-num">04</div><div class="overlay">"Sunridge, Whistler &mdash; new on the feed."</div></div>
+  </div>
+
+  <p style="color: var(--faint); font-size: 8pt; margin: 0.25in 0 0.2in; text-transform: uppercase; letter-spacing: 0.1em;">Sequence 2 &mdash; Heritage Meets Modern &middot; Post same day as Carousel 2</p>
+  <div class="story-grid">
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/174e5f25-a0ef-4302-818c-ed0c90dd651a/sunridge-whistle-web--42.jpg?format=500w" alt="Kitchen wide from living room with log wall"><div class="frame-num">01</div><div class="overlay">"An existing timber log home."</div></div>
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/c21d16bc-9d3e-4661-8dab-212ef12a3759/sunridge-whistle-web--45.jpg?format=500w" alt="Kitchen straight-on with marble waterfall island and log wall"><div class="frame-num">02</div><div class="overlay">"The challenge: modernize while honoring the timbers."</div></div>
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/9a16dd5a-9f57-4a07-8554-f7943f2ce222/sunridge-whistle-web-revision-4.jpg?format=500w" alt="Oak cabinetry detail meeting original log wall"><div class="frame-num">03</div><div class="overlay">"Where new oak meets original log."</div></div>
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/2db1e354-9e27-4587-badb-80e55aa753b2/sunridge-whistle-web--28.jpg?format=500w" alt="Living room with stone fireplace and mountain views"><div class="frame-num">04</div><div class="overlay">"See our latest post."</div></div>
+  </div>
+
+  <p style="color: var(--faint); font-size: 8pt; margin: 0.25in 0 0.2in; text-transform: uppercase; letter-spacing: 0.1em;">Sequence 3 &mdash; The Kitchen &middot; Post same day as Carousel 3</p>
+  <div class="story-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/27c6997a-3298-40e4-97a4-eb1f76fcc09d/sunridge-whistle-web--47.jpg?format=500w" alt="Fridge and coffee station with log wall"><div class="frame-num">01</div><div class="overlay">"The coffee bar has retractable doors."</div></div>
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3b57efcb-8f70-4587-bdea-2d291beb2fb4/sunridge-whistle-web--46.jpg?format=500w" alt="Kitchen appliance wall with fridge and ovens"><div class="frame-num">02</div><div class="overlay">"Open them up. There's a hidden TV."</div></div>
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/c21d16bc-9d3e-4661-8dab-212ef12a3759/sunridge-whistle-web--45.jpg?format=500w" alt="Kitchen straight-on hero with marble waterfall island"><div class="frame-num">03</div><div class="overlay">"Morning sports with your coffee. New on the feed."</div></div>
+  </div>
+
+  <div class="page-footer"><span>LRD Studio &middot; Sunridge Content Package</span><span>Stories 1-3</span></div>
+</div>
+
+<!-- STORIES PAGE 2 -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Stories</span> <span class="tag">Instagram</span>
+    &nbsp; Sequences 4-5
+  </div>
+
+  <p style="color: var(--faint); font-size: 8pt; margin: 0 0 0.2in; text-transform: uppercase; letter-spacing: 0.1em;">Sequence 4 &mdash; Six Bathrooms &middot; Post same day as Carousel 4</p>
+  <div class="story-grid">
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3d6322e6-8fc7-4146-b10e-5e9e4a48789e/sunridge-whistle-web--34.jpg?format=500w" alt="Black freestanding tub with breccia sarda stone accent"><div class="frame-num">01</div><div class="overlay">"Six bathrooms. Each one different."</div></div>
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/6847f944-d86d-40e4-8cf9-2dc00a75e1eb/sunridge-whistle-web--32.jpg?format=500w" alt="Primary ensuite double vanity with cedar ceiling"><div class="frame-num">02</div><div class="overlay">"But they all share a thread."</div></div>
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/534d7217-3cd8-4c06-8430-1e35ba5e59d3/sunridge-whistle-web--5.jpg?format=500w" alt="Guest bathroom vanity with oak and limestone"><div class="frame-num">03</div><div class="overlay">"Natural stone. Black fixtures. Backlit mirrors."</div></div>
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1771966243983-K0CRY04YAKUYU8RT2BV0/sunridge-whistle-web--38.jpg?format=500w" alt="Primary ensuite steam shower with backlit niche"><div class="frame-num">04</div><div class="overlay">"Plus a custom sauna. See our latest post."</div></div>
+  </div>
+
+  <p style="color: var(--faint); font-size: 8pt; margin: 0.4in 0 0.2in; text-transform: uppercase; letter-spacing: 0.1em;">Sequence 5 &mdash; Local Artists &middot; Standalone, not tied to a carousel</p>
+  <div class="story-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/ed4c7830-5cc1-4c86-b919-3a1a830703dd/sunridge-whistle-web--29.jpg?format=500w" alt="Living room overhead with Bachi chandelier hanging down"><div class="frame-num">01</div><div class="overlay">"This chandelier is by Bachi. Hand-blown glass. Local BC artist."</div></div>
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/38b3a48b-f383-42f6-8c9c-46b1dbc3b72a/sunridge-whistle-web--26.jpg?format=500w" alt="Living room with double-height stone fireplace and carved art"><div class="frame-num">02</div><div class="overlay">"The entry light is by Matthew McCormick. Also local."</div></div>
+    <div class="story-frame"><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/2db1e354-9e27-4587-badb-80e55aa753b2/sunridge-whistle-web--28.jpg?format=500w" alt="Living room with stone fireplace and mountain views"><div class="frame-num">03</div><div class="overlay">"We love working with makers from this province."</div></div>
+  </div>
+
+  <div class="page-footer"><span>LRD Studio &middot; Sunridge Content Package</span><span>Stories 4-5</span></div>
+</div>
+
+<!-- PINTEREST + LINKEDIN -->
+<div class="page">
+  <div class="section-meta">
+    <span class="tag">Pinterest</span> 12 pins &middot; All linking to lrdstudio.ca/projects/residential/sunridge
+  </div>
+  <h2 class="section">Pinterest Pins</h2>
+
+  <table class="pin-table">
+    <thead><tr><th></th><th>Pin Title (SEO optimized)</th><th>Board</th></tr></thead>
+    <tbody>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/c21d16bc-9d3e-4661-8dab-212ef12a3759/sunridge-whistle-web--45.jpg?format=100w"></td><td>Whistler Kitchen Renovation with Marble Waterfall Island and Log Walls</td><td>Kitchen Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/493971da-19b1-4a43-86c1-5d7bd9f3acb5/sunridge-whistle-web--50.jpg?format=100w"></td><td>Marble Waterfall Island Close Up in Timber Log Home Kitchen Renovation</td><td>Kitchen Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/b30d42a9-6e68-4cc0-85ca-0e2959a353d8/sunridge-whistle-web--27.jpg?format=100w"></td><td>Curved Staircase with Floating Treads Around Natural Stone Tower</td><td>Staircase Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/3d6322e6-8fc7-4146-b10e-5e9e4a48789e/sunridge-whistle-web--34.jpg?format=100w"></td><td>Black Freestanding Tub with Breccia Sarda Stone in Mountain Ensuite</td><td>Bathroom Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/6847f944-d86d-40e4-8cf9-2dc00a75e1eb/sunridge-whistle-web--32.jpg?format=100w"></td><td>Double Waterfall Vanity with Natural Stone in Whistler Primary Ensuite</td><td>Bathroom Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/bff2e130-2286-45b3-b0ff-1a8637c14131/sunridge-whistle-web--22.jpg?format=100w"></td><td>Arched Backlit Mirror in Stone Tower Powder Room Whistler BC</td><td>Powder Room</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/5461255e-32f2-4b6d-9ac7-6128ec44ae2c/sunridge-whistle-web--24.jpg?format=100w"></td><td>Home Bar in Natural Stone Arch with Cedar Ceiling and Wine Storage</td><td>Bar Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/38b3a48b-f383-42f6-8c9c-46b1dbc3b72a/sunridge-whistle-web--26.jpg?format=100w"></td><td>Stone Fireplace with Mountain View in Log Home Living Room</td><td>Living Room</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/1771966243983-K0CRY04YAKUYU8RT2BV0/sunridge-whistle-web--38.jpg?format=100w"></td><td>Steam Shower with Backlit Niche and Rain Head in Whistler Home</td><td>Bathroom Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/32c75771-2cde-453f-8fae-18a4af25cdea/sunridge-whistle-web--2.jpg?format=100w"></td><td>Walk In Shower with Backlit Stone Niche and Rain Head Black Fixtures</td><td>Bathroom Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/27c6997a-3298-40e4-97a4-eb1f76fcc09d/sunridge-whistle-web--47.jpg?format=100w"></td><td>Coffee Station with Fridge and Log Wall in Timber Home Kitchen</td><td>Kitchen Design</td></tr>
+      <tr><td><img src="https://images.squarespace-cdn.com/content/v1/63dc0dfc345ed25a7efd5c5d/a1bf2e4c-c8cf-46a5-b657-f3d168a7f084/sunridge-whistle-web--25.jpg?format=100w"></td><td>Dining Room with Log Beam Ceiling and Mountain View Whistler BC</td><td>Dining Room</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-meta" style="margin-top: 0.4in;">
+    <span class="tag">LinkedIn</span> 2 posts
+  </div>
+  <h2 class="section" style="font-size: 22pt;">LinkedIn</h2>
+
+  <div class="linkedin-block">
+    <div class="li-tag">The Renovation Challenge</div>
+    Sunridge is a timber log home in Whistler. The logs were staying. Every design decision started with: how does this sit beside a round timber beam?
+    <br><br>
+    In the kitchen, new oak meets the original log wall. That junction had to feel effortless. A round stone structure anchors the center of the house, running from the kitchen through the staircase and into the living space. It became the thread connecting old and new.
+    <br><br>
+    Renovation work is different from new builds. You're designing around something that already has a voice. Our job was to add to the conversation without talking over it.
+    <br><br>
+    Photography: Matt Anthony
+    <br>
+    lrdstudio.ca/projects/residential/sunridge
+  </div>
+
+  <div class="linkedin-block">
+    <div class="li-tag">Supporting Local Artists</div>
+    Two lighting pieces at Sunridge are by local BC artists: Bachi for the living room chandelier, Matthew McCormick for the entry pendant. Both made original pieces for the home.
+    <br><br>
+    The Bachi piece catches light from the double-height windows and scatters it across the stone fireplace. Soft, organic, completely at home beside the log beams. The McCormick piece is more structural, but has the same quality of being made by someone who understands materials.
+    <br><br>
+    When you bring a maker's work into a home, it creates a connection to place you can't get from a catalog. The work is better for it.
+    <br><br>
+    Photography: Matt Anthony
+    <br>
+    lrdstudio.ca/projects/residential/sunridge
+  </div>
+
+  <div class="page-footer"><span>LRD Studio &middot; Sunridge Content Package</span><span>Pinterest + LinkedIn</span></div>
+</div>
+
+<!-- PUBLISHING NOTES -->
+<div class="page" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+  <div style="max-width: 5in;">
+    <div style="font-size: 8pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--faint); margin-bottom: 1rem;">Publishing Notes</div>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 28pt; font-weight: 400; margin: 0 0 1.5rem;">Before we publish.</h2>
+
+    <div style="text-align: left; font-size: 9.5pt; color: var(--muted); line-height: 1.7;">
+      <p><strong style="color: var(--ink);">Photo rights.</strong> All Sunridge photography is by Matt Anthony. Matt owns all images. No permission needed for publishing or cross-posting.</p>
+      <p><strong style="color: var(--ink);">Voice check.</strong> Every caption uses Lauren's voice and phrasing (first person plural). Review with Lauren to confirm tone feels right before publishing.</p>
+      <p><strong style="color: var(--ink);">Publish order.</strong> Space the 5 carousels + 3 singles across 4-6 weeks. Stories go same-day as their corresponding carousel, 2-3 hours before the feed post. Story Sequence 5 (Local Artists) is standalone and can post independently.</p>
+      <p><strong style="color: var(--ink);">Cross-posting.</strong> Sunridge was shot by Matt. Companion posts go on @mattanthonyphoto 2-3 days after each LRD post. Matt's version uses photography/material analysis perspective, not design perspective. LRD posts first.</p>
+      <p><strong style="color: var(--ink);">Local artist credits.</strong> Bachi (@babordeaux) for living room chandelier. Matthew McCormick for entry pendant. Tag in relevant posts.</p>
+      <p><strong style="color: var(--ink);">Pinterest.</strong> All 12 pins link to lrdstudio.ca/projects/residential/sunridge. Schedule across 2-3 weeks, not all at once.</p>
+    </div>
+  </div>
+  <div class="page-footer"><span>LRD Studio &middot; Sunridge Content Package</span><span>End</span></div>
+</div>
+
+</body>
+</html>
