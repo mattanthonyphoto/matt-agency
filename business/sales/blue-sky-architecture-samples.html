@@ -118,6 +118,24 @@
   .sw-s-cta .sw-cta-btn { font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.5rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--sw-ink); background:var(--sw-gold); padding:16px 48px; display:inline-block; transition:all 0.4s ease; text-decoration:none; }
   .sw-s-cta .sw-cta-btn:hover { background:var(--sw-ink); color:var(--sw-gold); }
 
+  /* intro */
+  .sw-s-intro { display:flex; align-items:center; justify-content:center; flex-direction:column; background:#FAFAF8; padding:0 8vw; }
+  .sw-s-intro::before { content:''; display:block; width:40px; height:1px; background:var(--sw-gold); opacity:0.35; margin-bottom:32px; }
+  .sw-s-intro .sw-intro-lab { font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--sw-gold); margin-bottom:28px; }
+  .sw-s-intro .sw-intro-body { max-width:620px; }
+  .sw-s-intro .sw-intro-body p { font-family:'Cormorant Garamond',Georgia,serif; font-weight:300; font-style:italic; font-size:clamp(1.15rem,1.6vw,1.45rem); line-height:1.65; color:var(--sw-text); margin-bottom:18px; text-align:center; letter-spacing:0.005em; }
+  .sw-s-intro .sw-intro-body p em { font-style:normal; font-weight:400; color:var(--sw-ink); }
+  .sw-s-intro .sw-intro-sig { margin-top:32px; display:flex; flex-direction:column; align-items:center; gap:6px; }
+  .sw-s-intro .sw-intro-sig .sig-line { width:24px; height:1px; background:var(--sw-gold); opacity:0.5; margin-bottom:14px; }
+  .sw-s-intro .sw-intro-sig .sig-name { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:1.1rem; color:var(--sw-ink); }
+  .sw-s-intro .sw-intro-sig .sig-title { font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.5rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--sw-stone); }
+
+  .sw-s-intro::before, .sw-s-intro .sw-intro-lab, .sw-s-intro .sw-intro-body, .sw-s-intro .sw-intro-sig { opacity:0; transform:translateY(16px); transition:opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
+  .sw-s-intro .sw-intro-lab { transition-delay:0.1s; }
+  .sw-s-intro .sw-intro-body { transition-delay:0.2s; }
+  .sw-s-intro .sw-intro-sig { transition-delay:0.4s; }
+  .sw-s-intro.in-view::before, .sw-s-intro.in-view .sw-intro-lab, .sw-s-intro.in-view .sw-intro-body, .sw-s-intro.in-view .sw-intro-sig { opacity:1; transform:translateY(0); }
+
   /* hover on images */
   .sw-s-sp .sw-img img, .sw-s-pair .sw-pi img, .sw-s-single img, .sw-s-trio .sw-pi img { transition:transform 1s cubic-bezier(0.16,1,0.3,1); cursor:pointer; }
   .sw-s-sp .sw-img:hover img, .sw-s-pair .sw-pi:hover img, .sw-s-single:hover img, .sw-s-trio .sw-pi:hover img { transform:scale(1.015); }
@@ -132,35 +150,6 @@
   .sw-lb-close::before, .sw-lb-close::after { content:''; position:absolute; top:50%; left:0; width:100%; height:1px; background:#F6F4F0; }
   .sw-lb-close::before { transform:rotate(45deg); }
   .sw-lb-close::after { transform:rotate(-45deg); }
-
-  /* ═══ FOOTER ═══ */
-  .hp-ft{background:#1a1a18!important;border-top:1px solid rgba(201,169,110,.15);scroll-snap-align:start}
-  .hp-ft-locs{display:flex!important;justify-content:center;gap:2rem;padding:1.75rem 5vw;border-bottom:1px solid rgba(201,169,110,.08);flex-wrap:wrap}
-  .hp-ft-locs a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35)!important;font-weight:500;transition:color .3s ease;font-family:'Josefin Sans',sans-serif}
-  .hp-ft-locs a:hover{color:#c9a96e!important}
-  .hp-ft-row{display:flex!important;justify-content:space-between;align-items:center;padding:2.25rem 5vw;gap:2rem;flex-wrap:wrap}
-  .hp-ft-item{display:flex!important;align-items:baseline;gap:10px}
-  .hp-ft-label{font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:#c9a96e!important;font-weight:500;white-space:nowrap;font-family:'Josefin Sans',sans-serif}
-  .hp-ft-dot{width:3px;height:3px;border-radius:50%;background:rgba(201,169,110,.4);flex-shrink:0;position:relative;top:-2px}
-  .hp-ft-item p,.hp-ft-item a{margin:0;font-size:12px;color:rgba(246,244,240,.8)!important;font-weight:300;white-space:nowrap;text-decoration:none;transition:color .3s ease}
-  .hp-ft-item a:hover{color:#c9a96e!important}
-  .hp-ft-social{display:flex!important;gap:18px}
-  .hp-ft-social a{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.4)!important;transition:color .3s ease;font-family:'Josefin Sans',sans-serif}
-  .hp-ft-social a:hover{color:#c9a96e!important}
-  .hp-ft-rule{margin:0 5vw;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,169,110,.15) 20%,rgba(201,169,110,.15) 80%,transparent 100%)}
-  .hp-ft-bottom{display:flex!important;justify-content:space-between;align-items:center;padding:1.25rem 5vw}
-  .hp-ft-copy{font-size:10px;color:rgba(246,244,240,.35)!important;letter-spacing:.08em}
-  .hp-ft-nav{display:flex!important;gap:2.5rem}
-  .hp-ft-nav a{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,244,240,.35)!important;text-decoration:none;transition:color .3s ease;font-family:'Josefin Sans',sans-serif}
-  .hp-ft-nav a:hover{color:#c9a96e!important}
-  @media(max-width:900px){
-    .hp-ft-locs{gap:1rem;padding:1.5rem 6vw;justify-content:flex-start}
-    .hp-ft-locs a{font-size:.55rem}
-    .hp-ft-row{flex-direction:column;gap:1.25rem;align-items:flex-start;padding:2rem 6vw}
-    .hp-ft-rule{margin:0 6vw}
-    .hp-ft-bottom{flex-direction:column;gap:.75rem;text-align:center;padding:1.25rem 6vw}
-    .hp-ft-nav{gap:1.5rem;flex-wrap:wrap;justify-content:center}
-  }
 
   /* ═══ MOBILE ═══ */
   @media(max-width:900px) {
@@ -190,6 +179,9 @@
     .sw-s-cta h2 { font-size:1.4rem; }
     .sw-s-cta p { font-size:0.82rem; }
     .sw-fc { display:none; }
+    .sw-s-intro { padding:0 28px; }
+    .sw-s-intro .sw-intro-body p { font-size:1rem; }
+    .sw-s-intro .sw-intro-lab { font-size:0.55rem; }
   }
 
   @media(max-width:480px) {
@@ -211,6 +203,22 @@
   <div class="sw-hero-c">
     <h1>Selected <em>Work</em></h1>
     <div class="sw-hero-sub">Prepared for Blue Sky Architecture</div>
+  </div>
+</div>
+
+<!-- INTRODUCTION -->
+<div class="sw-s sw-s-intro">
+  <div class="sw-intro-lab">A Note for Bo</div>
+  <div class="sw-intro-body">
+    <p>Bo, thank you for taking the time to reply.</p>
+    <p>What drew me to Blue Sky in the first place was the way the work sits on its sites — that organic, humane approach to material and place that's rare to find. Harbour House is the kind of project I think about long after I've left it.</p>
+    <p>What follows is a curated selection of recent work across British Columbia. <em>Coastal projects</em> on the Sunshine Coast and Howe Sound, <em>alpine builds</em> in Whistler and Pemberton, and a handful of <em>interiors</em>. I've kept the captions short and the images large.</p>
+    <p>If anything sparks a conversation, I'd welcome it.</p>
+  </div>
+  <div class="sw-intro-sig">
+    <div class="sig-line"></div>
+    <div class="sig-name">Matt</div>
+    <div class="sig-title">Architectural Photography + Documentary Video</div>
   </div>
 </div>
 
@@ -450,41 +458,6 @@
   <h2>Like What <em>You See?</em></h2>
   <p>I'd welcome the chance to talk about documenting Blue Sky's projects. If the timing works, let's find a time to connect.</p>
   <a href="https://mattanthonyphoto.com/discovery-call" class="sw-cta-btn">Book a Discovery Call</a>
-</div>
-
-<!-- FOOTER -->
-<div class="hp-ft">
-  <div class="hp-ft-row">
-    <div class="hp-ft-item">
-      <span class="hp-ft-label">Based In</span>
-      <span class="hp-ft-dot"></span>
-      <p>Squamish, British Columbia</p>
-    </div>
-    <div class="hp-ft-item">
-      <span class="hp-ft-label">Email</span>
-      <span class="hp-ft-dot"></span>
-      <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a>
-    </div>
-    <div class="hp-ft-item">
-      <span class="hp-ft-label">Phone</span>
-      <span class="hp-ft-dot"></span>
-      <a href="tel:6047659270">604.765.9270</a>
-    </div>
-    <div class="hp-ft-social">
-      <a href="https://www.instagram.com/mattanthonyphoto/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.linkedin.com/in/mattanthonyphoto/" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-  </div>
-  <div class="hp-ft-rule"></div>
-  <div class="hp-ft-bottom">
-    <span class="hp-ft-copy">&copy; 2026 Matt Anthony Photography</span>
-    <nav class="hp-ft-nav">
-      <a href="https://mattanthonyphoto.com/projects">Projects</a>
-      <a href="https://mattanthonyphoto.com/journal">Journal</a>
-      <a href="https://mattanthonyphoto.com/bio">About</a>
-      <a href="https://mattanthonyphoto.com/contact">Contact</a>
-    </nav>
-  </div>
 </div>
 
 <div class="sw-lb" id="swLb"><div class="sw-lb-close" id="swLbClose"></div><img id="swLbImg"></div>
