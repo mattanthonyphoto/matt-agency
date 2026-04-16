@@ -313,7 +313,7 @@ def burn_story_overlay(image_path, title_text, credit_text=None):
     return str(out_path)
 
 
-IG_RATIO_MAP = {"4:5": 4 / 5, "1:1": 1.0, "1.91:1": 1.91}
+IG_RATIO_MAP = {"4:5": 4 / 5, "1:1": 1.0, "5:4": 5 / 4, "1.91:1": 1.91}
 
 
 def crop_image_for_publish(image_path, ig_ratio, focal_x, focal_y, tmp_dir=None):
@@ -1756,7 +1756,7 @@ def mode_publish():
                                 effective_ratio = crop.get("ratio") or "4:5"
                             else:
                                 effective_ratio = ig_ratio
-                            if effective_ratio in ("4:5", "1:1", "1.91:1"):
+                            if effective_ratio in IG_RATIO_MAP:
                                 full_img_path = crop_image_for_publish(
                                     full_img_path, effective_ratio, fx, fy
                                 )
