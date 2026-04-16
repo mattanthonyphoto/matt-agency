@@ -1743,13 +1743,23 @@ def mode_publish():
                     # Apply reviewer's per-image crop if one exists.
                     # image_urls_list is parallel to image_files, so we match by
                     # index to find the CDN URL the reviewer saw in the portal.
+                    # In Mix mode, each image carries its own ratio override;
+                    # in uniform mode, ig_ratio applies to all images.
                     if ig_ratio and idx < len(image_urls_list):
                         img_url = image_urls_list[idx]
                         crop = image_crops_map.get(img_url)
                         if crop and isinstance(crop, dict):
                             fx = crop.get("x", 50)
                             fy = crop.get("y", 50)
-                            full_img_path = crop_image_for_publish(full_img_path, ig_ratio, fx, fy)
+                            effective_ratio = crop.get("ratio") or ig_ratio
+                            if ig_ratio == "Mix" and not crop.get("ratio"):
+                                # Mix mode without a per-image override — skip cropping
+                                # rather than guess a ratio that may not match intent.
+                                pass
+                            elif effective_ratio in ("4:5", "1:1", "1.91:1"):
+                                full_img_path = crop_image_for_publish(
+                                    full_img_path, effective_ratio, fx, fy
+                                )
 
                     url = upload_image_to_host(full_img_path)
                     if url:
