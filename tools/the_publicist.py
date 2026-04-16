@@ -1743,23 +1743,28 @@ def mode_publish():
                     # Apply reviewer's per-image crop if one exists.
                     # image_urls_list is parallel to image_files, so we match by
                     # index to find the CDN URL the reviewer saw in the portal.
-                    # In Mix mode, each image carries its own ratio override;
-                    # in uniform mode, ig_ratio applies to all images.
+                    # In Mix mode, each image carries its own ratio override; if
+                    # none is set, default to 4:5 to match the portal default.
+                    # In uniform mode, ig_ratio applies to all images.
                     if ig_ratio and idx < len(image_urls_list):
                         img_url = image_urls_list[idx]
                         crop = image_crops_map.get(img_url)
                         if crop and isinstance(crop, dict):
                             fx = crop.get("x", 50)
                             fy = crop.get("y", 50)
-                            effective_ratio = crop.get("ratio") or ig_ratio
-                            if ig_ratio == "Mix" and not crop.get("ratio"):
-                                # Mix mode without a per-image override — skip cropping
-                                # rather than guess a ratio that may not match intent.
-                                pass
-                            elif effective_ratio in ("4:5", "1:1", "1.91:1"):
+                            if ig_ratio == "Mix":
+                                effective_ratio = crop.get("ratio") or "4:5"
+                            else:
+                                effective_ratio = ig_ratio
+                            if effective_ratio in ("4:5", "1:1", "1.91:1"):
                                 full_img_path = crop_image_for_publish(
                                     full_img_path, effective_ratio, fx, fy
                                 )
+                    elif ig_ratio == "Mix" and idx < len(image_urls_list):
+                        # Mix mode with no focal point set — still bake the 4:5
+                        # default crop so the uploaded image matches what the
+                        # reviewer saw in the portal.
+                        full_img_path = crop_image_for_publish(full_img_path, "4:5", 50, 50)
 
                     url = upload_image_to_host(full_img_path)
                     if url:
