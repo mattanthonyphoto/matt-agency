@@ -313,6 +313,70 @@ def burn_story_overlay(image_path, title_text, credit_text=None):
     return str(out_path)
 
 
+IG_RATIO_MAP = {"4:5": 4 / 5, "1:1": 1.0, "1.91:1": 1.91}
+
+
+def crop_image_for_publish(image_path, ig_ratio, focal_x, focal_y, tmp_dir=None):
+    """Crop an image to the specified IG ratio, anchored on a focal point.
+
+    focal_x, focal_y are 0-100 percentages matching CSS object-position: they
+    describe which point in the original image should stay visible in the crop.
+    Returns the path to a cropped temp JPEG. Caller should clean it up.
+
+    ig_ratio: "4:5" | "1:1" | "1.91:1".
+    """
+    try:
+        from PIL import Image
+    except ImportError:
+        logger.warning("PIL not installed — crop skipped")
+        return image_path
+
+    target_r = IG_RATIO_MAP.get(ig_ratio)
+    if not target_r:
+        return image_path
+
+    try:
+        img = Image.open(image_path)
+        W, H = img.size
+        current_r = W / H
+        # Decide which dimension drives the crop
+        if abs(current_r - target_r) < 0.01:
+            return image_path  # already matches, no crop needed
+        if current_r > target_r:
+            # Image is wider than target — crop the sides
+            new_w = int(round(H * target_r))
+            new_h = H
+        else:
+            # Image is taller than target — crop top/bottom
+            new_w = W
+            new_h = int(round(W / target_r))
+
+        # Focal point in pixel coordinates of the original image
+        fx_px = (focal_x / 100.0) * W
+        fy_px = (focal_y / 100.0) * H
+
+        left = fx_px - new_w / 2
+        top = fy_px - new_h / 2
+        left = max(0, min(W - new_w, left))
+        top = max(0, min(H - new_h, top))
+        right = left + new_w
+        bottom = top + new_h
+
+        cropped = img.crop((int(left), int(top), int(right), int(bottom)))
+
+        tmp_dir = tmp_dir or Path("/tmp") / "publicist-crops"
+        tmp_dir.mkdir(parents=True, exist_ok=True)
+        out_path = tmp_dir / f"{Path(image_path).stem}_{ig_ratio.replace(':', 'x')}_{int(focal_x)}_{int(focal_y)}.jpg"
+        cropped.convert("RGB").save(out_path, "JPEG", quality=92)
+        logger.info(
+            f"Cropped {Path(image_path).name} → {new_w}x{new_h} at focal ({focal_x:.0f}%, {focal_y:.0f}%) [{ig_ratio}]"
+        )
+        return str(out_path)
+    except Exception as e:
+        logger.error(f"Crop failed for {image_path}: {e}")
+        return image_path
+
+
 def upload_image_to_host(image_path):
     """Upload an image to freeimage.host and return the public URL."""
     try:
@@ -1593,6 +1657,16 @@ def mode_publish():
         hashtags = hashtags_parts[0].get("text", {}).get("content", "") if hashtags_parts else ""
         image_paths_parts = props.get("Image Paths", {}).get("rich_text", [])
         image_paths_str = image_paths_parts[0].get("text", {}).get("content", "") if image_paths_parts else ""
+        image_urls_parts = props.get("Image URLs", {}).get("rich_text", [])
+        image_urls_str = image_urls_parts[0].get("text", {}).get("content", "") if image_urls_parts else ""
+        image_urls_list = [u.strip() for u in image_urls_str.split(",") if u.strip()]
+        image_crops_parts = props.get("Image Crops", {}).get("rich_text", [])
+        image_crops_str = image_crops_parts[0].get("text", {}).get("content", "") if image_crops_parts else ""
+        try:
+            image_crops_map = json.loads(image_crops_str) if image_crops_str else {}
+        except Exception:
+            image_crops_map = {}
+        ig_ratio = props.get("IG Ratio", {}).get("select", {}).get("name", "")
 
         account_name = props.get("Account", {}).get("select", {}).get("name", "")
         post_type = props.get("Post Type", {}).get("select", {}).get("name", "")
@@ -1642,7 +1716,7 @@ def mode_publish():
         needs_images = post_type not in ("Text",)
 
         if needs_images and image_files:
-            for img_file in image_files[:10]:
+            for idx, img_file in enumerate(image_files[:10]):
                 full_img_path = None
                 if os.path.isabs(img_file) and os.path.exists(img_file):
                     full_img_path = img_file
@@ -1665,6 +1739,17 @@ def mode_publish():
                         proj_name = project_parts_tmp[0].get("text", {}).get("content", "") if project_parts_tmp else ""
                         credit = f"{proj_name}  ·  @mattanthonyphoto" if proj_name else "@mattanthonyphoto"
                         full_img_path = burn_story_overlay(full_img_path, story_title, credit)
+
+                    # Apply reviewer's per-image crop if one exists.
+                    # image_urls_list is parallel to image_files, so we match by
+                    # index to find the CDN URL the reviewer saw in the portal.
+                    if ig_ratio and idx < len(image_urls_list):
+                        img_url = image_urls_list[idx]
+                        crop = image_crops_map.get(img_url)
+                        if crop and isinstance(crop, dict):
+                            fx = crop.get("x", 50)
+                            fy = crop.get("y", 50)
+                            full_img_path = crop_image_for_publish(full_img_path, ig_ratio, fx, fy)
 
                     url = upload_image_to_host(full_img_path)
                     if url:
