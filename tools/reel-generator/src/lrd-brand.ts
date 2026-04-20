@@ -12,6 +12,6 @@ export const lrdColors = {
 export const lrdFonts = {
   serif: "'Cormorant Garamond', Georgia, serif",
   sans: "'DM Sans', -apple-system, sans-serif",
-  // Century Gothic alternative — geometric humanist sans used for story overlays.
-  geometric: "'Josefin Sans', 'Century Gothic', 'Futura', sans-serif",
+  // Matches the font loaded on lrdstudio.ca — Poppins is LRD's actual brand font.
+  brand: "'Poppins', -apple-system, 'Helvetica Neue', sans-serif",
 } as const;

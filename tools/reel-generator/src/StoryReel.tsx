@@ -47,16 +47,23 @@ if (typeof document !== "undefined") {
         font-display: block;
       }
       @font-face {
-        font-family: 'Josefin Sans';
-        src: url(${staticFile("fonts/JosefinSans-Regular.ttf")}) format('truetype');
+        font-family: 'Poppins';
+        src: url(${staticFile("fonts/Poppins-Light.ttf")}) format('truetype');
+        font-weight: 300;
+        font-style: normal;
+        font-display: block;
+      }
+      @font-face {
+        font-family: 'Poppins';
+        src: url(${staticFile("fonts/Poppins-Regular.ttf")}) format('truetype');
         font-weight: 400;
         font-style: normal;
         font-display: block;
       }
       @font-face {
-        font-family: 'Josefin Sans';
-        src: url(${staticFile("fonts/JosefinSans-Bold.ttf")}) format('truetype');
-        font-weight: 700;
+        font-family: 'Poppins';
+        src: url(${staticFile("fonts/Poppins-Medium.ttf")}) format('truetype');
+        font-weight: 500;
         font-style: normal;
         font-display: block;
       }
@@ -175,12 +182,12 @@ export const StoryFrame: React.FC<StoryFrameProps> = ({ photo, text, durationFra
         />
         <div
           style={{
-            fontFamily: lrdFonts.geometric,
-            fontSize: 54,
-            fontWeight: 400,
+            fontFamily: lrdFonts.brand,
+            fontSize: 50,
+            fontWeight: 300,
             color: "#FFFFFF",
-            lineHeight: 1.25,
-            letterSpacing: "1.5px",
+            lineHeight: 1.3,
+            letterSpacing: "0.5px",
             maxWidth: 820,
             textAlign: "center",
             textShadow: "0 2px 20px rgba(0,0,0,0.4)",
