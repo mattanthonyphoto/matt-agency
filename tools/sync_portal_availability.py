@@ -28,6 +28,26 @@ load_dotenv(PROJECT_ROOT / ".env", override=True)
 OUTPUT = PROJECT_ROOT / "tools" / "client-portal" / "data" / "availability.json"
 DAYS_AHEAD = 90
 
+# Only these event types block portal booking. Everything else (tasks, personal,
+# meetings, holds) stays free unless manually flagged busy via BLOCK_KEYWORDS.
+SHOOT_KEYWORDS = ("shoot", "photoshoot", "photo session", "session", "capture")
+SALES_KEYWORDS = ("discovery", "sales call", "sales", "consult", "consultation", "intro call", "discovery call")
+BLOCK_KEYWORDS = ("[busy]", "[block]", "#busy", "#block", "portal:busy")
+
+
+def event_blocks_availability(event):
+    """Return True only for shoots, discovery/sales calls, or manually-flagged busy events."""
+    title = (event.get("summary") or "").lower()
+    if not title:
+        return False
+    if any(kw in title for kw in BLOCK_KEYWORDS):
+        return True
+    if any(kw in title for kw in SHOOT_KEYWORDS):
+        return True
+    if any(kw in title for kw in SALES_KEYWORDS):
+        return True
+    return False
+
 
 def get_busy_dates():
     """Use existing _calendar_api_call which works with current token scope."""
@@ -50,10 +70,14 @@ def get_busy_dates():
         return []
 
     busy_dates = set()
+    skipped = 0
     for event in events or []:
-        # Skip declined events and all-day events that aren't real holds
         status = event.get("status", "")
         if status == "cancelled":
+            continue
+
+        if not event_blocks_availability(event):
+            skipped += 1
             continue
 
         start_obj = event.get("start", {})
@@ -74,6 +98,7 @@ def get_busy_dates():
             except Exception:
                 pass
 
+    print(f"Skipped {skipped} non-blocking events (tasks, personal, meetings)")
     return sorted(busy_dates)
 
 
