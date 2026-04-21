@@ -254,13 +254,13 @@ def burn_story_overlay(image_path, title_text, credit_text=None):
 
     draw = ImageDraw.Draw(img)
 
-    # Load brand fonts
+    # Load brand fonts — Poppins matches lrdstudio.ca site typography.
     try:
-        font_title = ImageFont.truetype(str(FONTS_DIR / "CormorantGaramond-Medium.ttf"), 72)
+        font_title = ImageFont.truetype(str(FONTS_DIR / "Poppins-Medium.ttf"), 58)
     except OSError:
-        font_title = ImageFont.truetype("/System/Library/Fonts/NewYork.ttf", 72)
+        font_title = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 58)
     try:
-        font_credit = ImageFont.truetype(str(FONTS_DIR / "JosefinSans-Light.ttf"), 28)
+        font_credit = ImageFont.truetype(str(FONTS_DIR / "Poppins-Light.ttf"), 26)
     except OSError:
         font_credit = ImageFont.load_default()
 
@@ -399,8 +399,13 @@ def upload_image_to_host(image_path):
         return None
 
 
-def late_create_post(platform, account_id, content, media_items, scheduled_for, post_type=None):
-    """Create a post via Late API. Supports all platforms."""
+def late_create_post(platform, account_id, content, media_items, scheduled_for, post_type=None, pinterest_title=None, pinterest_link=None):
+    """Create a post via Late API. Supports all platforms.
+
+    Pinterest extras: pinterest_title and pinterest_link map to the pin's title
+    and destination URL respectively. Without them, Late treats the whole
+    `content` string as the pin description with no clickable link.
+    """
     if not LATE_API_KEY:
         logger.error("LATE_API_KEY not set")
         return None
@@ -422,6 +427,15 @@ def late_create_post(platform, account_id, content, media_items, scheduled_for, 
     if post_type and post_type.lower() == "story":
         platform_entry["platformSpecificData"] = {"contentType": "story"}
 
+    # Pinterest needs title + link pushed via platformSpecificData so pins
+    # render with a headline and drive traffic back to lrdstudio.ca.
+    if late_platform == "pinterest":
+        psd = platform_entry.setdefault("platformSpecificData", {})
+        if pinterest_title:
+            psd["title"] = pinterest_title[:100]  # Pinterest title cap
+        if pinterest_link:
+            psd["link"] = pinterest_link
+
     payload = {
         "content": content,
         "platforms": [platform_entry],
@@ -432,26 +446,36 @@ def late_create_post(platform, account_id, content, media_items, scheduled_for, 
     if media_items:
         payload["mediaItems"] = media_items
 
-    try:
-        resp = requests.post(
-            f"{LATE_API_BASE}/posts",
-            headers={
-                "Authorization": f"Bearer {LATE_API_KEY}",
-                "Content-Type": "application/json"
-            },
-            json=payload,
-            timeout=30
-        )
-        data = resp.json()
-        if "post" in data:
-            post_id = data["post"]["_id"]
-            logger.info(f"Late post created ({late_platform}): {post_id}")
-            return post_id
-        logger.error(f"Late post failed ({late_platform}): {data}")
-        return None
-    except Exception as e:
-        logger.error(f"Late API error: {e}")
-        return None
+    import time as _time
+    for attempt in range(5):
+        try:
+            resp = requests.post(
+                f"{LATE_API_BASE}/posts",
+                headers={
+                    "Authorization": f"Bearer {LATE_API_KEY}",
+                    "Content-Type": "application/json"
+                },
+                json=payload,
+                timeout=30
+            )
+            data = resp.json()
+            if "post" in data:
+                post_id = data["post"]["_id"]
+                logger.info(f"Late post created ({late_platform}): {post_id}")
+                return post_id
+            # Rate-limit retry
+            details = data.get("details") if isinstance(data, dict) else None
+            if isinstance(details, dict) and "retryAfterSeconds" in details:
+                wait_s = int(details["retryAfterSeconds"]) + 1
+                logger.info(f"Late rate-limited; sleeping {wait_s}s then retrying")
+                _time.sleep(wait_s)
+                continue
+            logger.error(f"Late post failed ({late_platform}): {data}")
+            return None
+        except Exception as e:
+            logger.error(f"Late API error: {e}")
+            return None
+    return None
 
 
 def pick_hero_image(project_path):
@@ -1613,6 +1637,160 @@ def mode_plan():
     send_telegram(msg)
 
 
+# ── PRE-FLIGHT GUARDRAILS (Apr 2026 batch scars) ────────
+#
+# Each check here maps to a specific failure mode we hit on the Apr 20 LRD
+# scheduling push. Removing one means re-inviting that bug.
+
+def _build_feed_date_index():
+    """Return {(project, bucket): earliest_scheduled_datetime} for every feed
+    post in the LRD content DB that's Scheduled, Approved, or Published.
+    Used so we can refuse to schedule a Story before its matching feed.
+    `bucket` is a crude topic key derived from the title (e.g. 'kitchen',
+    'wine room'), good enough to pair a Story Sequence with its carousel."""
+    if not NOTION_API_KEY:
+        return {}
+    idx = {}
+    for db_id in get_all_notion_db_ids():
+        cursor = None
+        while True:
+            body = {"page_size": 100}
+            if cursor:
+                body["start_cursor"] = cursor
+            try:
+                resp = requests.post(
+                    f"{NOTION_API_BASE}/databases/{db_id}/query",
+                    headers=notion_headers(), json=body, timeout=15,
+                )
+                if resp.status_code != 200:
+                    break
+                data = resp.json()
+            except Exception:
+                break
+            for p in data.get("results", []):
+                props = p.get("properties", {})
+                status = (props.get("Status", {}).get("select") or {}).get("name", "")
+                if status not in ("Scheduled", "Approved", "Published"):
+                    continue
+                post_type = (props.get("Post Type", {}).get("select") or {}).get("name", "")
+                if post_type == "Story":
+                    continue  # only index feed posts
+                title = "".join(x.get("text", {}).get("content", "")
+                                for x in props.get("Post", {}).get("title", []))
+                project = "".join(x.get("text", {}).get("content", "")
+                                  for x in props.get("Project", {}).get("rich_text", []))
+                sched = (props.get("Scheduled Date", {}).get("date") or {}).get("start")
+                if not project or not sched:
+                    continue
+                bucket = _topic_bucket(title)
+                key = (project.lower(), bucket)
+                # Keep earliest match per bucket
+                if key not in idx or sched < idx[key]:
+                    idx[key] = sched
+            if not data.get("has_more"):
+                break
+            cursor = data.get("next_cursor")
+    return idx
+
+
+def _topic_bucket(title: str) -> str:
+    """Crude topic key from a post title. Matches Story Sequence titles to
+    their announcing feed — both usually share a distinctive word."""
+    t = (title or "").lower()
+    # Strip project prefix ("sunstone — ") if present
+    if "—" in t:
+        t = t.split("—", 1)[1].strip()
+    # Strip common suffixes
+    for suffix in (" story sequence", " story", " (single)"):
+        if t.endswith(suffix):
+            t = t[: -len(suffix)]
+    # Use first salient noun phrase — anything before a period or hash
+    for sep in (".", "#", "|"):
+        if sep in t:
+            t = t.split(sep, 1)[0]
+    return t.strip()
+
+
+def _precheck_reason(post, feed_date_idx):
+    """Return a human-readable reason to skip this post pre-schedule, or None
+    if it's safe. Runs BEFORE any Late API call — no side effects."""
+    props = post.get("properties", {})
+    title = "".join(x.get("text", {}).get("content", "")
+                    for x in props.get("Post", {}).get("title", []))
+    post_type = (props.get("Post Type", {}).get("select") or {}).get("name", "") or ""
+    platform = (props.get("Platform", {}).get("select") or {}).get("name", "") or ""
+    project = "".join(x.get("text", {}).get("content", "")
+                      for x in props.get("Project", {}).get("rich_text", []))
+    sched = (props.get("Scheduled Date", {}).get("date") or {}).get("start")
+
+    # 1. Missing Scheduled Date — publisher would fall back to today, creating
+    #    a post that fires within hours of itself. Seen Apr 20 on stories.
+    if not sched:
+        return "no Scheduled Date set (set one in Notion before approving)"
+
+    # 2. Story-before-feed guard: a Story that announces a feed must fire
+    #    AFTER the feed. Seen Apr 20 on Sunstone Kitchen/Details/Primary
+    #    Suite + Sunridge Stone Tower + Tapleys Kitchen + Tapleys Transformation
+    #    + Balsam Wine Room — stories went live pointing at posts that didn't
+    #    exist yet.
+    if post_type == "Story" and project:
+        bucket = _topic_bucket(title)
+        feed_sched = feed_date_idx.get((project.lower(), bucket))
+        if feed_sched and feed_sched[:10] > sched[:10]:
+            return (f"Story fires {sched[:10]} but matching feed '{bucket}' "
+                    f"isn't until {feed_sched[:10]} — re-date the story after the feed")
+
+    # 3. Story-over-cancelled-feed guard: Apr 20 Sunstone Mountain Story
+    #    announced a feed ('The Mountain Outside') that had been Cancelled.
+    if post_type == "Story" and project:
+        if _matching_feed_is_cancelled(title, project):
+            return ("matching feed is Cancelled — story would point at a "
+                    "post that never goes live (cancel the story or revive the feed)")
+
+    # 4. Pinterest needs a parseable Link. Pins without destination URLs
+    #    still schedule but drive zero traffic (Apr 20: 53 pins went out
+    #    with no link field until we re-scheduled them).
+    if platform.lower() == "pinterest":
+        caption_parts = props.get("Caption", {}).get("rich_text", [])
+        caption = "".join(x.get("text", {}).get("content", "") for x in caption_parts)
+        if not re.search(r"Link:\s*\S+", caption, flags=re.IGNORECASE):
+            return ("Pinterest post has no 'Link: ...' line in Caption — "
+                    "pins need a destination URL to drive traffic")
+
+    return None
+
+
+def _matching_feed_is_cancelled(story_title, project):
+    """True if the feed post that this Story would announce is Cancelled."""
+    if not NOTION_API_KEY:
+        return False
+    bucket = _topic_bucket(story_title)
+    for db_id in get_all_notion_db_ids():
+        try:
+            resp = requests.post(
+                f"{NOTION_API_BASE}/databases/{db_id}/query",
+                headers=notion_headers(),
+                json={"filter": {"and": [
+                    {"property": "Status", "select": {"equals": "Cancelled"}},
+                    {"property": "Project", "rich_text": {"equals": project}},
+                ]}, "page_size": 25},
+                timeout=10,
+            )
+            if resp.status_code != 200:
+                continue
+            for p in resp.json().get("results", []):
+                pt = (p["properties"].get("Post Type", {}).get("select") or {}).get("name", "")
+                if pt == "Story":
+                    continue
+                t = "".join(x.get("text", {}).get("content", "")
+                            for x in p["properties"].get("Post", {}).get("title", []))
+                if _topic_bucket(t) == bucket:
+                    return True
+        except Exception:
+            pass
+    return False
+
+
 # ── MODE: PUBLISH ───────────────────────────────────────
 
 def mode_publish():
@@ -1637,10 +1815,28 @@ def mode_publish():
         send_telegram(f"📤 <b>Publish Check</b>\nNo approved posts for {today}")
         return
 
+    # Pre-flight guardrails: skip posts that would cause known failure modes.
+    # Every rule here has a corresponding scar from the Apr 20 batch — do not
+    # remove without understanding what it's catching.
+    feed_dates_by_project = _build_feed_date_index()
+    pre_filtered = []
+    skipped_for_reason = []
+    for post in approved_posts:
+        reason = _precheck_reason(post, feed_dates_by_project)
+        if reason:
+            title = "".join(x.get("text",{}).get("content","")
+                            for x in post.get("properties", {}).get("Post", {}).get("title", []))
+            logger.warning(f"SKIP  {title} — {reason}")
+            skipped_for_reason.append((title, reason))
+            continue
+        pre_filtered.append(post)
+    if skipped_for_reason:
+        logger.info(f"Pre-flight filtered out {len(skipped_for_reason)} posts")
+
     published_count = 0
     failed_count = 0
 
-    for post in approved_posts:
+    for post in pre_filtered:
         page_id = post["id"]
         props = post.get("properties", {})
 
@@ -1650,7 +1846,7 @@ def mode_publish():
         if title_prop:
             title = title_prop[0].get("text", {}).get("content", "")
 
-        platform = props.get("Platform", {}).get("select", {}).get("name", "")
+        platform = (props.get("Platform", {}).get("select") or {}).get("name", "")
         caption_parts = props.get("Caption", {}).get("rich_text", [])
         caption = caption_parts[0].get("text", {}).get("content", "") if caption_parts else ""
         hashtags_parts = props.get("Hashtags", {}).get("rich_text", [])
@@ -1666,10 +1862,10 @@ def mode_publish():
             image_crops_map = json.loads(image_crops_str) if image_crops_str else {}
         except Exception:
             image_crops_map = {}
-        ig_ratio = props.get("IG Ratio", {}).get("select", {}).get("name", "")
+        ig_ratio = (props.get("IG Ratio", {}).get("select") or {}).get("name", "")
 
-        account_name = props.get("Account", {}).get("select", {}).get("name", "")
-        post_type = props.get("Post Type", {}).get("select", {}).get("name", "")
+        account_name = (props.get("Account", {}).get("select") or {}).get("name", "")
+        post_type = (props.get("Post Type", {}).get("select") or {}).get("name", "")
 
         # Map account name to slug
         account_slug_map = {"Matt Anthony": "matt-anthony", "LRD Studio": "lrd-studio", "Balmoral": "balmoral"}
@@ -1689,7 +1885,11 @@ def mode_publish():
 
         # If the Notion date already has a time component (ISO datetime), respect it
         if "T" in sched_date_start:
-            scheduled_for = sched_date_start if sched_date_start.endswith("Z") else sched_date_start + "Z"
+            # Notion returns e.g. "2026-05-12T14:00:00.000-07:00". Late rejects
+            # offset+Z combos, so pass the offset form through unchanged and
+            # only append Z when there's no timezone info at all.
+            has_offset = sched_date_start.endswith("Z") or "+" in sched_date_start[10:] or "-" in sched_date_start[10:]
+            scheduled_for = sched_date_start if has_offset else sched_date_start + "Z"
         else:
             # Look up optimal time from playbook posting_intelligence
             playbook = load_playbook(account_slug)
@@ -1715,15 +1915,98 @@ def mode_publish():
         # Text-only posts don't need images
         needs_images = post_type not in ("Text",)
 
+        # Story-sequence posts sometimes carry both the authoritative MP4 URL
+        # (Image URLs) AND raw source JPG stems (Image Paths) used to render it.
+        # Prefer the MP4 — otherwise Late gets the raw JPGs and schedules a
+        # 3-image feed post instead of the animated story. Clearing image_files
+        # here forces the URL-fallback branch below.
+        video_exts = (".mp4", ".mov", ".m4v", ".webm")
+        has_video_url = any(u.lower().split("?")[0].endswith(video_exts) for u in image_urls_list)
+        if post_type and post_type.lower() == "story" and has_video_url:
+            image_files = []
+
+        # Stories have a reviewer-facing preamble appended to Caption
+        # ("Animated 9:16 story sequence for X. Preview above...") that should
+        # not ship to IG. Strip it before sending to Late.
+        if post_type and post_type.lower() == "story":
+            cutoff = full_caption.find("Animated 9:16 story sequence")
+            if cutoff != -1:
+                full_caption = full_caption[:cutoff].rstrip()
+
+        # Fallback: no local Image Paths but CDN Image URLs exist — rehost them.
+        # Squarespace serves webp via content negotiation (IG rejects webp), and
+        # some URLs point at mp4 videos inside story sequences. Download, detect
+        # mime, and re-upload images to freeimage.host so Late gets a real JPG.
+        if needs_images and not image_files and image_urls_list:
+            import tempfile, mimetypes, shutil
+            video_exts = (".mp4", ".mov", ".m4v", ".webm")
+            for u in image_urls_list[:10]:
+                lower = u.lower().split("?")[0]
+                if lower.endswith(video_exts):
+                    media_items.append({"url": u, "type": "video"})
+                    continue
+                # Squarespace: force a full-size JPG render instead of webp.
+                fetch_url = u
+                if "squarespace-cdn.com" in u and "?format=" not in u:
+                    fetch_url = u + ("&" if "?" in u else "?") + "format=2500w"
+                try:
+                    r = requests.get(fetch_url, timeout=30)
+                    if r.status_code != 200:
+                        logger.warning(f"Fetch failed for {u}: {r.status_code}")
+                        continue
+                    ct = r.headers.get("Content-Type", "").split(";")[0].strip()
+                    if ct.startswith("video/"):
+                        media_items.append({"url": u, "type": "video"})
+                        continue
+                    # Normalize to JPEG via PIL (handles webp → jpg)
+                    from io import BytesIO
+                    from PIL import Image as _Image
+                    src_img = _Image.open(BytesIO(r.content))
+                    tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".jpg")
+                    src_img.convert("RGB").save(tmp.name, "JPEG", quality=92)
+                    # Per-image crop / ratio enforcement
+                    local_path = tmp.name
+                    crop = image_crops_map.get(u)
+                    effective_ratio = None
+                    if ig_ratio == "Mix":
+                        effective_ratio = (crop or {}).get("ratio") if isinstance(crop, dict) else "4:5"
+                    elif ig_ratio in IG_RATIO_MAP:
+                        effective_ratio = ig_ratio
+                    elif platform.lower() == "instagram" and post_type and post_type.lower() in ("carousel", "single", "feed"):
+                        effective_ratio = "4:5"
+                    if effective_ratio in IG_RATIO_MAP:
+                        fx = (crop or {}).get("x", 50) if isinstance(crop, dict) else 50
+                        fy = (crop or {}).get("y", 50) if isinstance(crop, dict) else 50
+                        local_path = crop_image_for_publish(local_path, effective_ratio, fx, fy)
+                    up_url = upload_image_to_host(local_path)
+                    if up_url:
+                        media_items.append({"url": up_url, "type": "image"})
+                    else:
+                        logger.warning(f"Re-upload failed for {u}")
+                except Exception as e:
+                    logger.warning(f"CDN rehost failed for {u}: {e}")
+
         if needs_images and image_files:
             for idx, img_file in enumerate(image_files[:10]):
                 full_img_path = None
                 if os.path.isabs(img_file) and os.path.exists(img_file):
                     full_img_path = img_file
                 else:
+                    # Notion may store files as bare stems ("7150") or with extension ("7150.jpg").
+                    # Match on filename OR on stem against common image extensions.
+                    want = img_file.lower()
+                    want_stem = os.path.splitext(want)[0]
+                    exts = (".jpg", ".jpeg", ".png", ".webp", ".heic")
                     for root, dirs, files in os.walk(projects_dir):
-                        if img_file in files:
-                            full_img_path = os.path.join(root, img_file)
+                        match = None
+                        for f in files:
+                            fl = f.lower()
+                            if fl == want:
+                                match = f; break
+                            if "." not in want and os.path.splitext(fl)[0] == want_stem and fl.endswith(exts):
+                                match = f; break
+                        if match:
+                            full_img_path = os.path.join(root, match)
                             break
 
                 if full_img_path:
@@ -1760,10 +2043,22 @@ def mode_publish():
                                 full_img_path = crop_image_for_publish(
                                     full_img_path, effective_ratio, fx, fy
                                 )
+                        elif ig_ratio in IG_RATIO_MAP:
+                            # No per-image crop saved — fall back to centre crop
+                            # at the uniform IG Ratio so IG doesn't reject 9:16
+                            # source files with aspect-range errors.
+                            full_img_path = crop_image_for_publish(full_img_path, ig_ratio, 50, 50)
+                        elif ig_ratio == "Mix":
+                            # Mix mode with no per-image crop — bake 4:5 default.
+                            full_img_path = crop_image_for_publish(full_img_path, "4:5", 50, 50)
                     elif ig_ratio == "Mix" and idx < len(image_urls_list):
                         # Mix mode with no focal point set — still bake the 4:5
                         # default crop so the uploaded image matches what the
                         # reviewer saw in the portal.
+                        full_img_path = crop_image_for_publish(full_img_path, "4:5", 50, 50)
+                    elif platform.lower() == "instagram" and post_type and post_type.lower() in ("carousel", "single", "feed"):
+                        # IG feed posts with no ratio preference — force 4:5 so
+                        # tall source files don't trip Instagram's aspect range.
                         full_img_path = crop_image_for_publish(full_img_path, "4:5", 50, 50)
 
                     url = upload_image_to_host(full_img_path)
@@ -1777,8 +2072,32 @@ def mode_publish():
                 failed_count += 1
                 continue
 
+        # Pinterest-specific fields: pull a title from the Notion post title
+        # (drop the leading "Pin — " prefix) and extract the destination URL
+        # from the "Link: ..." line at the end of the caption. Strip that line
+        # from the pin description so it doesn't render as body text.
+        pinterest_title = None
+        pinterest_link = None
+        send_caption = full_caption
+        if platform.lower() == "pinterest":
+            t = title or ""
+            if t.lower().startswith("pin — "):
+                pinterest_title = t[len("Pin — "):].strip()
+            elif t.lower().startswith("pin -"):
+                pinterest_title = t[len("Pin -"):].strip()
+            else:
+                pinterest_title = t.strip()
+            link_match = re.search(r"Link:\s*(\S+)", full_caption, flags=re.IGNORECASE)
+            if link_match:
+                raw = link_match.group(1).rstrip(".,;)")
+                pinterest_link = raw if raw.startswith("http") else f"https://{raw}"
+                send_caption = full_caption[:link_match.start()].rstrip(" .\n")
+
         # Schedule via Late API
-        post_id = late_create_post(platform, account_id, full_caption, media_items, scheduled_for, post_type=post_type)
+        post_id = late_create_post(platform, account_id, send_caption, media_items, scheduled_for,
+                                    post_type=post_type,
+                                    pinterest_title=pinterest_title,
+                                    pinterest_link=pinterest_link)
         if post_id:
             # Sync the actual scheduled date back to Notion (scheduled_for may differ from original)
             sched_date_sync = scheduled_for[:10] if scheduled_for else None
@@ -1800,6 +2119,12 @@ def mode_publish():
     msg = f"📤 <b>Published {published_count} posts</b>"
     if failed_count:
         msg += f" ({failed_count} failed)"
+    if skipped_for_reason:
+        msg += f" ({len(skipped_for_reason)} skipped pre-flight)"
+        for title, reason in skipped_for_reason[:5]:
+            msg += f"\n• {title} — {reason}"
+        if len(skipped_for_reason) > 5:
+            msg += f"\n• …and {len(skipped_for_reason) - 5} more"
     msg += f"\nDate: {today}"
     print(msg)
     send_telegram(msg)
