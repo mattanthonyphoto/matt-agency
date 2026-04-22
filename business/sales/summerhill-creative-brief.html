@@ -3,718 +3,758 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creative Brief — Summerhill Fine Homes — Oles Cove &amp; Johnstone Rd</title>
-<meta name="description" content="Creative brief for Summerhill Fine Homes — Oles Cove and Johnstone Rd waterfront residences, May 14-15 shoot window.">
+<title>Oles Cove / Madeira Park — Pre-shoot notes</title>
+<meta name="description" content="Pre-shoot notes for two Summerhill Fine Homes residences. May 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1A1A18;
-    --paper: #F6F4F0;
-    --gold: #C9A96E;
-    --gold-dim: rgba(201,169,110,0.12);
-    --gold-border: rgba(201,169,110,0.25);
-    --stone: #8A8579;
+    --ink: #111111;
+    --ink-70: rgba(17,17,17,0.72);
+    --ink-50: rgba(17,17,17,0.5);
+    --ink-30: rgba(17,17,17,0.3);
+    --ink-15: rgba(17,17,17,0.15);
+    --ink-08: rgba(17,17,17,0.08);
+    --paper: #FAFAF8;
     --white: #FFFFFF;
-    --light: #FAFAF8;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  html { font-size:16px; scroll-behavior:smooth; }
+  html { font-size:16px; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
   body {
-    background:var(--white); color:var(--ink);
-    font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.75;
-    overflow-x:hidden;
+    background:var(--paper); color:var(--ink);
+    font-family:'Inter',sans-serif; font-weight:300;
+    font-size:0.92rem; line-height:1.65;
+    letter-spacing:-0.005em;
   }
 
-  /* COVER */
-  .cover {
-    min-height:100vh; background:var(--ink); color:var(--paper);
-    display:flex; flex-direction:column; justify-content:flex-end;
-    position:relative; overflow:hidden;
+  /* Top bar — doc identity */
+  .topbar {
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 40px; background:rgba(250,250,248,0.92);
+    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--ink-08);
   }
-  .cover-image {
-    position:absolute; inset:0;
-    background-image:url("https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/c85b29cb-2a5a-4e3c-ab16-4d9ae5feabf6/mattanthonyphoto-summerhill-finehomes-sandy-hook-bc-architectural-photography-9.jpg");
-    background-size:cover; background-position:center 45%;
+  .topbar-item {
+    font-family:'Inter',sans-serif; font-weight:500;
+    font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--ink-70);
   }
-  .cover-image::after {
-    content:''; position:absolute; inset:0;
-    background:linear-gradient(
-      to bottom,
-      rgba(26,26,24,0.35) 0%,
-      rgba(26,26,24,0.15) 28%,
-      rgba(26,26,24,0.5) 62%,
-      rgba(26,26,24,0.94) 86%,
-      rgba(26,26,24,0.99) 100%
-    );
+  .topbar-item.muted { color:var(--ink-30); font-weight:400; }
+
+  /* Title block */
+  .title-block {
+    padding:180px 40px 120px; max-width:1100px; margin:0 auto;
   }
-  .cover-top {
-    position:absolute; top:0; left:0; right:0; z-index:3;
-    padding:40px 60px; display:flex; justify-content:space-between; align-items:center;
+  .doc-meta {
+    display:flex; gap:48px; margin-bottom:80px;
+    border-top:1px solid var(--ink); padding-top:20px;
   }
-  .cover-logo {
-    font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.65rem;
-    letter-spacing:0.35em; text-transform:uppercase; color:rgba(246,244,240,0.65);
+  .doc-meta-item {
+    font-size:0.7rem; letter-spacing:0.04em;
+    color:var(--ink-70); line-height:1.55;
+    font-weight:400;
   }
-  .cover-date {
-    font-family:'Josefin Sans',sans-serif; font-size:0.65rem;
-    letter-spacing:0.2em; color:rgba(246,244,240,0.45);
-  }
-  .cover-content {
-    position:relative; z-index:2; padding:0 60px 80px; max-width:840px;
-  }
-  .cover-eyebrow {
-    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.65rem;
-    letter-spacing:0.4em; text-transform:uppercase; color:var(--gold);
-    margin-bottom:20px; display:flex; align-items:center; gap:16px;
-  }
-  .cover-eyebrow::before { content:''; width:32px; height:1px; background:var(--gold); }
-  .cover h1 {
-    font-family:'Cormorant Garamond',serif; font-weight:400;
-    font-size:clamp(3rem,6vw,5.4rem); line-height:1.02; margin-bottom:22px;
-    letter-spacing:-0.012em;
-  }
-  .cover h1 em { font-style:italic; font-weight:500; color:var(--gold); }
-  .cover-sub {
-    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:400;
-    font-size:1.3rem; color:rgba(246,244,240,0.82); max-width:640px;
-    line-height:1.55; margin-bottom:52px;
-  }
-  .cover-meta-bar {
-    display:flex; flex-wrap:wrap; gap:48px; padding-top:32px;
-    border-top:1px solid rgba(201,169,110,0.2);
-  }
-  .cover-meta-item {
-    font-size:0.82rem; color:rgba(246,244,240,0.55); line-height:1.7;
-  }
-  .cover-meta-item strong {
-    display:block; color:var(--gold); font-weight:400;
-    font-family:'Josefin Sans',sans-serif; font-size:0.6rem;
-    letter-spacing:0.28em; text-transform:uppercase; margin-bottom:6px;
+  .doc-meta-item .label {
+    display:block; font-weight:500; font-size:0.62rem;
+    letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--ink-50); margin-bottom:6px;
   }
 
-  /* LAYOUT */
-  .section { padding:110px 60px; max-width:1040px; margin:0 auto; }
-  .section.narrow { max-width:820px; }
-  .section.dark { background:var(--ink); color:var(--paper); max-width:none; padding:110px 60px; }
-  .section.dark .inner { max-width:1040px; margin:0 auto; }
-  .section.cream { background:var(--paper); max-width:none; padding:110px 60px; }
-  .section.cream .inner { max-width:1040px; margin:0 auto; }
-  .section.light { background:var(--light); max-width:none; padding:110px 60px; }
-  .section.light .inner { max-width:1040px; margin:0 auto; }
-
-  .eyebrow {
-    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
-    letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
-    margin-bottom:18px; display:flex; align-items:center; gap:14px;
+  .doc-title {
+    font-family:'Newsreader',serif; font-weight:300;
+    font-size:clamp(2.8rem,5.5vw,4.6rem);
+    line-height:1.05; letter-spacing:-0.025em;
+    max-width:920px; margin-bottom:28px;
   }
-  .eyebrow::before { content:''; width:24px; height:1px; background:var(--gold); }
-  .section.dark .eyebrow { color:var(--gold); }
-
-  h2 {
-    font-family:'Cormorant Garamond',serif; font-weight:400;
-    font-size:2.6rem; line-height:1.12; margin-bottom:30px;
-    letter-spacing:-0.01em;
-  }
-  h2 em { font-style:italic; font-weight:500; color:var(--gold); }
-
-  h3 {
-    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.72rem;
-    letter-spacing:0.28em; text-transform:uppercase; color:var(--stone);
-    margin:56px 0 18px;
-  }
-  .section.dark h3 { color:var(--gold); }
-
-  h4 {
-    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500;
-    font-size:1.3rem; line-height:1.35; color:var(--ink);
-    margin:28px 0 10px;
-  }
-  .section.dark h4 { color:var(--paper); }
-
-  p { margin-bottom:18px; font-size:0.95rem; color:var(--ink); }
-  .section.dark p { color:rgba(246,244,240,0.82); }
-  .lead { font-size:1.08rem; line-height:1.9; color:var(--stone); margin-bottom:24px; }
-  .section.dark .lead { color:rgba(246,244,240,0.7); }
-
-  ul { list-style:none; }
-  li {
-    font-size:0.9rem; padding:7px 0 7px 22px; position:relative;
-    color:var(--stone); line-height:1.7;
-  }
-  .section.dark li { color:rgba(246,244,240,0.72); }
-  li::before {
-    content:''; position:absolute; left:0; top:17px;
-    width:8px; height:1px; background:var(--gold);
-  }
-  li strong { color:var(--ink); font-weight:500; }
-  .section.dark li strong { color:var(--paper); }
-
-  .divider { width:1px; height:72px; background:var(--gold-dim); margin:0 auto; display:block; }
-
-  /* PROJECT HEADER */
-  .project-header {
-    display:flex; align-items:baseline; gap:24px; flex-wrap:wrap;
-    padding-bottom:28px; margin-bottom:40px;
-    border-bottom:1px solid var(--gold-dim);
-  }
-  .project-number {
-    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.65rem;
-    letter-spacing:0.3em; text-transform:uppercase; color:var(--gold);
-  }
-  .project-title {
-    font-family:'Cormorant Garamond',serif; font-weight:400;
-    font-size:2.2rem; line-height:1.15; letter-spacing:-0.005em;
-  }
-  .project-title em { font-style:italic; color:var(--gold); font-weight:500; }
-  .project-addr {
-    width:100%;
-    font-family:'Josefin Sans',sans-serif; font-size:0.65rem;
-    letter-spacing:0.2em; text-transform:uppercase; color:var(--stone);
-    margin-top:6px;
+  .doc-title em {
+    font-style:italic; font-weight:300; color:var(--ink-70);
   }
 
-  /* CARDS GRID */
-  .card-grid {
-    display:grid; grid-template-columns:1fr 1fr; gap:1px;
-    background:var(--gold-dim); margin:40px 0;
+  .doc-lede {
+    font-family:'Newsreader',serif; font-weight:300;
+    font-size:1.2rem; line-height:1.55;
+    color:var(--ink-70); max-width:640px;
   }
-  .card {
-    background:var(--white); padding:36px 32px;
-  }
-  .section.cream .card { background:var(--paper); }
-  .card h4 {
-    font-family:'Josefin Sans',sans-serif; font-style:normal; font-weight:400;
-    font-size:0.7rem; letter-spacing:0.22em; text-transform:uppercase;
-    color:var(--gold); margin:0 0 18px;
-  }
-  .card ul { margin:0; }
-  .card li { font-size:0.85rem; padding:6px 0 6px 20px; }
 
-  /* NUMBERED LIST (for discovery call Qs) */
-  ol.num {
-    list-style:none; counter-reset:q; margin:24px 0;
+  /* Index */
+  .index {
+    max-width:1100px; margin:0 auto;
+    padding:0 40px 120px;
   }
-  ol.num li {
-    padding:14px 0 14px 52px; position:relative;
-    border-bottom:1px solid rgba(26,26,24,0.05);
-    font-size:0.92rem; color:var(--ink); line-height:1.65;
+  .index-title {
+    font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--ink-50); font-weight:500;
+    padding-bottom:16px; border-bottom:1px solid var(--ink);
+    margin-bottom:4px;
   }
-  ol.num li::before { display:none; }
-  ol.num li::after {
-    counter-increment:q; content:"0" counter(q);
-    position:absolute; left:0; top:14px;
-    font-family:'Cormorant Garamond',serif; font-style:italic;
-    font-size:1.4rem; color:var(--gold); font-weight:500;
+  .index-row {
+    display:grid; grid-template-columns:80px 1fr auto;
+    gap:32px; padding:28px 0;
+    border-bottom:1px solid var(--ink-08);
+    align-items:baseline;
   }
-  ol.num li strong { color:var(--ink); font-weight:500; }
+  .index-row:hover { background:rgba(17,17,17,0.015); }
+  .index-num {
+    font-family:'Newsreader',serif; font-style:italic; font-weight:300;
+    font-size:1.6rem; color:var(--ink-30);
+  }
+  .index-title-text {
+    font-family:'Newsreader',serif; font-weight:400;
+    font-size:1.35rem; line-height:1.3; letter-spacing:-0.01em;
+  }
+  .index-title-text small {
+    display:block; font-family:'Inter',sans-serif; font-weight:400;
+    font-size:0.72rem; letter-spacing:0.02em;
+    color:var(--ink-50); margin-top:4px;
+  }
+  .index-pg {
+    font-size:0.68rem; color:var(--ink-50); letter-spacing:0.05em;
+  }
 
-  /* INSIGHT BOX */
-  .insight {
-    background:var(--light); padding:40px 44px; margin:44px 0;
-    position:relative; border-left:3px solid var(--gold);
+  /* Section base */
+  section.spread {
+    max-width:1100px; margin:0 auto;
+    padding:120px 40px;
+    border-top:1px solid var(--ink);
   }
-  .section.cream .insight { background:var(--white); }
-  .insight h4 {
-    font-family:'Josefin Sans',sans-serif; font-style:normal; font-weight:400;
-    font-size:0.65rem; letter-spacing:0.28em; text-transform:uppercase;
-    color:var(--gold); margin:0 0 18px;
-  }
-  .insight p { font-size:0.92rem; margin-bottom:12px; }
-  .insight p:last-child { margin-bottom:0; }
+  section.spread + section.spread { border-top:1px solid var(--ink-08); }
 
-  /* SCHEDULE */
-  .schedule {
-    display:grid; grid-template-columns:1fr 1fr; gap:48px;
+  .spread-head {
+    display:grid; grid-template-columns:80px 1fr;
+    gap:32px; margin-bottom:80px;
+  }
+  .spread-num {
+    font-family:'Newsreader',serif; font-style:italic; font-weight:300;
+    font-size:1.6rem; color:var(--ink-30);
+    padding-top:6px;
+  }
+  .spread-title {
+    font-family:'Newsreader',serif; font-weight:300;
+    font-size:clamp(2rem,3.6vw,3rem);
+    line-height:1.1; letter-spacing:-0.02em;
+  }
+  .spread-title em { font-style:italic; color:var(--ink-70); }
+  .spread-sub {
+    margin-top:12px;
+    font-size:0.72rem; letter-spacing:0.04em;
+    color:var(--ink-50); font-weight:400;
+  }
+
+  /* Two-column layout for body */
+  .cols {
+    display:grid; grid-template-columns:80px 1fr;
+    gap:32px; margin:48px 0;
+  }
+  .col-label {
+    font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--ink-50); font-weight:500;
+    padding-top:2px;
+  }
+  .col-body { max-width:720px; }
+
+  /* Body typography */
+  .spread p {
+    font-size:0.95rem; line-height:1.75;
+    color:var(--ink); margin-bottom:16px;
+    font-weight:300;
+  }
+  .spread p.lede {
+    font-family:'Newsreader',serif; font-weight:300;
+    font-size:1.2rem; line-height:1.55;
+    color:var(--ink-70); margin-bottom:32px;
+  }
+
+  .spread h3 {
+    font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--ink-50); font-weight:500;
+    margin:48px 0 18px;
+  }
+
+  .spread ul {
+    list-style:none; margin:0 0 16px;
+  }
+  .spread li {
+    font-size:0.93rem; line-height:1.7;
+    padding:10px 0 10px 24px; position:relative;
+    color:var(--ink); border-bottom:1px solid var(--ink-08);
+    font-weight:300;
+  }
+  .spread li:last-child { border-bottom:none; }
+  .spread li::before {
+    content:''; position:absolute; left:0; top:21px;
+    width:12px; height:1px; background:var(--ink-30);
+  }
+  .spread li strong { font-weight:500; color:var(--ink); }
+
+  /* Numbered questions */
+  ol.numbered {
+    list-style:none; margin:24px 0 16px;
+    counter-reset:q;
+  }
+  ol.numbered li {
+    padding:20px 0 20px 56px; position:relative;
+    border-bottom:1px solid var(--ink-08);
+    font-size:0.95rem; line-height:1.65;
+    font-weight:300;
+  }
+  ol.numbered li:last-child { border-bottom:none; }
+  ol.numbered li::before {
+    counter-increment:q; content:counter(q,decimal-leading-zero);
+    position:absolute; left:0; top:22px;
+    font-family:'Newsreader',serif; font-style:italic; font-weight:300;
+    font-size:1.05rem; color:var(--ink-30);
+    width:auto; height:auto; background:none;
+  }
+  ol.numbered li strong { font-weight:500; color:var(--ink); }
+
+  /* Pull note (replacing insight box) */
+  .pull-note {
     margin:48px 0;
+    padding:0 0 0 24px;
+    border-left:1px solid var(--ink);
   }
-  .day { position:relative; }
-  .day-label {
-    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.6rem;
-    letter-spacing:0.3em; text-transform:uppercase; color:var(--gold);
-    margin-bottom:10px;
+  .pull-note .pn-label {
+    font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--ink-50); font-weight:500; margin-bottom:14px;
   }
-  .day-title {
-    font-family:'Cormorant Garamond',serif; font-weight:500; font-style:italic;
-    font-size:1.5rem; line-height:1.25; margin-bottom:6px;
+  .pull-note p {
+    font-family:'Newsreader',serif; font-weight:300;
+    font-size:1.1rem; line-height:1.55;
+    color:var(--ink); margin-bottom:14px;
   }
-  .day-loc {
-    font-size:0.78rem; color:var(--stone); margin-bottom:28px;
-    padding-bottom:18px; border-bottom:1px solid var(--gold-dim);
-    letter-spacing:0.05em;
-  }
-  .slot {
-    display:grid; grid-template-columns:68px 1fr; gap:18px;
-    padding:10px 0;
-  }
-  .slot-time {
-    font-family:'Josefin Sans',sans-serif; font-size:0.65rem;
-    letter-spacing:0.12em; color:var(--gold); padding-top:3px;
-  }
-  .slot-desc { font-size:0.87rem; color:var(--stone); line-height:1.55; }
+  .pull-note p:last-child { margin-bottom:0; }
+  .pull-note em { font-style:italic; }
 
-  /* DELIVERABLES */
-  .delivs {
-    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
-    background:var(--gold-dim); margin:44px 0;
-  }
-  .deliv {
-    background:var(--white); padding:36px 22px; text-align:center;
-  }
-  .section.cream .deliv { background:var(--paper); }
-  .deliv-num {
-    font-family:'Cormorant Garamond',serif; font-size:2.6rem; font-weight:500;
-    color:var(--gold); line-height:1; margin-bottom:10px;
-  }
-  .deliv-label {
-    font-family:'Josefin Sans',sans-serif; font-size:0.58rem;
-    letter-spacing:0.22em; text-transform:uppercase; color:var(--stone);
-    line-height:1.6;
-  }
-
-  /* CTA */
-  .cta {
-    text-align:center; padding:80px 40px; background:var(--ink); color:var(--paper);
-  }
-  .cta .eyebrow { justify-content:center; }
-  .cta h2 { max-width:640px; margin:0 auto 22px; color:var(--paper); }
-  .cta h2 em { color:var(--gold); }
-  .cta p { color:rgba(246,244,240,0.7); max-width:560px; margin:0 auto 40px; font-size:1rem; }
-  .cta-btn {
-    display:inline-block; padding:18px 44px;
-    font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:0.72rem;
-    letter-spacing:0.3em; text-transform:uppercase; color:var(--ink);
-    background:var(--gold); text-decoration:none;
-    transition:background 0.3s ease, transform 0.3s ease;
-  }
-  .cta-btn:hover { background:var(--paper); transform:translateY(-2px); }
-
-  /* FIGURE (drawings + photos) */
+  /* Figures — drawings */
   figure {
-    margin:32px 0 12px;
-    background:var(--ink);
-    padding:12px;
-    box-shadow:0 20px 60px rgba(0,0,0,0.08);
+    margin:64px 0 32px;
+    padding:0;
   }
   figure img {
     display:block; width:100%; height:auto;
     background:var(--white);
+    border:1px solid var(--ink-08);
   }
   figcaption {
-    font-family:'Josefin Sans',sans-serif; font-size:0.58rem;
-    letter-spacing:0.24em; text-transform:uppercase; color:var(--stone);
-    margin-top:14px; padding:0 6px 6px;
+    display:grid; grid-template-columns:80px 1fr;
+    gap:32px; margin-top:18px;
   }
-  figcaption strong { color:var(--gold); font-weight:500; }
-  .section.cream figure { background:var(--ink); }
+  figcaption .fc-label {
+    font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--ink-50); font-weight:500;
+  }
+  figcaption .fc-text {
+    font-size:0.78rem; line-height:1.55;
+    color:var(--ink-70); font-weight:400;
+    max-width:640px;
+  }
+  figcaption .fc-text strong { color:var(--ink); font-weight:500; }
 
-  /* FULL-BLEED HERO BAND */
-  .project-hero {
-    margin:0; padding:0; width:100%; background:var(--ink);
-    position:relative; overflow:hidden;
+  /* Full-bleed hero image */
+  .bleed {
+    width:100%; margin:0;
+    background:var(--white);
+    border-top:1px solid var(--ink);
+    border-bottom:1px solid var(--ink);
   }
-  .project-hero img {
+  .bleed img {
     display:block; width:100%; height:auto;
-    max-height:560px; object-fit:cover; object-position:center;
+    max-height:640px; object-fit:cover; object-position:center;
+  }
+  .bleed-caption {
+    max-width:1100px; margin:0 auto;
+    padding:18px 40px 0;
+    display:grid; grid-template-columns:80px 1fr;
+    gap:32px;
+  }
+  .bleed-caption .bc-label {
+    font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--ink-50); font-weight:500;
+  }
+  .bleed-caption .bc-text {
+    font-size:0.78rem; color:var(--ink-70); font-weight:400;
+    line-height:1.55;
   }
 
-  /* REFERENCE IMAGE GRID (Summerhill past work) */
-  .ref-grid {
-    display:grid; grid-template-columns:repeat(3,1fr); gap:4px;
-    margin:40px 0 20px;
+  /* Schedule table */
+  .schedule {
+    margin:32px 0 0;
   }
-  .ref-grid img {
-    display:block; width:100%; height:240px; object-fit:cover;
-    filter:brightness(0.96); transition:filter 0.4s ease;
+  .day-row {
+    display:grid; grid-template-columns:80px 1fr;
+    gap:32px; padding:40px 0;
+    border-bottom:1px solid var(--ink-08);
   }
-  .ref-grid img:hover { filter:brightness(1.05); }
-  .ref-caption {
-    font-family:'Josefin Sans',sans-serif; font-size:0.58rem;
-    letter-spacing:0.25em; text-transform:uppercase; color:var(--stone);
-    text-align:center; margin:4px 0 0;
+  .day-row:last-child { border-bottom:none; }
+  .day-label {
+    font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--ink-50); font-weight:500;
+  }
+  .day-label strong {
+    display:block; color:var(--ink); font-weight:500;
+    font-size:0.62rem; margin-bottom:6px;
+  }
+  .day-title {
+    font-family:'Newsreader',serif; font-weight:400;
+    font-size:1.35rem; margin-bottom:4px; letter-spacing:-0.01em;
+  }
+  .day-sub {
+    font-size:0.72rem; color:var(--ink-50); margin-bottom:24px;
+    padding-bottom:16px; border-bottom:1px solid var(--ink-08);
+    letter-spacing:0.02em;
+  }
+  .slot {
+    display:grid; grid-template-columns:72px 1fr;
+    gap:24px; padding:6px 0;
+    font-size:0.88rem; line-height:1.55;
+  }
+  .slot-t { color:var(--ink-50); font-weight:400; font-variant-numeric:tabular-nums; }
+  .slot-d { color:var(--ink); font-weight:300; }
+
+  /* Deliverables */
+  .delivs {
+    display:grid; grid-template-columns:repeat(4,1fr);
+    gap:0; margin:48px 0 0;
+    border-top:1px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+  }
+  .deliv {
+    padding:40px 20px 36px;
+    border-right:1px solid var(--ink-08);
+  }
+  .deliv:last-child { border-right:none; }
+  .deliv-label {
+    font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--ink-50); font-weight:500; margin-bottom:16px;
+  }
+  .deliv-num {
+    font-family:'Newsreader',serif; font-weight:300;
+    font-size:3rem; line-height:1; letter-spacing:-0.02em;
+    margin-bottom:12px;
+  }
+  .deliv-desc {
+    font-size:0.78rem; color:var(--ink-70); line-height:1.5; font-weight:400;
   }
 
-  /* FOOTER */
+  /* Next step */
+  .colophon {
+    max-width:1100px; margin:0 auto;
+    padding:120px 40px 80px;
+    border-top:1px solid var(--ink);
+    display:grid; grid-template-columns:80px 1fr;
+    gap:32px;
+  }
+  .colophon .co-label {
+    font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--ink-50); font-weight:500;
+    padding-top:6px;
+  }
+  .colophon h2 {
+    font-family:'Newsreader',serif; font-weight:300;
+    font-size:2.2rem; line-height:1.15; letter-spacing:-0.02em;
+    margin-bottom:24px; max-width:640px;
+  }
+  .colophon h2 em { font-style:italic; color:var(--ink-70); }
+  .colophon p {
+    font-size:0.92rem; line-height:1.7; color:var(--ink-70);
+    max-width:560px; margin-bottom:32px; font-weight:300;
+  }
+  .next-link {
+    display:inline-block; padding:14px 0;
+    font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--ink); font-weight:500; text-decoration:none;
+    border-bottom:1px solid var(--ink);
+    transition:padding-right 0.3s ease;
+  }
+  .next-link::after {
+    content:' →'; margin-left:6px; transition:margin-left 0.3s ease;
+  }
+  .next-link:hover::after { margin-left:14px; }
+
+  /* Footer */
   footer {
-    padding:48px 60px; background:var(--ink); color:rgba(246,244,240,0.45);
-    text-align:center; font-size:0.72rem;
-    font-family:'Josefin Sans',sans-serif; letter-spacing:0.15em;
+    max-width:1100px; margin:0 auto;
+    padding:40px; border-top:1px solid var(--ink-08);
+    display:flex; justify-content:space-between; flex-wrap:wrap;
+    gap:20px;
+    font-size:0.66rem; letter-spacing:0.1em;
+    color:var(--ink-50); text-transform:uppercase;
   }
-  footer a { color:var(--gold); text-decoration:none; }
+  footer a { color:var(--ink); text-decoration:none; border-bottom:1px solid var(--ink-15); }
 
-  /* MOBILE */
   @media (max-width:780px) {
-    .cover-top, .cover-content { padding-left:28px; padding-right:28px; }
-    .section, .section.dark, .section.cream, .section.light { padding:72px 28px; }
-    .cover-meta-bar { gap:28px; }
-    .card-grid { grid-template-columns:1fr; }
-    .schedule { grid-template-columns:1fr; gap:60px; }
-    .delivs { grid-template-columns:1fr 1fr; }
-    .ref-grid { grid-template-columns:1fr 1fr; }
-    .ref-grid img { height:180px; }
-    .project-hero img { max-height:320px; }
-    h2 { font-size:2rem; }
-    .project-title { font-size:1.7rem; }
+    .topbar { padding:14px 20px; }
+    .topbar-item { font-size:0.58rem; }
+    .topbar-item.muted { display:none; }
+    .title-block, .index, section.spread, .colophon { padding-left:20px; padding-right:20px; }
+    .title-block { padding-top:110px; padding-bottom:80px; }
+    section.spread { padding-top:80px; padding-bottom:80px; }
+    .doc-meta { flex-wrap:wrap; gap:20px 40px; }
+    .spread-head, .cols, figcaption, .bleed-caption, .day-row, .colophon { grid-template-columns:1fr; gap:14px; }
+    .spread-num { font-size:1.2rem; }
+    .delivs { grid-template-columns:1fr 1fr; border-top:1px solid var(--ink); }
+    .deliv:nth-child(2) { border-right:none; }
+    .deliv:nth-child(1), .deliv:nth-child(2) { border-bottom:1px solid var(--ink-08); }
+    .bleed img { max-height:320px; }
+    .bleed-caption { padding:18px 20px 0; }
+    footer { padding:28px 20px; }
   }
 </style>
 </head>
 <body>
 
-<!-- COVER -->
-<section class="cover">
-  <div class="cover-image"></div>
-  <div class="cover-top">
-    <div class="cover-logo">Matt Anthony Photography</div>
-    <div class="cover-date">22 · 04 · 2026</div>
-  </div>
-  <div class="cover-content">
-    <div class="cover-eyebrow">Creative Brief · Confidential</div>
-    <h1>Oles Cove &amp;<br><em>Johnstone Rd.</em></h1>
-    <div class="cover-sub">
-      Two waterfront residences. Two shoot days. One coordinated visual strategy.
-    </div>
-    <div class="cover-meta-bar">
-      <div class="cover-meta-item">
-        <strong>Prepared for</strong>
-        Kyle Paisley<br>Summerhill Fine Homes
-      </div>
-      <div class="cover-meta-item">
-        <strong>Shoot window</strong>
-        May 14 &ndash; 15, 2026<br>Weather-dependent
-      </div>
-      <div class="cover-meta-item">
-        <strong>Scope</strong>
-        Photography + Reel<br>Per project
-      </div>
-      <div class="cover-meta-item">
-        <strong>Investment</strong>
-        $6,000 + GST<br>$3,000 per project
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PURPOSE -->
-<section class="section narrow">
-  <div class="eyebrow">Purpose of this brief</div>
-  <h2>A plan, <em>not a scavenger hunt.</em></h2>
-  <p class="lead">
-    Two shoots back-to-back is a lot of visual ground to cover in two days. This document is my read of both sets of drawings so we walk onto each site with a shot plan, not a scavenger hunt.
-  </p>
-  <p class="lead">
-    It&rsquo;s a starting point, not a lock. Your redlines, context I&rsquo;m missing, and the moments that matter most to the Summerhill narrative all belong on top of this — we&rsquo;ll tighten it on the Oles Cove discovery call and over a coffee before Johnstone.
-  </p>
-</section>
-
-<hr class="divider">
-
-<!-- PROJECT 01 -->
-<section class="section cream">
-  <div class="inner">
-    <div class="project-header">
-      <div style="flex:1 1 auto;">
-        <div class="project-number">Project 01</div>
-        <div class="project-title">Wilson Residence <em>— Oles Cove</em></div>
-      </div>
-      <div class="project-addr">5383 Oles Cove Rd · Waterfront acreage</div>
-    </div>
-
-    <figure>
-      <img src="assets/summerhill-brief/wilson-site.jpg" alt="Wilson Residence site plan — 5383 Oles Cove Road">
-      <figcaption><strong>Wilson Residence &middot; site plan</strong> &nbsp;&mdash;&nbsp; Second Nature Designs. Dwelling + studio + workshop/garage on 0.928 ha.</figcaption>
-    </figure>
-
-    <h3>What I know so far</h3>
-    <ul>
-      <li><strong>Completed waterfront build</strong> on private acreage</li>
-      <li><strong>Subjects in frame</strong> — the Wilsons on site, lifestyle over pure architecture</li>
-      <li>We shot a completion reel here previously — known ground, known light</li>
-      <li><strong>Window vendors</strong> (Innotech, Kolbe) have flagged interest in cost-share participation</li>
-    </ul>
-
-    <h3>Discovery call · 20 minutes</h3>
-    <p>The design story is the thing I can&rsquo;t pull from a floor plan. Questions I&rsquo;ll bring:</p>
-    <ol class="num">
-      <li><strong>Brief &amp; intent.</strong> What did the Wilsons ask for? What was the non-negotiable?</li>
-      <li><strong>Site moves.</strong> What dictated the siting — prevailing wind, view corridor, sun path, existing trees?</li>
-      <li><strong>Signature moment.</strong> If Wilson had to walk one person through the house and show them <em>one</em> thing, where would they stop?</li>
-      <li><strong>Material story.</strong> Exterior cladding, roof, interior millwork, stone. Where did you spend, where did you restrain?</li>
-      <li><strong>Lifestyle beats.</strong> How do the Wilsons actually <em>use</em> this house? Coffee spot, entertaining zone, dog&rsquo;s corner, kids&rsquo; hangout.</li>
-      <li><strong>Landscape.</strong> Who did it, what&rsquo;s mature vs. freshly planted, anything flowering in mid-May.</li>
-      <li><strong>Publication potential.</strong> Shelter-mag candidate, or marketing/portfolio piece? That changes the edit.</li>
-    </ol>
-
-    <h3>Shot priorities · to confirm on call</h3>
-    <div class="card-grid">
-      <div class="card">
-        <h4>Hero exterior</h4>
-        <ul>
-          <li>Wide establishing shot placing the house on the waterfront</li>
-          <li>Golden hour, drone-assisted for siting context</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4>Approach sequence</h4>
-        <ul>
-          <li>Driveway &rarr; entry, 2&ndash;3 frames that build anticipation</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4>View corridor</h4>
-        <ul>
-          <li>Primary living &rarr; water — the axis the design was built around</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4>Subjects in frame</h4>
-        <ul>
-          <li>3&ndash;5 environmental portraits — island, deck, dock, quiet candid</li>
-          <li>Matched wardrobe palette, solids, no logos</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4>Detail layer</h4>
-        <ul>
-          <li>3&ndash;4 tight frames on material choices that cost real money</li>
-          <li>Joinery, stone, hardware, millwork transitions</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4>Reel · 15&ndash;30s</h4>
-        <ul>
-          <li>Approach push-in, human moment, window-reveal, golden-hour sweep</li>
-          <li>Licensed music, vertical cut</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3>Logistics</h3>
-    <ul>
-      <li>Confirm Wilson availability — subjects on site 2&ndash;3 hours minimum</li>
-      <li>Wardrobe note to Wilsons: solids, neutral palette, no logos or bright primaries</li>
-      <li>Tide chart for waterfront framing — I&rsquo;ll check the May 14 swing</li>
-      <li>Drone window — confirm no active air restrictions over the cove</li>
-    </ul>
-  </div>
-</section>
-
-<!-- PROJECT 02 HERO -->
-<div class="project-hero">
-  <img src="assets/summerhill-brief/madeira-axon.jpg" alt="Madeira Park Residence — axonometric by Keck Architecture + Design">
+<div class="topbar">
+  <div class="topbar-item">Matt Anthony &nbsp;/&nbsp; Pre-shoot notes</div>
+  <div class="topbar-item muted">Summerhill Fine Homes &nbsp;·&nbsp; 2026.04</div>
 </div>
 
-<!-- PROJECT 02 -->
-<section class="section">
-  <div class="project-header">
-    <div style="flex:1 1 auto;">
-      <div class="project-number">Project 02</div>
-      <div class="project-title">Madeira Park <em>— Johnstone Rd.</em></div>
+<!-- TITLE -->
+<section class="title-block">
+  <div class="doc-meta">
+    <div class="doc-meta-item">
+      <span class="label">For</span>
+      Kyle Paisley<br>Summerhill Fine Homes
     </div>
-    <div class="project-addr">4976 Johnstone Rd · Keck Architecture + Design · Waterfront harbour</div>
+    <div class="doc-meta-item">
+      <span class="label">Shoot window</span>
+      14 &ndash; 15 May 2026<br>Weather-dependent
+    </div>
+    <div class="doc-meta-item">
+      <span class="label">By</span>
+      Matt Anthony<br>Photography
+    </div>
+    <div class="doc-meta-item">
+      <span class="label">Issued</span>
+      22.04.2026<br>Rev. 01
+    </div>
   </div>
 
-  <p class="lead">
-    This is clearly the more architecturally restrained of the two &mdash; a designed home, not a spec home. The drawings tell me it wants to be photographed like a Keck project, not like a listing.
+  <h1 class="doc-title">
+    Two waterfront houses.<br>
+    <em>A reading of the drawings before we shoot.</em>
+  </h1>
+
+  <p class="doc-lede">
+    A record of what the plans tell me about each project, what I need you to tell me, and how I propose to photograph both over two days. Intended as a working document. Mark it up.
   </p>
-
-  <h3>Parti · what the drawings tell me</h3>
-  <div class="card-grid">
-    <div class="card">
-      <h4>Massing</h4>
-      <ul>
-        <li>Two gabled wings — east &amp; west — linked by a lower central volume</li>
-        <li>East wing projects toward the water; west wing anchors the driveway</li>
-        <li>Pure vertical siding, no fussy trim — agrarian / Scandinavian read</li>
-        <li>Standing-seam metal roof, vented ridge and eaves detailed cleanly</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h4>The signature move</h4>
-      <ul>
-        <li>Double-height staircase volume between the two wings</li>
-        <li>Glass curtain wall on one face — the &ldquo;staircase / atrium&rdquo; you flagged</li>
-        <li>Continuous skylight run above the upper floor</li>
-        <li>This is almost certainly the hero interior frame</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h4>Upper floor</h4>
-      <ul>
-        <li>Kitchen / living / dining, open plan</li>
-        <li>Deck cantilever over the lower workshop — glass guardrail, stainless cap</li>
-        <li>East wing living opens to the deck and the water</li>
-        <li>Flush window sills, no reveal clutter</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h4>Lower floor &amp; site</h4>
-      <ul>
-        <li>Bedrooms, baths, laundry, workshop/storage</li>
-        <li>Walkout at the waterside via the stepped grade</li>
-        <li>Wood soffits, clear finish — warm reflected light under the eave</li>
-        <li>CIP concrete planters step down the steep waterfront rock</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="insight">
-    <h4>The staging question</h4>
-    <p>
-      <strong>No landscaping, no furnishings, listing-prep reality.</strong> Interiors will read cold and empty without intervention; there&rsquo;s no soft layer (plants, textiles, art) to warm the architecture. My take:
-    </p>
-    <p>
-      <strong>1. Sailboat at the dock &mdash; yes.</strong> It&rsquo;s a scale anchor for the waterfront exteriors and reads as &ldquo;a place that belongs on the water.&rdquo; Coordinate tide.
-    </p>
-    <p>
-      <strong>2. AI furnishings &mdash; treat as a post-production add-on, not a shoot-day call.</strong> Shoot the space clean and honest, then select 3&ndash;5 hero interior frames for AI staging (bed, living seating, dining, kitchen dressing) as a separate deliverable. That way the <em>architectural portfolio version</em> and the <em>listing version</em> are two distinct edits off the same shoot. Happy to quote separately once we see the empty frames.
-    </p>
-    <p>
-      <strong>3. Real props we can bring.</strong> One piece of driftwood, a stoneware vase, a linen throw. Small things that give scale without lying about the finish-out.
-    </p>
-  </div>
-
-  <figure>
-    <img src="assets/summerhill-brief/madeira-elevations.jpg" alt="Madeira Park — north and south building elevations">
-    <figcaption><strong>Building elevations</strong> &nbsp;&mdash;&nbsp; north + south. The gable-end compositions we&rsquo;ll photograph head-on.</figcaption>
-  </figure>
-
-  <figure>
-    <img src="assets/summerhill-brief/madeira-sections.jpg" alt="Madeira Park — building sections through stair volume">
-    <figcaption><strong>Building sections</strong> &nbsp;&mdash;&nbsp; the double-height stair volume (right) is the signature interior frame.</figcaption>
-  </figure>
-
-  <figure>
-    <img src="assets/summerhill-brief/madeira-floor-plans.jpg" alt="Madeira Park — reflected ceiling plans lower + upper">
-    <figcaption><strong>Floor plans</strong> &nbsp;&mdash;&nbsp; lower (left): bedrooms, workshop, games room. Upper (right): kitchen, living, dining, deck off east wing.</figcaption>
-  </figure>
-
-  <h3>Shot priorities · exterior</h3>
-  <ul>
-    <li>Hero gable-end elevation (road side) — symmetrical, dead-on, neutral light</li>
-    <li>Hero gable-end elevation (water side) — from the water or shoreline, drone at eave-line</li>
-    <li>Approach frame from driveway, showing the flush-wall siding-to-concrete detail</li>
-    <li>Cantilever deck from below on the waterside, emphasizing the float</li>
-    <li>Stepped planter / retaining wall sequence down the slope</li>
-    <li>Drone top-down + 30&deg; angle showing the two-wing parti — the shot that <em>explains</em> the design</li>
-  </ul>
-
-  <h3>Shot priorities · interior</h3>
-  <ul>
-    <li>Stair volume from the lower floor looking up through the curtain wall — the money shot</li>
-    <li>Stair volume from the upper landing looking down</li>
-    <li>Kitchen / living open-plan, framed through the deck opening toward water</li>
-    <li>Skylight light-cast frames (mid-morning, watch for harsh bars)</li>
-    <li>Threshold shots at the wing-to-stair transitions — east and west</li>
-    <li>Ceiling / soffit details where the wood soffit carries indoor to outdoor</li>
-  </ul>
-
-  <h3>Reel beats · 15&ndash;30s</h3>
-  <ul>
-    <li>Approach from driveway &rarr; pan to reveal gable geometry</li>
-    <li>Interior stair volume light reveal — probably the best single beat</li>
-    <li>Cantilever deck &rarr; water view dolly</li>
-    <li>Drone pullback at close — house sits in harbour context</li>
-    <li>Licensed music, vertical cut — lean Scandi-minimal, not cinematic swell</li>
-  </ul>
-
-  <h3>Logistics</h3>
-  <ul>
-    <li>Tide chart for waterfront frames and dock staging</li>
-    <li>Confirm sailboat availability and berth timing for the shoot day</li>
-    <li>Drone — confirm airspace around Madeira Park harbour</li>
-    <li>Clean-up pass needed — construction dust, ladder marks, tape residue on glass</li>
-    <li>Clear all MEP tags (HRV stickers, window tags) before we arrive</li>
-    <li>Blinds / window coverings, if any go in pre-shoot — confirm</li>
-  </ul>
 </section>
 
-<!-- SCHEDULE -->
-<section class="section light">
-  <div class="inner">
-    <div class="eyebrow">Proposed schedule</div>
-    <h2>Two days, <em>weather flex built in.</em></h2>
-    <p class="lead">
-      If Day 1 is grey or flat we flip the order and keep Wilson for the better light day.
-    </p>
+<!-- INDEX -->
+<section class="index">
+  <div class="index-title">Contents</div>
+  <div class="index-row">
+    <div class="index-num">01</div>
+    <div class="index-title-text">
+      Wilson Residence
+      <small>5383 Oles Cove Road &nbsp;·&nbsp; Second Nature Designs</small>
+    </div>
+    <div class="index-pg">i–iii</div>
+  </div>
+  <div class="index-row">
+    <div class="index-num">02</div>
+    <div class="index-title-text">
+      Madeira Park Residence
+      <small>4976 Johnstone Road &nbsp;·&nbsp; Keck Architecture + Design</small>
+    </div>
+    <div class="index-pg">iv–viii</div>
+  </div>
+  <div class="index-row">
+    <div class="index-num">03</div>
+    <div class="index-title-text">
+      Schedule &amp; deliverables
+      <small>Two days, weather-flexed</small>
+    </div>
+    <div class="index-pg">ix</div>
+  </div>
+</section>
 
-    <div class="schedule">
-      <div class="day">
-        <div class="day-label">Day 01 · Thursday</div>
+<!-- 01 — WILSON -->
+<section class="spread">
+  <div class="spread-head">
+    <div class="spread-num">01</div>
+    <div>
+      <h2 class="spread-title">Wilson Residence, <em>Oles Cove.</em></h2>
+      <div class="spread-sub">5383 Oles Cove Road &nbsp;·&nbsp; Second Nature Designs &nbsp;·&nbsp; Completed &nbsp;·&nbsp; 0.928 ha waterfront parcel</div>
+    </div>
+  </div>
+
+  <p class="lede">
+    A finished house with subjects on site. I've shot here before, which removes half the unknowns. What I don't know is the design story — the decisions the drawings can't tell me. That's what the pre-shoot conversation is for.
+  </p>
+
+  <figure>
+    <img src="assets/summerhill-brief/wilson-site.jpg" alt="Wilson Residence site plan">
+    <figcaption>
+      <div class="fc-label">Fig. 01.1</div>
+      <div class="fc-text"><strong>Site plan.</strong> Dwelling, studio, workshop/garage set against Malaspina Strait. Solid rock bluff to the north. Driveway approach from Oles Cove Road cuts south across the parcel before arriving.</div>
+    </figcaption>
+  </figure>
+
+  <div class="cols">
+    <div class="col-label">Known</div>
+    <div class="col-body">
+      <ul>
+        <li>Completed waterfront build on private acreage. Rock bluff to the north, water to the west.</li>
+        <li>Subjects (the Wilsons) on site — environmental portraits, not pure architecture.</li>
+        <li>Previous completion reel shot here. Known site, known light behaviour.</li>
+        <li>Window vendors Innotech and Kolbe have indicated interest in cost-share participation.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="col-label">Pre-shoot<br>conversation</div>
+    <div class="col-body">
+      <p>Twenty minutes, any time before the 14th. The questions I'd ask:</p>
+      <ol class="numbered">
+        <li><strong>Brief.</strong> What did the Wilsons ask for. What was non-negotiable.</li>
+        <li><strong>Siting.</strong> What dictated the position on the parcel. Prevailing wind, view corridor, sun, existing trees.</li>
+        <li><strong>One thing.</strong> If you walked a stranger through, where would you stop. What would you show.</li>
+        <li><strong>Material.</strong> Cladding, roof, interior joinery, stone. Where did the budget go, where did you hold back.</li>
+        <li><strong>Occupation.</strong> How do they actually use the house. Where do they drink coffee. Where do they eat in summer.</li>
+        <li><strong>Landscape.</strong> Mature vs. freshly planted. Anything in bloom in mid-May.</li>
+        <li><strong>Publication.</strong> Shelter magazine candidate or internal portfolio piece. Different edit either way.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="col-label">Intended<br>frames</div>
+    <div class="col-body">
+      <ul>
+        <li><strong>Siting, from water.</strong> Drone at low altitude, low tide if it reads. The house in its parcel.</li>
+        <li><strong>Approach.</strong> Driveway to threshold. Two or three frames that build the arrival.</li>
+        <li><strong>Primary axis.</strong> Living volume out to the water. The view the plan was organised around.</li>
+        <li><strong>Portraits.</strong> Three to five. Island, deck, dock, a quiet interior. Neutral wardrobe.</li>
+        <li><strong>Material close-ups.</strong> Three to four, where the money is.</li>
+        <li><strong>Reel, 15&ndash;30s.</strong> Approach push, a human beat, a window reveal, an evening exterior. Vertical, licensed score.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="col-label">Logistics</div>
+    <div class="col-body">
+      <ul>
+        <li>Wilsons on site two to three hours. Wardrobe note: solids, no logos, no primaries.</li>
+        <li>Tide chart for the waterside frames. Confirmed before shoot day.</li>
+        <li>Drone airspace over the cove verified.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 02 HERO -->
+<div class="bleed">
+  <img src="assets/summerhill-brief/madeira-axon.jpg" alt="Madeira Park Residence axonometric by Keck Architecture">
+</div>
+<div class="bleed-caption">
+  <div class="bc-label">Fig. 02.0</div>
+  <div class="bc-text">
+    <strong>Madeira Park, axonometric.</strong> Two gabled wings linked by a lower central volume. Private dock reached by engineered gangway. Drawing: Keck Architecture + Design.
+  </div>
+</div>
+
+<!-- 02 — MADEIRA PARK -->
+<section class="spread">
+  <div class="spread-head">
+    <div class="spread-num">02</div>
+    <div>
+      <h2 class="spread-title">Madeira Park Residence, <em>Johnstone Road.</em></h2>
+      <div class="spread-sub">4976 Johnstone Road &nbsp;·&nbsp; Keck Architecture + Design &nbsp;·&nbsp; Completed, unfurnished &nbsp;·&nbsp; Waterfront harbour</div>
+    </div>
+  </div>
+
+  <p class="lede">
+    A designed house, not a spec house. The drawings read like a Keck project — restrained, declarative, Scandinavian in reference. This one wants to be photographed on its own terms, not the listing's.
+  </p>
+
+  <div class="cols">
+    <div class="col-label">Reading<br>the parti</div>
+    <div class="col-body">
+      <p>Two gabled volumes, east and west, are knit together by a lower linking volume with a double-height stair. A continuous skylight band lets light down into the plan from above. The east wing cantilevers toward the water with a glass-guarded deck. A standing-seam metal roof and vertical wood siding form the only exterior vocabulary. Nothing decorative. No applied trim.</p>
+      <p>The house reads almost agrarian from the approach. From the water, the cantilever changes the conversation — suddenly the building is a modern piece of architecture, not a gabled cabin.</p>
+    </div>
+  </div>
+
+  <figure>
+    <img src="assets/summerhill-brief/madeira-elevations.jpg" alt="Madeira Park — north and south elevations">
+    <figcaption>
+      <div class="fc-label">Fig. 02.1</div>
+      <div class="fc-text"><strong>Elevations, north + south.</strong> The two gables sit at different heights, different spans. The linking volume reads as a lower datum between them. Deck and glass guardrail project from the upper floor of the east wing.</div>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/summerhill-brief/madeira-sections.jpg" alt="Madeira Park — building sections">
+    <figcaption>
+      <div class="fc-label">Fig. 02.2</div>
+      <div class="fc-text"><strong>Sections.</strong> The long section (top centre) shows the staircase volume opening up between east and west wings. This is the interior that deserves the most careful light.</div>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/summerhill-brief/madeira-floor-plans.jpg" alt="Madeira Park — floor plans">
+    <figcaption>
+      <div class="fc-label">Fig. 02.3</div>
+      <div class="fc-text"><strong>Floor plans.</strong> Lower (left): bedrooms, workshop/storage, games room below the east deck. Upper (right): kitchen, dining, living along the water-side datum. Stair sits at the hinge.</div>
+    </figcaption>
+  </figure>
+
+  <div class="pull-note">
+    <div class="pn-label">On staging</div>
+    <p>No landscaping, no furniture, listing-prep reality. An honest interior will read cold. There is no soft layer to warm the architecture.</p>
+    <p>My position: shoot the house honest first. One sailboat at the dock is the only staging that belongs on a shoot day — it gives the waterside exterior a scale anchor and a tenure.</p>
+    <p>Furnished versions are a post-production exercise, not a shoot decision. Select three to five interior frames after the fact and we'll stage them digitally for the listing. The portfolio edit and the MLS edit become two separate things, drawn from the same negatives.</p>
+  </div>
+
+  <div class="cols">
+    <div class="col-label">Intended<br>frames, exterior</div>
+    <div class="col-body">
+      <ul>
+        <li><strong>Gable elevation, road side.</strong> Head-on, symmetrical, neutral light.</li>
+        <li><strong>Gable elevation, water side.</strong> From shoreline or water, drone at eave-line.</li>
+        <li><strong>Approach.</strong> Driveway arrival, flush-siding-to-concrete detail.</li>
+        <li><strong>Deck cantilever.</strong> From below, waterside, emphasising the float over the workshop.</li>
+        <li><strong>Stepped concrete retaining.</strong> The site moves down the rock in stages.</li>
+        <li><strong>Parti shot.</strong> Drone, 30&deg; angle from water. The two wings and the link, legible in one frame.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="col-label">Intended<br>frames, interior</div>
+    <div class="col-body">
+      <ul>
+        <li><strong>Stair volume, up.</strong> Lower floor looking up through the curtain wall.</li>
+        <li><strong>Stair volume, down.</strong> Upper landing, the descent and the skylight above.</li>
+        <li><strong>Kitchen / living / deck.</strong> Framed through the deck opening toward water.</li>
+        <li><strong>Skylight cast.</strong> Mid-morning, watch for harsh bars across surfaces.</li>
+        <li><strong>Thresholds.</strong> Wing-to-stair transitions, east and west. The reveal detailing.</li>
+        <li><strong>Soffit.</strong> Where the clear-finish wood carries from exterior eave to interior ceiling.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="col-label">Reel, 15&ndash;30s</div>
+    <div class="col-body">
+      <ul>
+        <li>Approach, panning to reveal the gable geometry.</li>
+        <li>Stair volume, morning light through the curtain wall. Single beat.</li>
+        <li>Deck cantilever toward water, dolly.</li>
+        <li>Drone pullback at close. The harbour context.</li>
+        <li>Vertical cut, licensed score. No cinematic swell.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="col-label">Logistics</div>
+    <div class="col-body">
+      <ul>
+        <li>Tide chart for waterside frames and the dock stage.</li>
+        <li>Confirm sailboat availability and berth timing.</li>
+        <li>Drone airspace cleared around Madeira Park harbour.</li>
+        <li>Site cleaned: construction dust, ladder marks on walkouts, tape residue on glass.</li>
+        <li>MEP tags removed from vents, glazing, appliances.</li>
+        <li>Blinds or window treatments confirmed if any install pre-shoot.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — SCHEDULE -->
+<section class="spread">
+  <div class="spread-head">
+    <div class="spread-num">03</div>
+    <div>
+      <h2 class="spread-title">Schedule &amp; <em>deliverables.</em></h2>
+      <div class="spread-sub">Two days, weather-flexed. If 14 May reads flat, we reverse and keep the better light for Wilson.</div>
+    </div>
+  </div>
+
+  <div class="schedule">
+    <div class="day-row">
+      <div class="day-label"><strong>Day 01</strong>Thursday<br>14 May</div>
+      <div>
         <div class="day-title">Wilson Residence</div>
-        <div class="day-loc">May 14 · Oles Cove</div>
-
-        <div class="slot"><div class="slot-time">06:30</div><div class="slot-desc">Drone + exterior golden hour</div></div>
-        <div class="slot"><div class="slot-time">08:00</div><div class="slot-desc">Interiors begin, empty house</div></div>
-        <div class="slot"><div class="slot-time">10:30</div><div class="slot-desc">Wilsons on site · lifestyle beats + portraits</div></div>
-        <div class="slot"><div class="slot-time">13:00</div><div class="slot-desc">Lunch / reset</div></div>
-        <div class="slot"><div class="slot-time">14:00</div><div class="slot-desc">Detail layer + reel B-roll</div></div>
-        <div class="slot"><div class="slot-time">18:30</div><div class="slot-desc">Exterior golden hour + drone</div></div>
-        <div class="slot"><div class="slot-time">20:30</div><div class="slot-desc">Wrap</div></div>
+        <div class="day-sub">Oles Cove &nbsp;·&nbsp; subjects on site</div>
+        <div class="slot"><div class="slot-t">06:30</div><div class="slot-d">Drone, exterior, first light</div></div>
+        <div class="slot"><div class="slot-t">08:00</div><div class="slot-d">Interiors, empty house pass</div></div>
+        <div class="slot"><div class="slot-t">10:30</div><div class="slot-d">Wilsons on site, environmental portraits, lifestyle</div></div>
+        <div class="slot"><div class="slot-t">13:00</div><div class="slot-d">Lunch, reset</div></div>
+        <div class="slot"><div class="slot-t">14:00</div><div class="slot-d">Detail, reel b-roll</div></div>
+        <div class="slot"><div class="slot-t">18:30</div><div class="slot-d">Exterior, evening light, drone</div></div>
+        <div class="slot"><div class="slot-t">20:30</div><div class="slot-d">Wrap</div></div>
       </div>
+    </div>
 
-      <div class="day">
-        <div class="day-label">Day 02 · Friday</div>
+    <div class="day-row">
+      <div class="day-label"><strong>Day 02</strong>Friday<br>15 May</div>
+      <div>
         <div class="day-title">Madeira Park</div>
-        <div class="day-loc">May 15 · 4976 Johnstone Rd.</div>
-
-        <div class="slot"><div class="slot-time">06:30</div><div class="slot-desc">Drone + exterior morning light (gable shadows)</div></div>
-        <div class="slot"><div class="slot-time">08:00</div><div class="slot-desc">Stair volume — first light through the curtain wall</div></div>
-        <div class="slot"><div class="slot-time">10:00</div><div class="slot-desc">Upper floor living / kitchen / deck</div></div>
-        <div class="slot"><div class="slot-time">12:30</div><div class="slot-desc">Lunch / reset</div></div>
-        <div class="slot"><div class="slot-time">13:30</div><div class="slot-desc">Lower floor, workshop walkout</div></div>
-        <div class="slot"><div class="slot-time">15:00</div><div class="slot-desc">Detail layer + reel B-roll</div></div>
-        <div class="slot"><div class="slot-time">17:30</div><div class="slot-desc">Sailboat dock staging</div></div>
-        <div class="slot"><div class="slot-time">19:00</div><div class="slot-desc">Exterior golden hour + drone</div></div>
-        <div class="slot"><div class="slot-time">20:30</div><div class="slot-desc">Wrap</div></div>
+        <div class="day-sub">Johnstone Road &nbsp;·&nbsp; unfurnished, architectural</div>
+        <div class="slot"><div class="slot-t">06:30</div><div class="slot-d">Drone, exterior, morning shadow on gables</div></div>
+        <div class="slot"><div class="slot-t">08:00</div><div class="slot-d">Stair volume, first light through curtain wall</div></div>
+        <div class="slot"><div class="slot-t">10:00</div><div class="slot-d">Kitchen, living, deck threshold</div></div>
+        <div class="slot"><div class="slot-t">12:30</div><div class="slot-d">Lunch, reset</div></div>
+        <div class="slot"><div class="slot-t">13:30</div><div class="slot-d">Lower floor, workshop walkout</div></div>
+        <div class="slot"><div class="slot-t">15:00</div><div class="slot-d">Detail, reel b-roll</div></div>
+        <div class="slot"><div class="slot-t">17:30</div><div class="slot-d">Dock staging, sailboat if available</div></div>
+        <div class="slot"><div class="slot-t">19:00</div><div class="slot-d">Exterior, evening, drone</div></div>
+        <div class="slot"><div class="slot-t">20:30</div><div class="slot-d">Wrap</div></div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- DELIVERABLES -->
-<section class="section cream">
-  <div class="inner">
-    <div class="eyebrow">Deliverables · per project</div>
-    <h2>What lands <em>in your inbox.</em></h2>
+  <h3 style="margin-top:80px;">Deliverables, per project</h3>
 
-    <div class="delivs">
-      <div class="deliv">
-        <div class="deliv-num">15&ndash;20</div>
-        <div class="deliv-label">Hero images<br>Fully edited<br>Web + print res</div>
-      </div>
-      <div class="deliv">
-        <div class="deliv-num">1</div>
-        <div class="deliv-label">Short-form reel<br>15&ndash;30s vertical<br>Licensed music</div>
-      </div>
-      <div class="deliv">
-        <div class="deliv-num">2&ndash;4</div>
-        <div class="deliv-label">Cost-share partners<br>Innotech, Kolbe<br>Open invite</div>
-      </div>
-      <div class="deliv">
-        <div class="deliv-num">+</div>
-        <div class="deliv-label">AI-staged edit<br>Johnstone listing<br>Quoted separately</div>
-      </div>
+  <div class="delivs">
+    <div class="deliv">
+      <div class="deliv-label">01</div>
+      <div class="deliv-num">15&ndash;20</div>
+      <div class="deliv-desc">Hero photographs, fully edited, web + print resolution.</div>
     </div>
-
-    <p class="lead" style="text-align:center; max-width:680px; margin:24px auto 0;">
-      $3,000 + GST per project · $6,000 + GST total · window vendor cost-share coordinated through you.
-    </p>
+    <div class="deliv">
+      <div class="deliv-label">02</div>
+      <div class="deliv-num">1</div>
+      <div class="deliv-desc">Short-form film, 15&ndash;30s, vertical, licensed score.</div>
+    </div>
+    <div class="deliv">
+      <div class="deliv-label">03</div>
+      <div class="deliv-num">Open</div>
+      <div class="deliv-desc">Vendor cost-share, coordinated through Summerhill. Innotech, Kolbe invited.</div>
+    </div>
+    <div class="deliv">
+      <div class="deliv-label">04</div>
+      <div class="deliv-num">+</div>
+      <div class="deliv-desc">Post-production digital staging (Madeira only), quoted separately.</div>
+    </div>
   </div>
-</section>
 
-<!-- CTA -->
-<section class="cta">
-  <div class="eyebrow">Next step</div>
-  <h2>Twenty minutes on Oles Cove, <em>coffee before Johnstone.</em></h2>
-  <p>
-    Redlines on anything above, send them back marked up. Otherwise, let&rsquo;s lock the discovery call and get the shoot days on the calendar the moment you&rsquo;re back.
+  <p style="margin-top:32px; font-size:0.82rem; color:var(--ink-70);">
+    Fee: <strong style="color:var(--ink);">$3,000 + GST per project</strong>. Two projects, $6,000 + GST total. Cost-share contributions offset, not additive.
   </p>
-  <a href="https://mattanthonyphoto.com/discovery-call" class="cta-btn">Book the call</a>
 </section>
+
+<!-- NEXT STEP -->
+<div class="colophon">
+  <div class="co-label">Next</div>
+  <div>
+    <h2>Twenty minutes on Oles Cove. <em>Coffee before Johnstone.</em></h2>
+    <p>
+      Mark up this document where it's wrong. Lock the pre-shoot call before the 14th. The schedule holds as long as the weather does.
+    </p>
+    <a href="https://mattanthonyphoto.com/discovery-call" class="next-link">Book the call</a>
+  </div>
+</div>
 
 <footer>
-  Matt Anthony Photography &nbsp;·&nbsp; <a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a> &nbsp;·&nbsp; 604.765.9270
+  <div>Matt Anthony Photography &nbsp;·&nbsp; 2026.04.22 &nbsp;·&nbsp; Rev. 01</div>
+  <div><a href="mailto:info@mattanthonyphoto.com">info@mattanthonyphoto.com</a> &nbsp;·&nbsp; 604.765.9270</div>
 </footer>
 
 </body>
