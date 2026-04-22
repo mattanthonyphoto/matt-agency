@@ -290,6 +290,51 @@
   }
   .cta-btn:hover { background:var(--paper); transform:translateY(-2px); }
 
+  /* FIGURE (drawings + photos) */
+  figure {
+    margin:32px 0 12px;
+    background:var(--ink);
+    padding:12px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.08);
+  }
+  figure img {
+    display:block; width:100%; height:auto;
+    background:var(--white);
+  }
+  figcaption {
+    font-family:'Josefin Sans',sans-serif; font-size:0.58rem;
+    letter-spacing:0.24em; text-transform:uppercase; color:var(--stone);
+    margin-top:14px; padding:0 6px 6px;
+  }
+  figcaption strong { color:var(--gold); font-weight:500; }
+  .section.cream figure { background:var(--ink); }
+
+  /* FULL-BLEED HERO BAND */
+  .project-hero {
+    margin:0; padding:0; width:100%; background:var(--ink);
+    position:relative; overflow:hidden;
+  }
+  .project-hero img {
+    display:block; width:100%; height:auto;
+    max-height:560px; object-fit:cover; object-position:center;
+  }
+
+  /* REFERENCE IMAGE GRID (Summerhill past work) */
+  .ref-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:4px;
+    margin:40px 0 20px;
+  }
+  .ref-grid img {
+    display:block; width:100%; height:240px; object-fit:cover;
+    filter:brightness(0.96); transition:filter 0.4s ease;
+  }
+  .ref-grid img:hover { filter:brightness(1.05); }
+  .ref-caption {
+    font-family:'Josefin Sans',sans-serif; font-size:0.58rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--stone);
+    text-align:center; margin:4px 0 0;
+  }
+
   /* FOOTER */
   footer {
     padding:48px 60px; background:var(--ink); color:rgba(246,244,240,0.45);
@@ -306,6 +351,9 @@
     .card-grid { grid-template-columns:1fr; }
     .schedule { grid-template-columns:1fr; gap:60px; }
     .delivs { grid-template-columns:1fr 1fr; }
+    .ref-grid { grid-template-columns:1fr 1fr; }
+    .ref-grid img { height:180px; }
+    .project-hero img { max-height:320px; }
     h2 { font-size:2rem; }
     .project-title { font-size:1.7rem; }
   }
@@ -371,6 +419,21 @@
       </div>
       <div class="project-addr">5383 Oles Cove Rd · Waterfront acreage</div>
     </div>
+
+    <div class="ref-grid">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/62f2712d-a413-46af-bcd8-d0f17957f8ab/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-4.jpg?format=1500w" alt="Summerhill Sandy Hook — exterior">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/aa77ed99-a103-40dd-bce5-b355bab58632/sandy-hook-sunshine-coast-architectural-photography-matt-anthony-.jpg-11.jpg?format=1500w" alt="Summerhill Sandy Hook — interior">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/9207a2de-b9ed-4747-bd12-d5c9849da836/architectural-interiors-photographer-gillespie-sunshine-coast-2.jpg?format=1500w" alt="Summerhill Gillespie — interior">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/b7448f8f-04d8-4093-baed-9aa1c54c140d/5322-backhouse-web-1.1.jpg?format=1500w" alt="Summerhill Backhouse">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/450a7fc3-25a9-4668-8662-90111e476240/architectural-interiors-photographer-morden-project-sunshine-coast--6.jpg?format=1500w" alt="Summerhill Morden">
+      <img src="https://images.squarespace-cdn.com/content/v1/6824fd48afd1dd40cd73e146/99381b00-0337-4207-afdf-fef0d9870acf/construction-lifestyle-photography-sunshine-coast-summerhill18.jpg?format=1500w" alt="Summerhill in-progress lifestyle">
+    </div>
+    <p class="ref-caption">Tone reference &mdash; past Summerhill deliveries</p>
+
+    <figure style="margin-top:48px;">
+      <img src="assets/summerhill-brief/wilson-site.jpg" alt="Wilson Residence site plan — 5383 Oles Cove Road">
+      <figcaption><strong>Wilson Residence &middot; site plan</strong> &nbsp;&mdash;&nbsp; Second Nature Designs. Dwelling + studio + workshop/garage on 0.928 ha.</figcaption>
+    </figure>
 
     <h3>What I know so far</h3>
     <ul>
@@ -446,6 +509,11 @@
   </div>
 </section>
 
+<!-- PROJECT 02 HERO -->
+<div class="project-hero">
+  <img src="assets/summerhill-brief/madeira-axon.jpg" alt="Madeira Park Residence — axonometric by Keck Architecture + Design">
+</div>
+
 <!-- PROJECT 02 -->
 <section class="section">
   <div class="project-header">
@@ -515,6 +583,21 @@
       <strong>3. Real props we can bring.</strong> One piece of driftwood, a stoneware vase, a linen throw. Small things that give scale without lying about the finish-out.
     </p>
   </div>
+
+  <figure>
+    <img src="assets/summerhill-brief/madeira-elevations.jpg" alt="Madeira Park — north and south building elevations">
+    <figcaption><strong>Building elevations</strong> &nbsp;&mdash;&nbsp; north + south. The gable-end compositions we&rsquo;ll photograph head-on.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/summerhill-brief/madeira-sections.jpg" alt="Madeira Park — building sections through stair volume">
+    <figcaption><strong>Building sections</strong> &nbsp;&mdash;&nbsp; the double-height stair volume (right) is the signature interior frame.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/summerhill-brief/madeira-floor-plans.jpg" alt="Madeira Park — reflected ceiling plans lower + upper">
+    <figcaption><strong>Floor plans</strong> &nbsp;&mdash;&nbsp; lower (left): bedrooms, workshop, games room. Upper (right): kitchen, living, dining, deck off east wing.</figcaption>
+  </figure>
 
   <h3>Shot priorities · exterior</h3>
   <ul>
