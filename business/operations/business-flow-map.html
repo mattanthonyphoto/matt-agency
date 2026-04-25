@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Operating Map / Matt Anthony Photography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #FAFAF8;
+  --ink: #111111;
+  --ink-72: rgba(17,17,17,0.72);
+  --ink-50: rgba(17,17,17,0.50);
+  --ink-30: rgba(17,17,17,0.30);
+  --ink-15: rgba(17,17,17,0.15);
+  --ink-08: rgba(17,17,17,0.08);
+  --ink-04: rgba(17,17,17,0.04);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--ink); }
+
+/* ---------------- top bar ---------------- */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid var(--ink-15);
+  padding: 14px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-72);
+}
+.topbar .right { text-align: right; }
+
+/* ---------------- layout ---------------- */
+.shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 110px 40px 80px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  column-gap: 32px;
+  margin-bottom: 22px;
+}
+
+.label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-50);
+  padding-top: 6px;
+}
+
+.body p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.body p.lede {
+  font-family: 'Newsreader', serif;
+  font-weight: 300;
+  font-size: 21px;
+  line-height: 1.45;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+
+.body p.lede em {
+  font-style: italic;
+  color: var(--ink-72);
+}
+
+/* ---------------- title block ---------------- */
+.title-block {
+  margin-bottom: 80px;
+  border-bottom: 1px solid var(--ink-15);
+  padding-bottom: 50px;
+}
+
+.doc-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 50px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.doc-meta .key { display: block; color: var(--ink-50); margin-bottom: 6px; font-size: 9px; }
+.doc-meta .val { display: block; color: var(--ink); font-weight: 400; font-size: 11px; letter-spacing: 0.1em; text-transform: none; }
+
+.bigtitle {
+  font-family: 'Newsreader', serif;
+  font-weight: 300;
+  font-size: 78px;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.bigtitle em {
+  font-style: italic;
+  color: var(--ink-72);
+  display: block;
+  font-size: 56px;
+}
+
+.title-block .lede {
+  font-family: 'Newsreader', serif;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--ink-72);
+  margin-top: 28px;
+  max-width: 720px;
+}
+.title-block .lede em { font-style: italic; color: var(--ink); }
+
+/* ---------------- contents ---------------- */
+.contents {
+  margin: 60px 0 100px;
+  border-top: 1px solid var(--ink-15);
+  border-bottom: 1px solid var(--ink-15);
+  padding: 30px 0;
+}
+
+.contents-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 100px;
+  gap: 24px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--ink-08);
+  align-items: baseline;
+}
+.contents-row:last-child { border-bottom: none; }
+
+.contents-num {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--ink-50);
+}
+.contents-title {
+  font-family: 'Newsreader', serif;
+  font-weight: 300;
+  font-size: 22px;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.contents-title em { font-style: italic; color: var(--ink-72); display: block; font-size: 14px; margin-top: 4px; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 0; }
+.contents-page {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-50);
+  text-align: right;
+}
+
+/* ---------------- section heads ---------------- */
+.spread {
+  margin: 100px 0 40px;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  column-gap: 32px;
+  border-top: 1px solid var(--ink);
+  padding-top: 24px;
+}
+
+.spread-num {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--ink-50);
+}
+
+.spread-title {
+  font-family: 'Newsreader', serif;
+  font-weight: 300;
+  font-size: 44px;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.spread-title em { font-style: italic; color: var(--ink-72); display: block; font-size: 28px; margin-top: 4px; }
+
+.spread-sub {
+  margin-top: 14px;
+  font-family: 'Newsreader', serif;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink-72);
+  max-width: 680px;
+}
+.spread-sub em { font-style: italic; }
+
+/* ---------------- diagrams ---------------- */
+.diagram-frame {
+  margin: 40px 0 30px;
+  border: 1px solid var(--ink-15);
+  background: #fff;
+  padding: 28px 24px 20px;
+}
+.diagram-frame svg { display: block; width: 100%; height: auto; }
+.diagram-cap {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  column-gap: 32px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--ink-50);
+}
+.diagram-cap .fignum {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--ink-50);
+}
+.diagram-cap .figtext em { font-style: italic; color: var(--ink-72); }
+
+/* SVG primitives */
+.node-rect { fill: #fff; stroke: var(--ink); stroke-width: 1; }
+.node-rect.muted { fill: #fff; stroke: rgba(17,17,17,0.3); }
+.node-rect.bottleneck { fill: rgba(17,17,17,0.06); stroke: var(--ink); stroke-width: 1.5; }
+.node-rect.gap { fill: #fff; stroke: var(--ink-30); stroke-width: 1; stroke-dasharray: 4 4; }
+.node-rect.owner { fill: var(--ink); stroke: var(--ink); }
+.node-rect.pod { fill: rgba(17,17,17,0.03); stroke: var(--ink); stroke-width: 1; }
+.node-text { font-family: 'Inter', sans-serif; font-size: 10px; fill: var(--ink); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+.node-text.owner { fill: #fff; }
+.node-sub { font-family: 'Newsreader', serif; font-style: italic; font-size: 9px; fill: var(--ink-50); font-weight: 300; }
+.node-sub.owner { fill: rgba(255,255,255,0.7); }
+.section-label { font-family: 'Inter', sans-serif; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; fill: var(--ink-50); font-weight: 500; }
+.flow-line { stroke: var(--ink-50); stroke-width: 1; fill: none; }
+.flow-line.dashed { stroke-dasharray: 4 3; stroke: var(--ink-30); }
+.flow-line.thick { stroke: var(--ink); stroke-width: 1.5; }
+.flow-arrow { fill: var(--ink-50); }
+.flow-arrow.dim { fill: var(--ink-30); }
+.flow-arrow.bold { fill: var(--ink); }
+.pod-label { font-family: 'Inter', sans-serif; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; fill: var(--ink); font-weight: 600; }
+.pod-divider { stroke: var(--ink); stroke-width: 0.5; }
+
+/* ---------------- pull notes ---------------- */
+.pull-note {
+  margin: 30px 0;
+  border-left: 2px solid var(--ink);
+  padding: 18px 24px;
+  background: var(--ink-04);
+}
+.pull-note p {
+  font-family: 'Newsreader', serif;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink);
+  font-style: italic;
+}
+.pull-note p:not(:last-child) { margin-bottom: 10px; }
+.pull-note .src {
+  display: block;
+  margin-top: 12px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-50);
+}
+
+/* ---------------- numbered cards ---------------- */
+.principles {
+  margin: 24px 0 40px;
+}
+.principle {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--ink-08);
+}
+.principle:last-child { border-bottom: 1px solid var(--ink-15); }
+.principle .pnum {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 30px;
+  color: var(--ink-50);
+  line-height: 1;
+}
+.principle h3 {
+  font-family: 'Newsreader', serif;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.principle .src {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-50);
+  margin-bottom: 12px;
+  display: block;
+}
+.principle p {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+/* ---------------- gap table ---------------- */
+.gap-table {
+  margin: 30px 0 40px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink-15);
+}
+.gap-row {
+  display: grid;
+  grid-template-columns: 60px 1.6fr 2fr 1fr 90px;
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--ink-08);
+  align-items: baseline;
+}
+.gap-row.head {
+  border-bottom: 1px solid var(--ink-30);
+  padding: 14px 0;
+}
+.gap-row.head > * {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-50);
+}
+.gap-row .gnum {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-50);
+}
+.gap-row .ghole {
+  font-family: 'Newsreader', serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.gap-row .gfix {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink);
+  font-weight: 300;
+}
+.gap-row .gevidence {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--ink-72);
+  font-weight: 300;
+}
+.gap-row .gimpact {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-align: right;
+  white-space: nowrap;
+}
+.severity {
+  display: inline-block;
+  padding: 3px 8px;
+  border: 1px solid var(--ink);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+}
+.severity.crit { background: var(--ink); color: #fff; }
+.severity.high { background: #fff; color: var(--ink); }
+.severity.med { background: #fff; color: var(--ink-72); border-color: var(--ink-30); }
+
+/* ---------------- numbers strip ---------------- */
+.numbers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  margin: 30px 0;
+}
+.numbers .nbox {
+  padding: 22px 18px;
+  border-right: 1px solid var(--ink-15);
+}
+.numbers .nbox:last-child { border-right: none; }
+.numbers .nlabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-50);
+  margin-bottom: 12px;
+  display: block;
+}
+.numbers .nbig {
+  font-family: 'Newsreader', serif;
+  font-weight: 300;
+  font-size: 38px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.numbers .nbig em { font-style: italic; color: var(--ink-72); font-size: 28px; }
+.numbers .ndesc {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--ink-72);
+  line-height: 1.4;
+}
+
+/* ---------------- timeline ---------------- */
+.tl {
+  margin: 30px 0 40px;
+}
+.tl-section {
+  border-top: 1px solid var(--ink);
+  padding: 24px 0 8px;
+}
+.tl-head {
+  display: grid;
+  grid-template-columns: 80px 1fr 200px;
+  gap: 32px;
+  margin-bottom: 18px;
+  align-items: baseline;
+}
+.tl-marker {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--ink-50);
+  letter-spacing: 0.06em;
+}
+.tl-head h3 {
+  font-family: 'Newsreader', serif;
+  font-weight: 300;
+  font-size: 26px;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+.tl-head h3 em { font-style: italic; color: var(--ink-72); display: block; font-size: 16px; margin-top: 2px; }
+.tl-target {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-50);
+  text-align: right;
+}
+.tl-target strong { color: var(--ink); font-weight: 600; display: block; font-size: 14px; letter-spacing: 0.08em; margin-top: 2px; }
+.tl-list {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 32px;
+  padding: 12px 0 24px;
+}
+.tl-list ol { list-style: none; counter-reset: tlist; }
+.tl-list li {
+  counter-increment: tlist;
+  position: relative;
+  padding: 10px 0 10px 36px;
+  border-bottom: 1px solid var(--ink-08);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  font-weight: 300;
+}
+.tl-list li:before {
+  content: counter(tlist, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 12px;
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--ink-50);
+}
+.tl-list li b {
+  font-weight: 500;
+  color: var(--ink);
+}
+.tl-list li span.unit {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-50);
+  margin-left: 8px;
+}
+
+/* ---------------- revenue model ---------------- */
+.rev-model {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  margin: 30px 0;
+  border: 1px solid var(--ink);
+}
+.rev-side {
+  padding: 28px;
+}
+.rev-side.left { border-right: 1px solid var(--ink); }
+.rev-head {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-50);
+  margin-bottom: 10px;
+}
+.rev-year {
+  font-family: 'Newsreader', serif;
+  font-weight: 300;
+  font-size: 28px;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.rev-total {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-72);
+  margin-bottom: 24px;
+}
+.rev-line {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--ink-08);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  align-items: baseline;
+}
+.rev-line .rname { color: var(--ink); font-weight: 400; }
+.rev-line .rname em { font-style: italic; color: var(--ink-50); display: block; font-size: 11px; font-weight: 300; margin-top: 2px; }
+.rev-line .rpct { color: var(--ink-72); font-weight: 300; font-size: 12px; }
+.rev-line .ramt { font-family: 'Newsreader', serif; font-weight: 400; font-size: 14px; min-width: 60px; text-align: right; }
+
+/* ---------------- bleed ---------------- */
+.bleed-quote {
+  margin: 70px -40px;
+  padding: 80px 80px;
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+}
+.bleed-quote h2 {
+  font-family: 'Newsreader', serif;
+  font-weight: 300;
+  font-size: 44px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  max-width: 800px;
+  margin: 0 auto 18px;
+}
+.bleed-quote h2 em { font-style: italic; color: rgba(250,250,248,0.65); }
+.bleed-quote .src {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(250,250,248,0.5);
+}
+
+/* ---------------- footer ---------------- */
+footer {
+  margin-top: 100px;
+  padding-top: 30px;
+  border-top: 1px solid var(--ink);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--ink-72);
+}
+footer .right { text-align: right; }
+footer .colophon {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-72);
+}
+
+/* ---------------- responsive ---------------- */
+@media (max-width: 800px) {
+  .shell { padding: 100px 24px 60px; }
+  .row { grid-template-columns: 1fr; gap: 8px; margin-bottom: 18px; }
+  .label { padding-top: 0; margin-bottom: 4px; }
+  .bigtitle { font-size: 48px; }
+  .bigtitle em { font-size: 34px; }
+  .doc-meta { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .spread { grid-template-columns: 1fr; }
+  .spread-title { font-size: 32px; }
+  .spread-title em { font-size: 20px; }
+  .numbers { grid-template-columns: repeat(2, 1fr); }
+  .numbers .nbox { border-right: none; border-bottom: 1px solid var(--ink-15); }
+  .gap-row { grid-template-columns: 1fr; gap: 6px; padding: 16px 0; }
+  .gap-row.head { display: none; }
+  .gap-row .gimpact { text-align: left; }
+  .rev-model { grid-template-columns: 1fr; }
+  .rev-side.left { border-right: none; border-bottom: 1px solid var(--ink); }
+  .tl-head { grid-template-columns: 1fr; }
+  .tl-target { text-align: left; }
+  .tl-list { grid-template-columns: 1fr; }
+  .bleed-quote { margin: 50px -24px; padding: 50px 30px; }
+  .bleed-quote h2 { font-size: 28px; }
+  .topbar { padding: 12px 20px; font-size: 9px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     TOP BAR
+============================================================ -->
+<div class="topbar">
+  <div class="left">Matt Anthony / Operating map</div>
+  <div class="right">Internal / 2026.04.24</div>
+</div>
+
+<div class="shell">
+
+  <!-- ============================================================
+       TITLE
+  ============================================================ -->
+  <section class="title-block">
+    <div class="doc-meta">
+      <div><span class="key">For</span><span class="val">Matt Anthony</span></div>
+      <div><span class="key">Subject</span><span class="val">Business architecture</span></div>
+      <div><span class="key">By</span><span class="val">Strategy session</span></div>
+      <div><span class="key">Issued</span><span class="val">April 24, 2026</span></div>
+    </div>
+
+    <h1 class="bigtitle">
+      The business as it runs,
+      <em>and as it could.</em>
+    </h1>
+
+    <p class="lede">
+      A working map of how money, attention, and decisions move through Matt Anthony Photography today, the model a research-backed agency would replace it with, and the gap between the two. <em>Read the diagrams first, then the principles, then the sequence at the back.</em>
+    </p>
+  </section>
+
+  <!-- ============================================================
+       CONTENTS
+  ============================================================ -->
+  <nav class="contents">
+    <div class="contents-row">
+      <div class="contents-num">01</div>
+      <div class="contents-title">Today<em>The current operating system, drawn honestly</em></div>
+      <div class="contents-page">Pp. 03–06</div>
+    </div>
+    <div class="contents-row">
+      <div class="contents-num">02</div>
+      <div class="contents-title">Ideal<em>How a research-backed boutique agency would run this</em></div>
+      <div class="contents-page">Pp. 07–11</div>
+    </div>
+    <div class="contents-row">
+      <div class="contents-num">03</div>
+      <div class="contents-title">Delta<em>Holes, leaks, and where the model breaks</em></div>
+      <div class="contents-page">Pp. 12–15</div>
+    </div>
+    <div class="contents-row">
+      <div class="contents-num">04</div>
+      <div class="contents-title">Sequence<em>What to move first, in what order, with what target</em></div>
+      <div class="contents-page">Pp. 16–18</div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       SECTION 01 - TODAY
+  ============================================================ -->
+  <section class="spread">
+    <div class="spread-num">01</div>
+    <div>
+      <h2 class="spread-title">
+        Today.
+        <em>The current operating system, drawn honestly.</em>
+      </h2>
+      <p class="spread-sub">
+        2025 closed at $105,237 across 89 invoices. The shape of the business is a one-person operator at the center of every loop, supported by a real but uneven scaffold of agents, sheets, and CRM. The fundamentals are strong. The architecture is fragile.
+      </p>
+    </div>
+  </section>
+
+  <div class="row">
+    <div class="label">Snapshot</div>
+    <div class="body">
+      <div class="numbers">
+        <div class="nbox">
+          <span class="nlabel">2025 Revenue</span>
+          <div class="nbig">$105K</div>
+          <div class="ndesc">89 invoices, top 2 clients = 49%</div>
+        </div>
+        <div class="nbox">
+          <span class="nlabel">Recurring base</span>
+          <div class="nbig">$5.1K<em>/mo</em></div>
+          <div class="ndesc">LRD + Balmoral + small hosts</div>
+        </div>
+        <div class="nbox">
+          <span class="nlabel">Cost-share hit rate</span>
+          <div class="nbig">90%</div>
+          <div class="ndesc">Vs. AOS assumption of 33%</div>
+        </div>
+        <div class="nbox">
+          <span class="nlabel">Net margin</span>
+          <div class="nbig">~31%</div>
+          <div class="ndesc">$33K net on $105K gross</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CURRENT STATE DIAGRAM
+  ============================================================ -->
+  <div class="diagram-frame">
+    <svg viewBox="0 0 1040 720" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" class="flow-arrow"/>
+        </marker>
+        <marker id="arrDim" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" class="flow-arrow dim"/>
+        </marker>
+        <marker id="arrBold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" class="flow-arrow bold"/>
+        </marker>
+      </defs>
+
+      <!-- Section labels -->
+      <text x="20" y="22" class="section-label">Acquisition</text>
+      <text x="280" y="22" class="section-label">Pipeline</text>
+      <text x="500" y="22" class="section-label">Production</text>
+      <text x="760" y="22" class="section-label">Money</text>
+
+      <!-- Vertical dividers -->
+      <line x1="250" y1="40" x2="250" y2="540" class="pod-divider" stroke-dasharray="3 3"/>
+      <line x1="490" y1="40" x2="490" y2="540" class="pod-divider" stroke-dasharray="3 3"/>
+      <line x1="720" y1="40" x2="720" y2="540" class="pod-divider" stroke-dasharray="3 3"/>
+
+      <!-- LEAD SOURCES (acquisition) -->
+      <g>
+        <!-- Cold email -->
+        <rect x="20" y="60" width="200" height="46" class="node-rect" rx="2"/>
+        <text x="32" y="80" class="node-text">Cold email — Instantly</text>
+        <text x="32" y="98" class="node-sub">3 campaigns, 541 leads</text>
+
+        <!-- Pricing guide -->
+        <rect x="20" y="120" width="200" height="46" class="node-rect" rx="2"/>
+        <text x="32" y="140" class="node-text">Pricing guide form</text>
+        <text x="32" y="158" class="node-sub">n8n → GHL + email</text>
+
+        <!-- Contact form -->
+        <rect x="20" y="180" width="200" height="46" class="node-rect" rx="2"/>
+        <text x="32" y="200" class="node-text">Contact form</text>
+        <text x="32" y="218" class="node-sub">Webhook → GHL</text>
+
+        <!-- Instagram -->
+        <rect x="20" y="240" width="200" height="46" class="node-rect bottleneck" rx="2"/>
+        <text x="32" y="260" class="node-text">Instagram</text>
+        <text x="32" y="278" class="node-sub">Reactivated Mar after 5mo dark</text>
+
+        <!-- Referrals -->
+        <rect x="20" y="300" width="200" height="46" class="node-rect gap" rx="2"/>
+        <text x="32" y="320" class="node-text">Referrals — informal</text>
+        <text x="32" y="338" class="node-sub">No tracking, no incentive</text>
+
+        <!-- GBP -->
+        <rect x="20" y="360" width="200" height="46" class="node-rect" rx="2"/>
+        <text x="32" y="380" class="node-text">Google Business Profile</text>
+        <text x="32" y="398" class="node-sub">Live, 5 review requests sent</text>
+
+        <!-- Missing channels -->
+        <rect x="20" y="420" width="200" height="46" class="node-rect gap" rx="2"/>
+        <text x="32" y="440" class="node-text">Houzz, ArchDaily, Pinterest</text>
+        <text x="32" y="458" class="node-sub">Not present where peers are</text>
+
+        <!-- Paid -->
+        <rect x="20" y="480" width="200" height="46" class="node-rect gap" rx="2"/>
+        <text x="32" y="500" class="node-text">Paid ads</text>
+        <text x="32" y="518" class="node-sub">$300/mo budgeted, $0 spent</text>
+      </g>
+
+      <!-- PIPELINE -->
+      <g>
+        <!-- GHL Pipeline -->
+        <rect x="270" y="80" width="200" height="60" class="node-rect bottleneck" rx="2"/>
+        <text x="282" y="102" class="node-text">GHL Pipeline</text>
+        <text x="282" y="120" class="node-sub">Stages exist, close-rate</text>
+        <text x="282" y="132" class="node-sub">not tracked</text>
+
+        <!-- Discovery call -->
+        <rect x="270" y="170" width="200" height="60" class="node-rect" rx="2"/>
+        <text x="282" y="192" class="node-text">Discovery call</text>
+        <text x="282" y="210" class="node-sub">Booked via GHL widget,</text>
+        <text x="282" y="222" class="node-sub">no budget question on form</text>
+
+        <!-- Proposal -->
+        <rect x="270" y="260" width="200" height="60" class="node-rect" rx="2"/>
+        <text x="282" y="282" class="node-text">Proposal</text>
+        <text x="282" y="300" class="node-sub">Sent via GHL within hours</text>
+        <text x="282" y="312" class="node-sub">(competitive advantage)</text>
+
+        <!-- Follow-up -->
+        <rect x="270" y="350" width="200" height="60" class="node-rect gap" rx="2"/>
+        <text x="282" y="372" class="node-text">Follow-up</text>
+        <text x="282" y="390" class="node-sub">Manual, ad-hoc — leads</text>
+        <text x="282" y="402" class="node-sub">go cold without a sequence</text>
+
+        <!-- Close -->
+        <rect x="270" y="440" width="200" height="60" class="node-rect" rx="2"/>
+        <text x="282" y="462" class="node-text">Close + 50% deposit</text>
+        <text x="282" y="480" class="node-sub">No close-rate baseline,</text>
+        <text x="282" y="492" class="node-sub">can&#39;t optimize what isn&#39;t measured</text>
+      </g>
+
+      <!-- PRODUCTION -->
+      <g>
+        <!-- Schedule -->
+        <rect x="510" y="80" width="200" height="50" class="node-rect" rx="2"/>
+        <text x="522" y="102" class="node-text">Schedule + prep</text>
+        <text x="522" y="120" class="node-sub">Matt — light timing, scout</text>
+
+        <!-- Shoot -->
+        <rect x="510" y="160" width="200" height="50" class="node-rect" rx="2"/>
+        <text x="522" y="182" class="node-text">Shoot day</text>
+        <text x="522" y="200" class="node-sub">Matt + Sebastian (as needed)</text>
+
+        <!-- Edit -->
+        <rect x="510" y="240" width="200" height="50" class="node-rect bottleneck" rx="2"/>
+        <text x="522" y="262" class="node-text">Edit — Matt</text>
+        <text x="522" y="280" class="node-sub">Alena hire pending — bottleneck</text>
+
+        <!-- Delivery -->
+        <rect x="510" y="320" width="200" height="50" class="node-rect" rx="2"/>
+        <text x="522" y="342" class="node-text">Delivery — Dropbox</text>
+        <text x="522" y="360" class="node-sub">~1 week turnaround</text>
+
+        <!-- Asset library -->
+        <rect x="510" y="400" width="200" height="50" class="node-rect gap" rx="2"/>
+        <text x="522" y="422" class="node-text">Asset library</text>
+        <text x="522" y="440" class="node-sub">No central searchable archive</text>
+
+        <!-- QC / Feedback -->
+        <rect x="510" y="480" width="200" height="50" class="node-rect gap" rx="2"/>
+        <text x="522" y="502" class="node-text">QC + post-project NPS</text>
+        <text x="522" y="520" class="node-sub">No formal feedback loop</text>
+      </g>
+
+      <!-- MONEY / RETENTION -->
+      <g>
+        <!-- Invoice -->
+        <rect x="740" y="80" width="200" height="50" class="node-rect" rx="2"/>
+        <text x="752" y="102" class="node-text">Invoice — GHL</text>
+        <text x="752" y="120" class="node-sub">89 invoices in 2025</text>
+
+        <!-- Cost-share -->
+        <rect x="740" y="160" width="200" height="50" class="node-rect bottleneck" rx="2"/>
+        <text x="752" y="182" class="node-text">Cost-share — 90% hit</text>
+        <text x="752" y="200" class="node-sub">Likely under-priced per party</text>
+
+        <!-- Retainer -->
+        <rect x="740" y="240" width="200" height="50" class="node-rect" rx="2"/>
+        <text x="752" y="262" class="node-text">Retainers — $5.1K/mo</text>
+        <text x="752" y="280" class="node-sub">LRD + Balmoral + hosts</text>
+
+        <!-- Repeat -->
+        <rect x="740" y="320" width="200" height="50" class="node-rect" rx="2"/>
+        <text x="752" y="342" class="node-text">Repeat purchase</text>
+        <text x="752" y="360" class="node-sub">Strong but unsystematic</text>
+
+        <!-- Reviews -->
+        <rect x="740" y="400" width="200" height="50" class="node-rect gap" rx="2"/>
+        <text x="752" y="422" class="node-text">Reviews / testimonials</text>
+        <text x="752" y="440" class="node-sub">Manual ask, no automation</text>
+
+        <!-- Awards -->
+        <rect x="740" y="480" width="200" height="50" class="node-rect gap" rx="2"/>
+        <text x="752" y="502" class="node-text">Awards / publications</text>
+        <text x="752" y="520" class="node-sub">Clients submit, Matt does not</text>
+      </g>
+
+      <!-- BACKEND BAND -->
+      <line x1="20" y1="555" x2="940" y2="555" class="pod-divider" stroke-dasharray="3 3"/>
+      <text x="20" y="578" class="section-label">Backend / scaffolding</text>
+
+      <rect x="20" y="595" width="220" height="50" class="node-rect pod" rx="2"/>
+      <text x="32" y="617" class="node-text">8 cron agents (local)</text>
+      <text x="32" y="635" class="node-sub">Morning/Sunday/Operator/Reply</text>
+
+      <rect x="260" y="595" width="220" height="50" class="node-rect pod" rx="2"/>
+      <text x="272" y="617" class="node-text">n8n — 5 working / 2 erroring</text>
+      <text x="272" y="635" class="node-sub">Forms, cold email, brief gen</text>
+
+      <rect x="500" y="595" width="220" height="50" class="node-rect pod" rx="2"/>
+      <text x="512" y="617" class="node-text">Notion + Sheets + GHL</text>
+      <text x="512" y="635" class="node-sub">CRM + finance + content calendar</text>
+
+      <rect x="740" y="595" width="200" height="50" class="node-rect pod" rx="2"/>
+      <text x="752" y="617" class="node-text">35 software tools, $8K/yr</text>
+      <text x="752" y="635" class="node-sub">Unaudited, target $3-4K</text>
+
+      <!-- OWNER NODE - center -->
+      <rect x="400" y="665" width="240" height="40" class="node-rect owner" rx="2"/>
+      <text x="412" y="690" class="node-text owner">Matt — single point of failure</text>
+
+      <!-- Arrows: lead sources to GHL pipeline -->
+      <path d="M 220 83 L 270 95" class="flow-line" marker-end="url(#arr)"/>
+      <path d="M 220 143 L 270 105" class="flow-line" marker-end="url(#arr)"/>
+      <path d="M 220 203 L 270 115" class="flow-line" marker-end="url(#arr)"/>
+      <path d="M 220 263 L 270 125" class="flow-line" marker-end="url(#arr)"/>
+      <path d="M 220 323 L 270 135" class="flow-line dashed" marker-end="url(#arrDim)"/>
+      <path d="M 220 383 L 270 140" class="flow-line" marker-end="url(#arr)"/>
+
+      <!-- Pipeline flow vertical -->
+      <path d="M 370 140 L 370 170" class="flow-line" marker-end="url(#arr)"/>
+      <path d="M 370 230 L 370 260" class="flow-line" marker-end="url(#arr)"/>
+      <path d="M 370 320 L 370 350" class="flow-line dashed" marker-end="url(#arrDim)"/>
+      <path d="M 370 410 L 370 440" class="flow-line" marker-end="url(#arr)"/>
+
+      <!-- Pipeline to Production -->
+      <path d="M 470 470 L 510 105" class="flow-line thick" marker-end="url(#arrBold)"/>
+
+      <!-- Production flow vertical -->
+      <path d="M 610 130 L 610 160" class="flow-line" marker-end="url(#arr)"/>
+      <path d="M 610 210 L 610 240" class="flow-line" marker-end="url(#arr)"/>
+      <path d="M 610 290 L 610 320" class="flow-line" marker-end="url(#arr)"/>
+      <path d="M 610 370 L 610 400" class="flow-line dashed" marker-end="url(#arrDim)"/>
+
+      <!-- Production to Money -->
+      <path d="M 710 345 L 740 105" class="flow-line" marker-end="url(#arr)"/>
+      <path d="M 710 345 L 740 185" class="flow-line dashed" marker-end="url(#arrDim)"/>
+
+      <!-- Money loop back to acquisition (repeat) -->
+      <path d="M 840 345 L 840 530 L 220 530 L 220 415" class="flow-line dashed" marker-end="url(#arrDim)" fill="none"/>
+
+      <!-- Owner arrows to all four columns -->
+      <path d="M 460 665 L 370 530" class="flow-line dashed" marker-end="url(#arrDim)"/>
+      <path d="M 520 665 L 610 530" class="flow-line dashed" marker-end="url(#arrDim)"/>
+      <path d="M 580 665 L 840 530" class="flow-line dashed" marker-end="url(#arrDim)"/>
+      <path d="M 420 665 L 220 540" class="flow-line dashed" marker-end="url(#arrDim)"/>
+
+      <!-- Legend -->
+      <g transform="translate(720, 665)">
+        <rect x="0" y="0" width="14" height="14" class="node-rect bottleneck"/>
+        <text x="20" y="11" class="node-sub" style="font-size:9px">Bottleneck</text>
+        <rect x="100" y="0" width="14" height="14" class="node-rect gap"/>
+        <text x="120" y="11" class="node-sub" style="font-size:9px">Gap / missing</text>
+        <rect x="200" y="0" width="14" height="14" class="node-rect"/>
+        <text x="220" y="11" class="node-sub" style="font-size:9px">Working</text>
+      </g>
+    </svg>
+  </div>
+  <div class="diagram-cap">
+    <div class="fignum">Fig. 01.1</div>
+    <div class="figtext">Current operating system, end to end. <em>Solid arrows are working flows; dashed arrows are partial or manual; shaded nodes are bottlenecks; dashed nodes are missing entirely.</em></div>
+  </div>
+
+  <div class="row">
+    <div class="label">What's working</div>
+    <div class="body">
+      <p>Three loops are genuinely strong. <b>Cold outbound:</b> 541 leads in three Instantly campaigns, first replies converting (Kombi, GD Nielsen). <b>Proposal speed:</b> turnaround in hours is a documented competitive advantage almost no peer matches. <b>Cost-share economics:</b> 90% hit rate is roughly 3x the AOS assumption — the highest-margin revenue line in the business and the one peers don't even try to capture.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="label">What's bending</div>
+    <div class="body">
+      <p>Production capacity is capped at Matt's hours. The capacity rule (intake pauses at three active projects) admits this directly. Edit handoff to Alena is the single highest-leverage bottleneck unsolved as of last update. The CRM has stages but no close-rate baseline, which means the funnel can't be optimized — only intuited. Repeat clients drive close to half of revenue, but there is no formal program asking for the second engagement.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="label">What's silent</div>
+    <div class="body">
+      <p>The accounts where revenue could exist but doesn't. <b>Awards and publications:</b> clients submit work, Matt does not — peers like StudioHDP have built entire books around photography that won 350+ design awards. <b>Image licensing as a product:</b> every cost-share moment is a single-use transaction, not an ongoing license. <b>Referral incentive:</b> repeat clients are 49% of revenue with zero formal ask. <b>Paid acquisition:</b> $300/mo budgeted and $0 spent for two consecutive quarters.</p>
+    </div>
+  </div>
+
+  <div class="pull-note">
+    <p>The 2025 business made $105K with one person, no close-rate data, no follow-up sequence, no paid budget actually spent, no awards strategy executed, and Instagram dark for five months. That isn't a ceiling, it's a baseline.</p>
+    <span class="src">Reading the numbers honestly</span>
+  </div>
+
+  <!-- ============================================================
+       SECTION 02 - IDEAL
+  ============================================================ -->
+  <section class="spread">
+    <div class="spread-num">02</div>
+    <div>
+      <h2 class="spread-title">
+        Ideal.
+        <em>How a research-backed boutique agency would run this.</em>
+      </h2>
+      <p class="spread-sub">
+        A model designed from the outside in: pods of work that run on their own rhythm, an owner whose week has only three modes, and a financial structure where retention compounds and cost-share is treated as a real revenue line, not a happy accident.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       IDEAL STATE DIAGRAM
+  ============================================================ -->
+  <div class="diagram-frame">
+    <svg viewBox="0 0 1040 760" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" class="flow-arrow"/>
+        </marker>
+        <marker id="arr2Bold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" class="flow-arrow bold"/>
+        </marker>
+      </defs>
+
+      <!-- Pod headers -->
+      <text x="20" y="22" class="pod-label">Demand engine</text>
+      <text x="280" y="22" class="pod-label">Intake + close</text>
+      <text x="540" y="22" class="pod-label">Delivery pod</text>
+      <text x="800" y="22" class="pod-label">Monetization</text>
+
+      <!-- Pod outlines -->
+      <rect x="14" y="34" width="240" height="350" fill="none" stroke="#111" stroke-width="0.8" stroke-dasharray="2 4"/>
+      <rect x="274" y="34" width="240" height="350" fill="none" stroke="#111" stroke-width="0.8" stroke-dasharray="2 4"/>
+      <rect x="534" y="34" width="240" height="350" fill="none" stroke="#111" stroke-width="0.8" stroke-dasharray="2 4"/>
+      <rect x="794" y="34" width="240" height="350" fill="none" stroke="#111" stroke-width="0.8" stroke-dasharray="2 4"/>
+
+      <!-- DEMAND ENGINE -->
+      <g>
+        <rect x="20" y="50" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="32" y="69" class="node-text">Cold outbound</text>
+        <text x="32" y="85" class="node-sub">Instantly, 6 ICP campaigns</text>
+
+        <rect x="20" y="100" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="32" y="119" class="node-text">Newsletter</text>
+        <text x="32" y="135" class="node-sub">Monthly, every past lead</text>
+
+        <rect x="20" y="150" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="32" y="169" class="node-text">LinkedIn + Pinterest + IG</text>
+        <text x="32" y="185" class="node-sub">Auto-published from Notion</text>
+
+        <rect x="20" y="200" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="32" y="219" class="node-text">Houzz + ArchDaily</text>
+        <text x="32" y="235" class="node-sub">Discovery surfaces peers own</text>
+
+        <rect x="20" y="250" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="32" y="269" class="node-text">Paid retargeting</text>
+        <text x="32" y="285" class="node-sub">Meta + Google, $300-500/mo</text>
+
+        <rect x="20" y="300" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="32" y="319" class="node-text">Referral program</text>
+        <text x="32" y="335" class="node-sub">Formal incentive, tracked</text>
+
+        <rect x="20" y="350" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="32" y="369" class="node-text">Authority surface</text>
+        <text x="32" y="385" class="node-sub">Awards, publications, speaking</text>
+      </g>
+
+      <!-- INTAKE -->
+      <g>
+        <rect x="280" y="50" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="292" y="69" class="node-text">Self-serve quote tool</text>
+        <text x="292" y="85" class="node-sub">Filters tire-kickers up front</text>
+
+        <rect x="280" y="100" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="292" y="119" class="node-text">Discovery — qualified</text>
+        <text x="292" y="135" class="node-sub">Budget + timeline + fit</text>
+
+        <rect x="280" y="150" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="292" y="169" class="node-text">Proposal — 24h SLA</text>
+        <text x="292" y="185" class="node-sub">Productized tier picker</text>
+
+        <rect x="280" y="200" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="292" y="219" class="node-text">Auto follow-up</text>
+        <text x="292" y="235" class="node-sub">D+3, +7, +14, +30 sequence</text>
+
+        <rect x="280" y="250" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="292" y="269" class="node-text">Close + 50% deposit</text>
+        <text x="292" y="285" class="node-sub">Stage-by-stage probability</text>
+
+        <rect x="280" y="300" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="292" y="319" class="node-text">Win/loss logged</text>
+        <text x="292" y="335" class="node-sub">Close rate as a real metric</text>
+
+        <rect x="280" y="350" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="292" y="369" class="node-text">Lost-deal nurture</text>
+        <text x="292" y="385" class="node-sub">Feeds back to demand engine</text>
+      </g>
+
+      <!-- DELIVERY POD -->
+      <g>
+        <rect x="540" y="50" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="552" y="69" class="node-text">Producer schedules</text>
+        <text x="552" y="85" class="node-sub">Prep doc, light timing, scout</text>
+
+        <rect x="540" y="100" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="552" y="119" class="node-text">Matt shoots — only</text>
+        <text x="552" y="135" class="node-sub">+ Sebastian for 2-camera days</text>
+
+        <rect x="540" y="150" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="552" y="169" class="node-text">Editor — Alena (default)</text>
+        <text x="552" y="185" class="node-sub">Every shoot, no exceptions</text>
+
+        <rect x="540" y="200" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="552" y="219" class="node-text">QC — Matt approves</text>
+        <text x="552" y="235" class="node-sub">15-min review, not 6 hours</text>
+
+        <rect x="540" y="250" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="552" y="269" class="node-text">Asset library — searchable</text>
+        <text x="552" y="285" class="node-sub">Tagged by client, project, type</text>
+
+        <rect x="540" y="300" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="552" y="319" class="node-text">Delivery + NPS ask</text>
+        <text x="552" y="335" class="node-sub">Auto-trigger 7 days post</text>
+
+        <rect x="540" y="350" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="552" y="369" class="node-text">Award/publication submit</text>
+        <text x="552" y="385" class="node-sub">Producer files, Matt approves</text>
+      </g>
+
+      <!-- MONETIZATION -->
+      <g>
+        <rect x="800" y="50" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="812" y="69" class="node-text">Tier 1 — Project</text>
+        <text x="812" y="85" class="node-sub">$3.5K-5.5K, 15-18/yr</text>
+
+        <rect x="800" y="100" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="812" y="119" class="node-text">Tier 2 — Creative Partner</text>
+        <text x="812" y="135" class="node-sub">$2.5-4K/mo, 4-6 active</text>
+
+        <rect x="800" y="150" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="812" y="169" class="node-text">Tier 3 — Brand film</text>
+        <text x="812" y="185" class="node-sub">$10K-18K, 1-2/yr (Embedded)</text>
+
+        <rect x="800" y="200" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="812" y="219" class="node-text">Cost-share — split bill</text>
+        <text x="812" y="235" class="node-sub">Per-party licensing, auto-invoice</text>
+
+        <rect x="800" y="250" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="812" y="269" class="node-text">Image licensing storefront</text>
+        <text x="812" y="285" class="node-sub">Publication + commercial rights</text>
+
+        <rect x="800" y="300" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="812" y="319" class="node-text">Add-ons priced to market</text>
+        <text x="812" y="335" class="node-sub">Drone $600, twilight $800, rush $200</text>
+
+        <rect x="800" y="350" width="228" height="42" class="node-rect" rx="2"/>
+        <text x="812" y="369" class="node-text">Annual review + expansion</text>
+        <text x="812" y="385" class="node-sub">CP renewal + scope upgrade</text>
+      </g>
+
+      <!-- BAND - COMMAND CENTER -->
+      <line x1="14" y1="404" x2="1028" y2="404" class="pod-divider" stroke-dasharray="2 4"/>
+      <text x="20" y="427" class="pod-label">Command center</text>
+
+      <rect x="20" y="445" width="240" height="50" class="node-rect pod" rx="2"/>
+      <text x="32" y="467" class="node-text">Weekly scorecard — 7 metrics</text>
+      <text x="32" y="485" class="node-sub">Pipeline, close-rate, delivery, NPS</text>
+
+      <rect x="280" y="445" width="240" height="50" class="node-rect pod" rx="2"/>
+      <text x="292" y="467" class="node-text">Monthly P&L close</text>
+      <text x="292" y="485" class="node-sub">Profit First allocation</text>
+
+      <rect x="540" y="445" width="240" height="50" class="node-rect pod" rx="2"/>
+      <text x="552" y="467" class="node-text">Quarterly rocks (3-5)</text>
+      <text x="552" y="485" class="node-sub">Outcomes not activities</text>
+
+      <rect x="800" y="445" width="240" height="50" class="node-rect pod" rx="2"/>
+      <text x="812" y="467" class="node-text">Annual planning + pricing</text>
+      <text x="812" y="485" class="node-sub">10% lift target each year</text>
+
+      <!-- BAND - AGENT FLEET -->
+      <line x1="14" y1="510" x2="1028" y2="510" class="pod-divider" stroke-dasharray="2 4"/>
+      <text x="20" y="533" class="pod-label">Agent fleet — runs the boring work</text>
+
+      <rect x="20" y="551" width="240" height="50" class="node-rect pod" rx="2"/>
+      <text x="32" y="573" class="node-text">Demand: replies, leads, content</text>
+      <text x="32" y="591" class="node-sub">Reply Classifier, Operator, DM Prep</text>
+
+      <rect x="280" y="551" width="240" height="50" class="node-rect pod" rx="2"/>
+      <text x="292" y="573" class="node-text">Sales: follow-up, briefing</text>
+      <text x="292" y="591" class="node-sub">Operator follow-up + Morning Cmd</text>
+
+      <rect x="540" y="551" width="240" height="50" class="node-rect pod" rx="2"/>
+      <text x="552" y="573" class="node-text">Delivery: prep, handoff, NPS</text>
+      <text x="552" y="591" class="node-sub">The Producer agent</text>
+
+      <rect x="800" y="551" width="240" height="50" class="node-rect pod" rx="2"/>
+      <text x="812" y="573" class="node-text">Money: invoices, tax, retainer</text>
+      <text x="812" y="591" class="node-sub">The Accountant + Watchdog</text>
+
+      <!-- OWNER - 3 modes -->
+      <line x1="14" y1="616" x2="1028" y2="616" class="pod-divider"/>
+      <text x="20" y="639" class="pod-label">Owner — Matt as Creative Director, three modes only</text>
+
+      <rect x="20" y="657" width="320" height="80" class="node-rect owner" rx="2"/>
+      <text x="32" y="681" class="node-text owner">Shoot</text>
+      <text x="32" y="700" class="node-sub owner">Mon-Wed default. Production days.</text>
+      <text x="32" y="717" class="node-sub owner">Capture, light timing, on-site call.</text>
+
+      <rect x="360" y="657" width="320" height="80" class="node-rect owner" rx="2"/>
+      <text x="372" y="681" class="node-text owner">Sell</text>
+      <text x="372" y="700" class="node-sub owner">Thursdays. Discovery + proposals.</text>
+      <text x="372" y="717" class="node-sub owner">Pricing decisions, scope shaping.</text>
+
+      <rect x="700" y="657" width="328" height="80" class="node-rect owner" rx="2"/>
+      <text x="712" y="681" class="node-text owner">Decide</text>
+      <text x="712" y="700" class="node-sub owner">Friday + Monday AM. Strategy,</text>
+      <text x="712" y="717" class="node-sub owner">authority work, scorecard, hiring.</text>
+
+      <!-- Inter-pod arrows -->
+      <path d="M 248 220 L 280 170" class="flow-line thick" marker-end="url(#arr2Bold)"/>
+      <path d="M 508 270 L 540 120" class="flow-line thick" marker-end="url(#arr2Bold)"/>
+      <path d="M 768 320 L 800 165" class="flow-line thick" marker-end="url(#arr2Bold)"/>
+
+      <!-- Money loop back to demand -->
+      <path d="M 914 380 L 914 395 L 134 395 L 134 380" class="flow-line dashed" marker-end="url(#arr2)"/>
+
+      <!-- Owner up to command -->
+      <path d="M 180 657 L 140 500" class="flow-line dashed" marker-end="url(#arr2)"/>
+      <path d="M 520 657 L 400 500" class="flow-line dashed" marker-end="url(#arr2)"/>
+      <path d="M 860 657 L 920 500" class="flow-line dashed" marker-end="url(#arr2)"/>
+    </svg>
+  </div>
+  <div class="diagram-cap">
+    <div class="fignum">Fig. 02.1</div>
+    <div class="figtext">Ideal architecture as a four-pod system. <em>Each pod runs on its own rhythm. Owner sits below, in three modes only. Agents run the boring work. Command center sets the cadence.</em></div>
+  </div>
+
+  <div class="row">
+    <div class="label">The shift</div>
+    <div class="body">
+      <p>Today, every arrow ends at Matt. In the ideal model, each pod has its own input, output, and operator. Matt's role compresses from <em>everything</em> to three modes — shoot, sell, decide — on a fixed weekly rhythm. Below, seven principles, each with the research that supports it.</p>
+    </div>
+  </div>
+
+  <!-- PRINCIPLES -->
+  <div class="row">
+    <div class="label">Principles</div>
+    <div class="body">
+      <div class="principles">
+
+        <div class="principle">
+          <div class="pnum">01</div>
+          <div>
+            <h3>Productize ruthlessly. Three tiers, fixed scope, fixed price.</h3>
+            <span class="src">McKinsey on productized services • PriceIntelligently</span>
+            <p>Productized services sustain ~40% gross margin where hourly work compresses to ~20% as the operator tires of negotiating. Three-tier ladders (entry → core → premium) outperform flat menus because they let the customer self-sort by intent. Build Tier 1 (Project, $3.5-5.5K), Tier 2 (Creative Partner, $2.5-4K/mo), Tier 3 (Brand film/Embedded, $10-18K). Every quote picks one tier; no bespoke math at the table.</p>
+          </div>
+        </div>
+
+        <div class="principle">
+          <div class="pnum">02</div>
+          <div>
+            <h3>Decouple production from creative direction.</h3>
+            <span class="src">Gerber, The E-Myth Revisited • Warrillow, Built to Sell</span>
+            <p>The owner-operator who edits, schedules, and bills cannot also strategize and sell. Make Alena the default editor on day one of every shoot, no exceptions. Producer (eventually a part-time coordinator, today the Producer agent) handles prep, handoff, delivery, NPS. Matt's QC pass is 15 minutes per project, not six hours. This single move 2-3x's throughput per Matt-hour, which is the lever that breaks the $150K solo ceiling.</p>
+          </div>
+        </div>
+
+        <div class="principle">
+          <div class="pnum">03</div>
+          <div>
+            <h3>Diversify acquisition across five channels, none above 40%.</h3>
+            <span class="src">Salesforce State of Marketing • HubSpot annual benchmarks</span>
+            <p>Multi-channel customers spend 10-30% more and stay longer. Today the business is dangerously close to single-channel (cold email + word of mouth do most of the work). Target mix: cold outbound 40%, referral/word-of-mouth 25%, organic SEO + content 15%, paid retargeting 10%, partnership/PR 10%. This insulates against any one channel breaking — Instagram dark for five months should not have been a financial event.</p>
+          </div>
+        </div>
+
+        <div class="principle">
+          <div class="pnum">04</div>
+          <div>
+            <h3>Compound retention into expansion, not just repeat.</h3>
+            <span class="src">Bain &amp; Company (Reichheld) • Wharton on referrals</span>
+            <p>A 5% retention lift translates to 25-95% profit lift across services businesses. Repeat clients are already 49% of revenue, but they're being captured passively. Build a retention engine: NPS at delivery, quarterly check-in by the Producer agent, anniversary review (one year in, what's next), automated win-back at 9 months silent. Referred customers carry 16% higher lifetime value — formal referral incentive ($500 credit per closed referral) is the single highest-ROI program not yet in place.</p>
+          </div>
+        </div>
+
+        <div class="principle">
+          <div class="pnum">05</div>
+          <div>
+            <h3>Cost-share is a revenue line, not a happy accident.</h3>
+            <span class="src">Industry standard practice • observed peer pricing</span>
+            <p>90% hit rate is exceptional, but the current 30% bundled premium probably under-prices the work. Industry standard is split production cost <em>plus</em> separate per-party licensing fees ($500-1,500 per party per use case). Restructure: one production fee divided by participating parties, plus per-party license tiered by use (web, print, paid social, broadcast). The Producer agent invoices each party automatically. Estimated lift: $8-15K/yr at current shoot volume.</p>
+          </div>
+        </div>
+
+        <div class="principle">
+          <div class="pnum">06</div>
+          <div>
+            <h3>Build authority as a moat. Awards and publications systematized.</h3>
+            <span class="src">StudioHDP model (350+ design awards) • PPA top-quartile benchmarks</span>
+            <p>Competitors who own publication channels (Ema Peter — AD/Dwell/Azure; Mike Kelley — Fstoppers media empire) sit at the top of the category and command premium. Matt has zero publication wins as of last report; clients submit work, he doesn't. Move publication submission inside the delivery pod: every project enters an award and publication queue at delivery. Submit calendar runs quarterly. Target: one publication credit and one award shortlist by end of 2026, three of each by end of 2027.</p>
+          </div>
+        </div>
+
+        <div class="principle">
+          <div class="pnum">07</div>
+          <div>
+            <h3>Owner pays self first. Profit First allocation.</h3>
+            <span class="src">Michalowicz, Profit First</span>
+            <p>The personal P&L ($6,580/mo spend vs $3K target) is currently the largest financial leak in the business — bigger than software bloat, bigger than LOC interest. Allocate every deposited dollar across separate accounts: 50% Owner Pay, 15% Tax, 5% Profit (locked, quarterly), 30% Operating. Personal spend constraint forces the model to work for Matt, not the other way around. LOC paid down monthly from Profit envelope.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- BLEED QUOTE -->
+  <div class="bleed-quote">
+    <h2>The agency model is not a different business. <em>It's the same business, with the operator's role compressed.</em></h2>
+    <div class="src">Design principle behind every move below</div>
+  </div>
+
+  <!-- REVENUE MODEL -->
+  <div class="row">
+    <div class="label">Revenue mix</div>
+    <div class="body">
+      <p>What the model produces if it lands cleanly. The 2027 column is the same revenue Matt has already targeted ($172.9K original AOS plan), reorganized so that recurring covers the floor, project work is the variable layer, and licensing finally shows up as a real line.</p>
+
+      <div class="rev-model">
+        <div class="rev-side left">
+          <div class="rev-head">2025 actual</div>
+          <div class="rev-year">$105,237</div>
+          <div class="rev-total">89 invoices, top 2 = 49%</div>
+
+          <div class="rev-line"><div class="rname">Project photography</div><div class="rpct">40.7%</div><div class="ramt">$42.8K</div></div>
+          <div class="rev-line"><div class="rname">Retainers <em>Balmoral + Window Merchant</em></div><div class="rpct">42.3%</div><div class="ramt">$44.5K</div></div>
+          <div class="rev-line"><div class="rname">Licensing / cost-share</div><div class="rpct">7.4%</div><div class="ramt">$7.8K</div></div>
+          <div class="rev-line"><div class="rname">Hosting / subscriptions</div><div class="rpct">3.4%</div><div class="ramt">$3.6K</div></div>
+          <div class="rev-line"><div class="rname">Other</div><div class="rpct">6.2%</div><div class="ramt">$6.5K</div></div>
+        </div>
+
+        <div class="rev-side">
+          <div class="rev-head">2027 target — agency model</div>
+          <div class="rev-year">$180,000</div>
+          <div class="rev-total">Recurring covers fixed, project is upside</div>
+
+          <div class="rev-line"><div class="rname">Creative Partner retainers <em>4 active @ $2.5-4K/mo</em></div><div class="rpct">50%</div><div class="ramt">$90K</div></div>
+          <div class="rev-line"><div class="rname">Project photography <em>15-18 @ $3.5-5.5K avg</em></div><div class="rpct">35%</div><div class="ramt">$63K</div></div>
+          <div class="rev-line"><div class="rname">Cost-share + licensing <em>per-party fees, storefront</em></div><div class="rpct">10%</div><div class="ramt">$18K</div></div>
+          <div class="rev-line"><div class="rname">Brand film / Embedded <em>1-2/yr @ $10-18K</em></div><div class="rpct">5%</div><div class="ramt">$9K</div></div>
+          <div class="rev-line"><div class="rname">Hosting / subscriptions</div><div class="rpct">—</div><div class="ramt">incl.</div></div>
+        </div>
+      </div>
+
+      <p>Two structural differences worth noting. <b>One:</b> in 2025 the retainer line was 42% of revenue but driven by two clients, one of whom (Window Merchant) is now paused — the entire $18K hole the 2026 plan opens with. The 2027 model spreads $90K across four retainers so no single pause is fatal. <b>Two:</b> licensing/cost-share rises from 7.4% to 10% in absolute terms but the dollar value more than doubles ($7.8K → $18K) because per-party invoicing finally captures what the 90% hit rate is actually worth.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SECTION 03 - DELTA / GAPS
+  ============================================================ -->
+  <section class="spread">
+    <div class="spread-num">03</div>
+    <div>
+      <h2 class="spread-title">
+        Delta.
+        <em>Holes, leaks, and where the model breaks.</em>
+      </h2>
+      <p class="spread-sub">
+        Twenty things between today and the ideal. Severity is honest: <b>Critical</b> caps revenue or breaks the model, <b>High</b> leaks measurable money, <b>Med</b> compounds slowly. Each row pairs the hole with the move and the data behind it.
+      </p>
+    </div>
+  </section>
+
+  <div class="gap-table">
+    <div class="gap-row head">
+      <div>Nº</div>
+      <div>The hole</div>
+      <div>The move</div>
+      <div>Evidence / source</div>
+      <div>Severity</div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">01</div>
+      <div class="ghole">Single-shooter capacity ceiling</div>
+      <div class="gfix">Decouple production: Alena edits every shoot, Producer agent handles prep/handoff/delivery, Sebastian on standby. Matt becomes Creative Director, not Operator.</div>
+      <div class="gevidence">Capacity rule already admits this (intake pauses at 3 active). PPA top quartile does &lt;40% project work, 60%+ products/retainers.</div>
+      <div class="gimpact"><span class="severity crit">Critical</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">02</div>
+      <div class="ghole">Editor handoff still incomplete</div>
+      <div class="gfix">Schedule Alena meeting and test edit this week. From the next shoot onward she edits every project. Cull-only by Matt, not edit.</div>
+      <div class="gevidence">Each self-edited project = 6-9 hours = $600-900 opportunity cost at $100/hr. At 18 projects = $10-16K leaked annually.</div>
+      <div class="gimpact"><span class="severity crit">Critical</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">03</div>
+      <div class="ghole">Close rate not tracked</div>
+      <div class="gfix">Stage probabilities on the GHL pipeline (Discovery 20%, Proposal Sent 40%, Verbal Yes 75%, Closed 100%). Win/loss reason logged on every deal.</div>
+      <div class="gevidence">Cannot optimize what is not measured. Sales orgs that track close rate by stage typically see a 15-20% pipeline efficiency lift in the first 2 quarters.</div>
+      <div class="gimpact"><span class="severity crit">Critical</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">04</div>
+      <div class="ghole">No automated follow-up sequence</div>
+      <div class="gfix">D+3, +7, +14, +30 sequence on every proposal. Operator agent drafts, Matt approves and sends. Lost-deal nurture re-enters demand engine.</div>
+      <div class="gevidence">~80% of B2B sales require 5+ touches; ~44% of sellers stop after one. Automated sequences typically lift close rate 15-30%.</div>
+      <div class="gimpact"><span class="severity high">High</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">05</div>
+      <div class="ghole">No formal referral program</div>
+      <div class="gfix">$500 credit (or equivalent) for any closed referral. Asked at delivery NPS &gt; 9 and at quarterly check-in. Tracked in GHL custom field.</div>
+      <div class="gevidence">Edelman: 84% of B2B buying starts with referral. Wharton: referred customers 16% higher LTV. Repeat clients already drive 49% of revenue with no system.</div>
+      <div class="gimpact"><span class="severity high">High</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">06</div>
+      <div class="ghole">Cost-share under-priced and bundled</div>
+      <div class="gfix">Restructure as split production fee + per-party licensing tiered by use case. Auto-invoice each party at shoot booking, not after.</div>
+      <div class="gevidence">Industry standard: per-party licensing $500-1,500/use. At 90% hit rate this is the single biggest under-monetized line — est. $8-15K/yr lift.</div>
+      <div class="gimpact"><span class="severity high">High</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">07</div>
+      <div class="ghole">Award + publication strategy not executed</div>
+      <div class="gfix">Submission calendar (Western Living, Gray, AZURE, Houzz, ArchDaily, AIA). Producer files, Matt approves. Quarterly cadence.</div>
+      <div class="gevidence">Zero award/publication wins to date. StudioHDP photographs won 350+ design awards as a category-defining moat.</div>
+      <div class="gimpact"><span class="severity high">High</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">08</div>
+      <div class="ghole">Revenue concentration — top 2 = 49%</div>
+      <div class="gfix">Target 4 active Creative Partners by Q4 2026. No single client &gt;25% of monthly recurring. Diversify ICP coverage across 5 of 11 verticals.</div>
+      <div class="gevidence">Window Merchant pause = $18K hole that 2026 plan opens with. Concentration above 25% is generally treated as a structural risk in service businesses.</div>
+      <div class="gimpact"><span class="severity high">High</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">09</div>
+      <div class="ghole">No retention engine — NPS, anniversary, win-back</div>
+      <div class="gfix">Auto-trigger NPS 7 days post-delivery. Quarterly Producer check-in. 12-month anniversary review. 9-month-silent win-back sequence.</div>
+      <div class="gevidence">Bain (Reichheld): 5% retention lift = 25-95% profit lift. Currently zero formal retention surface.</div>
+      <div class="gimpact"><span class="severity high">High</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">10</div>
+      <div class="ghole">Pricing at low end of market</div>
+      <div class="gfix">Q3 2026 review: bring base shoot to $4K (from $3.5K), Drone to $600 (from $350), add rush fee $200, formalize revision rounds at $125/hr.</div>
+      <div class="gevidence">Vancouver/BC market: $3-8K/project. Matt sits at the low end with no documented retouching policy. Margin floor (40% AOS) holds at +$500.</div>
+      <div class="gimpact"><span class="severity high">High</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">11</div>
+      <div class="ghole">Marketing channels missing where peers live</div>
+      <div class="gfix">Houzz profile, ArchDaily portfolio submission, monthly newsletter (every past lead + signed clients), Pinterest weekly cadence.</div>
+      <div class="gevidence">Every major BC peer has Houzz/ArchDaily presence. Email ROI ~$36-42 per $1 (HubSpot). Pinterest is a top-3 referral channel for design-buyer ICPs.</div>
+      <div class="gimpact"><span class="severity high">High</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">12</div>
+      <div class="ghole">Paid budget allocated but never spent</div>
+      <div class="gfix">Run $300-500/mo as retargeting against website visitors and warm cold-email opens. Meta + Google. Test 90 days, kill or scale by data.</div>
+      <div class="gevidence">$3,600/yr already approved in overhead. Retargeting CTR for warm audiences typically 2-5x cold display CTR.</div>
+      <div class="gimpact"><span class="severity med">Med</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">13</div>
+      <div class="ghole">Discovery form missing budget + timeline</div>
+      <div class="gfix">Add two questions before booking: "Approximate budget range" (radio) and "Earliest start" (date). Cuts unqualified discovery time.</div>
+      <div class="gevidence">Standard B2B intake practice. Saves an estimated 30-45 min per unqualified call at current funnel volume.</div>
+      <div class="gimpact"><span class="severity med">Med</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">14</div>
+      <div class="ghole">No central searchable asset library</div>
+      <div class="gfix">Tagged Dropbox structure (client/project/type/date) feeding a small Notion or Airtable index. Every delivery indexed at handoff.</div>
+      <div class="gevidence">Enables licensing storefront, fast republication for awards, and content repurposing without re-finding files.</div>
+      <div class="gimpact"><span class="severity med">Med</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">15</div>
+      <div class="ghole">35 software tools, $8K/yr unaudited</div>
+      <div class="gfix">90-day audit. Cancel QuickBooks ($240/yr), consolidate where overlap, target $3-4K/yr stack.</div>
+      <div class="gevidence">$4-5K/yr recoverable. SaaS bloat is a leading drag on solo-operator margin.</div>
+      <div class="gimpact"><span class="severity med">Med</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">16</div>
+      <div class="ghole">Personal spend 2.2x over target</div>
+      <div class="gfix">Profit First account split. Personal envelope capped at $3.5K/mo, reviewed monthly. LOC paid down from Profit envelope quarterly.</div>
+      <div class="gevidence">$6,580 vs $3K = $43K/yr drag. LOC at 8.94% adds $1,481/yr silent interest. Net effect: ~$45K/yr financial leak.</div>
+      <div class="gimpact"><span class="severity high">High</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">17</div>
+      <div class="ghole">FHSA unopened, GST Quick Method not elected</div>
+      <div class="gfix">Open FHSA before Dec 31 2026 ($8K deduction = ~$2,400 tax saving). Elect GST Quick Method for 2027 ($1,500-2K/yr saving).</div>
+      <div class="gevidence">Both are confirmed CRA programs. Combined: ~$4K/yr left on the table at zero ongoing effort.</div>
+      <div class="gimpact"><span class="severity high">High</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">18</div>
+      <div class="ghole">No quarterly tax installments</div>
+      <div class="gfix">Set up CRA quarterly installments based on 2025 owing ($6,816). Avoids interest and penalty exposure once a year is breached.</div>
+      <div class="gevidence">CRA requires installments when net tax owing &gt; $3K. Penalty + interest on missed installments compounds at prescribed rate.</div>
+      <div class="gimpact"><span class="severity med">Med</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">19</div>
+      <div class="ghole">n8n technical debt — 2 erroring, 1 obsolete</div>
+      <div class="gfix">Fix Find Decision Makers Email + Web Crawler this sprint, deactivate Personalized Outreach Message. Update Watchdog to alert on new errors.</div>
+      <div class="gevidence">Agent fleet relies on the cold email pipeline. Silent errors break the demand engine without warning.</div>
+      <div class="gimpact"><span class="severity med">Med</span></div>
+    </div>
+
+    <div class="gap-row">
+      <div class="gnum">20</div>
+      <div class="ghole">No formal SLA / SOP for proposal turnaround</div>
+      <div class="gfix">Document the &lt;24h SLA in the discovery follow-up email. Make it a sales asset, not just a habit. Track in CRM as time-to-proposal metric.</div>
+      <div class="gevidence">Proposal speed is already a documented competitive advantage. Naming it converts a behavior into a brand promise.</div>
+      <div class="gimpact"><span class="severity med">Med</span></div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="label">Reading the table</div>
+    <div class="body">
+      <p>Three Critical items if everything else slips: <b>capacity ceiling</b>, <b>editor handoff</b>, <b>close rate tracking</b>. Each is a single decision Matt can make this week. Together they unlock everything below them — without them, no amount of marketing or pricing work matters because the production line cannot absorb the volume and the funnel cannot be optimized.</p>
+    </div>
+  </div>
+
+  <div class="pull-note">
+    <p>The most expensive line in the business is not on any invoice. It's the cost of every shoot Matt edits himself, every proposal that goes silent without a follow-up sequence, every cost-share moment priced at 30% instead of full per-party fees, and the personal P&L that is currently $43K/yr larger than the model assumes.</p>
+    <span class="src">Where the leaks actually are</span>
+  </div>
+
+  <!-- ============================================================
+       SECTION 04 - SEQUENCE
+  ============================================================ -->
+  <section class="spread">
+    <div class="spread-num">04</div>
+    <div>
+      <h2 class="spread-title">
+        Sequence.
+        <em>What to move first, in what order, with what target.</em>
+      </h2>
+      <p class="spread-sub">
+        Three horizons. The first 90 days unblock the production line and the funnel — without these, nothing else compounds. The next 12 months install the agency operating system. The 36-month horizon is where the model proves itself as a sellable, ownable asset.
+      </p>
+    </div>
+  </section>
+
+  <div class="tl">
+
+    <!-- 90 DAYS -->
+    <div class="tl-section">
+      <div class="tl-head">
+        <div class="tl-marker">Horizon i.</div>
+        <h3>The first 90 days <em>Unblock production. Make the funnel measurable.</em></h3>
+        <div class="tl-target">Target<strong>$50K closed by Q3</strong></div>
+      </div>
+      <div class="tl-list">
+        <div></div>
+        <ol>
+          <li><b>Hire Alena formally.</b> First test edit this week. From shoot one in May, she edits every project. Matt cull-only. <span class="unit">Unblocks #1 + #2</span></li>
+          <li><b>Stage probabilities on GHL pipeline.</b> Discovery 20% / Proposal 40% / Verbal 75% / Closed 100%. Win-loss reason on every deal logged by the Operator agent. <span class="unit">Unblocks #3</span></li>
+          <li><b>Auto follow-up sequence in Operator.</b> D+3, +7, +14, +30. Drafts to Telegram, Matt approves and sends. <span class="unit">Lifts close rate 15-30%</span></li>
+          <li><b>Restructure cost-share invoicing.</b> Split production fee + per-party licensing tier ($500/$900/$1,500 by use). Built into proposal template. Producer agent invoices at booking. <span class="unit">Est. $8-15K/yr lift</span></li>
+          <li><b>Discovery form: add budget + timeline.</b> Two radio questions before booking. <span class="unit">15 min change</span></li>
+          <li><b>Profit First accounts.</b> Open Tax + Profit envelopes at the existing bank. Allocate 50/15/5/30 from every deposit. Personal spend hard-capped at $3.5K/mo. <span class="unit">$45K/yr leak addressed</span></li>
+          <li><b>Open FHSA + elect GST Quick Method.</b> Half a day, $4K/yr saving locked in. <span class="unit">Free money</span></li>
+          <li><b>Fix the two erroring n8n workflows, kill the obsolete one.</b> Watchdog alert on any new error. <span class="unit">Demand engine stability</span></li>
+          <li><b>Houzz + ArchDaily profiles + first project submission.</b> Where peers are. <span class="unit">~2 hours per platform</span></li>
+          <li><b>Document the &lt;24h proposal SLA in the discovery follow-up.</b> Convert habit into brand promise. <span class="unit">Naming the moat</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 12 MONTHS -->
+    <div class="tl-section">
+      <div class="tl-head">
+        <div class="tl-marker">Horizon ii.</div>
+        <h3>The next 12 months <em>Install the agency operating system.</em></h3>
+        <div class="tl-target">Target<strong>$140K, 4 retainers</strong></div>
+      </div>
+      <div class="tl-list">
+        <div></div>
+        <ol>
+          <li><b>Close two more Creative Partners.</b> Target verticals with monthly recurring above $2,500. Bring active CPs to four (LRD, GD Nielsen, Balmoral upgrade, one new). <span class="unit">Recurring base $11K+/mo</span></li>
+          <li><b>Productize three tiers publicly on the website.</b> Tier 1 Project, Tier 2 Creative Partner, Tier 3 Brand film. Pricing visible. Self-serve quote calculator before discovery booking. <span class="unit">Filters tire-kickers</span></li>
+          <li><b>Award + publication submission calendar (quarterly).</b> Producer files, Matt approves. Target one publication credit and one award shortlist by year end. <span class="unit">Authority compounds</span></li>
+          <li><b>Referral program live.</b> $500 credit per closed referral. Asked at delivery NPS &gt; 9 and quarterly check-in. Tracked in GHL custom field. <span class="unit">Highest-ROI program</span></li>
+          <li><b>Retention engine.</b> Auto-NPS 7 days post-delivery. Quarterly Producer check-in. 12-month anniversary review. 9-month win-back sequence. <span class="unit">5% retention = 25%+ profit (Bain)</span></li>
+          <li><b>Newsletter monthly.</b> Every past lead + signed client. Three sections: new work, what we're noticing, who we're booking. Ghosted by Operator content mode. <span class="unit">Email ROI ~$36/$1</span></li>
+          <li><b>Paid retargeting on, $300-500/mo.</b> Meta + Google against website visitors and warm cold-email opens. 90-day test. <span class="unit">Already in budget</span></li>
+          <li><b>Q3 pricing reset.</b> Project base $4K, drone $600, rush $200, revision rounds $125/hr. AOS margin floor still holds. <span class="unit">10% lift</span></li>
+          <li><b>Image licensing storefront (lightweight).</b> Squarespace page + Notion-backed catalog of select images, per-use pricing visible. Cost-share clients can self-license. <span class="unit">New revenue line</span></li>
+          <li><b>Software audit + consolidation.</b> $8K/yr → $4K/yr. Cancel QuickBooks. Document remaining stack. <span class="unit">$4K/yr saved</span></li>
+          <li><b>Weekly scorecard live.</b> Seven metrics: pipeline value, deals closed, NPS, deliveries this week, retainer health, runway, owner-pay-on-time. Reviewed every Monday. <span class="unit">EOS-style operating cadence</span></li>
+          <li><b>Vehicle decision.</b> RAV4 lease vs finance analysis closed. 288K-km Mazda 3 retired before reliability becomes a job-site event. <span class="unit">Risk removed</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 36 MONTHS -->
+    <div class="tl-section">
+      <div class="tl-head">
+        <div class="tl-marker">Horizon iii.</div>
+        <h3>The 36-month horizon <em>From operator to owner.</em></h3>
+        <div class="tl-target">Target<strong>$220K, sellable model</strong></div>
+      </div>
+      <div class="tl-list">
+        <div></div>
+        <ol>
+          <li><b>Incorporate.</b> When net income clears $150K consistently. Optimize comp split (salary + dividend). Talk to CPA for the corporate structure. <span class="unit">Tax + liability shift</span></li>
+          <li><b>Full-time second shooter.</b> Sebastian or equivalent on retainer day-rate, defined deliverables, capacity unblocked at 35-40 projects/yr. <span class="unit">Breaks solo ceiling</span></li>
+          <li><b>Producer / coordinator hire.</b> Part-time $25-35/hr, 10-15 hrs/week. Owns prep, handoff, billing, NPS. Frees Matt's "decide" mode. <span class="unit">Last bottleneck closed</span></li>
+          <li><b>Six active Creative Partners.</b> Recurring $15-18K/mo covers fixed cost entirely; project work and licensing are upside. <span class="unit">Recurring covers floor</span></li>
+          <li><b>Embedded brand film as productized Tier 3.</b> Two per year minimum. Becomes the showcase tier that drives the rest of the funnel. <span class="unit">$20-36K/yr</span></li>
+          <li><b>Publication wins compound.</b> Featured in Western Living, AD-adjacent, Gray. Award shortlists become an annual event. The portfolio is its own marketing. <span class="unit">Top-tier positioning</span></li>
+          <li><b>Asset library is a real product.</b> Searchable, tagged, licensable. Cost-share clients license self-serve, new clients can preview Matt's range without a discovery call. <span class="unit">Sales surface</span></li>
+          <li><b>The business is sellable.</b> Owner-independent operations, documented SOPs, recurring revenue base, brand authority — Warrillow's "Built to Sell" criteria all met. Even if Matt never sells, the option matters. <span class="unit">Optionality</span></li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CLOSING -->
+  <div class="row">
+    <div class="label">The bet</div>
+    <div class="body">
+      <p>Three things are true at once. The fundamentals are stronger than they look — 90% cost-share hit, six retainer-equivalents, a documented competitive advantage in proposal speed, a working agent fleet, a 75-page website doing real SEO work. The architecture is weaker than the fundamentals — Matt at the center of every loop, no close rate, no follow-up sequence, no formal retention. And the gap between today and the ideal is not a question of capability; it is a question of moves made in order.</p>
+
+      <p>This document is the order. Start with the three Critical items (Alena, close-rate, follow-up sequence). The rest compounds.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="left">
+      <div class="colophon">Set in Newsreader and Inter. Drawn for Matt, by request.</div>
+    </div>
+    <div class="right">
+      Matt Anthony Photography<br>
+      info@mattanthonyphoto.com / 604.765.9270<br>
+      mattanthonyphoto.com
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

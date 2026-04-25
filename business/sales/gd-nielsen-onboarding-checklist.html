@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GD Nielsen Homes, Onboarding Checklist</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:wght@400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    color: #1A1A18;
+    background: #fff;
+    line-height: 1.6;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  @page {
+    size: letter;
+    margin: 0.6in 0.7in;
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 0;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #E8E5DF;
+  }
+
+  .header-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #B8A082;
+    margin-bottom: 12px;
+  }
+
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: #1A1A18;
+    margin-bottom: 8px;
+  }
+
+  .header p {
+    font-size: 14px;
+    color: #8A8579;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .intro {
+    background: #FAFAF8;
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 36px;
+    font-size: 14px;
+    color: #4A4A45;
+    line-height: 1.7;
+  }
+
+  .intro strong {
+    color: #1A1A18;
+  }
+
+  .section {
+    margin-bottom: 36px;
+    page-break-inside: avoid;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .section-number {
+    width: 36px;
+    height: 36px;
+    background: #1A1A18;
+    color: #F6F4F0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #1A1A18;
+  }
+
+  .section-time {
+    font-size: 12px;
+    color: #B8A082;
+    font-weight: 500;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: #6B6B65;
+    margin-bottom: 16px;
+    padding-left: 50px;
+  }
+
+  .steps {
+    padding-left: 50px;
+    list-style: none;
+  }
+
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #F0EDE8;
+    font-size: 14px;
+  }
+
+  .step:last-child {
+    border-bottom: none;
+  }
+
+  .checkbox {
+    display: none;
+  }
+
+  .checkbox-label {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #D9D5CD;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .checkbox:checked + .checkbox-label {
+    background: #1A1A18;
+    border-color: #1A1A18;
+  }
+
+  .checkbox:checked + .checkbox-label::after {
+    content: '\2713';
+    color: #F6F4F0;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .checkbox:checked ~ .step-content {
+    opacity: 0.45;
+    text-decoration: line-through;
+    text-decoration-color: #D9D5CD;
+  }
+
+  .step-content {
+    flex: 1;
+  }
+
+  .step-content strong {
+    color: #1A1A18;
+  }
+
+  .step-path {
+    display: inline-block;
+    background: #F4F2ED;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #6B6B65;
+    margin: 4px 0;
+  }
+
+  .step-note {
+    font-size: 13px;
+    color: #8A8579;
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  .link-box {
+    display: block;
+    background: #1A1A18;
+    color: #F6F4F0;
+    text-align: center;
+    padding: 14px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    margin: 12px 0 4px 0;
+    word-break: break-all;
+  }
+
+  .link-box:hover {
+    background: #2A2A28;
+  }
+
+  .link-label {
+    font-size: 11px;
+    color: #B8A082;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .divider {
+    height: 1px;
+    background: #E8E5DF;
+    margin: 36px 0;
+  }
+
+  .summary {
+    background: #FAFAF8;
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-top: 36px;
+  }
+
+  .summary h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+    font-size: 13px;
+  }
+
+  .summary-grid dt {
+    color: #8A8579;
+  }
+
+  .summary-grid dd {
+    color: #1A1A18;
+    font-weight: 500;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #E8E5DF;
+    font-size: 12px;
+    color: #B8A082;
+  }
+
+  .footer a {
+    color: #1A1A18;
+    text-decoration: none;
+  }
+
+  .portal-feature {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #F0EDE8;
+    padding-left: 50px;
+  }
+
+  .portal-feature:last-child {
+    border-bottom: none;
+  }
+
+  .portal-icon {
+    width: 40px;
+    height: 40px;
+    background: #F4F2ED;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .portal-feature-content h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1A1A18;
+    margin-bottom: 2px;
+  }
+
+  .portal-feature-content p {
+    font-size: 13px;
+    color: #6B6B65;
+    line-height: 1.5;
+  }
+
+  .portal-highlight {
+    background: #1A1A18;
+    color: #F6F4F0;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 16px 0 8px 50px;
+  }
+
+  .portal-highlight h4 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #B8A082;
+    margin-bottom: 10px;
+  }
+
+  .portal-highlight ol {
+    padding-left: 18px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #E8E5DF;
+  }
+
+  .portal-highlight ol strong {
+    color: #F6F4F0;
+  }
+
+  .deadline-banner {
+    background: #1A1A18;
+    color: #F6F4F0;
+    border-radius: 8px;
+    padding: 18px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .deadline-banner-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #B8A082;
+    margin-bottom: 2px;
+  }
+
+  .deadline-banner-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .deadline-banner-date {
+    margin-left: auto;
+    font-size: 13px;
+    color: #E8E5DF;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .deadline-banner-date strong {
+    display: block;
+    color: #F6F4F0;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 0; }
+    .link-box { background: #1A1A18 !important; }
+    .section-number { background: #1A1A18 !important; color: #F6F4F0 !important; }
+    .portal-icon { background: #F4F2ED !important; }
+    .portal-highlight { background: #1A1A18 !important; color: #F6F4F0 !important; }
+    .deadline-banner { background: #1A1A18 !important; color: #F6F4F0 !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-label">Creative Partner Onboarding</div>
+    <h1>Welcome, DK</h1>
+    <p>A few quick setup tasks to get GD Nielsen Homes running on the new platform, and a walkthrough of your private client portal.</p>
+  </div>
+
+  <div class="deadline-banner">
+    <div>
+      <div class="deadline-banner-label">Website Launch Target</div>
+      <div class="deadline-banner-title">gdnielsen.com, rebuilt and live</div>
+    </div>
+    <div class="deadline-banner-date">
+      <strong>May 21, 2026</strong>
+      30 day build
+    </div>
+  </div>
+
+  <div class="intro">
+    Everything we build for GD Nielsen, the new website, social media, SEO, publication outreach, runs through a few platforms that need your setup, plus a private portal where you and Greg will review and approve everything. <strong>Steps 1 to 4 are one time setup. Step 5 is your portal, the thing you'll actually use week to week. Step 6 books the website discovery workshop, which is the first thing we need to do together.</strong>
+  </div>
+
+  <!-- STEP 1: Squarespace Account -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div class="section-title">Create Your Squarespace Account</div>
+      <div class="section-time">3 minutes</div>
+    </div>
+    <div class="section-desc">
+      Your new site will live on Squarespace 7.1, which is what I'll use to rebuild and launch gdnielsen.com. You'll create the account under your email so GD Nielsen owns it outright, then add me as a contributor so I can build and maintain it.
+    </div>
+    <ul class="steps">
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb1"><label for="cb1" class="checkbox-label"></label>
+        <div class="step-content">
+          Go to <strong>squarespace.com</strong> and click <strong>Get Started</strong>
+        </div>
+      </li>
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb2"><label for="cb2" class="checkbox-label"></label>
+        <div class="step-content">
+          Sign up with <strong>dk@gdnielsen.com</strong>
+          <div class="step-note">You can skip the template picker, I'll handle the design.</div>
+        </div>
+      </li>
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb3"><label for="cb3" class="checkbox-label"></label>
+        <div class="step-content">
+          Once in, go to:
+          <br><span class="step-path">Settings &rarr; Permissions &amp; Ownership &rarr; Invite Contributor</span>
+        </div>
+      </li>
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb4"><label for="cb4" class="checkbox-label"></label>
+        <div class="step-content">
+          Enter <strong>info@mattanthonyphoto.com</strong>, set role to <strong>Administrator</strong>, and send the invite
+          <div class="step-note">You stay the site owner. I just get backend access to build and maintain the site.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- STEP 2: Zernio + Meta -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div class="section-title">Connect Your Social Platforms</div>
+      <div class="section-time">8 minutes</div>
+    </div>
+    <div class="section-desc">
+      Two things happen here. First, you'll create your Zernio account, the tool I use to schedule and publish your content. Then you'll add me as an admin on Meta Business Manager so I can manage your Instagram directly for analytics and engagement.
+    </div>
+
+    <div style="padding-left: 50px;">
+      <div class="link-label">Your Zernio signup link</div>
+      <a class="link-box" href="https://zernio.com/signup?inviteToken=94a69dc743a329a3a24dfeacf911d19d9719751fd316215b" target="_blank">
+        zernio.com/signup?inviteToken=94a69dc7...
+      </a>
+    </div>
+
+    <ul class="steps" style="margin-top: 16px;">
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb5"><label for="cb5" class="checkbox-label"></label>
+        <div class="step-content">
+          Click the link above and create your Zernio account using <strong>dk@gdnielsen.com</strong>
+        </div>
+      </li>
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb6"><label for="cb6" class="checkbox-label"></label>
+        <div class="step-content">
+          Once logged in, click <strong>"Add Account"</strong> and connect <strong>Instagram</strong>
+          <div class="step-note">Log in with the Meta account that manages the GD Nielsen Instagram page. You'll authorize read and publish access.</div>
+        </div>
+      </li>
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb7"><label for="cb7" class="checkbox-label"></label>
+        <div class="step-content">
+          If you have a <strong>Pinterest</strong> business account, add it too
+          <div class="step-note">Pinterest acts as a passive SEO engine for custom home builders. Every pin links back to your site. If you don't have one yet, I'll set one up.</div>
+        </div>
+      </li>
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb8"><label for="cb8" class="checkbox-label"></label>
+        <div class="step-content">
+          Connect your <strong>Google Business Profile</strong> if one already exists
+          <div class="step-note">If GD doesn't have a GBP live yet, leave this. I'll claim and set it up during the SEO rollout.</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="section-desc" style="margin-top: 20px; margin-bottom: 12px;">
+      <strong style="color: #1A1A18;">Now add me to Meta Business Manager.</strong> Zernio handles scheduling, but I also need direct admin access to run analytics, engagement, and troubleshooting.
+    </div>
+
+    <ul class="steps">
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb9"><label for="cb9" class="checkbox-label"></label>
+        <div class="step-content">
+          Go to <strong>business.facebook.com</strong> and log in
+        </div>
+      </li>
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb10"><label for="cb10" class="checkbox-label"></label>
+        <div class="step-content">
+          Navigate to:
+          <br><span class="step-path">Settings &rarr; People &rarr; Add People</span>
+        </div>
+      </li>
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb11"><label for="cb11" class="checkbox-label"></label>
+        <div class="step-content">
+          Enter <strong>info@mattanthonyphoto.com</strong> and grant <strong>Admin access</strong>
+        </div>
+      </li>
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb12"><label for="cb12" class="checkbox-label"></label>
+        <div class="step-content">
+          Click <strong>Send Invite</strong>
+          <div class="step-note">This does not give me access to any personal Facebook profile. Only the business assets tied to GD Nielsen's page.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- STEP 3: Priority Projects + Brand Assets -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div class="section-title">Prepare Your Project List and Brand Assets</div>
+      <div class="section-time">Before the discovery workshop</div>
+    </div>
+    <div class="section-desc">
+      The new site and the first quarter of content will be built around the projects you most want to lead with. Come to the discovery workshop with the shortlist and any brand assets you already have.
+    </div>
+    <ul class="steps">
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb13"><label for="cb13" class="checkbox-label"></label>
+        <div class="step-content">
+          Pick <strong>5 to 10 projects</strong> to lead the new website portfolio
+          <div class="step-note">Forested Family Estate is already on my list. Include anything in progress we should plan around.</div>
+        </div>
+      </li>
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb14"><label for="cb14" class="checkbox-label"></label>
+        <div class="step-content">
+          Gather <strong>logo files, brand fonts, and any brand guidelines</strong> you already have
+          <div class="step-note">Vector files preferred (AI, EPS, SVG). If you only have PNGs or JPGs, still send them and I'll work from there.</div>
+        </div>
+      </li>
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb15"><label for="cb15" class="checkbox-label"></label>
+        <div class="step-content">
+          Flag any <strong>upcoming projects in the next 3 months</strong> we should plan a shoot around
+        </div>
+      </li>
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb16"><label for="cb16" class="checkbox-label"></label>
+        <div class="step-content">
+          Send existing <strong>project photography</strong> you want pulled into the new site
+          <div class="step-note">Dropbox or Google Drive link is easiest. Even rough iPhone progress shots help.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- STEP 4: Client Portal -->
+  <div class="section page-break">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div class="section-title">Your Client Portal</div>
+    </div>
+    <div class="section-desc">
+      This is your private dashboard, and the only thing you'll need to check regularly. Everything else runs automatically. <strong>Your one recurring task is reviewing posts in Approvals.</strong>
+    </div>
+
+    <div style="padding-left: 50px;">
+      <div class="link-label">Your portal</div>
+      <a class="link-box" href="https://portal.mattanthonyphoto.com" target="_blank">
+        portal.mattanthonyphoto.com
+      </a>
+      <div style="display: flex; gap: 24px; margin-top: 8px; font-size: 13px; color: #6B6B65;">
+        <span><strong style="color:#1A1A18;">Login:</strong> dk@gdnielsen.com</span>
+        <span><strong style="color:#1A1A18;">Password:</strong> CedarHarbourCove47</span>
+      </div>
+    </div>
+
+    <ul class="steps" style="margin-top: 20px;">
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb17"><label for="cb17" class="checkbox-label"></label>
+        <div class="step-content">
+          Log in at <strong>portal.mattanthonyphoto.com</strong> and confirm you can see your dashboard
+        </div>
+      </li>
+      <li class="step">
+        <input type="checkbox" class="checkbox" id="cb18"><label for="cb18" class="checkbox-label"></label>
+        <div class="step-content">
+          If Greg wants his own login, let me know and I'll provision one for him too
+        </div>
+      </li>
+    </ul>
+
+    <div style="padding-left: 50px; margin-top: 28px;">
+      <div class="link-label" style="margin-bottom: 12px;">The two pages you'll use most</div>
+    </div>
+
+    <div class="portal-feature">
+      <div class="portal-icon">&#9998;</div>
+      <div class="portal-feature-content">
+        <h4>Approvals</h4>
+        <p>Every social post I draft lands here before it goes live. You'll see the images, caption, and hashtags for each one. Three options. <strong>Approve</strong> if it's good to go, <strong>Request Revision</strong> with specific notes and I'll rebuild it, or <strong>Decline</strong> to start fresh. Nothing publishes without your sign off.</p>
+      </div>
+    </div>
+
+    <div class="portal-feature">
+      <div class="portal-icon">&#128197;</div>
+      <div class="portal-feature-content">
+        <h4>Content Calendar</h4>
+        <p>A monthly view of every post, past and upcoming. Color coded by status so you can see at a glance what's published, what's scheduled, and what's waiting on your review. Click any post to see the full details.</p>
+      </div>
+    </div>
+
+    <div class="portal-highlight">
+      <h4>Your weekly rhythm</h4>
+      <ol>
+        <li>I draft your posts and they appear in <strong>Approvals</strong></li>
+        <li>You review each one. Takes about <strong>5 to 10 minutes</strong> with a coffee</li>
+        <li><strong>Approve</strong> the ones that are good to go</li>
+        <li>If something feels off, hit <strong>Request Revision</strong> and tell me what to change. I'll rebuild it with your notes</li>
+        <li>Approved posts publish automatically on schedule</li>
+      </ol>
+    </div>
+
+    <div style="padding-left: 50px; margin-top: 28px;">
+      <div class="link-label" style="margin-bottom: 12px;">Also inside your portal</div>
+    </div>
+
+    <div class="portal-feature">
+      <div class="portal-icon">&#9633;</div>
+      <div class="portal-feature-content">
+        <h4>Dashboard</h4>
+        <p>Home screen with pending approvals, this month's stats, and your latest published posts.</p>
+      </div>
+    </div>
+
+    <div class="portal-feature">
+      <div class="portal-icon">&#128200;</div>
+      <div class="portal-feature-content">
+        <h4>Performance Reports</h4>
+        <p>Weekly analytics. Reach, engagement, and top performing posts. Curated highlights, not raw data.</p>
+      </div>
+    </div>
+
+    <div class="portal-feature">
+      <div class="portal-icon">&#128247;</div>
+      <div class="portal-feature-content">
+        <h4>Projects &amp; Schedule</h4>
+        <p>Every shoot we work on, active and completed, with dates, deliverables, and countdowns.</p>
+      </div>
+    </div>
+
+    <div class="portal-feature">
+      <div class="portal-icon">&#128230;</div>
+      <div class="portal-feature-content">
+        <h4>Deliverables</h4>
+        <p>Your photo library. Browse, preview, and download full resolution images from every project.</p>
+      </div>
+    </div>
+
+    <div class="portal-feature">
+      <div class="portal-icon">&#127912;</div>
+      <div class="portal-feature-content">
+        <h4>Brand Kit</h4>
+        <p>Your voice rules, vocabulary, hashtag strategy, and connected platforms. The playbook I follow.</p>
+      </div>
+    </div>
+
+    <div class="portal-feature">
+      <div class="portal-icon">&#128179;</div>
+      <div class="portal-feature-content">
+        <h4>Invoices</h4>
+        <p>Billing history, payment status, and downloadable invoices.</p>
+      </div>
+    </div>
+
+    <div class="step-note" style="padding-left: 50px; margin-top: 12px;">Works on your phone. The whole thing is built for thumbs.</div>
+  </div>
+
+  <!-- STEP 5: Website Discovery Workshop -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div class="section-title">Book Your Website Discovery Workshop</div>
+      <div class="section-time">This week</div>
+    </div>
+    <div class="section-desc">
+      60 minute session to align on information architecture, sitemap, visual direction, and project priorities for the new site. This is the first thing we need to do together. The 30 day build clock starts the day we complete it. Greg is welcome to join.
+    </div>
+    <div style="padding-left: 50px;">
+      <a class="link-box" href="https://api.leadconnectorhq.com/widget/booking/enp6ws53Ks3oceXUhRER" target="_blank">
+        Book Your Website Discovery Workshop
+      </a>
+      <div class="step-note" style="text-align: center; margin-top: 8px;">Pick any time that works for you this week. On a call or in person in North Vancouver, both work.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Summary -->
+  <div class="summary">
+    <h3>Quick Reference</h3>
+    <dl class="summary-grid">
+      <dt>Your portal</dt>
+      <dd>portal.mattanthonyphoto.com</dd>
+      <dt>Portal login</dt>
+      <dd>dk@gdnielsen.com</dd>
+      <dt>Portal password</dt>
+      <dd>CedarHarbourCove47</dd>
+      <dt>Website live by</dt>
+      <dd>May 21, 2026</dd>
+      <dt>Retainer starts</dt>
+      <dd>May 1, 2026</dd>
+      <dt>Monthly billing</dt>
+      <dd>1st of each month, starting June 1</dd>
+      <dt>First shoot</dt>
+      <dd>Forested Family Estate, early May</dd>
+      <dt>Fast contact</dt>
+      <dd>Text or email anytime, 604.765.9270</dd>
+    </dl>
+  </div>
+
+  <div class="footer">
+    <p>Matt Anthony Photography &nbsp;&middot;&nbsp; <a href="https://www.mattanthonyphoto.com">mattanthonyphoto.com</a> &nbsp;&middot;&nbsp; 604.765.9270</p>
+  </div>
+
+</div>
+</body>
+</html>
